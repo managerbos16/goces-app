@@ -15,7 +15,7 @@
         // Ambil saldo asli dari attribute data-balance
         const realBalance = balance.getAttribute("data-balance") || balance.innerText;
 
-        const hiddenBalance = "Rp ••••••••";
+        const hiddenBalance = " ••••••••";
 
         // Default
         let isHidden = false;
