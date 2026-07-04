@@ -1,0 +1,327 @@
+/* ==========================================================================
+   GOCES HOME HEADER ENGINE - PREMIUM WHITE & LIGHT BLUE GRADIENT CONTEXT
+========================================================================== */
+
+.goces-home-header,
+.goces-home-header * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Precise Light iOS Design Token Architecture Mapping Wallet Spec */
+  --ios-hdr-bg: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f8fbff 40%,
+    #eef6ff 75%,
+    #dbeafe 100%
+  );
+  --ios-hdr-border: rgba(219, 234, 254, 0.7);
+  --ios-hdr-text-main: #0f172a;
+  --ios-hdr-text-muted: #64748b;
+  --ios-hdr-blue-accent: #1d4ed8;
+
+  /* Premium Glassmorphism & Shadow Profiles */
+  --ios-hdr-glass-bg: rgba(255, 255, 255, 0.65);
+  --ios-hdr-glass-border: rgba(255, 255, 255, 0.8);
+  --ios-hdr-shadow-sm: 0 2px 8px rgba(0, 41, 116, 0.03);
+  --ios-hdr-shadow-md: 0 8px 24px -4px rgba(0, 41, 116, 0.05);
+  --ios-hdr-btn-shadow:
+    0 4px 12px rgba(0, 41, 116, 0.04), inset 0 1px 0px #ffffff;
+}
+
+/* Master Header Container Elements with Elegant Curved Base */
+.goces-home-header {
+  position: relative;
+  width: 100%;
+  background: var(--ios-hdr-bg);
+  border-bottom: 1px solid var(--ios-hdr-border);
+  /* Massive smoothed continuous curve matching Apple Human Interface standards */
+  border-bottom-left-radius: clamp(32px, 8vw, 42px);
+  border-bottom-right-radius: clamp(32px, 8vw, 42px);
+
+  /* Configured layout pads: Extra bottom padding coordinates structural overlap with wallet */
+  padding-top: calc(env(safe-area-inset-top) + clamp(16px, 4vw, 24px));
+  padding-left: clamp(16px, 4.5vw, 24px);
+  padding-right: clamp(16px, 4.5vw, 24px);
+  padding-bottom: clamp(44px, 11vw, 56px);
+
+  box-shadow: var(--ios-hdr-shadow-md);
+  overflow: hidden;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  z-index: 10;
+}
+
+/* Structural Overlap Logic: Elevate wallet layer onto header mesh structure */
+.goces-wallet-section {
+  position: relative;
+  margin-top: clamp(
+    -32px,
+    -8vw,
+    -24px
+  ) !important; /* Locks wallet tightly with curved baseline */
+  z-index: 11 !important;
+}
+
+/* iOS Luxury Lighting and Ambient Vectors */
+.goces-hdr-ambient-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 85% 15%,
+    rgba(219, 234, 254, 0.45) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.goces-hdr-bg-decor-1 {
+  position: absolute;
+  width: min(60vw, 260px);
+  aspect-ratio: 1 / 1;
+  top: -20%;
+  left: -10%;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(219, 234, 254, 0.25) 0%,
+    rgba(238, 246, 255, 0) 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.goces-hdr-bg-decor-2 {
+  position: absolute;
+  width: min(45vw, 180px);
+  aspect-ratio: 1 / 1;
+  bottom: -15%;
+  right: 5%;
+  border-radius: 50%;
+  background: rgba(219, 234, 254, 0.15);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.goces-hdr-glass-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Content Structural Containers */
+.goces-hdr-upper-row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: clamp(16px, 4.5vw, 22px);
+  z-index: 3;
+}
+
+.goces-hdr-lower-row {
+  position: relative;
+  width: 100%;
+  z-index: 3;
+}
+
+/* Enlarged Circular Premium Profile Component */
+.goces-hdr-left-zone {
+  display: flex;
+  align-items: center;
+}
+
+.goces-hdr-profile-wrapper {
+  display: block;
+  text-decoration: none;
+  outline: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goces-hdr-profile-wrapper:active {
+  transform: scale(0.92);
+}
+
+.goces-hdr-profile-photo {
+  width: clamp(46px, 12vw, 52px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 41, 116, 0.08);
+  background: #ffffff;
+}
+
+/* System Glass Control Cluster */
+.goces-hdr-right-zone {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 3vw, 14px);
+}
+
+.goces-hdr-glass-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(40px, 10.5vw, 44px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  text-decoration: none;
+  background: var(--ios-hdr-glass-bg);
+  border: 1px solid var(--ios-hdr-glass-border);
+  color: var(--ios-hdr-text-main);
+  box-shadow: var(--ios-hdr-btn-shadow);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goces-hdr-glass-btn:active {
+  transform: scale(0.88);
+  background: rgba(219, 234, 254, 0.5);
+  color: var(--ios-hdr-blue-accent);
+}
+
+.goces-hdr-glass-btn svg {
+  width: 48%;
+  height: 48%;
+  transition: transform 0.2s ease;
+}
+
+/* Micro Status Badge Component Mapping Jagel Metrics */
+.goces-hdr-status-badge {
+  position: absolute;
+  top: -1.5px;
+  right: -1.5px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  background: #ff3b30; /* Native Apple iOS Red System Variable */
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(255, 59, 48, 0.3);
+}
+
+/* Elongated Premium iOS Search Bar Layout */
+.goces-hdr-search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: clamp(42px, 10vw, 46px);
+  padding: 0 clamp(14px, 4vw, 18px);
+  border-radius: 24px; /* Fluid continuous rounded shape profile */
+  background: #ffffff;
+  border: 1px solid rgba(219, 234, 254, 0.8);
+  box-shadow:
+    var(--ios-hdr-shadow-sm),
+    inset 0 -1px 1px rgba(0, 41, 116, 0.01);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goces-hdr-search-container:focus-within {
+  border-color: rgba(29, 78, 216, 0.35);
+  box-shadow:
+    0 10px 25px -6px rgba(0, 41, 116, 0.06),
+    0 0 0 3px rgba(29, 78, 216, 0.05);
+  transform: translateY(-0.5px);
+}
+
+.goces-hdr-search-trigger {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin-right: 12px;
+  color: var(--ios-hdr-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.goces-hdr-search-container:focus-within .goces-hdr-search-trigger {
+  color: var(--ios-hdr-blue-accent);
+}
+
+.goces-hdr-search-trigger svg {
+  width: clamp(17px, 4.5vw, 19px);
+  height: clamp(17px, 4.5vw, 19px);
+}
+
+.goces-hdr-search-input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--ios-hdr-text-main);
+  font-size: clamp(13px, 3.5vw, 14.5px);
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.goces-hdr-search-input::placeholder {
+  color: var(--ios-hdr-text-muted);
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   FLEXIBLE RESPONSIVE MATRIX CONFIGURATION (Fluid Adaptation Layer)
+   ========================================================================== */
+
+@media (max-width: 359px) {
+  .goces-home-header {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 38px;
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+  }
+  .goces-hdr-upper-row {
+    margin-bottom: 12px;
+  }
+  .goces-hdr-right-zone {
+    gap: 8px;
+  }
+  .goces-hdr-search-container {
+    padding: 0 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .goces-home-header {
+    max-width: 100%;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    padding-bottom: 60px;
+  }
+}

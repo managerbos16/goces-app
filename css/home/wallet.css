@@ -1,0 +1,370 @@
+/* ==========================================================================
+   GOCESPAY PREMIUM CARD ENGINE - ZERO-PATCH CLEAN BUILD
+========================================================================== */
+
+.goces-wallet-section,
+.goces-wallet-section * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* iOS Premium White to Ultra Soft Blue Spec */
+  --ios-gradient-surface: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f8fbff 35%,
+    #eef6ff 70%,
+    #dbeafe 100%
+  );
+  --ios-card-border: rgba(219, 234, 254, 0.55);
+
+  /* Layered Micro Shadows for Depth Injection */
+  --ios-shadow-lvl1: 0 4px 18px -2px rgba(0, 41, 116, 0.05);
+  --ios-shadow-lvl2: 0 12px 32px -4px rgba(0, 41, 116, 0.03);
+  --ios-inner-highlight: inset 0 1.5px 0px rgba(255, 255, 255, 0.9);
+  --ios-floating-btn-shadow:
+    0 4px 14px rgba(0, 41, 116, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  /* Strict Color Definitions */
+  --text-slate-dark: #0f172a;
+  --text-slate-muted: #64748b;
+  --apple-blue-accent: #1d4ed8;
+
+  /* Shortcut Core Gradient Nodes */
+  --sc-blue: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  --sc-purple: linear-gradient(135deg, #a855f7, #6b21a8);
+  --sc-green: linear-gradient(135deg, #10b981, #047857);
+  --sc-orange: linear-gradient(135deg, #f97316, #c2410c);
+}
+
+/* Section Wrapper: Compresses and Raises the Layout */
+.goces-wallet-section {
+  width: 100%;
+  padding: 0 clamp(12px, 4vw, 20px);
+  background: transparent;
+  margin-top: clamp(
+    -24px,
+    -5vw,
+    -14px
+  ); /* Forces structural alignment towards header */
+  position: relative;
+  z-index: 99;
+  display: block;
+}
+
+/* Card Body Structural Base */
+.goces-wallet-card {
+  position: relative;
+  width: 100%;
+  max-width: 500px; /* Perfectly compact constraints */
+  margin: 0 auto;
+  background: var(--ios-gradient-surface);
+  border: 1px solid var(--ios-card-border);
+  border-radius: clamp(
+    24px,
+    6vw,
+    30px
+  ); /* Massive premium corner smoothing radius */
+  padding: clamp(14px, 4vw, 20px); /* Condensed spacing rules */
+  box-shadow:
+    var(--ios-shadow-lvl1), var(--ios-shadow-lvl2), var(--ios-inner-highlight);
+  overflow: hidden;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-slate-dark);
+}
+
+/* Light Injectors and Vectors */
+.goces-ambient-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 15% 15%,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.goces-card-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.9) 25%,
+    rgba(255, 255, 255, 0.9) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.goces-card-watermark {
+  position: absolute;
+  right: -2%;
+  bottom: -12%;
+  font-size: clamp(95px, 24vw, 135px);
+  font-weight: 900;
+  font-style: italic;
+  color: rgba(29, 78, 216, 0.015);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Upper Row Setup */
+.goces-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(10px, 3vw, 14px);
+  position: relative;
+  z-index: 3;
+}
+
+.goces-brand-title {
+  font-size: clamp(11px, 2.8vw, 12.5px);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--text-slate-muted);
+}
+
+/* Elegant Points Mini Badge */
+.goces-badge-points {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(219, 234, 254, 0.8);
+  padding: 3px 9px;
+  border-radius: 100px;
+  box-shadow: 0 2px 6px rgba(0, 41, 116, 0.02);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition:
+    background 0.2s,
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goces-badge-points:active {
+  transform: scale(0.95);
+  background: rgba(219, 234, 254, 0.4);
+}
+
+.goces-star-svg {
+  width: 11px;
+  height: 11px;
+  color: #eab308;
+}
+
+.goces-points-value {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-slate-dark);
+}
+
+.goces-points-value small {
+  font-weight: 500;
+  color: var(--text-slate-muted);
+}
+
+/* Main Focus Balance Node */
+.goces-balance-display-zone {
+  position: relative;
+  z-index: 3;
+  margin-bottom: clamp(12px, 3.5vw, 16px);
+}
+
+.goces-balance-flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.goces-anchor-saldo {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+#walletBalance {
+  font-size: clamp(28px, 8vw, 36px); /* Maximized prominent sizing rules */
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: var(--text-slate-dark);
+  display: inline-block;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.goces-anchor-saldo:active #walletBalance {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+/* Premium Haptic Eye Trigger Config */
+.goces-haptic-eye-trigger {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(219, 234, 254, 0.9);
+  padding: 7px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-slate-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 41, 116, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goces-haptic-eye-trigger:active {
+  transform: scale(0.88);
+  background: rgba(219, 234, 254, 0.6);
+}
+
+.goces-eye-svg {
+  width: clamp(18px, 5vw, 20px);
+  height: clamp(18px, 5vw, 20px);
+}
+
+/* SVG Eye Stroke Controllers */
+.goces-eye-svg .eye-diagonal-mask {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  transition:
+    stroke-dashoffset 0.25s ease,
+    opacity 0.15s ease;
+  opacity: 0;
+}
+
+.goces-haptic-eye-trigger.blind-mode {
+  color: var(--apple-blue-accent);
+  border-color: rgba(29, 78, 216, 0.2);
+  background: rgba(239, 246, 255, 0.75);
+}
+
+.goces-haptic-eye-trigger.blind-mode .goces-eye-svg .eye-diagonal-mask {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* Ultra Thin Splitter Hairline */
+.goces-card-hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(219, 234, 254, 0.15) 0%,
+    rgba(219, 234, 254, 0.85) 20%,
+    rgba(219, 234, 254, 0.85) 80%,
+    rgba(219, 234, 254, 0.15) 100%
+  );
+  margin-bottom: clamp(12px, 3.5vw, 16px);
+  border: none;
+}
+
+/* Floating iOS Menu Segment */
+.goces-action-grid-menu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(6px, 2vw, 14px);
+  position: relative;
+  z-index: 3;
+}
+
+.goces-action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goces-action-item:active {
+  transform: scale(0.86); /* Crisp iOS compression physics behavior */
+}
+
+.goces-icon-capsule {
+  width: clamp(40px, 11vw, 46px);
+  aspect-ratio: 1 / 1;
+  border-radius: clamp(13px, 3.5vw, 15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  box-shadow: var(--ios-floating-btn-shadow);
+  transition:
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.goces-action-item:hover .goces-icon-capsule {
+  filter: brightness(1.04);
+}
+
+/* High Fidelity Gradient Map injectors */
+.goces-icon-capsule.style-blue {
+  background: var(--sc-blue);
+}
+.goces-icon-capsule.style-purple {
+  background: var(--sc-purple);
+}
+.goces-icon-capsule.style-green {
+  background: var(--sc-green);
+}
+.goces-icon-capsule.style-orange {
+  background: var(--sc-orange);
+}
+
+.goces-icon-capsule svg {
+  width: 42%;
+  height: 42%;
+  color: #ffffff;
+}
+
+.goces-action-item span {
+  font-size: clamp(10.5px, 2.8vw, 11.5px);
+  font-weight: 600;
+  color: var(--text-slate-muted);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* ==========================================================================
+   SOLID RESPONSIVE CORE (Anti-Overflow / Fluid Adapters)
+   ========================================================================== */
+@media (max-width: 359px) {
+  .goces-wallet-card {
+    padding: 11px;
+  }
+  .goces-action-grid-menu {
+    gap: 4px;
+  }
+  .goces-icon-capsule {
+    margin-bottom: 3px;
+  }
+}
+@media (min-width: 768px) {
+  .goces-wallet-card {
+    border-radius: 28px;
+  }
+}
