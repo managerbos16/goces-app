@@ -1,55 +1,101 @@
 /* ==========================================================================
-   GOCESPAY WALLET CARD - PREMIUM CONTROLLER MODULE
+   GOCESPAY WALLET CONTROLLER
+   Compatible with Jagel Android WebView
 ========================================================================== */
-document.addEventListener("DOMContentLoaded", () => {
-    const eyeTrigger = document.getElementById("toggleBalance");
-    const displayField = document.getElementById("walletBalance");
 
-    if (eyeTrigger && displayField) {
-        // Safe string tracking mapped dynamically from original Jagel node
-        const realBalanceValue = displayField.textContent.trim();
-        const secureMaskString = "Rp ••••••••";
+(function () {
 
-        // Query state synchronization from continuous disk engine
-        let isWalletMasked = localStorage.getItem("goces_mask_preference") === "true";
+    function initWallet() {
 
-        // UI Pipeline Execution Thread
-        const renderingEnginePipeline = (executeAnimation = false) => {
-            if (executeAnimation) {
-                // Fluent fluid mechanical micro-fade transitions
-                displayField.style.transition = "opacity 0.12s ease, transform 0.12s ease";
-                displayField.style.opacity = "0";
-                displayField.style.transform = "translateY(1.5px)";
+        const balance = document.getElementById("walletBalance");
+        const toggle = document.getElementById("toggleBalance");
 
-                setTimeout(() => {
-                    displayField.textContent = isWalletMasked ? secureMaskString : realBalanceValue;
-                    displayField.style.opacity = "1";
-                    displayField.style.transform = "translateY(0)";
-                }, 110);
+        if (!balance || !toggle) return;
+
+        // Ambil saldo asli dari attribute data-balance
+        const realBalance = balance.getAttribute("data-balance") || balance.innerText;
+
+        const hiddenBalance = "Rp ••••••••";
+
+        // Default
+        let isHidden = false;
+
+        // Ambil status terakhir
+        try {
+            isHidden = localStorage.getItem("goces_wallet_hidden") === "true";
+        } catch (e) {
+            isHidden = false;
+        }
+
+        // Render tampilan
+        function render(animated) {
+
+            if (animated) {
+
+                balance.style.opacity = "0";
+                balance.style.transform = "translateY(2px)";
+
+                setTimeout(function () {
+
+                    balance.innerText = isHidden ? hiddenBalance : realBalance;
+
+                    balance.style.opacity = "1";
+                    balance.style.transform = "translateY(0)";
+
+                }, 120);
+
             } else {
-                displayField.textContent = isWalletMasked ? secureMaskString : realBalanceValue;
+
+                balance.innerText = isHidden ? hiddenBalance : realBalance;
+
             }
 
-            // Sync structural controller attributes to the toggle layout wrapper
-            if (isWalletMasked) {
-                eyeTrigger.classList.add("blind-mode");
+            if (isHidden) {
+
+                toggle.classList.add("blind-mode");
+
             } else {
-                eyeTrigger.classList.remove("blind-mode");
+
+                toggle.classList.remove("blind-mode");
+
             }
+
+        }
+
+        // Render pertama
+        render(false);
+
+        // Klik tombol mata
+        toggle.onclick = function (e) {
+
+            e.preventDefault();
+
+            isHidden = !isHidden;
+
+            try {
+
+                localStorage.setItem(
+                    "goces_wallet_hidden",
+                    isHidden
+                );
+
+            } catch (err) { }
+
+            render(true);
+
         };
 
-        // Initialize display configuration state array safely
-        renderingEnginePipeline(false);
-
-        // Core Interaction Layer
-        eyeTrigger.addEventListener("click", (clickEvent) => {
-            clickEvent.preventDefault();
-            clickEvent.stopPropagation();
-
-            isWalletMasked = !isWalletMasked;
-            localStorage.setItem("goces_mask_preference", isWalletMasked);
-
-            renderingEnginePipeline(true);
-        });
     }
-});
+
+    // Aman untuk Browser & Jagel
+    if (document.readyState === "loading") {
+
+        document.addEventListener("DOMContentLoaded", initWallet);
+
+    } else {
+
+        initWallet();
+
+    }
+
+})();
