@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/shop/shop.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/fresh/fresh.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/goride/goride.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/gocar/gocar.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/delivery/delivery.css">
 </head>
 
 <body>
@@ -172,7 +174,7 @@
                         <span class="goces-shortcut-label">GoRide</span>
                     </button>
 
-                    <a href="action://act/car" class="goces-shortcut-item">
+                    <button type="button" class="goces-shortcut-item" onclick="gcsCarPopupOpen()">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
@@ -181,7 +183,7 @@
                             </div>
                         </div>
                         <span class="goces-shortcut-label">GoCar</span>
-                    </a>
+                    </button>
 
                     <a href="#" class="goces-shortcut-item" onclick="showPage('food');return false;">
                         <div class="goces-shortcut-icon-frame">
@@ -194,7 +196,7 @@
                         <span class="goces-shortcut-label">GoFood</span>
                     </a>
 
-                    <a href="action://act/delivery" class="goces-shortcut-item">
+                    <button type="button" class="goces-shortcut-item" onclick="gcsDeliveryPopupOpen()">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
@@ -203,7 +205,7 @@
                             </div>
                         </div>
                         <span class="goces-shortcut-label">Delivery</span>
-                    </a>
+                    </button>
 
                     <a href="#" class="goces-shortcut-item" onclick="showPage('shop');return false;">
                         <div class="goces-shortcut-icon-frame">
@@ -252,12 +254,6 @@
                 </div>
             </section>
 
-        </section>
-
-        <section id="page-ride" class="goces-page">
-        </section>
-
-        <section id="page-car" class="goces-page">
         </section>
 
         <section id="page-food" class="goces-page">
@@ -384,9 +380,6 @@
                 </section>
 
             </main>
-        </section>
-
-        <section id="page-delivery" class="goces-page">
         </section>
 
         <section id="page-shop" class="goces-page">
@@ -673,12 +666,6 @@
             </main>
         </section>
 
-        <section id="page-ppob" class="goces-page">
-        </section>
-
-        <section id="page-rental" class="goces-page">
-        </section>
-
         <section id="page-promo" class="goces-page">
         </section>
 
@@ -769,6 +756,8 @@
     <script src="https://goces-app.vercel.app/js/shop/shop.js"></script>
     <script src="https://goces-app.vercel.app/js/fresh/fresh.js"></script>
     <script src="https://goces-app.vercel.app/js/goride/goride.js"></script>
+    <script src="https://goces-app.vercel.app/js/gocar/gocar.js"></script>
+    <script src="https://goces-app.vercel.app/js/delivery/delivery.js"></script>
 
     <div id="gcsRidePopupOverlay" class="gcsRidePopupOverlay" aria-hidden="true">
         <div id="gcsRidePopupBackdrop" class="gcsRidePopupBackdrop"></div>
@@ -801,6 +790,78 @@
                         </svg>
                     </div>
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcsCarPopupOverlay" class="gcsCarPopupOverlay" aria-hidden="true">
+        <div id="gcsCarPopupBackdrop" class="gcsCarPopupBackdrop"></div>
+
+        <div id="gcsCarPopupSheet" class="gcsCarPopupSheet" role="dialog" aria-modal="true"
+            aria-labelledby="gcsCarPopupTitleId">
+            <div id="gcsCarPopupDragArea" class="gcsCarPopupHandleWrapper">
+                <div class="gcsCarPopupHandle"></div>
+            </div>
+
+            <div class="gcsCarPopupHeader">
+                <h2 id="gcsCarPopupTitleId" class="gcsCarPopupTitle">Layanan GoCar</h2>
+            </div>
+
+            <div class="gcsCarPopupContent">
+                <div id="gcsCarServiceCardId" class="gcsCarServiceCard" tabindex="0" role="button"
+                    aria-label="Pesan GoCar, Mobil, Nyaman, Aman">
+                    <div class="gcsCarServiceLeft">
+                        <div class="gcsCarImageWrapper">
+                            <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=120&q=80"
+                                alt="GoCar" class="gcsCarServiceImg">
+                        </div>
+                        <div class="gcsCarServiceInfo">
+                            <h3 class="gcsCarServiceTitle">GoCar</h3>
+                            <p class="gcsCarServiceDesc">Mobil • Nyaman • Aman</p>
+                        </div>
+                    </div>
+                    <div class="gcsCarServiceRight">
+                        <div class="gcsCarIconActionCircle">
+                            <i class="ph ph-caret-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gcsDeliveryPopupOverlay" class="gcsDeliveryPopupOverlay" aria-hidden="true">
+        <div id="gcsDeliveryPopupBackdrop" class="gcsDeliveryPopupBackdrop"></div>
+
+        <div id="gcsDeliveryPopupSheet" class="gcsDeliveryPopupSheet" role="dialog" aria-modal="true"
+            aria-labelledby="gcsDeliveryPopupTitleId">
+            <div id="gcsDeliveryPopupDragArea" class="gcsDeliveryPopupHandleWrapper">
+                <div class="gcsDeliveryPopupHandle"></div>
+            </div>
+
+            <div class="gcsDeliveryPopupHeader">
+                <h2 id="gcsDeliveryPopupTitleId" class="gcsDeliveryPopupTitle">Layanan Delivery</h2>
+            </div>
+
+            <div class="gcsDeliveryPopupContent">
+                <div id="gcsDeliveryServiceCardId" class="gcsDeliveryServiceCard" tabindex="0" role="button"
+                    aria-label="Pesan Delivery, Kirim Paket, Cepat, Aman">
+                    <div class="gcsDeliveryServiceLeft">
+                        <div class="gcsDeliveryImageWrapper">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=120&q=80"
+                                alt="Delivery" class="gcsDeliveryServiceImg">
+                        </div>
+                        <div class="gcsDeliveryServiceInfo">
+                            <h3 class="gcsDeliveryServiceTitle">Delivery</h3>
+                            <p class="gcsDeliveryServiceDesc">Kirim Paket • Cepat • Aman</p>
+                        </div>
+                    </div>
+                    <div class="gcsDeliveryServiceRight">
+                        <div class="gcsDeliveryIconActionCircle">
+                            <i class="ph ph-caret-right"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,225 @@
+.gcsDeliveryPopupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Backdrop Gelap dengan Fade Animasi */
+.gcsDeliveryPopupBackdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  pointer-events: none;
+  will-change: background-color;
+}
+
+.gcsDeliveryPopupOverlay.gcsDeliveryPopupVisible .gcsDeliveryPopupBackdrop {
+  background-color: rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+}
+
+/* Modal Bottom Sheet Sheet */
+.gcsDeliveryPopupSheet {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 26px 26px 0 0;
+  padding: 0 var(--screen-padding) calc(24px + var(--safe-bottom));
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.06);
+  transform: translateY(100%);
+  transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.gcsDeliveryPopupOverlay.gcsDeliveryPopupVisible .gcsDeliveryPopupSheet {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* State Lepas Transisi Saat Drag */
+.gcsDeliveryPopupSheet.gcsDeliveryPopupDragging {
+  transition: none;
+}
+
+/* Handle Drag */
+.gcsDeliveryPopupHandleWrapper {
+  width: 100%;
+  padding: 12px 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  touch-action: none;
+}
+
+.gcsDeliveryPopupHandleWrapper:active {
+  cursor: grabbing;
+}
+
+.gcsDeliveryPopupHandle {
+  width: 48px;
+  height: 5px;
+  background-color: var(--border);
+  border-radius: 999px;
+}
+
+/* Header & Typography */
+.gcsDeliveryPopupHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gcsDeliveryPopupTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+/* Content Container */
+.gcsDeliveryPopupContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   PREMIUM SERVICE CARD DELIVERY STYLE
+   ========================================================================== */
+.gcsDeliveryServiceCard {
+  width: 100%;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.gcsDeliveryServiceCard:focus-visible {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.gcsDeliveryServiceCard:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+}
+
+.gcsDeliveryServiceLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.gcsDeliveryImageWrapper {
+  width: 64px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gcsDeliveryServiceImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gcsDeliveryServiceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gcsDeliveryServiceTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.gcsDeliveryServiceDesc {
+  font-size: 13px;
+  color: var(--text);
+  opacity: 0.5;
+  margin: 0;
+}
+
+.gcsDeliveryIconActionCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--blue);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25);
+  transition: background-color var(--transition);
+}
+
+.gcsDeliveryServiceCard:hover .gcsDeliveryIconActionCircle {
+  background-color: var(--blue-dark);
+}
+
+/* UI Demo Button Generic */
+.gcsDeliveryPopupButton {
+  padding: 12px 24px;
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2);
+  transition: transform var(--transition);
+}
+.gcsDeliveryPopupButton:active {
+  transform: scale(0.95);
+}
+
+/* Ripple Canvas Overlay Engine */
+.gcsDeliveryPopupRipple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: gcsDeliveryPopupRippleAnim 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+  background-color: rgba(29, 78, 216, 0.06);
+  pointer-events: none;
+}
+
+@keyframes gcsDeliveryPopupRippleAnim {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
