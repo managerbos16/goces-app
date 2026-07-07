@@ -161,36 +161,6 @@
   }
 }
 
-.gcsRideArrow {
-  width: 34px;
-
-  height: 34px;
-
-  border-radius: 50%;
-
-  background: #eff6ff;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  color: var(--blue);
-
-  flex-shrink: 0;
-}
-
-.gcsRideArrow svg {
-  width: 18px;
-
-  height: 18px;
-}
-
-/*==============================
-        SERVICE CARD
-==============================*/
-
 .gcsRideServiceCard {
   width: 100%;
 
@@ -217,50 +187,48 @@
   transition: 0.25s;
 }
 
+.gcsRideServiceLeft {
+  display: contents;
+}
+
 .gcsRideServiceCard:active {
   transform: scale(0.97);
 }
 
 .gcsRideImage {
-  width: 56px;
+  width: 48px;
 
-  height: 56px;
-
-  border-radius: 18px;
-
-  background: #eef5ff;
+  height: 48px;
 
   display: flex;
 
   align-items: center;
 
   justify-content: center;
-
-  flex-shrink: 0;
 }
 
 .gcsRideImage img {
-  width: 44px;
+  width: 42px;
 
-  height: 44px;
+  height: 42px;
 
   object-fit: contain;
+
+  display: block;
 }
 
 .gcsRideInfo h3 {
   margin: 0;
 
-  font-size: 17px;
+  font-size: 16px;
 
   font-weight: 700;
-
-  color: #111827;
 }
 
 .gcsRideInfo p {
-  margin-top: 4px;
+  margin-top: 2px;
 
-  font-size: 13px;
+  font-size: 12px;
 
   color: #6b7280;
 }
@@ -272,7 +240,31 @@
 
   justify-content: center;
 
-  margin-left: 2px;
+  align-items: flex-start;
 
-  line-height: 1.15;
+  line-height: 1.2;
+}
+
+.gcsRideArrow {
+  width: 32px;
+
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: #eef5ff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: var(--blue);
+}
+
+.gcsRideArrow svg {
+  width: 18px;
+
+  height: 18px;
 }
