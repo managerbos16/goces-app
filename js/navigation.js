@@ -1,21 +1,23 @@
-/*==================================
-  GOCES NAVIGATION
-==================================*/
+/*==================================================
+            GOCES NAVIGATION
+==================================================*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.querySelectorAll(".goces-nav-item").forEach(button => {
+    document
+        .querySelectorAll(".goces-nav-item, .goces-qris-btn")
+        .forEach(button => {
 
-        button.addEventListener("click", () => {
+            button.addEventListener("click", function () {
 
-            const page = button.dataset.page;
+                const page = this.dataset.page;
 
-            if (page) {
+                if (!page) return;
+
                 showPage(page);
-            }
+
+            });
 
         });
-
-    });
 
 });

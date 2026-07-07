@@ -1,112 +1,223 @@
-/*==================================
-  GOCES ROUTER v1.0
-==================================*/
+/*==================================================
+                GOCES ROUTER v3.0
+==================================================*/
 
 let currentPage = "home";
-const pageHistory = [];
+let pageHistory = [];
 
-const pages = document.querySelectorAll(".goces-page");
-const navItems = document.querySelectorAll(".goces-nav-item");
+/*==================================================
+                CACHE
+==================================================*/
 
-/*==================================
-  Update Tampilan
-==================================*/
+const pages = {};
+const navs = {};
 
-function updateUI(pageId) {
+/*==================================================
+                INITIALIZE
+==================================================*/
 
-    pages.forEach(page => {
-        page.classList.remove("goces-active");
+document.addEventListener("DOMContentLoaded", initRouter);
+
+function initRouter() {
+
+    document.querySelectorAll(".goces-page").forEach(page => {
+
+        pages[page.id.replace("page-", "")] = page;
+
     });
 
-    const target = document.getElementById(`page-${pageId}`);
+    document.querySelectorAll(".goces-nav-item").forEach(nav => {
 
-    if (!target) {
-        console.warn(`Halaman "${pageId}" tidak ditemukan.`);
+        navs[nav.dataset.page] = nav;
+
+    });
+
+    history.replaceState(
+        {
+            page: currentPage
+        },
+        "",
+        "#" + currentPage
+    );
+
+}
+
+/*==================================================
+                UPDATE PAGE
+==================================================*/
+
+function updatePage(page) {
+
+    if (!pages[page]) {
+
+        console.warn("Page tidak ditemukan :", page);
+
         return false;
+
     }
 
-    target.classList.add("goces-active");
+    Object.values(pages).forEach(item => {
 
-    navItems.forEach(item => {
         item.classList.remove("goces-active");
+
     });
 
-    const active = document.querySelector(`.goces-nav-item[data-page="${pageId}"]`);
+    pages[page].classList.add("goces-active");
 
-    if (active) {
-        active.classList.add("goces-active");
+    Object.values(navs).forEach(item => {
+
+        item.classList.remove("goces-active");
+
+    });
+
+    if (navs[page]) {
+
+        navs[page].classList.add("goces-active");
+
     }
 
-    window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant"
-    });
+    window.scrollTo(0, 0);
+
+    currentPage = page;
 
     return true;
 
 }
 
-/*==================================
-  Buka Halaman
-==================================*/
+/*==================================================
+                SHOW PAGE
+==================================================*/
 
-function showPage(pageId, saveHistory = true) {
+function showPage(page) {
 
-    if (pageId === currentPage) return;
+    if (!page) return;
 
-    if (saveHistory) {
+    if (page === currentPage) return;
+
+    if (!pages[page]) return;
+
+    const last = pageHistory[pageHistory.length - 1];
+
+    if (last !== currentPage) {
+
         pageHistory.push(currentPage);
+
     }
 
-    if (updateUI(pageId)) {
-        currentPage = pageId;
-    }
+    history.pushState(
+        {
+            page: page
+        },
+        "",
+        "#" + page
+    );
+
+    updatePage(page);
 
 }
 
-/*==================================
-  Ganti Halaman Tanpa History
-==================================*/
+/*==================================================
+                REPLACE PAGE
+==================================================*/
 
-function replacePage(pageId) {
+function replacePage(page) {
 
-    if (updateUI(pageId)) {
-        currentPage = pageId;
-    }
+    if (!page) return;
+
+    if (!pages[page]) return;
+
+    history.replaceState(
+        {
+            page: page
+        },
+        "",
+        "#" + page
+    );
+
+    updatePage(page);
 
 }
 
-/*==================================
-  Tombol Back
-==================================*/
+/*==================================================
+                GO BACK
+==================================================*/
 
 function goBack() {
 
     if (pageHistory.length > 0) {
 
-        const previousPage = pageHistory.pop();
-
-        showPage(previousPage, false);
+        history.back();
 
         return;
 
     }
 
-    /* Sudah di halaman utama */
-
-    if (typeof Jagel !== "undefined" && typeof Jagel.close === "function") {
-        Jagel.close();
-    }
+    window.location.href = "action://act/back";
 
 }
 
-/*==================================
-  Reset History
-==================================*/
+/*==================================================
+            ANDROID / BROWSER BACK
+==================================================*/
+
+window.addEventListener("popstate", function () {
+
+    if (pageHistory.length === 0) {
+
+        currentPage = "home";
+
+        return;
+
+    }
+
+    const previous = pageHistory.pop();
+
+    updatePage(previous);
+
+});
+
+/*==================================================
+                RESET HISTORY
+==================================================*/
 
 function resetHistory() {
 
-    pageHistory.length = 0;
+    pageHistory = [];
+
+}
+
+/*==================================================
+                GET CURRENT PAGE
+==================================================*/
+
+function getCurrentPage() {
+
+    return currentPage;
+
+}
+
+/*==================================================
+                GET PREVIOUS PAGE
+==================================================*/
+
+function getPreviousPage() {
+
+    if (pageHistory.length === 0) {
+
+        return null;
+
+    }
+
+    return pageHistory[pageHistory.length - 1];
+
+}
+
+/*==================================================
+                CAN GO BACK
+==================================================*/
+
+function canGoBack() {
+
+    return pageHistory.length > 0;
 
 }
