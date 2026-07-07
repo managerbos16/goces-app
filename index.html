@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/home/wallet.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/home/shortcut.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/home/slider.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/food/food.css">
 </head>
 
 <body>
@@ -19,27 +20,20 @@
     <div class="goces-app">
 
         <section id="page-home" class="goces-page goces-active">
-            <!-- ==========================================================================
-     GOCES HOME HEADER - PREMIUM iOS 18 ARCHITECTURE
-========================================================================== -->
             <header class="goces-home-header">
-                <!-- iOS Ambient Soft Lighting Effects -->
                 <div class="goces-hdr-ambient-glow"></div>
                 <div class="goces-hdr-bg-decor-1"></div>
                 <div class="goces-hdr-bg-decor-2"></div>
                 <div class="goces-hdr-glass-highlight"></div>
 
                 <div class="goces-hdr-upper-row">
-                    <!-- Profile Frame Section -->
                     <div class="goces-hdr-left-zone">
                         <a href="action://act/profile" class="goces-hdr-profile-wrapper">
                             <img src="{foto}" alt="{nama}" class="goces-hdr-profile-photo">
                         </a>
                     </div>
 
-                    <!-- System Action Cluster (Notification & Cart) -->
                     <div class="goces-hdr-right-zone">
-                        <!-- Messages / Notification Glass Capsule -->
                         <a href="action://act/message_list" class="goces-hdr-glass-btn" aria-label="Messages">
                             <span class="goces-hdr-status-badge">{jumlah_pesan}</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
@@ -49,7 +43,6 @@
                             </svg>
                         </a>
 
-                        <!-- Shopping Cart Glass Capsule -->
                         <a href="action://act/cart" class="goces-hdr-glass-btn" aria-label="Cart">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -61,7 +54,6 @@
                     </div>
                 </div>
 
-                <!-- Elongated Premium iOS Search Architecture -->
                 <div class="goces-hdr-lower-row">
                     <form action="action://act/search" class="goces-hdr-search-container">
                         <button type="submit" class="goces-hdr-search-trigger" aria-label="Search">
@@ -77,17 +69,12 @@
                 </div>
             </header>
 
-            <!-- ==========================================================================
-     GOCESPAY PREMIUM WALLET CARD - LIGHT iOS 18 ARCHITECTURE
-========================================================================== -->
             <section class="goces-wallet-section">
                 <div class="goces-wallet-card">
-                    <!-- iOS Ambient & Light Injectors -->
                     <div class="goces-ambient-glow"></div>
                     <div class="goces-card-highlight"></div>
                     <div class="goces-card-watermark">G</div>
 
-                    <!-- Upper Row: Logo & Points -->
                     <div class="goces-card-header">
                         <div class="goces-brand-title">GOCESPAY</div>
                         <a href="action://act/customer_points" class="goces-badge-points">
@@ -98,11 +85,10 @@
                         </a>
                     </div>
 
-                    <!-- Center Row: Focal Balance Display (No Subtitle Sub-text) -->
                     <div class="goces-balance-display-zone">
                         <div class="goces-balance-flex-wrapper">
                             <a href="action://act/account" class="goces-anchor-saldo">
-                                <span id="walletBalance" data-balance="Rp {saldo}">{saldo}</span>
+                                <span id="walletBalance" data-balance="{saldo}">{saldo}</span>
                             </a>
                             <button id="toggleBalance" class="goces-haptic-eye-trigger"
                                 aria-label="Toggle Balance Visibility">
@@ -116,12 +102,9 @@
                         </div>
                     </div>
 
-                    <!-- Hairline Separation Grid -->
                     <div class="goces-card-hairline"></div>
 
-                    <!-- Bottom Row: Floating iOS Shortcut Matrix -->
                     <div class="goces-action-grid-menu">
-                        <!-- Tarik -->
                         <a href="action://act/withdraw" class="goces-action-item">
                             <div class="goces-icon-capsule style-blue">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -133,7 +116,6 @@
                             <span>Tarik</span>
                         </a>
 
-                        <!-- Transfer -->
                         <a href="javascript:void(0)" class="goces-action-item">
                             <div class="goces-icon-capsule style-purple">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -145,7 +127,6 @@
                             <span>Transfer</span>
                         </a>
 
-                        <!-- Top Up -->
                         <a href="action://act/topup" class="goces-action-item">
                             <div class="goces-icon-capsule style-green">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -157,7 +138,6 @@
                             <span>Top Up</span>
                         </a>
 
-                        <!-- Lainnya -->
                         <a href="action://act/account" class="goces-action-item">
                             <div class="goces-icon-capsule style-orange">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
@@ -173,14 +153,8 @@
                 </div>
             </section>
 
-            <!-- ==========================================================================
-     GOCES PREMIUM SHORTCUT MATRIX - LIGHT iOS 18 ARCHITECTURE
-========================================================================== -->
             <section class="goces-shortcuts-section">
                 <div class="goces-shortcuts-grid">
-
-                    <!-- ROW 1 -->
-                    <!-- GoRide -->
                     <a href="action://act/ride" class="goces-shortcut-item">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
@@ -195,7 +169,6 @@
                         <span class="goces-shortcut-label">GoRide</span>
                     </a>
 
-                    <!-- GoCar -->
                     <a href="action://act/car" class="goces-shortcut-item">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
@@ -211,8 +184,7 @@
                         <span class="goces-shortcut-label">GoCar</span>
                     </a>
 
-                    <!-- GoFood -->
-                    <a href="action://act/food" class="goces-shortcut-item">
+                    <a href="#" class="goces-shortcut-item" onclick="showPage('food');return false;">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
@@ -223,7 +195,6 @@
                         <span class="goces-shortcut-label">GoFood</span>
                     </a>
 
-                    <!-- Delivery -->
                     <a href="action://act/delivery" class="goces-shortcut-item">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
@@ -237,8 +208,6 @@
                         <span class="goces-shortcut-label">Delivery</span>
                     </a>
 
-                    <!-- ROW 2 -->
-                    <!-- Shop -->
                     <a href="action://act/shop" class="goces-shortcut-item">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
@@ -252,7 +221,6 @@
                         <span class="goces-shortcut-label">Shop</span>
                     </a>
 
-                    <!-- Fresh -->
                     <a href="action://act/fresh" class="goces-shortcut-item">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
@@ -265,7 +233,6 @@
                         <span class="goces-shortcut-label">Fresh</span>
                     </a>
 
-                    <!-- PPOB -->
                     <a href="" class="goces-shortcut-item">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
@@ -278,7 +245,6 @@
                         <span class="goces-shortcut-label">PPOB</span>
                     </a>
 
-                    <!-- Rental -->
                     <a href="" class="goces-shortcut-item">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
@@ -296,6 +262,30 @@
                 </div>
             </section>
 
+        </section>
+
+        <section id="page-food" class="goces-page">
+        </section>
+
+        <section id="page-ride" class="goces-page">
+        </section>
+
+        <section id="page-car" class="goces-page">
+        </section>
+
+        <section id="page-delivery" class="goces-page">
+        </section>
+
+        <section id="page-shop" class="goces-page">
+        </section>
+
+        <section id="page-fresh" class="goces-page">
+        </section>
+
+        <section id="page-ppob" class="goces-page">
+        </section>
+
+        <section id="page-rental" class="goces-page">
         </section>
 
         <section id="page-promo" class="goces-page">
@@ -381,6 +371,7 @@
     <script src="https://goces-app.vercel.app/js/home/wallet.js"></script>
     <script src="https://goces-app.vercel.app/js/home/shortcut.js"></script>
     <script src="https://goces-app.vercel.app/js/home/slider.js"></script>
+    <script src="https://goces-app.vercel.app/js/food/food.js"></script>
 
 </body>
 
