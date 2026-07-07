@@ -17,6 +17,7 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/food/food.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/shop/shop.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/fresh/fresh.css">
 </head>
 
 <body>
@@ -214,7 +215,7 @@
                         <span class="goces-shortcut-label">Shop</span>
                     </a>
 
-                    <a href="action://act/fresh" class="goces-shortcut-item">
+                    <a href="#" class="goces-shortcut-item" onclick="showPage('fresh');return false;">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
@@ -240,11 +241,11 @@
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594742/ChatGPT_Image_16_Jun_2026_15.10.13_czsgh3.png"
+                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595827/file_0000000091d87208bf6429921e35795f_yy8yxn.png"
                                     alt="GoRide" loading="lazy">
                             </div>
                         </div>
-                        <span class="goces-shortcut-label">Rental</span>
+                        <span class="goces-shortcut-label">Lainnya</span>
                     </a>
 
                 </div>
@@ -390,9 +391,9 @@
         <section id="page-shop" class="goces-page">
             <header class="gcsShopHeader">
                 <div class="gcsShopHeaderInner">
-                    <a href="action://act/back" class="gcsShopIconCircle" aria-label="Kembali">
+                    <button type="button" class="icon-circle-btn" onclick="goBack()" aria-label="Kembali">
                         <i class="ph ph-arrow-left"></i>
-                    </a>
+                    </button>
                     <div class="gcsShopHeaderRight">
                         <a href="https://jgjk.mobi/act/cart" class="gcsShopIconCircle" aria-label="Keranjang">
                             <i class="ph ph-shopping-cart"></i>
@@ -515,6 +516,160 @@
         </section>
 
         <section id="page-fresh" class="goces-page">
+            <header class="gcsFreshHeader">
+                <div class="gcsFreshHeaderInner">
+                    <button type="button" class="icon-circle-btn" onclick="goBack()" aria-label="Kembali">
+                        <i class="ph ph-arrow-left"></i>
+                    </button>
+                    <div class="gcsFreshHeaderRight">
+                        <a href="https://jgjk.mobi/act/cart" class="gcsFreshIconCircle" aria-label="Keranjang">
+                            <i class="ph ph-shopping-cart"></i>
+                        </a>
+                        <a href="action://act/message_list" class="gcsFreshIconCircle" aria-label="Notifikasi">
+                            <i class="ph ph-bell"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="gcsFreshSearchSection">
+                <div class="gcsFreshSearchWrapper">
+                    <i class="ph ph-magnifying-glass gcsFreshSearchInnerIcon"></i>
+                    <form action="action://act/search">
+                        <input type="search" id="search" name="search" class="input"
+                            placeholder="Cari buah, sayur, daging...">
+                    </form>
+                </div>
+            </div>
+
+            <section class="gcsFreshHeroSection">
+                <div class="gcsFreshHeroCard">
+                    <div class="gcsFreshHeroContent">
+                        <span class="gcsFreshHeroLabel">🥬 Fresh Market</span>
+                        <h1 class="gcsFreshHeroTitle">Belanja kebutuhan harian lebih hemat.</h1>
+                        <p class="gcsFreshHeroSubtext">Gratis Ongkir & Diskon hingga <span
+                                class="gcsFreshHighlightYellow">50%</span></p>
+                        <a href="#" class="gcsFreshHeroBtn">Belanja Sekarang</a>
+                    </div>
+                    <div class="gcsFreshHeroIllustration">
+                        <div class="gcsFreshGlassShape">🍎</div>
+                        <div class="gcsFreshGlassShape">🥦</div>
+                        <div class="gcsFreshGlassShape">🥩</div>
+                        <div class="gcsFreshGlassShape">🥛</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsFreshFlashSection">
+                <div class="gcsFreshFlashCard">
+                    <div class="gcsFreshFlashInfo">
+                        <h2 class="gcsFreshFlashTitle">⚡ Flash Fresh</h2>
+                        <div class="gcsFreshCountdown" id="gcsFreshTimer">
+                            <span class="gcsFreshTimeSlot" id="gcsFreshH">00</span>:
+                            <span class="gcsFreshTimeSlot" id="gcsFreshM">00</span>:
+                            <span class="gcsFreshTimeSlot" id="gcsFreshS">00</span>
+                        </div>
+                    </div>
+                    <div class="gcsFreshFlashAction">
+                        <span class="gcsFreshFlashPromoLabel">Diskon hingga 60%</span>
+                        <a href="#" class="gcsFreshFlashBtn">Lihat Promo</a>
+                    </div>
+                </div>
+            </section>
+
+            <nav class="gcsFreshCategoryNav">
+                <div class="gcsFreshCategoryScroll">
+                    <button class="gcsFreshCategoryChip gcsFreshActive" data-category="semua">Semua</button>
+                    <button class="gcsFreshCategoryChip" data-category="sayur">Sayur</button>
+                    <button class="gcsFreshCategoryChip" data-category="buah">Buah</button>
+                    <button class="gcsFreshCategoryChip" data-category="daging">Daging</button>
+                    <button class="gcsFreshCategoryChip" data-category="ayam">Ayam</button>
+                    <button class="gcsFreshCategoryChip" data-category="seafood">Seafood</button>
+                    <button class="gcsFreshCategoryChip" data-category="telur">Telur</button>
+                    <button class="gcsFreshCategoryChip" data-category="susu">Susu</button>
+                    <button class="gcsFreshCategoryChip" data-category="frozen">Frozen Food</button>
+                    <button class="gcsFreshCategoryChip" data-category="bumbu">Bumbu</button>
+                    <button class="gcsFreshCategoryChip" data-category="beras">Beras</button>
+                </div>
+            </nav>
+
+            <div class="gcsFreshQuickFilterBar">
+                <div class="gcsFreshQuickFilterScroll">
+                    <button class="gcsFreshFilterTab gcsFreshSelected" data-filter="semua">Semua</button>
+                    <button class="gcsFreshFilterTab" data-filter="promo">Promo</button>
+                    <button class="gcsFreshFilterTab" data-filter="ongkir">Gratis Ongkir</button>
+                    <button class="gcsFreshFilterTab" data-filter="fresh">Fresh Hari Ini</button>
+                    <button class="gcsFreshFilterTab" data-filter="organik">Organik</button>
+                    <button class="gcsFreshFilterTab" data-filter="rating">Rating 4.8+</button>
+                </div>
+            </div>
+
+            <main class="gcsFreshMainBody">
+
+                <section id="gcsFreshSec-semua" class="gcsFreshMenuSection gcsFreshSectionVisible">
+                    <div class="gcsFreshGrid">
+
+                        <div class="gcsFreshCard" data-gcs-category="sayur"
+                            data-gcs-filters="promo organik fresh rating"
+                            data-gcs-tags="sayur bayam organik hijau segar">
+                            <div class="gcsFreshMedia">
+                                <img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=500&q=80"
+                                    alt="Bayam" class="gcsFreshLazyImg" loading="lazy">
+                                <div class="gcsFreshBadgeWrapper">
+                                    <span class="gcsFreshBadge gcsFreshBadgeFresh">Fresh Hari Ini</span>
+                                    <span class="gcsFreshBadge gcsFreshBadgeOrganik">Organik</span>
+                                </div>
+                            </div>
+                            <div class="gcsFreshDetails">
+                                <h3 class="gcsFreshProductTitle">Bayam Hidroponik Organik Segar 250g</h3>
+                                <p class="gcsFreshMerchantName">GOCES Fresh Hub</p>
+                                <div class="gcsFreshPriceLayout">
+                                    <span class="gcsFreshPriceActual">Rp 12.500</span>
+                                    <span class="gcsFreshPriceCut">Rp 25.000</span>
+                                    <span class="gcsFreshDiscount">50%</span>
+                                </div>
+                                <div class="gcsFreshMetaRow">
+                                    <span class="gcsFreshRating"><i class="ph-fill ph-star"></i> 4.9</span>
+                                    <span class="gcsFreshSold">100+ terjual</span>
+                                    <span class="gcsFreshLocation"><i class="ph ph-map-pin"></i> Makassar</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gcsFreshCard" data-gcs-category="daging" data-gcs-filters="promo ongkir rating"
+                            data-gcs-tags="daging sapi premium sirloin slice">
+                            <div class="gcsFreshMedia">
+                                <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=500&q=80"
+                                    alt="Daging Sapi" class="gcsFreshLazyImg" loading="lazy">
+                                <div class="gcsFreshBadgeWrapper">
+                                    <span class="gcsFreshBadge gcsFreshBadgePromo">Promo</span>
+                                    <span class="gcsFreshBadge gcsFreshBadgeOngkir">Gratis Ongkir</span>
+                                </div>
+                            </div>
+                            <div class="gcsFreshDetails">
+                                <h3 class="gcsFreshProductTitle">Daging Sapi Sirloin Slice Premium 500g</h3>
+                                <p class="gcsFreshMerchantName">Meat Master Meatshop</p>
+                                <div class="gcsFreshPriceLayout">
+                                    <span class="gcsFreshPriceActual">Rp 85.000</span>
+                                    <span class="gcsFreshPriceCut">Rp 120.000</span>
+                                    <span class="gcsFreshDiscount">29%</span>
+                                </div>
+                                <div class="gcsFreshMetaRow">
+                                    <span class="gcsFreshRating"><i class="ph-fill ph-star"></i> 4.8</span>
+                                    <span class="gcsFreshSold">500+ terjual</span>
+                                    <span class="gcsFreshLocation"><i class="ph ph-map-pin"></i> Jakarta Selatan</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="gcsFreshSec-sayur" class="gcsFreshMenuSection"></section>
+                <section id="gcsFreshSec-buah" class="gcsFreshMenuSection"></section>
+                <section id="gcsFreshSec-daging" class="gcsFreshMenuSection"></section>
+
+            </main>
         </section>
 
         <section id="page-ppob" class="goces-page">
@@ -611,6 +766,7 @@
     <script src="kuliner.js"></script>
     <script src="https://goces-app.vercel.app/js/food/food.js"></script>
     <script src="https://goces-app.vercel.app/js/shop/shop.js"></script>
+    <script src="https://goces-app.vercel.app/js/fresh/fresh.js"></script>
 
 </body>
 

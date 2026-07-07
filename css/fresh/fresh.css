@@ -1,0 +1,574 @@
+.gcsFreshHeader {
+  background-color: var(--gray);
+  padding: calc(var(--screen-padding) + var(--safe-top)) var(--screen-padding)
+    calc(var(--screen-padding) / 2);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.gcsFreshHeaderInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gcsFreshHeaderRight {
+  display: flex;
+  gap: 12px;
+}
+
+.gcsFreshIconCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--icon-radius);
+  background-color: var(--white);
+  color: var(--text);
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: var(--gcsFreshShadowSmooth);
+  border: 1px solid var(--border);
+  transition: transform var(--transition);
+}
+
+.gcsFreshIconCircle:active {
+  transform: scale(0.9);
+}
+
+/* --- Search Optimization System --- */
+.gcsFreshSearchSection {
+  padding: calc(var(--screen-padding) / 2) var(--screen-padding);
+}
+
+.gcsFreshSearchWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.gcsFreshSearchInnerIcon {
+  position: absolute;
+  left: 16px;
+  color: var(--text);
+  font-size: 18px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gcsFreshSearchWrapper form {
+  width: 100%;
+}
+
+.gcsFreshSearchWrapper .input {
+  width: 100%;
+  height: 48px;
+  border-radius: 999px; /* Bulat penuh sesuai design system */
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  padding: 0 var(--screen-padding) 0 46px;
+  font-size: 15px;
+  color: var(--text);
+  box-shadow: var(--gcsFreshShadowSmooth);
+  outline: none;
+  font-family: inherit;
+  transition: box-shadow var(--transition);
+}
+
+.gcsFreshSearchWrapper .input:focus {
+  box-shadow:
+    0 0 0 3px rgba(29, 78, 216, 0.1),
+    var(--gcsFreshShadowSmooth);
+}
+
+/* ==========================================================================
+   HERO PROMO DESIGN SYSTEM (PREMIUM CLASS COMPONENT)
+   ========================================================================== */
+.gcsFreshHeroSection {
+  padding: calc(var(--screen-padding) / 2) var(--screen-padding);
+}
+
+.gcsFreshHeroCard {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    #10b981 0%,
+    #047857 100%
+  ); /* Warna Fresh Hijau dengan gradasi premium */
+  border-radius: var(--card-radius);
+  padding: 24px;
+  color: var(--white);
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gcsFreshHeroContent {
+  position: relative;
+  z-index: 3;
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gcsFreshHeroLabel {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 6px;
+  align-self: flex-start;
+  letter-spacing: 0.5px;
+}
+
+.gcsFreshHeroTitle {
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.gcsFreshHeroSubtext {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.gcsFreshHighlightYellow {
+  color: #fcd34d;
+  font-weight: 800;
+}
+
+.gcsFreshHeroBtn {
+  align-self: flex-start;
+  background-color: var(--white);
+  color: #047857;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: opacity var(--transition);
+}
+
+.gcsFreshHeroBtn:active {
+  opacity: 0.9;
+}
+
+/* Dynamic Floating Layout Glassmorphism Graphics */
+.gcsFreshHeroIllustration {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.gcsFreshGlassShape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  animation: gcsFreshFloat 4s ease-in-out infinite alternate;
+}
+
+.gcsFreshGlassShape:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.gcsFreshGlassShape:nth-child(3) {
+  animation-delay: 1s;
+}
+.gcsFreshGlassShape:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+@keyframes gcsFreshFloat {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.03);
+  }
+}
+
+/* ==========================================================================
+   FLASH DEAL SPECIFICATION MODULE
+   ========================================================================== */
+.gcsFreshFlashSection {
+  padding: calc(var(--screen-padding) / 2) var(--screen-padding);
+}
+
+.gcsFreshFlashCard {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--gcsFreshShadowSmooth);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.gcsFreshFlashInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gcsFreshFlashTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.gcsFreshCountdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.gcsFreshTimeSlot {
+  background-color: #ff3b30;
+  color: var(--white);
+  padding: 4px 6px;
+  border-radius: 6px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.gcsFreshFlashAction {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gcsFreshFlashPromoLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff3b30;
+}
+
+.gcsFreshFlashBtn {
+  background-color: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: opacity var(--transition);
+}
+
+/* ==========================================================================
+   CATEGORIES BAR & INTERACTION TABS
+   ========================================================================== */
+.gcsFreshCategoryNav {
+  padding: calc(var(--screen-padding) / 2) 0;
+}
+
+.gcsFreshCategoryScroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 var(--screen-padding);
+  scrollbar-width: none;
+}
+
+.gcsFreshCategoryScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.gcsFreshCategoryChip {
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-family: inherit;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.gcsFreshCategoryChip.gcsFreshActive {
+  background-color: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
+/* Quick Filter Section */
+.gcsFreshQuickFilterBar {
+  padding: 6px 0 var(--screen-padding);
+}
+
+.gcsFreshQuickFilterScroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 0 var(--screen-padding);
+  scrollbar-width: none;
+}
+
+.gcsFreshQuickFilterScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.gcsFreshFilterTab {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.gcsFreshFilterTab.gcsFreshSelected {
+  background-color: #eff6ff;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+/* --- Dynamic Transitions Structure --- */
+.gcsFreshMainBody {
+  padding: 0 var(--screen-padding);
+}
+
+.gcsFreshMenuSection {
+  display: none;
+  opacity: 0;
+  transform: scale(0.98) translateY(10px);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+.gcsFreshMenuSection.gcsFreshSectionVisible {
+  display: block;
+}
+.gcsFreshMenuSection.gcsFreshAnimate {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ==========================================================================
+   PREMIUM 2-COLUMN GRID GRID COMPONENT
+   ========================================================================== */
+.gcsFreshGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--screen-padding);
+}
+
+.gcsFreshCard {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  box-shadow: var(--gcsFreshShadowSmooth);
+  transition: transform var(--transition);
+}
+
+.gcsFreshCard:active {
+  transform: scale(0.96);
+}
+
+.gcsFreshMedia {
+  position: relative;
+  width: 100%;
+  padding-top: 95%; /* Premium Aspect Ratio */
+  background-color: var(--gray);
+  overflow: hidden;
+}
+
+.gcsFreshMedia img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gcsFreshMedia img.gcsFreshImageLoaded {
+  opacity: 1;
+}
+
+.gcsFreshBadgeWrapper {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 2;
+}
+
+.gcsFreshBadge {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: var(--white);
+  align-self: flex-start;
+}
+
+.gcsFreshBadgeFresh {
+  background-color: #10b981;
+}
+.gcsFreshBadgeOrganik {
+  background-color: #059669;
+}
+.gcsFreshBadgePromo {
+  background-color: #ff3b30;
+}
+.gcsFreshBadgeOngkir {
+  background-color: #2563eb;
+}
+
+.gcsFreshDetails {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 4px;
+}
+
+.gcsFreshProductTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 36px;
+}
+
+.gcsFreshMerchantName {
+  font-size: 12px;
+  color: var(--text);
+  opacity: 0.5;
+}
+
+.gcsFreshPriceLayout {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.gcsFreshPriceActual {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.gcsFreshPriceCut {
+  font-size: 11px;
+  color: var(--text);
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.gcsFreshDiscount {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ff3b30;
+  background-color: rgba(255, 59, 48, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.gcsFreshMetaRow {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text);
+  opacity: 0.7;
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border);
+  gap: 4px;
+}
+
+.gcsFreshRating {
+  color: #ff9500;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.gcsFreshSold {
+  margin-left: auto;
+}
+
+/* Micro-Interaction Canvas Ripple overlay mechanics */
+.gcsFreshRipple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: gcsFreshRippleAnimation 0.45s ease-out;
+  background-color: rgba(29, 78, 216, 0.08);
+  pointer-events: none;
+}
+
+@keyframes gcsFreshRippleAnimation {
+  to {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+/* --- Adaptive Viewports Configuration --- */
+@media (min-width: 768px) {
+  .gcsFreshGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gcsFreshCategoryScroll,
+  .gcsFreshQuickFilterScroll {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gcsFreshGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
