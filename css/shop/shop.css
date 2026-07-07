@@ -1,0 +1,496 @@
+/* --- Header iOS Style --- */
+.gcsShopHeader {
+  background-color: var(--gray);
+  padding: calc(var(--screen-padding) + var(--safe-top)) var(--screen-padding)
+    calc(var(--screen-padding) / 2);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.gcsShopHeaderInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gcsShopHeaderRight {
+  display: flex;
+  gap: 12px;
+}
+
+.gcsShopIconCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--icon-radius);
+  background-color: var(--white);
+  color: var(--text);
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: var(--gcsShopShadowSmooth);
+  border: 1px solid var(--border);
+  transition: transform var(--transition);
+}
+
+.gcsShopIconCircle:active {
+  transform: scale(0.9);
+}
+
+/* --- Search Area Customization --- */
+.gcsShopSearchSection {
+  padding: calc(var(--screen-padding) / 2) var(--screen-padding);
+}
+
+.gcsShopSearchWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.gcsShopSearchInnerIcon {
+  position: absolute;
+  left: 16px;
+  color: var(--text);
+  font-size: 18px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gcsShopSearchWrapper form {
+  width: 100%;
+}
+
+.gcsShopSearchWrapper .input {
+  width: 100%;
+  height: 48px;
+  border-radius: 999px; /* Bulat Penuh Sesuai Aturan */
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  padding: 0 var(--screen-padding) 0 46px;
+  font-size: 15px;
+  color: var(--text);
+  box-shadow: var(--gcsShopShadowSmooth);
+  outline: none;
+  font-family: inherit;
+  transition: box-shadow var(--transition);
+}
+
+.gcsShopSearchWrapper .input:focus {
+  box-shadow:
+    0 0 0 3px rgba(29, 78, 216, 0.1),
+    var(--gcsShopShadowSmooth);
+}
+
+/* ==========================================================================
+   PREMIUM FLASH SALE CARD COMPONENT (iOS 18 STYLE)
+   ========================================================================== */
+.gcsShopFlashSaleSection {
+  padding: calc(var(--screen-padding) / 2) var(--screen-padding);
+}
+
+.gcsShopFlashSaleCard {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  color: var(--white);
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(29, 78, 216, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform var(--transition);
+}
+
+.gcsShopFlashSaleCard:active {
+  transform: scale(0.99);
+}
+
+.gcsShopFlashSaleBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ff3b30;
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 0 0 0 14px;
+  letter-spacing: 0.5px;
+}
+
+.gcsShopFlashSaleContent {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gcsShopFlashSaleTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gcsShopFlashSaleMainTitle {
+  font-size: clamp(20px, 5vw, 24px);
+  font-weight: 850;
+  letter-spacing: -0.5px;
+}
+
+.gcsShopFlashSaleTimer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.gcsShopTimerBlock {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 6px;
+  min-width: 28px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.gcsShopFlashSalePromoText {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+.gcsShopHighlightText {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffcc00;
+}
+
+.gcsShopFlashSaleBtn {
+  align-self: flex-start;
+  background-color: var(--white);
+  color: var(--blue);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: opacity var(--transition);
+}
+
+.gcsShopFlashSaleBtn:active {
+  opacity: 0.9;
+}
+
+.gcsShopFlashSaleIllustration {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  position: relative;
+  margin-right: 10px;
+}
+
+.gcsShopFlashSaleIllustration::before {
+  content: "🛒";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
+  animation: gcsShopFloat 3s ease-in-out infinite;
+}
+
+@keyframes gcsShopFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -54%);
+  }
+  50% {
+    transform: translate(-50%, -46%);
+  }
+}
+
+/* --- Category Navigation Bar --- */
+.gcsShopCategoryNav {
+  padding: calc(var(--screen-padding) / 2) 0 var(--screen-padding);
+}
+
+.gcsShopCategoryScroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 var(--screen-padding);
+  scrollbar-width: none;
+}
+
+.gcsShopCategoryScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.gcsShopCategoryChip {
+  padding: 10px 20px;
+  border-radius: 999px; /* Bulat Sesuai Pedoman */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-family: inherit;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.gcsShopCategoryChip.gcsShopActive {
+  background-color: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
+.gcsShopCategoryChip:active {
+  transform: scale(0.95);
+}
+
+/* --- Dynamic Sections Layout --- */
+.gcsShopMainContent {
+  padding: 0 var(--screen-padding);
+}
+
+.gcsShopMenuSection {
+  display: none;
+  opacity: 0;
+  transform: scale(0.98) translateY(12px);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+.gcsShopMenuSection.gcsShopSectionVisible {
+  display: block;
+}
+
+.gcsShopMenuSection.gcsShopAnimateFade {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ==========================================================================
+   2-COLUMN PREMIUM PRODUCTS GRID ENGINE
+   ========================================================================== */
+.gcsShopGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--screen-padding);
+}
+
+.gcsShopCard {
+  background-color: var(--white);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  box-shadow: var(--gcsShopShadowSmooth);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.gcsShopCard:active {
+  transform: scale(0.96);
+}
+
+.gcsShopMediaHolder {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Square Ratio ala e-Commerce modern */
+  background-color: var(--gray);
+  overflow: hidden;
+}
+
+.gcsShopMediaHolder img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gcsShopMediaHolder img.gcsShopLoaded {
+  opacity: 1;
+}
+
+.gcsShopCardBadge {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.gcsShopBadgeFs {
+  top: 10px;
+  left: 10px;
+  background-color: #ff3b30;
+  color: var(--white);
+}
+
+.gcsShopBadgeFree {
+  bottom: 10px;
+  left: 10px;
+  background-color: #34c759;
+  color: var(--white);
+}
+
+.gcsShopCardDetails {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 4px;
+}
+
+.gcsShopMerchantLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.gcsShopProductTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 36px;
+}
+
+.gcsShopMerchantName {
+  font-size: 12px;
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.gcsShopPriceRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.gcsShopPriceActual {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.gcsShopPriceCut {
+  font-size: 11px;
+  color: var(--text);
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.gcsShopDiscountTag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ff3b30;
+  background-color: rgba(255, 59, 48, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.gcsShopCardMeta {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0.7;
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border);
+  gap: 6px;
+}
+
+.gcsShopRating {
+  color: #ff9500;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 700;
+}
+
+.gcsShopSold {
+  margin-left: auto;
+}
+
+.gcsShopLocation {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Touch Canvas Ripple overlay mechanics */
+.gcsShopRipple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: gcsShopRippleAnim 0.4s ease-out;
+  background-color: rgba(29, 78, 216, 0.08);
+  pointer-events: none;
+}
+
+@keyframes gcsShopRippleAnim {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* --- Adaptive Viewports Configuration --- */
+@media (min-width: 768px) {
+  .gcsShopGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gcsShopCategoryScroll {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gcsShopGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
