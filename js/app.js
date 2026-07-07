@@ -15,7 +15,7 @@
 
   setAppHeight();
 
-  window.addEventListener("orientationchange", function () {
+  window.addEventListener("orientationchange", () => {
 
     setTimeout(setAppHeight, 300);
 
@@ -23,16 +23,8 @@
 
 })();
 
-/*==================================
-      APP START
-==================================*/
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", function () {
-
-  if (typeof replacePage === "function") {
-
-    replacePage("home");
-
-  }
+  replacePage("home");
 
 });
