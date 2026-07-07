@@ -828,36 +828,34 @@
 
     <div id="gcsDeliveryPopupOverlay" class="gcsDeliveryPopupOverlay" aria-hidden="true">
         <div id="gcsDeliveryPopupBackdrop" class="gcsDeliveryPopupBackdrop"></div>
-
-        <div id="gcsDeliveryPopupSheet" class="gcsDeliveryPopupSheet" role="dialog" aria-modal="true"
-            aria-labelledby="gcsDeliveryPopupTitleId">
+        <div id="gcsDeliveryPopupSheet" class="gcsDeliveryPopupSheet" role="dialog" aria-modal="true">
             <div id="gcsDeliveryPopupDragArea" class="gcsDeliveryPopupHandleWrapper">
                 <div class="gcsDeliveryPopupHandle"></div>
             </div>
-
             <div class="gcsDeliveryPopupHeader">
-                <h2 id="gcsDeliveryPopupTitleId" class="gcsDeliveryPopupTitle">Layanan Delivery</h2>
+                <h2 class="gcsDeliveryPopupTitle">
+                    Layanan Delivery
+                </h2>
             </div>
-
             <div class="gcsDeliveryPopupContent">
-                <div id="gcsDeliveryServiceCardId" class="gcsDeliveryServiceCard" tabindex="0" role="button"
-                    aria-label="Pesan Delivery, Kirim Paket, Cepat, Aman">
+                <button type="button" class="gcsDeliveryServiceCard" onclick="openDelivery()">
                     <div class="gcsDeliveryServiceLeft">
-                        <div class="gcsDeliveryImageWrapper">
+                        <div class="gcsDeliveryImage">
                             <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=120&q=80"
-                                alt="Delivery" class="gcsDeliveryServiceImg">
+                                alt="Delivery">
                         </div>
-                        <div class="gcsDeliveryServiceInfo">
-                            <h3 class="gcsDeliveryServiceTitle">Delivery</h3>
-                            <p class="gcsDeliveryServiceDesc">Kirim Paket • Cepat • Aman</p>
-                        </div>
-                    </div>
-                    <div class="gcsDeliveryServiceRight">
-                        <div class="gcsDeliveryIconActionCircle">
-                            <i class="ph ph-caret-right"></i>
+                        <div class="gcsDeliveryInfo">
+                            <h3>Delivery</h3>
+                            <p>Kirim Paket • Cepat • Aman</p>
                         </div>
                     </div>
-                </div>
+                    <div class="gcsDeliveryArrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
