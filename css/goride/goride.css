@@ -224,7 +224,7 @@
 
   align-items: center;
 
-  gap: 5px;
+  gap: 8px;
 
   flex: 1;
 }
@@ -271,4 +271,16 @@
   font-size: 13px;
 
   color: #6b7280;
+}
+
+.gcsRideInfo {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  margin-left: 2px;
+
+  line-height: 1.15;
 }
