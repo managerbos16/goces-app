@@ -194,39 +194,31 @@
 .gcsRideServiceCard {
   width: 100%;
 
-  display: flex;
+  display: grid;
+
+  grid-template-columns: 48px 1fr 36px;
 
   align-items: center;
 
-  justify-content: space-between;
+  column-gap: 12px;
 
-  padding: 16px;
+  padding: 14px 16px;
+
+  background: #fff;
 
   border: none;
 
   border-radius: 20px;
 
-  background: #fff;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
 
   cursor: pointer;
 
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-
-  transition: 0.25s ease;
+  transition: 0.25s;
 }
 
 .gcsRideServiceCard:active {
   transform: scale(0.97);
-}
-
-.gcsRideServiceLeft {
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  flex: 1;
 }
 
 .gcsRideImage {
