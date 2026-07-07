@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/food/food.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/shop/shop.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/fresh/fresh.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/goride/goride.css">
 </head>
 
 <body>
@@ -160,7 +161,7 @@
 
             <section class="goces-shortcuts-section">
                 <div class="goces-shortcuts-grid">
-                    <a href="action://act/ride" class="goces-shortcut-item">
+                    <button type="button" class="goces-shortcut-item" onclick="gcsRidePopupOpen()">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
@@ -169,7 +170,7 @@
                             </div>
                         </div>
                         <span class="goces-shortcut-label">GoRide</span>
-                    </a>
+                    </button>
 
                     <a href="action://act/car" class="goces-shortcut-item">
                         <div class="goces-shortcut-icon-frame">
@@ -252,6 +253,24 @@
             </section>
 
         </section>
+
+        <div id="gcsRidePopupOverlay" class="gcsRidePopupOverlay" aria-hidden="true">
+            <div id="gcsRidePopupBackdrop" class="gcsRidePopupBackdrop"></div>
+
+            <div id="gcsRidePopupSheet" class="gcsRidePopupSheet" role="dialog" aria-modal="true">
+                <div id="gcsRidePopupDragArea" class="gcsRidePopupHandleWrapper">
+                    <div class="gcsRidePopupHandle"></div>
+                </div>
+
+                <div class="gcsRidePopupHeader">
+                    <h2 class="gcsRidePopupTitle">Layanan GoRide</h2>
+                </div>
+
+                <div class="gcsRidePopupContent">
+                    <button class="gcsRidePopupButton">GoRide</button>
+                </div>
+            </div>
+        </div>
 
         <section id="page-ride" class="goces-page">
         </section>
@@ -767,6 +786,7 @@
     <script src="https://goces-app.vercel.app/js/food/food.js"></script>
     <script src="https://goces-app.vercel.app/js/shop/shop.js"></script>
     <script src="https://goces-app.vercel.app/js/fresh/fresh.js"></script>
+    <script src="https://goces-app.vercel.app/js/goride/goride.js"></script>
 
 </body>
 
