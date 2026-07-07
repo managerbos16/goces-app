@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/goride/goride.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/gocar/gocar.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/delivery/delivery.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/lainnya/lainnya.css">
 </head>
 
 <body>
@@ -240,7 +241,7 @@
                         <span class="goces-shortcut-label">PPOB</span>
                     </a>
 
-                    <a href="" class="goces-shortcut-item">
+                    <a href="#" class="goces-shortcut-item" onclick="showPage('lainnya');return false;">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
@@ -666,6 +667,248 @@
             </main>
         </section>
 
+        <section id="page-lainnya" class="goces-page">
+            <header class="gcsMoreHeader">
+                <div class="gcsMoreHeaderInner">
+                    <a href="action://act/back" class="gcsMoreIconCircle" aria-label="Kembali">
+                        <i class="ph ph-arrow-left"></i>
+                    </a>
+                    <div class="gcsMoreHeaderRight">
+                        <a href="https://jgjk.mobi/act/cart" class="gcsMoreIconCircle" aria-label="Keranjang">
+                            <i class="ph ph-shopping-cart"></i>
+                        </a>
+                        <a href="action://act/message_list" class="gcsMoreIconCircle" aria-label="Notifikasi">
+                            <i class="ph ph-bell"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="gcsMoreSearchSection">
+                <div class="gcsMoreSearchWrapper">
+                    <i class="ph ph-magnifying-glass gcsMoreSearchIcon"></i>
+                    <form action="action://act/search">
+                        <input type="search" id="search" name="search" class="input"
+                            placeholder="Cari layanan GOCES...">
+                    </form>
+                </div>
+            </div>
+
+            <section class="gcsMoreSection">
+                <h2 class="gcsMoreSectionTitle">Layanan Teratas</h2>
+                <div class="gcsMoreCardWrapper">
+                    <div class="gcsMoreGrid gcsMoreGridTop">
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0" aria-label="GoRide">
+                            <div class="gcsMoreIconBox" style="background-color: #eff6ff; color: var(--blue);"><i
+                                    class="ph-fill ph-motorcycle"></i></div>
+                            <span class="gcsMoreServiceLabel">GoRide</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0" aria-label="GoCar">
+                            <div class="gcsMoreIconBox" style="background-color: #eff6ff; color: var(--blue);"><i
+                                    class="ph-fill ph-car"></i></div>
+                            <span class="gcsMoreServiceLabel">GoCar</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0" aria-label="GoFood">
+                            <div class="gcsMoreIconBox" style="background-color: #fff1f2; color: #e11d48;"><i
+                                    class="ph-fill ph-hamburger"></i></div>
+                            <span class="gcsMoreServiceLabel">GoFood</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0" aria-label="Delivery">
+                            <div class="gcsMoreIconBox" style="background-color: #f0fdf4; color: #16a34a;"><i
+                                    class="ph-fill ph-package"></i></div>
+                            <span class="gcsMoreServiceLabel">Delivery</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0" aria-label="Shop">
+                            <div class="gcsMoreIconBox" style="background-color: #fef2f2; color: #dc2626;"><i
+                                    class="ph-fill ph-shopping-bag"></i></div>
+                            <span class="gcsMoreServiceLabel">Shop</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0" aria-label="Fresh">
+                            <div class="gcsMoreIconBox" style="background-color: #ecfdf5; color: #059669;"><i
+                                    class="ph-fill ph-leaf"></i></div>
+                            <span class="gcsMoreServiceLabel">Fresh</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0" aria-label="PPOB">
+                            <div class="gcsMoreIconBox" style="background-color: #fffbeb; color: #d97706;"><i
+                                    class="ph-fill ph-lightbulb"></i></div>
+                            <span class="gcsMoreServiceLabel">PPOB</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0" aria-label="Hadiah">
+                            <div class="gcsMoreIconBox" style="background-color: #fdf4ff; color: #c026d3;"><i
+                                    class="ph-fill ph-gift"></i></div>
+                            <span class="gcsMoreServiceLabel">Hadiah</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsMoreSection gcsMoreCategoryBlock">
+                <h2 class="gcsMoreSectionTitle">Untukmu! 🎁</h2>
+                <div class="gcsMoreCardWrapper">
+                    <div class="gcsMoreGrid">
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreBadge">Baru</div>
+                            <div class="gcsMoreIconBox gcsMoreIconPurple"><i class="ph-fill ph-ticket"></i></div>
+                            <span class="gcsMoreServiceLabel">Paket Diskon</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconPurple"><i class="ph-fill ph-gift"></i></div>
+                            <span class="gcsMoreServiceLabel">Hadiah</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsMoreSection gcsMoreCategoryBlock">
+                <h2 class="gcsMoreSectionTitle">Keuangan 💳</h2>
+                <div class="gcsMoreCardWrapper">
+                    <div class="gcsMoreGrid">
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconBlue"><i class="ph-fill ph-wallet"></i></div>
+                            <span class="gcsMoreServiceLabel">GOCESPay</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconBlue"><i
+                                    class="ph-fill ph-clock-counter-clockwise"></i></div>
+                            <span class="gcsMoreServiceLabel">Pay Later</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconBlue"><i class="ph-fill ph-chart-line-up"></i></div>
+                            <span class="gcsMoreServiceLabel">Go Inves</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreBadge gcsMoreBadgePromo">Promo</div>
+                            <div class="gcsMoreIconBox gcsMoreIconBlue"><i class="ph-fill ph-bank"></i></div>
+                            <span class="gcsMoreServiceLabel">Pinjaman</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconBlue"><i class="ph-fill ph-car-profile"></i></div>
+                            <span class="gcsMoreServiceLabel">Gadai BPKB</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconBlue"><i class="ph-fill ph-credit-card"></i></div>
+                            <span class="gcsMoreServiceLabel">Kartu Kredit</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsMoreSection gcsMoreCategoryBlock">
+                <h2 class="gcsMoreSectionTitle">Belanja & Gaya Hidup 🛒</h2>
+                <div class="gcsMoreCardWrapper">
+                    <div class="gcsMoreGrid">
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconRed"><i class="ph-fill ph-shopping-bag"></i></div>
+                            <span class="gcsMoreServiceLabel">Shop</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconGreen"><i class="ph-fill ph-leaf"></i></div>
+                            <span class="gcsMoreServiceLabel">Fresh</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconOrange"><i class="ph-fill ph-storefront"></i></div>
+                            <span class="gcsMoreServiceLabel">Jastip</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreBadge">Baru</div>
+                            <div class="gcsMoreIconBox gcsMoreIconBrown"><i class="ph-fill ph-coffee"></i></div>
+                            <span class="gcsMoreServiceLabel">Kopita</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsMoreSection gcsMoreCategoryBlock">
+                <h2 class="gcsMoreSectionTitle">Perjalanan ✈️</h2>
+                <div class="gcsMoreCardWrapper">
+                    <div class="gcsMoreGrid">
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconTeal"><i class="ph-fill ph-airplane-tilt"></i></div>
+                            <span class="gcsMoreServiceLabel">Travel</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconTeal"><i class="ph-fill ph-buildings"></i></div>
+                            <span class="gcsMoreServiceLabel">Hotel</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconTeal"><i class="ph-fill ph-sim-card"></i></div>
+                            <span class="gcsMoreServiceLabel">eSIM</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconTeal"><i class="ph-fill ph-map-trifold"></i></div>
+                            <span class="gcsMoreServiceLabel">Peta</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconTeal"><i class="ph-fill ph-key"></i></div>
+                            <span class="gcsMoreServiceLabel">Sewa</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsMoreSection gcsMoreCategoryBlock">
+                <h2 class="gcsMoreSectionTitle">Kesehatan & Perlindungan ❤️</h2>
+                <div class="gcsMoreCardWrapper">
+                    <div class="gcsMoreGrid">
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconRed"><i class="ph-fill ph-first-aid"></i></div>
+                            <span class="gcsMoreServiceLabel">Kesehatan</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconRed"><i class="ph-fill ph-shield-check"></i></div>
+                            <span class="gcsMoreServiceLabel">Asuransi</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsMoreSection gcsMoreCategoryBlock">
+                <h2 class="gcsMoreSectionTitle">Pembayaran 💡</h2>
+                <div class="gcsMoreCardWrapper">
+                    <div class="gcsMoreGrid">
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconYellow"><i class="ph-fill ph-lightbulb"></i></div>
+                            <span class="gcsMoreServiceLabel">PPOB</span>
+                        </div>
+                        <div class="gcsMoreServiceCard" role="button" tabindex="0">
+                            <div class="gcsMoreIconBox gcsMoreIconYellow"><i class="ph-fill ph-receipt"></i></div>
+                            <span class="gcsMoreServiceLabel">Go Tagihan</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsMoreSection gcsMoreHelpSection">
+                <h2 class="gcsMoreSectionTitle">Butuh Bantuan?</h2>
+                <div class="gcsMoreHelpWrapper">
+                    <div class="gcsMoreHelpCard" role="button" tabindex="0">
+                        <i class="ph ph-question gcsMoreHelpIcon"></i>
+                        <div class="gcsMoreHelpText">
+                            <h3>Pusat Bantuan</h3>
+                            <p>Temukan solusi untuk kendalamu.</p>
+                        </div>
+                        <i class="ph ph-caret-right gcsMoreHelpArrow"></i>
+                    </div>
+                    <div class="gcsMoreHelpCard" role="button" tabindex="0">
+                        <i class="ph ph-headset gcsMoreHelpIcon"></i>
+                        <div class="gcsMoreHelpText">
+                            <h3>Hubungi Kami</h3>
+                            <p>CS siap membantu 24/7.</p>
+                        </div>
+                        <i class="ph ph-caret-right gcsMoreHelpArrow"></i>
+                    </div>
+                    <div class="gcsMoreHelpCard" role="button" tabindex="0">
+                        <i class="ph ph-info gcsMoreHelpIcon"></i>
+                        <div class="gcsMoreHelpText">
+                            <h3>FAQ</h3>
+                            <p>Pertanyaan yang sering diajukan.</p>
+                        </div>
+                        <i class="ph ph-caret-right gcsMoreHelpArrow"></i>
+                    </div>
+                </div>
+            </section>
+        </section>
+
         <section id="page-promo" class="goces-page">
         </section>
 
@@ -758,6 +1001,8 @@
     <script src="https://goces-app.vercel.app/js/goride/goride.js"></script>
     <script src="https://goces-app.vercel.app/js/gocar/gocar.js"></script>
     <script src="https://goces-app.vercel.app/js/delivery/delivery.js"></script>
+    <script src="https://goces-app.vercel.app/js/lainnya/lainnya.js"></script>
+
 
     <div id="gcsRidePopupOverlay" class="gcsRidePopupOverlay" aria-hidden="true">
         <div id="gcsRidePopupBackdrop" class="gcsRidePopupBackdrop"></div>
@@ -841,7 +1086,7 @@
                 <button type="button" class="gcsDeliveryServiceCard" onclick="openDelivery()">
                     <div class="gcsDeliveryServiceLeft">
                         <div class="gcsDeliveryImage">
-                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=120&q=80"
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594740/ChatGPT_Image_16_Jun_2026_15.13.20_lmhens.png"
                                 alt="Delivery">
                         </div>
                         <div class="gcsDeliveryInfo">

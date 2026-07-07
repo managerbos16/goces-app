@@ -1,0 +1,313 @@
+.gcsMoreHeader {
+  background-color: rgba(249, 250, 251, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: calc(var(--screen-padding) + var(--safe-top)) var(--screen-padding)
+    calc(var(--screen-padding) / 2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.gcsMoreHeaderInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gcsMoreHeaderRight {
+  display: flex;
+  gap: 12px;
+}
+
+.gcsMoreIconCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--icon-radius);
+  background-color: var(--white);
+  color: var(--text);
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: var(--gcsMoreShadow);
+  border: 1px solid var(--border);
+  transition: transform var(--transition);
+}
+
+.gcsMoreIconCircle:active {
+  transform: scale(0.9);
+}
+
+/* SEARCH AREA */
+.gcsMoreSearchSection {
+  padding: calc(var(--screen-padding) / 2) var(--screen-padding);
+}
+
+.gcsMoreSearchWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.gcsMoreSearchIcon {
+  position: absolute;
+  left: 16px;
+  color: var(--text);
+  font-size: 18px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gcsMoreSearchWrapper form {
+  width: 100%;
+}
+
+.gcsMoreSearchWrapper .input {
+  width: 100%;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  padding: 0 var(--screen-padding) 0 46px;
+  font-size: 15px;
+  color: var(--text);
+  box-shadow: var(--gcsMoreShadow);
+  outline: none;
+  font-family: inherit;
+  transition: box-shadow var(--transition);
+}
+
+.gcsMoreSearchWrapper .input:focus {
+  box-shadow:
+    0 0 0 3px rgba(29, 78, 216, 0.1),
+    var(--gcsMoreShadow);
+}
+
+/* SECTIONS & TYPOGRAPHY */
+.gcsMoreSection {
+  padding: var(--section-gap) var(--screen-padding);
+}
+
+.gcsMoreSectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.gcsMoreCardWrapper {
+  background-color: var(--white);
+  border-radius: var(--card-radius);
+  padding: 20px 16px;
+  box-shadow: var(--gcsMoreShadow);
+  border: 1px solid rgba(0, 0, 0, 0.015);
+}
+
+/* GRID SYSTEM */
+.gcsMoreGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 24px;
+  column-gap: 12px;
+}
+
+/* SERVICE CARDS (ICONS) */
+.gcsMoreServiceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  transition: transform var(--transition);
+  will-change: transform;
+}
+
+.gcsMoreServiceCard:active {
+  transform: scale(0.92);
+}
+
+.gcsMoreIconBox {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--icon-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: box-shadow var(--transition);
+}
+
+.gcsMoreServiceCard:hover .gcsMoreIconBox {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Specific Icon Box Colors */
+.gcsMoreIconPurple {
+  background-color: #f3e8ff;
+  color: #9333ea;
+}
+.gcsMoreIconBlue {
+  background-color: #eff6ff;
+  color: var(--blue);
+}
+.gcsMoreIconRed {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+.gcsMoreIconGreen {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+.gcsMoreIconOrange {
+  background-color: #fff7ed;
+  color: #ea580c;
+}
+.gcsMoreIconBrown {
+  background-color: #fdf8f6;
+  color: #78350f;
+}
+.gcsMoreIconTeal {
+  background-color: #f0fdfa;
+  color: #0d9488;
+}
+.gcsMoreIconYellow {
+  background-color: #fffbeb;
+  color: #d97706;
+}
+
+.gcsMoreServiceLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* BADGES */
+.gcsMoreBadge {
+  position: absolute;
+  top: -6px;
+  right: 50%;
+  transform: translateX(20px);
+  background-color: #ff3b30;
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 999px;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(255, 59, 48, 0.3);
+}
+
+.gcsMoreBadgePromo {
+  background-color: #34c759;
+  box-shadow: 0 2px 6px rgba(52, 199, 89, 0.3);
+}
+
+/* RIPPLE EFFECT */
+.gcsMoreRipple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: gcsMoreRippleAnim 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  background-color: rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gcsMoreRippleAnim {
+  to {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+/* QUICK ACCESS (HELP SECTION) */
+.gcsMoreHelpWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gcsMoreHelpCard {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--gcsMoreShadow);
+  border: 1px solid rgba(0, 0, 0, 0.015);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.gcsMoreHelpCard:active {
+  transform: scale(0.98);
+}
+
+.gcsMoreHelpIcon {
+  font-size: 24px;
+  color: var(--blue);
+}
+
+.gcsMoreHelpText h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: var(--text);
+}
+
+.gcsMoreHelpText p {
+  font-size: 12px;
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.gcsMoreHelpArrow {
+  margin-left: auto;
+  color: var(--text);
+  opacity: 0.4;
+}
+
+/* RESPONSIVE LAYOUT */
+@media (min-width: 768px) {
+  .gcsMoreGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .gcsMoreGridTop {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .gcsMoreHelpWrapper {
+    flex-direction: row;
+  }
+  .gcsMoreHelpCard {
+    flex: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gcsMoreGrid {
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 32px;
+  }
+  .gcsMoreSection {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
