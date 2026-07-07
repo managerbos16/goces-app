@@ -796,36 +796,36 @@
 
     <div id="gcsCarPopupOverlay" class="gcsCarPopupOverlay" aria-hidden="true">
         <div id="gcsCarPopupBackdrop" class="gcsCarPopupBackdrop"></div>
-
-        <div id="gcsCarPopupSheet" class="gcsCarPopupSheet" role="dialog" aria-modal="true"
-            aria-labelledby="gcsCarPopupTitleId">
+        <div id="gcsCarPopupSheet" class="gcsCarPopupSheet" role="dialog" aria-modal="true">
             <div id="gcsCarPopupDragArea" class="gcsCarPopupHandleWrapper">
                 <div class="gcsCarPopupHandle"></div>
             </div>
-
+            <!-- Header -->
             <div class="gcsCarPopupHeader">
-                <h2 id="gcsCarPopupTitleId" class="gcsCarPopupTitle">Layanan GoCar</h2>
+                <h2 class="gcsCarPopupTitle">
+                    Layanan GoCar
+                </h2>
             </div>
-
+            <!-- Content -->
             <div class="gcsCarPopupContent">
-                <div id="gcsCarServiceCardId" class="gcsCarServiceCard" tabindex="0" role="button"
-                    aria-label="Pesan GoCar, Mobil, Nyaman, Aman">
+                <button type="button" class="gcsCarServiceCard" onclick="openCar()">
                     <div class="gcsCarServiceLeft">
-                        <div class="gcsCarImageWrapper">
+                        <div class="gcsCarImage">
                             <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=120&q=80"
-                                alt="GoCar" class="gcsCarServiceImg">
+                                alt="GoCar">
                         </div>
-                        <div class="gcsCarServiceInfo">
-                            <h3 class="gcsCarServiceTitle">GoCar</h3>
-                            <p class="gcsCarServiceDesc">Mobil • Nyaman • Aman</p>
-                        </div>
-                    </div>
-                    <div class="gcsCarServiceRight">
-                        <div class="gcsCarIconActionCircle">
-                            <i class="ph ph-caret-right"></i>
+                        <div class="gcsCarInfo">
+                            <h3>GoCar</h3>
+                            <p>Mobil • Nyaman • Aman</p>
                         </div>
                     </div>
-                </div>
+                    <div class="gcsCarArrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
