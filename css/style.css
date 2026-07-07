@@ -85,3 +85,12 @@ a {
 .goces-page::-webkit-scrollbar {
   display: none;
 }
+
+/*==================================
+        GOCES FEEDBACK
+==================================*/
+
+.goces-click-effect {
+  transform: scale(0.95);
+  transition: transform 0.12s ease;
+}
