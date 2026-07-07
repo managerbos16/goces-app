@@ -1,12 +1,12 @@
 /*==================================================
-            GOCES FEEDBACK ENGINE v2.0
+        GOCES FEEDBACK ENGINE v3.0 FINAL
 ==================================================*/
 
 const GocesFeedback = (() => {
 
-    /*----------------------------------
+    /*==================================
                 CONFIG
-    ----------------------------------*/
+    ==================================*/
 
     const CONFIG = {
 
@@ -18,15 +18,15 @@ const GocesFeedback = (() => {
 
         volume: 0.35,
 
-        soundFile: "assets/audio/click.wav",
+        soundFile: "https://goces-app.vercel.app/assets/audio/click.wav",
 
         animationDuration: 120
 
     };
 
-    /*----------------------------------
+    /*==================================
                 AUDIO
-    ----------------------------------*/
+    ==================================*/
 
     let audio = null;
 
@@ -42,11 +42,13 @@ const GocesFeedback = (() => {
 
         audio.volume = CONFIG.volume;
 
+        audio.load();
+
     }
 
-    /*----------------------------------
-                HAPTIC
-    ----------------------------------*/
+    /*==================================
+            HAPTIC FEEDBACK
+    ==================================*/
 
     function vibrate() {
 
@@ -58,9 +60,9 @@ const GocesFeedback = (() => {
 
     }
 
-    /*----------------------------------
+    /*==================================
                 SOUND
-    ----------------------------------*/
+    ==================================*/
 
     function playSound() {
 
@@ -68,19 +70,19 @@ const GocesFeedback = (() => {
 
         try {
 
-            const click = audio.cloneNode();
+            audio.pause();
 
-            click.volume = CONFIG.volume;
+            audio.currentTime = 0;
 
-            click.play().catch(() => { });
+            audio.play().catch(() => { });
 
         } catch (e) { }
 
     }
 
-    /*----------------------------------
-            SCALE ANIMATION
-    ----------------------------------*/
+    /*==================================
+            SCALE EFFECT
+    ==================================*/
 
     function animate(element) {
 
@@ -88,43 +90,43 @@ const GocesFeedback = (() => {
 
         if (element.animate) {
 
+            element.getAnimations().forEach(anim => anim.cancel());
+
             element.animate(
+
                 [
+
                     {
                         transform: "scale(1)"
                     },
+
                     {
-                        transform: "scale(0.95)"
+                        transform: "scale(.95)"
                     },
+
                     {
                         transform: "scale(1)"
                     }
+
                 ],
+
                 {
+
                     duration: CONFIG.animationDuration,
+
                     easing: "ease-out"
+
                 }
+
             );
-
-        } else {
-
-            element.style.transition = "transform .12s ease";
-
-            element.style.transform = "scale(.95)";
-
-            setTimeout(() => {
-
-                element.style.transform = "";
-
-            }, CONFIG.animationDuration);
 
         }
 
     }
 
-    /*----------------------------------
+    /*==================================
                 PLAY
-    ----------------------------------*/
+    ==================================*/
 
     function play(element = null) {
 
@@ -136,33 +138,51 @@ const GocesFeedback = (() => {
 
     }
 
-    /*----------------------------------
+    /*==================================
             AUTO ENABLE
-    ----------------------------------*/
+    ==================================*/
 
     function enableAuto() {
 
         initSound();
 
-        document.addEventListener("click", function (e) {
+        document.addEventListener(
 
-            const target = e.target.closest(
+            "pointerdown",
 
-                "button,a,[data-feedback],.goces-click"
+            function (e) {
 
-            );
+                const target = e.target.closest(
 
-            if (!target) return;
+                    "button,a,[data-feedback],.goces-click"
 
-            play(target);
+                );
+
+                if (!target) return;
+
+                play(target);
+
+            },
+
+            { passive: true }
+
+        );
+
+        document.addEventListener("visibilitychange", function () {
+
+            if (!document.hidden && audio) {
+
+                audio.load();
+
+            }
 
         });
 
     }
 
-    /*----------------------------------
+    /*==================================
                 API
-    ----------------------------------*/
+    ==================================*/
 
     return {
 
