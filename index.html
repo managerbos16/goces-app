@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/home/wallet.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/home/shortcut.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/home/slider.css">
+
+    <link rel="stylesheet" href="kuliner.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/food/food.css">
 </head>
 
@@ -264,13 +267,136 @@
 
         </section>
 
-        <section id="page-food" class="goces-page">
-        </section>
-
         <section id="page-ride" class="goces-page">
         </section>
 
         <section id="page-car" class="goces-page">
+        </section>
+
+        <section id="page-food" class="goces-page">
+            <header class="goces-header">
+                <div class="header-inner">
+                    <a href="action://act/back" class="icon-circle-btn" aria-label="Kembali">
+                        <i class="ph ph-arrow-left"></i>
+                    </a>
+                    <div class="header-right">
+                        <a href="https://jgjk.mobi/act/cart" class="icon-circle-btn" aria-label="Keranjang">
+                            <i class="ph ph-shopping-cart"></i>
+                        </a>
+                        <a href="action://act/message_list" class="icon-circle-btn" aria-label="Notifikasi">
+                            <i class="ph ph-bell"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="search-section">
+                <div class="search-wrapper">
+                    <i class="ph ph-magnifying-glass search-inner-icon"></i>
+                    <form action="action://act/search">
+                        <input type="search" id="search" name="search" class="input"
+                            placeholder="Cari makanan, toko, atau layanan...">
+                    </form>
+                </div>
+            </div>
+
+            <nav class="categories-bar">
+                <div class="categories-scroll">
+                    <button class="category-chip active" data-category="semua">Semua</button>
+                    <button class="category-chip" data-category="kuliner">Kuliner</button>
+                    <button class="category-chip" data-category="pizza">Pizza</button>
+                    <button class="category-chip" data-category="bakso">Bakso</button>
+                    <button class="category-chip" data-category="snack">Snack</button>
+                    <button class="category-chip" data-category="minuman">Minuman</button>
+                </div>
+            </nav>
+
+            <main class="content-body">
+
+                <section id="section-semua" class="menu-section section-visible">
+                    <div class="section-title-wrapper">
+                        <h2 class="section-heading">Kuliner Favorit</h2>
+                        <a href="#" class="see-all-link">Lihat Semua</a>
+                    </div>
+                    <div class="products-grid">
+                        <div class="product-card" data-tags="bakso super mercon mie pangsit sol daging pedas">
+                            <div class="card-image-holder">
+                                <img src="https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=500&q=80"
+                                    alt="Bakso Mercon" loading="lazy">
+                                <span class="promo-tag">Promo 20%</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="product-title">Bakso Super Mercon</h3>
+                                <p class="merchant-name"><i class="ph ph-storefront"></i> Bakso & Mie Pangsit SOL</p>
+                                <div class="card-meta">
+                                    <span class="rating"><i class="ph-fill ph-star"></i> 4.9</span>
+                                    <span class="distance"><i class="ph ph-map-pin"></i> 0.8 km</span>
+                                </div>
+                                <p class="price-text">Rp 22.000</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-tags="pizza margherita luigi keju italia">
+                            <div class="card-image-holder">
+                                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80"
+                                    alt="Pizza" loading="lazy">
+                            </div>
+                            <div class="card-info">
+                                <h3 class="product-title">Pizza Margherita</h3>
+                                <p class="merchant-name"><i class="ph ph-storefront"></i> Luigi's Pizzeria</p>
+                                <div class="card-meta">
+                                    <span class="rating"><i class="ph-fill ph-star"></i> 4.8</span>
+                                    <span class="distance"><i class="ph ph-map-pin"></i> 1.5 km</span>
+                                </div>
+                                <p class="price-text">Rp 75.000</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-tags="brown sugar boba milk trade susu segar minuman">
+                            <div class="card-image-holder">
+                                <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=500&q=80"
+                                    alt="Boba" loading="lazy">
+                                <span class="promo-tag">Diskon 35%</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="product-title">Brown Sugar Boba</h3>
+                                <p class="merchant-name"><i class="ph ph-storefront"></i> the milk trade</p>
+                                <div class="card-meta">
+                                    <span class="rating"><i class="ph-fill ph-star"></i> 5.0</span>
+                                    <span class="distance"><i class="ph ph-map-pin"></i> 1.1 km</span>
+                                </div>
+                                <p class="price-text">Rp 19.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-kuliner" class="menu-section">
+                    <div class="section-title-wrapper">
+                        <h2 class="section-heading">Eksplor Kuliner</h2>
+                        <a href="#" class="see-all-link">Lihat Semua</a>
+                    </div>
+                    <div class="products-grid">
+                    </div>
+                </section>
+
+                <section id="section-pizza" class="menu-section">
+                    <div class="section-title-wrapper">
+                        <h2 class="section-heading">Spesial Pizza</h2>
+                        <a href="#" class="see-all-link">Lihat Semua</a>
+                    </div>
+                    <div class="products-grid">
+                    </div>
+                </section>
+
+                <section id="section-bakso" class="menu-section">
+                    <div class="section-title-wrapper">
+                        <h2 class="section-heading">Pilihan Bakso</h2>
+                        <a href="#" class="see-all-link">Lihat Semua</a>
+                    </div>
+                    <div class="products-grid">
+                    </div>
+                </section>
+
+            </main>
         </section>
 
         <section id="page-delivery" class="goces-page">
@@ -371,6 +497,8 @@
     <script src="https://goces-app.vercel.app/js/home/wallet.js"></script>
     <script src="https://goces-app.vercel.app/js/home/shortcut.js"></script>
     <script src="https://goces-app.vercel.app/js/home/slider.js"></script>
+
+    <script src="kuliner.js"></script>
     <script src="https://goces-app.vercel.app/js/food/food.js"></script>
 
 </body>

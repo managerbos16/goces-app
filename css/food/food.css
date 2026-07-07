@@ -1,258 +1,257 @@
-/* --- Header --- */
-.ios-header {
-  background: var(--ios-blue-gradient);
-  padding: calc(16px + var(--safe-top)) 16px 24px;
-  border-bottom-left-radius: 32px;
-  border-bottom-right-radius: 32px;
-  box-shadow: var(--shadow-soft);
+/* --- Header Component --- */
+.goces-header {
+  background-color: var(--gray);
+  padding: calc(var(--screen-padding) + var(--safe-top)) var(--screen-padding)
+    calc(var(--screen-padding) / 2);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.header-top {
+.header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-.header-actions {
+.header-right {
   display: flex;
   gap: 12px;
 }
 
-.icon-btn {
-  color: white;
-  font-size: 24px;
-  text-decoration: none;
-  display: flex;
+.icon-circle-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition:
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    background 0.2s;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--icon-radius);
+  background-color: var(--white);
+  color: var(--text);
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: transform var(--transition);
 }
 
-.icon-btn:active {
+.icon-circle-btn:active {
   transform: scale(0.9);
-  background: rgba(255, 255, 255, 0.3);
 }
 
-/* --- Search --- */
-.search-container {
-  width: 100%;
+/* --- Search Input Area --- */
+.search-section {
+  padding: calc(var(--screen-padding) / 2) var(--screen-padding);
 }
 
-.search-input-wrapper {
+.search-wrapper {
   position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
 }
 
-.search-icon {
+.search-inner-icon {
   position: absolute;
   left: 16px;
-  color: var(--text-secondary);
-  font-size: 20px;
+  color: var(--text);
+  font-size: 18px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.input {
+.search-wrapper form {
+  width: 100%;
+}
+
+.search-wrapper .input {
   width: 100%;
   height: 48px;
-  border: none;
-  border-radius: var(--radius-full);
-  padding: 0 20px 0 44px;
-  font-size: 16px;
-  font-family: inherit;
-  background: var(--surface-white);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  outline: none;
-  transition: box-shadow 0.3s ease;
-}
-
-.input:focus {
-  box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
-}
-
-/* --- Categories (Horizontal Scroll) --- */
-.category-nav {
-  padding: 20px 0;
-  background: transparent;
-}
-
-.category-scroll {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding: 0 16px;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-.category-scroll::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari */
-}
-
-.chip {
-  padding: 10px 20px;
-  border: none;
-  border-radius: var(--radius-full);
-  background: var(--surface-white);
-  color: var(--text-secondary);
+  border-radius: 999px;
+  /* Rounded Penuh Sesuai Instruksi */
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  padding: 0 var(--screen-padding) 0 46px;
   font-size: 15px;
-  font-weight: 600;
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  outline: none;
   font-family: inherit;
+  transition: box-shadow var(--transition);
+}
+
+.search-wrapper .input:focus {
+  box-shadow:
+    0 0 0 3px rgba(29, 78, 216, 0.1),
+    var(--shadow-sm);
+}
+
+/* --- Category Chips Scrollbar --- */
+.categories-bar {
+  padding: calc(var(--screen-padding) / 2) 0 var(--screen-padding);
+}
+
+.categories-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 0 var(--screen-padding);
+  scrollbar-width: none;
+}
+
+.categories-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-chip {
+  padding: 10px 20px;
+  border-radius: 999px;
+  /* Rounded Penuh Sesuai Instruksi */
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: var(--shadow-card);
   white-space: nowrap;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-family: inherit;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
 }
 
-.chip.active {
-  background: var(--ios-blue);
-  color: white;
-  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
-  transform: scale(1.05);
+.category-chip.active {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
 }
 
-/* --- Main Content & Animations --- */
-.main-content {
-  padding: 0 16px;
+.category-chip:active {
+  transform: scale(0.95);
 }
 
-.category-section {
+/* --- Dynamic Main Area Sections --- */
+.content-body {
+  padding: 0 var(--screen-padding);
+}
+
+.menu-section {
   display: none;
   opacity: 0;
-  transform: translateY(20px);
+  transform: scale(0.98) translateY(10px);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
 }
 
-.category-section.active {
+.menu-section.section-visible {
   display: block;
-  animation: springFadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-@keyframes springFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.menu-section.animate-fade {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
-.section-header {
+.section-title-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: var(--section-gap);
 }
 
-.section-title {
-  font-size: clamp(18px, 4vw, 22px);
+.section-heading {
+  font-size: 18px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text);
 }
 
-.see-all {
-  color: var(--ios-blue);
-  text-decoration: none;
-  font-size: 14px;
+.see-all-link {
+  font-size: 13px;
   font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
 }
 
-/* --- Grid & Cards --- */
-.food-grid {
+/* --- Premium Products Grid System --- */
+.products-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: var(--screen-padding);
 }
 
-.food-card {
-  background: var(--surface-white);
-  border-radius: var(--radius-lg);
+.product-card {
+  background-color: var(--white);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition:
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
 }
 
-/* Active state meniru efek tekan di iOS */
-.food-card:active {
+.product-card:active {
   transform: scale(0.96);
 }
 
-/* Hover untuk Desktop */
-@media (hover: hover) {
-  .food-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-soft);
-  }
-}
-
-.card-image-wrapper {
+.card-image-holder {
   position: relative;
   width: 100%;
-  padding-top: 100%;
-  /* Rasio 1:1 */
+  padding-top: 85%;
+  background-color: var(--gray);
   overflow: hidden;
 }
 
-.card-image-wrapper img {
+.card-image-holder img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
 }
 
-.food-card:hover .card-image-wrapper img {
-  transform: scale(1.05);
-}
-
-.promo-badge {
+.promo-tag {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(255, 59, 48, 0.9);
-  color: white;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-size: 12px;
+  top: 10px;
+  left: 10px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 11px;
   font-weight: 700;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  padding: 4px 8px;
+  border-radius: 8px;
+  z-index: 2;
 }
 
-.card-content {
+.card-info {
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
-.food-name {
+.product-title {
   font-size: 15px;
   font-weight: 700;
+  color: var(--text);
   margin-bottom: 4px;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .merchant-name {
-  font-size: 13px;
-  color: var(--text-secondary);
+  font-size: 12px;
+  color: var(--text);
+  opacity: 0.6;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -262,70 +261,64 @@
 .card-meta {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-bottom: 12px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: auto;
+  margin-bottom: 8px;
 }
 
 .rating {
   color: #ff9500;
-  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .distance {
+  color: var(--text);
+  opacity: 0.5;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
-.price {
-  font-size: 16px;
+.price-text {
+  font-size: 15px;
   font-weight: 700;
-  color: var(--ios-blue);
+  color: var(--blue);
 }
 
-/* --- Responsive Breakpoints --- */
-/* Android Besar / iPhone Max */
-@media (min-width: 428px) {
-  .food-grid {
-    gap: 20px;
+/* Material Ripple Overlay Effect */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.5s ease-out;
+  background-color: rgba(29, 78, 216, 0.1);
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
   }
 }
 
-/* Tablet */
+/* --- Responsive Scaling --- */
 @media (min-width: 768px) {
-  .food-grid {
+  .products-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
   }
 
-  .category-scroll {
+  .categories-scroll {
     justify-content: center;
-    /* Tengahkan chip di layar besar */
   }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
-  body {
-    /* Membatasi lebar konten di desktop seperti layout aplikasi */
-    max-width: 1200px;
-    margin: 0 auto;
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-    box-shadow: var(--shadow-soft);
-    min-height: 100vh;
-    background: var(--surface-white);
-  }
-
-  .ios-header {
-    border-radius: 0 0 32px 32px;
-  }
-
-  .food-grid {
+  .products-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }

@@ -8,21 +8,13 @@
   --radius: 18px;
   --nav-height: 88px;
   --transition: 0.25s ease;
-
   --safe-top: env(safe-area-inset-top);
   --safe-bottom: env(safe-area-inset-bottom);
-
   --screen-padding: 16px;
-
   --section-gap: 18px;
-
   --card-radius: 22px;
-
   --icon-radius: 18px;
-
   --header-radius: 0 0 28px 28px;
-
-  --shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
 }
 
 * {

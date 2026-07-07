@@ -1,68 +1,128 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Logika Tab / Kategori Filter
-    const chips = document.querySelectorAll('.chip');
-    const sections = document.querySelectorAll('.category-section');
+    "use strict";
 
-    // Event Delegation menggunakan forEach (karena jumlah chip sedikit dan statis)
-    chips.forEach(chip => {
-        chip.addEventListener('click', function (e) {
+    // --- DOM Cache Elements ---
+    const chips = document.querySelectorAll(".category-chip");
+    const sections = document.querySelectorAll(".menu-section");
+    const searchInput = document.getElementById("search");
+    const cards = document.querySelectorAll(".product-card");
+
+    /**
+     * Navigation Switcher Engine
+     * Uses display blocks and safe requestAnimationFrame macro-task toggles.
+     */
+    const renderCategoryView = (targetCategory) => {
+        const targetId = `section-${targetCategory}`;
+        let activeSection = document.getElementById(targetId);
+
+        // Fallback safety to render All Section
+        if (!activeSection) {
+            activeSection = document.getElementById("section-semua");
+        }
+
+        // Wipe clean active visibilities 
+        sections.forEach((sec) => {
+            sec.classList.remove("animate-fade", "section-visible");
+        });
+
+        // Toggle visibility target layer
+        activeSection.classList.add("section-visible");
+
+        // Render smoothly using engine style injection rules
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                activeSection.classList.add("animate-fade");
+            }, 10);
+        });
+    };
+
+    // Chip Delegation Event Mapping
+    chips.forEach((chip) => {
+        chip.addEventListener("click", function (e) {
             e.preventDefault();
+            if (this.classList.contains("active")) return;
 
-            // Ambil target section dari data-target
-            const targetId = this.getAttribute('data-target');
+            chips.forEach((c) => c.classList.remove("active"));
+            this.classList.add("active");
 
-            // Jika chip yang diklik sudah aktif, tidak perlu melakukan apa-apa
-            if (this.classList.contains('active')) return;
+            const selectedCat = this.getAttribute("data-category");
+            renderCategoryView(selectedCat);
 
-            // Hapus kelas aktif dari semua chip
-            chips.forEach(c => c.classList.remove('active'));
-            // Tambahkan kelas aktif ke chip yang diklik
-            this.classList.add('active');
-
-            // Sembunyikan semua section (hilangkan class active)
-            sections.forEach(section => {
-                // Untuk memastikan animasi spring/fade ter-trigger ulang
-                section.style.display = 'none';
-                section.classList.remove('active');
+            // Auto center chip focus state structure inside viewports
+            this.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center"
             });
-
-            // Tampilkan section yang dituju
-            // Menggunakan requestAnimationFrame agar browser me-render display:block terlebih dahulu
-            // sebelum meng-apply class active (untuk trigger CSS Animation)
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.style.display = 'block';
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        targetSection.classList.add('active');
-                    });
-                });
-            }
-
-            // Scroll otomatis ke chip yang diklik agar terlihat di tengah (berguna di mobile)
-            this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         });
     });
 
-    // 2. Optimasi Pencarian dengan Debounce (Performance)
-    const searchInput = document.getElementById('search');
-
-    const debounce = (func, delay) => {
-        let timer;
-        return function (...args) {
-            clearTimeout(timer);
-            timer = setTimeout(() => func.apply(this, args), delay);
-        };
+    // Booting up configuration states sequence
+    const initPageStates = () => {
+        const baseActive = document.querySelector(".menu-section.section-visible");
+        if (baseActive) {
+            baseActive.classList.add("animate-fade");
+        }
     };
+    initPageStates();
 
-    const handleSearch = debounce((e) => {
-        const query = e.target.value.toLowerCase();
-        // Logika pencarian murni di frontend (jika diperlukan)
-        // Saat ini hanya sekedar visual, namun siap dipasang logika filter DOM.
-        console.log("Mencari: ", query);
-    }, 300); // Tunggu 300ms setelah user berhenti mengetik
-
+    /**
+     * Clean Local Inline Search Filter 
+     * Optimizes search matches on active cards.
+     */
     if (searchInput) {
-        searchInput.addEventListener('input', handleSearch);
+        searchInput.addEventListener("input", (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            if (query === "") {
+                // If text input is blank reset to standard current active category section views
+                const activeChip = document.querySelector(".category-chip.active");
+                const currentCat = activeChip ? activeChip.getAttribute("data-category") : "semua";
+                renderCategoryView(currentCat);
+                cards.forEach(card => card.style.display = "flex");
+                return;
+            }
+
+            // Expose structural spaces for real-time validation checks
+            sections.forEach(sec => sec.classList.add("section-visible", "animate-fade"));
+
+            cards.forEach((card) => {
+                const searchData = card.getAttribute("data-tags") || "";
+                const title = card.querySelector(".product-title").textContent.toLowerCase();
+                const merchant = card.querySelector(".merchant-name").textContent.toLowerCase();
+
+                if (searchData.includes(query) || title.includes(query) || merchant.includes(query)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
     }
+
+    /**
+     * Interaction Canvas Ripple Effect Module
+     */
+    cards.forEach((card) => {
+        card.addEventListener("click", function (e) {
+            const rippleSpan = document.createElement("span");
+            rippleSpan.classList.add("ripple");
+
+            const sizeMetrics = Math.max(this.offsetWidth, this.offsetHeight);
+            rippleSpan.style.width = rippleSpan.style.height = `${sizeMetrics}px`;
+
+            const boundRect = this.getBoundingClientRect();
+            const coordX = e.clientX - boundRect.left - (sizeMetrics / 2);
+            const coordY = e.clientY - boundRect.top - (sizeMetrics / 2);
+
+            rippleSpan.style.left = `${coordX}px`;
+            rippleSpan.style.top = `${coordY}px`;
+
+            this.appendChild(rippleSpan);
+
+            rippleSpan.addEventListener("animationend", () => {
+                rippleSpan.remove();
+            });
+        });
+    });
 });
