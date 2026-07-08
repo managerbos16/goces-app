@@ -1,126 +1,150 @@
-/* Section Utama */
+/* ===================================================
+   PREMIUM VOUCHER DESIGN - GOCES STYLE
+   =================================================== */
+
+/* Container Utama */
 .gcsVoucherGoRideSection {
   padding: 20px 16px;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  background-color: #f9fafb; /* Sesuaikan dengan background aplikasi Anda */
 }
 
 .gcsVoucherGoRideTitle {
   font-size: 18px;
-  font-weight: 500;
-  color: var(--text);
+  font-weight: 600;
+  color: #111;
   margin: 0 0 16px 0;
 }
 
 .gcsVoucherGoRideContainer {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Card Voucher */
 .gcsVoucherGoRideCard {
-  background: var(--white);
-  border-radius: var(--card-radius);
+  background: #ffffff;
+  border-radius: 22px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border);
 }
 
-/* Efek Sobekan Kiri & Kanan */
+/* Efek Sobekan Realistis */
 .gcsVoucherGoRideCard::before,
 .gcsVoucherGoRideCard::after {
   content: "";
   position: absolute;
-  top: 60%;
-  width: 20px;
-  height: 20px;
-  background: var(--gray);
+  top: 65%; /* Posisi garis putus-putus */
+  width: 24px;
+  height: 24px;
+  background: #f9fafb; /* Sesuaikan dengan warna background halaman */
   border-radius: 50%;
-  z-index: 1;
+  z-index: 2;
 }
 .gcsVoucherGoRideCard::before {
-  left: -10px;
+  left: -12px;
 }
 .gcsVoucherGoRideCard::after {
-  right: -10px;
+  right: -12px;
 }
 
-/* Struktur Card */
+/* Bagian Atas */
 .gcsVoucherGoRideLeft {
   padding: 20px;
   display: flex;
   gap: 16px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .gcsVoucherGoRideIcon {
-  width: 48px;
-  height: 48px;
-  background: #eff6ff;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 4px;
 }
 
 .gcsVoucherGoRideContent {
   flex: 1;
 }
 
-.gcsVoucherGoRideName {
-  font-weight: 600;
-  color: var(--text);
-  margin: 0;
+.gcsVoucherBadge {
+  background: #00880c; /* Warna Hijau Gojek */
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
 }
+
+.gcsVoucherGoRideName {
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
 .gcsVoucherGoRideDesc {
   font-size: 13px;
   color: #6b7280;
-  margin: 4px 0 0;
+  margin: 0;
+  line-height: 1.4;
 }
 
-/* Divider Putus-putus */
+/* Garis Putus-putus */
 .gcsVoucherGoRideDivider {
   position: relative;
   margin: 0 20px;
-  border-top: 2px dashed var(--border);
+  border-top: 2px dashed #e5e7eb;
 }
 
 /* Bagian Bawah */
 .gcsVoucherGoRideRight {
-  padding: 16px 20px;
+  padding: 16px 20px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .gcsVoucherGoRideCode {
-  font-weight: 700;
-  color: var(--blue);
-  font-family: monospace;
+  font-family: "Courier New", monospace;
+  font-weight: 800;
+  color: #111;
   font-size: 15px;
+  background: #f3f4f6;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 6px;
 }
 
 .gcsVoucherGoRideExpired {
   font-size: 11px;
   color: #9ca3af;
-  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .gcsVoucherGoRideButton {
-  background: var(--blue);
-  color: var(--white);
+  background: #00880c; /* Warna Hijau Gojek */
+  color: #fff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 10px 24px;
+  border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.25s ease;
 }
 
 .gcsVoucherGoRideButton:active {
@@ -130,4 +154,20 @@
 /* Utility */
 .gcsVoucherGoRideHidden {
   display: none !important;
+}
+
+/* Toast */
+.gprToast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
