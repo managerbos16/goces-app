@@ -1,98 +1,236 @@
-#page-aktivitas {
-  padding: 0 16px;
-  background: var(--gray);
-  min-height: 100vh;
+/* STICKY HEADER WITH SAFE AREA */
+.gcsActivityHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: calc(var(--safe-top) + 12px);
+  padding-bottom: 12px;
+  border-radius: var(--header-radius);
 }
 
-#page-aktivitas .gcsNativeActivityHeader {
-  display: flex;
-  justify-content: space-between;
+.gcsActivityHeaderContainer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 20px 0;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 var(--screen-padding);
 }
 
-#page-aktivitas .gcsNativeActivityTitle {
-  font-size: 34px;
-  font-weight: 800;
-  margin: 0;
+.gcsActivityTitle {
+  grid-column: 2;
+  font-size: clamp(22px, 4vw, 24px);
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  letter-spacing: -0.5px;
 }
 
-#page-aktivitas .gcsNativeActivityHeaderRight {
+.gcsActivityHeaderActions {
+  grid-column: 3;
+  justify-self: end;
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
-#page-aktivitas .gcsNativeActivityCartButton,
-#page-aktivitas .gcsNativeActivityNotificationButton {
-  background: var(--white);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+/* APP-STORE STYLE ACTION BUTTONS */
+.gcsActivityIconButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 40px;
+  height: 40px;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--icon-radius);
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    transform 0.2s var(--ios-spring),
+    background-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-#page-aktivitas .gcsNativeActivitySegmentWrapper {
+.gcsActivityIconButton:active {
+  transform: scale(0.92);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.gcsActivityIconButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* MAIN LAYOUT CONTAINER */
+.gcsActivityContainer {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: var(--section-gap) var(--screen-padding)
+    calc(var(--safe-bottom) + 32px);
   display: flex;
-  background: #e5e7eb;
-  padding: 4px;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: var(--section-gap);
 }
 
-#page-aktivitas .gcsNativeActivitySegmentButton {
+/* IOS SEGMENTED CONTROL (TABS) */
+.gcsActivityTabs {
+  display: flex;
+  background-color: rgba(120, 120, 128, 0.12);
+  padding: 3px;
+  border-radius: 14px;
+  position: relative;
+  gap: 4px;
+}
+
+.gcsActivityTabButton {
   flex: 1;
   border: none;
-  padding: 8px;
-  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
   font-weight: 600;
-  background: transparent;
-  transition: 0.3s;
+  padding: 10px 0;
+  border-radius: 11px;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--text);
+  transition: all 0.25s var(--ios-spring);
+  text-align: center;
 }
 
-#page-aktivitas .gcsNativeActivitySegmentButtonActive {
-  background: var(--white);
-  color: var(--blue);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* ACTIVE TAB IMPLEMENTATION */
+.gcsActivityTabButton.gcsActivityTabActive {
+  background-color: var(--blue);
+  color: var(--white);
+  box-shadow: 0 3px 10px rgba(29, 78, 216, 0.25);
 }
 
-#page-aktivitas .gcsNativeActivityPanel {
+/* ANIMATED CONTENT WRAPPER */
+.gcsActivityContentWrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* NATIVE LOOK SECTION ANIMATIONS */
+.gcsActivitySection {
   display: none;
-}
-#page-aktivitas .gcsNativeActivityPanelActive {
-  display: block;
-  animation: fadeIn 0.3s ease;
+  opacity: 0;
+  transform: scale(0.97) translateY(10px);
+  transition:
+    opacity 0.3s var(--ios-spring),
+    transform 0.3s var(--ios-spring);
 }
 
-#page-aktivitas .gcsNativeActivityCard {
-  background: var(--white);
-  padding: 16px;
-  border-radius: 22px;
+.gcsActivitySection.gcsActivitySectionActive {
+  display: block;
+}
+
+.gcsActivitySection.gcsActivitySectionVisible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* PREMIUM NATIVE CARD STYLE */
+.gcsActivityCard {
+  background-color: var(--white);
+  border-radius: var(--card-radius);
+  padding: 40px 24px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  justify-content: center;
 }
 
-#page-aktivitas .gcsNativeActivityCardTitle {
+/* INTERACTIVE LUXURY ICON BLOCKS */
+.gcsActivityIconWrapper {
+  width: 72px;
+  height: 72px;
+  background-color: rgba(29, 78, 216, 0.06);
+  border-radius: var(--card-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  margin-bottom: 24px;
+}
+
+.gcsActivityIconWrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
+.gcsActivityCardTitle {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.gcsActivityCardDescription {
+  font-size: 14px;
+  color: #6b7280;
+  max-width: 280px;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* NATIVE-LIKE ACTION BUTTONS WITH SPRING EFFECTS */
+.gcsActivityButton {
+  width: 100%;
+  max-width: 290px;
+  height: 52px;
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  outline: none;
+  border-radius: var(--radius);
+  font-size: 16px;
   font-weight: 600;
-  display: block;
-}
-#page-aktivitas .gcsNativeActivityBadgeSuccess {
-  font-size: 12px;
-  color: #059669;
-  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.2);
+  transition:
+    transform 0.2s var(--ios-spring),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes fadeIn {
-  from {
+.gcsActivityButton:hover {
+  background-color: var(--blue-dark);
+}
+
+.gcsActivityButton:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.1);
+}
+
+/* NATIVE RIPPLE EFFECT LAYER */
+.gcsActivityRipple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  animation: gcsActivityRippleAnimation 0.5s linear;
+  pointer-events: none;
+}
+
+@keyframes gcsActivityRippleAnimation {
+  to {
+    transform: scale(4);
     opacity: 0;
   }
-  to {
-    opacity: 1;
+}
+
+/* TABLET AND DESKTOP FINE TUNING */
+@media (min-width: 640px) {
+  .gcsActivityCard {
+    padding: 56px 32px;
   }
 }
