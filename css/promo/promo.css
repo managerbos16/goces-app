@@ -1,300 +1,322 @@
-/* =========================================================
-   HEADER iOS STYLE
-   ========================================================= */
-.gcsPromo-header {
+/* CONTAINER UTAMA */
+.gcsPromoContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
-  z-index: 100;
-  padding: calc(var(--safe-top) + 12px) var(--screen-padding) 12px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: var(--header-radius);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* ================= HEADER iOS STYLE ================= */
+.gcsPromoHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  padding: calc(var(--screen-padding) + var(--safe-top)) var(--screen-padding)
+    12px;
+  background-color: rgba(249, 250, 251, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.gcsPromo-header-left {
+.gcsPromoSearchWrapper {
   flex: 1;
+  margin-right: 12px;
 }
 
-.gcsPromo-search-form {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: var(--gray);
-  border-radius: var(--radius);
-  padding: 0 12px;
-  height: 44px;
-  border: 1px solid var(--border);
-  transition: var(--transition);
-}
-
-.gcsPromo-search-form:focus-within {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
-}
-
-.gcsPromo-search-icon {
-  color: #9ca3af;
-  margin-right: 8px;
-}
-
-.gcsPromo-input {
+.gcsPromoSearchWrapper form {
   width: 100%;
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 1rem;
-  color: var(--text);
 }
 
-.gcsPromo-input::placeholder {
-  color: #9ca3af;
-}
-
-.gcsPromo-header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.gcsPromo-icon-btn {
-  width: 44px;
+.gcsPromoSearchInput {
+  width: 100%;
   height: 44px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 999px;
+  padding: 0 20px;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: background-color var(--transition);
+}
+
+.gcsPromoSearchInput:focus {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.gcsPromoHeaderActions {
+  display: flex;
+  gap: 10px;
+}
+
+.gcsPromoIconButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--white);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  background-color: var(--white);
   color: var(--text);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: transform var(--transition);
 }
 
-.gcsPromo-icon-btn:active {
-  transform: scale(0.92);
+.gcsPromoIconButton:active {
+  transform: scale(0.9);
 }
 
-/* =========================================================
-   SCROLLABLE CONTENT
-   ========================================================= */
-.gcsPromo-content-wrapper {
+/* ================= SCROLL AREA ================= */
+.gcsPromoMainScroll {
   flex: 1;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: var(--screen-padding);
-  padding-bottom: calc(var(--safe-bottom) + 32px);
-  display: flex;
-  flex-direction: column;
-  gap: var(--section-gap);
+  padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + 20px);
+  scroll-behavior: smooth;
 }
 
-.gcsPromo-content-wrapper::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for clean UI */
+.gcsPromoMainScroll::-webkit-scrollbar {
+  display: none;
 }
 
-/* =========================================================
-   COUNTER CARD
-   ========================================================= */
-.gcsPromo-counter-card {
-  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+.gcsPromoSection {
+  padding: var(--section-gap) var(--screen-padding) 0;
+}
+
+/* ================= CARD JUMLAH VOUCHER ================= */
+.gcsPromoSummaryCard {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
   border-radius: var(--card-radius);
   padding: 24px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   color: var(--white);
-  box-shadow: 0 12px 30px rgba(29, 78, 216, 0.25);
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.25);
   position: relative;
   overflow: hidden;
 }
 
-.gcsPromo-counter-card::after {
+/* Efek Glass Ringan di Background Card Summary */
+.gcsPromoSummaryCard::before {
   content: "";
   position: absolute;
   top: -50px;
-  right: -20px;
+  right: -30px;
   width: 150px;
   height: 150px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+  backdrop-filter: blur(10px);
 }
 
-.gcsPromo-counter-title {
-  font-size: 1.25rem;
+.gcsPromoSummaryText {
+  position: relative;
+  z-index: 2;
+}
+
+.gcsPromoSummaryTitle {
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
-.gcsPromo-counter-desc {
-  font-size: 0.875rem;
+.gcsPromoSummarySubtitle {
+  font-size: 14px;
   opacity: 0.85;
 }
 
-.gcsPromo-counter-value {
-  font-size: 2.5rem;
+.gcsPromoSummaryNumber h1 {
+  font-size: 40px;
   font-weight: 800;
-  letter-spacing: -1px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* =========================================================
-   CATEGORY FILTER (SEGMENTED CONTROL iOS STYLE)
-   ========================================================= */
-.gcsPromo-category-scroll {
-  margin: 0 calc(var(--screen-padding) * -1);
+/* ================= KATEGORI CHIP ================= */
+.gcsPromoCategoryNav {
+  padding: var(--section-gap) 0 0;
+}
+
+.gcsPromoCategoryScroll {
+  display: flex;
+  gap: 10px;
   padding: 0 var(--screen-padding);
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-.gcsPromo-category-scroll::-webkit-scrollbar {
+.gcsPromoCategoryScroll::-webkit-scrollbar {
   display: none;
 }
 
-.gcsPromo-category-list {
-  display: inline-flex;
-  gap: 8px;
-  list-style: none;
-  background: #e5e7eb;
-  padding: 4px;
-  border-radius: calc(var(--radius) + 4px);
-}
-
-.gcsPromo-category-btn {
+.gcsPromoChip {
   padding: 10px 20px;
-  font-size: 0.9rem;
+  border-radius: 999px;
+  background-color: var(--white);
+  color: var(--text);
+  font-size: 14px;
   font-weight: 600;
-  color: #6b7280;
-  background: transparent;
-  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  cursor: pointer;
   white-space: nowrap;
   transition: all var(--transition);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.gcsPromo-category-btn.gcsPromo-active {
-  background: var(--white);
-  color: var(--blue);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.gcsPromoChip.gcsPromoActive {
+  background-color: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2);
 }
 
-/* =========================================================
-   VOUCHER CARD
-   ========================================================= */
-.gcsPromo-voucher-list {
-  display: flex;
-  flex-direction: column;
+/* ================= CARD VOUCHER ================= */
+.gcsPromoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
-.gcsPromo-card {
-  background: var(--white);
+.gcsPromoCard {
+  background-color: var(--white);
   border-radius: var(--card-radius);
   padding: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(229, 231, 235, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
   transition:
-    transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
-    opacity 0.3s ease;
-  will-change: transform, opacity;
-  display: flex; /* default flex */
+    transform var(--transition),
+    opacity 0.3s ease,
+    box-shadow var(--transition);
+  display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
-.gcsPromo-card.gcsPromo-hidden {
-  display: none; /* Logic filter via display none */
+/* Hover & Active Card */
+.gcsPromoCard:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
-.gcsPromo-card-header {
+/* State Filter & Delete (Hiding) */
+.gcsPromoCard.gcsPromoHidden {
+  display: none !important;
+}
+
+/* Card Elements */
+.gcsPromoCardTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-}
-
-.gcsPromo-badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 12px;
-  background: #eff6ff;
-  color: var(--blue);
-  letter-spacing: 0.5px;
-}
-
-.gcsPromo-quota {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #ef4444;
-  background: #fef2f2;
-  padding: 4px 10px;
-  border-radius: 10px;
-}
-
-.gcsPromo-title {
-  font-size: 1.2rem;
-  font-weight: 800;
   margin-bottom: 4px;
-  color: var(--text);
 }
 
-.gcsPromo-desc {
-  font-size: 0.9rem;
-  color: #6b7280;
-  margin-bottom: 16px;
-}
-
-.gcsPromo-details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  background: var(--gray);
-  padding: 14px;
-  border-radius: 14px;
-  margin-bottom: 20px;
-}
-
-.gcsPromo-detail-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.gcsPromo-detail-item.gcsPromo-full {
-  grid-column: 1 / -1;
-}
-
-.gcsPromo-detail-item span {
-  font-size: 0.75rem;
-  color: #9ca3af;
-  margin-bottom: 2px;
-}
-
-.gcsPromo-detail-item strong {
-  font-size: 0.9rem;
+.gcsPromoBadge {
+  font-size: 11px;
   font-weight: 700;
-  color: var(--text);
-}
-
-.gcsPromo-btn-use {
-  width: 100%;
-  height: 52px;
-  background: var(--blue);
+  padding: 4px 10px;
+  border-radius: 6px;
   color: var(--white);
-  border-radius: var(--radius);
+}
+
+/* Badge Colors */
+.gcsPromoBadgeRide {
+  background-color: #10b981;
+}
+.gcsPromoBadgeCar {
+  background-color: #3b82f6;
+}
+.gcsPromoBadgeFood {
+  background-color: #ef4444;
+}
+.gcsPromoBadgeDelivery {
+  background-color: #f59e0b;
+}
+.gcsPromoBadgeShop {
+  background-color: #8b5cf6;
+}
+.gcsPromoBadgeFresh {
+  background-color: #059669;
+}
+.gcsPromoBadgePPOB {
+  background-color: #d946ef;
+}
+
+.gcsPromoExpiry {
+  font-size: 12px;
+  color: var(--text);
+  opacity: 0.5;
+  font-weight: 600;
+}
+
+.gcsPromoCardTitle {
+  font-size: 18px;
   font-weight: 700;
-  font-size: 1rem;
+  color: var(--text);
+}
+
+.gcsPromoCardDesc {
+  font-size: 13px;
+  color: var(--text);
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+.gcsPromoCardBottom {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  margin-top: 6px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+
+.gcsPromoQuotaText {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.gcsPromoQuotaValue {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.gcsPromoUseBtn {
+  background-color: #eff6ff;
+  color: var(--blue);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
   transition:
     transform var(--transition),
-    opacity var(--transition);
+    background-color var(--transition);
 }
 
-.gcsPromo-btn-use:active {
-  transform: scale(0.96);
-  opacity: 0.9;
+.gcsPromoUseBtn:active {
+  transform: scale(0.95);
+  background-color: #dbeafe;
+}
+
+/* ================= RESPONSIVE LAYOUT ================= */
+@media (min-width: 768px) {
+  .gcsPromoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gcsPromoCategoryScroll {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gcsPromoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

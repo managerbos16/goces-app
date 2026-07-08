@@ -1222,696 +1222,427 @@
         </section>
 
         <section id="page-promo" class="goces-page">
-            <header class="gcsPromo-header">
-                <div class="gcsPromo-header-left">
-                    <form action="action://act/search" class="gcsPromo-search-form" id="gcsPromo-search-form">
-                        <svg class="gcsPromo-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                        <input type="search" id="search" name="search" class="gcsPromo-input"
-                            placeholder="Cari promo...">
-                    </form>
-                </div>
-                <div class="gcsPromo-header-right">
-                    <a href="https://jgjk.mobi/act/cart" class="gcsPromo-icon-btn" aria-label="Keranjang">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                    </a>
-                    <a href="action://act/message_list" class="gcsPromo-icon-btn" aria-label="Notifikasi">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                        </svg>
-                    </a>
-                </div>
-            </header>
-
-            <div class="gcsPromo-content-wrapper">
-
-                <section class="gcsPromo-counter-section">
-                    <div class="gcsPromo-counter-card">
-                        <div class="gcsPromo-counter-info">
-                            <h2 class="gcsPromo-counter-title">Voucher Aktif</h2>
-                            <p class="gcsPromo-counter-desc">Siap digunakan hari ini</p>
-                        </div>
-                        <div class="gcsPromo-counter-value" id="gcsPromo-total-voucher">0</div>
+            <div class="gcsPromoContainer">
+                <header class="gcsPromoHeader">
+                    <div class="gcsPromoSearchWrapper">
+                        <form action="action://act/search">
+                            <input type="search" id="search" name="search" class="input gcsPromoSearchInput"
+                                placeholder="Cari voucher...">
+                        </form>
                     </div>
-                </section>
+                    <div class="gcsPromoHeaderActions">
+                        <a href="https://jgjk.mobi/act/cart" class="gcsPromoIconButton" aria-label="Keranjang">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </a>
+                        <a href="action://act/message_list" class="gcsPromoIconButton" aria-label="Notifikasi">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </header>
 
-                <nav class="gcsPromo-category-scroll">
-                    <ul class="gcsPromo-category-list" id="gcsPromo-category-list">
-                        <li><button class="gcsPromo-category-btn gcsPromo-active" data-filter="semua">Semua</button>
-                        </li>
-                        <li><button class="gcsPromo-category-btn" data-filter="goride">GoRide</button></li>
-                        <li><button class="gcsPromo-category-btn" data-filter="gocar">GoCar</button></li>
-                        <li><button class="gcsPromo-category-btn" data-filter="gofood">GoFood</button></li>
-                        <li><button class="gcsPromo-category-btn" data-filter="delivery">Delivery</button></li>
-                        <li><button class="gcsPromo-category-btn" data-filter="shop">Shop</button></li>
-                        <li><button class="gcsPromo-category-btn" data-filter="fresh">Fresh</button></li>
-                        <li><button class="gcsPromo-category-btn" data-filter="ppob">PPOB</button></li>
-                    </ul>
-                </nav>
+                <main class="gcsPromoMainScroll">
 
-                <section class="gcsPromo-voucher-list" id="gcsPromo-voucher-container">
+                    <section class="gcsPromoSection">
+                        <div class="gcsPromoSummaryCard">
+                            <div class="gcsPromoSummaryText">
+                                <h2 class="gcsPromoSummaryTitle">Voucher Aktif</h2>
+                                <p class="gcsPromoSummarySubtitle">Siap digunakan hari ini</p>
+                            </div>
+                            <div class="gcsPromoSummaryNumber">
+                                <h1 id="gcsPromoTotalCount">0</h1>
+                            </div>
+                        </div>
+                    </section>
 
-                    <article class="gcsPromo-card" data-category="goride" data-id="gr1">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoRide</span>
-                            <span class="gcsPromo-quota">Sisa 12</span>
+                    <nav class="gcsPromoCategoryNav">
+                        <div class="gcsPromoCategoryScroll">
+                            <button class="gcsPromoChip gcsPromoActive" data-category="semua">Semua</button>
+                            <button class="gcsPromoChip" data-category="goride">GoRide</button>
+                            <button class="gcsPromoChip" data-category="gocar">GoCar</button>
+                            <button class="gcsPromoChip" data-category="gofood">GoFood</button>
+                            <button class="gcsPromoChip" data-category="delivery">Delivery</button>
+                            <button class="gcsPromoChip" data-category="shop">Shop</button>
+                            <button class="gcsPromoChip" data-category="fresh">Fresh</button>
+                            <button class="gcsPromoChip" data-category="ppob">PPOB</button>
                         </div>
-                        <h3 class="gcsPromo-title">Diskon 50% GoRide</h3>
-                        <p class="gcsPromo-desc">Perjalanan aman dan nyaman kemana saja.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 10.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                    </nav>
 
-                    <article class="gcsPromo-card" data-category="goride" data-id="gr2">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoRide</span>
-                            <span class="gcsPromo-quota">Sisa 5</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Potongan Rp 10.000</h3>
-                        <p class="gcsPromo-desc">Khusus jam sibuk pulang kerja.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 20.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 10.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>31
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                    <section class="gcsPromoSection">
+                        <div class="gcsPromoGrid" id="gcsPromoGridContainer">
 
-                    <article class="gcsPromo-card" data-category="goride" data-id="gr3">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoRide</span>
-                            <span class="gcsPromo-quota">Sisa 50</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon 20% Akhir Pekan</h3>
-                        <p class="gcsPromo-desc">Jalan-jalan makin hemat di hari Minggu.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 15.000</strong>
+                            <div class="gcsPromoCard" data-category="goride" data-quota="50">
+                                <div class="gcsPromoCardTop">
+                                    <span class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span>
+                                    <span class="gcsPromoExpiry">Berlaku s/d 31 Des</span>
+                                </div>
+                                <h3 class="gcsPromoCardTitle">Diskon 50% Perjalanan</h3>
+                                <p class="gcsPromoCardDesc">Maks. Potongan Rp10.000, Min. Belanja Rp15.000</p>
+                                <div class="gcsPromoCardBottom">
+                                    <span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">50</strong></span>
+                                    <button class="gcsPromoUseBtn">Gunakan Sekarang</button>
+                                </div>
                             </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 8.000</strong>
+                            <div class="gcsPromoCard" data-category="goride" data-quota="100">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 15 Jan</span></div>
+                                <h3 class="gcsPromoCardTitle">Potongan Rp5.000</h3>
+                                <p class="gcsPromoCardDesc">Tanpa Min. Belanja untuk pengguna baru.</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">100</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>15
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                            <div class="gcsPromoCard" data-category="goride" data-quota="20">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 20 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon 30% Akhir Pekan</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp8.000, Min. Belanja Rp20.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">20</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="goride" data-quota="5">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 10 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Flash Sale Rp1.000</h3>
+                                <p class="gcsPromoCardDesc">Perjalanan jarak dekat (Maks 3km).</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">5</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="goride" data-quota="200">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 30 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Cashback 20% Coins</h3>
+                                <p class="gcsPromoCardDesc">Maks. Cashback 5.000 Coins, Min. Belanja Rp15.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">200</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
 
-                    <article class="gcsPromo-card" data-category="goride" data-id="gr4">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoRide</span>
-                            <span class="gcsPromo-quota">Sisa 3</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Cashback 30% GoPay</h3>
-                        <p class="gcsPromo-desc">Bayar pakai GoPay dapat cashback.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 25.000</strong>
+                            <div class="gcsPromoCard" data-category="gocar" data-quota="30">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon 40% GoCar</h3>
+                                <p class="gcsPromoCardDesc">Maks. Potongan Rp20.000, Min. Belanja Rp40.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">30</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 12.000</strong>
+                            <div class="gcsPromoCard" data-category="gocar" data-quota="15">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 25 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Potongan Rp15.000</h3>
+                                <p class="gcsPromoCardDesc">Min. Belanja Rp50.000 (Khusus Malam)</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">15</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>12
-                                    Des 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                            <div class="gcsPromoCard" data-category="gocar" data-quota="50">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 15 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon 25% GoCar L</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp25.000 untuk perjalanan keluarga</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">50</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="gocar" data-quota="10">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 5 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Gratis Jemput</h3>
+                                <p class="gcsPromoCardDesc">Bebas biaya jemput (Maks Rp10.000)</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">10</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="gocar" data-quota="100">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Cashback Rp10.000</h3>
+                                <p class="gcsPromoCardDesc">Ke GOCESPay, Min. Belanja Rp60.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">100</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
 
-                    <article class="gcsPromo-card" data-category="goride" data-id="gr5">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoRide</span>
-                            <span class="gcsPromo-quota">Sisa 8</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon Pengguna Baru</h3>
-                        <p class="gcsPromo-desc">Perjalanan pertamamu hampir gratis.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 0</strong></div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 20.000</strong>
+                            <div class="gcsPromoCard" data-category="gofood" data-quota="80">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 30 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon 60% Kuliner</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp30.000, Min. Belanja Rp40.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">80</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                            <div class="gcsPromoCard" data-category="gofood" data-quota="200">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Gratis Ongkir Food</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp15.000, Min. Belanja Rp35.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">200</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="gofood" data-quota="40">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 20 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Potongan Rp20.000</h3>
+                                <p class="gcsPromoCardDesc">Min. Belanja Rp100.000 di Resto Pilihan</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">40</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="gofood" data-quota="15">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 10 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon 30% Cemilan</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp15.000, Min. Belanja Rp30.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">15</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="gofood" data-quota="300">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Jan</span></div>
+                                <h3 class="gcsPromoCardTitle">Cashback 50% Coins</h3>
+                                <p class="gcsPromoCardDesc">Maks. 10.000 Coins, Min. Belanja Rp20.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">300</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
 
-                    <article class="gcsPromo-card" data-category="gocar" data-id="gc1">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoCar</span>
-                            <span class="gcsPromo-quota">Sisa 10</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon Rp 20.000 GoCar</h3>
-                        <p class="gcsPromo-desc">Nyaman ke mall tanpa panas-panasan.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 40.000</strong>
+                            <div class="gcsPromoCard" data-category="delivery" data-quota="50">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon Ongkir 50%</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp10.000 untuk pengiriman instan</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">50</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 20.000</strong>
+                            <div class="gcsPromoCard" data-category="delivery" data-quota="25">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 15 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Potongan Rp5.000</h3>
+                                <p class="gcsPromoCardDesc">Pengiriman Same Day, Tanpa Min. Transaksi</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">25</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>31
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                            <div class="gcsPromoCard" data-category="delivery" data-quota="100">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 20 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Cashback Rp3.000</h3>
+                                <p class="gcsPromoCardDesc">Setiap kirim barang jarak > 5km</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">100</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="delivery" data-quota="10">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 5 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Kirim Multi-Stop Murah</h3>
+                                <p class="gcsPromoCardDesc">Diskon 20% (Maks Rp15.000)</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">10</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="delivery" data-quota="500">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Proteksi Barang Gratis</h3>
+                                <p class="gcsPromoCardDesc">Bebas biaya asuransi pengiriman hingga Rp1 Juta</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">500</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
 
-                    <article class="gcsPromo-card" data-category="gocar" data-id="gc2">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoCar</span>
-                            <span class="gcsPromo-quota">Sisa 2</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Potongan Bandara 50%</h3>
-                        <p class="gcsPromo-desc">Antar jemput bandara lebih hemat.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 100.000</strong>
+                            <div class="gcsPromoCard" data-category="shop" data-quota="60">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon 70% Fashion</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp50.000, Min. Belanja Rp100.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">60</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 50.000</strong>
+                            <div class="gcsPromoCard" data-category="shop" data-quota="150">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 25 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Gratis Ongkir Shop</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp20.000, Min. Belanja Rp50.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">150</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                            <div class="gcsPromoCard" data-category="shop" data-quota="30">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 10 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Potongan Elektronik</h3>
+                                <p class="gcsPromoCardDesc">Diskon Rp100.000, Min. Belanja Rp1.000.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">30</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="shop" data-quota="200">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Cashback 10%</h3>
+                                <p class="gcsPromoCardDesc">Maks. 20.000 Coins, Min. Belanja Rp150.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">200</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="shop" data-quota="8">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 5 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon Kilat 90%</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp25.000 (Flash Sale Item)</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">8</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
 
-                    <article class="gcsPromo-card" data-category="gocar" data-id="gc3">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoCar</span>
-                            <span class="gcsPromo-quota">Sisa 15</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon 30% Malam Hari</h3>
-                        <p class="gcsPromo-desc">Berlaku jam 20:00 - 04:00.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 30.000</strong>
+                            <div class="gcsPromoCard" data-category="fresh" data-quota="45">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 30 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon 30% Sayur</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp15.000, Min. Belanja Rp40.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">45</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
+                            <div class="gcsPromoCard" data-category="fresh" data-quota="120">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 15 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Gratis Ongkir Belanja</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp15.000, Min. Belanja Rp50.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">120</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>25
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                            <div class="gcsPromoCard" data-category="fresh" data-quota="25">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 20 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Potongan Daging Segar</h3>
+                                <p class="gcsPromoCardDesc">Diskon Rp20.000, Min. Belanja Rp100.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">25</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="fresh" data-quota="15">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 10 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon 50% Buah</h3>
+                                <p class="gcsPromoCardDesc">Maks. Rp25.000, Min. Belanja Rp45.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">15</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="fresh" data-quota="80">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Cashback 15% Fresh</h3>
+                                <p class="gcsPromoCardDesc">Maks. 15.000 Coins, Min. Belanja Rp75.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">80</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
 
-                    <article class="gcsPromo-card" data-category="gocar" data-id="gc4">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoCar</span>
-                            <span class="gcsPromo-quota">Sisa 20</span>
-                        </div>
-                        <h3 class="gcsPromo-title">GoCar Protect+ Cashback</h3>
-                        <p class="gcsPromo-desc">Lebih aman, lebih untung.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 50.000</strong>
+                            <div class="gcsPromoCard" data-category="ppob" data-quota="100">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Cashback 20% Tagihan</h3>
+                                <p class="gcsPromoCardDesc">Maks. 10.000 Coins untuk PLN/PDAM</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">100</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
+                            <div class="gcsPromoCard" data-category="ppob" data-quota="50">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 25 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Diskon Token Listrik</h3>
+                                <p class="gcsPromoCardDesc">Potongan Rp5.000, Min. Pembelian Rp50.000</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">50</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
                             </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                            <div class="gcsPromoCard" data-category="ppob" data-quota="200">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 15 Des</span></div>
+                                <h3 class="gcsPromoCardTitle">Promo Pulsa Murah</h3>
+                                <p class="gcsPromoCardDesc">Diskon Rp2.000 Semua Operator</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">200</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="ppob" data-quota="30">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 10 Nov</span></div>
+                                <h3 class="gcsPromoCardTitle">Cashback Internet</h3>
+                                <p class="gcsPromoCardDesc">Cashback 5% s/d 20.000 Coins untuk Tagihan Internet</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">30</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
+                            <div class="gcsPromoCard" data-category="ppob" data-quota="500">
+                                <div class="gcsPromoCardTop"><span
+                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
+                                        class="gcsPromoExpiry">Berlaku s/d 31 Jan</span></div>
+                                <h3 class="gcsPromoCardTitle">Bebas Biaya Admin</h3>
+                                <p class="gcsPromoCardDesc">Gratis biaya admin untuk 3x transaksi BPJS</p>
+                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
+                                            class="gcsPromoQuotaValue">500</strong></span><button
+                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
+                            </div>
 
-                    <article class="gcsPromo-card" data-category="gocar" data-id="gc5">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoCar</span>
-                            <span class="gcsPromo-quota">Sisa 6</span>
                         </div>
-                        <h3 class="gcsPromo-title">Spesial Hari Pahlawan</h3>
-                        <p class="gcsPromo-desc">Promo tematik nasional.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 35.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 10.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>11
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
+                    </section>
 
-                    <article class="gcsPromo-card" data-category="gofood" data-id="gf1">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoFood</span>
-                            <span class="gcsPromo-quota">Sisa 25</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Pesta Diskon GoFood 60%</h3>
-                        <p class="gcsPromo-desc">Makan enak perut kenyang dompet aman.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 40.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 25.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>15
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="gofood" data-id="gf2">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoFood</span>
-                            <span class="gcsPromo-quota">Sisa 10</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Gratis Ongkir Sepuasnya</h3>
-                        <p class="gcsPromo-desc">Bebas biaya antar di jam makan siang.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 30.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="gofood" data-id="gf3">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoFood</span>
-                            <span class="gcsPromo-quota">Sisa 5</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Flash Sale Tengah Malam</h3>
-                        <p class="gcsPromo-desc">Khusus pembelian jam 22.00 - 02.00.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 50.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 30.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>31
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="gofood" data-id="gf4">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoFood</span>
-                            <span class="gcsPromo-quota">Sisa 30</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon Minuman & Kopi</h3>
-                        <p class="gcsPromo-desc">Berlaku untuk merchant pilihan.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 25.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 10.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>25
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="gofood" data-id="gf5">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">GoFood</span>
-                            <span class="gcsPromo-quota">Sisa 8</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Potongan Mitra GoFood</h3>
-                        <p class="gcsPromo-desc">Support UMKM lokal favoritmu.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 35.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>10
-                                    Des 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="delivery" data-id="dl1">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Delivery</span>
-                            <span class="gcsPromo-quota">Sisa 50</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Potongan Ongkir Rp 5.000</h3>
-                        <p class="gcsPromo-desc">Kirim barang instan tanpa ragu.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 15.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 5.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="delivery" data-id="dl2">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Delivery</span>
-                            <span class="gcsPromo-quota">Sisa 12</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon Pengiriman Paket Besar</h3>
-                        <p class="gcsPromo-desc">Cocok untuk pindahan atau barang berat.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 100.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 25.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>31
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="delivery" data-id="dl3">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Delivery</span>
-                            <span class="gcsPromo-quota">Sisa 10</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Gratis Asuransi Paket</h3>
-                        <p class="gcsPromo-desc">Barang aman sampai tujuan 100%.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 20.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 5.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>15
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="delivery" data-id="dl4">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Delivery</span>
-                            <span class="gcsPromo-quota">Sisa 20</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Cashback Delivery 20%</h3>
-                        <p class="gcsPromo-desc">Dapatkan saldo tambahan setiap kirim barang.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 30.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 10.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="delivery" data-id="dl5">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Delivery</span>
-                            <span class="gcsPromo-quota">Sisa 4</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon Delivery Antar Kota</h3>
-                        <p class="gcsPromo-desc">Khusus wilayah Jabodetabek.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 50.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>25
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="shop" data-id="sh1">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Shop</span>
-                            <span class="gcsPromo-quota">Sisa 5</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon 70% Fashion</h3>
-                        <p class="gcsPromo-desc">Tampil gaya maksimal budget minimal.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 150.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 100.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="shop" data-id="sh2">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Shop</span>
-                            <span class="gcsPromo-quota">Sisa 12</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Gadget Sale Potongan 5%</h3>
-                        <p class="gcsPromo-desc">Beli HP baru pakai promo ini.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 1.000.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 150.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>31
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="shop" data-id="sh3">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Shop</span>
-                            <span class="gcsPromo-quota">Sisa 25</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Gratis Ongkir Shop</h3>
-                        <p class="gcsPromo-desc">Bebas ongkir untuk seluruh toko resmi.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 50.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 20.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>15
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="shop" data-id="sh4">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Shop</span>
-                            <span class="gcsPromo-quota">Sisa 10</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Cashback 50% Skin Care</h3>
-                        <p class="gcsPromo-desc">Kesehatan kulit nomor satu.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 80.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 40.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>11
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="shop" data-id="sh5">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Shop</span>
-                            <span class="gcsPromo-quota">Sisa 40</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon Payday Shop</h3>
-                        <p class="gcsPromo-desc">Promo khusus gajian akhir bulan.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 200.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 50.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="fresh" data-id="fr1">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Fresh</span>
-                            <span class="gcsPromo-quota">Sisa 18</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon Sayur 30%</h3>
-                        <p class="gcsPromo-desc">Belanja bahan dapur lebih fresh.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 50.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>31
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="fresh" data-id="fr2">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Fresh</span>
-                            <span class="gcsPromo-quota">Sisa 12</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Potongan Daging & Ayam</h3>
-                        <p class="gcsPromo-desc">Protein segar langsung diantar.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 100.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 25.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="fresh" data-id="fr3">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Fresh</span>
-                            <span class="gcsPromo-quota">Sisa 20</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Buah Tropis Diskon 20%</h3>
-                        <p class="gcsPromo-desc">Camilan sehat kaya vitamin.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 40.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 10.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>15
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="fresh" data-id="fr4">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Fresh</span>
-                            <span class="gcsPromo-quota">Sisa 30</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Gratis Ongkir Supermarket</h3>
-                        <p class="gcsPromo-desc">Belanja bulanan tanpa repot antri.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 150.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 20.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>12
-                                    Des 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="fresh" data-id="fr5">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">Fresh</span>
-                            <span class="gcsPromo-quota">Sisa 10</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Paket Sembako Murah</h3>
-                        <p class="gcsPromo-desc">Diskon spesial beras dan minyak.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 80.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>25
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="ppob" data-id="pp1">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">PPOB</span>
-                            <span class="gcsPromo-quota">Sisa 50</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Cashback Token Listrik</h3>
-                        <p class="gcsPromo-desc">Beli PLN bulan ini lebih hemat.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 50.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 5.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="ppob" data-id="pp2">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">PPOB</span>
-                            <span class="gcsPromo-quota">Sisa 20</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Potongan Pulsa Rp 5.000</h3>
-                        <p class="gcsPromo-desc">Isi pulsa All Operator cepat.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 25.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 5.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>31
-                                    Okt 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="ppob" data-id="pp3">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">PPOB</span>
-                            <span class="gcsPromo-quota">Sisa 15</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Diskon Tagihan Air (PDAM)</h3>
-                        <p class="gcsPromo-desc">Bayar sebelum tanggal 20.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 50.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 10.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>20
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="ppob" data-id="pp4">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">PPOB</span>
-                            <span class="gcsPromo-quota">Sisa 30</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Cashback BPJS Kesehatan</h3>
-                        <p class="gcsPromo-desc">Lebih mudah bayar asuransi negara.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 100.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 15.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>30
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                    <article class="gcsPromo-card" data-category="ppob" data-id="pp5">
-                        <div class="gcsPromo-card-header">
-                            <span class="gcsPromo-badge">PPOB</span>
-                            <span class="gcsPromo-quota">Sisa 10</span>
-                        </div>
-                        <h3 class="gcsPromo-title">Promo Paket Data 10%</h3>
-                        <p class="gcsPromo-desc">Streaming lancar internet ngebut.</p>
-                        <div class="gcsPromo-details">
-                            <div class="gcsPromo-detail-item"><span>Min. Belanja</span><strong>Rp 75.000</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item"><span>Maks. Potongan</span><strong>Rp 7.500</strong>
-                            </div>
-                            <div class="gcsPromo-detail-item gcsPromo-full"><span>Berlaku hingga</span><strong>15
-                                    Nov 2026</strong></div>
-                        </div>
-                        <button class="gcsPromo-btn-use">Gunakan Sekarang</button>
-                    </article>
-
-                </section>
-
+                </main>
             </div>
         </section>
 
