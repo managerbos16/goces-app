@@ -1,0 +1,180 @@
+/* ===================================================
+   PREMIUM VOUCHER DESIGN - GOCAR STYLE
+   =================================================== */
+
+/* Container & Auto-Hide Logic */
+.gcsVoucherGoCarSection {
+  padding: 20px 16px;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  transition: all 0.3s ease;
+}
+
+/* Jika section disembunyikan (Tidak ada voucher aktif) */
+.gcsVoucherGoCarSectionHidden {
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.gcsVoucherGoCarTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.3px;
+}
+
+.gcsVoucherGoCarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Voucher */
+.gcsVoucherGoCarCard {
+  background: #ffffff;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Efek Sobekan Realistis */
+.gcsVoucherGoCarCard::before,
+.gcsVoucherGoCarCard::after {
+  content: "";
+  position: absolute;
+  top: 65%;
+  width: 24px;
+  height: 24px;
+  background: #f9fafb; /* Sesuaikan warna ini dengan background aplikasi utama Anda */
+  border-radius: 50%;
+  z-index: 2;
+}
+.gcsVoucherGoCarCard::before {
+  left: -12px;
+}
+.gcsVoucherGoCarCard::after {
+  right: -12px;
+}
+
+/* Bagian Atas */
+.gcsVoucherGoCarLeft {
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.gcsVoucherGoCarIcon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.gcsVoucherGoCarContent {
+  flex: 1;
+}
+
+.gcsVoucherGoCarBadge {
+  background: #00880c;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.gcsVoucherGoCarName {
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
+.gcsVoucherGoCarDesc {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Garis Putus-putus */
+.gcsVoucherGoCarDivider {
+  position: relative;
+  margin: 0 20px;
+  border-top: 2px dashed #e5e7eb;
+}
+
+/* Bagian Bawah */
+.gcsVoucherGoCarRight {
+  padding: 16px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gcsVoucherGoCarCode {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  color: #111;
+  font-size: 15px;
+  background: #f3f4f6;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.gcsVoucherGoCarExpired {
+  font-size: 11px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Tombol Salin Premium */
+.gcsVoucherGoCarButton {
+  background: #00880c;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gcsVoucherGoCarButton:active {
+  transform: scale(0.92);
+}
+
+/* Toast Style (Reused) */
+.gprToast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

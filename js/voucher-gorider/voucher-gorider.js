@@ -43,7 +43,7 @@ function gcsVoucherGoRideRender(vouchers, container) {
         // Struktur HTML Baru (Premium UI)
         card.innerHTML = `
             <div class="gcsVoucherGoRideLeft">
-                <img src="images/goride.png" class="gcsVoucherGoRideIcon" alt="GoRide">
+                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781593613/ChatGPT_Image_16_Jun_2026_15.06.38_zw3ga1.png" class="gcsVoucherGoRideIcon" alt="GoRide">
                 <div class="gcsVoucherGoRideContent">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                         <p class="gcsVoucherGoRideName">${item.name}</p>
