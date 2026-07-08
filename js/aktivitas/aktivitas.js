@@ -1,19 +1,27 @@
 /**
- * Kontrol Navigasi Tab Aktivitas
+ * GOCES Activity Logic
+ * Mengelola switching tab dengan prefix unik gcsActivity
  */
+
 document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll(".tab-btn");
-    const panels = document.querySelectorAll(".tab-panel");
+    const tabs = document.querySelectorAll(".gcsActivityTabButton");
+    const panels = document.querySelectorAll(".gcsActivityPanel");
+
+    const switchTab = (targetId) => {
+        // Reset buttons
+        tabs.forEach(btn => {
+            btn.classList.toggle("gcsActivityTabActive", btn.dataset.target === targetId);
+        });
+
+        // Reset panels
+        panels.forEach(panel => {
+            panel.classList.toggle("gcsActivityPanelActive", panel.id === targetId);
+        });
+    };
 
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
-            // Hapus active dari semua tombol dan panel
-            tabs.forEach(t => t.classList.remove("active"));
-            panels.forEach(p => p.classList.remove("active"));
-
-            // Tambahkan active pada elemen yang dipilih
-            tab.classList.add("active");
-            document.getElementById(tab.dataset.target).classList.add("active");
+            switchTab(tab.dataset.target);
         });
     });
 });

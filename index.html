@@ -1650,34 +1650,56 @@
         </section>
 
         <section id="page-aktivitas" class="goces-page">
-            <header class="activity-header">
-                <div class="header-left">
+            <header class="gcsActivityHeader">
+                <div class="gcsActivityHeaderLeft">
                     <h1>Aktivitas</h1>
                 </div>
-                <div class="header-right">
-                    <a href="https://jgjk.mobi/act/cart" class="icon-btn" aria-label="Keranjang">🛒</a>
-                    <a href="action://act/message_list" class="icon-btn" aria-label="Notifikasi">🔔</a>
+                <div class="gcsActivityHeaderRight">
+                    <a href="https://jgjk.mobi/act/cart" class="gcsActivityCartButton" aria-label="Keranjang">🛒</a>
+                    <a href="action://act/message_list" class="gcsActivityNotificationButton"
+                        aria-label="Notifikasi">🔔</a>
                 </div>
             </header>
 
-            <section class="activity-tabs">
-                <button class="tab-btn active" data-target="pembelian">Pembelian</button>
-                <button class="tab-btn" data-target="saldo">Saldo</button>
-                <button class="tab-btn" data-target="poin">Poin</button>
-            </section>
+            <nav class="gcsActivityTabs">
+                <button class="gcsActivityTabButton gcsActivityTabActive" data-target="pembelian">Pembelian</button>
+                <button class="gcsActivityTabButton" data-target="saldo">Saldo</button>
+                <button class="gcsActivityTabButton" data-target="poin">Poin</button>
+            </nav>
 
-            <main class="activity-content">
-                <section id="pembelian" class="tab-panel active">
-                    <article class="card">Pembelian 1</article>
-                    <article class="card">Pembelian 2</article>
+            <main class="gcsActivityContent">
+                <section id="pembelian" class="gcsActivityPanel gcsActivityPanelActive">
+                    <article class="gcsActivityCard">
+                        <div class="gcsActivityCardIcon">🚗</div>
+                        <div class="gcsActivityCardBody">
+                            <h2 class="gcsActivityCardTitle">GoRide</h2>
+                            <span class="gcsActivityBadge">Berhasil</span>
+                            <p class="gcsActivityCardMeta">12 Des 2023 • 14:00</p>
+                            <p class="gcsActivityPrice">Rp 15.000</p>
+                        </div>
+                    </article>
                 </section>
 
-                <section id="saldo" class="tab-panel">
-                    <article class="card">Saldo Masuk</article>
+                <section id="saldo" class="gcsActivityPanel">
+                    <article class="gcsActivityCard">
+                        <div class="gcsActivityCardIcon">💳</div>
+                        <div class="gcsActivityCardBody">
+                            <h2 class="gcsActivityCardTitle">Top Up Saldo</h2>
+                            <p class="gcsActivityCardMeta">11 Des 2023 • 10:00</p>
+                            <p class="gcsActivityPrice">+ Rp 100.000</p>
+                        </div>
+                    </article>
                 </section>
 
-                <section id="poin" class="tab-panel">
-                    <article class="card">Poin Reward</article>
+                <section id="poin" class="gcsActivityPanel">
+                    <article class="gcsActivityCard">
+                        <div class="gcsActivityCardIcon">🎁</div>
+                        <div class="gcsActivityCardBody">
+                            <h2 class="gcsActivityCardTitle">Bonus Poin</h2>
+                            <p class="gcsActivityCardMeta">10 Des 2023 • 09:00</p>
+                            <p class="gcsActivityPrice">+ 50 Poin</p>
+                        </div>
+                    </article>
                 </section>
             </main>
         </section>
