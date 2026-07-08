@@ -1,27 +1,38 @@
 /**
  * GOCES Activity Logic
- * Mengelola switching tab dengan prefix unik gcsActivity
+ * Modul kontrol navigasi tab premium untuk aplikasi iOS
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll(".gcsActivityTabButton");
-    const panels = document.querySelectorAll(".gcsActivityPanel");
+    "use strict";
 
-    const switchTab = (targetId) => {
-        // Reset buttons
-        tabs.forEach(btn => {
-            btn.classList.toggle("gcsActivityTabActive", btn.dataset.target === targetId);
+    const segments = document.querySelectorAll(".gcsActivitySegmentButton");
+    const panels = [
+        document.querySelector(".gcsActivityPurchasePanel"),
+        document.querySelector(".gcsActivityBalancePanel"),
+        document.querySelector(".gcsActivityPointPanel")
+    ];
+
+    /**
+     * Berpindah antar panel dengan transisi halus
+     * @param {string} target - Data target dari button
+     */
+    const handleTabSwitch = (target) => {
+        // Toggle Buttons
+        segments.forEach(btn => {
+            btn.classList.toggle("gcsActivitySegmentActive", btn.dataset.target === target);
         });
 
-        // Reset panels
+        // Toggle Panels
         panels.forEach(panel => {
-            panel.classList.toggle("gcsActivityPanelActive", panel.id === targetId);
+            panel.classList.toggle("gcsActivityPanelActive", panel.id === target);
         });
     };
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            switchTab(tab.dataset.target);
+    // Event Listener
+    segments.forEach(segment => {
+        segment.addEventListener("click", () => {
+            handleTabSwitch(segment.dataset.target);
         });
     });
 });
