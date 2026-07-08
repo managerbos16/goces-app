@@ -1,0 +1,427 @@
+/* CONTAINER */
+.gcsProfileContainer {
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: var(--gray);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(var(--safe-bottom) + 32px);
+}
+
+/* HEADER IDENTIK DENGAN HOME */
+.gcsProfileHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--safe-top) + 12px) var(--screen-padding) 12px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: calc(var(--safe-top) + var(--nav-height));
+}
+
+.gcsProfileHeaderLeft {
+  display: flex;
+  align-items: center;
+}
+
+.gcsProfileBackButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  border-radius: var(--icon-radius);
+  transition:
+    transform var(--transition),
+    background-color var(--transition);
+}
+
+.gcsProfileBackButton:active {
+  transform: scale(0.92);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gcsProfileBackButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.gcsProfileHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* LEVEL AKUN (RIBBON/PITA) */
+.gcsProfileRibbon {
+  background: var(--blue);
+  border: none;
+  border-radius: 30px;
+  padding: 6px 14px 6px 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.gcsProfileRibbon:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.15);
+}
+
+.gcsProfileRibbonContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gcsProfileRibbon svg {
+  width: 18px;
+  height: 18px;
+  color: #fef08a; /* Warna Gold Crown/Star */
+}
+
+.gcsProfileRibbonText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.gcsProfileRibbonLabel {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.gcsProfileRibbonValue {
+  font-size: 13px;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* SETTING BUTTON */
+.gcsProfileSettingBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  border-radius: var(--icon-radius);
+  background: var(--white);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    background-color var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.gcsProfileSettingBtn:active {
+  transform: scale(0.92);
+  background-color: var(--gray);
+}
+
+.gcsProfileSettingBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* MAIN AREA */
+.gcsProfileMain {
+  padding: 24px var(--screen-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* PROFILE CARD */
+.gcsProfileCard {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.gcsProfileCard:active {
+  transform: scale(0.98);
+}
+
+.gcsProfileAvatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--gray);
+  border: 1px solid var(--border);
+}
+
+.gcsProfileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.gcsProfileNameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.gcsProfileName {
+  font-size: clamp(18px, 5vw, 22px);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.gcsProfileDetail {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* BADGES */
+.gcsProfileBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.3px;
+}
+
+.gcsProfileBadgeSuccess {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.gcsProfileBadgeWarning {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+/* BALANCE CARD */
+.gcsProfileBalanceCard {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+.gcsProfileBalanceItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--transition);
+}
+
+.gcsProfileBalanceItem:active {
+  background-color: var(--gray);
+}
+
+.gcsProfileBalanceDivider {
+  width: 1px;
+  height: 40px;
+  background-color: var(--border);
+}
+
+.gcsProfileBalanceIconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: rgba(29, 78, 216, 0.1);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gcsProfileIconPoint {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+
+.gcsProfileBalanceIconWrap svg {
+  width: 20px;
+  height: 20px;
+}
+
+.gcsProfileBalanceText {
+  display: flex;
+  flex-direction: column;
+}
+
+.gcsProfileBalanceLabel {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 2px;
+}
+
+.gcsProfileBalanceValue {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* SECTIONS & MENU LIST iOS STYLE */
+.gcsProfileSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gcsProfileSectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  padding-left: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gcsProfileMenuList {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.gcsProfileMenuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--transition);
+}
+
+.gcsProfileMenuItem:last-child {
+  border-bottom: none;
+}
+
+.gcsProfileMenuItem:active {
+  background-color: var(--gray);
+}
+
+.gcsProfileMenuLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.gcsProfileMenuIcon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+.gcsProfileMenuText {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.gcsProfileMenuRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gcsProfileChevron {
+  width: 20px;
+  height: 20px;
+  color: #9ca3af;
+}
+
+/* LOGOUT BUTTON */
+.gcsProfileLogoutSection {
+  margin-top: 10px;
+}
+
+.gcsProfileButton {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.gcsProfileButtonDanger {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.gcsProfileButtonDanger:active {
+  transform: scale(0.97);
+  background: #fee2e2;
+}
+
+/* RIPPLE EFFECT */
+.gcsProfileRipple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  transform: scale(0);
+  animation: gcsProfileRippleAnim 0.5s linear;
+  pointer-events: none;
+}
+
+@keyframes gcsProfileRippleAnim {
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* RESPONSIVE DESKTOP/TABLET */
+@media (min-width: 768px) {
+  .gcsProfileMain {
+    padding: 32px 40px;
+  }
+}

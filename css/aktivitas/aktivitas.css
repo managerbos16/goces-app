@@ -1,0 +1,276 @@
+.gcsActivityContainer {
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: var(--gray);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* HEADER BASE IDENTIK DENGAN HOME */
+.gcsActivityHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--safe-top) + 12px) var(--screen-padding) 12px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: calc(var(--safe-top) + var(--nav-height));
+}
+
+.gcsActivityHeaderSpacer {
+  width: 92px; /* Menyamakan keseimbangan visual tombol kanan */
+}
+
+.gcsActivityHeaderTitle {
+  font-size: clamp(17px, 4vw, 19px);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  text-align: center;
+}
+
+.gcsActivityHeaderActions {
+  display: flex;
+  gap: 10px;
+}
+
+.gcsActivityIconButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  border-radius: var(--icon-radius);
+  background: var(--white);
+  border: 1px solid var(--border);
+  transition:
+    transform var(--transition),
+    background-color var(--transition);
+}
+
+.gcsActivityIconButton:active {
+  transform: scale(0.92);
+  background-color: var(--gray);
+}
+
+.gcsActivityIconButton svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* CATEGORY TABS SYSTEM MENGGUNAKAN iOS CHIP PATTERN */
+.gcsActivityTabsWrapper {
+  position: sticky;
+  top: calc(var(--safe-top) + var(--nav-height));
+  z-index: 90;
+  background: rgba(249, 250, 251, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.gcsActivityTabsList {
+  display: flex;
+  gap: 8px;
+  padding: 0 var(--screen-padding);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gcsActivityTabsList::-webkit-scrollbar {
+  display: none;
+}
+
+.gcsActivityTabChip {
+  padding: 10px 18px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.gcsActivityTabChip:active {
+  transform: scale(0.95);
+}
+
+.gcsActivityTabChip.gcsActivityActive {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+}
+
+/* MAIN PANEL LAYOUT */
+.gcsActivityMainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--screen-padding);
+  min-height: calc(100vh - (var(--safe-top) + var(--nav-height) + 140px));
+}
+
+.gcsActivityTabPanel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(0);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+/* PREMIUM EMPTY STATE CARD DESIGN */
+.gcsActivityEmptyCard {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(229, 231, 235, 0.7);
+  padding: 40px 24px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.03);
+}
+
+.gcsActivityIconContainer {
+  width: 84px;
+  height: 84px;
+  background-color: rgba(29, 78, 216, 0.06);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  margin-bottom: 24px;
+}
+
+.gcsActivityIconContainer svg {
+  width: 38px;
+  height: 38px;
+}
+
+.gcsActivityCardTitle {
+  font-size: clamp(18px, 4.5vw, 21px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.4px;
+}
+
+.gcsActivityCardDesc {
+  font-size: clamp(13px, 3.5vw, 14.5px);
+  color: #6b7280;
+  margin-bottom: 32px;
+  max-width: 290px;
+}
+
+/* PREMIUM BUTTON SYSTEM (HOME DRIVEN) */
+.gcsActivityButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  background-color: var(--blue);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.25);
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.gcsActivityButton:hover {
+  background-color: var(--blue-dark);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.35);
+}
+
+.gcsActivityButton:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.15);
+}
+
+/* RIPPLE EFFECT SYSTEM */
+.gcsActivityRipple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: gcsActivityRippleAnimation 0.55s linear;
+  pointer-events: none;
+}
+
+@keyframes gcsActivityRippleAnimation {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* ANIMATION UTILITIES */
+.gcsActivityShow {
+  display: flex !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* RESPONSIVE BREAKPOINTS WITH AUTO-BOUNDS */
+@media (min-width: 480px) {
+  .gcsActivityEmptyCard {
+    padding: 48px 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  .gcsActivityTabsWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .gcsActivityTabsList {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
