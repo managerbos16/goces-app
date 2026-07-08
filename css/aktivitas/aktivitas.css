@@ -1,236 +1,333 @@
-/* STICKY HEADER WITH SAFE AREA */
-.gcsActivityHeader {
+/* Header Container (Sticky Context) */
+.ios-header-container {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.94);
+  background-color: var(--ios-blur-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   padding-top: calc(var(--safe-top) + 12px);
-  padding-bottom: 12px;
-  border-radius: var(--header-radius);
 }
 
-.gcsActivityHeaderContainer {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+/* Header Styles */
+.ios-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 0 var(--screen-padding);
+  padding: 0 var(--screen-padding) 12px var(--screen-padding);
 }
 
-.gcsActivityTitle {
-  grid-column: 2;
-  font-size: clamp(22px, 4vw, 24px);
-  font-weight: 700;
+.header-title {
+  font-size: 32px;
+  font-weight: 800;
   color: var(--text);
-  text-align: center;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.7px;
 }
 
-.gcsActivityHeaderActions {
-  grid-column: 3;
-  justify-self: end;
+.header-actions {
   display: flex;
   gap: 10px;
 }
 
-/* APP-STORE STYLE ACTION BUTTONS */
-.gcsActivityIconButton {
+/* Premium iOS Icon Buttons */
+.icon-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--icon-radius);
   color: var(--text);
-  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-subtle);
   transition:
-    transform 0.2s var(--ios-spring),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
     background-color 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-}
-
-.gcsActivityIconButton:active {
-  transform: scale(0.92);
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
-.gcsActivityIconButton svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* MAIN LAYOUT CONTAINER */
-.gcsActivityContainer {
-  max-width: 768px;
-  margin: 0 auto;
-  padding: var(--section-gap) var(--screen-padding)
-    calc(var(--safe-bottom) + 32px);
-  display: flex;
-  flex-direction: column;
-  gap: var(--section-gap);
-}
-
-/* IOS SEGMENTED CONTROL (TABS) */
-.gcsActivityTabs {
-  display: flex;
-  background-color: rgba(120, 120, 128, 0.12);
-  padding: 3px;
-  border-radius: 14px;
-  position: relative;
-  gap: 4px;
-}
-
-.gcsActivityTabButton {
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 0;
-  border-radius: 11px;
-  cursor: pointer;
-  background-color: transparent;
-  color: var(--text);
-  transition: all 0.25s var(--ios-spring);
-  text-align: center;
-}
-
-/* ACTIVE TAB IMPLEMENTATION */
-.gcsActivityTabButton.gcsActivityTabActive {
-  background-color: var(--blue);
-  color: var(--white);
-  box-shadow: 0 3px 10px rgba(29, 78, 216, 0.25);
-}
-
-/* ANIMATED CONTENT WRAPPER */
-.gcsActivityContentWrapper {
-  position: relative;
-  width: 100%;
-}
-
-/* NATIVE LOOK SECTION ANIMATIONS */
-.gcsActivitySection {
-  display: none;
-  opacity: 0;
-  transform: scale(0.97) translateY(10px);
-  transition:
-    opacity 0.3s var(--ios-spring),
-    transform 0.3s var(--ios-spring);
-}
-
-.gcsActivitySection.gcsActivitySectionActive {
-  display: block;
-}
-
-.gcsActivitySection.gcsActivitySectionVisible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-/* PREMIUM NATIVE CARD STYLE */
-.gcsActivityCard {
-  background-color: var(--white);
-  border-radius: var(--card-radius);
-  padding: 40px 24px;
-  text-align: center;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* INTERACTIVE LUXURY ICON BLOCKS */
-.gcsActivityIconWrapper {
-  width: 72px;
-  height: 72px;
-  background-color: rgba(29, 78, 216, 0.06);
-  border-radius: var(--card-radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue);
-  margin-bottom: 24px;
-}
-
-.gcsActivityIconWrapper svg {
-  width: 32px;
-  height: 32px;
-}
-
-.gcsActivityCardTitle {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 10px;
-  letter-spacing: -0.3px;
-}
-
-.gcsActivityCardDescription {
-  font-size: 14px;
-  color: #6b7280;
-  max-width: 280px;
-  margin-bottom: 32px;
-  line-height: 1.5;
-}
-
-/* NATIVE-LIKE ACTION BUTTONS WITH SPRING EFFECTS */
-.gcsActivityButton {
-  width: 100%;
-  max-width: 290px;
-  height: 52px;
-  background-color: var(--blue);
-  color: var(--white);
-  border: none;
-  outline: none;
-  border-radius: var(--radius);
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.2);
-  transition:
-    transform 0.2s var(--ios-spring),
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
-  position: relative;
   overflow: hidden;
 }
 
-.gcsActivityButton:hover {
-  background-color: var(--blue-dark);
+.icon-btn svg {
+  width: 21px;
+  height: 21px;
+  z-index: 2;
 }
 
-.gcsActivityButton:active {
-  transform: scale(0.96);
-  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.1);
+.icon-btn:hover {
+  background-color: #f3f4f6;
 }
 
-/* NATIVE RIPPLE EFFECT LAYER */
-.gcsActivityRipple {
+.icon-btn:active {
+  transform: scale(0.92);
+}
+
+/* Light Dynamic Ripple Effect */
+.ripple {
   position: absolute;
+  background: rgba(0, 0, 0, 0.06);
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.35);
   transform: scale(0);
-  animation: gcsActivityRippleAnimation 0.5s linear;
+  animation: ripple-effect 0.4s linear;
   pointer-events: none;
+  z-index: 1;
 }
 
-@keyframes gcsActivityRippleAnimation {
+@keyframes ripple-effect {
   to {
-    transform: scale(4);
+    transform: scale(2.5);
     opacity: 0;
   }
 }
 
-/* TABLET AND DESKTOP FINE TUNING */
-@media (min-width: 640px) {
-  .gcsActivityCard {
-    padding: 56px 32px;
+/* Navigation & Capsule/Pill System */
+.ios-nav {
+  padding: 0 var(--screen-padding) 14px var(--screen-padding);
+}
+
+.nav-scroll-wrapper {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.nav-scroll-wrapper::-webkit-scrollbar {
+  display: none; /* Safari & Chrome */
+}
+
+.tab-pill {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  box-shadow: var(--shadow-subtle);
+  transform: scale(1);
+}
+
+/* Active and Inactive States */
+.tab-pill.active {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.tab-pill:not(.active) {
+  background-color: var(--white);
+  color: var(--text);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.tab-pill:active {
+  transform: scale(0.95);
+}
+
+/* Main Content Wrapper */
+.ios-content {
+  flex: 1;
+  padding: var(--section-gap) var(--screen-padding)
+    calc(var(--safe-bottom) + 30px) var(--screen-padding);
+}
+
+/* Tab System Content Views Toggle */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px) scale(0.99);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Activity Layout Infrastructure */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Premium Card Design Specification */
+.activity-card {
+  background-color: var(--white);
+  border-radius: var(--card-radius);
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.015);
+  transition: transform 0.2s var(--transition);
+}
+
+.activity-card:active {
+  transform: scale(0.985);
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Custom Themed Icon Contexts */
+.icon-wrapper {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--icon-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.icon-wrapper svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Icon Color Palettes */
+.icon-goride {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+.icon-gofood {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+.icon-gocar {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+.icon-pulsa {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+.icon-tagihan {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+.icon-income {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--green);
+}
+.icon-expense {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--red);
+}
+.icon-poin-plus {
+  background: linear-gradient(135deg, #f59e0b, #ec4899);
+}
+.icon-poin-minus {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+}
+
+/* Details Inside Metadata Cards */
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.card-time {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 1px;
+}
+
+.card-right {
+  display: flex;
+  align-items: center;
+}
+
+.flex-column-end {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Numeric Quantities Styles */
+.card-amount {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.text-neutral {
+  color: var(--text);
+}
+.text-income {
+  color: var(--green);
+}
+.text-expense {
+  color: var(--red);
+}
+
+/* iOS Pill Badge Styles */
+.poin-badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.badge-plus {
+  background-color: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+.badge-minus {
+  background-color: #f3f4f6;
+  color: var(--text-muted);
+}
+
+/* --- iOS Premium Optimization & Responsive Safe Zones --- */
+@media (max-width: 375px) {
+  .header-title {
+    font-size: 28px;
+  }
+  .card-title {
+    font-size: 15px;
+  }
+  .card-desc {
+    font-size: 12px;
+  }
+  .icon-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+  .ios-header-container {
+    max-width: 598px;
   }
 }

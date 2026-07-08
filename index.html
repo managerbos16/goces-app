@@ -1650,106 +1650,312 @@
         </section>
 
         <section id="page-aktivitas" class="goces-page">
-            <header class="gcsActivityHeader">
-                <div class="gcsActivityHeaderContainer">
-                    <h1 class="gcsActivityTitle">Aktivitas</h1>
-                    <div class="gcsActivityHeaderActions">
-                        <a href="https://jgjk.mobi/act/cart" class="gcsActivityIconButton" aria-label="Keranjang">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+            <div class="ios-header-container">
+                <header class="ios-header">
+                    <h1 class="header-title">Aktivitas</h1>
+                    <div class="header-actions">
+                        <button class="icon-btn" aria-label="Keranjang">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="9" cy="21" r="1"></circle>
                                 <circle cx="20" cy="21" r="1"></circle>
-                                <path d="1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                             </svg>
-                        </a>
-                        <a href="action://act/message_list" class="gcsActivityIconButton" aria-label="Notifikasi">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                            <span class="ripple"></span>
+                        </button>
+                        <button class="icon-btn" aria-label="Notifikasi">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                             </svg>
-                        </a>
+                            <span class="ripple"></span>
+                        </button>
                     </div>
-                </div>
-            </header>
+                </header>
 
-            <main class="gcsActivityContainer">
-
-                <nav class="gcsActivityTabs" role="tablist" aria-label="Kategori Aktivitas">
-                    <button class="gcsActivityTabButton gcsActivityTabActive" role="tab" aria-selected="true"
-                        aria-controls="gcsActivityPanelPurchase" id="gcsActivityTabPurchase">
-                        🧾 Pembelian
-                    </button>
-                    <button class="gcsActivityTabButton" role="tab" aria-selected="false"
-                        aria-controls="gcsActivityPanelBalance" id="gcsActivityTabBalance">
-                        💳 Saldo
-                    </button>
-                    <button class="gcsActivityTabButton" role="tab" aria-selected="false"
-                        aria-controls="gcsActivityPanelPoint" id="gcsActivityTabPoint">
-                        ⭐ Poin
-                    </button>
+                <nav class="ios-nav">
+                    <div class="nav-scroll-wrapper">
+                        <button class="tab-pill active" data-tab="pembelian">Pembelian</button>
+                        <button class="tab-pill" data-tab="saldo">Saldo</button>
+                        <button class="tab-pill" data-tab="poin">Poin</button>
+                    </div>
                 </nav>
+            </div>
 
-                <div class="gcsActivityContentWrapper">
+            <main class="ios-content">
 
-                    <section class="gcsActivitySection gcsActivitySectionActive" id="gcsActivityPanelPurchase"
-                        role="tabpanel" aria-labelledby="gcsActivityTabPurchase">
-                        <div class="gcsActivityCard">
-                            <div class="gcsActivityIconWrapper">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                <div class="tab-content active" data-content="pembelian">
+                    <div class="activity-list">
+
+                        <div class="activity-card">
+                            <div class="card-left">
+                                <div class="icon-wrapper icon-goride">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <class></class>
+                                        <path d="M5 18l6-6 6 6" />
+                                        <path d="M5 12l6-6 6 6" />
+                                    </svg>
+                                </div>
+                                <div class="card-details">
+                                    <h3 class="card-title">Pembayaran GoRide</h3>
+                                    <p class="card-desc">Perjalanan ke Kantor Pusat</p>
+                                    <span class="card-time">Hari ini • 08:15</span>
+                                </div>
+                            </div>
+                            <div class="card-right">
+                                <span class="card-amount text-neutral">Rp14.000</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="card-left">
+                                <div class="icon-wrapper icon-gofood">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                    </svg>
+                                </div>
+                                <div class="card-details">
+                                    <h3 class="card-title">Pembayaran GoFood</h3>
+                                    <p class="card-desc">Kopi Susu & Croissant</p>
+                                    <span class="card-time">Hari ini • 12:30</span>
+                                </div>
+                            </div>
+                            <div class="card-right">
+                                <span class="card-amount text-neutral">Rp42.000</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="card-left">
+                                <div class="icon-wrapper icon-gocar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="1" y="3" width="22" height="13" rx="2" ry="2"></rect>
+                                        <path d="M7 21h0a1 1 0 0 1-1-1v-2h12v2a1 1 0 0 1-1 1h0"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-details">
+                                    <h3 class="card-title">Pembayaran GoCar</h3>
+                                    <p class="card-desc">Antar Jemput Bandara</p>
+                                    <span class="card-time">Kemarin • 17:45</span>
+                                </div>
+                            </div>
+                            <div class="card-right">
+                                <span class="card-amount text-neutral">Rp185.000</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="card-left">
+                                <div class="icon-wrapper icon-pulsa">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                    </svg>
+                                </div>
+                                <div class="card-details">
+                                    <h3 class="card-title">Pembelian Pulsa</h3>
+                                    <p class="card-desc">Telkomsel Data 50GB</p>
+                                    <span class="card-time">3 hari lalu • 10:00</span>
+                                </div>
+                            </div>
+                            <div class="card-right">
+                                <span class="card-amount text-neutral">Rp102.000</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="card-left">
+                                <div class="icon-wrapper icon-tagihan">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                                    </svg>
+                                </div>
+                                <div class="card-details">
+                                    <h3 class="card-title">Pembayaran Tagihan</h3>
+                                    <p class="card-desc">Listrik PLN Pascabayar</p>
+                                    <span class="card-time">5 hari lalu • 19:20</span>
+                                </div>
+                            </div>
+                            <div class="card-right">
+                                <span class="card-amount text-neutral">Rp450.000</span>
+                            </div>
+                        </div>
+
+                    </div>
+            </main>
+
+            <div class="tab-content" data-content="saldo">
+                <div class="activity-list">
+
+                    <div class="activity-card">
+                        <div class="card-left">
+                            <div class="icon-wrapper icon-income">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
                                 </svg>
                             </div>
-                            <h2 class="gcsActivityCardTitle">Belum Ada Riwayat Pembelian</h2>
-                            <p class="gcsActivityCardDescription">Semua pesanan yang berhasil akan muncul di halaman
-                                ini.</p>
-                            <button class="gcsActivityButton" id="gcsActivityBtnPurchaseAction">Lihat Riwayat
-                                Pembelian</button>
+                            <div class="card-details">
+                                <h3 class="card-title">Top Up</h3>
+                                <p class="card-desc">via Mobile Banking BCA</p>
+                                <span class="card-time">Hari ini • 09:00</span>
+                            </div>
                         </div>
-                    </section>
+                        <div class="card-right">
+                            <span class="card-amount text-income">+Rp100.000</span>
+                        </div>
+                    </div>
 
-                    <section class="gcsActivitySection" id="gcsActivityPanelBalance" role="tabpanel"
-                        aria-labelledby="gcsActivityTabBalance" aria-hidden="true">
-                        <div class="gcsActivityCard">
-                            <div class="gcsActivityIconWrapper">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                                    <line x1="12" y1="4" x2="12" y2="20"></line>
+                    <div class="activity-card">
+                        <div class="card-left">
+                            <div class="icon-wrapper icon-income">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 11l-5-5-5 5M12 6v12" />
                                 </svg>
                             </div>
-                            <h2 class="gcsActivityCardTitle">Belum Ada Riwayat Saldo</h2>
-                            <p class="gcsActivityCardDescription">Semua transaksi GOCESPay akan muncul di halaman ini.
-                            </p>
-                            <button class="gcsActivityButton" id="gcsActivityBtnBalanceAction">Lihat Riwayat
-                                Saldo</button>
+                            <div class="card-details">
+                                <h3 class="card-title">Transfer Masuk</h3>
+                                <p class="card-desc">Dari Ahmad S.</p>
+                                <span class="card-time">Kemarin • 14:15</span>
+                            </div>
                         </div>
-                    </section>
+                        <div class="card-right">
+                            <span class="card-amount text-income">+Rp50.000</span>
+                        </div>
+                    </div>
 
-                    <section class="gcsActivitySection" id="gcsActivityPanelPoint" role="tabpanel"
-                        aria-labelledby="gcsActivityTabPoint" aria-hidden="true">
-                        <div class="gcsActivityCard">
-                            <div class="gcsActivityIconWrapper">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 12 20 22 4 22 4 12"></polyline>
-                                    <rect x="2" y="7" width="20" height="5"></rect>
-                                    <line x1="12" y1="22" x2="12" y2="7"></line>
-                                    <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
-                                    <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                    <div class="activity-card">
+                        <div class="card-left">
+                            <div class="icon-wrapper icon-expense">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M7 13l5 5 5-5M12 18V6" />
                                 </svg>
                             </div>
-                            <h2 class="gcsActivityCardTitle">Belum Ada Riwayat Poin</h2>
-                            <p class="gcsActivityCardDescription">Poin dari setiap transaksi akan muncul di halaman ini.
-                            </p>
-                            <button class="gcsActivityButton" id="gcsActivityBtnPointAction">Lihat Riwayat Poin</button>
+                            <div class="card-details">
+                                <h3 class="card-title">GoRide</h3>
+                                <p class="card-desc">Transaksi Layanan</p>
+                                <span class="card-time">Kemarin • 08:00</span>
+                            </div>
                         </div>
-                    </section>
+                        <div class="card-right">
+                            <span class="card-amount text-expense">-Rp18.000</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="card-left">
+                            <div class="icon-wrapper icon-expense">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M7 13l5 5 5-5M12 18V6" />
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">GoFood</h3>
+                                <p class="card-desc">Transaksi Layanan</p>
+                                <span class="card-time">3 hari lalu • 13:00</span>
+                            </div>
+                        </div>
+                        <div class="card-right">
+                            <span class="card-amount text-expense">-Rp42.000</span>
+                        </div>
+                    </div>
 
                 </div>
+            </div>
+
+            <div class="tab-content" data-content="poin">
+                <div class="activity-list">
+
+                    <div class="activity-card">
+                        <div class="card-left">
+                            <div class="icon-wrapper icon-poin-plus">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Selesai Perjalanan</h3>
+                                <p class="card-desc">Reward loyalitas berkendara</p>
+                                <span class="card-time">Hari ini • 18:20</span>
+                            </div>
+                        </div>
+                        <div class="card-right flex-column-end">
+                            <span class="poin-badge badge-plus">+120 Poin</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="card-left">
+                            <div class="icon-wrapper icon-poin-plus">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
+                                    </path>
+                                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Promo</h3>
+                                <p class="card-desc">Bonus akhir pekan ceria</p>
+                                <span class="card-time">Kemarin • 11:00</span>
+                            </div>
+                        </div>
+                        <div class="card-right flex-column-end">
+                            <span class="poin-badge badge-plus">+50 Poin</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="card-left">
+                            <div class="icon-wrapper icon-poin-minus">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Tukar Voucher</h3>
+                                <p class="card-desc">Diskon Makan GoFood Rp10k</p>
+                                <span class="card-time">3 hari lalu • 15:40</span>
+                            </div>
+                        </div>
+                        <div class="card-right flex-column-end">
+                            <span class="poin-badge badge-minus">-80 Poin</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             </main>
         </section>
 

@@ -1,147 +1,93 @@
-/**
- * GOCES Activity Page Module
- * Engineered with high-performance event delegation, passive listeners,
- * and Apple-inspired UX guidelines.
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-    gcsActivityInit();
+    initTabSystem();
+    initNativeRippleEffects();
 });
 
-function gcsActivityInit() {
-    const tabsContainer = document.querySelector('.gcsActivityTabs');
-    const actionButtons = [
-        { id: 'gcsActivityBtnPurchaseAction', callback: gcsActivityOpenPurchase },
-        { id: 'gcsActivityBtnBalanceAction', callback: gcsActivityOpenBalance },
-        { id: 'gcsActivityBtnPointAction', callback: gcsActivityOpenPoint }
-    ];
-
-    // Trigger initial animation for first active section immediately
-    const initialActiveSection = document.querySelector('.gcsActivitySectionActive');
-    if (initialActiveSection) {
-        requestAnimationFrame(() => {
-            initialActiveSection.classList.add('gcsActivitySectionVisible');
-        });
-    }
-
-    // Event Delegation for Segmented Control Tabs
-    if (tabsContainer) {
-        tabsContainer.addEventListener('click', (event) => {
-            const targetTab = event.target.closest('.gcsActivityTabButton');
-            if (targetTab && !targetTab.classList.contains('gcsActivityTabActive')) {
-                gcsActivitySwitchTab(targetTab);
-            }
-        }, { passive: true });
-    }
-
-    // Bind Actions to Placeholder functions with Native Ripple Effect
-    actionButtons.forEach(btn => {
-        const btnElement = document.getElementById(btn.id);
-        if (btnElement) {
-            btnElement.addEventListener('click', (event) => {
-                gcsActivityInjectRipple(event, btnElement);
-                // Delay callback execution to let ripple animation breathe
-                setTimeout(() => {
-                    btn.callback();
-                }, 150);
-            });
-        }
-    });
-}
-
 /**
- * High-Performance Tab Switching with iOS Frame Motion
+ * Premium iOS Tab Interface Switching Architecture
  */
-function gcsActivitySwitchTab(selectedTabButton) {
-    const allTabs = document.querySelectorAll('.gcsActivityTabButton');
-    const allSections = document.querySelectorAll('.gcsActivitySection');
-    const targetPanelId = selectedTabButton.getAttribute('aria-controls');
-    const targetSection = document.getElementById(targetPanelId);
+function initTabSystem() {
+    const tabButtons = document.querySelectorAll('.tab-pill');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-    // 1. Update State Profile on Tabs
-    allTabs.forEach(tab => {
-        tab.classList.remove('gcsActivityTabActive');
-        tab.setAttribute('aria-selected', 'false');
-    });
-    selectedTabButton.classList.add('gcsActivityTabActive');
-    selectedTabButton.setAttribute('aria-selected', 'true');
+    // Trigger visual entry initialization on active view
+    const initialActiveContent = document.querySelector('.tab-content.active');
+    if (initialActiveContent) {
+        setTimeout(() => {
+            initialActiveContent.classList.add('show');
+        }, 50);
+    }
 
-    // 2. Perform Fluid Out-In Animation Block via CSS Lifecycle Matrix
-    allSections.forEach(section => {
-        if (section.classList.contains('gcsActivitySectionActive')) {
-            section.classList.remove('gcsActivitySectionVisible');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
 
-            // Listen for the cleanest performance fade-out finish
-            const onFadeOutEnd = (e) => {
-                if (e.propertyName === 'opacity' || e.propertyName === 'transform') {
-                    section.classList.remove('gcsActivitySectionActive');
-                    section.setAttribute('aria-hidden', 'true');
-                    section.removeEventListener('transitionend', onFadeOutEnd);
+            // Prevent process execution if tab selected is already active
+            if (button.classList.contains('active')) return;
 
-                    // Trigger inbound component animation context smoothly
-                    gcsActivityRevealSection(targetSection);
+            // Step 1: Remove active states on pills UI context
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Step 2: Handle Content Fade out transitional sequence
+            tabContents.forEach(content => {
+                if (content.classList.contains('active')) {
+                    content.classList.remove('show');
+
+                    // Delay layout swap after animation finishes (250ms)
+                    setTimeout(() => {
+                        content.classList.remove('active');
+
+                        // Step 3: Trigger entrance on target layout framework
+                        const nextContent = document.querySelector(`[data-content="${targetTab}"]`);
+                        if (nextContent) {
+                            nextContent.classList.add('active');
+                            // Small trick to ensure display property registers before transition
+                            setTimeout(() => {
+                                nextContent.classList.add('show');
+                            }, 20);
+                        }
+                    }, 250);
                 }
-            };
-            section.addEventListener('transitionend', onFadeOutEnd);
-        }
-    });
-}
-
-/**
- * Utility to properly handle incoming micro-animation sequencing
- */
-function gcsActivityRevealSection(targetSection) {
-    if (!targetSection) return;
-
-    targetSection.classList.add('gcsActivitySectionActive');
-    targetSection.removeAttribute('aria-hidden');
-
-    // Ensure DOM registers display:block before rendering CSS Transforms
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            targetSection.classList.add('gcsActivitySectionVisible');
+            });
         });
     });
 }
 
 /**
- * Premium Liquid UI Ripple Engine
+ * Creates lightweight native physical UI response (Ripple logic)
  */
-function gcsActivityInjectRipple(event, button) {
-    const circle = document.createElement('span');
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
+function initNativeRippleEffects() {
+    const buttons = document.querySelectorAll('.icon-btn');
 
-    const rect = button.getBoundingClientRect();
+    buttons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            // Clear existing elements if user clicks consecutively rapidly
+            const existingRipple = this.querySelector('.ripple');
+            if (existingRipple) {
+                existingRipple.remove();
+            }
 
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.clientX - rect.left - radius}px`;
-    circle.style.top = `${event.clientY - rect.top - radius}px`;
-    circle.classList.add('gcsActivityRipple');
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
 
-    // Clear older ripples to avoid unnecessary RAM profile bloating
-    const currentRipple = button.querySelector('.gcsActivityRipple');
-    if (currentRipple) {
-        currentRipple.remove();
-    }
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
 
-    button.appendChild(circle);
-}
+            ripple.style.width = ripple.style.height = `${size}px`;
 
-/**
- * ACTION PLACEHOLDERS
- */
-function gcsActivityOpenPurchase() {
-    console.log('[Native Route Request] Navigating to: activity://purchase_history');
-    alert('Membuka Halaman Riwayat Pembelian...');
-}
+            const x = e.clientX - rect.left - (size / 2);
+            const y = e.clientY - rect.top - (size / 2);
 
-function gcsActivityOpenBalance() {
-    console.log('[Native Route Request] Navigating to: activity://gcespay_history');
-    alert('Membuka Halaman Riwayat Transaksi Saldo...');
-}
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
 
-function gcsActivityOpenPoint() {
-    console.log('[Native Route Request] Navigating to: activity://points_rewards');
-    alert('Membuka Halaman Riwayat Perolehan Poin...');
+            this.appendChild(ripple);
+
+            // Housekeeping cleanup memory leaks prevention
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
+        });
+    });
 }
