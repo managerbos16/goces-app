@@ -1,0 +1,150 @@
+/* --- WRAPPER SECTION --- */
+.gcsFoodBannerSection {
+  width: 100%;
+  padding: 0 var(--screen-padding);
+  box-sizing: border-box;
+}
+
+.gcsFoodBannerContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition);
+}
+
+/* --- JUDUL / HEADER BANNER --- */
+.gcsFoodBannerHeader {
+  width: 100%;
+  margin-bottom: 12px;
+  transition: opacity var(--transition);
+}
+
+.gcsFoodBannerTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+/* --- SLIDER VIEWPORT (RASIO 16:7) --- */
+.gcsFoodBannerSlider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7; /* Menjaga konsistensi rasio secara dinamis */
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--gcsFoodBannerShadow);
+  background-color: rgba(0, 0, 0, 0.03);
+  touch-action: pan-y; /* Membantu akurasi swipe di mobile */
+}
+
+/* TRACK ANIMASI GESER */
+.gcsFoodBannerTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition);
+  will-change: transform;
+}
+
+/* ITEM BANNER INDIVIDUAL */
+.gcsFoodBannerItem {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gcsFoodBannerLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ELEMEN GAMBAR MAKANAN */
+.gcsFoodBannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- ANIMASI INTERAKSI (HOVER & PRESSED) --- */
+/* Desktop Hover: Sedikit melakukan pembesaran gambar */
+@media (hover: hover) {
+  .gcsFoodBannerLink:hover .gcsFoodBannerImage {
+    transform: scale(1.04);
+  }
+}
+
+/* Mobile Click/Pressed: Efek mengecil/membal ala iOS native button */
+.gcsFoodBannerLink:active .gcsFoodBannerImage {
+  transform: scale(0.98);
+}
+
+/* --- DOT INDICATOR NAVIGATION --- */
+.gcsFoodBannerDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  height: 8px;
+  transition: opacity var(--transition);
+}
+
+.gcsFoodBannerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  transition: all var(--transition);
+}
+
+/* Status Titik Aktif / Kapsul */
+.gcsFoodBannerDot.gcsFoodBannerActive {
+  width: 16px;
+  border-radius: 4px;
+  background-color: var(--blue);
+}
+
+/* --- UTILITY VALIDASI (SEMBUNYI & KOLAPS) --- */
+.gcsFoodBannerHidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Digunakan oleh JS untuk menghilangkan sisa ruang kosong jika promo nihil */
+.gcsFoodBannerCollapse {
+  height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  border: none !important;
+}
+
+/* --- RESPONSIVE OPTIMIZATION --- */
+@media (max-width: 360px) {
+  .gcsFoodBannerTitle {
+    font-size: 16px;
+  }
+  :root {
+    --screen-padding: 12px;
+    --card-radius: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Batasan maksimal layout web-view di tablet/desktop demi menjaga aspek rasio */
+  .gcsFoodBannerSection {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
