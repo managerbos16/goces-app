@@ -1,0 +1,147 @@
+/* --- WRAPPER SECTION --- */
+.gcsPromoBannerSection {
+  width: 100%;
+  padding: 0 var(--screen-padding);
+  box-sizing: border-box;
+}
+
+.gcsPromoBannerContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition);
+}
+
+/* --- HEADER / JUDUL PROMO --- */
+.gcsPromoBannerHeader {
+  width: 100%;
+  margin-bottom: 12px;
+  transition: opacity var(--transition);
+}
+
+.gcsPromoBannerTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+/* --- SLIDER VIEWPORT (RASIO MASTER 16:7) --- */
+.gcsPromoBannerSlider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7; /* Memenuhi aspek rasio wajib tanpa hardcode tinggi */
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--gcsPromoBannerShadow);
+  background-color: rgba(0, 0, 0, 0.03);
+  touch-action: pan-y; /* Optimalisasi swipe mobile */
+}
+
+/* TRACK ANIMASI RUNNING SLIDE */
+.gcsPromoBannerTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition);
+  will-change: transform;
+}
+
+/* SLIDE ITEM INDIVIDUAL */
+.gcsPromoBannerItem {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gcsPromoBannerLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* GAMBAR BANNER PROMO */
+.gcsPromoBannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* INTERAKSI HOVER (DESKTOP) & PRESSED (MOBILE) */
+@media (hover: hover) {
+  .gcsPromoBannerLink:hover .gcsPromoBannerImage {
+    transform: scale(1.035);
+  }
+}
+
+.gcsPromoBannerLink:active .gcsPromoBannerImage {
+  transform: scale(0.98);
+}
+
+/* --- DOT INDICATOR NAVIGATION --- */
+.gcsPromoBannerDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  height: 8px;
+  transition: opacity var(--transition);
+}
+
+.gcsPromoBannerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  transition: all var(--transition);
+}
+
+.gcsPromoBannerDot.gcsPromoPromoBannerActive {
+  width: 16px;
+  border-radius: 4px;
+  background-color: var(--blue);
+}
+
+/* --- UTILITY ATURAN KOSONG (KOLAPS OTOMATIS) --- */
+.gcsPromoBannerHidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Memaksa kontainer kolaps total ke ukuran 0 saat tidak ada promo aktif */
+.gcsPromoBannerCollapse {
+  height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  border: none !important;
+}
+
+/* --- AKOMODASI RESPONSIVE SCREEN SIZES --- */
+@media (max-width: 360px) {
+  .gcsPromoBannerTitle {
+    font-size: 16px;
+  }
+  :root {
+    --screen-padding: 12px;
+    --card-radius: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Tampilan Tablet / Desktop Max Web-App Viewport */
+  .gcsPromoBannerSection {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
