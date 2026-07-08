@@ -1,32 +1,37 @@
 /**
- * GOCES Activity Logic
- * Handles tab switching with smooth CSS class transitions
+ * GOCES Activity Controller
+ * Mengelola tab switching dan interaksi UI
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll(".gcs-segment-btn");
-    const contents = document.querySelectorAll(".gcs-tab-content");
+    "use strict";
 
-    const switchTab = (targetId) => {
-        // Update Buttons
+    const tabs = document.querySelectorAll(".gcs-tab-btn");
+    const panels = document.querySelectorAll(".gcs-tab-panel");
+
+    /**
+     * Fungsi untuk mengganti panel aktif
+     * @param {string} targetId - ID dari panel yang akan ditampilkan
+     */
+    const activateTab = (targetId) => {
+        // Reset state tombol
         tabs.forEach(tab => {
-            tab.classList.toggle("active", tab.dataset.target === targetId);
+            const isActive = tab.dataset.tab === targetId;
+            tab.classList.toggle("active", isActive);
+            tab.setAttribute("aria-selected", isActive);
         });
 
-        // Update Content with animation
-        contents.forEach(content => {
-            if (content.id === targetId) {
-                content.classList.add("active");
-            } else {
-                content.classList.remove("active");
-            }
+        // Reset state panel
+        panels.forEach(panel => {
+            panel.classList.toggle("active", panel.id === targetId);
         });
     };
 
+    // Event listener untuk setiap tab
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
-            const target = tab.dataset.target;
-            switchTab(target);
+            const target = tab.dataset.tab;
+            activateTab(target);
         });
     });
 });
