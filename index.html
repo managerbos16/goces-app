@@ -1186,13 +1186,17 @@
             </section>
         </section>
 
+        <section class="gcsHalamanPromoBannerSection">
+            <div id="gcsHalamanPromoBannerContainer" class="gcsHalamanPromoBannerContainer"></div>
+        </section>
+
         <section id="page-promo" class="goces-page">
             <div class="gcsPromoContainer">
                 <header class="gcsPromoHeader">
                     <div class="gcsPromoSearchWrapper">
                         <form action="action://act/search">
                             <input type="search" id="search" name="search" class="input gcsPromoSearchInput"
-                                placeholder="Cari voucher...">
+                                placeholder="Cari promo...">
                         </form>
                     </div>
                     <div class="gcsPromoHeaderActions">
@@ -1215,409 +1219,59 @@
                 </header>
 
                 <main class="gcsPromoMainScroll">
+
                     <section class="gcsHalamanPromoBannerSection">
                         <div id="gcsHalamanPromoBannerContainer" class="gcsHalamanPromoBannerContainer"></div>
                     </section>
 
-                    <section class="gcsPromoSection">
-                        <div class="gcsPromoSummaryCard">
-                            <div class="gcsPromoSummaryText">
-                                <h2 class="gcsPromoSummaryTitle">Voucher Aktif</h2>
-                                <p class="gcsPromoSummarySubtitle">Siap digunakan hari ini</p>
-                            </div>
-                            <div class="gcsPromoSummaryNumber">
-                                <h1 id="gcsPromoTotalCount">0</h1>
-                            </div>
-                        </div>
-                    </section>
-
                     <nav class="gcsPromoCategoryNav">
                         <div class="gcsPromoCategoryScroll">
-                            <button class="gcsPromoChip gcsPromoActive" data-category="semua">Semua</button>
-                            <button class="gcsPromoChip" data-category="goride">GoRide</button>
-                            <button class="gcsPromoChip" data-category="gocar">GoCar</button>
-                            <button class="gcsPromoChip" data-category="gofood">GoFood</button>
-                            <button class="gcsPromoChip" data-category="delivery">Delivery</button>
-                            <button class="gcsPromoChip" data-category="shop">Shop</button>
-                            <button class="gcsPromoChip" data-category="fresh">Fresh</button>
-                            <button class="gcsPromoChip" data-category="ppob">PPOB</button>
+                            <button class="gcsPromoChip gcsPromoActive" data-tab="gcsPromoSemua">Semua</button>
+                            <button class="gcsPromoChip" data-tab="gcsPromoGoRide">GoRide</button>
+                            <button class="gcsPromoChip" data-tab="gcsPromoGoCar">GoCar</button>
+                            <button class="gcsPromoChip" data-tab="gcsPromoGoFood">GoFood</button>
+                            <button class="gcsPromoChip" data-tab="gcsPromoDelivery">Delivery</button>
+                            <button class="gcsPromoChip" data-tab="gcsPromoShop">Shop</button>
+                            <button class="gcsPromoChip" data-tab="gcsPromoFresh">Fresh</button>
+                            <button class="gcsPromoChip" data-tab="gcsPromoPPOB">PPOB</button>
                         </div>
                     </nav>
 
-                    <section class="gcsPromoSection">
-
-                        <div class="gcsPromoGrid" id="gcsPromoGridContainer">
-
-                            <section class="gcsVoucherGoRideSection">
-                                <h2 id="gcsVoucherGoRideTitle" class="gcsVoucherGoRideTitle">Gratis Ongkir</h2>
-                                <div id="gcsVoucherGoRideContainer" class="gcsVoucherGoRideContainer">
-                                </div>
+                    <section class="gcsPromoContent">
+                        <div class="gcsPromoTabContent gcsPromoTabActive" id="gcsPromoSemua">
+                            <section class="gcsHalamanPromoBannerSection">
+                                <div id="gcsHalamanPromoBannerContainer" class="gcsHalamanPromoBannerContainer"></div>
                             </section>
+                        </div>
 
-                            <div class="gcsPromoCard" data-category="goride" data-quota="50">
-                                <div class="gcsPromoCardTop">
-                                    <span class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span>
-                                    <span class="gcsPromoExpiry">Berlaku s/d 31 Des</span>
-                                </div>
-                                <h3 class="gcsPromoCardTitle">Diskon 50% Perjalanan</h3>
-                                <p class="gcsPromoCardDesc">Maks. Potongan Rp10.000, Min. Belanja Rp15.000</p>
-                                <div class="gcsPromoCardBottom">
-                                    <span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">50</strong></span>
-                                    <button class="gcsPromoUseBtn">Gunakan Sekarang</button>
-                                </div>
-                            </div>
+                        <div class="gcsPromoTabContent" id="gcsPromoGoRide">
 
-                            <div class="gcsPromoCard" data-category="goride" data-quota="100">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 15 Jan</span></div>
-                                <h3 class="gcsPromoCardTitle">Potongan Rp5.000</h3>
-                                <p class="gcsPromoCardDesc">Tanpa Min. Belanja untuk pengguna baru.</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">100</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="goride" data-quota="20">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 20 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon 30% Akhir Pekan</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp8.000, Min. Belanja Rp20.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">20</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="goride" data-quota="5">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 10 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Flash Sale Rp1.000</h3>
-                                <p class="gcsPromoCardDesc">Perjalanan jarak dekat (Maks 3km).</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">5</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="goride" data-quota="200">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 30 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Cashback 20% Coins</h3>
-                                <p class="gcsPromoCardDesc">Maks. Cashback 5.000 Coins, Min. Belanja Rp15.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">200</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
+                        </div>
 
-                            <div class="gcsPromoCard" data-category="gocar" data-quota="30">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon 40% GoCar</h3>
-                                <p class="gcsPromoCardDesc">Maks. Potongan Rp20.000, Min. Belanja Rp40.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">30</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="gocar" data-quota="15">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 25 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Potongan Rp15.000</h3>
-                                <p class="gcsPromoCardDesc">Min. Belanja Rp50.000 (Khusus Malam)</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">15</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="gocar" data-quota="50">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 15 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon 25% GoCar L</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp25.000 untuk perjalanan keluarga</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">50</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="gocar" data-quota="10">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 5 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Gratis Jemput</h3>
-                                <p class="gcsPromoCardDesc">Bebas biaya jemput (Maks Rp10.000)</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">10</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="gocar" data-quota="100">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeCar">GoCar</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Cashback Rp10.000</h3>
-                                <p class="gcsPromoCardDesc">Ke GOCESPay, Min. Belanja Rp60.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">100</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
+                        <div class="gcsPromoTabContent" id="gcsPromoGoCar">
 
-                            <div class="gcsPromoCard" data-category="gofood" data-quota="80">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 30 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon 60% Kuliner</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp30.000, Min. Belanja Rp40.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">80</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="gofood" data-quota="200">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Gratis Ongkir Food</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp15.000, Min. Belanja Rp35.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">200</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="gofood" data-quota="40">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 20 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Potongan Rp20.000</h3>
-                                <p class="gcsPromoCardDesc">Min. Belanja Rp100.000 di Resto Pilihan</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">40</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="gofood" data-quota="15">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 10 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon 30% Cemilan</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp15.000, Min. Belanja Rp30.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">15</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="gofood" data-quota="300">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFood">GoFood</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Jan</span></div>
-                                <h3 class="gcsPromoCardTitle">Cashback 50% Coins</h3>
-                                <p class="gcsPromoCardDesc">Maks. 10.000 Coins, Min. Belanja Rp20.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">300</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
+                        </div>
 
-                            <div class="gcsPromoCard" data-category="delivery" data-quota="50">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon Ongkir 50%</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp10.000 untuk pengiriman instan</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">50</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="delivery" data-quota="25">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 15 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Potongan Rp5.000</h3>
-                                <p class="gcsPromoCardDesc">Pengiriman Same Day, Tanpa Min. Transaksi</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">25</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="delivery" data-quota="100">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 20 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Cashback Rp3.000</h3>
-                                <p class="gcsPromoCardDesc">Setiap kirim barang jarak > 5km</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">100</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="delivery" data-quota="10">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 5 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Kirim Multi-Stop Murah</h3>
-                                <p class="gcsPromoCardDesc">Diskon 20% (Maks Rp15.000)</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">10</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="delivery" data-quota="500">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeDelivery">Delivery</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Proteksi Barang Gratis</h3>
-                                <p class="gcsPromoCardDesc">Bebas biaya asuransi pengiriman hingga Rp1 Juta</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">500</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
+                        <div class="gcsPromoTabContent" id="gcsPromoGoFood">
 
-                            <div class="gcsPromoCard" data-category="shop" data-quota="60">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon 70% Fashion</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp50.000, Min. Belanja Rp100.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">60</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="shop" data-quota="150">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 25 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Gratis Ongkir Shop</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp20.000, Min. Belanja Rp50.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">150</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="shop" data-quota="30">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 10 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Potongan Elektronik</h3>
-                                <p class="gcsPromoCardDesc">Diskon Rp100.000, Min. Belanja Rp1.000.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">30</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="shop" data-quota="200">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Cashback 10%</h3>
-                                <p class="gcsPromoCardDesc">Maks. 20.000 Coins, Min. Belanja Rp150.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">200</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="shop" data-quota="8">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeShop">Shop</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 5 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon Kilat 90%</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp25.000 (Flash Sale Item)</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">8</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
+                        </div>
 
-                            <div class="gcsPromoCard" data-category="fresh" data-quota="45">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 30 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon 30% Sayur</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp15.000, Min. Belanja Rp40.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">45</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="fresh" data-quota="120">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 15 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Gratis Ongkir Belanja</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp15.000, Min. Belanja Rp50.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">120</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="fresh" data-quota="25">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 20 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Potongan Daging Segar</h3>
-                                <p class="gcsPromoCardDesc">Diskon Rp20.000, Min. Belanja Rp100.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">25</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="fresh" data-quota="15">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 10 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon 50% Buah</h3>
-                                <p class="gcsPromoCardDesc">Maks. Rp25.000, Min. Belanja Rp45.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">15</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="fresh" data-quota="80">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgeFresh">Fresh</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Cashback 15% Fresh</h3>
-                                <p class="gcsPromoCardDesc">Maks. 15.000 Coins, Min. Belanja Rp75.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">80</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
+                        <div class="gcsPromoTabContent" id="gcsPromoDelivery">
 
-                            <div class="gcsPromoCard" data-category="ppob" data-quota="100">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Cashback 20% Tagihan</h3>
-                                <p class="gcsPromoCardDesc">Maks. 10.000 Coins untuk PLN/PDAM</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">100</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="ppob" data-quota="50">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 25 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Diskon Token Listrik</h3>
-                                <p class="gcsPromoCardDesc">Potongan Rp5.000, Min. Pembelian Rp50.000</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">50</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="ppob" data-quota="200">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 15 Des</span></div>
-                                <h3 class="gcsPromoCardTitle">Promo Pulsa Murah</h3>
-                                <p class="gcsPromoCardDesc">Diskon Rp2.000 Semua Operator</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">200</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="ppob" data-quota="30">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 10 Nov</span></div>
-                                <h3 class="gcsPromoCardTitle">Cashback Internet</h3>
-                                <p class="gcsPromoCardDesc">Cashback 5% s/d 20.000 Coins untuk Tagihan Internet</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">30</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
-                            <div class="gcsPromoCard" data-category="ppob" data-quota="500">
-                                <div class="gcsPromoCardTop"><span
-                                        class="gcsPromoBadge gcsPromoBadgePPOB">PPOB</span><span
-                                        class="gcsPromoExpiry">Berlaku s/d 31 Jan</span></div>
-                                <h3 class="gcsPromoCardTitle">Bebas Biaya Admin</h3>
-                                <p class="gcsPromoCardDesc">Gratis biaya admin untuk 3x transaksi BPJS</p>
-                                <div class="gcsPromoCardBottom"><span class="gcsPromoQuotaText">Sisa: <strong
-                                            class="gcsPromoQuotaValue">500</strong></span><button
-                                        class="gcsPromoUseBtn">Gunakan Sekarang</button></div>
-                            </div>
+                        </div>
+
+                        <div class="gcsPromoTabContent" id="gcsPromoShop">
+
+                        </div>
+
+                        <div class="gcsPromoTabContent" id="gcsPromoFresh">
+
+                        </div>
+
+                        <div class="gcsPromoTabContent" id="gcsPromoPPOB">
 
                         </div>
                     </section>
-
                 </main>
             </div>
         </section>
@@ -1635,14 +1289,16 @@
                                 stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="9" cy="21" r="1"></circle>
                                 <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
+                                </path>
                             </svg>
                             <span class="ripple"></span>
                         </button>
                         <button class="icon-btn" aria-label="Notifikasi">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9">
+                                </path>
                                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                             </svg>
                             <span class="ripple"></span>
@@ -1712,8 +1368,10 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                         stroke-linejoin="round">
-                                        <rect x="1" y="3" width="22" height="13" rx="2" ry="2"></rect>
-                                        <path d="M7 21h0a1 1 0 0 1-1-1v-2h12v2a1 1 0 0 1-1 1h0"></path>
+                                        <rect x="1" y="3" width="22" height="13" rx="2" ry="2">
+                                        </rect>
+                                        <path d="M7 21h0a1 1 0 0 1-1-1v-2h12v2a1 1 0 0 1-1 1h0">
+                                        </path>
                                     </svg>
                                 </div>
                                 <div class="card-details">
@@ -1733,7 +1391,8 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                         stroke-linejoin="round">
-                                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2">
+                                        </rect>
                                         <line x1="12" y1="18" x2="12.01" y2="18"></line>
                                     </svg>
                                 </div>
@@ -1754,7 +1413,8 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                         stroke-linejoin="round">
-                                        <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                                        <rect x="2" y="4" width="20" height="16" rx="2" ry="2">
+                                        </rect>
                                         <line x1="12" y1="4" x2="12" y2="20"></line>
                                     </svg>
                                 </div>
@@ -1945,13 +1605,15 @@
                                 stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="9" cy="21" r="1"></circle>
                                 <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
+                                </path>
                             </svg>
                         </button>
                         <button class="gcsChatActionButton gcsChatNotificationButton" aria-label="Notifikasi">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9">
+                                </path>
                                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                             </svg>
                         </button>
@@ -1962,7 +1624,8 @@
             <main class="gcsChatMainContent">
 
                 <section class="gcsChatSection gcsChatServiceSection">
-                    <h2 class="gcsChatSectionTitle gcsChatServiceTitle">Layanan GOCES</h2>
+                    <h2 class="gcsChatSectionTitle gcsChatServiceTitle">Layanan GOCES
+                    </h2>
                     <div class="gcsChatCardGroup">
 
                         <a href="inbox.html" class="gcsChatCard gcsChatMenuCard">
@@ -1978,7 +1641,8 @@
                                 </div>
                                 <div class="gcsChatCardBody">
                                     <h3 class="gcsChatCardTitle">Inbox</h3>
-                                    <p class="gcsChatCardDescription">Lihat seluruh pesan yang masuk.</p>
+                                    <p class="gcsChatCardDescription">Lihat seluruh
+                                        pesan yang masuk.</p>
                                 </div>
                             </div>
                             <div class="gcsChatCardRight">
@@ -1996,12 +1660,14 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
                                         stroke-linejoin="round">
-                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+                                        </path>
                                     </svg>
                                 </div>
                                 <div class="gcsChatCardBody">
                                     <h3 class="gcsChatCardTitle">Customer Service</h3>
-                                    <p class="gcsChatCardDescription">Hubungi tim layanan pelanggan.</p>
+                                    <p class="gcsChatCardDescription">Hubungi tim
+                                        layanan pelanggan.</p>
                                 </div>
                             </div>
                             <div class="gcsChatCardRight">
@@ -2020,13 +1686,15 @@
                                         stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
                                         stroke-linejoin="round">
                                         <circle cx="12" cy="12" r="10"></circle>
-                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3">
+                                        </path>
                                         <line x1="12" y1="17" x2="12.01" y2="17"></line>
                                     </svg>
                                 </div>
                                 <div class="gcsChatCardBody">
                                     <h3 class="gcsChatCardTitle">Bantuan</h3>
-                                    <p class="gcsChatCardDescription">Pusat bantuan dan FAQ.</p>
+                                    <p class="gcsChatCardDescription">Pusat bantuan dan
+                                        FAQ.</p>
                                 </div>
                             </div>
                             <div class="gcsChatCardRight">
@@ -2042,7 +1710,8 @@
                 </section>
 
                 <section class="gcsChatSection gcsChatAiSection">
-                    <h2 class="gcsChatSectionTitle gcsChatAiTitle">GOCES AI Assistant</h2>
+                    <h2 class="gcsChatSectionTitle gcsChatAiTitle">GOCES AI Assistant
+                    </h2>
                     <div class="gcsChatCardGroup">
 
                         <a href="goces-ai.html" class="gcsChatCard gcsChatAiCard">
@@ -2059,8 +1728,10 @@
                                 </div>
                                 <div class="gcsChatCardBody">
                                     <h3 class="gcsChatCardTitle">GOCES AI Assistant</h3>
-                                    <p class="gcsChatCardDescription">Tanyakan apa saja mengenai perjalanan, pembayaran,
-                                        promo, merchant, driver, maupun informasi lainnya.</p>
+                                    <p class="gcsChatCardDescription">Tanyakan apa saja
+                                        mengenai perjalanan, pembayaran,
+                                        promo, merchant, driver, maupun informasi
+                                        lainnya.</p>
                                 </div>
                             </div>
                             <div class="gcsChatCardRight">
@@ -2125,7 +1796,8 @@
                                 <h2 class="gcsProfileUserName">Akbar</h2>
                                 <span class="gcsProfileVerifiedBadge">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z">
+                                        </path>
                                     </svg>
                                     Terverifikasi
                                 </span>
@@ -2144,7 +1816,8 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
                                         stroke-linejoin="round">
-                                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                        <rect x="2" y="5" width="20" height="14" rx="2">
+                                        </rect>
                                         <line x1="2" y1="10" x2="22" y2="10"></line>
                                     </svg>
                                 </div>
@@ -2181,7 +1854,8 @@
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
                                     <span class="gcsProfileMenuHeading">Pembayaran</span>
-                                    <span class="gcsProfileMenuSubheading">Kelola dan atur sistem pembayaran
+                                    <span class="gcsProfileMenuSubheading">Kelola dan
+                                        atur sistem pembayaran
                                         instan</span>
                                 </div>
                             </div>
@@ -2200,7 +1874,8 @@
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
                                     <span class="gcsProfileMenuHeading">Referral</span>
-                                    <span class="gcsProfileMenuSubheading">Bagikan kode dan dapatkan keuntungan
+                                    <span class="gcsProfileMenuSubheading">Bagikan kode
+                                        dan dapatkan keuntungan
                                         ekstra</span>
                                 </div>
                             </div>
@@ -2218,8 +1893,10 @@
                                             d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Voucher Saya</span>
-                                    <span class="gcsProfileMenuSubheading">Lihat voucher diskon dan potongan harga
+                                    <span class="gcsProfileMenuHeading">Voucher
+                                        Saya</span>
+                                    <span class="gcsProfileMenuSubheading">Lihat voucher
+                                        diskon dan potongan harga
                                         aktif</span>
                                 </div>
                             </div>
@@ -2237,7 +1914,8 @@
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
                                     <span class="gcsProfileMenuHeading">Promo</span>
-                                    <span class="gcsProfileMenuSubheading">Penawaran eksklusif dan promo spesial
+                                    <span class="gcsProfileMenuSubheading">Penawaran
+                                        eksklusif dan promo spesial
                                         GOCES</span>
                                 </div>
                             </div>
@@ -2255,7 +1933,8 @@
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
                                     <span class="gcsProfileMenuHeading">Favorit</span>
-                                    <span class="gcsProfileMenuSubheading">Layanan, produk, atau merchant andalan
+                                    <span class="gcsProfileMenuSubheading">Layanan,
+                                        produk, atau merchant andalan
                                         Anda</span>
                                 </div>
                             </div>
@@ -2275,8 +1954,10 @@
                                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Alamat Tersimpan</span>
-                                    <span class="gcsProfileMenuSubheading">Kelola titik koordinat pengantaran
+                                    <span class="gcsProfileMenuHeading">Alamat
+                                        Tersimpan</span>
+                                    <span class="gcsProfileMenuSubheading">Kelola titik
+                                        koordinat pengantaran
                                         berkala</span>
                                 </div>
                             </div>
@@ -2300,8 +1981,10 @@
                                             d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Daftar Driver</span>
-                                    <span class="gcsProfileMenuSubheading">Bergabung sebagai mitra driver
+                                    <span class="gcsProfileMenuHeading">Daftar
+                                        Driver</span>
+                                    <span class="gcsProfileMenuSubheading">Bergabung
+                                        sebagai mitra driver
                                         profesional</span>
                                 </div>
                             </div>
@@ -2322,8 +2005,10 @@
                                             d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Daftar Mitra</span>
-                                    <span class="gcsProfileMenuSubheading">Kembangkan bisnis kuliner/toko retail
+                                    <span class="gcsProfileMenuHeading">Daftar
+                                        Mitra</span>
+                                    <span class="gcsProfileMenuSubheading">Kembangkan
+                                        bisnis kuliner/toko retail
                                         Anda</span>
                                 </div>
                             </div>
@@ -2349,12 +2034,15 @@
                                             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Verifikasi Email</span>
-                                    <span class="gcsProfileMenuSubheading">Konfirmasi kepemilikan email aktif</span>
+                                    <span class="gcsProfileMenuHeading">Verifikasi
+                                        Email</span>
+                                    <span class="gcsProfileMenuSubheading">Konfirmasi
+                                        kepemilikan email aktif</span>
                                 </div>
                             </div>
                             <div class="gcsProfileMenuRightSide">
-                                <span class="gcsProfileBadgeElement gcsProfileBadgeWarning">Belum Verifikasi</span>
+                                <span class="gcsProfileBadgeElement gcsProfileBadgeWarning">Belum
+                                    Verifikasi</span>
                                 <svg class="gcsProfileChevronIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                     stroke-width="2.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -2369,8 +2057,10 @@
                                             d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Verifikasi Nomor Telepon</span>
-                                    <span class="gcsProfileMenuSubheading">Gunakan otentikasi nomor seluler resmi</span>
+                                    <span class="gcsProfileMenuHeading">Verifikasi Nomor
+                                        Telepon</span>
+                                    <span class="gcsProfileMenuSubheading">Gunakan
+                                        otentikasi nomor seluler resmi</span>
                                 </div>
                             </div>
                             <div class="gcsProfileMenuRightSide">
@@ -2395,8 +2085,10 @@
                                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Riwayat Aktivitas</span>
-                                    <span class="gcsProfileMenuSubheading">Catatan penggunaan aplikasi secara
+                                    <span class="gcsProfileMenuHeading">Riwayat
+                                        Aktivitas</span>
+                                    <span class="gcsProfileMenuSubheading">Catatan
+                                        penggunaan aplikasi secara
                                         berkala</span>
                                 </div>
                             </div>
@@ -2413,8 +2105,10 @@
                                             d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Riwayat Transaksi</span>
-                                    <span class="gcsProfileMenuSubheading">Data mutasi keuangan dan order
+                                    <span class="gcsProfileMenuHeading">Riwayat
+                                        Transaksi</span>
+                                    <span class="gcsProfileMenuSubheading">Data mutasi
+                                        keuangan dan order
                                         pengantaran</span>
                                 </div>
                             </div>
@@ -2439,8 +2133,10 @@
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Metode Pembayaran</span>
-                                    <span class="gcsProfileMenuSubheading">Integrasikan kartu debit, kredit, dan
+                                    <span class="gcsProfileMenuHeading">Metode
+                                        Pembayaran</span>
+                                    <span class="gcsProfileMenuSubheading">Integrasikan
+                                        kartu debit, kredit, dan
                                         e-wallet</span>
                                 </div>
                             </div>
@@ -2457,8 +2153,10 @@
                                             d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Pengaturan Privasi</span>
-                                    <span class="gcsProfileMenuSubheading">Atur kontrol pembagian data personal
+                                    <span class="gcsProfileMenuHeading">Pengaturan
+                                        Privasi</span>
+                                    <span class="gcsProfileMenuSubheading">Atur kontrol
+                                        pembagian data personal
                                         Anda</span>
                                 </div>
                             </div>
@@ -2475,8 +2173,10 @@
                                             d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Keamanan Akun</span>
-                                    <span class="gcsProfileMenuDescription">Atur PIN 2FA, Biometrik TouchID /
+                                    <span class="gcsProfileMenuHeading">Keamanan
+                                        Akun</span>
+                                    <span class="gcsProfileMenuDescription">Atur PIN
+                                        2FA, Biometrik TouchID /
                                         FaceID</span>
                                 </div>
                             </div>
@@ -2493,8 +2193,10 @@
                                             d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Ubah Password</span>
-                                    <span class="gcsProfileMenuSubheading">Perbarui kata sandi secara berkala demi
+                                    <span class="gcsProfileMenuHeading">Ubah
+                                        Password</span>
+                                    <span class="gcsProfileMenuSubheading">Perbarui kata
+                                        sandi secara berkala demi
                                         keamanan</span>
                                 </div>
                             </div>
@@ -2512,7 +2214,8 @@
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
                                     <span class="gcsProfileMenuHeading">Bahasa</span>
-                                    <span class="gcsProfileMenuSubheading">Pilih preferensi bahasa (ID / EN)</span>
+                                    <span class="gcsProfileMenuSubheading">Pilih
+                                        preferensi bahasa (ID / EN)</span>
                                 </div>
                             </div>
                             <div class="gcsProfileMenuRightSide"><svg class="gcsProfileChevronIcon" fill="none"
@@ -2536,7 +2239,8 @@
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
                                     <span class="gcsProfileMenuHeading">Bantuan</span>
-                                    <span class="gcsProfileMenuSubheading">Pusat dokumentasi masalah & FAQ</span>
+                                    <span class="gcsProfileMenuSubheading">Pusat
+                                        dokumentasi masalah & FAQ</span>
                                 </div>
                             </div>
                             <div class="gcsProfileMenuRightSide"><svg class="gcsProfileChevronIcon" fill="none"
@@ -2553,8 +2257,10 @@
                                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Hubungi Customer Service</span>
-                                    <span class="gcsProfileMenuSubheading">Layanan live chat bantuan operasional
+                                    <span class="gcsProfileMenuHeading">Hubungi Customer
+                                        Service</span>
+                                    <span class="gcsProfileMenuSubheading">Layanan live
+                                        chat bantuan operasional
                                         24/7</span>
                                 </div>
                             </div>
@@ -2572,8 +2278,10 @@
                                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Tentang GOCES</span>
-                                    <span class="gcsProfileMenuSubheading">Informasi regulasi sistem & versi
+                                    <span class="gcsProfileMenuHeading">Tentang
+                                        GOCES</span>
+                                    <span class="gcsProfileMenuSubheading">Informasi
+                                        regulasi sistem & versi
                                         aplikasi</span>
                                 </div>
                             </div>
@@ -2591,8 +2299,10 @@
                                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Kebijakan Privasi</span>
-                                    <span class="gcsProfileMenuSubheading">Dokumentasi legal pengelolaan privasi
+                                    <span class="gcsProfileMenuHeading">Kebijakan
+                                        Privasi</span>
+                                    <span class="gcsProfileMenuSubheading">Dokumentasi
+                                        legal pengelolaan privasi
                                         digital</span>
                                 </div>
                             </div>
@@ -2610,8 +2320,10 @@
                                             d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0" />
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
-                                    <span class="gcsProfileMenuHeading">Syarat & Ketentuan</span>
-                                    <span class="gcsProfileMenuSubheading">Aturan dasar persetujuan mengikat pengguna
+                                    <span class="gcsProfileMenuHeading">Syarat &
+                                        Ketentuan</span>
+                                    <span class="gcsProfileMenuSubheading">Aturan dasar
+                                        persetujuan mengikat pengguna
                                         GOCES</span>
                                 </div>
                             </div>
@@ -2635,7 +2347,8 @@
                                     </svg></div>
                                 <div class="gcsProfileMenuTextWrapper">
                                     <span class="gcsProfileMenuHeading gcsProfileTextRed">Logout</span>
-                                    <span class="gcsProfileMenuSubheading gcsProfileTextRedSub">Keluar dari sesi akun
+                                    <span class="gcsProfileMenuSubheading gcsProfileTextRedSub">Keluar
+                                        dari sesi akun
                                         aktif perangkat ini</span>
                                 </div>
                             </div>
