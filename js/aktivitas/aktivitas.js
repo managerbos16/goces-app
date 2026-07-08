@@ -1,27 +1,24 @@
-(function () {
-    "use strict";
+const tabs = document.querySelectorAll('.gcsActivitySegmentButton');
+const panels = document.querySelectorAll('.gcsActivityPanel');
 
-    function gcsActivityInit() {
-        const segments = document.querySelectorAll('.gcsActivitySegmentButton');
-        const panels = document.querySelectorAll('.gcsActivityPanel');
+const switchTab = (target) => {
+    // Reset buttons
+    tabs.forEach(tab => {
+        tab.classList.remove('gcsActivitySegmentActive');
+        if (tab.dataset.target === target) tab.classList.add('gcsActivitySegmentActive');
+    });
 
-        segments.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // UI Toggle
-                segments.forEach(s => s.classList.remove('gcsActivitySegmentActive'));
-                btn.classList.add('gcsActivitySegmentActive');
+    // Reset panels
+    panels.forEach(panel => {
+        panel.classList.remove('gcsActivityPanelActive');
+        if (panel.id === `gcsActivityPanel${target.charAt(0).toUpperCase() + target.slice(1)}`) {
+            panel.classList.add('gcsActivityPanelActive');
+        }
+    });
+};
 
-                // Panel Toggle
-                const target = btn.dataset.target;
-                panels.forEach(p => {
-                    p.classList.remove('gcsActivityPanelActive');
-                    if (p.id === `gcsActivity${target.charAt(0).toUpperCase() + target.slice(1)}Panel`) {
-                        p.classList.add('gcsActivityPanelActive');
-                    }
-                });
-            });
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', gcsActivityInit);
-})();
+tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+        switchTab(e.target.dataset.target);
+    });
+});

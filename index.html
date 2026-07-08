@@ -1651,28 +1651,14 @@
 
         <section id="page-aktivitas" class="goces-page">
             <header class="gcsActivityHeader">
-                <div class="gcsActivityHeaderTop">
-                    <h1 class="gcsActivityTitle">Aktivitas</h1>
-                    <div class="gcsActivityHeaderActions">
-                        <a href="https://jgjk.mobi/act/cart" class="gcsActivityCartButton" aria-label="Keranjang">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="9" cy="21" r="1" />
-                                <circle cx="20" cy="21" r="1" />
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                            </svg>
-                        </a>
-                        <a href="action://act/message_list" class="gcsActivityNotificationButton"
-                            aria-label="Notifikasi">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                            </svg>
-                        </a>
-                    </div>
+                <h1 class="gcsActivityTitle">Aktivitas</h1>
+                <div class="gcsActivityHeaderActions">
+                    <a href="https://jgjk.mobi/act/cart" class="gcsActivityIconButton">🛒</a>
+                    <a href="action://act/message_list" class="gcsActivityIconButton">🔔</a>
                 </div>
             </header>
 
-            <main class="gcsActivityContent">
+            <main class="gcsActivityMain">
                 <div class="gcsActivitySegment">
                     <button class="gcsActivitySegmentButton gcsActivitySegmentActive"
                         data-target="purchase">Pembelian</button>
@@ -1680,42 +1666,44 @@
                     <button class="gcsActivitySegmentButton" data-target="point">Poin</button>
                 </div>
 
-                <section id="gcsActivityPurchasePanel" class="gcsActivityPanel gcsActivityPanelActive">
-                    <article class="gcsActivityCard">
-                        <div class="gcsActivityCardIcon">🛵</div>
+                <section id="gcsActivityPanelPurchase" class="gcsActivityPanel gcsActivityPanelActive">
+                    <div class="gcsActivityCard">
+                        <div class="gcsActivityCardIcon">⚡</div>
                         <div class="gcsActivityCardBody">
                             <div class="gcsActivityCardHeader">
-                                <h3 class="gcsActivityCardTitle">GoRide - Perjalanan</h3>
-                                <span class="gcsActivityBadgeSuccess">Selesai</span>
+                                <span class="gcsActivityCardTitle">Listrik PLN</span>
+                                <span class="gcsActivityBadgeSuccess">Berhasil</span>
                             </div>
-                            <p class="gcsActivityCardSubtitle">8 Juli 2026 • 14:00</p>
+                            <span class="gcsActivityCardSubtitle">TRX-9928374 | 08 Jul, 14:00</span>
                             <div class="gcsActivityCardFooter">
-                                <span class="gcsActivityCardPrice">Rp 25.000</span>
+                                <span class="gcsActivityCardPrice">Rp 100.000</span>
                             </div>
                         </div>
-                    </article>
+                    </div>
                 </section>
 
-                <section id="gcsActivityBalancePanel" class="gcsActivityPanel">
-                    <article class="gcsActivityCard">
-                        <div class="gcsActivityCardIcon">⬆</div>
-                        <div class="gcsActivityCardBody">
-                            <h3 class="gcsActivityCardTitle">Top Up GOCESPay</h3>
-                            <p class="gcsActivityCardSubtitle">Hari ini • 12:30</p>
-                            <span class="gcsActivityCardPrice" style="color: #059669">+ Rp 100.000</span>
+                <section id="gcsActivityPanelBalance" class="gcsActivityPanel">
+                    <div class="gcsActivityTimeline">
+                        <div class="gcsActivityTimelineItem">
+                            <span class="gcsActivityTimelineIcon">⬆</span>
+                            <div class="gcsActivityTimelineInfo">
+                                <p>Top Up Saldo</p>
+                                <small>08 Jul, 12:00</small>
+                            </div>
+                            <span class="gcsActivityPricePositive">+ Rp 500.000</span>
                         </div>
-                    </article>
+                    </div>
                 </section>
 
-                <section id="gcsActivityPointPanel" class="gcsActivityPanel">
-                    <article class="gcsActivityCard">
-                        <div class="gcsActivityCardIcon">🎁</div>
-                        <div class="gcsActivityCardBody">
-                            <h3 class="gcsActivityCardTitle">Bonus Poin Transaksi</h3>
-                            <p class="gcsActivityCardSubtitle">7 Juli 2026</p>
-                            <span class="gcsActivityCardPrice" style="color: #d97706">+ 50 Poin</span>
+                <section id="gcsActivityPanelPoint" class="gcsActivityPanel">
+                    <div class="gcsActivityRewardCard">
+                        <div class="gcsActivityRewardIcon">🎁</div>
+                        <div class="gcsActivityRewardInfo">
+                            <p>Bonus Transaksi</p>
+                            <small>07 Jul, 09:30</small>
                         </div>
-                    </article>
+                        <span class="gcsActivityRewardValue">+ 50 pts</span>
+                    </div>
                 </section>
             </main>
         </section>
