@@ -1,66 +1,98 @@
-.gcsNativeActivityHeader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--nav-height);
-  padding: var(--safe-top) var(--screen-padding) 0;
+#page-aktivitas {
+  padding: 0 16px;
+  background: var(--gray);
+  min-height: 100vh;
+}
+
+#page-aktivitas .gcsNativeActivityHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(249, 250, 251, 0.8);
-  backdrop-filter: blur(20px);
-  z-index: 100;
+  padding: 20px 0;
 }
 
-.gcsNativeActivityTitle {
+#page-aktivitas .gcsNativeActivityTitle {
   font-size: 34px;
-  font-weight: 700;
-  color: var(--text);
+  font-weight: 800;
   margin: 0;
 }
 
-.gcsNativeActivitySegmentWrapper {
+#page-aktivitas .gcsNativeActivityHeaderRight {
   display: flex;
-  background: var(--border);
-  padding: 4px;
-  border-radius: 14px;
-  margin: 0 var(--screen-padding) var(--section-gap);
+  gap: 12px;
 }
 
-.gcsNativeActivitySegmentButton {
+#page-aktivitas .gcsNativeActivityCartButton,
+#page-aktivitas .gcsNativeActivityNotificationButton {
+  background: var(--white);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#page-aktivitas .gcsNativeActivitySegmentWrapper {
+  display: flex;
+  background: #e5e7eb;
+  padding: 4px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+#page-aktivitas .gcsNativeActivitySegmentButton {
   flex: 1;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 8px;
+  border-radius: 8px;
   font-weight: 600;
-  color: #6b7280;
-  cursor: pointer;
-  transition: var(--transition);
+  background: transparent;
+  transition: 0.3s;
 }
 
-.gcsNativeActivitySegmentButtonActive {
+#page-aktivitas .gcsNativeActivitySegmentButtonActive {
   background: var(--white);
   color: var(--blue);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.gcsNativeActivityPanel {
+#page-aktivitas .gcsNativeActivityPanel {
   display: none;
-  padding: 0 var(--screen-padding);
 }
-.gcsNativeActivityPanelActive {
+#page-aktivitas .gcsNativeActivityPanelActive {
   display: block;
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.3s ease;
+}
+
+#page-aktivitas .gcsNativeActivityCard {
+  background: var(--white);
+  padding: 16px;
+  border-radius: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+#page-aktivitas .gcsNativeActivityCardTitle {
+  font-weight: 600;
+  display: block;
+}
+#page-aktivitas .gcsNativeActivityBadgeSuccess {
+  font-size: 12px;
+  color: #059669;
+  font-weight: 500;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }

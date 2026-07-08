@@ -1,28 +1,19 @@
-const gcsNativeActivityInit = () => {
-    const buttons = document.querySelectorAll('.gcsNativeActivitySegmentButton');
-    const panels = document.querySelectorAll('.gcsNativeActivityPanel');
+function gcsNativeActivityInit() {
+    const activityPage = document.querySelector("#page-aktivitas");
+    const segments = activityPage.querySelectorAll(".gcsNativeActivitySegmentButton");
+    const panels = activityPage.querySelectorAll(".gcsNativeActivityPanel");
 
-    const gcsNativeActivitySwitchTab = (target) => {
-        buttons.forEach(btn => {
-            btn.classList.toggle('gcsNativeActivitySegmentButtonActive', btn.dataset.tab === target);
-        });
+    segments.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Remove active class
+            segments.forEach(s => s.classList.remove("gcsNativeActivitySegmentButtonActive"));
+            panels.forEach(p => p.classList.remove("gcsNativeActivityPanelActive"));
 
-        panels.forEach(panel => {
-            panel.classList.remove('gcsNativeActivityPanelActive');
-            if (panel.id === `gcsNativeActivity${target.charAt(0).toUpperCase() + target.slice(1)}Panel`) {
-                panel.classList.add('gcsNativeActivityPanelActive');
-            }
-        });
-    };
-
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            gcsNativeActivitySwitchTab(button.dataset.tab);
+            // Add active class
+            btn.classList.add("gcsNativeActivitySegmentButtonActive");
+            const target = btn.getAttribute("data-target");
+            activityPage.querySelector(`#gcsNativeActivityPanel${target.charAt(0).toUpperCase() + target.slice(1)}`)
+                .classList.add("gcsNativeActivityPanelActive");
         });
     });
-
-    // Default state
-    gcsNativeActivitySwitchTab('purchase');
-};
-
-document.addEventListener('DOMContentLoaded', gcsNativeActivityInit);
+}

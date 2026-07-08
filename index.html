@@ -1651,29 +1651,63 @@
 
         <section id="page-aktivitas" class="goces-page">
             <header class="gcsNativeActivityHeader">
-                <div class="gcsNativeActivityHeaderLeft">
-                    <h1 class="gcsNativeActivityTitle">Aktivitas</h1>
-                </div>
+                <h1 class="gcsNativeActivityTitle">Aktivitas</h1>
                 <div class="gcsNativeActivityHeaderRight">
-                    <button class="gcsNativeActivityCartButton" aria-label="Keranjang"></button>
-                    <button class="gcsNativeActivityNotificationButton" aria-label="Notifikasi"></button>
+                    <button class="gcsNativeActivityCartButton" aria-label="Keranjang">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                            fill="none">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </button>
+                    <button class="gcsNativeActivityNotificationButton" aria-label="Notifikasi">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                            fill="none">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </button>
                 </div>
             </header>
 
-            <main class="gcsNativeActivityMain">
-                <div class="gcsNativeActivitySegmentWrapper">
-                    <button class="gcsNativeActivitySegmentButton gcsNativeActivitySegmentButtonActive"
-                        data-tab="purchase">Pembelian</button>
-                    <button class="gcsNativeActivitySegmentButton" data-tab="balance">Saldo</button>
-                    <button class="gcsNativeActivitySegmentButton" data-tab="point">Poin</button>
-                </div>
+            <div class="gcsNativeActivitySegmentWrapper">
+                <button class="gcsNativeActivitySegmentButton gcsNativeActivitySegmentButtonActive"
+                    data-target="purchase">Pembelian</button>
+                <button class="gcsNativeActivitySegmentButton" data-target="balance">Saldo</button>
+                <button class="gcsNativeActivitySegmentButton" data-target="point">Poin</button>
+            </div>
 
-                <div id="gcsNativeActivityContent" class="gcsNativeActivityContent">
-                    <section id="gcsNativeActivityPurchasePanel" class="gcsNativeActivityPanel"></section>
-                    <section id="gcsNativeActivityBalancePanel" class="gcsNativeActivityPanel"></section>
-                    <section id="gcsNativeActivityPointPanel" class="gcsNativeActivityPanel"></section>
+            <div class="gcsNativeActivityContent">
+                <div id="gcsNativeActivityPanelPurchase" class="gcsNativeActivityPanel gcsNativeActivityPanelActive">
+                    <div class="gcsNativeActivityCard">
+                        <div class="gcsNativeActivityCardBody">
+                            <span class="gcsNativeActivityCardTitle">Listrik PLN</span>
+                            <span class="gcsNativeActivityCardDate">08 Jul 2026</span>
+                            <span class="gcsNativeActivityBadgeSuccess">Berhasil</span>
+                        </div>
+                        <div class="gcsNativeActivityCardAmount">Rp 100.000</div>
+                    </div>
                 </div>
-            </main>
+                <div id="gcsNativeActivityPanelBalance" class="gcsNativeActivityPanel">
+                    <div class="gcsNativeActivityCard">
+                        <div class="gcsNativeActivityCardBody">
+                            <span class="gcsNativeActivityCardTitle">Top Up Saldo</span>
+                            <span class="gcsNativeActivityCardDate">07 Jul 2026</span>
+                        </div>
+                        <div class="gcsNativeActivityCardAmount" style="color: #059669;">+ Rp 500.000</div>
+                    </div>
+                </div>
+                <div id="gcsNativeActivityPanelPoint" class="gcsNativeActivityPanel">
+                    <div class="gcsNativeActivityCard">
+                        <div class="gcsNativeActivityCardBody">
+                            <span class="gcsNativeActivityCardTitle">Bonus Loyalitas</span>
+                            <span class="gcsNativeActivityCardDate">06 Jul 2026</span>
+                        </div>
+                        <div class="gcsNativeActivityCardAmount" style="color: #d97706;">+ 50 Pts</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="page-chat" class="goces-page">
