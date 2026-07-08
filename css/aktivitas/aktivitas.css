@@ -1,26 +1,26 @@
-.gcs-header {
+.activity-header {
   position: fixed;
   top: 0;
   width: 100%;
   height: 88px;
-  padding: 0 var(--screen-padding);
+  padding: 0 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(249, 250, 251, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   z-index: 100;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--border);
 }
-.gcs-title {
+.header-left h1 {
   font-size: 32px;
   font-weight: 800;
 }
-.gcs-header-actions {
+.header-right {
   display: flex;
   gap: 12px;
 }
-.gcs-btn-circle {
+.icon-btn {
   width: 44px;
   height: 44px;
   background: var(--white);
@@ -28,106 +28,98 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: transform var(--transition);
 }
-.gcs-btn-circle:active {
+.icon-btn:active {
   transform: scale(0.95);
 }
 
-.gcs-segmented-control {
+.activity-tabs {
   display: flex;
-  background: var(--border);
-  padding: 4px;
-  border-radius: 14px;
-  margin: 0 var(--screen-padding) 20px;
+  gap: 8px;
+  padding: 0 16px;
+  margin-bottom: 20px;
 }
-.gcs-tab-btn {
+.tab-btn {
   flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--white);
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
-  background: transparent;
 }
-.gcs-tab-btn.active {
-  background: var(--white);
-  color: var(--blue);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+.tab-btn.active {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.2);
 }
 
-.gcs-panel {
+.activity-content {
+  padding: 0 16px;
+}
+.tab-panel {
   display: none;
-  padding: 0 var(--screen-padding);
-  animation: fadeIn 0.25s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--transition);
 }
-.gcs-panel.active {
+.tab-panel.active {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
-.gcs-card {
+
+.ios-card {
   background: var(--white);
   padding: 20px;
-  border-radius: var(--card-radius);
+  border-radius: 22px;
   display: flex;
   align-items: center;
   gap: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
   margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
-.gcs-icon {
-  width: 52px;
-  height: 52px;
+.card-icon {
+  width: 50px;
+  height: 50px;
   background: var(--gray);
-  border-radius: var(--icon-radius);
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
 }
-.gcs-info {
+.card-details {
   flex: 1;
 }
-.gcs-flex-row {
+.card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 4px;
 }
-.gcs-service {
-  font-weight: 700;
-}
-.gcs-meta {
+.card-meta {
   font-size: 12px;
   color: #6b7280;
 }
-.gcs-badge {
-  padding: 3px 8px;
-  border-radius: 6px;
+.badge {
   font-size: 10px;
-  font-weight: 700;
-}
-.success {
+  padding: 2px 8px;
+  border-radius: 6px;
   background: #dcfce7;
   color: #166534;
-}
-.gcs-price-inc {
-  color: #166534;
   font-weight: 700;
 }
-.gcs-empty {
-  text-align: center;
-  margin-top: 80px;
-  color: #94a3b8;
+.card-price {
+  font-weight: 700;
+  margin-top: 4px;
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.card-price-inc {
+  font-weight: 700;
+  color: #166534;
 }

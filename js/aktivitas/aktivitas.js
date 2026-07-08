@@ -1,35 +1,33 @@
 /**
- * GOCES Activity Controller
- * Mengelola navigasi tab dengan pendekatan state-driven
+ * Aktivitas Controller - GOCES
+ * Menangani navigasi tab tanpa reload halaman
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    "use strict";
-
-    const tabs = document.querySelectorAll(".gcs-tab-btn");
-    const panels = document.querySelectorAll(".gcs-panel");
+    const tabs = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".tab-panel");
 
     /**
-     * Fungsi untuk mengganti tab aktif secara halus
-     * @param {string} target - Data-tab target
+     * Fungsi untuk berpindah tab
+     * @param {string} targetTab - Nama tab yang dituju
      */
-    const switchTab = (target) => {
-        // Toggle class active pada tombol
+    const activateTab = (targetTab) => {
+        // Update class pada tombol
         tabs.forEach(tab => {
-            tab.classList.toggle("active", tab.dataset.tab === target);
+            tab.classList.toggle("active", tab.dataset.tab === targetTab);
         });
 
-        // Toggle class active pada panel
+        // Update class pada panel
         panels.forEach(panel => {
-            panel.classList.toggle("active", panel.id === target);
+            panel.classList.toggle("active", panel.id === targetTab);
         });
     };
 
-    // Menambahkan event listener ke setiap tombol tab
+    // Event listener untuk klik tab
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
-            const targetTab = tab.dataset.tab;
-            switchTab(targetTab);
+            const target = tab.dataset.tab;
+            activateTab(target);
         });
     });
 });
