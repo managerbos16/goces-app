@@ -1,4 +1,4 @@
-/* HEADER */
+/* HEADER iOS STYLE */
 .gcsPromoHeader {
   position: sticky;
   top: 0;
@@ -6,43 +6,56 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   padding: calc(var(--safe-top) + 12px) var(--screen-padding) 12px;
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  height: calc(var(--safe-top) + var(--nav-height));
+}
+
+.gcsPromoSearchForm {
+  flex: 1;
 }
 
 .gcsPromoSearchWrapper {
-  flex: 1;
-  margin-right: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-/* EXACT FORM OVERRIDE */
-.gcsPromoSearchWrapper form {
-  display: flex;
-  width: 100%;
+.gcsPromoSearchIcon {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  color: #9ca3af;
+  pointer-events: none;
 }
-.gcsPromoSearchWrapper .input {
+
+.gcsPromoInput {
   width: 100%;
-  background-color: var(--gray);
-  border: 1px solid var(--border);
-  padding: 10px 16px;
-  border-radius: var(--radius);
-  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 12px 10px 38px;
+  font-size: 15px;
+  color: var(--text);
   outline: none;
-  transition: var(--transition);
+  transition: background-color var(--transition);
 }
-.gcsPromoSearchWrapper .input:focus {
-  border-color: var(--blue);
-  background-color: var(--white);
-  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+
+.gcsPromoInput:focus {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.gcsPromoInput::placeholder {
+  color: #9ca3af;
 }
 
 .gcsPromoHeaderActions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .gcsPromoIconButton {
@@ -55,335 +68,242 @@
   border-radius: var(--icon-radius);
   background: var(--white);
   border: 1px solid var(--border);
-  transition: var(--transition);
+  transition:
+    transform var(--transition),
+    background-color var(--transition);
 }
+
 .gcsPromoIconButton:active {
   transform: scale(0.92);
-  background: var(--gray);
+  background-color: var(--gray);
 }
+
 .gcsPromoIconButton svg {
-  width: 22px;
-  height: 22px;
+  width: 21px;
+  height: 21px;
 }
 
 /* MAIN CONTENT */
 .gcsPromoMain {
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
-  gap: var(--section-gap);
-  overflow-x: hidden;
+  gap: 24px;
 }
 
-/* HERO BANNER */
-.gcsPromoHero {
-  margin: var(--screen-padding);
-  padding: 24px;
+/* ACTIVE VOUCHER CARD */
+.gcsPromoActiveCard {
+  margin: 0 var(--screen-padding);
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
   border-radius: var(--card-radius);
-  color: var(--white);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.4);
-}
-
-.gcsPromoHeroContent {
-  position: relative;
-  z-index: 2;
-}
-
-.gcsPromoHeroTitle {
-  font-size: 24px;
-  font-weight: 800;
-  margin: 12px 0 8px;
-  letter-spacing: -0.5px;
-}
-
-.gcsPromoHeroDesc {
-  font-size: 14px;
-  opacity: 0.9;
-  margin-bottom: 20px;
-}
-
-.gcsPromoBtn {
-  padding: 10px 20px;
-  border-radius: var(--radius);
-  font-weight: 600;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.gcsPromoBtnPrimary {
-  background: var(--white);
-  color: var(--blue-dark);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-.gcsPromoBtnPrimary:active {
-  transform: scale(0.96);
-  background: var(--gray);
-}
-
-/* BADGES */
-.gcsPromoBadge {
-  display: inline-block;
-  padding: 4px 10px;
-  font-size: 11px;
-  font-weight: 700;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.gcsPromoBadgeWarning {
-  background: #fbbf24;
-  color: #92400e;
-}
-.gcsPromoBadgeInfo {
-  background: #dbeafe;
-  color: var(--blue-dark);
-}
-.gcsPromoBadgeSuccess {
-  background: #dcfce3;
-  color: #166534;
-}
-
-/* CATEGORIES */
-.gcsPromoCategoryWrapper {
-  position: sticky;
-  top: calc(var(--safe-top) + var(--nav-height));
-  z-index: 99;
-  background: var(--gray);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.gcsPromoCategoryList {
+  padding: 20px;
   display: flex;
-  gap: 8px;
-  padding: 0 var(--screen-padding);
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  list-style: none;
-}
-.gcsPromoCategoryList::-webkit-scrollbar {
-  display: none;
-}
-
-.gcsPromoChip {
-  padding: 8px 16px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  white-space: nowrap;
-  cursor: pointer;
-  transition: var(--transition);
-}
-.gcsPromoChip:active {
-  transform: scale(0.95);
-}
-.gcsPromoChip.gcsPromoActive {
-  background: var(--blue);
-  color: var(--white);
-  border-color: var(--blue);
-  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.3);
-}
-
-/* CONTENT AREA & ANIMATION */
-.gcsPromoContentArea {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity var(--transition),
-    transform var(--transition);
-}
-.gcsPromoContentArea.gcsPromoHidden {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-/* SECTION STRUCTURE */
-.gcsPromoSection {
-  margin-bottom: 24px;
-}
-.gcsPromoSectionHeader {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 var(--screen-padding);
-  margin-bottom: 12px;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(29, 78, 216, 0.2);
+  color: var(--white);
 }
-.gcsPromoSectionTitle {
+
+.gcsPromoActiveContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gcsPromoActiveTitle {
   font-size: 18px;
   font-weight: 700;
 }
-.gcsPromoCountdown {
-  display: flex;
-  gap: 4px;
-}
-.gcsPromoTimeBox {
-  background: #ef4444;
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 6px;
-  border-radius: 6px;
-}
-.gcsPromoTimeColon {
-  font-weight: 700;
-  color: #ef4444;
+
+.gcsPromoActiveSubtitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* GRID LAYOUTS */
-.gcsPromoGrid2Col {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+.gcsPromoCounterWrapper {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gcsPromoCounterText {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* CATEGORY CHIPS */
+.gcsPromoCategoryNav {
   padding: 0 var(--screen-padding);
 }
-.gcsPromoSlider {
+
+.gcsPromoCategoryScroll {
   display: flex;
-  gap: 12px;
-  padding: 0 var(--screen-padding);
+  gap: 10px;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-}
-.gcsPromoSlider::-webkit-scrollbar {
-  display: none;
-}
-.gcsPromoSlider .gcsPromoCard {
-  min-width: 240px;
-  scroll-snap-align: start;
+  padding-bottom: 4px; /* Space for scrollbar */
+  scrollbar-width: none; /* Firefox */
 }
 
-/* VOUCHER CARD */
-.gcsPromoCard {
+.gcsPromoCategoryScroll::-webkit-scrollbar {
+  display: none; /* Safari/Chrome */
+}
+
+.gcsPromoCategoryBtn {
   background: var(--white);
-  border-radius: var(--card-radius);
   border: 1px solid var(--border);
+  color: #6b7280;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+
+.gcsPromoCategoryBtn.gcsPromoCategoryActive {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2);
+}
+
+.gcsPromoCategoryBtn:active {
+  transform: scale(0.95);
+}
+
+/* VOUCHER LIST */
+.gcsPromoVoucherList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 var(--screen-padding);
+}
+
+.gcsPromoVoucher {
+  background: var(--white);
+  border-radius: var(--radius);
   padding: 16px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  position: relative;
-  overflow: hidden;
-  transition: var(--transition);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  cursor: pointer;
-}
-.gcsPromoCard:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
-}
-.gcsPromoCard:active {
-  transform: scale(0.98);
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  will-change: opacity, transform;
 }
 
-.gcsPromoCard::before,
-.gcsPromoCard::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: var(--gray);
-  border-radius: 50%;
-  bottom: 50px;
-  border: 1px solid var(--border);
-}
-.gcsPromoCard::before {
-  left: -9px;
-  border-right-color: transparent;
-  border-top-color: transparent;
-  transform: rotate(45deg);
-}
-.gcsPromoCard::after {
-  right: -9px;
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  transform: rotate(45deg);
+.gcsPromoVoucherIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 
-.gcsPromoCardDivider {
-  position: absolute;
-  bottom: 58px;
-  left: 12px;
-  right: 12px;
-  border-bottom: 2px dashed var(--border);
+/* Voucher Color Variations */
+.gcsPromoBgBlue {
+  background: rgba(29, 78, 216, 0.1);
+}
+.gcsPromoBgGreen {
+  background: rgba(16, 185, 129, 0.1);
+}
+.gcsPromoBgRed {
+  background: rgba(239, 68, 68, 0.1);
+}
+.gcsPromoBgPurple {
+  background: rgba(139, 92, 246, 0.1);
+}
+.gcsPromoBgOrange {
+  background: rgba(249, 115, 22, 0.1);
 }
 
-.gcsPromoCardHeader {
+.gcsPromoVoucherInfo {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.gcsPromoCardTitle {
+
+.gcsPromoVoucherTitle {
   font-size: 15px;
   font-weight: 700;
   color: var(--text);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.2;
 }
-.gcsPromoCardDesc {
-  font-size: 12px;
+
+.gcsPromoVoucherDesc {
+  font-size: 13px;
   color: #6b7280;
 }
-.gcsPromoCodeBox {
-  background: var(--gray);
-  border: 1px solid var(--border);
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-family: monospace;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--blue-dark);
-  display: inline-block;
-  align-self: flex-start;
-}
-.gcsPromoCardMeta {
-  font-size: 11px;
-  color: #9ca3af;
-  margin-bottom: 24px;
-}
 
-.gcsPromoCardAction {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 16px;
-}
-.gcsPromoCardBtn {
-  background: var(--blue);
-  color: var(--white);
+.gcsPromoUseBtn {
+  background: rgba(29, 78, 216, 0.1);
+  color: var(--blue);
   border: none;
   padding: 8px 16px;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 13px;
-  font-weight: 600;
-  width: 100%;
-  text-align: center;
-  transition: var(--transition);
-}
-.gcsPromoCardBtn:active {
-  background: var(--blue-dark);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    background-color var(--transition);
 }
 
-/* RESPONSIVE DESKTOP & TABLET */
-@media (min-width: 768px) {
-  .gcsPromoGrid2Col {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .gcsPromoSlider .gcsPromoCard {
-    min-width: 280px;
-  }
+.gcsPromoUseBtn:active {
+  transform: scale(0.92);
+  background: rgba(29, 78, 216, 0.2);
 }
-@media (min-width: 1024px) {
-  .gcsPromoGrid2Col {
-    grid-template-columns: repeat(4, 1fr);
+
+/* EMPTY STATE */
+.gcsPromoEmptyState {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dashed var(--border);
+}
+
+.gcsPromoEmptyIcon {
+  font-size: 40px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.gcsPromoEmptyTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.gcsPromoEmptyDesc {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* UTILITIES: CLASS INI DIKENDALIKAN OLEH JAVASCRIPT */
+.gcsPromoHidden {
+  display: none !important;
+}
+
+/* RESPONSIVE DESKTOP/TABLET */
+@media (min-width: 768px) {
+  .gcsPromoMain {
+    padding: 32px 24px;
   }
 }
