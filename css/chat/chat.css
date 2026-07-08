@@ -1,14 +1,3 @@
-/* CONTAINER */
-.gcsChatContainer {
-  max-width: 768px;
-  margin: 0 auto;
-  background-color: var(--gray);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: calc(var(--safe-bottom) + 24px);
-}
-
 /* HEADER IDENTIK DENGAN HOME */
 .gcsChatHeader {
   position: sticky;

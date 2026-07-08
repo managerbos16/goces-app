@@ -1,13 +1,3 @@
-.gcsActivityContainer {
-  max-width: 768px;
-  margin: 0 auto;
-  background-color: var(--gray);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
 /* HEADER BASE IDENTIK DENGAN HOME */
 .gcsActivityHeader {
   position: sticky;
