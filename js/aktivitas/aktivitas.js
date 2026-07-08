@@ -1,24 +1,28 @@
-const tabs = document.querySelectorAll('.gcsActivitySegmentButton');
-const panels = document.querySelectorAll('.gcsActivityPanel');
+const gcsNativeActivityInit = () => {
+    const buttons = document.querySelectorAll('.gcsNativeActivitySegmentButton');
+    const panels = document.querySelectorAll('.gcsNativeActivityPanel');
 
-const switchTab = (target) => {
-    // Reset buttons
-    tabs.forEach(tab => {
-        tab.classList.remove('gcsActivitySegmentActive');
-        if (tab.dataset.target === target) tab.classList.add('gcsActivitySegmentActive');
+    const gcsNativeActivitySwitchTab = (target) => {
+        buttons.forEach(btn => {
+            btn.classList.toggle('gcsNativeActivitySegmentButtonActive', btn.dataset.tab === target);
+        });
+
+        panels.forEach(panel => {
+            panel.classList.remove('gcsNativeActivityPanelActive');
+            if (panel.id === `gcsNativeActivity${target.charAt(0).toUpperCase() + target.slice(1)}Panel`) {
+                panel.classList.add('gcsNativeActivityPanelActive');
+            }
+        });
+    };
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            gcsNativeActivitySwitchTab(button.dataset.tab);
+        });
     });
 
-    // Reset panels
-    panels.forEach(panel => {
-        panel.classList.remove('gcsActivityPanelActive');
-        if (panel.id === `gcsActivityPanel${target.charAt(0).toUpperCase() + target.slice(1)}`) {
-            panel.classList.add('gcsActivityPanelActive');
-        }
-    });
+    // Default state
+    gcsNativeActivitySwitchTab('purchase');
 };
 
-tabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-        switchTab(e.target.dataset.target);
-    });
-});
+document.addEventListener('DOMContentLoaded', gcsNativeActivityInit);

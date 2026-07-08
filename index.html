@@ -1650,61 +1650,29 @@
         </section>
 
         <section id="page-aktivitas" class="goces-page">
-            <header class="gcsActivityHeader">
-                <h1 class="gcsActivityTitle">Aktivitas</h1>
-                <div class="gcsActivityHeaderActions">
-                    <a href="https://jgjk.mobi/act/cart" class="gcsActivityIconButton">🛒</a>
-                    <a href="action://act/message_list" class="gcsActivityIconButton">🔔</a>
+            <header class="gcsNativeActivityHeader">
+                <div class="gcsNativeActivityHeaderLeft">
+                    <h1 class="gcsNativeActivityTitle">Aktivitas</h1>
+                </div>
+                <div class="gcsNativeActivityHeaderRight">
+                    <button class="gcsNativeActivityCartButton" aria-label="Keranjang"></button>
+                    <button class="gcsNativeActivityNotificationButton" aria-label="Notifikasi"></button>
                 </div>
             </header>
 
-            <main class="gcsActivityMain">
-                <div class="gcsActivitySegment">
-                    <button class="gcsActivitySegmentButton gcsActivitySegmentActive"
-                        data-target="purchase">Pembelian</button>
-                    <button class="gcsActivitySegmentButton" data-target="balance">Saldo</button>
-                    <button class="gcsActivitySegmentButton" data-target="point">Poin</button>
+            <main class="gcsNativeActivityMain">
+                <div class="gcsNativeActivitySegmentWrapper">
+                    <button class="gcsNativeActivitySegmentButton gcsNativeActivitySegmentButtonActive"
+                        data-tab="purchase">Pembelian</button>
+                    <button class="gcsNativeActivitySegmentButton" data-tab="balance">Saldo</button>
+                    <button class="gcsNativeActivitySegmentButton" data-tab="point">Poin</button>
                 </div>
 
-                <section id="gcsActivityPanelPurchase" class="gcsActivityPanel gcsActivityPanelActive">
-                    <div class="gcsActivityCard">
-                        <div class="gcsActivityCardIcon">⚡</div>
-                        <div class="gcsActivityCardBody">
-                            <div class="gcsActivityCardHeader">
-                                <span class="gcsActivityCardTitle">Listrik PLN</span>
-                                <span class="gcsActivityBadgeSuccess">Berhasil</span>
-                            </div>
-                            <span class="gcsActivityCardSubtitle">TRX-9928374 | 08 Jul, 14:00</span>
-                            <div class="gcsActivityCardFooter">
-                                <span class="gcsActivityCardPrice">Rp 100.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="gcsActivityPanelBalance" class="gcsActivityPanel">
-                    <div class="gcsActivityTimeline">
-                        <div class="gcsActivityTimelineItem">
-                            <span class="gcsActivityTimelineIcon">⬆</span>
-                            <div class="gcsActivityTimelineInfo">
-                                <p>Top Up Saldo</p>
-                                <small>08 Jul, 12:00</small>
-                            </div>
-                            <span class="gcsActivityPricePositive">+ Rp 500.000</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="gcsActivityPanelPoint" class="gcsActivityPanel">
-                    <div class="gcsActivityRewardCard">
-                        <div class="gcsActivityRewardIcon">🎁</div>
-                        <div class="gcsActivityRewardInfo">
-                            <p>Bonus Transaksi</p>
-                            <small>07 Jul, 09:30</small>
-                        </div>
-                        <span class="gcsActivityRewardValue">+ 50 pts</span>
-                    </div>
-                </section>
+                <div id="gcsNativeActivityContent" class="gcsNativeActivityContent">
+                    <section id="gcsNativeActivityPurchasePanel" class="gcsNativeActivityPanel"></section>
+                    <section id="gcsNativeActivityBalancePanel" class="gcsNativeActivityPanel"></section>
+                    <section id="gcsNativeActivityPointPanel" class="gcsNativeActivityPanel"></section>
+                </div>
             </main>
         </section>
 

@@ -1,64 +1,57 @@
-.gcsActivityHeader {
+.gcsNativeActivityHeader {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  padding: var(--safe-top) var(--screen-padding) 10px;
+  height: var(--nav-height);
+  padding: var(--safe-top) var(--screen-padding) 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(249, 250, 251, 0.8);
   backdrop-filter: blur(20px);
   z-index: 100;
 }
 
-.gcsActivityTitle {
+.gcsNativeActivityTitle {
   font-size: 34px;
   font-weight: 700;
   color: var(--text);
+  margin: 0;
 }
 
-.gcsActivitySegment {
+.gcsNativeActivitySegmentWrapper {
   display: flex;
-  background: #e5e7eb;
+  background: var(--border);
   padding: 4px;
-  border-radius: 50px;
+  border-radius: 14px;
   margin: 0 var(--screen-padding) var(--section-gap);
 }
 
-.gcsActivitySegmentButton {
+.gcsNativeActivitySegmentButton {
   flex: 1;
   border: none;
   padding: 10px;
-  border-radius: 40px;
-  background: transparent;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
   transition: var(--transition);
 }
 
-.gcsActivitySegmentActive {
-  background: var(--blue);
-  color: white;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+.gcsNativeActivitySegmentButtonActive {
+  background: var(--white);
+  color: var(--blue);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.gcsActivityPanel {
+.gcsNativeActivityPanel {
   display: none;
   padding: 0 var(--screen-padding);
 }
-.gcsActivityPanelActive {
+.gcsNativeActivityPanelActive {
   display: block;
-  animation: fadeIn 0.3s ease;
-}
-
-.gcsActivityCard {
-  background: white;
-  padding: 16px;
-  border-radius: var(--card-radius);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.3s ease-out;
 }
 
 @keyframes fadeIn {
