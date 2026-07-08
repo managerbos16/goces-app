@@ -1,266 +1,343 @@
-/* HEADER BASE IDENTIK DENGAN HOME */
-.gcsActivityHeader {
-  position: sticky;
-  top: 0;
+.gcsAct-header {
+  position: relative;
   z-index: 100;
+  padding: calc(var(--safe-top) + 16px) var(--screen-padding) 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--header-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: calc(var(--safe-top) + 12px) var(--screen-padding) 12px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  height: calc(var(--safe-top) + var(--nav-height));
 }
 
-.gcsActivityHeaderSpacer {
-  width: 92px; /* Menyamakan keseimbangan visual tombol kanan */
-}
-
-.gcsActivityHeaderTitle {
-  font-size: clamp(17px, 4vw, 19px);
-  font-weight: 700;
+.gcsAct-title {
+  font-size: 1.75rem;
+  font-weight: 800;
   color: var(--text);
-  letter-spacing: -0.3px;
-  text-align: center;
+  letter-spacing: -0.5px;
 }
 
-.gcsActivityHeaderActions {
+.gcsAct-header-right {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
-.gcsActivityIconButton {
-  width: 40px;
-  height: 40px;
+.gcsAct-icon-btn {
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text);
-  border-radius: var(--icon-radius);
   background: var(--white);
-  border: 1px solid var(--border);
-  transition:
-    transform var(--transition),
-    background-color var(--transition);
+  border-radius: 50%;
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition);
 }
 
-.gcsActivityIconButton:active {
-  transform: scale(0.92);
-  background-color: var(--gray);
+.gcsAct-icon-btn:active {
+  transform: scale(0.9);
 }
 
-.gcsActivityIconButton svg {
-  width: 21px;
-  height: 21px;
-}
-
-/* CATEGORY TABS SYSTEM MENGGUNAKAN iOS CHIP PATTERN */
-.gcsActivityTabsWrapper {
-  position: sticky;
-  top: calc(var(--safe-top) + var(--nav-height));
+/* ====================================================
+   SEGMENTED CONTROL (KATEGORI)
+   ==================================================== */
+.gcsAct-segment-wrapper {
+  padding: 16px var(--screen-padding) 4px;
+  background: var(--gray);
   z-index: 90;
-  background: rgba(249, 250, 251, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-.gcsActivityTabsList {
+.gcsAct-segment-control {
   display: flex;
-  gap: 8px;
-  padding: 0 var(--screen-padding);
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+  background: #e5e7eb; /* Light gray base */
+  padding: 4px;
+  border-radius: var(--radius);
+  gap: 4px;
 }
 
-.gcsActivityTabsList::-webkit-scrollbar {
+.gcsAct-segment-btn {
+  flex: 1;
+  padding: 10px 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  background: var(--white); /* "Kategori lainnya putih" */
+  border-radius: calc(var(--radius) - 4px);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+/* State Aktif Kategori */
+.gcsAct-segment-btn.gcsAct-active {
+  background: var(--blue); /* "Kategori aktif berwarna biru" */
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2);
+}
+
+/* ====================================================
+   SCROLLABLE CONTENT & TAB SYSTEM
+   ==================================================== */
+.gcsAct-content-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px var(--screen-padding) calc(var(--safe-bottom) + 32px);
+  position: relative;
+}
+
+.gcsAct-content-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-.gcsActivityTabChip {
-  padding: 10px 18px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  white-space: nowrap;
-  cursor: pointer;
-  outline: none;
+/* TAB ANIMATION */
+.gcsAct-tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(15px) scale(0.98);
   transition:
-    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
 }
 
-.gcsActivityTabChip:active {
-  transform: scale(0.95);
+/* Step 1: Element takes space in layout */
+.gcsAct-tab-content.gcsAct-show {
+  display: block;
 }
 
-.gcsActivityTabChip.gcsActivityActive {
-  background: var(--blue);
-  color: var(--white);
-  border-color: var(--blue);
-  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+/* Step 2: Element fades and scales in */
+.gcsAct-tab-content.gcsAct-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
-/* MAIN PANEL LAYOUT */
-.gcsActivityMainContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--screen-padding);
-  min-height: calc(100vh - (var(--safe-top) + var(--nav-height) + 140px));
-}
-
-.gcsActivityTabPanel {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateY(0);
-  transition:
-    opacity var(--transition),
-    transform var(--transition);
-}
-
-/* PREMIUM EMPTY STATE CARD DESIGN */
-.gcsActivityEmptyCard {
+/* ====================================================
+   CARD PREMIUM iOS STYLE
+   ==================================================== */
+.gcsAct-card {
   background: var(--white);
   border-radius: var(--card-radius);
-  border: 1px solid rgba(229, 231, 235, 0.7);
-  padding: 40px 24px;
-  width: 100%;
-  max-width: 420px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.03);
-}
-
-.gcsActivityIconContainer {
-  width: 84px;
-  height: 84px;
-  background-color: rgba(29, 78, 216, 0.06);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue);
-  margin-bottom: 24px;
-}
-
-.gcsActivityIconContainer svg {
-  width: 38px;
-  height: 38px;
-}
-
-.gcsActivityCardTitle {
-  font-size: clamp(18px, 4.5vw, 21px);
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 10px;
-  letter-spacing: -0.4px;
-}
-
-.gcsActivityCardDesc {
-  font-size: clamp(13px, 3.5vw, 14.5px);
-  color: #6b7280;
-  margin-bottom: 32px;
-  max-width: 290px;
-}
-
-/* PREMIUM BUTTON SYSTEM (HOME DRIVEN) */
-.gcsActivityButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 52px;
-  background-color: var(--blue);
-  border: none;
-  border-radius: var(--radius);
-  color: var(--white);
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  outline: none;
-  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.25);
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(229, 231, 235, 0.4);
   transition:
-    background-color var(--transition),
     transform var(--transition),
     box-shadow var(--transition);
 }
 
-.gcsActivityButton:hover {
-  background-color: var(--blue-dark);
-  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.35);
-}
-
-.gcsActivityButton:active {
+.gcsAct-card:active {
   transform: scale(0.97);
-  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.15);
+  background: #fdfdfd;
 }
 
-/* RIPPLE EFFECT SYSTEM */
-.gcsActivityRipple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(0);
-  animation: gcsActivityRippleAnimation 0.55s linear;
-  pointer-events: none;
+/* Card Header */
+.gcsAct-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-@keyframes gcsActivityRippleAnimation {
-  to {
-    transform: scale(2.5);
-    opacity: 0;
-  }
+.gcsAct-service {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-/* ANIMATION UTILITIES */
-.gcsActivityShow {
-  display: flex !important;
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+.gcsAct-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--icon-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
 }
 
-/* RESPONSIVE BREAKPOINTS WITH AUTO-BOUNDS */
-@media (min-width: 480px) {
-  .gcsActivityEmptyCard {
-    padding: 48px 32px;
-  }
+/* Warna Khusus Layanan */
+.gcsAct-icon-ride {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+.gcsAct-icon-food {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+.gcsAct-icon-car {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+.gcsAct-icon-topup {
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+}
+.gcsAct-icon-payment {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+.gcsAct-icon-transfer {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+.gcsAct-icon-gift {
+  background: linear-gradient(135deg, #ec4899, #db2777);
+}
+.gcsAct-icon-redeem {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
 }
 
-@media (min-width: 768px) {
-  .gcsActivityTabsWrapper {
-    display: flex;
-    justify-content: center;
-  }
-  .gcsActivityTabsList {
-    justify-content: center;
-    width: 100%;
-  }
+.gcsAct-service-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Status Badges */
+.gcsAct-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+.gcsAct-badge-success {
+  background: #d1fae5;
+  color: #059669;
+}
+.gcsAct-badge-warning {
+  background: #fef3c7;
+  color: #d97706;
+}
+.gcsAct-badge-danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Typography & Layout Data */
+.gcsAct-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gcsAct-border-top {
+  border-top: 1px dashed var(--border);
+  padding-top: 14px;
+}
+
+.gcsAct-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.gcsAct-method strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.gcsAct-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gray);
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+
+.gcsAct-total-label {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.gcsAct-total-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* Format Nominal Khusus (Tab Saldo & Poin) */
+.gcsAct-amount {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.gcsAct-amount-in {
+  color: #10b981;
+}
+.gcsAct-amount-out {
+  color: #ef4444;
+}
+.gcsAct-font-bold {
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+/* Detail Saldo Sebelum/Sesudah */
+.gcsAct-balance-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gcsAct-balance-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gcsAct-balance-col span {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.gcsAct-balance-col strong {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.gcsAct-align-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.gcsAct-mt-2 {
+  margin-top: 8px;
+}
+
+/* ====================================================
+   EMPTY STATE
+   ==================================================== */
+.gcsAct-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  opacity: 1;
+  transition: opacity var(--transition);
+}
+
+.gcsAct-empty-state.gcsAct-hidden {
+  display: none;
+  opacity: 0;
+}
+
+.gcsAct-empty-icon {
+  width: 72px;
+  height: 72px;
+  color: #d1d5db;
+  margin-bottom: 20px;
+}
+
+.gcsAct-empty-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.gcsAct-empty-desc {
+  font-size: 0.9rem;
+  color: #6b7280;
 }

@@ -1,210 +1,119 @@
 /**
- * GOCES Activity Page Application Engine
- * Menerapkan standard arsitektur vanilla JS modular, performa render tinggi,
- * efisiensi repaint, serta isolasi namespace fungsional global.
+ * GOCES - Halaman Aktivitas Logic
+ * Mematuhi aturan strict Vanilla JS: Tidak membuat HTML menggunakan JS.
+ * Digunakan untuk: Navigasi Tab, Animasi Kelas, dan Filter Empty State.
  */
 
-// Menjaga enkapsulasi dengan cakupan eksekusi lokal instan
-(function () {
-    "use strict";
+document.addEventListener('DOMContentLoaded', () => {
 
-    // State Manajemen Aplikasi
-    const state = {
-        activeTab: "cart",
-        isAnimating: false,
-        animationDuration: 250 // Sinkronisasi dengan var(--transition) CSS
+    // ==========================================
+    // 1. Inisialisasi Variabel DOM
+    // ==========================================
+    const segmentButtons = document.querySelectorAll('.gcsAct-segment-btn');
+    const tabContents = document.querySelectorAll('.gcsAct-tab-content');
+    const emptyState = document.getElementById('gcsAct-empty');
+
+    // ==========================================
+    // 2. Fungsi Pengecekan Data Kosong (Empty State)
+    // ==========================================
+    /**
+     * Memeriksa apakah sebuah tab memiliki Card (article) di dalamnya.
+     * Jika tidak ada, tampilkan ilustrasi Empty State.
+     */
+    const checkEmptyState = (activeTabElement) => {
+        // Ambil semua article di dalam tab yang sedang aktif
+        const cards = activeTabElement.querySelectorAll('article.gcsAct-card');
+
+        if (cards.length === 0) {
+            // Tampilkan empty state
+            emptyState.classList.remove('gcsAct-hidden');
+        } else {
+            // Sembunyikan empty state
+            emptyState.classList.add('gcsAct-hidden');
+        }
     };
 
-    // Ref DOM Cache Element Kunci untuk Optimasi Pemanggilan berulang
-    let tabsListContainer = null;
-    let mainContentContainer = null;
-
+    // ==========================================
+    // 3. Logika Navigasi Tab (Switching)
+    // ==========================================
     /**
-     * Inisialisasi Utama Aplikasi (gcsActivityInit)
+     * Fungsi utama untuk mengelola perpindahan antar kategori.
+     * Menggunakan CSS transition (opacity, transform) untuk animasi iOS.
      */
-    function gcsActivityInit() {
-        tabsListContainer = document.getElementById("gcsActivityTabsList");
-        mainContentContainer = document.getElementById("gcsActivityMainContent");
+    const switchTab = (targetId) => {
+        // Elemen Tab Baru
+        const targetTab = document.getElementById(targetId);
 
-        if (!tabsListContainer || !mainContentContainer) return;
+        // Cari Tab Lama yang saat ini aktif
+        const currentTab = document.querySelector('.gcsAct-tab-content.gcsAct-show');
 
-        setupTabEventListeners();
-        setupGlobalEventListeners();
-    }
+        // Mencegah proses berulang jika tab yang diklik sudah aktif
+        if (currentTab && currentTab.id === targetId) return;
 
-    /**
-     * Konfigurasi Event Listeners menggunakan Event Delegation Berkinerja Tinggi
-     */
-    function setupTabEventListeners() {
-        tabsListContainer.addEventListener("click", function (event) {
-            const targetChip = event.target.closest(".gcsActivityTabChip");
+        // Proses Menghilangkan Tab Lama (Fade Out)
+        if (currentTab) {
+            // Hapus class active (trigger animasi CSS opacity 0 & scale down)
+            currentTab.classList.remove('gcsAct-active');
 
-            // Proteksi jika element bukan chip tab, sedang dalam animasi, atau mengklik tab yang sama aktif
-            if (!targetChip || state.isAnimating || targetChip.classList.contains("gcsActivityActive")) {
-                return;
-            }
-
-            const selectedTabId = targetChip.getAttribute("data-tab");
-            if (selectedTabId) {
-                gcsActivitySwitchTab(selectedTabId, targetChip);
-            }
-        });
-    }
-
-    /**
-     * Manajemen Mekanisme Event Delegasi Global untuk Komponen Konten & Efek Ripple
-     */
-    function setupGlobalEventListeners() {
-        // Event delegation pada area penampung konten utama
-        mainContentContainer.addEventListener("click", function (event) {
-            const element = event.target;
-
-            // Deteksi penanganan aksi tombol placeholder
-            const actionButton = element.closest(".gcsActivityButton");
-            if (actionButton) {
-                // Eksekusi Efek Visual Ripple native modern
-                if (actionButton.getAttribute("data-ripple") === "true") {
-                    createNativeRippleEffect(event, actionButton);
-                }
-
-                const actionType = actionButton.getAttribute("data-action");
-                if (actionType) {
-                    executePlaceholderAction(actionType);
-                }
-            }
-        });
-    }
-
-    /**
-     * Logika Perpindahan Tab Menggunakan Skema Transisi GPU Accelerated (gcsActivitySwitchTab)
-     * @param {String} tabId - Target Pengenal Identitas Tab Terpilih
-     * @param {HTMLElement} targetChipElement - Element Chip DOM yang Dipicu Aktif
-     */
-    function gcsActivitySwitchTab(tabId, targetChipElement) {
-        state.isAnimating = true;
-
-        // Mendapatkan referensi DOM Panel lama & baru
-        const currentActivePanel = document.querySelector(`.gcsActivityTabPanel.gcsActivityShow`);
-        const targetPanel = document.getElementById(`gcsActivityPanel${capitalizeFirstLetter(tabId)}`);
-
-        // 1. Mutasi Visual State untuk Navigasi Header Tab (Sinkronous)
-        document.querySelectorAll(".gcsActivityTabChip").forEach(chip => {
-            chip.classList.remove("gcsActivityActive");
-            chip.setAttribute("aria-selected", "false");
-        });
-        targetChipElement.classList.add("gcsActivityActive");
-        targetChipElement.setAttribute("aria-selected", "true");
-
-        // 2. Alur Animasi Fade & Transform Menggunakan requestAnimationFrame & Microtask Timers
-        if (currentActivePanel) {
-            // Memicu penurunan Opacity & Translasi posisi keluar
-            currentActivePanel.style.opacity = "0";
-            currentActivePanel.style.transform = "translateY(-6px)";
-
+            // Tunggu durasi CSS transition selesai (0.3s)
             setTimeout(() => {
-                requestAnimationFrame(() => {
-                    // Sembunyikan total panel lama
-                    currentActivePanel.classList.remove("gcsActivityShow");
-                    currentActivePanel.style.display = "none";
+                currentTab.classList.remove('gcsAct-show'); // Hapus display: block
 
-                    // Persiapkan visual dasar panel target masuk secara transparan
-                    targetPanel.style.display = "flex";
-                    targetPanel.style.opacity = "0";
-                    targetPanel.style.transform = "translateY(6px)";
+                // Proses Memunculkan Tab Baru (Fade In)
+                showNewTab(targetTab);
+            }, 300); // Sesuaikan dengan durasi di CSS .gcsAct-tab-content
 
-                    // Paksa Browser merefresh tata letak geometris (Reflow/Repaint optimization)
-                    void targetPanel.offsetWidth;
-
-                    // Picu rendering penampakan visual transisi masuk
-                    requestAnimationFrame(() => {
-                        targetPanel.classList.add("gcsActivityShow");
-                        targetPanel.style.opacity = "1";
-                        targetPanel.style.transform = "translateY(0)";
-
-                        state.activeTab = tabId;
-                        state.isAnimating = false;
-                    });
-                });
-            }, state.animationDuration);
         } else {
-            // Fallback penanganan langsung jika panel aktif awal tidak terdeteksi
-            if (targetPanel) {
-                targetPanel.classList.add("gcsActivityShow");
-                targetPanel.style.display = "flex";
-                targetPanel.style.opacity = "1";
-                targetPanel.style.transform = "translateY(0)";
-            }
-            state.activeTab = tabId;
-            state.isAnimating = false;
+            // Fallback jika tidak ada tab aktif sebelumnya
+            showNewTab(targetTab);
         }
-    }
+    };
 
     /**
-     * Penciptaan Efek Riak Gelombang Sentuh Modern (Native Ripple Dynamic Layer)
-     * @param {Event} event - Objek Pointer Koordinat Mouse/Sentuhan
-     * @param {HTMLElement} buttonElement - Target Kontainer Tempat Efek Diberikan
+     * Fungsi pembantu untuk memunculkan tab baru secara visual
      */
-    function createNativeRippleEffect(event, buttonElement) {
-        const circle = document.createElement("span");
-        const diameter = Math.max(buttonElement.clientWidth, buttonElement.clientHeight);
-        const radius = diameter / 2;
+    const showNewTab = (targetTab) => {
+        // 1. Set display: block (agar memakan ruang layout)
+        targetTab.classList.add('gcsAct-show');
 
-        const boundingClient = buttonElement.getBoundingClientRect();
+        // 2. Cek apakah tab ini butuh Empty State
+        checkEmptyState(targetTab);
 
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${event.clientX - boundingClient.left - radius}px`;
-        circle.style.top = `${event.clientY - boundingClient.top - radius}px`;
-        circle.classList.add("gcsActivityRipple");
+        // 3. Gunakan requestAnimationFrame untuk memastikan browser 
+        // merender display:block terlebih dahulu sebelum memicu animasi.
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                // Tambah class active (trigger animasi CSS opacity 1 & scale 1)
+                targetTab.classList.add('gcsAct-active');
+            });
+        });
+    };
 
-        // Menghapus inkarnasi ripple lama jika masih melekat akibat spamming
-        const oldRipple = buttonElement.querySelector(".gcsActivityRipple");
-        if (oldRipple) {
-            oldRipple.remove();
-        }
+    // ==========================================
+    // 4. Event Listener Segmented Control
+    // ==========================================
+    segmentButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const clickedBtn = e.currentTarget;
+            const targetId = clickedBtn.dataset.target;
 
-        buttonElement.appendChild(circle);
+            // Reset UI Kategori Aktif
+            segmentButtons.forEach(btn => btn.classList.remove('gcsAct-active'));
+
+            // Set tombol yang ditekan menjadi aktif
+            clickedBtn.classList.add('gcsAct-active');
+
+            // Eksekusi perpindahan tab
+            switchTab(targetId);
+        });
+    });
+
+    // ==========================================
+    // 5. Inisiasi Awal Saat Halaman Dimuat
+    // ==========================================
+    // Memastikan empty state di-cek pada tab default yang aktif
+    const defaultActiveTab = document.querySelector('.gcsAct-tab-content.gcsAct-active');
+    if (defaultActiveTab) {
+        checkEmptyState(defaultActiveTab);
     }
-
-    /**
-     * Eksekutor Fungsi Aksi Placeholder Sistem Sesuai Permintaan Spesifikasi
-     * @param {String} actionName - Nama fungsi tujuan panggilan balik internal
-     */
-    function executePlaceholderAction(actionName) {
-        if (actionName === "openPurchaseHistory") {
-            openPurchaseHistory();
-        } else if (actionName === "openBalanceHistory") {
-            openBalanceHistory();
-        }
-    }
-
-    /**
-     * Fungsi Placeholder Manajemen Alur Riwayat Pembelian (openPurchaseHistory)
-     */
-    function openPurchaseHistory() {
-        console.log("[GOCES Bridge]: Membuka gerbang aktivitas riwayat pembelian...");
-        alert("Fungsi openPurchaseHistory(): Menghubungkan Anda ke repositori riwayat transaksi internal GOCES...");
-    }
-
-    /**
-     * Fungsi Placeholder Manajemen Alur Riwayat Dompet/Saldo (openBalanceHistory)
-     */
-    function openBalanceHistory() {
-        console.log("[GOCES Bridge]: Membuka gerbang aktivitas riwayat saldo GOCESPay...");
-        alert("Fungsi openBalanceHistory(): Menampilkan mutasi transaksi lengkap GOCESPay Wallet Anda...");
-    }
-
-    /**
-     * Helper String: Mengubah huruf awal karakter menjadi Kapital
-     */
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
-    // Melakukan pemicuan inisialisasi dokumen saat DOM Pohon telah siap diproses secara optimal
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", gcsActivityInit);
-    } else {
-        gcsActivityInit();
-    }
-
-})();
+});
