@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/gocar/gocar.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/delivery/delivery.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/lainnya/lainnya.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/ppob/ppob.css">
 </head>
 
 <body>
@@ -230,7 +231,7 @@
                         <span class="goces-shortcut-label">Fresh</span>
                     </a>
 
-                    <a href="" class="goces-shortcut-item">
+                    <a href="#" class="goces-shortcut-item" onclick="showPage('ppob');return false;">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
@@ -667,12 +668,309 @@
             </main>
         </section>
 
+        <section id="page-ppob" class="goces-page">
+            <header class="gcsPpobHeader">
+                <div class="gcsPpobHeaderInner">
+                    <a href="action://act/back" class="gcsPpobIconCircle" aria-label="Kembali">
+                        <i class="ph ph-arrow-left"></i>
+                    </a>
+                    <div class="gcsPpobHeaderRight">
+                        <a href="https://jgjk.mobi/act/cart" class="gcsPpobIconCircle" aria-label="Keranjang">
+                            <i class="ph ph-shopping-cart"></i>
+                        </a>
+                        <a href="action://act/message_list" class="gcsPpobIconCircle" aria-label="Notifikasi">
+                            <i class="ph ph-bell"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="gcsPpobSearchSection">
+                <div class="gcsPpobSearchWrapper">
+                    <i class="ph ph-magnifying-glass gcsPpobSearchIcon"></i>
+                    <form action="action://act/search">
+                        <input type="search" id="search" name="search" class="input" placeholder="Cari layanan PPOB...">
+                    </form>
+                </div>
+            </div>
+
+            <section class="gcsPpobHeroSection">
+                <div class="gcsPpobHeroCard">
+                    <div class="gcsPpobHeroContent">
+                        <span class="gcsPpobHeroBadge">💡 PPOB GOCES</span>
+                        <h1 class="gcsPpobHeroTitle">Bayar semua tagihan dalam satu aplikasi.</h1>
+                        <button class="gcsPpobHeroBtn">Lihat Promo</button>
+                    </div>
+                    <div class="gcsPpobHeroIllustration">
+                        <div class="gcsPpobGlassShape"><i class="ph-fill ph-receipt"></i></div>
+                        <div class="gcsPpobGlassShape"><i class="ph-fill ph-lightning"></i></div>
+                    </div>
+                </div>
+            </section>
+
+            <nav class="gcsPpobFilterNav">
+                <div class="gcsPpobFilterScroll">
+                    <button class="gcsPpobFilterChip gcsPpobActive" data-filter="semua">Semua</button>
+                    <button class="gcsPpobFilterChip" data-filter="favorit">Favorit</button>
+                    <button class="gcsPpobFilterChip" data-filter="promo">Promo</button>
+                    <button class="gcsPpobFilterChip" data-filter="terbaru">Terbaru</button>
+                    <button class="gcsPpobFilterChip" data-filter="sering-dipakai">Sering Dipakai</button>
+                </div>
+            </nav>
+
+            <section class="gcsPpobSection">
+                <h2 class="gcsPpobSectionTitle">Layanan Utama</h2>
+                <div class="gcsPpobCardWrapper">
+                    <div class="gcsPpobGrid">
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"
+                                style="color: var(--blue); background-color: rgba(29,78,216,0.1);"><i
+                                    class="ph-fill ph-device-mobile"></i></div>
+                            <span class="gcsPpobServiceLabel">Pulsa</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"
+                                style="color: var(--blue); background-color: rgba(29,78,216,0.1);"><i
+                                    class="ph-fill ph-wifi-high"></i></div>
+                            <span class="gcsPpobServiceLabel">Paket Data</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #d97706; background-color: rgba(217,119,6,0.1);">
+                                <i class="ph-fill ph-lightning"></i></div>
+                            <span class="gcsPpobServiceLabel">Token PLN</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #d97706; background-color: rgba(217,119,6,0.1);">
+                                <i class="ph-fill ph-receipt"></i></div>
+                            <span class="gcsPpobServiceLabel">Tagihan PLN</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #0284c7; background-color: rgba(2,132,199,0.1);">
+                                <i class="ph-fill ph-drop"></i></div>
+                            <span class="gcsPpobServiceLabel">PDAM</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #dc2626; background-color: rgba(220,38,38,0.1);">
+                                <i class="ph-fill ph-television"></i></div>
+                            <span class="gcsPpobServiceLabel">TV Kabel</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #059669; background-color: rgba(5,150,105,0.1);">
+                                <i class="ph-fill ph-globe"></i></div>
+                            <span class="gcsPpobServiceLabel">Internet</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #dc2626; background-color: rgba(220,38,38,0.1);">
+                                <i class="ph-fill ph-phone-call"></i></div>
+                            <span class="gcsPpobServiceLabel">Telkom</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #7c3aed; background-color: rgba(124,58,237,0.1);">
+                                <i class="ph-fill ph-game-controller"></i></div>
+                            <span class="gcsPpobServiceLabel">Voucher Game</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #e11d48; background-color: rgba(225,29,72,0.1);">
+                                <i class="ph-fill ph-play-circle"></i></div>
+                            <span class="gcsPpobServiceLabel">Streaming</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #475569; background-color: rgba(71,85,105,0.1);">
+                                <i class="ph-fill ph-car"></i></div>
+                            <span class="gcsPpobServiceLabel">Parkir</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox" style="color: #475569; background-color: rgba(71,85,105,0.1);">
+                                <i class="ph-fill ph-road-horizon"></i></div>
+                            <span class="gcsPpobServiceLabel">Tol</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsPpobPromoSection">
+                <div class="gcsPpobPromoHeader">
+                    <h2 class="gcsPpobSectionTitle">Promo Hari Ini</h2>
+                </div>
+                <div class="gcsPpobPromoScroll">
+                    <div class="gcsPpobPromoCard" style="background: linear-gradient(135deg, #1d4ed8, #3b82f6);">
+                        <h3 class="gcsPpobPromoTitle">🔥 Cashback 20%</h3>
+                        <p class="gcsPpobPromoDesc">Untuk semua tagihan</p>
+                    </div>
+                    <div class="gcsPpobPromoCard" style="background: linear-gradient(135deg, #d97706, #f59e0b);">
+                        <h3 class="gcsPpobPromoTitle">⚡ Diskon Token PLN</h3>
+                        <p class="gcsPpobPromoDesc">Potongan hingga 50rb</p>
+                    </div>
+                    <div class="gcsPpobPromoCard" style="background: linear-gradient(135deg, #059669, #10b981);">
+                        <h3 class="gcsPpobPromoTitle">📱 Promo Pulsa</h3>
+                        <p class="gcsPpobPromoDesc">Gratis extra kuota</p>
+                    </div>
+                    <div class="gcsPpobPromoCard" style="background: linear-gradient(135deg, #c026d3, #d946ef);">
+                        <h3 class="gcsPpobPromoTitle">💳 Promo Tagihan</h3>
+                        <p class="gcsPpobPromoDesc">Bebas biaya admin</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsPpobSection">
+                <h2 class="gcsPpobSectionTitle">Keuangan</h2>
+                <div class="gcsPpobCardWrapper">
+                    <div class="gcsPpobGrid">
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-bank"></i></div>
+                            <span class="gcsPpobServiceLabel">Virtual Account</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-credit-card"></i></div>
+                            <span class="gcsPpobServiceLabel">Kartu Kredit</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-heartbeat"></i></div>
+                            <span class="gcsPpobServiceLabel">BPJS</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-file-text"></i></div>
+                            <span class="gcsPpobServiceLabel">Pajak</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-hand-coins"></i></div>
+                            <span class="gcsPpobServiceLabel">Cicilan</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-motorcycle"></i></div>
+                            <span class="gcsPpobServiceLabel">Leasing</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsPpobSection">
+                <h2 class="gcsPpobSectionTitle">Produk Digital</h2>
+                <div class="gcsPpobCardWrapper">
+                    <div class="gcsPpobGrid">
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-google-play-logo"></i></div>
+                            <span class="gcsPpobServiceLabel">Google Play</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-apple-logo"></i></div>
+                            <span class="gcsPpobServiceLabel">Apple Gift Card</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-spotify-logo"></i></div>
+                            <span class="gcsPpobServiceLabel">Spotify</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-film-strip"></i></div>
+                            <span class="gcsPpobServiceLabel">Netflix</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-star"></i></div>
+                            <span class="gcsPpobServiceLabel">Disney+</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-youtube-logo"></i></div>
+                            <span class="gcsPpobServiceLabel">YouTube Premium</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-cloud"></i></div>
+                            <span class="gcsPpobServiceLabel">iCloud</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-game-controller"></i></div>
+                            <span class="gcsPpobServiceLabel">Steam Wallet</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-sim-card"></i></div>
+                            <span class="gcsPpobServiceLabel">eSIM</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsPpobSection">
+                <h2 class="gcsPpobSectionTitle">Tagihan</h2>
+                <div class="gcsPpobCardWrapper">
+                    <div class="gcsPpobGrid">
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-lightning"></i></div>
+                            <span class="gcsPpobServiceLabel">Listrik</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-drop"></i></div>
+                            <span class="gcsPpobServiceLabel">Air</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-globe"></i></div>
+                            <span class="gcsPpobServiceLabel">Internet</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-television"></i></div>
+                            <span class="gcsPpobServiceLabel">TV Kabel</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-fire"></i></div>
+                            <span class="gcsPpobServiceLabel">Gas</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-house-line"></i></div>
+                            <span class="gcsPpobServiceLabel">PBB</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-phone"></i></div>
+                            <span class="gcsPpobServiceLabel">Telepon</span>
+                        </div>
+                        <div class="gcsPpobServiceCard" role="button" tabindex="0">
+                            <div class="gcsPpobIconBox"><i class="ph-fill ph-heartbeat"></i></div>
+                            <span class="gcsPpobServiceLabel">BPJS</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gcsPpobSection">
+                <h2 class="gcsPpobSectionTitle">Transaksi Terakhir</h2>
+                <div class="gcsPpobHistoryList">
+
+                    <div class="gcsPpobHistoryCard" role="button" tabindex="0">
+                        <div class="gcsPpobHistoryIcon"
+                            style="background-color: rgba(29,78,216,0.1); color: var(--blue);">
+                            <i class="ph-fill ph-device-mobile"></i>
+                        </div>
+                        <div class="gcsPpobHistoryInfo">
+                            <h3 class="gcsPpobHistoryTitle">Pulsa Telkomsel</h3>
+                            <p class="gcsPpobHistoryDate">Hari ini</p>
+                        </div>
+                        <div class="gcsPpobHistoryStatusBox">
+                            <span class="gcsPpobHistoryAmount">Rp50.000</span>
+                            <span class="gcsPpobHistoryStatus gcsPpobStatusSuccess">Berhasil</span>
+                        </div>
+                    </div>
+
+                    <div class="gcsPpobHistoryCard" role="button" tabindex="0">
+                        <div class="gcsPpobHistoryIcon" style="background-color: rgba(217,119,6,0.1); color: #d97706;">
+                            <i class="ph-fill ph-lightning"></i>
+                        </div>
+                        <div class="gcsPpobHistoryInfo">
+                            <h3 class="gcsPpobHistoryTitle">Token PLN</h3>
+                            <p class="gcsPpobHistoryDate">Kemarin</p>
+                        </div>
+                        <div class="gcsPpobHistoryStatusBox">
+                            <span class="gcsPpobHistoryAmount">Rp100.000</span>
+                            <span class="gcsPpobHistoryStatus gcsPpobStatusSuccess">Berhasil</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </section>
+
         <section id="page-lainnya" class="goces-page">
             <header class="gcsMoreHeader">
                 <div class="gcsMoreHeaderInner">
-                    <a href="action://act/back" class="gcsMoreIconCircle" aria-label="Kembali">
+                    <button type="button" class="icon-circle-btn" onclick="goBack()" aria-label="Kembali">
                         <i class="ph ph-arrow-left"></i>
-                    </a>
+                    </button>
                     <div class="gcsMoreHeaderRight">
                         <a href="https://jgjk.mobi/act/cart" class="gcsMoreIconCircle" aria-label="Keranjang">
                             <i class="ph ph-shopping-cart"></i>
@@ -1002,6 +1300,7 @@
     <script src="https://goces-app.vercel.app/js/gocar/gocar.js"></script>
     <script src="https://goces-app.vercel.app/js/delivery/delivery.js"></script>
     <script src="https://goces-app.vercel.app/js/lainnya/lainnya.js"></script>
+    <script src="https://goces-app.vercel.app/js/ppob/ppob.js"></script>
 
 
     <div id="gcsRidePopupOverlay" class="gcsRidePopupOverlay" aria-hidden="true">
