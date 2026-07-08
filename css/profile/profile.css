@@ -1,169 +1,115 @@
-/* --- HEADER AREA --- */
-.gcsProfileHeaderContainer {
+/* --- TOP NAVIGATION BAR --- */
+.gcsProfileTopBarContainer {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background-color: var(--gcsProfileBlurBg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  padding-top: calc(var(--safe-top) + 12px);
-  padding-bottom: 12px;
+  z-index: 999;
+  background-color: rgba(249, 250, 251, 0.88);
+  backdrop-filter: blur(20px) cubic-bezier(0.25, 1, 0.5, 1);
+  -webkit-backdrop-filter: blur(20px) cubic-bezier(0.25, 1, 0.5, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: calc(var(--safe-top) + 10px);
+  padding-bottom: 10px;
 }
 
-.gcsProfileHeader {
+.gcsProfileTopBar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 0 var(--screen-padding);
+  height: 44px;
 }
 
-.gcsProfileActionButton {
+.gcsProfileTopBarRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Button Navigation (Back & Setting) */
+.gcsProfileBackButton,
+.gcsProfileSettingButton {
   position: relative;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   background-color: var(--white);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text);
-  cursor: pointer;
-  box-shadow: var(--gcsProfileShadowSubtle);
-  transition:
-    transform 0.2s var(--transition),
-    background-color 0.2s ease;
+  text-decoration: none;
+  box-shadow: var(--gcsProfileShadow);
+  transition: transform var(--transition);
   overflow: hidden;
 }
 
-.gcsProfileActionButton svg {
-  width: 21px;
-  height: 21px;
+.gcsProfileBackButton svg,
+.gcsProfileSettingButton svg {
+  width: 20px;
+  height: 20px;
   z-index: 2;
 }
 
-.gcsProfileActionButton:hover {
-  background-color: #f3f4f6;
-}
-
-.gcsProfileActionButton:active {
+.gcsProfileBackButton:active,
+.gcsProfileSettingButton:active {
   transform: scale(0.92);
 }
 
-.gcsProfileRipple {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: gcsProfileRippleAnim 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes gcsProfileRippleAnim {
-  to {
-    transform: scale(2.5);
-    opacity: 0;
-  }
-}
-
-/* --- MAIN CONTENT CONTAINER --- */
-.gcsProfileMainContent {
-  flex: 1;
-  padding: 20px var(--screen-padding) calc(var(--safe-bottom) + 32px)
-    var(--screen-padding);
-  animation: gcsProfileFadeInUp 0.45s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-@keyframes gcsProfileFadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- ACCOUNT RIBBON --- */
-.gcsProfileRibbonSection {
-  margin-bottom: 24px;
-}
-
-.gcsProfileRibbonCard {
+/* Membership Ribbon Badge */
+.gcsProfileLevelBadge {
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-  border-radius: var(--card-radius);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   color: var(--white);
-  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.gcsProfileRibbonCard::after {
-  content: "";
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 150px;
-  height: 150px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-}
-
-.gcsProfileRibbonLeft {
+  padding: 8px 14px;
+  border-radius: 40px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  z-index: 2;
-}
-
-.gcsProfileRibbonIcon {
-  width: 32px;
-  height: 32px;
-  color: #fbbf24; /* Golden */
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.gcsProfileRibbonInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.gcsProfileRibbonSubtitle {
-  font-size: 11px;
+  gap: 6px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.15);
+  letter-spacing: -0.1px;
 }
 
-.gcsProfileRibbonTitle {
-  font-size: 17px;
-  font-weight: 700;
+.gcsProfileLevelBadge svg {
+  width: 14px;
+  height: 14px;
+  color: #fbbf24; /* Gold Star/Crown */
+}
+
+/* --- SCROLLER VIEW --- */
+.gcsProfilePageScroller {
+  flex: 1;
+  padding: 24px var(--screen-padding) calc(var(--safe-bottom) + 40px)
+    var(--screen-padding);
 }
 
 /* --- PROFILE IDENTITY --- */
 .gcsProfileIdentitySection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
-.gcsProfileAvatar {
+.gcsProfileIdentityCard {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  box-shadow: var(--gcsProfileShadow);
+}
+
+.gcsProfileAvatarWrapper {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  padding: 3px;
   background-color: var(--white);
-  box-shadow: var(--gcsProfileShadowSubtle);
-  margin-bottom: 16px;
+  padding: 3px;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    var(--gcsProfileShadow);
+  flex-shrink: 0;
 }
 
 .gcsProfileAvatarImage {
@@ -173,54 +119,90 @@
   object-fit: cover;
 }
 
-.gcsProfileName {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: var(--text);
+.gcsProfileIdentityInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.gcsProfileNameWrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 4px;
 }
 
-.gcsProfileEmail,
-.gcsProfilePhone {
+.gcsProfileUserName {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.gcsProfileVerifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #d1fae5;
+  color: #065f46;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+.gcsProfileVerifiedBadge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.gcsProfileUserEmail,
+.gcsProfileUserPhone {
   font-size: 14px;
-  color: var(--gcsProfileTextMuted);
+  color: #6b7280;
   margin-bottom: 2px;
 }
 
-/* --- WALLET SECTION --- */
+/* --- WALLET CARDS --- */
 .gcsProfileWalletSection {
-  margin-bottom: 32px;
+  margin-bottom: var(--section-gap);
 }
 
 .gcsProfileWalletGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 12px;
 }
 
 .gcsProfileWalletCard {
   background-color: var(--white);
   border-radius: var(--card-radius);
-  padding: 16px;
+  padding: 18px;
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-decoration: none;
-  box-shadow: var(--gcsProfileShadowSubtle);
-  border: 1px solid rgba(0, 0, 0, 0.015);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  box-shadow: var(--gcsProfileShadow);
   transition:
-    transform 0.25s var(--transition),
-    box-shadow 0.25s var(--transition);
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
-.gcsProfileWalletCard:active {
-  transform: scale(0.96);
+.gcsProfileWalletCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+}
+
+.gcsProfileWalletHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .gcsProfileWalletIcon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--icon-radius);
   display: flex;
   align-items: center;
@@ -228,84 +210,96 @@
 }
 
 .gcsProfileWalletIcon svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
-.gcsProfileWalletIconSaldo {
-  background-color: rgba(29, 78, 216, 0.1);
+.gcsProfileWalletIconBlue {
+  background-color: rgba(29, 78, 216, 0.08);
   color: var(--blue);
 }
-
-.gcsProfileWalletIconPoin {
-  background-color: rgba(245, 158, 11, 0.1);
+.gcsProfileWalletIconOrange {
+  background-color: rgba(245, 158, 11, 0.08);
   color: #d97706;
 }
 
-.gcsProfileWalletInfo {
-  display: flex;
-  flex-direction: column;
-}
-
 .gcsProfileWalletTitle {
-  font-size: 13px;
-  color: var(--gcsProfileTextMuted);
-  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
 }
 
 .gcsProfileWalletValue {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 800;
   color: var(--text);
+  letter-spacing: -0.2px;
 }
 
-/* --- MENU ACCOUNT SECTION --- */
-.gcsProfileMenuSection {
+/* --- INSET GROUPED LISTS (MENU CATEGORIES) --- */
+.gcsProfileMenuGroup {
+  margin-bottom: var(--section-gap);
+}
+
+.gcsProfileCategoryTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-left: 8px;
+  margin-bottom: 10px;
+}
+
+.gcsProfileCategoryCards {
   display: flex;
   flex-direction: column;
-}
-
-.gcsProfileMenuList {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.gcsProfileMenuCard {
   background-color: var(--white);
   border-radius: var(--card-radius);
-  padding: 16px 20px;
+  box-shadow: var(--gcsProfileShadow);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+}
+
+/* Card Menu Setup */
+.gcsProfileMenuCard {
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
   text-decoration: none;
-  box-shadow: var(--gcsProfileShadowSubtle);
-  border: 1px solid rgba(0, 0, 0, 0.015);
+  background-color: var(--white);
   transition:
-    transform 0.25s var(--transition),
-    box-shadow 0.25s var(--transition);
+    background-color var(--transition),
+    transform var(--transition);
+  overflow: hidden;
+}
+
+/* iOS Separtor Border Line */
+.gcsProfileMenuCard:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 68px;
+  height: 1px;
+  background-color: #f3f4f6;
 }
 
 .gcsProfileMenuCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
-}
-
-.gcsProfileMenuCard:active {
-  transform: scale(0.975);
-  box-shadow: var(--gcsProfileShadowActive);
+  background-color: #fdfdfd;
 }
 
 .gcsProfileMenuLeft {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
-/* --- ICON COLORS --- */
 .gcsProfileMenuIcon {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--icon-radius);
   display: flex;
   align-items: center;
@@ -314,145 +308,163 @@
 }
 
 .gcsProfileMenuIcon svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
-.gcsProfileIconBlue {
+/* Kategori Pewarnaan Icon Bulat Premium */
+.gcsProfileBgBlue {
   background-color: rgba(29, 78, 216, 0.08);
   color: var(--blue);
 }
-.gcsProfileIconOrange {
-  background-color: rgba(249, 115, 22, 0.08);
-  color: #f97316;
-}
-.gcsProfileIconGreen {
-  background-color: rgba(16, 185, 129, 0.08);
-  color: #10b981;
-}
-.gcsProfileIconPurple {
+.gcsProfileBgPurple {
   background-color: rgba(139, 92, 246, 0.08);
   color: #8b5cf6;
 }
-.gcsProfileIconRed {
-  background-color: rgba(239, 68, 68, 0.08);
-  color: #ef4444;
+.gcsProfileBgYellow {
+  background-color: rgba(245, 158, 11, 0.08);
+  color: #d97706;
 }
-.gcsProfileIconTeal {
-  background-color: rgba(20, 184, 166, 0.08);
-  color: #14b8a6;
-}
-.gcsProfileIconYellow {
-  background-color: rgba(234, 179, 8, 0.08);
-  color: #eab308;
-}
-.gcsProfileIconPink {
+.gcsProfileBgPink {
   background-color: rgba(236, 72, 153, 0.08);
   color: #ec4899;
 }
-.gcsProfileIconGray {
+.gcsProfileBgRed {
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+}
+.gcsProfileBgGreen {
+  background-color: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+}
+.gcsProfileBgOrange {
+  background-color: rgba(249, 115, 22, 0.08);
+  color: #f97316;
+}
+.gcsProfileBgTeal {
+  background-color: rgba(20, 184, 166, 0.08);
+  color: #14b8a6;
+}
+.gcsProfileBgGray {
   background-color: rgba(107, 114, 128, 0.08);
   color: #6b7280;
 }
+.gcsProfileBgSoftRed {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
 
-.gcsProfileMenuBody {
+.gcsProfileMenuTextWrapper {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  padding-right: 8px;
 }
 
 .gcsProfileMenuHeading {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text);
+  letter-spacing: -0.2px;
 }
 
-.gcsProfileMenuDescription {
+.gcsProfileMenuSubheading {
   font-size: 13px;
-  color: var(--gcsProfileTextMuted);
+  color: #9ca3af;
+  line-height: 1.3;
 }
 
-.gcsProfileTextRed {
-  color: #ef4444;
-}
-
-.gcsProfileMenuRight {
+.gcsProfileMenuRightSide {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
-.gcsProfileMenuArrow {
-  width: 18px;
-  height: 18px;
+.gcsProfileChevronIcon {
+  width: 16px;
+  height: 16px;
   color: #c4c4c6;
-  transition: transform 0.25s var(--transition);
-}
-
-.gcsProfileMenuCard:hover .gcsProfileMenuArrow {
-  transform: translateX(2px);
-  color: var(--text);
 }
 
 /* --- BADGES --- */
-.gcsProfileBadge {
+.gcsProfileBadgeElement {
   font-size: 11px;
   font-weight: 700;
   padding: 4px 10px;
-  border-radius: 12px;
-  letter-spacing: 0.2px;
+  border-radius: 30px;
 }
 
 .gcsProfileBadgeNew {
-  background-color: #fee2e2;
-  color: #ef4444;
+  background-color: #eff6ff;
+  color: var(--blue);
 }
 .gcsProfileBadgeWarning {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: #fffbeb;
+  color: #b45309;
 }
-.gcsProfileBadgeActive {
-  background-color: #d1fae5;
-  color: #059669;
-}
-.gcsProfileBadgeGray {
-  background-color: #f3f4f6;
-  color: #6b7280;
+.gcsProfileBadgeSuccess {
+  background-color: #ecfdf5;
+  color: #047857;
 }
 
-/* --- RESPONSIVE & DEVICE SAFE ZONES --- */
-@media (max-width: 360px) {
-  .gcsProfileAvatar {
-    width: 80px;
-    height: 80px;
+/* --- KHUSUS LOGOUT --- */
+.gcsProfileLogoutCard {
+  box-shadow: var(--gcsProfileShadow);
+}
+.gcsProfileTextRed {
+  color: #dc2626 !important;
+}
+.gcsProfileTextRedSub {
+  color: #fca5a5 !important;
+}
+
+/* --- RIPPLE ELEMENT --- */
+.gcsProfileRipple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.04);
+  transform: scale(0);
+  animation: gcsProfileRippleEffect 0.4s ease-out;
+  pointer-events: none;
+}
+
+@keyframes gcsProfileRippleEffect {
+  to {
+    transform: scale(3);
+    opacity: 0;
   }
-  .gcsProfileName {
-    font-size: 22px;
-  }
-  .gcsProfileMenuCard {
-    padding: 14px 16px;
-  }
+}
+
+/* --- RESPONSIVITAS PLATFORM (320px - DESKTOP BINDING) --- */
+@media (max-width: 375px) {
   .gcsProfileMenuHeading {
     font-size: 15px;
   }
-  .gcsProfileMenuDescription {
+  .gcsProfileMenuSubheading {
     font-size: 12px;
   }
-  .gcsProfileMenuIcon {
-    width: 40px;
-    height: 40px;
+  .gcsProfileAvatarWrapper {
+    width: 80px;
+    height: 80px;
+  }
+  .gcsProfileUserName {
+    font-size: 20px;
   }
 }
 
 @media (min-width: 768px) {
-  body.gcsProfilePageBody {
-    max-width: 520px;
+  body.gcsProfileBody {
+    max-width: 480px;
     margin: 0 auto;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.03);
+    background-color: #f1f3f5;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
     border-left: 1px solid var(--border);
     border-right: 1px solid var(--border);
   }
-  .gcsProfileHeaderContainer {
-    max-width: 518px;
+  .gcsProfileTopBarContainer {
+    max-width: 478px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

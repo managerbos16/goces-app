@@ -1,6 +1,6 @@
 /**
- * Logika dan Interaksi Mikro Halaman Profile GOCES
- * Murni Vanilla JS, diisolasi dengan prefix gcsProfile
+ * GOCES Profile Page Interactions
+ * Murni Vanilla JavaScript Tanpa Library / Dependency Luar
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,87 +8,83 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Fungsi Utama Inisialisasi Halaman
+ * Inisialisasi Fungsi Utama
  */
 function gcsProfileInit() {
-    gcsProfileInitRipple();
-    gcsProfileInitTouchFeedback();
-    gcsProfileInitHeaderActions();
+    gcsProfileApplyRippleEffect();
+    gcsProfileApplyIOSPressAnimation();
 }
 
 /**
- * Menerapkan efek Ripple (riak air) pada tombol dengan class gcsProfileActionButton
+ * Membuat efek Ripple khas saat elemen navigasi utama di-klik
  */
-function gcsProfileInitRipple() {
-    const gcsProfileButtons = document.querySelectorAll('.gcsProfileActionButton');
+function gcsProfileApplyRippleEffect() {
+    const gcsProfileRippleTargets = document.querySelectorAll('.gcsProfileBackButton, .gcsProfileSettingButton, .gcsProfileMenuCard, .gcsProfileWalletCard');
 
-    gcsProfileButtons.forEach(gcsProfileBtn => {
-        gcsProfileBtn.addEventListener('click', function (gcsProfileEvent) {
-            // Hapus ripple lama agar tidak menumpuk saat di-klik berulang
-            const gcsProfileOldRipple = this.querySelector('.gcsProfileRipple');
-            if (gcsProfileOldRipple) {
-                gcsProfileOldRipple.remove();
+    gcsProfileRippleTargets.forEach(target => {
+        target.addEventListener('click', function (e) {
+            // Bersihkan sisa elemen ripple sebelumnya jika ada
+            const gcsProfileExistingRipple = this.querySelector('.gcsProfileRipple');
+            if (gcsProfileExistingRipple) {
+                gcsProfileExistingRipple.remove();
             }
 
-            const gcsProfileRippleEl = document.createElement('span');
-            gcsProfileRippleEl.classList.add('gcsProfileRipple');
+            const gcsProfileRippleSpan = document.createElement('span');
+            gcsProfileRippleSpan.classList.add('gcsProfileRipple');
 
-            const gcsProfileRect = this.getBoundingClientRect();
-            const gcsProfileSize = Math.max(gcsProfileRect.width, gcsProfileRect.height);
+            // Hitung koordinat klik dalam area card
+            const gcsProfileBounds = this.getBoundingClientRect();
+            const gcsProfileSize = Math.max(gcsProfileBounds.width, gcsProfileBounds.height);
 
-            gcsProfileRippleEl.style.width = gcsProfileRippleEl.style.height = `${gcsProfileSize}px`;
+            gcsProfileRippleSpan.style.width = gcsProfileRippleSpan.style.height = `${gcsProfileSize}px`;
 
-            const gcsProfileX = gcsProfileEvent.clientX - gcsProfileRect.left - (gcsProfileSize / 2);
-            const gcsProfileY = gcsProfileEvent.clientY - gcsProfileRect.top - (gcsProfileSize / 2);
+            const gcsProfileX = e.clientX - gcsProfileBounds.left - (gcsProfileSize / 2);
+            const gcsProfileY = e.clientY - gcsProfileBounds.top - (gcsProfileSize / 2);
 
-            gcsProfileRippleEl.style.left = `${gcsProfileX}px`;
-            gcsProfileRippleEl.style.top = `${gcsProfileY}px`;
+            gcsProfileRippleSpan.style.left = `${gcsProfileX}px`;
+            gcsProfileRippleSpan.style.top = `${gcsProfileY}px`;
 
-            this.appendChild(gcsProfileRippleEl);
+            this.appendChild(gcsProfileRippleSpan);
 
-            // Bersihkan elemen dari DOM setelah animasi berakhir
-            gcsProfileRippleEl.addEventListener('animationend', () => {
-                gcsProfileRippleEl.remove();
+            // Bersihkan objek span ripple dari DOM saat animasi selesai
+            gcsProfileRippleSpan.addEventListener('animationend', () => {
+                gcsProfileRippleSpan.remove();
             });
         });
     });
 }
 
 /**
- * Mengoptimalkan feedback visual (scale) pada perangkat layar sentuh untuk card menu
+ * Menerapkan efek kompresi taktil (Scale Pressed) ala iOS App Native saat disentuh
  */
-function gcsProfileInitTouchFeedback() {
+function gcsProfileApplyIOSPressAnimation() {
     const gcsProfileCards = document.querySelectorAll('.gcsProfileMenuCard, .gcsProfileWalletCard');
 
-    gcsProfileCards.forEach(gcsProfileCard => {
-        gcsProfileCard.addEventListener('touchstart', function () {
-            this.style.transform = 'scale(0.97) translateY(0)';
+    gcsProfileCards.forEach(card => {
+        // Event pendeteksi interaksi mobile touch
+        card.addEventListener('touchstart', function () {
+            this.style.transform = 'scale(0.965)';
+            this.style.transition = 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)';
         }, { passive: true });
 
-        gcsProfileCard.addEventListener('touchend', function () {
+        card.addEventListener('touchend', function () {
             this.style.transform = '';
+            this.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
         }, { passive: true });
+
+        // Kompatibilitas interaksi kursor desktop mouse click state
+        card.addEventListener('mousedown', function () {
+            this.style.transform = 'scale(0.965)';
+            this.style.transition = 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)';
+        });
+
+        card.addEventListener('mouseup', function () {
+            this.style.transform = '';
+            this.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+        });
+
+        card.addEventListener('mouseleave', function () {
+            this.style.transform = '';
+        });
     });
-}
-
-/**
- * Inisialisasi aksi pada tombol Header
- */
-function gcsProfileInitHeaderActions() {
-    const gcsProfileBackBtn = document.querySelector('.gcsProfileBackButton');
-    const gcsProfileSettingBtn = document.querySelector('.gcsProfileSettingButton');
-
-    if (gcsProfileBackBtn) {
-        gcsProfileBackBtn.addEventListener('click', () => {
-            // Simulasi fungsi back. Ganti dengan logika navigasi sebenarnya jika diperlukan.
-            window.history.back();
-        });
-    }
-
-    if (gcsProfileSettingBtn) {
-        gcsProfileSettingBtn.addEventListener('click', () => {
-            // Simulasi buka pengaturan
-            window.location.href = 'privacy-settings.html';
-        });
-    }
 }
