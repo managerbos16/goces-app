@@ -1,0 +1,181 @@
+/* ===================================================
+   PREMIUM VOUCHER DESIGN - PPOB STYLE
+   =================================================== */
+
+.gcsPpobVoucherSection {
+  padding: 20px 16px;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  overflow: visible;
+}
+
+/* Auto-Hide Logic: Konten akan naik otomatis jika class ini aktif */
+.gcsPpobVoucherSectionHidden {
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none;
+}
+
+.gcsPpobVoucherTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.3px;
+}
+
+.gcsPpobVoucherContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Voucher */
+.gcsPpobVoucherCard {
+  background: #ffffff;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Efek Sobekan Realistis */
+.gcsPpobVoucherCard::before,
+.gcsPpobVoucherCard::after {
+  content: "";
+  position: absolute;
+  top: 65%;
+  width: 24px;
+  height: 24px;
+  background: #f9fafb; /* Sesuaikan dengan background halaman utama */
+  border-radius: 50%;
+  z-index: 2;
+}
+.gcsPpobVoucherCard::before {
+  left: -12px;
+}
+.gcsPpobVoucherCard::after {
+  right: -12px;
+}
+
+/* Header Card */
+.gcsPpobVoucherLeft {
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.gcsPpobVoucherIcon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #fff;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.gcsPpobVoucherContent {
+  flex: 1;
+}
+
+.gcsPpobVoucherBadge {
+  background: #7c3aed; /* Warna Ungu PPOB */
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.gcsPpobVoucherName {
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
+.gcsPpobVoucherDesc {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Garis Putus-putus */
+.gcsPpobVoucherDivider {
+  position: relative;
+  margin: 0 20px;
+  border-top: 2px dashed #e5e7eb;
+}
+
+/* Footer Card */
+.gcsPpobVoucherRight {
+  padding: 16px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gcsPpobVoucherCode {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  color: #111;
+  font-size: 15px;
+  background: #f3f4f6;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.gcsPpobVoucherExpired {
+  font-size: 11px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Tombol Salin Capsule */
+.gcsPpobVoucherButton {
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gcsPpobVoucherButton:active {
+  transform: scale(0.92);
+}
+
+/* Toast (Reuse existing ID) */
+.gprToast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
