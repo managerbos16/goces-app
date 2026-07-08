@@ -1,29 +1,28 @@
-/* HEADER IDENTIK DENGAN HOME */
-.gcsChatHeader {
+/* --- STICKY iOS BLUR HEADER --- */
+.gcsChatHeaderContainer {
   position: sticky;
   top: 0;
   z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: calc(var(--safe-top) + 12px) var(--screen-padding) 12px;
-  background: rgba(255, 255, 255, 0.85);
+  background-color: var(--gcsChatBlurBg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  height: calc(var(--safe-top) + var(--nav-height));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  padding-top: calc(var(--safe-top) + 12px);
+  padding-bottom: 12px;
 }
 
-.gcsChatHeaderSpacer {
-  width: 92px; /* Menyeimbangkan layout judul tengah terhadap ikon di kanan */
+.gcsChatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--screen-padding);
 }
 
 .gcsChatHeaderTitle {
-  font-size: clamp(17px, 4vw, 19px);
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 800;
   color: var(--text);
-  text-align: center;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.6px;
 }
 
 .gcsChatHeaderActions {
@@ -31,293 +30,256 @@
   gap: 10px;
 }
 
-.gcsChatIconButton {
-  width: 40px;
-  height: 40px;
+/* --- INTERACTIVE ACTION BUTTONS --- */
+.gcsChatActionButton {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text);
-  border-radius: var(--icon-radius);
-  background: var(--white);
-  border: 1px solid var(--border);
+  cursor: pointer;
+  box-shadow: var(--gcsChatShadowSubtle);
   transition:
-    transform var(--transition),
-    background-color var(--transition);
+    transform 0.2s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.2s ease;
+  overflow: hidden;
 }
 
-.gcsChatIconButton:active {
-  transform: scale(0.92);
-  background-color: var(--gray);
-}
-
-.gcsChatIconButton svg {
+.gcsChatActionButton svg {
   width: 21px;
   height: 21px;
+  z-index: 2;
 }
 
-/* MAIN CONTENT */
-.gcsChatMain {
-  padding: var(--screen-padding);
-  display: flex;
-  flex-direction: column;
-  gap: 28px; /* Jarak antar section yang elegan */
+.gcsChatActionButton:hover {
+  background-color: #f3f4f6;
 }
 
-/* SECTION STRUCTURE */
-.gcsChatSection {
-  display: flex;
-  flex-direction: column;
-  gap: var(--section-gap);
+.gcsChatActionButton:active {
+  transform: scale(0.92);
 }
 
-.gcsChatSectionHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.gcsChatSectionTitle {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.5px;
-}
-
-.gcsChatSectionSubtitle {
-  font-size: 14px;
-  color: #6b7280;
-}
-
-/* LAYANAN BANTUAN GRID */
-.gcsChatServiceGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.gcsChatServiceCard {
-  background: var(--white);
-  border-radius: var(--card-radius);
-  padding: 16px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition);
-}
-
-.gcsChatServiceCard:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
-}
-
-.gcsChatServiceCard:active {
-  transform: scale(0.95);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-}
-
-.gcsChatServiceIcon {
-  width: 32px;
-  height: 32px;
-  margin-bottom: 12px;
-  object-fit: contain;
-}
-
-.gcsChatServiceTitle {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 4px;
-  color: var(--text);
-}
-
-.gcsChatServiceDesc {
-  font-size: 11px;
-  color: #9ca3af;
-  line-height: 1.2;
-}
-
-/* AI CARD */
-.gcsChatAiCard {
-  background: var(--white);
-  border-radius: var(--card-radius);
-  padding: 20px;
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 8px 24px rgba(29, 78, 216, 0.06);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.gcsChatAiCard:hover {
-  box-shadow: 0 14px 28px rgba(29, 78, 216, 0.1);
-  transform: translateY(-2px);
-}
-
-.gcsChatAiCard:active {
-  transform: scale(0.98);
-}
-
-.gcsChatAiBadge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(29, 78, 216, 0.1);
-  color: var(--blue-dark);
-  font-size: 11px;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 12px;
-  letter-spacing: 0.5px;
-}
-
-.gcsChatAiCardBody {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-right: 40px; /* Space for badge */
-}
-
-.gcsChatAiIcon {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.gcsChatAiInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.gcsChatAiTitle {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.gcsChatAiDesc {
-  font-size: 13px;
-  color: #6b7280;
-  line-height: 1.4;
-}
-
-/* EMPTY STATE CARD */
-.gcsChatEmptyState {
-  background: var(--white);
-  border-radius: var(--card-radius);
-  padding: 40px 24px;
-  text-align: center;
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.gcsChatEmptyIconWrapper {
-  width: 72px;
-  height: 72px;
-  background: rgba(249, 250, 251, 1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #9ca3af;
-  margin-bottom: 20px;
-}
-
-.gcsChatEmptyIconWrapper svg {
-  width: 32px;
-  height: 32px;
-}
-
-.gcsChatEmptyTitle {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 8px;
-}
-
-.gcsChatEmptyDesc {
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 24px;
-  max-width: 280px;
-}
-
-/* BUTTON PREMIUM */
-.gcsChatBtnPrimary {
-  width: 100%;
-  background: var(--blue);
-  color: var(--white);
-  border: none;
-  padding: 14px 24px;
-  border-radius: var(--radius);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.2);
-  transition:
-    transform var(--transition),
-    background-color var(--transition),
-    box-shadow var(--transition);
-}
-
-.gcsChatBtnPrimary:hover {
-  background: var(--blue-dark);
-  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
-}
-
-.gcsChatBtnPrimary:active {
-  transform: scale(0.97);
-  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.15);
-}
-
-/* RIPPLE EFFECT */
+/* Taptic Custom Ripple Effect Layout */
 .gcsChatRipple {
   position: absolute;
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.05); /* Gelap untuk card putih */
   transform: scale(0);
-  animation: gcsChatRippleAnim 0.6s linear;
+  animation: gcsChatRippleAnimation 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: none;
+  z-index: 1;
 }
 
-.gcsChatBtnPrimary .gcsChatRipple {
-  background: rgba(255, 255, 255, 0.3); /* Putih untuk button biru */
-}
-
-@keyframes gcsChatRippleAnim {
+@keyframes gcsChatRippleAnimation {
   to {
-    transform: scale(3);
+    transform: scale(2.5);
     opacity: 0;
   }
 }
 
-/* RESPONSIVE TABLET & DESKTOP */
-@media (min-width: 768px) {
-  .gcsChatEmptyState {
-    padding: 56px 40px;
+/* --- MAIN WORKSPACE AREA WITH ENTRANCE ANIMATION --- */
+.gcsChatMainContent {
+  flex: 1;
+  padding: 20px var(--screen-padding) calc(var(--safe-bottom) + 32px)
+    var(--screen-padding);
+  animation: gcsChatSlideUpEntrance 0.45s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes gcsChatSlideUpEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
-  .gcsChatSection {
-    gap: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- SECTION INFRASTRUCTURE --- */
+.gcsChatSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gcsChatAiSection {
+  margin-top: 30px; /* Jarak antar-section presisi 30px sesuai instruksi */
+}
+
+.gcsChatSectionTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gcsChatTextMuted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding-left: 4px;
+}
+
+.gcsChatCardGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Jarak antar-card berkisar 14px-16px */
+}
+
+/* --- NATIVE NANO-SHADOW SPEC CARD --- */
+.gcsChatCard {
+  background-color: var(--white);
+  border-radius: var(--card-radius);
+  padding: 20px; /* Padding besar premium */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--gcsChatShadowSubtle);
+  border: 1px solid rgba(0, 0, 0, 0.015);
+  transition:
+    transform 0.25s var(--transition),
+    box-shadow 0.25s var(--transition);
+}
+
+/* Animasi Hover & Active State */
+.gcsChatCard:hover {
+  transform: translateY(-2px); /* Mengangkat card sedikit */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.035);
+}
+
+.gcsChatCard:active {
+  transform: scale(0.975) translateY(0); /* Scale mengecil saat ditekan */
+  box-shadow: var(--gcsChatShadowActive);
+}
+
+.gcsChatCardLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-right: 8px;
+}
+
+/* --- ICON BACKGROUND CONTEXTS --- */
+.gcsChatCardIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--icon-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gcsChatCardIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Tema Palet Warna Lembut (Soft Backgrounds) */
+.gcsChatIconInbox {
+  background-color: rgba(29, 78, 216, 0.08);
+  color: var(--blue);
+}
+
+.gcsChatIconCs {
+  background-color: rgba(16, 185, 129, 0.09);
+  color: #10b981;
+}
+
+.gcsChatIconBantuan {
+  background-color: rgba(245, 158, 11, 0.09);
+  color: #d97706;
+}
+
+.gcsChatIconAi {
+  background-color: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+  width: 52px;
+  height: 52px;
+}
+
+.gcsChatIconAi svg {
+  width: 25px;
+  height: 25px;
+}
+
+/* --- DESIGN TYPOGRAPHY --- */
+.gcsChatCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gcsChatCardTitle {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.gcsChatCardDescription {
+  font-size: 13.5px;
+  color: var(--gcsChatTextMuted);
+  line-height: 1.4;
+}
+
+.gcsChatCardRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.gcsChatChevron {
+  width: 18px;
+  height: 18px;
+  color: #c4c4c6;
+  transition: transform 0.25s var(--transition);
+}
+
+.gcsChatCard:hover .gcsChatChevron {
+  transform: translateX(2px);
+  color: var(--text);
+}
+
+/* Kustomisasi Spesifik Premium Card AI */
+.gcsChatAiCard {
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  background: linear-gradient(180deg, #ffffff 0%, #fcfcff 100%);
+}
+
+/* --- iOS BREAKPOINTS & MOBILE OPTIMIZATIONS --- */
+@media (max-width: 360px) {
+  .gcsChatHeaderTitle {
+    font-size: 26px;
+  }
+  .gcsChatCard {
+    padding: 16px;
+  }
+  .gcsChatCardTitle {
+    font-size: 15px;
+  }
+  .gcsChatCardDescription {
+    font-size: 12.5px;
+  }
+  .gcsChatCardIcon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Tablet / Desktop Safe Zone Constraints Window */
+@media (min-width: 768px) {
+  body.gcsChatPageBody {
+    max-width: 520px;
+    margin: 0 auto;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.03);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+  .gcsChatHeaderContainer {
+    max-width: 518px;
   }
 }

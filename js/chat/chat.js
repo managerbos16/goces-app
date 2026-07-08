@@ -1,139 +1,70 @@
 /**
- * GOCES Chat Page Logic
- * Menerapkan arsitektur Vanilla JS yang modular, Event Delegation, 
- * dan Optimasi Repaint/Rendering dengan standar performa tinggi.
+ * Arsitektur Interaksi Mikro halaman Chat GOCES
  */
+document.addEventListener('DOMContentLoaded', () => {
+    gcsChatInit();
+});
 
-const GcsChatEngine = (function () {
-    "use strict";
+/**
+ * Fungsi Utama Inisialisasi Fitur Halaman Chat
+ */
+function gcsChatInit() {
+    gcsChatInitRipple();
+    gcsChatInitTouchFeedback();
+}
 
-    // Cache referensi DOM utama untuk menghindari query berulang
-    let gcsChatMainContainer = null;
+/**
+ * Mengaktifkan Efek Riak Taktil Ringan pada Tombol Lingkaran Action
+ */
+function gcsChatInitRipple() {
+    const gcsChatButtons = document.querySelectorAll('.gcsChatActionButton');
 
-    /**
-     * Inisialisasi Utama
-     */
-    function gcsChatInit() {
-        gcsChatMainContainer = document.getElementById("gcsChatMainArea");
-
-        if (!gcsChatMainContainer) return;
-
-        // Menggunakan Event Delegation tunggal pada container utama
-        gcsChatMainContainer.addEventListener("click", gcsChatHandleInteractions);
-    }
-
-    /**
-     * Manajemen Interaksi Terpusat (Event Delegation)
-     * @param {Event} event 
-     */
-    function gcsChatHandleInteractions(event) {
-        // Cari elemen terdekat yang memiliki atribut data-action
-        const targetElement = event.target.closest("[data-action]");
-
-        if (targetElement) {
-            // Jalankan animasi Ripple untuk visual feedback
-            requestAnimationFrame(() => {
-                gcsChatRenderRipple(event, targetElement);
-            });
-
-            // Eksekusi fungsi berdasarkan action
-            const actionType = targetElement.getAttribute("data-action");
-            gcsChatRouteAction(actionType);
-        }
-    }
-
-    /**
-     * Router Aksi Placeholder
-     * @param {String} action 
-     */
-    function gcsChatRouteAction(action) {
-        switch (action) {
-            case "gcsChatOpenInbox":
-                gcsChatOpenInbox();
-                break;
-            case "gcsChatOpenCs":
-                gcsChatOpenCs();
-                break;
-            case "gcsChatOpenHelp":
-                gcsChatOpenHelp();
-                break;
-            case "gcsChatOpenAi":
-                gcsChatOpenAi();
-                break;
-            default:
-                console.warn("[GOCES Chat] Action tidak dikenali:", action);
-        }
-    }
-
-    /**
-     * Render Animasi Gelombang Sentuh (Ripple Effect)
-     * @param {Event} e - Pointer Event
-     * @param {HTMLElement} element - Target container ripple
-     */
-    function gcsChatRenderRipple(e, element) {
-        // Hapus ripple lama agar tidak menumpuk di DOM
-        const oldRipple = element.querySelector(".gcsChatRipple");
-        if (oldRipple) {
-            oldRipple.remove();
-        }
-
-        const circle = document.createElement("span");
-        const diameter = Math.max(element.clientWidth, element.clientHeight);
-        const radius = diameter / 2;
-        const rect = element.getBoundingClientRect();
-
-        // Hitung koordinat klik (support mouse dan touch event)
-        const clientX = e.clientX || (e.touches && e.touches[0].clientX) || rect.left + radius;
-        const clientY = e.clientY || (e.touches && e.touches[0].clientY) || rect.top + radius;
-
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${clientX - rect.left - radius}px`;
-        circle.style.top = `${clientY - rect.top - radius}px`;
-        circle.classList.add("gcsChatRipple");
-
-        element.appendChild(circle);
-
-        // Hapus element dari DOM setelah animasi selesai (0.6s)
-        setTimeout(() => {
-            if (circle.parentNode === element) {
-                circle.remove();
+    gcsChatButtons.forEach(gcsChatBtn => {
+        gcsChatBtn.addEventListener('click', function (gcsChatEvent) {
+            // Pembersihan elemen riak lama untuk optimasi memori runtime
+            const gcsChatOldRipple = this.querySelector('.gcsChatRipple');
+            if (gcsChatOldRipple) {
+                gcsChatOldRipple.remove();
             }
-        }, 600);
-    }
 
-    /**
-     * Placeholder Functions untuk Navigasi Layanan GOCES
-     */
-    function gcsChatOpenInbox() {
-        console.log("Mengeksekusi gcsChatOpenInbox()...");
-        // alert("Membuka halaman Inbox Notifikasi...");
-    }
+            const gcsChatRippleElement = document.createElement('span');
+            gcsChatRippleElement.classList.add('gcsChatRipple');
 
-    function gcsChatOpenCs() {
-        console.log("Mengeksekusi gcsChatOpenCs()...");
-        // alert("Menghubungkan ke Customer Service GOCES...");
-    }
+            const gcsChatRect = this.getBoundingClientRect();
+            const gcsChatSize = Math.max(gcsChatRect.width, gcsChatRect.height);
 
-    function gcsChatOpenHelp() {
-        console.log("Mengeksekusi gcsChatOpenHelp()...");
-        // alert("Membuka Pusat Bantuan...");
-    }
+            gcsChatRippleElement.style.width = gcsChatRippleElement.style.height = `${gcsChatSize}px`;
 
-    function gcsChatOpenAi() {
-        console.log("Mengeksekusi gcsChatOpenAi()...");
-        // alert("Memulai sesi obrolan dengan GOCES AI Assistant...");
-    }
+            const gcsChatX = gcsChatEvent.clientX - gcsChatRect.left - (gcsChatSize / 2);
+            const gcsChatY = gcsChatEvent.clientY - gcsChatRect.top - (gcsChatSize / 2);
 
-    // Mengembalikan method inisialisasi agar bisa dipanggil saat DOM siap
-    return {
-        init: gcsChatInit
-    };
+            gcsChatRippleElement.style.left = `${gcsChatX}px`;
+            gcsChatRippleElement.style.top = `${gcsChatY}px`;
 
-})();
+            this.appendChild(gcsChatRippleElement);
 
-// Eksekusi inisialisasi saat struktur DOM HTML telah selesai di-load
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", GcsChatEngine.init);
-} else {
-    GcsChatEngine.init();
+            // Detach node dari DOM ketika durasi keyframe selesai
+            gcsChatRippleElement.addEventListener('animationend', () => {
+                gcsChatRippleElement.remove();
+            });
+        });
+    });
+}
+
+/**
+ * Optimasi Akselerasi Taktil Layar Sentuh untuk Ekosistem Card iOS
+ */
+function gcsChatInitTouchFeedback() {
+    const gcsChatCards = document.querySelectorAll('.gcsChatCard');
+
+    gcsChatCards.forEach(gcsChatCardItem => {
+        // Logika percepatan visual saat mendeteksi input touchstart mobile device
+        gcsChatCardItem.addEventListener('touchstart', function () {
+            this.style.transform = 'scale(0.97) translateY(0)';
+        }, { passive: true });
+
+        gcsChatCardItem.addEventListener('touchend', function () {
+            this.style.transform = '';
+        }, { passive: true });
+    });
 }
