@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/benner-home/benner-home.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/benner-food/benner-food.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/benner-shop/benner-shop.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/benner-fresh/benner-fresh.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/benner-ppob/benner-ppob.css">
+    <link rel="stylesheet" href="https://goces-app.vercel.app/css/benner-promo/benner-promo.css">
 </head>
 
 <body>
@@ -296,6 +299,10 @@
                 </div>
             </div>
 
+            <section class="gcsFoodBannerSection">
+                <div id="gcsFoodBannerContainer" class="gcsFoodBannerContainer"></div>
+            </section>
+
             <nav class="categories-bar">
                 <div class="categories-scroll">
                     <button class="category-chip active" data-category="semua">Semua</button>
@@ -314,10 +321,6 @@
                         <h2 class="section-heading">Kuliner Favorit</h2>
                         <a href="#" class="see-all-link">Lihat Semua</a>
                     </div>
-
-                    <section class="gcsFoodBannerSection">
-                        <div id="gcsFoodBannerContainer" class="gcsFoodBannerContainer"></div>
-                    </section>
 
                     <div class="products-grid">
                         <div class="product-card" data-tags="bakso super mercon mie pangsit sol daging pedas">
@@ -426,24 +429,8 @@
                 </div>
             </div>
 
-            <section class="gcsShopFlashSaleSection">
-                <div class="gcsShopFlashSaleCard">
-                    <div class="gcsShopFlashSaleBadge">LIMITED</div>
-                    <div class="gcsShopFlashSaleContent">
-                        <div class="gcsShopFlashSaleTitleRow">
-                            <h2 class="gcsShopFlashSaleMainTitle">🔥 FLASH SALE</h2>
-                            <div class="gcsShopFlashSaleTimer" id="gcsShopCountdown">
-                                <span class="gcsShopTimerBlock" id="gcsShopTimerH">00</span>:
-                                <span class="gcsShopTimerBlock" id="gcsShopTimerM">00</span>:
-                                <span class="gcsShopTimerBlock" id="gcsShopTimerS">00</span>
-                            </div>
-                        </div>
-                        <p class="gcsShopFlashSalePromoText">Diskon sampai <span class="gcsShopHighlightText">70%</span>
-                        </p>
-                        <a href="#" class="gcsShopFlashSaleBtn">Belanja Sekarang</a>
-                    </div>
-                    <div class="gcsShopFlashSaleIllustration"></div>
-                </div>
+            <section class="gcsShopBannerSection">
+                <div id="gcsShopBannerContainer" class="gcsShopBannerContainer"></div>
             </section>
 
             <nav class="gcsShopCategoryNav">
@@ -462,11 +449,6 @@
             <main class="gcsShopMainContent">
 
                 <section id="gcsShopSec-semua" class="gcsShopMenuSection gcsShopSectionVisible">
-
-                    <section class="gcsShopBannerSection">
-                        <div id="gcsShopBannerContainer" class="gcsShopBannerContainer"></div>
-                    </section>
-
                     <div class="gcsShopGrid">
 
                         <div class="gcsShopCard" data-gcs-tags="jaket hoddie bomber jepang fashion pria">
@@ -559,39 +541,8 @@
                 </div>
             </div>
 
-            <section class="gcsFreshHeroSection">
-                <div class="gcsFreshHeroCard">
-                    <div class="gcsFreshHeroContent">
-                        <span class="gcsFreshHeroLabel">🥬 Fresh Market</span>
-                        <h1 class="gcsFreshHeroTitle">Belanja kebutuhan harian lebih hemat.</h1>
-                        <p class="gcsFreshHeroSubtext">Gratis Ongkir & Diskon hingga <span
-                                class="gcsFreshHighlightYellow">50%</span></p>
-                        <a href="#" class="gcsFreshHeroBtn">Belanja Sekarang</a>
-                    </div>
-                    <div class="gcsFreshHeroIllustration">
-                        <div class="gcsFreshGlassShape">🍎</div>
-                        <div class="gcsFreshGlassShape">🥦</div>
-                        <div class="gcsFreshGlassShape">🥩</div>
-                        <div class="gcsFreshGlassShape">🥛</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="gcsFreshFlashSection">
-                <div class="gcsFreshFlashCard">
-                    <div class="gcsFreshFlashInfo">
-                        <h2 class="gcsFreshFlashTitle">⚡ Flash Fresh</h2>
-                        <div class="gcsFreshCountdown" id="gcsFreshTimer">
-                            <span class="gcsFreshTimeSlot" id="gcsFreshH">00</span>:
-                            <span class="gcsFreshTimeSlot" id="gcsFreshM">00</span>:
-                            <span class="gcsFreshTimeSlot" id="gcsFreshS">00</span>
-                        </div>
-                    </div>
-                    <div class="gcsFreshFlashAction">
-                        <span class="gcsFreshFlashPromoLabel">Diskon hingga 60%</span>
-                        <a href="#" class="gcsFreshFlashBtn">Lihat Promo</a>
-                    </div>
-                </div>
+            <section class="gcsFreshBannerSection">
+                <div id="gcsFreshBannerContainer" class="gcsFreshBannerContainer"></div>
             </section>
 
             <nav class="gcsFreshCategoryNav">
@@ -715,18 +666,8 @@
                 </div>
             </div>
 
-            <section class="gcsPpobHeroSection">
-                <div class="gcsPpobHeroCard">
-                    <div class="gcsPpobHeroContent">
-                        <span class="gcsPpobHeroBadge">💡 PPOB GOCES</span>
-                        <h1 class="gcsPpobHeroTitle">Bayar semua tagihan dalam satu aplikasi.</h1>
-                        <button class="gcsPpobHeroBtn">Lihat Promo</button>
-                    </div>
-                    <div class="gcsPpobHeroIllustration">
-                        <div class="gcsPpobGlassShape"><i class="ph-fill ph-receipt"></i></div>
-                        <div class="gcsPpobGlassShape"><i class="ph-fill ph-lightning"></i></div>
-                    </div>
-                </div>
+            <section class="gcsPpobBannerSection">
+                <div id="gcsPpobBannerContainer" class="gcsPpobBannerContainer"></div>
             </section>
 
             <nav class="gcsPpobFilterNav">
@@ -1265,6 +1206,10 @@
                         </a>
                     </div>
                 </header>
+
+                <section class="gcsHalamanPromoBannerSection">
+                    <div id="gcsHalamanPromoBannerContainer" class="gcsHalamanPromoBannerContainer"></div>
+                </section>
 
                 <main class="gcsPromoMainScroll">
 
@@ -2780,6 +2725,9 @@
     <script src="https://goces-app.vercel.app/js/benner-home/benner-home.js"></script>
     <script src="https://goces-app.vercel.app/js/benner-food/benner-food.js"></script>
     <script src="https://goces-app.vercel.app/js/benner-shop/benner-shop.js"></script>
+    <script src="https://goces-app.vercel.app/js/benner-fresh/benner-fresh.js"></script>
+    <script src="https://goces-app.vercel.app/js/benner-ppob/benner-ppob.js"></script>
+    <script src="https://goces-app.vercel.app/js/benner-promo/benner-promo.js"></script>
 
     <div id="gcsRidePopupOverlay" class="gcsRidePopupOverlay" aria-hidden="true">
         <div id="gcsRidePopupBackdrop" class="gcsRidePopupBackdrop"></div>

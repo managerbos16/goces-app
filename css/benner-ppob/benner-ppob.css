@@ -1,0 +1,152 @@
+/* --- SECTION & CONTAINER UTAMA --- */
+.gcsPpobBannerSection {
+  width: 100%;
+  padding: 0 var(--screen-padding);
+  box-sizing: border-box;
+}
+
+.gcsPpobBannerContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition);
+}
+
+/* --- HEADER & JUDUL PROMO PPOB --- */
+.gcsPpobBannerHeader {
+  width: 100%;
+  margin-bottom: 12px;
+  transition: opacity var(--transition);
+}
+
+.gcsPpobBannerTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+/* --- VIEWPORT SLIDER (RASIO 16:7) --- */
+.gcsPpobBannerSlider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7; /* Memastikan dimensi responsif mengikuti rasio yang diminta */
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--gcsPpobBannerShadow);
+  background-color: rgba(0, 0, 0, 0.03);
+  touch-action: pan-y; /* Mendukung gesture usap horizontal secara natif */
+}
+
+/* TRACK GESER / SLIDE ANIMASI --- */
+.gcsPpobBannerTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition);
+  will-change: transform; /* Optimasi hardware acceleration */
+}
+
+/* ITEM SLIDE TUNGGAL --- */
+.gcsPpobBannerItem {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* WRAPPER KLIK SELURUH BANNER --- */
+.gcsPpobBannerLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent; /* Menghilangkan blok biru bawaan browser saat tap */
+}
+
+/* GAMBAR PROMO PPOB --- */
+.gcsPpobBannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- ANIMASI INTERAKSI MULTI-DEVICE --- */
+/* Hover Desktop: Zoom membesar perlahan */
+@media (hover: hover) {
+  .gcsPpobBannerLink:hover .gcsPpobBannerImage {
+    transform: scale(1.035);
+  }
+}
+
+/* Tap/Click Mobile: Efek membal (scale down) ala tombol native iOS */
+.gcsPpobBannerLink:active .gcsPpobBannerImage {
+  transform: scale(0.97);
+}
+
+/* --- INDIKATOR DOT --- */
+.gcsPpobBannerDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  height: 8px;
+  transition: opacity var(--transition);
+}
+
+.gcsPpobBannerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  transition: all var(--transition);
+}
+
+.gcsPpobBannerDot.gcsPpobBannerActive {
+  width: 16px;
+  border-radius: 4px;
+  background-color: var(--blue);
+}
+
+/* --- CLASS BANTUAN (UTILITY) --- */
+.gcsPpobBannerHidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Membuang celah kosong secara otomatis apabila jadwal promo sedang kosong */
+.gcsPpobBannerCollapse {
+  height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  border: none !important;
+}
+
+/* --- PENYESUAIAN LAYAR RESPONSIVE --- */
+@media (max-width: 360px) {
+  .gcsPpobBannerTitle {
+    font-size: 16px;
+  }
+  :root {
+    --screen-padding: 12px;
+    --card-radius: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Batasan untuk rasio layar tablet agar tidak stretch terlalu lebar */
+  .gcsPpobBannerSection {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}

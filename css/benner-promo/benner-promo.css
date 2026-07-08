@@ -1,0 +1,140 @@
+/* --- SECTION & CONTAINER --- */
+.gcsHalamanPromoBannerSection {
+  width: 100%;
+  padding: 0 var(--screen-padding);
+  box-sizing: border-box;
+}
+
+.gcsHalamanPromoBannerContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition);
+}
+
+/* --- HEADER TITLE --- */
+.gcsHalamanPromoBannerHeader {
+  width: 100%;
+  margin-bottom: 12px;
+  transition: opacity var(--transition);
+}
+
+.gcsHalamanPromoBannerTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+/* --- SLIDER & TRACK --- */
+.gcsHalamanPromoBannerSlider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--gcsHalamanPromoBannerShadow);
+  background-color: rgba(0, 0, 0, 0.03);
+  touch-action: pan-y;
+}
+
+.gcsHalamanPromoBannerTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition);
+  will-change: transform;
+}
+
+.gcsHalamanPromoBannerItem {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gcsHalamanPromoBannerLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gcsHalamanPromoBannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- INTERAKSI --- */
+@media (hover: hover) {
+  .gcsHalamanPromoBannerLink:hover .gcsHalamanPromoBannerImage {
+    transform: scale(1.035);
+  }
+}
+
+.gcsHalamanPromoBannerLink:active .gcsHalamanPromoBannerImage {
+  transform: scale(0.97);
+}
+
+/* --- DOT INDICATOR --- */
+.gcsHalamanPromoBannerDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  height: 8px;
+  transition: opacity var(--transition);
+}
+
+.gcsHalamanPromoBannerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  transition: all var(--transition);
+}
+
+.gcsHalamanPromoBannerDot.gcsHalamanPromoBannerActive {
+  width: 16px;
+  border-radius: 4px;
+  background-color: var(--blue);
+}
+
+/* --- UTILITY CLASSES --- */
+.gcsHalamanPromoBannerHidden {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.gcsHalamanPromoBannerCollapse {
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 360px) {
+  .gcsHalamanPromoBannerTitle {
+    font-size: 16px;
+  }
+  :root {
+    --screen-padding: 12px;
+    --card-radius: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .gcsHalamanPromoBannerSection {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
