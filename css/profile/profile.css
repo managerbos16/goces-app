@@ -1,349 +1,379 @@
-/* HEADER IDENTIK DENGAN HOME */
-.gcsProfileHeader {
+/* --- HEADER AREA --- */
+.gcsProfileHeaderContainer {
   position: sticky;
   top: 0;
   z-index: 100;
+  background-color: var(--gcsProfileBlurBg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  padding-top: calc(var(--safe-top) + 12px);
+  padding-bottom: 12px;
+}
+
+.gcsProfileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--screen-padding);
+}
+
+.gcsProfileActionButton {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--gcsProfileShadowSubtle);
+  transition:
+    transform 0.2s var(--transition),
+    background-color 0.2s ease;
+  overflow: hidden;
+}
+
+.gcsProfileActionButton svg {
+  width: 21px;
+  height: 21px;
+  z-index: 2;
+}
+
+.gcsProfileActionButton:hover {
+  background-color: #f3f4f6;
+}
+
+.gcsProfileActionButton:active {
+  transform: scale(0.92);
+}
+
+.gcsProfileRipple {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: gcsProfileRippleAnim 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes gcsProfileRippleAnim {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* --- MAIN CONTENT CONTAINER --- */
+.gcsProfileMainContent {
+  flex: 1;
+  padding: 20px var(--screen-padding) calc(var(--safe-bottom) + 32px)
+    var(--screen-padding);
+  animation: gcsProfileFadeInUp 0.45s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes gcsProfileFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- ACCOUNT RIBBON --- */
+.gcsProfileRibbonSection {
+  margin-bottom: 24px;
+}
+
+.gcsProfileRibbonCard {
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  border-radius: var(--card-radius);
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: calc(var(--safe-top) + 12px) var(--screen-padding) 12px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  height: calc(var(--safe-top) + var(--nav-height));
-}
-
-.gcsProfileHeaderLeft {
-  display: flex;
-  align-items: center;
-}
-
-.gcsProfileBackButton {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
-  border-radius: var(--icon-radius);
-  transition:
-    transform var(--transition),
-    background-color var(--transition);
-}
-
-.gcsProfileBackButton:active {
-  transform: scale(0.92);
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.gcsProfileBackButton svg {
-  width: 24px;
-  height: 24px;
-}
-
-.gcsProfileHeaderRight {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* LEVEL AKUN (RIBBON/PITA) */
-.gcsProfileRibbon {
-  background: var(--blue);
-  border: none;
-  border-radius: 30px;
-  padding: 6px 14px 6px 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.2);
   position: relative;
   overflow: hidden;
 }
 
-.gcsProfileRibbon:active {
-  transform: scale(0.95);
-  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.15);
+.gcsProfileRibbonCard::after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
 }
 
-.gcsProfileRibbonContent {
+.gcsProfileRibbonLeft {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
+  z-index: 2;
 }
 
-.gcsProfileRibbon svg {
-  width: 18px;
-  height: 18px;
-  color: #fef08a; /* Warna Gold Crown/Star */
+.gcsProfileRibbonIcon {
+  width: 32px;
+  height: 32px;
+  color: #fbbf24; /* Golden */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-.gcsProfileRibbonText {
+.gcsProfileRibbonInfo {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
-.gcsProfileRibbonLabel {
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.8);
+.gcsProfileRibbonSubtitle {
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.gcsProfileRibbonValue {
-  font-size: 13px;
-  color: var(--white);
+.gcsProfileRibbonTitle {
+  font-size: 17px;
   font-weight: 700;
-  line-height: 1.1;
 }
 
-/* SETTING BUTTON */
-.gcsProfileSettingBtn {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
-  border-radius: var(--icon-radius);
-  background: var(--white);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition:
-    transform var(--transition),
-    background-color var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.gcsProfileSettingBtn:active {
-  transform: scale(0.92);
-  background-color: var(--gray);
-}
-
-.gcsProfileSettingBtn svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* MAIN AREA */
-.gcsProfileMain {
-  padding: 24px var(--screen-padding);
+/* --- PROFILE IDENTITY --- */
+.gcsProfileIdentitySection {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-/* PROFILE CARD */
-.gcsProfileCard {
-  background: var(--white);
-  border-radius: var(--card-radius);
-  padding: 20px;
-  display: flex;
   align-items: center;
-  gap: 16px;
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition);
-}
-
-.gcsProfileCard:active {
-  transform: scale(0.98);
+  text-align: center;
+  margin-bottom: 32px;
 }
 
 .gcsProfileAvatar {
-  width: 72px;
-  height: 72px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: var(--white);
+  box-shadow: var(--gcsProfileShadowSubtle);
+  margin-bottom: 16px;
+}
+
+.gcsProfileAvatarImage {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  background-color: var(--gray);
-  border: 1px solid var(--border);
-}
-
-.gcsProfileInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
-}
-
-.gcsProfileNameRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
 }
 
 .gcsProfileName {
-  font-size: clamp(18px, 5vw, 22px);
-  font-weight: 700;
-  color: var(--text);
+  font-size: 24px;
+  font-weight: 800;
   letter-spacing: -0.5px;
+  color: var(--text);
+  margin-bottom: 4px;
 }
 
-.gcsProfileDetail {
-  font-size: 13px;
-  color: #6b7280;
+.gcsProfileEmail,
+.gcsProfilePhone {
+  font-size: 14px;
+  color: var(--gcsProfileTextMuted);
+  margin-bottom: 2px;
 }
 
-/* BADGES */
-.gcsProfileBadge {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 12px;
-  letter-spacing: 0.3px;
+/* --- WALLET SECTION --- */
+.gcsProfileWalletSection {
+  margin-bottom: 32px;
 }
 
-.gcsProfileBadgeSuccess {
-  background: rgba(16, 185, 129, 0.1);
-  color: #059669;
+.gcsProfileWalletGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 
-.gcsProfileBadgeWarning {
-  background: rgba(239, 68, 68, 0.1);
-  color: #dc2626;
-}
-
-/* BALANCE CARD */
-.gcsProfileBalanceCard {
-  background: var(--white);
+.gcsProfileWalletCard {
+  background-color: var(--white);
   border-radius: var(--card-radius);
+  padding: 16px;
   display: flex;
-  align-items: center;
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-  overflow: hidden;
-}
-
-.gcsProfileBalanceItem {
-  flex: 1;
-  display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 12px;
-  padding: 20px 16px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: background-color var(--transition);
+  text-decoration: none;
+  box-shadow: var(--gcsProfileShadowSubtle);
+  border: 1px solid rgba(0, 0, 0, 0.015);
+  transition:
+    transform 0.25s var(--transition),
+    box-shadow 0.25s var(--transition);
 }
 
-.gcsProfileBalanceItem:active {
-  background-color: var(--gray);
+.gcsProfileWalletCard:active {
+  transform: scale(0.96);
 }
 
-.gcsProfileBalanceDivider {
-  width: 1px;
-  height: 40px;
-  background-color: var(--border);
-}
-
-.gcsProfileBalanceIconWrap {
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  background: rgba(29, 78, 216, 0.1);
-  color: var(--blue);
+.gcsProfileWalletIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--icon-radius);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.gcsProfileIconPoint {
-  background: rgba(245, 158, 11, 0.1);
+.gcsProfileWalletIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.gcsProfileWalletIconSaldo {
+  background-color: rgba(29, 78, 216, 0.1);
+  color: var(--blue);
+}
+
+.gcsProfileWalletIconPoin {
+  background-color: rgba(245, 158, 11, 0.1);
   color: #d97706;
 }
 
-.gcsProfileBalanceIconWrap svg {
-  width: 20px;
-  height: 20px;
-}
-
-.gcsProfileBalanceText {
+.gcsProfileWalletInfo {
   display: flex;
   flex-direction: column;
 }
 
-.gcsProfileBalanceLabel {
-  font-size: 12px;
-  color: #6b7280;
+.gcsProfileWalletTitle {
+  font-size: 13px;
+  color: var(--gcsProfileTextMuted);
   margin-bottom: 2px;
 }
 
-.gcsProfileBalanceValue {
-  font-size: 15px;
+.gcsProfileWalletValue {
+  font-size: 16px;
   font-weight: 700;
   color: var(--text);
 }
 
-/* SECTIONS & MENU LIST iOS STYLE */
-.gcsProfileSection {
+/* --- MENU ACCOUNT SECTION --- */
+.gcsProfileMenuSection {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.gcsProfileSectionTitle {
-  font-size: 14px;
-  font-weight: 600;
-  color: #6b7280;
-  padding-left: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .gcsProfileMenuList {
-  background: var(--white);
-  border-radius: var(--card-radius);
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-}
-
-.gcsProfileMenuItem {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gcsProfileMenuCard {
+  background-color: var(--white);
+  border-radius: var(--card-radius);
+  padding: 16px 20px;
+  display: flex;
   justify-content: space-between;
-  padding: 16px;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: background-color var(--transition);
+  align-items: center;
+  text-decoration: none;
+  box-shadow: var(--gcsProfileShadowSubtle);
+  border: 1px solid rgba(0, 0, 0, 0.015);
+  transition:
+    transform 0.25s var(--transition),
+    box-shadow 0.25s var(--transition);
 }
 
-.gcsProfileMenuItem:last-child {
-  border-bottom: none;
+.gcsProfileMenuCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
 }
 
-.gcsProfileMenuItem:active {
-  background-color: var(--gray);
+.gcsProfileMenuCard:active {
+  transform: scale(0.975);
+  box-shadow: var(--gcsProfileShadowActive);
 }
 
 .gcsProfileMenuLeft {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
+/* --- ICON COLORS --- */
 .gcsProfileMenuIcon {
-  font-size: 20px;
-  width: 24px;
-  text-align: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--icon-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.gcsProfileMenuText {
-  font-size: 15px;
-  font-weight: 500;
+.gcsProfileMenuIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.gcsProfileIconBlue {
+  background-color: rgba(29, 78, 216, 0.08);
+  color: var(--blue);
+}
+.gcsProfileIconOrange {
+  background-color: rgba(249, 115, 22, 0.08);
+  color: #f97316;
+}
+.gcsProfileIconGreen {
+  background-color: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+}
+.gcsProfileIconPurple {
+  background-color: rgba(139, 92, 246, 0.08);
+  color: #8b5cf6;
+}
+.gcsProfileIconRed {
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+}
+.gcsProfileIconTeal {
+  background-color: rgba(20, 184, 166, 0.08);
+  color: #14b8a6;
+}
+.gcsProfileIconYellow {
+  background-color: rgba(234, 179, 8, 0.08);
+  color: #eab308;
+}
+.gcsProfileIconPink {
+  background-color: rgba(236, 72, 153, 0.08);
+  color: #ec4899;
+}
+.gcsProfileIconGray {
+  background-color: rgba(107, 114, 128, 0.08);
+  color: #6b7280;
+}
+
+.gcsProfileMenuBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gcsProfileMenuHeading {
+  font-size: 16px;
+  font-weight: 700;
   color: var(--text);
+}
+
+.gcsProfileMenuDescription {
+  font-size: 13px;
+  color: var(--gcsProfileTextMuted);
+}
+
+.gcsProfileTextRed {
+  color: #ef4444;
 }
 
 .gcsProfileMenuRight {
@@ -352,65 +382,77 @@
   gap: 10px;
 }
 
-.gcsProfileChevron {
-  width: 20px;
-  height: 20px;
-  color: #9ca3af;
+.gcsProfileMenuArrow {
+  width: 18px;
+  height: 18px;
+  color: #c4c4c6;
+  transition: transform 0.25s var(--transition);
 }
 
-/* LOGOUT BUTTON */
-.gcsProfileLogoutSection {
-  margin-top: 10px;
+.gcsProfileMenuCard:hover .gcsProfileMenuArrow {
+  transform: translateX(2px);
+  color: var(--text);
 }
 
-.gcsProfileButton {
-  width: 100%;
-  padding: 16px;
-  border-radius: var(--radius);
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition),
-    background-color var(--transition);
+/* --- BADGES --- */
+.gcsProfileBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.2px;
 }
 
-.gcsProfileButtonDanger {
-  background: #fef2f2;
-  color: #dc2626;
-  border: 1px solid #fca5a5;
+.gcsProfileBadgeNew {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+.gcsProfileBadgeWarning {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+.gcsProfileBadgeActive {
+  background-color: #d1fae5;
+  color: #059669;
+}
+.gcsProfileBadgeGray {
+  background-color: #f3f4f6;
+  color: #6b7280;
 }
 
-.gcsProfileButtonDanger:active {
-  transform: scale(0.97);
-  background: #fee2e2;
-}
-
-/* RIPPLE EFFECT */
-.gcsProfileRipple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.06);
-  transform: scale(0);
-  animation: gcsProfileRippleAnim 0.5s linear;
-  pointer-events: none;
-}
-
-@keyframes gcsProfileRippleAnim {
-  to {
-    transform: scale(3);
-    opacity: 0;
+/* --- RESPONSIVE & DEVICE SAFE ZONES --- */
+@media (max-width: 360px) {
+  .gcsProfileAvatar {
+    width: 80px;
+    height: 80px;
+  }
+  .gcsProfileName {
+    font-size: 22px;
+  }
+  .gcsProfileMenuCard {
+    padding: 14px 16px;
+  }
+  .gcsProfileMenuHeading {
+    font-size: 15px;
+  }
+  .gcsProfileMenuDescription {
+    font-size: 12px;
+  }
+  .gcsProfileMenuIcon {
+    width: 40px;
+    height: 40px;
   }
 }
 
-/* RESPONSIVE DESKTOP/TABLET */
 @media (min-width: 768px) {
-  .gcsProfileMain {
-    padding: 32px 40px;
+  body.gcsProfilePageBody {
+    max-width: 520px;
+    margin: 0 auto;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.03);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+  .gcsProfileHeaderContainer {
+    max-width: 518px;
   }
 }

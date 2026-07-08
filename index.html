@@ -2103,325 +2103,656 @@
         </section>
 
         <section id="page-profile" class="goces-page">
-            <header class="gcsProfileHeader">
-                <div class="gcsProfileHeaderLeft">
-                    <a href="action://act/back" class="gcsProfileBackButton" aria-label="Kembali">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+            <div class="gcsProfileHeaderContainer">
+                <header class="gcsProfileHeader">
+                    <button class="gcsProfileActionButton gcsProfileBackButton" aria-label="Kembali">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="15 18 9 12 15 6"></polyline>
                         </svg>
-                    </a>
-                </div>
-
-                <div class="gcsProfileHeaderRight">
-                    <button class="gcsProfileRibbon" data-action="gcsProfileOpenLevel">
-                        <div class="gcsProfileRibbonContent">
-                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
-                                </path>
-                            </svg>
-                            <div class="gcsProfileRibbonText">
-                                <span class="gcsProfileRibbonLabel">LEVEL AKUN</span>
-                                <span class="gcsProfileRibbonValue">Silver</span>
-                            </div>
-                        </div>
                     </button>
 
-                    <button class="gcsProfileSettingBtn" data-action="gcsProfileOpenSetting" aria-label="Pengaturan">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                    <button class="gcsProfileActionButton gcsProfileSettingButton" aria-label="Pengaturan">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"></circle>
                             <path
                                 d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
                             </path>
                         </svg>
                     </button>
-                </div>
-            </header>
+                </header>
+            </div>
 
-            <main class="gcsProfileMain" id="gcsProfileMainArea">
+            <main class="gcsProfileMainContent">
 
-                <section class="gcsProfileCard" data-action="gcsProfileOpenDetail">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239ca3af'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E"
-                        alt="Avatar" class="gcsProfileAvatar" loading="lazy">
-                    <div class="gcsProfileInfo">
-                        <div class="gcsProfileNameRow">
-                            <h2 class="gcsProfileName">Akbar</h2>
-                            <span class="gcsProfileBadge gcsProfileBadgeSuccess">Terverifikasi</span>
-                        </div>
-                        <p class="gcsProfileDetail">akbar@email.com</p>
-                        <p class="gcsProfileDetail">+62 xxx xxxx xxxx</p>
-                    </div>
-                </section>
-
-                <section class="gcsProfileBalanceCard">
-                    <div class="gcsProfileBalanceItem" data-action="gcsProfileOpenWallet">
-                        <div class="gcsProfileBalanceIconWrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
-                                <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
-                                <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path>
+                <section class="gcsProfileRibbonSection">
+                    <div class="gcsProfileRibbonCard">
+                        <div class="gcsProfileRibbonLeft">
+                            <svg class="gcsProfileRibbonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                </path>
                             </svg>
-                        </div>
-                        <div class="gcsProfileBalanceText">
-                            <span class="gcsProfileBalanceLabel">Saldo GOCESPay</span>
-                            <span class="gcsProfileBalanceValue">Rp 0</span>
-                        </div>
-                    </div>
-                    <div class="gcsProfileBalanceDivider"></div>
-                    <div class="gcsProfileBalanceItem" data-action="gcsProfileOpenPoints">
-                        <div class="gcsProfileBalanceIconWrap gcsProfileIconPoint">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 8l2.5 7H9.5z"></path>
-                            </svg>
-                        </div>
-                        <div class="gcsProfileBalanceText">
-                            <span class="gcsProfileBalanceLabel">Poin Pembelian</span>
-                            <span class="gcsProfileBalanceValue">0 Poin</span>
+                            <div class="gcsProfileRibbonInfo">
+                                <span class="gcsProfileRibbonSubtitle">LEVEL AKUN</span>
+                                <span class="gcsProfileRibbonTitle">Diamond Member</span>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <section class="gcsProfileSection">
-                    <h3 class="gcsProfileSectionTitle">Pembayaran</h3>
+                <section class="gcsProfileIdentitySection">
+                    <div class="gcsProfileAvatar">
+                        <img class="gcsProfileAvatarImage"
+                            src="https://ui-avatars.com/api/?name=Akbar&background=e5e7eb&color=111827&size=200"
+                            alt="Foto Profile Akbar">
+                    </div>
+                    <h2 class="gcsProfileName">Akbar</h2>
+                    <p class="gcsProfileEmail">akbar@email.com</p>
+                    <p class="gcsProfilePhone">+62 812 3456 7890</p>
+                </section>
+
+                <section class="gcsProfileWalletSection">
+                    <div class="gcsProfileWalletGrid">
+                        <a href="wallet.html" class="gcsProfileWalletCard">
+                            <div class="gcsProfileWalletIcon gcsProfileWalletIconSaldo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                                </svg>
+                            </div>
+                            <div class="gcsProfileWalletInfo">
+                                <span class="gcsProfileWalletTitle">Saldo</span>
+                                <span class="gcsProfileWalletValue">Rp 2.500.000</span>
+                            </div>
+                        </a>
+                        <a href="points.html" class="gcsProfileWalletCard">
+                            <div class="gcsProfileWalletIcon gcsProfileWalletIconPoin">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 8l3 3-3 3-3-3 3-3z"></path>
+                                </svg>
+                            </div>
+                            <div class="gcsProfileWalletInfo">
+                                <span class="gcsProfileWalletTitle">Poin</span>
+                                <span class="gcsProfileWalletValue">12.580 Poin</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section class="gcsProfileMenuSection">
                     <div class="gcsProfileMenuList">
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenGocesPay">
+
+                        <a href="payment.html" class="gcsProfileMenuCard">
                             <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">💳</span>
-                                <span class="gcsProfileMenuText">GOCESPay</span>
+                                <div class="gcsProfileMenuIcon gcsProfileIconBlue"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Pembayaran</span>
+                                    <span class="gcsProfileMenuDescription">Kelola pembayaran Anda</span>
+                                </div>
                             </div>
                             <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <polyline points="9 18 15 12 9 6"></polyline>
                                 </svg>
                             </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenPaylater">
+                        </a>
+
+                        <a href="driver-register.html" class="gcsProfileMenuCard">
                             <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">⏱️</span>
-                                <span class="gcsProfileMenuText">GOCESPay Later</span>
+                                <div class="gcsProfileMenuIcon gcsProfileIconOrange"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2">
+                                        </path>
+                                        <circle cx="7" cy="17" r="2"></circle>
+                                        <path d="M9 17h6"></path>
+                                        <circle cx="17" cy="17" r="2"></circle>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Daftar Driver</span>
+                                    <span class="gcsProfileMenuDescription">Bergabung jadi mitra pengemudi</span>
+                                </div>
                             </div>
                             <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <span class="gcsProfileBadge gcsProfileBadgeNew">Baru</span>
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <polyline points="9 18 15 12 9 6"></polyline>
                                 </svg>
                             </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenPaymentMethod">
+                        </a>
+
+                        <a href="merchant-register.html" class="gcsProfileMenuCard">
                             <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">🏦</span>
-                                <span class="gcsProfileMenuText">Metode Pembayaran</span>
+                                <div class="gcsProfileMenuIcon gcsProfileIconGreen"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Daftar Mitra</span>
+                                    <span class="gcsProfileMenuDescription">Daftarkan toko atau layanan Anda</span>
+                                </div>
                             </div>
                             <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <polyline points="9 18 15 12 9 6"></polyline>
                                 </svg>
                             </div>
-                        </div>
+                        </a>
+
+                        <a href="referral.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconPurple"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Referral</span>
+                                    <span class="gcsProfileMenuDescription">Ajak teman dapat untung</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="email-verification.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconRed"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Verifikasi Email</span>
+                                    <span class="gcsProfileMenuDescription">Amankan akun Anda</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <span class="gcsProfileBadge gcsProfileBadgeWarning">Belum Verifikasi</span>
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="phone-verification.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconTeal"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Verifikasi Nomor Telepon</span>
+                                    <span class="gcsProfileMenuDescription">Hubungkan nomor HP</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <span class="gcsProfileBadge gcsProfileBadgeActive">Aktif</span>
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="transaction-history.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconBlue"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Riwayat Transaksi</span>
+                                    <span class="gcsProfileMenuDescription">Lihat semua transaksi Anda</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="activity-history.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconOrange"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Riwayat Aktivitas</span>
+                                    <span class="gcsProfileMenuDescription">Jejak aktivitas di GOCES</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="vouchers.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconYellow"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
+                                        </path>
+                                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Voucher Saya</span>
+                                    <span class="gcsProfileMenuDescription">Kumpulan diskon Anda</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <span class="gcsProfileBadge gcsProfileBadgeNew">3 Baru</span>
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="promo.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconPink"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polygon
+                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                        </polygon>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Promo</span>
+                                    <span class="gcsProfileMenuDescription">Promo menarik GOCES</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="favorites.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconRed"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                        </path>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Favorit</span>
+                                    <span class="gcsProfileMenuDescription">Merchant & driver favorit</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="saved-address.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconGreen"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Alamat Tersimpan</span>
+                                    <span class="gcsProfileMenuDescription">Lokasi tersimpan</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="payment-methods.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconBlue"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                        <line x1="2" y1="10" x2="22" y2="10"></line>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Metode Pembayaran</span>
+                                    <span class="gcsProfileMenuDescription">Kartu & e-wallet</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="privacy-settings.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconGray"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Pengaturan Privasi</span>
+                                    <span class="gcsProfileMenuDescription">Kontrol privasi Anda</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="security.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconPurple"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Keamanan Akun</span>
+                                    <span class="gcsProfileMenuDescription">PIN & Biometrik</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="change-password.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconTeal"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4">
+                                        </path>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Ubah Password</span>
+                                    <span class="gcsProfileMenuDescription">Ganti kata sandi</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="language.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconBlue"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path
+                                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                        </path>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Bahasa</span>
+                                    <span class="gcsProfileMenuDescription">Pilih bahasa aplikasi</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <span class="gcsProfileBadge gcsProfileBadgeGray">ID</span>
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="help.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconYellow"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Bantuan</span>
+                                    <span class="gcsProfileMenuDescription">FAQ & solusi kendala</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="customer-service.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconOrange"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Hubungi Customer Service</span>
+                                    <span class="gcsProfileMenuDescription">Chat dengan CS</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="about.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconBlue"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Tentang GOCES</span>
+                                    <span class="gcsProfileMenuDescription">Versi aplikasi</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <span class="gcsProfileBadge gcsProfileBadgeGray">v1.0.0</span>
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="privacy-policy.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconGray"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Kebijakan Privasi</span>
+                                    <span class="gcsProfileMenuDescription">Aturan privasi data</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="terms.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconGray"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading">Syarat & Ketentuan</span>
+                                    <span class="gcsProfileMenuDescription">Regulasi GOCES</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="logout.html" class="gcsProfileMenuCard">
+                            <div class="gcsProfileMenuLeft">
+                                <div class="gcsProfileMenuIcon gcsProfileIconRed"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg></div>
+                                <div class="gcsProfileMenuBody">
+                                    <span class="gcsProfileMenuHeading gcsProfileTextRed">Logout</span>
+                                    <span class="gcsProfileMenuDescription">Keluar dari aplikasi</span>
+                                </div>
+                            </div>
+                            <div class="gcsProfileMenuRight">
+                                <svg class="gcsProfileMenuArrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+
                     </div>
                 </section>
-
-                <section class="gcsProfileSection">
-                    <h3 class="gcsProfileSectionTitle">Kemitraan</h3>
-                    <div class="gcsProfileMenuList">
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenDriver">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">🛵</span>
-                                <span class="gcsProfileMenuText">Daftar Driver</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenMerchant">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">🏪</span>
-                                <span class="gcsProfileMenuText">Daftar Mitra</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="gcsProfileSection">
-                    <h3 class="gcsProfileSectionTitle">Keamanan Akun</h3>
-                    <div class="gcsProfileMenuList">
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileVerifyEmail">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">✉️</span>
-                                <span class="gcsProfileMenuText">Verifikasi Email</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <span class="gcsProfileBadge gcsProfileBadgeSuccess">Terverifikasi</span>
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileVerifyPhone">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">📱</span>
-                                <span class="gcsProfileMenuText">Verifikasi Nomor Telepon</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <span class="gcsProfileBadge gcsProfileBadgeWarning">Belum</span>
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="gcsProfileSection">
-                    <h3 class="gcsProfileSectionTitle">Program</h3>
-                    <div class="gcsProfileMenuList">
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenReferral">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">🤝</span>
-                                <span class="gcsProfileMenuText">Referral</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenRewards">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">🎁</span>
-                                <span class="gcsProfileMenuText">Hadiah</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenPromo">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">🎫</span>
-                                <span class="gcsProfileMenuText">Promo Saya</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="gcsProfileSection">
-                    <h3 class="gcsProfileSectionTitle">Bantuan</h3>
-                    <div class="gcsProfileMenuList">
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenHelpCenter">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">🎧</span>
-                                <span class="gcsProfileMenuText">Bantuan</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenContactUs">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">📞</span>
-                                <span class="gcsProfileMenuText">Hubungi Kami</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenFaq">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">❓</span>
-                                <span class="gcsProfileMenuText">FAQ</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="gcsProfileSection">
-                    <h3 class="gcsProfileSectionTitle">Tentang</h3>
-                    <div class="gcsProfileMenuList">
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenPrivacy">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">🛡️</span>
-                                <span class="gcsProfileMenuText">Privacy Policy</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenTOS">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">📄</span>
-                                <span class="gcsProfileMenuText">Ketentuan Layanan</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="gcsProfileMenuItem" data-action="gcsProfileOpenRating">
-                            <div class="gcsProfileMenuLeft">
-                                <span class="gcsProfileMenuIcon">⭐</span>
-                                <span class="gcsProfileMenuText">Beri Rating Aplikasi</span>
-                            </div>
-                            <div class="gcsProfileMenuRight">
-                                <svg class="gcsProfileChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="gcsProfileSection gcsProfileLogoutSection">
-                    <button class="gcsProfileButton gcsProfileButtonDanger" data-action="gcsProfileLogout">
-                        Keluar
-                    </button>
-                </section>
-
             </main>
         </section>
 
