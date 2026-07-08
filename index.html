@@ -1222,137 +1222,58 @@
         </section>
 
         <section id="page-promo" class="goces-page">
-            <header class="gcsPromoHeader">
-                <form action="action://act/search" class="gcsPromoSearchForm">
-                    <div class="gcsPromoSearchWrapper">
-                        <svg class="gcsPromoSearchIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                        <input type="search" id="gcsPromoSearchInput" name="search" class="gcsPromoInput"
-                            placeholder="Cari promo...">
+            <div class="gcs-app">
+                <!-- Header Premium -->
+                <header class="gcs-header">
+                    <div class="gcs-nav-top">
+                        <h1>Promo</h1>
+                        <div class="gcs-header-actions">
+                            <button class="gcs-btn-icon"><span class="icon-cart"></span></button>
+                            <button class="gcs-btn-icon"><span class="icon-bell"></span></button>
+                        </div>
                     </div>
-                </form>
-                <div class="gcsPromoHeaderActions">
-                    <a href="https://jgjk.mobi/act/cart" class="gcsPromoIconButton" aria-label="Keranjang">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                    </a>
-                    <a href="action://act/message_list" class="gcsPromoIconButton" aria-label="Notifikasi">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                        </svg>
-                    </a>
-                </div>
-            </header>
+                    <form class="gcs-search-container" action="action://act/search">
+                        <span class="search-icon"></span>
+                        <input type="search" id="gcsSearch" placeholder="Cari promo..." class="gcs-input">
+                    </form>
+                </header>
 
-            <main class="gcsPromoMain" id="gcsPromoMainArea">
+                <main class="gcs-content">
+                    <!-- Dashboard Card -->
+                    <section class="gcs-hero-card">
+                        <div class="hero-info">
+                            <span class="hero-label">Voucher Aktif</span>
+                            <h2 id="gcsCounter" class="hero-value">0 Voucher</h2>
+                        </div>
+                        <div class="hero-icon">🎫</div>
+                    </section>
 
-                <section class="gcsPromoActiveCard">
-                    <div class="gcsPromoActiveContent">
-                        <h2 class="gcsPromoActiveTitle">Voucher Aktif</h2>
-                        <p class="gcsPromoActiveSubtitle">Siap digunakan untuk transaksimu</p>
+                    <!-- Kategori Premium -->
+                    <nav class="gcs-category-wrapper">
+                        <div class="gcs-category-scroll" id="gcsCategoryScroll">
+                            <button class="gcs-chip active" data-cat="semua">Semua</button>
+                            <button class="gcs-chip" data-cat="goride">GoRide</button>
+                            <button class="gcs-chip" data-cat="gocar">GoCar</button>
+                            <button class="gcs-chip" data-cat="gofood">GoFood</button>
+                            <button class="gcs-chip" data-cat="shop">Shop</button>
+                        </div>
+                    </nav>
+
+                    <!-- Voucher List -->
+                    <div class="gcs-voucher-grid" id="gcsList">
+                        <article class="gcs-card" data-cat="goride">
+                            <div class="card-visual goride">🛵</div>
+                            <div class="card-body">
+                                <span class="badge">Hemat 50%</span>
+                                <h3>Diskon GoRide Maksimal</h3>
+                                <p>Berlaku hingga 31 Des</p>
+                            </div>
+                            <button class="gcs-btn-use">Pakai</button>
+                        </article>
+                        <!-- Tambahkan voucher lainnya di sini -->
                     </div>
-                    <div class="gcsPromoCounterWrapper">
-                        <span id="gcsPromoCounter" class="gcsPromoCounterText">0 Voucher</span>
-                    </div>
-                </section>
-
-                <nav class="gcsPromoCategoryNav">
-                    <div class="gcsPromoCategoryScroll">
-                        <button class="gcsPromoCategoryBtn gcsPromoCategoryActive" data-action="gcsPromoFilter"
-                            data-target="semua">Semua</button>
-                        <button class="gcsPromoCategoryBtn" data-action="gcsPromoFilter"
-                            data-target="goride">GoRide</button>
-                        <button class="gcsPromoCategoryBtn" data-action="gcsPromoFilter"
-                            data-target="gocar">GoCar</button>
-                        <button class="gcsPromoCategoryBtn" data-action="gcsPromoFilter"
-                            data-target="gofood">GoFood</button>
-                        <button class="gcsPromoCategoryBtn" data-action="gcsPromoFilter"
-                            data-target="shop">Shop</button>
-                        <button class="gcsPromoCategoryBtn" data-action="gcsPromoFilter"
-                            data-target="fresh">Fresh</button>
-                    </div>
-                </nav>
-
-                <section class="gcsPromoVoucherList" id="gcsPromoVoucherContainer">
-
-                    <article class="gcsPromoVoucher" data-category="goride" data-active="true">
-                        <div class="gcsPromoVoucherIcon gcsPromoBgBlue">🛵</div>
-                        <div class="gcsPromoVoucherInfo">
-                            <h3 class="gcsPromoVoucherTitle gcsPromoSearchTarget">Diskon 50% Perjalanan GoRide</h3>
-                            <p class="gcsPromoVoucherDesc gcsPromoSearchTarget">Berlaku s/d 31 Des</p>
-                        </div>
-                        <button class="gcsPromoUseBtn">Pakai</button>
-                    </article>
-                    <article class="gcsPromoVoucher" data-category="goride" data-active="true">
-                        <div class="gcsPromoVoucherIcon gcsPromoBgBlue">🛵</div>
-                        <div class="gcsPromoVoucherInfo">
-                            <h3 class="gcsPromoVoucherTitle gcsPromoSearchTarget">Potongan Rp10.000 GoRide</h3>
-                            <p class="gcsPromoVoucherDesc gcsPromoSearchTarget">Khusus jam sibuk</p>
-                        </div>
-                        <button class="gcsPromoUseBtn">Pakai</button>
-                    </article>
-
-                    <article class="gcsPromoVoucher" data-category="gocar" data-active="true">
-                        <div class="gcsPromoVoucherIcon gcsPromoBgGreen">🚘</div>
-                        <div class="gcsPromoVoucherInfo">
-                            <h3 class="gcsPromoVoucherTitle gcsPromoSearchTarget">Cashback 20% GoCar</h3>
-                            <p class="gcsPromoVoucherDesc gcsPromoSearchTarget">Bayar pakai GOCESPay</p>
-                        </div>
-                        <button class="gcsPromoUseBtn">Pakai</button>
-                    </article>
-
-                    <article class="gcsPromoVoucher" data-category="gofood" data-active="true">
-                        <div class="gcsPromoVoucherIcon gcsPromoBgRed">🍔</div>
-                        <div class="gcsPromoVoucherInfo">
-                            <h3 class="gcsPromoVoucherTitle gcsPromoSearchTarget">Gratis Ongkir GoFood Rp15.000</h3>
-                            <p class="gcsPromoVoucherDesc gcsPromoSearchTarget">Min. belanja Rp40.000</p>
-                        </div>
-                        <button class="gcsPromoUseBtn">Pakai</button>
-                    </article>
-                    <article class="gcsPromoVoucher" data-category="gofood" data-active="true">
-                        <div class="gcsPromoVoucherIcon gcsPromoBgRed">🍕</div>
-                        <div class="gcsPromoVoucherInfo">
-                            <h3 class="gcsPromoVoucherTitle gcsPromoSearchTarget">Diskon Makanan 30%</h3>
-                            <p class="gcsPromoVoucherDesc gcsPromoSearchTarget">Khusus resto pilihan</p>
-                        </div>
-                        <button class="gcsPromoUseBtn">Pakai</button>
-                    </article>
-
-                    <article class="gcsPromoVoucher" data-category="shop" data-active="true">
-                        <div class="gcsPromoVoucherIcon gcsPromoBgPurple">🛍️</div>
-                        <div class="gcsPromoVoucherInfo">
-                            <h3 class="gcsPromoVoucherTitle gcsPromoSearchTarget">Voucher Belanja Shop 50rb</h3>
-                            <p class="gcsPromoVoucherDesc gcsPromoSearchTarget">Promo gajian</p>
-                        </div>
-                        <button class="gcsPromoUseBtn">Pakai</button>
-                    </article>
-
-                    <article class="gcsPromoVoucher" data-category="fresh" data-active="true">
-                        <div class="gcsPromoVoucherIcon gcsPromoBgOrange">🥦</div>
-                        <div class="gcsPromoVoucherInfo">
-                            <h3 class="gcsPromoVoucherTitle gcsPromoSearchTarget">Sayur Fresh Diskon 15%</h3>
-                            <p class="gcsPromoVoucherDesc gcsPromoSearchTarget">Pembelian pagi hari</p>
-                        </div>
-                        <button class="gcsPromoUseBtn">Pakai</button>
-                    </article>
-
-                    <div class="gcsPromoEmptyState gcsPromoHidden" id="gcsPromoEmptyState">
-                        <div class="gcsPromoEmptyIcon">🎫</div>
-                        <h3 class="gcsPromoEmptyTitle">Voucher Tidak Ditemukan</h3>
-                        <p class="gcsPromoEmptyDesc">Coba ganti kategori atau kata kunci pencarianmu.</p>
-                    </div>
-
-                </section>
-            </main>
+                </main>
+            </div>
         </section>
 
         <section id="page-qris" class="goces-page">
