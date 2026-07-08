@@ -1,0 +1,133 @@
+/* Section Utama */
+.gcsVoucherGoRideSection {
+  padding: 20px 16px;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.gcsVoucherGoRideTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 16px 0;
+}
+
+.gcsVoucherGoRideContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card Voucher */
+.gcsVoucherGoRideCard {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+}
+
+/* Efek Sobekan Kiri & Kanan */
+.gcsVoucherGoRideCard::before,
+.gcsVoucherGoRideCard::after {
+  content: "";
+  position: absolute;
+  top: 60%;
+  width: 20px;
+  height: 20px;
+  background: var(--gray);
+  border-radius: 50%;
+  z-index: 1;
+}
+.gcsVoucherGoRideCard::before {
+  left: -10px;
+}
+.gcsVoucherGoRideCard::after {
+  right: -10px;
+}
+
+/* Struktur Card */
+.gcsVoucherGoRideLeft {
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.gcsVoucherGoRideIcon {
+  width: 48px;
+  height: 48px;
+  background: #eff6ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.gcsVoucherGoRideContent {
+  flex: 1;
+}
+
+.gcsVoucherGoRideName {
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+.gcsVoucherGoRideDesc {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 4px 0 0;
+}
+
+/* Divider Putus-putus */
+.gcsVoucherGoRideDivider {
+  position: relative;
+  margin: 0 20px;
+  border-top: 2px dashed var(--border);
+}
+
+/* Bagian Bawah */
+.gcsVoucherGoRideRight {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gcsVoucherGoRideCode {
+  font-weight: 700;
+  color: var(--blue);
+  font-family: monospace;
+  font-size: 15px;
+}
+
+.gcsVoucherGoRideExpired {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.gcsVoucherGoRideButton {
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.gcsVoucherGoRideButton:active {
+  transform: scale(0.95);
+}
+
+/* Utility */
+.gcsVoucherGoRideHidden {
+  display: none !important;
+}

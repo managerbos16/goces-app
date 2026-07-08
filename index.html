@@ -1207,11 +1207,10 @@
                     </div>
                 </header>
 
-                <section class="gcsHalamanPromoBannerSection">
-                    <div id="gcsHalamanPromoBannerContainer" class="gcsHalamanPromoBannerContainer"></div>
-                </section>
-
                 <main class="gcsPromoMainScroll">
+                    <section class="gcsHalamanPromoBannerSection">
+                        <div id="gcsHalamanPromoBannerContainer" class="gcsHalamanPromoBannerContainer"></div>
+                    </section>
 
                     <section class="gcsPromoSection">
                         <div class="gcsPromoSummaryCard">
@@ -1239,7 +1238,14 @@
                     </nav>
 
                     <section class="gcsPromoSection">
+
                         <div class="gcsPromoGrid" id="gcsPromoGridContainer">
+
+                            <section class="gcsVoucherGoRideSection">
+                                <h2 id="gcsVoucherGoRideTitle" class="gcsVoucherGoRideTitle">Gratis Ongkir</h2>
+                                <div id="gcsVoucherGoRideContainer" class="gcsVoucherGoRideContainer">
+                                </div>
+                            </section>
 
                             <div class="gcsPromoCard" data-category="goride" data-quota="50">
                                 <div class="gcsPromoCardTop">
@@ -1254,6 +1260,7 @@
                                     <button class="gcsPromoUseBtn">Gunakan Sekarang</button>
                                 </div>
                             </div>
+
                             <div class="gcsPromoCard" data-category="goride" data-quota="100">
                                 <div class="gcsPromoCardTop"><span
                                         class="gcsPromoBadge gcsPromoBadgeRide">GoRide</span><span
@@ -2828,6 +2835,21 @@
                 </button>
             </div>
         </div>
+    </div>
+
+    <div id="gprToast" style="
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#111;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:10px;
+    font-size:13px;
+    display:none;
+    z-index:9999;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);">
     </div>
 
 </body>
