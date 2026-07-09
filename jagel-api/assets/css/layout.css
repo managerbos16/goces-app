@@ -1,0 +1,11 @@
+.gc-container {
+  padding: 12px;
+}
+
+.gc-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+}

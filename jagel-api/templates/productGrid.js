@@ -1,0 +1,62 @@
+const renderProductCard =
+    require("./components/renderProductCard");
+
+function renderProductGrid(data) {
+
+    let cards = "";
+
+    data.items.forEach(product => {
+
+        cards += renderProductCard(product);
+
+    });
+
+    return `
+
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>${data.title}</title>
+
+<link
+rel="stylesheet"
+href="/assets/css/app.css">
+
+</head>
+
+<body>
+
+<div class="gc-container">
+
+    <h2 class="gc-title">
+
+        ${data.title}
+
+    </h2>
+
+    <div class="gc-grid">
+
+        ${cards}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+
+`;
+
+}
+
+module.exports = renderProductGrid;

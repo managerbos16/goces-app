@@ -1,0 +1,31 @@
+:root {
+  /* Primary */
+
+  --gc-primary: #00a86b;
+
+  --gc-primary-dark: #00945e;
+
+  /* Background */
+
+  --gc-background: #f5f7fb;
+
+  --gc-card: #ffffff;
+
+  /* Text */
+
+  --gc-text: #222222;
+
+  --gc-text-light: #666666;
+
+  /* Border */
+
+  --gc-border: #e8e8e8;
+
+  /* Radius */
+
+  --gc-radius: 18px;
+
+  /* Shadow */
+
+  --gc-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
