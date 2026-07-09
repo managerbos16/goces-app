@@ -76,7 +76,7 @@ function updatePage(page) {
 
     }
 
-    window.scrollTo(0, 0);
+    pages[page].scrollTop = 0;
 
     currentPage = page;
 

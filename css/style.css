@@ -29,14 +29,30 @@ html {
   height: 100%;
 }
 
+html,
 body {
   width: 100%;
   height: 100%;
-  background: var(--gray);
-  font-family:
-    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-  color: var(--text);
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.goces-app {
+  position: fixed;
+  inset: 0;
   overflow: hidden;
+  background: var(--gray);
+}
+
+.goces-page {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom));
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 button {
@@ -55,27 +71,6 @@ img {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-.goces-app {
-  position: relative;
-  width: 100%;
-  height: 100dvh;
-  overflow: hidden;
-  background: var(--gray);
-}
-
-.goces-page {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom));
-  background: var(--gray);
-  display: none;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .goces-active {
