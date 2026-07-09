@@ -6,14 +6,16 @@ const routes = require("./routes");
 const app = express();
 
 app.use(cors());
-
-// Layani folder public
 app.use(express.static("public"));
-
 app.use("/", routes);
 
-const PORT = process.env.PORT || 3000;
+// Jalankan hanya saat lokal
+if (process.env.NODE_ENV !== "production") {
+    const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log("🚀 Server berjalan di port " + PORT);
-});
+    app.listen(PORT, () => {
+        console.log("🚀 Server berjalan di port " + PORT);
+    });
+}
+
+module.exports = app;
