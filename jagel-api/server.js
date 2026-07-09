@@ -6,7 +6,6 @@ const routes = require("./routes");
 const app = express();
 
 app.use(cors());
-app.use("/assets", express.static("assets"));
 
 app.use("/", routes);
 

@@ -29,7 +29,7 @@ content="width=device-width,initial-scale=1">
 
 <link
 rel="stylesheet"
-href="/assets/css/app.css">
+href="/css/app.css">
 
 </head>
 
