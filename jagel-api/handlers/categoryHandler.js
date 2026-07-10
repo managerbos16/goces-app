@@ -15,6 +15,8 @@ async function categoryHandler(req, res) {
 
         const data = {
 
+            page: req.category.page,
+
             title: req.category.title,
 
             items: response.data.lists.data || []

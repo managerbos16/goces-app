@@ -51,6 +51,32 @@ href="/css/app.css">
 
 </div>
 
+<script>
+
+function sendHeight() {
+
+    parent.postMessage({
+
+        type: "goces-resize",
+
+        page: "${data.page}",
+
+        height: document.documentElement.scrollHeight
+
+    }, "*");
+
+}
+
+window.addEventListener("load", sendHeight);
+
+if (window.ResizeObserver) {
+
+    new ResizeObserver(sendHeight).observe(document.body);
+
+}
+
+</script>
+
 </body>
 
 </html>
