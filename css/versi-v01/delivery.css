@@ -71,6 +71,7 @@
   align-items: center;
   cursor: grab;
   touch-action: none;
+  user-select: none;
 }
 
 .gcsDeliveryPopupHandleWrapper:active {
