@@ -49,6 +49,8 @@
   transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
   will-change: transform;
   overflow: hidden;
+  overscroll-behavior-y: contain; /* Penting: Mencegah pull-to-refresh */
+  transition: transform 0.2s ease-out;
 }
 
 .gcsRidePopupOverlay.gcsRidePopupVisible .gcsRidePopupSheet {

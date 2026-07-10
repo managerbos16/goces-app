@@ -50,6 +50,8 @@
   transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
   overflow: hidden;
   will-change: transform;
+  overscroll-behavior-y: contain; /* Mencegah refresh saat ditarik */
+  transition: transform 0.2s ease-out;
 }
 
 .gcsCarPopupOverlay.gcsCarPopupVisible .gcsCarPopupSheet {
