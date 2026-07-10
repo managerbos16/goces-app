@@ -1,181 +1,131 @@
 /**
- * Food GOCES - Production Ready JavaScript
- * Modular, performant (RAF), dan tidak mengunci scroll behavior default.
+ * Food GOCES v0.2
+ * Native-Safe JavaScript Architecture (No Scroll Locks)
  */
 
-let foodv02CurrentPage = 'foodv02SectionSemua';
-let foodv02SearchTimeout = null;
+const foodv02State = {
+    searchTimer: null
+};
 
 function foodv02Init() {
-    foodv02InitBanner();
     foodv02BindEvents();
 }
 
 function foodv02BindEvents() {
-    // Event Delegation untuk Tab Kategori
-    const categoryWrapper = document.getElementById('foodv02CategoryWrapper');
-    if (categoryWrapper) {
-        categoryWrapper.addEventListener('click', (e) => {
-            const btn = e.target.closest('.foodv02CategoryButton');
-            if (!btn) return;
-
-            const targetSection = btn.getAttribute('data-target');
-            if (targetSection && targetSection !== foodv02CurrentPage) {
-                foodv02ActivateCategory(btn, targetSection);
-            }
+    // Category Click Event
+    const categoryChips = document.querySelectorAll('.foodv02CategoryChip');
+    categoryChips.forEach(chip => {
+        chip.addEventListener('click', function (e) {
+            const category = this.getAttribute('data-category');
+            foodv02ShowCategory(category, categoryChips, this);
         });
-    }
-
-    // Event Delegation untuk Ripple Effect
-    document.addEventListener('mousedown', (e) => {
-        const rippleTarget = e.target.closest('.foodv02RippleTarget');
-        if (rippleTarget) {
-            foodv02Ripple(e, rippleTarget);
-        }
     });
 
-    // Support Touch device
-    document.addEventListener('touchstart', (e) => {
-        const rippleTarget = e.target.closest('.foodv02RippleTarget');
-        if (rippleTarget) {
-            foodv02Ripple(e.touches[0], rippleTarget);
-        }
-    }, { passive: true }); // passive true memastikan scroll tidak diblok
-
-    // Realtime Search Filtering
-    const searchInput = document.getElementById('foodv02Search');
+    // Search Event (Realtime)
+    const searchInput = document.getElementById('foodv02SearchInput');
     if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(foodv02SearchTimeout);
-            foodv02SearchTimeout = setTimeout(() => {
-                foodv02SearchFilter(e.target.value.toLowerCase());
-            }, 150); // Debounce optimal
+        searchInput.addEventListener('input', function (e) {
+            clearTimeout(foodv02State.searchTimer);
+            foodv02State.searchTimer = setTimeout(() => {
+                foodv02Search(this.value);
+            }, 150); // Debounce ringan agar performa tetap halus
         });
     }
-}
 
-function foodv02ActivateCategory(btn, targetSection) {
-    // Update Button Active State
-    document.querySelectorAll('.foodv02CategoryButton').forEach(el => {
-        el.classList.remove('foodv02CategoryActive');
-    });
-    btn.classList.add('foodv02CategoryActive');
-
-    foodv02CenterActiveChip(btn);
-    foodv02ShowPage(targetSection);
-}
-
-function foodv02ShowPage(pageId) {
-    const currentSection = document.getElementById(foodv02CurrentPage);
-    const nextSection = document.getElementById(pageId);
-
-    if (!nextSection) return;
-
-    requestAnimationFrame(() => {
-        // Logika Tab tanpa menyebabkan reflow/reload (CSS Transition menghandle sisanya)
-        if (currentSection) {
-            currentSection.classList.remove('foodv02SectionActive');
-        }
-
-        nextSection.classList.add('foodv02SectionActive');
-        foodv02CurrentPage = pageId;
+    // Ripple Event
+    const rippleTargets = document.querySelectorAll('.foodv02RippleTarget');
+    rippleTargets.forEach(target => {
+        target.addEventListener('mousedown', foodv02Ripple);
+        target.addEventListener('touchstart', foodv02Ripple, { passive: true });
     });
 }
 
-function foodv02CenterActiveChip(btn) {
-    const wrapper = document.getElementById('foodv02CategoryWrapper');
-    if (!wrapper || !btn) return;
+function foodv02ShowCategory(categoryName, allChips, activeChip) {
+    // Update Chips Style
+    allChips.forEach(c => c.classList.remove('foodv02Active'));
+    activeChip.classList.add('foodv02Active');
 
-    const wrapperRect = wrapper.getBoundingClientRect();
-    const btnRect = btn.getBoundingClientRect();
+    // Center chip in scroll area
+    activeChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 
-    const scrollLeftPos = btn.offsetLeft - (wrapperRect.width / 2) + (btnRect.width / 2);
-
-    wrapper.scrollTo({
-        left: scrollLeftPos,
-        behavior: 'smooth'
-    });
-}
-
-function foodv02SearchFilter(keyword) {
-    // Jika mencari, pastikan kita ada di tab "Semua"
-    if (foodv02CurrentPage !== 'foodv02SectionSemua' && keyword.length > 0) {
-        const btnSemua = document.querySelector('.foodv02CategoryButton[data-target="foodv02SectionSemua"]');
-        if (btnSemua) foodv02ActivateCategory(btnSemua, 'foodv02SectionSemua');
-    }
-
-    const cards = document.querySelectorAll('#foodv02SectionSemua .foodv02Card');
-
-    requestAnimationFrame(() => {
-        cards.forEach(card => {
-            const name = card.getAttribute('data-name').toLowerCase();
-            const merchant = card.getAttribute('data-merchant').toLowerCase();
-            const tags = card.getAttribute('data-tags').toLowerCase();
-
-            if (name.includes(keyword) || merchant.includes(keyword) || tags.includes(keyword)) {
-                card.style.display = 'block';
-                setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.95)';
-                setTimeout(() => { card.style.display = 'none'; }, 300);
+    // Hide all sections
+    const allSections = document.querySelectorAll('.foodv02MenuSection');
+    allSections.forEach(section => {
+        section.classList.remove('foodv02ActiveSection');
+        // Timeout untuk membiarkan CSS transition selesai
+        setTimeout(() => {
+            if (!section.classList.contains('foodv02ActiveSection')) {
+                section.style.display = 'none';
             }
-        });
+        }, 250);
+    });
+
+    // Show target section
+    const targetSection = document.getElementById(`foodv02Section-${categoryName}`);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+        // Trigger reflow untuk animasi fade-in
+        void targetSection.offsetWidth;
+        targetSection.classList.add('foodv02ActiveSection');
+    }
+}
+
+function foodv02Search(query) {
+    const q = query.toLowerCase().trim();
+    const allCards = document.querySelectorAll('.foodv02ProductCard');
+
+    allCards.forEach(card => {
+        const foodNameEl = card.querySelector('.foodv02FoodName');
+        const merchantNameEl = card.querySelector('.foodv02MerchantName');
+
+        let isMatch = false;
+        if (foodNameEl && foodNameEl.innerText.toLowerCase().includes(q)) isMatch = true;
+        if (merchantNameEl && merchantNameEl.innerText.toLowerCase().includes(q)) isMatch = true;
+
+        if (isMatch || q === '') {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
     });
 }
 
-function foodv02InitBanner() {
-    const container = document.getElementById('foodv02BannerContainer');
-    const dotContainer = document.getElementById('foodv02DotContainer');
-    if (!container || !dotContainer) return;
+function foodv02Ripple(e) {
+    // Hanya proses sentuhan pertama untuk touch event
+    let x, y;
+    if (e.type === 'touchstart') {
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+    } else {
+        x = e.clientX;
+        y = e.clientY;
+    }
 
-    // Sesuai gambar referensi: Rasio 16:7 dan gambar Pizza
-    const imgUrl = 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80';
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
 
-    requestAnimationFrame(() => {
-        container.innerHTML = `<img src="${imgUrl}" alt="Promo GOCES" class="foodv02BannerItem">`;
+    const ripple = document.createElement('span');
+    ripple.classList.add('foodv02Ripple');
 
-        // Dot indicator (Contoh 3 slide, slide pertama aktif)
-        dotContainer.innerHTML = `
-            <div class="foodv02Dot foodv02DotActive"></div>
-            <div class="foodv02Dot"></div>
-            <div class="foodv02Dot"></div>
-        `;
-    });
-}
-
-function foodv02Ripple(event, button) {
-    const circle = document.createElement('span');
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const diameter = Math.max(btn.clientWidth, btn.clientHeight);
     const radius = diameter / 2;
-    const rect = button.getBoundingClientRect();
 
-    // Perhitungan posisi akurat, menahan error fallback ke tengah
-    const clientX = event.clientX || (rect.left + radius);
-    const clientY = event.clientY || (rect.top + radius);
+    ripple.style.width = ripple.style.height = `${diameter}px`;
+    ripple.style.left = `${x - rect.left - radius}px`;
+    ripple.style.top = `${y - rect.top - radius}px`;
 
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${clientX - rect.left - radius}px`;
-    circle.style.top = `${clientY - rect.top - radius}px`;
-    circle.classList.add('foodv02Ripple');
-
-    const existingRipple = button.querySelector('.foodv02Ripple');
+    // Hapus ripple lama agar tidak menumpuk di DOM
+    const existingRipple = btn.querySelector('.foodv02Ripple');
     if (existingRipple) {
         existingRipple.remove();
     }
 
-    button.appendChild(circle);
+    btn.appendChild(ripple);
 
     setTimeout(() => {
-        if (circle.parentNode === button) {
-            circle.remove();
-        }
-    }, 500);
+        ripple.remove();
+    }, 600); // Sesuai durasi animasi CSS
 }
 
-// Inisialisasi
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', foodv02Init);
-} else {
-    foodv02Init();
-}
+// Jalankan inisialisasi saat DOM siap
+document.addEventListener('DOMContentLoaded', foodv02Init);

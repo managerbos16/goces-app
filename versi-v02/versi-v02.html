@@ -925,174 +925,179 @@
             <div class="scroll-area">
                 <header class="foodv02Header">
                     <div class="foodv02HeaderInner">
-                        <div class="foodv02HeaderLeft">
-                            <a href="action://act/back" class="foodv02CircleBtn foodv02RippleTarget" aria-label="Back">
-                                <i class="ph ph-arrow-left"></i>
-                            </a>
-                        </div>
+                        <a href="action://act/back" class="foodv02IconCircleBtn foodv02RippleTarget"
+                            aria-label="Kembali">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </a>
+
                         <div class="foodv02HeaderRight">
-                            <a href="https://jgjk.mobi/act/cart" class="foodv02CircleBtn foodv02RippleTarget"
-                                aria-label="Cart">
-                                <i class="ph ph-shopping-cart"></i>
+                            <a href="https://jgjk.mobi/act/cart" class="foodv02IconCircleBtn foodv02RippleTarget"
+                                aria-label="Keranjang">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
                             </a>
-                            <a href="action://act/message_list" class="foodv02CircleBtn foodv02RippleTarget"
-                                aria-label="Messages">
-                                <i class="ph ph-bell"></i>
+                            <a href="action://act/message_list" class="foodv02IconCircleBtn foodv02RippleTarget"
+                                aria-label="Pesan">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>
                             </a>
                         </div>
                     </div>
                 </header>
 
-                <div class="foodv02SearchWrapper">
-                    <form action="action://act/search" class="foodv02SearchForm" onsubmit="event.preventDefault();">
-                        <i class="ph ph-magnifying-glass foodv02SearchIcon"></i>
-                        <input type="search" id="foodv02Search" name="search" class="foodv02SearchInput"
-                            placeholder="Cari makanan, toko, atau layanan...">
-                    </form>
-                </div>
-
-                <div class="foodv02SectionTitle">
-                    <h2>Promo Makanan</h2>
-                </div>
-
-                <section class="foodv02BannerSection">
-                    <div id="foodv02BannerContainer" class="foodv02BannerContainer">
-                    </div>
-                    <div id="foodv02DotContainer" class="foodv02DotContainer">
+                <section class="foodv02SearchSection">
+                    <div class="foodv02SearchWrapper">
+                        <div class="foodv02SearchIcon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8E8E93"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <input type="text" class="foodv02SearchInput" id="foodv02SearchInput"
+                            placeholder="Cari makanan atau minuman...">
                     </div>
                 </section>
 
-                <nav class="foodv02CategoryBar">
-                    <div class="foodv02CategoryWrapper" id="foodv02CategoryWrapper">
-                        <button class="foodv02CategoryButton foodv02CategoryActive foodv02RippleTarget"
-                            data-target="foodv02SectionSemua">Semua</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionKuliner">Kuliner</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionPizza">Pizza</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionBakso">Bakso</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionSnack">Snack</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionMinuman">Minuman</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionDessert">Dessert</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionCoffee">Coffee</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionSeafood">Seafood</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionAyam">Ayam</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionBurger">Burger</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionNasi">Nasi</button>
-                        <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionSate">Sate</button>
+                <nav class="foodv02CategoriesBar">
+                    <div class="foodv02CategoriesScroll">
+                        <button class="foodv02CategoryChip foodv02Active foodv02RippleTarget"
+                            data-category="semua">Semua</button>
+                        <button class="foodv02CategoryChip foodv02RippleTarget"
+                            data-category="terlaris">Terlaris</button>
+                        <button class="foodv02CategoryChip foodv02RippleTarget" data-category="minuman">Minuman</button>
+                        <button class="foodv02CategoryChip foodv02RippleTarget" data-category="promo">Promo</button>
+                        <button class="foodv02CategoryChip foodv02RippleTarget"
+                            data-category="terdekat">Terdekat</button>
                     </div>
                 </nav>
 
-                <main class="foodv02Content" id="foodv02Content">
+                <main class="foodv02ContentBody">
+                    <section class="foodv02MenuSection foodv02ActiveSection" id="foodv02Section-semua">
+                        <div class="foodv02ProductsGrid">
 
-                    <section id="foodv02SectionSemua" class="foodv02Section foodv02SectionActive">
-                        <div class="foodv02ProductGrid" id="foodv02ProductGrid">
-
-                            <div class="foodv02Card foodv02RippleTarget" data-tags="pizza kuliner"
-                                data-name="Hawaiian Chicken Pizza" data-merchant="Pizza Pazzo">
-                                <div class="foodv02CardImageWrapper">
-                                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80"
-                                        alt="Pizza" loading="lazy" class="foodv02CardImage">
-                                    <span class="foodv02BadgePromo">Promo 20%</span>
+                            <article class="foodv02ProductCard foodv02RippleTarget">
+                                <div class="foodv02CardImage">
+                                    <img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?w=400&q=80"
+                                        alt="Kopi Yakult" loading="lazy">
                                 </div>
                                 <div class="foodv02CardInfo">
-                                    <h3 class="foodv02ItemName">Hawaiian Chicken Pizza</h3>
-                                    <p class="foodv02Merchant">Pizza Pazzo</p>
-                                    <div class="foodv02Meta">
-                                        <span class="foodv02Rating"><i class="ph-fill ph-star"></i> 4.9</span>
-                                        <span class="foodv02Distance">2.5 km</span>
-                                    </div>
-                                    <p class="foodv02Price">Rp 85.000</p>
-                                </div>
-                            </div>
-
-                            <div class="foodv02Card foodv02RippleTarget" data-tags="burger snack"
-                                data-name="Double Beef Burger" data-merchant="Burger King">
-                                <div class="foodv02CardImageWrapper">
-                                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
-                                        alt="Burger" loading="lazy" class="foodv02CardImage">
-                                </div>
-                                <div class="foodv02CardInfo">
-                                    <h3 class="foodv02ItemName">Double Beef Burger</h3>
-                                    <p class="foodv02Merchant">Burger Chill</p>
-                                    <div class="foodv02Meta">
-                                        <span class="foodv02Rating"><i class="ph-fill ph-star"></i> 4.8</span>
+                                    <h3 class="foodv02FoodName">Kopi Yakult</h3>
+                                    <p class="foodv02MerchantName">KOPITAA</p>
+                                    <div class="foodv02CardMeta">
+                                        <span class="foodv02Rating">★ 4.8</span>
                                         <span class="foodv02Distance">1.2 km</span>
                                     </div>
-                                    <p class="foodv02Price">Rp 45.000</p>
+                                    <p class="foodv02Price">Rp 18.000</p>
                                 </div>
-                            </div>
+                            </article>
 
-                            <div class="foodv02Card foodv02RippleTarget" data-tags="kopi minuman coffee"
-                                data-name="Kopi Susu Aren" data-merchant="Kopi Senja">
-                                <div class="foodv02CardImageWrapper">
-                                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80"
-                                        alt="Coffee" loading="lazy" class="foodv02CardImage">
-                                    <span class="foodv02BadgePromo">Free Ongkir</span>
+                            <article class="foodv02ProductCard foodv02RippleTarget">
+                                <div class="foodv02CardImage">
+                                    <img src="https://images.unsplash.com/photo-1515823662972-da6a2b4d3002?w=400&q=80"
+                                        alt="Matcha Latte" loading="lazy">
                                 </div>
                                 <div class="foodv02CardInfo">
-                                    <h3 class="foodv02ItemName">Kopi Susu Aren Premium</h3>
-                                    <p class="foodv02Merchant">Kopi Senja</p>
-                                    <div class="foodv02Meta">
-                                        <span class="foodv02Rating"><i class="ph-fill ph-star"></i> 4.7</span>
-                                        <span class="foodv02Distance">0.8 km</span>
+                                    <h3 class="foodv02FoodName">Matcha Latte</h3>
+                                    <p class="foodv02MerchantName">KOPITAA</p>
+                                    <div class="foodv02CardMeta">
+                                        <span class="foodv02Rating">★ 4.9</span>
+                                        <span class="foodv02Distance">1.2 km</span>
                                     </div>
                                     <p class="foodv02Price">Rp 22.000</p>
                                 </div>
-                            </div>
+                            </article>
+
+                            <article class="foodv02ProductCard foodv02RippleTarget">
+                                <div class="foodv02CardImage">
+                                    <img src="https://images.unsplash.com/photo-1572490122747-3968b75bb8fc?w=400&q=80"
+                                        alt="Matcha Aren" loading="lazy">
+                                </div>
+                                <div class="foodv02CardInfo">
+                                    <h3 class="foodv02FoodName">Matcha Aren</h3>
+                                    <p class="foodv02MerchantName">KOPITAA</p>
+                                    <div class="foodv02CardMeta">
+                                        <span class="foodv02Rating">★ 4.7</span>
+                                        <span class="foodv02Distance">1.2 km</span>
+                                    </div>
+                                    <p class="foodv02Price">Rp 24.000</p>
+                                </div>
+                            </article>
+
+                            <article class="foodv02ProductCard foodv02RippleTarget">
+                                <div class="foodv02CardImage">
+                                    <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&q=80"
+                                        alt="Matcha Karamel" loading="lazy">
+                                </div>
+                                <div class="foodv02CardInfo">
+                                    <h3 class="foodv02FoodName">Matcha Karamel</h3>
+                                    <p class="foodv02MerchantName">KOPITAA</p>
+                                    <div class="foodv02CardMeta">
+                                        <span class="foodv02Rating">★ 4.8</span>
+                                        <span class="foodv02Distance">1.2 km</span>
+                                    </div>
+                                    <p class="foodv02Price">Rp 26.000</p>
+                                </div>
+                            </article>
+
+                            <article class="foodv02ProductCard foodv02RippleTarget">
+                                <div class="foodv02CardImage">
+                                    <img src="https://images.unsplash.com/photo-1553909489-cd47ce7ea9aa?w=400&q=80"
+                                        alt="Matcha Stroberi" loading="lazy">
+                                </div>
+                                <div class="foodv02CardInfo">
+                                    <h3 class="foodv02FoodName">Matcha Stroberi</h3>
+                                    <p class="foodv02MerchantName">KOPITAA</p>
+                                    <div class="foodv02CardMeta">
+                                        <span class="foodv02Rating">★ 4.9</span>
+                                        <span class="foodv02Distance">1.2 km</span>
+                                    </div>
+                                    <p class="foodv02Price">Rp 28.000</p>
+                                </div>
+                            </article>
+
+                            <article class="foodv02ProductCard foodv02RippleTarget">
+                                <div class="foodv02CardImage">
+                                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80"
+                                        alt="Lemon Tea" loading="lazy">
+                                </div>
+                                <div class="foodv02CardInfo">
+                                    <h3 class="foodv02FoodName">Lemon Tea</h3>
+                                    <p class="foodv02MerchantName">KOPITAA</p>
+                                    <div class="foodv02CardMeta">
+                                        <span class="foodv02Rating">★ 4.6</span>
+                                        <span class="foodv02Distance">1.2 km</span>
+                                    </div>
+                                    <p class="foodv02Price">Rp 15.000</p>
+                                </div>
+                            </article>
 
                         </div>
                     </section>
 
-                    <section id="foodv02SectionKuliner" class="foodv02Section">
-                        <iframe class="foodv02Iframe" src="https://goces-api.vercel.app/kuliner"
-                            title="Kuliner"></iframe>
+                    <section class="foodv02MenuSection" id="foodv02Section-terlaris">
+                        <div class="foodv02EmptyState">Kategori Terlaris (Contoh)</div>
                     </section>
-
-                    <section id="foodv02SectionPizza" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Pizza</div>
+                    <section class="foodv02MenuSection" id="foodv02Section-minuman">
+                        <div class="foodv02EmptyState">Kategori Minuman (Contoh)</div>
                     </section>
-                    <section id="foodv02SectionBakso" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Bakso</div>
+                    <section class="foodv02MenuSection" id="foodv02Section-promo">
+                        <div class="foodv02EmptyState">Kategori Promo (Contoh)</div>
                     </section>
-                    <section id="foodv02SectionSnack" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Snack</div>
+                    <section class="foodv02MenuSection" id="foodv02Section-terdekat">
+                        <div class="foodv02EmptyState">Kategori Terdekat (Contoh)</div>
                     </section>
-                    <section id="foodv02SectionMinuman" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Minuman</div>
-                    </section>
-                    <section id="foodv02SectionDessert" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Dessert</div>
-                    </section>
-                    <section id="foodv02SectionCoffee" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Coffee</div>
-                    </section>
-                    <section id="foodv02SectionSeafood" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Seafood</div>
-                    </section>
-                    <section id="foodv02SectionAyam" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Ayam</div>
-                    </section>
-                    <section id="foodv02SectionBurger" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Burger</div>
-                    </section>
-                    <section id="foodv02SectionNasi" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Nasi</div>
-                    </section>
-                    <section id="foodv02SectionSate" class="foodv02Section">
-                        <div class="foodv02EmptyState">Kategori Sate</div>
-                    </section>
-
                 </main>
 
             </div>
@@ -1716,6 +1721,7 @@
     <!-- ========== AKHIR NAVIGASI BOTTOM BAWAH ========== -->
 
     <script src="script.js"></script>
+    <script src="food.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v02/global.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v02/gofood.js"></script>
 
