@@ -55,13 +55,19 @@ href="/css/app.css">
 
 function sendHeight() {
 
-    parent.postMessage({
+    const totalItems = ${data.items.length};
 
-        type: "goces-resize",
+    window.parent.postMessage({
+
+        type: "goces-frame",
 
         page: "${data.page}",
 
-        height: document.documentElement.scrollHeight
+        height: document.documentElement.scrollHeight,
+
+        totalItems: totalItems,
+
+        empty: totalItems === 0
 
     }, "*");
 

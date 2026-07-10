@@ -1,21 +1,27 @@
-/*==================================
-        GOCES IFRAME RESIZE
-==================================*/
+window.addEventListener("message", function (e) {
 
-window.addEventListener("message", function (event) {
+    if (!e.data) return;
 
-    if (!event.data) return;
+    if (e.data.type !== "goces-frame") return;
 
-    if (event.data.type !== "goces-resize") return;
-
-    const page = event.data.page;
-
-    const height = event.data.height;
+    const page = e.data.page;
 
     const frame = document.getElementById("frame-" + page);
 
-    if (!frame) return;
+    const section = document.getElementById("section-" + page);
 
-    frame.style.height = height + "px";
+    if (!frame || !section) return;
+
+    if (e.data.empty) {
+
+        section.style.display = "none";
+
+        return;
+
+    }
+
+    section.style.display = "";
+
+    frame.style.height = e.data.height + "px";
 
 });
