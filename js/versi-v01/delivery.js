@@ -33,50 +33,59 @@ function gcsDeliveryPopupInit() {
 
     if (!overlay || !sheet || !backdrop) return;
 
-    backdrop.addEventListener("click", window.gcsDeliveryPopupClose);
+    // Click Backdrop
+    backdrop.addEventListener("click", gcsDeliveryPopupClose);
 
     // Keyboard Control
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && overlay.classList.contains("gcsDeliveryPopupVisible")) {
-            window.gcsDeliveryPopupClose();
+            gcsDeliveryPopupClose();
         }
     });
 
-    // Pointer Gestures Engine (Drag to close)
-    dragArea.addEventListener("pointerdown", (e) => {
-        gcsDeliveryPopupIsDragging = true;
-        gcsDeliveryPopupStartY = e.clientY;
-        gcsDeliveryPopupCurrentY = 0;
-        sheet.classList.add("gcsDeliveryPopupDragging");
-        gcsDeliveryPopupThreshold = sheet.offsetHeight * 0.30;
-        dragArea.setPointerCapture(e.pointerId);
-    }, { passive: false });
+    // Pointer Gestures (Drag to close)
+    if (dragArea) {
+        // PENTING: Gunakan { passive: false } agar preventDefault() berfungsi
+        dragArea.addEventListener("pointerdown", (e) => {
+            e.preventDefault(); // INI KUNCI UTAMA MENCEGAH RELOAD
 
-    dragArea.addEventListener("pointermove", (e) => {
-        if (!gcsDeliveryPopupIsDragging) return;
-        const deltaY = e.clientY - gcsDeliveryPopupStartY;
-        if (deltaY > 0) {
-            gcsDeliveryPopupCurrentY = deltaY;
-            sheet.style.transform = `translateY(${gcsDeliveryPopupCurrentY}px)`;
-        }
-    }, { passive: true });
+            gcsDeliveryPopupIsDragging = true;
+            gcsDeliveryPopupStartY = e.clientY;
+            gcsDeliveryPopupCurrentY = 0;
+            sheet.classList.add("gcsDeliveryPopupDragging");
+            gcsDeliveryPopupThreshold = sheet.offsetHeight * 0.30; // Tutup jika ditarik 30%
+            dragArea.setPointerCapture(e.pointerId);
+        }, { passive: false });
 
-    const handleDragEnd = (e) => {
-        if (!gcsDeliveryPopupIsDragging) return;
-        gcsDeliveryPopupIsDragging = false;
-        sheet.classList.remove("gcsDeliveryPopupDragging");
-        dragArea.releasePointerCapture(e.pointerId);
+        dragArea.addEventListener("pointermove", (e) => {
+            if (!gcsDeliveryPopupIsDragging) return;
+            const deltaY = e.clientY - gcsDeliveryPopupStartY;
 
-        if (gcsDeliveryPopupCurrentY > gcsDeliveryPopupThreshold) {
-            window.gcsDeliveryPopupClose();
-        } else {
-            sheet.style.transform = "";
-        }
-        gcsDeliveryPopupCurrentY = 0;
-    };
+            // Hanya izinkan tarik ke bawah
+            if (deltaY > 0) {
+                gcsDeliveryPopupCurrentY = deltaY;
+                sheet.style.transform = `translateY(${gcsDeliveryPopupCurrentY}px)`;
+            }
+        }, { passive: true });
 
-    dragArea.addEventListener("pointerup", handleDragEnd);
-    dragArea.addEventListener("pointercancel", handleDragEnd);
+        const handleDragEnd = (e) => {
+            if (!gcsDeliveryPopupIsDragging) return;
+            gcsDeliveryPopupIsDragging = false;
+            sheet.classList.remove("gcsDeliveryPopupDragging");
+            dragArea.releasePointerCapture(e.pointerId);
+
+            // Cek apakah tarikan cukup jauh untuk menutup
+            if (gcsDeliveryPopupCurrentY > gcsDeliveryPopupThreshold) {
+                gcsDeliveryPopupClose();
+            } else {
+                sheet.style.transform = ""; // Kembali ke posisi semula
+            }
+            gcsDeliveryPopupCurrentY = 0;
+        };
+
+        dragArea.addEventListener("pointerup", handleDragEnd);
+        dragArea.addEventListener("pointercancel", handleDragEnd);
+    }
 }
 
 // Fungsi Internal untuk menyembunyikan UI (Dipakai oleh Close & Back Button)
