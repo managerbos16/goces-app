@@ -1,6 +1,6 @@
 /**
  * Food GOCES - Production Ready JavaScript
- * Arsitektur modular, event delegation, dan performance optimized (requestAnimationFrame)
+ * Modular, performant (RAF), dan tidak mengunci scroll behavior default.
  */
 
 let foodv02CurrentPage = 'foodv02SectionSemua';
@@ -12,7 +12,7 @@ function foodv02Init() {
 }
 
 function foodv02BindEvents() {
-    // Event Delegation untuk Category Button
+    // Event Delegation untuk Tab Kategori
     const categoryWrapper = document.getElementById('foodv02CategoryWrapper');
     if (categoryWrapper) {
         categoryWrapper.addEventListener('click', (e) => {
@@ -26,13 +26,21 @@ function foodv02BindEvents() {
         });
     }
 
-    // Ripple Effect Delegation
-    document.addEventListener('click', (e) => {
+    // Event Delegation untuk Ripple Effect
+    document.addEventListener('mousedown', (e) => {
         const rippleTarget = e.target.closest('.foodv02RippleTarget');
         if (rippleTarget) {
-            foodv02RippleEffect(e, rippleTarget);
+            foodv02Ripple(e, rippleTarget);
         }
     });
+
+    // Support Touch device
+    document.addEventListener('touchstart', (e) => {
+        const rippleTarget = e.target.closest('.foodv02RippleTarget');
+        if (rippleTarget) {
+            foodv02Ripple(e.touches[0], rippleTarget);
+        }
+    }, { passive: true }); // passive true memastikan scroll tidak diblok
 
     // Realtime Search Filtering
     const searchInput = document.getElementById('foodv02Search');
@@ -41,7 +49,7 @@ function foodv02BindEvents() {
             clearTimeout(foodv02SearchTimeout);
             foodv02SearchTimeout = setTimeout(() => {
                 foodv02SearchFilter(e.target.value.toLowerCase());
-            }, 150); // Debounce ringan
+            }, 150); // Debounce optimal
         });
     }
 }
@@ -53,10 +61,7 @@ function foodv02ActivateCategory(btn, targetSection) {
     });
     btn.classList.add('foodv02CategoryActive');
 
-    // Center the chip
     foodv02CenterActiveChip(btn);
-
-    // Show Page
     foodv02ShowPage(targetSection);
 }
 
@@ -67,12 +72,11 @@ function foodv02ShowPage(pageId) {
     if (!nextSection) return;
 
     requestAnimationFrame(() => {
-        // Hilangkan halaman lama (Transisi dilakukan oleh CSS)
+        // Logika Tab tanpa menyebabkan reflow/reload (CSS Transition menghandle sisanya)
         if (currentSection) {
             currentSection.classList.remove('foodv02SectionActive');
         }
 
-        // Tampilkan halaman baru
         nextSection.classList.add('foodv02SectionActive');
         foodv02CurrentPage = pageId;
     });
@@ -85,7 +89,6 @@ function foodv02CenterActiveChip(btn) {
     const wrapperRect = wrapper.getBoundingClientRect();
     const btnRect = btn.getBoundingClientRect();
 
-    // Hitung posisi tengah agar persis seperti behavior scroll iOS
     const scrollLeftPos = btn.offsetLeft - (wrapperRect.width / 2) + (btnRect.width / 2);
 
     wrapper.scrollTo({
@@ -95,8 +98,8 @@ function foodv02CenterActiveChip(btn) {
 }
 
 function foodv02SearchFilter(keyword) {
-    // Pastikan kita kembali ke tab 'Semua' saat melakukan pencarian
-    if (foodv02CurrentPage !== 'foodv02SectionSemua') {
+    // Jika mencari, pastikan kita ada di tab "Semua"
+    if (foodv02CurrentPage !== 'foodv02SectionSemua' && keyword.length > 0) {
         const btnSemua = document.querySelector('.foodv02CategoryButton[data-target="foodv02SectionSemua"]');
         if (btnSemua) foodv02ActivateCategory(btnSemua, 'foodv02SectionSemua');
     }
@@ -111,7 +114,6 @@ function foodv02SearchFilter(keyword) {
 
             if (name.includes(keyword) || merchant.includes(keyword) || tags.includes(keyword)) {
                 card.style.display = 'block';
-                // Trigger reflow untuk animasi masuk kembali
                 setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
             } else {
                 card.style.opacity = '0';
@@ -124,33 +126,39 @@ function foodv02SearchFilter(keyword) {
 
 function foodv02InitBanner() {
     const container = document.getElementById('foodv02BannerContainer');
-    if (!container) return;
+    const dotContainer = document.getElementById('foodv02DotContainer');
+    if (!container || !dotContainer) return;
 
-    // Injeksi elemen via JS agar sesuai permintaan (tanpa gambar statis di HTML)
-    // Untuk production, Anda bisa memodifikasi ini menjadi slider
-    const imgUrl = 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80';
+    // Sesuai gambar referensi: Rasio 16:7 dan gambar Pizza
+    const imgUrl = 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80';
 
     requestAnimationFrame(() => {
-        container.innerHTML = `
-            <img src="${imgUrl}" alt="Promo GOCES" class="foodv02BannerItem">
+        container.innerHTML = `<img src="${imgUrl}" alt="Promo GOCES" class="foodv02BannerItem">`;
+
+        // Dot indicator (Contoh 3 slide, slide pertama aktif)
+        dotContainer.innerHTML = `
+            <div class="foodv02Dot foodv02DotActive"></div>
+            <div class="foodv02Dot"></div>
+            <div class="foodv02Dot"></div>
         `;
     });
 }
 
-function foodv02RippleEffect(event, button) {
+function foodv02Ripple(event, button) {
     const circle = document.createElement('span');
     const diameter = Math.max(button.clientWidth, button.clientHeight);
     const radius = diameter / 2;
-
     const rect = button.getBoundingClientRect();
 
-    // Perhitungan posisi klik yang akurat
+    // Perhitungan posisi akurat, menahan error fallback ke tengah
+    const clientX = event.clientX || (rect.left + radius);
+    const clientY = event.clientY || (rect.top + radius);
+
     circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.clientX - rect.left - radius}px`;
-    circle.style.top = `${event.clientY - rect.top - radius}px`;
+    circle.style.left = `${clientX - rect.left - radius}px`;
+    circle.style.top = `${clientY - rect.top - radius}px`;
     circle.classList.add('foodv02Ripple');
 
-    // Mencegah ripple menumpuk berlebihan (optimasi DOM)
     const existingRipple = button.querySelector('.foodv02Ripple');
     if (existingRipple) {
         existingRipple.remove();
@@ -158,13 +166,16 @@ function foodv02RippleEffect(event, button) {
 
     button.appendChild(circle);
 
-    // Hapus span setelah animasi selesai agar DOM tetap bersih
     setTimeout(() => {
         if (circle.parentNode === button) {
             circle.remove();
         }
-    }, 600);
+    }, 500);
 }
 
-// Inisialisasi setelah DOM siap
-document.addEventListener('DOMContentLoaded', foodv02Init);
+// Inisialisasi
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', foodv02Init);
+} else {
+    foodv02Init();
+}

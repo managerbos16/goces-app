@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="gojek.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/versi-v02/beranda.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/versi-v02/promo.css">
@@ -925,17 +926,16 @@
                 <header class="foodv02Header">
                     <div class="foodv02HeaderInner">
                         <div class="foodv02HeaderLeft">
-                            <a href="action://act/back" class="foodv02IconButton foodv02RippleTarget" aria-label="Back">
+                            <a href="action://act/back" class="foodv02CircleBtn foodv02RippleTarget" aria-label="Back">
                                 <i class="ph ph-arrow-left"></i>
                             </a>
                         </div>
-                        <div class="foodv02HeaderTitle">Food GOCES</div>
                         <div class="foodv02HeaderRight">
-                            <a href="https://jgjk.mobi/act/cart" class="foodv02IconButton foodv02RippleTarget"
+                            <a href="https://jgjk.mobi/act/cart" class="foodv02CircleBtn foodv02RippleTarget"
                                 aria-label="Cart">
                                 <i class="ph ph-shopping-cart"></i>
                             </a>
-                            <a href="action://act/message_list" class="foodv02IconButton foodv02RippleTarget"
+                            <a href="action://act/message_list" class="foodv02CircleBtn foodv02RippleTarget"
                                 aria-label="Messages">
                                 <i class="ph ph-bell"></i>
                             </a>
@@ -943,7 +943,7 @@
                     </div>
                 </header>
 
-                <div class="foodv02SearchContainer">
+                <div class="foodv02SearchWrapper">
                     <form action="action://act/search" class="foodv02SearchForm" onsubmit="event.preventDefault();">
                         <i class="ph ph-magnifying-glass foodv02SearchIcon"></i>
                         <input type="search" id="foodv02Search" name="search" class="foodv02SearchInput"
@@ -951,8 +951,14 @@
                     </form>
                 </div>
 
+                <div class="foodv02SectionTitle">
+                    <h2>Promo Makanan</h2>
+                </div>
+
                 <section class="foodv02BannerSection">
                     <div id="foodv02BannerContainer" class="foodv02BannerContainer">
+                    </div>
+                    <div id="foodv02DotContainer" class="foodv02DotContainer">
                     </div>
                 </section>
 
@@ -979,44 +985,28 @@
                         <button class="foodv02CategoryButton foodv02RippleTarget"
                             data-target="foodv02SectionAyam">Ayam</button>
                         <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionSate">Sate</button>
+                            data-target="foodv02SectionBurger">Burger</button>
                         <button class="foodv02CategoryButton foodv02RippleTarget"
                             data-target="foodv02SectionNasi">Nasi</button>
                         <button class="foodv02CategoryButton foodv02RippleTarget"
-                            data-target="foodv02SectionBurger">Burger</button>
+                            data-target="foodv02SectionSate">Sate</button>
                     </div>
                 </nav>
 
                 <main class="foodv02Content" id="foodv02Content">
 
                     <section id="foodv02SectionSemua" class="foodv02Section foodv02SectionActive">
-                        <div class="foodv02CardGrid" id="foodv02CardGrid">
-                            <div class="foodv02Card foodv02RippleTarget" data-tags="nasi ayam"
-                                data-name="Nasi Ayam Geprek Premium" data-merchant="Ayam Geprek GOCES">
-                                <div class="foodv02CardImage">
-                                    <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=400&q=80"
-                                        alt="Ayam Geprek" loading="lazy">
-                                    <span class="foodv02BadgePromo">Diskon 20%</span>
-                                </div>
-                                <div class="foodv02CardInfo">
-                                    <h3 class="foodv02ItemName">Nasi Ayam Geprek Premium</h3>
-                                    <p class="foodv02Merchant">Ayam Geprek GOCES</p>
-                                    <div class="foodv02Meta">
-                                        <span class="foodv02Rating"><i class="ph-fill ph-star"></i> 4.8</span>
-                                        <span class="foodv02Distance">1.2 km</span>
-                                    </div>
-                                    <p class="foodv02Price">Rp 25.000</p>
-                                </div>
-                            </div>
+                        <div class="foodv02ProductGrid" id="foodv02ProductGrid">
 
                             <div class="foodv02Card foodv02RippleTarget" data-tags="pizza kuliner"
-                                data-name="Pizza Meat Lover" data-merchant="Pizza Pazzo">
-                                <div class="foodv02CardImage">
+                                data-name="Hawaiian Chicken Pizza" data-merchant="Pizza Pazzo">
+                                <div class="foodv02CardImageWrapper">
                                     <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80"
-                                        alt="Pizza" loading="lazy">
+                                        alt="Pizza" loading="lazy" class="foodv02CardImage">
+                                    <span class="foodv02BadgePromo">Promo 20%</span>
                                 </div>
                                 <div class="foodv02CardInfo">
-                                    <h3 class="foodv02ItemName">Pizza Meat Lover</h3>
+                                    <h3 class="foodv02ItemName">Hawaiian Chicken Pizza</h3>
                                     <p class="foodv02Merchant">Pizza Pazzo</p>
                                     <div class="foodv02Meta">
                                         <span class="foodv02Rating"><i class="ph-fill ph-star"></i> 4.9</span>
@@ -1026,40 +1016,41 @@
                                 </div>
                             </div>
 
-                            <div class="foodv02Card foodv02RippleTarget" data-tags="minuman coffee"
-                                data-name="Iced Caramel Macchiato" data-merchant="Kopi Senja">
-                                <div class="foodv02CardImage">
-                                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80"
-                                        alt="Coffee" loading="lazy">
+                            <div class="foodv02Card foodv02RippleTarget" data-tags="burger snack"
+                                data-name="Double Beef Burger" data-merchant="Burger King">
+                                <div class="foodv02CardImageWrapper">
+                                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+                                        alt="Burger" loading="lazy" class="foodv02CardImage">
                                 </div>
                                 <div class="foodv02CardInfo">
-                                    <h3 class="foodv02ItemName">Iced Caramel Macchiato</h3>
+                                    <h3 class="foodv02ItemName">Double Beef Burger</h3>
+                                    <p class="foodv02Merchant">Burger Chill</p>
+                                    <div class="foodv02Meta">
+                                        <span class="foodv02Rating"><i class="ph-fill ph-star"></i> 4.8</span>
+                                        <span class="foodv02Distance">1.2 km</span>
+                                    </div>
+                                    <p class="foodv02Price">Rp 45.000</p>
+                                </div>
+                            </div>
+
+                            <div class="foodv02Card foodv02RippleTarget" data-tags="kopi minuman coffee"
+                                data-name="Kopi Susu Aren" data-merchant="Kopi Senja">
+                                <div class="foodv02CardImageWrapper">
+                                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80"
+                                        alt="Coffee" loading="lazy" class="foodv02CardImage">
+                                    <span class="foodv02BadgePromo">Free Ongkir</span>
+                                </div>
+                                <div class="foodv02CardInfo">
+                                    <h3 class="foodv02ItemName">Kopi Susu Aren Premium</h3>
                                     <p class="foodv02Merchant">Kopi Senja</p>
                                     <div class="foodv02Meta">
                                         <span class="foodv02Rating"><i class="ph-fill ph-star"></i> 4.7</span>
                                         <span class="foodv02Distance">0.8 km</span>
                                     </div>
-                                    <p class="foodv02Price">Rp 35.000</p>
+                                    <p class="foodv02Price">Rp 22.000</p>
                                 </div>
                             </div>
 
-                            <div class="foodv02Card foodv02RippleTarget" data-tags="dessert snack"
-                                data-name="Choco Lava Cake" data-merchant="Sweet Treats">
-                                <div class="foodv02CardImage">
-                                    <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=400&q=80"
-                                        alt="Dessert" loading="lazy">
-                                    <span class="foodv02BadgePromo">Gratis Ongkir</span>
-                                </div>
-                                <div class="foodv02CardInfo">
-                                    <h3 class="foodv02ItemName">Choco Lava Cake</h3>
-                                    <p class="foodv02Merchant">Sweet Treats</p>
-                                    <div class="foodv02Meta">
-                                        <span class="foodv02Rating"><i class="ph-fill ph-star"></i> 4.9</span>
-                                        <span class="foodv02Distance">3.0 km</span>
-                                    </div>
-                                    <p class="foodv02Price">Rp 40.000</p>
-                                </div>
-                            </div>
                         </div>
                     </section>
 
@@ -1069,37 +1060,37 @@
                     </section>
 
                     <section id="foodv02SectionPizza" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Pizza...</div>
+                        <div class="foodv02EmptyState">Kategori Pizza</div>
                     </section>
                     <section id="foodv02SectionBakso" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Bakso...</div>
+                        <div class="foodv02EmptyState">Kategori Bakso</div>
                     </section>
                     <section id="foodv02SectionSnack" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Snack...</div>
+                        <div class="foodv02EmptyState">Kategori Snack</div>
                     </section>
                     <section id="foodv02SectionMinuman" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Minuman...</div>
+                        <div class="foodv02EmptyState">Kategori Minuman</div>
                     </section>
                     <section id="foodv02SectionDessert" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Dessert...</div>
+                        <div class="foodv02EmptyState">Kategori Dessert</div>
                     </section>
                     <section id="foodv02SectionCoffee" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Coffee...</div>
+                        <div class="foodv02EmptyState">Kategori Coffee</div>
                     </section>
                     <section id="foodv02SectionSeafood" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Seafood...</div>
+                        <div class="foodv02EmptyState">Kategori Seafood</div>
                     </section>
                     <section id="foodv02SectionAyam" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Ayam...</div>
-                    </section>
-                    <section id="foodv02SectionSate" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Sate...</div>
-                    </section>
-                    <section id="foodv02SectionNasi" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Nasi...</div>
+                        <div class="foodv02EmptyState">Kategori Ayam</div>
                     </section>
                     <section id="foodv02SectionBurger" class="foodv02Section">
-                        <div class="foodv02EmptyState">Memuat Burger...</div>
+                        <div class="foodv02EmptyState">Kategori Burger</div>
+                    </section>
+                    <section id="foodv02SectionNasi" class="foodv02Section">
+                        <div class="foodv02EmptyState">Kategori Nasi</div>
+                    </section>
+                    <section id="foodv02SectionSate" class="foodv02Section">
+                        <div class="foodv02EmptyState">Kategori Sate</div>
                     </section>
 
                 </main>
