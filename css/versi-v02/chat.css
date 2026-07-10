@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-900);
+}
+
+.cyberInboxPage {
+  padding-bottom: 30px;
+}
+
+.cyberInboxHeader {
+  background: var(--blue-700);
+  padding: 55px 20px 40px;
+  border-radius: 0 0 30px 30px;
+}
+
+.cyberInboxHeader h1 {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--gray-50);
+}
+
+.cyberInboxSubtitle {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--gray-100);
+}
+
+.cyberInboxTitle {
+  margin: 20px 20px 18px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cyberFeatureWrap {
+  display: flex;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.cyberFeatureCard {
+  width: 95px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 24px;
+  border: 1px solid var(--gray-200);
+  background: var(--gray-50);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.cyberFeatureCard span {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--gray-900);
+}
+
+.cyberFeatureIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  position: relative;
+}
+
+.cyberFeatureIcon svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--gray-50);
+}
+
+.cyberInboxIcon {
+  background: #ff7a00;
+}
+
+.cyberHelpIcon {
+  background: var(--blue-700);
+}
+
+.cyberNotifyDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: red;
+  border: 3px solid var(--gray-50);
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+
+.cyberSectionDivider {
+  height: 5px;
+  background: var(--gray-200);
+  margin: 15px 5px;
+}
+
+.cyberAiCard {
+  margin: 20px;
+  padding: 18px;
+  border: 1px solid var(--gray-200);
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gray-50);
+}
+
+.cyberAiLeft {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.cyberAiIcon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cyberAiIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cyberAiInfo {
+  margin-left: 15px;
+}
+
+.cyberAiTitle {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.cyberAiDesc {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--gray-500);
+}
+
+.cyberAiArrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gray-50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  color: var(--gray-400);
+}
+
+.cyberPopupOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.cyberPopup {
+  width: 100%;
+  max-width: 340px;
+  background: var(--gray-50);
+  border-radius: 28px;
+  padding: 24px;
+}
+
+.cyberPopupTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.cyberPopupText {
+  margin-top: 16px;
+  color: var(--gray-900);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.cyberPopupButton {
+  width: 100%;
+  height: 50px;
+  margin-top: 24px;
+  border: none;
+  border-radius: 16px;
+  background: var(--blue-700);
+  color: var(--gray-50);
+  font-size: 15px;
+  font-weight: 600;
+}

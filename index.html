@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>GOCES</title>
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/style.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/navigation.css">
@@ -43,241 +43,257 @@
 
 </head>
 
+<style>
+    .scroll-area {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 88px;
+        scrollbar-width: none;
+    }
+
+    .scroll-area::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
 <body>
 
     <div class="goces-app">
 
         <section id="page-home" class="goces-page goces-active">
-            <header class="goces-home-header">
-                <div class="goces-hdr-ambient-glow"></div>
-                <div class="goces-hdr-bg-decor-1"></div>
-                <div class="goces-hdr-bg-decor-2"></div>
-                <div class="goces-hdr-glass-highlight"></div>
+            <div class="scroll-area">
+                <header class="goces-home-header">
+                    <div class="goces-hdr-ambient-glow"></div>
+                    <div class="goces-hdr-bg-decor-1"></div>
+                    <div class="goces-hdr-bg-decor-2"></div>
+                    <div class="goces-hdr-glass-highlight"></div>
 
-                <div class="goces-hdr-upper-row">
-                    <div class="goces-hdr-left-zone">
-                        <a href="#" class="goces-hdr-profile-wrapper" onclick="showPage('profile');return false;">
-                            <img src="{foto}" alt="{nama}" class="goces-hdr-profile-photo">
-                        </a>
-                    </div>
-
-                    <div class="goces-hdr-right-zone">
-                        <a href="action://act/message_list" class="goces-hdr-glass-btn" aria-label="Messages">
-                            <span class="goces-hdr-status-badge">{jumlah_pesan}</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                            </svg>
-                        </a>
-
-                        <a href="action://act/cart" class="goces-hdr-glass-btn" aria-label="Cart">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="goces-hdr-lower-row">
-                    <form action="action://act/search" class="goces-hdr-search-container">
-                        <button type="submit" class="goces-hdr-search-trigger" aria-label="Search">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </button>
-                        <input type="search" name="search" class="goces-hdr-search-input"
-                            placeholder="Cari makanan, toko, atau layanan...">
-                    </form>
-                </div>
-            </header>
-
-            <section class="goces-wallet-section">
-                <div class="goces-wallet-card">
-                    <div class="goces-ambient-glow"></div>
-                    <div class="goces-card-highlight"></div>
-                    <div class="goces-card-watermark">G</div>
-
-                    <div class="goces-card-header">
-                        <div class="goces-brand-title">GOCESPAY</div>
-                        <a href="action://act/customer_points" class="goces-badge-points">
-                            <svg class="goces-star-svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2l2.9 6 6.6.6-5 4.3 1.5 6.4L12 16.8 6 19.3l1.5-6.4-5-4.3 6.6-.6L12 2z" />
-                            </svg>
-                            <span class="goces-points-value">{poin} <small>Poin</small></span>
-                        </a>
-                    </div>
-
-                    <div class="goces-balance-display-zone">
-                        <div class="goces-balance-flex-wrapper">
-                            <a href="action://act/account" class="goces-anchor-saldo">
-                                <span id="walletBalance" data-balance="{saldo}">{saldo}</span>
+                    <div class="goces-hdr-upper-row">
+                        <div class="goces-hdr-left-zone">
+                            <a href="#" class="goces-hdr-profile-wrapper" onclick="showPage('profile');return false;">
+                                <img src="{foto}" alt="{nama}" class="goces-hdr-profile-photo">
                             </a>
-                            <button id="toggleBalance" class="goces-haptic-eye-trigger"
-                                aria-label="Toggle Balance Visibility">
-                                <svg class="goces-eye-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path class="eye-contour" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                    <circle class="eye-iris" cx="12" cy="12" r="3" />
-                                    <line class="eye-diagonal-mask" x1="2" y1="2" x2="22" y2="22" />
+                        </div>
+
+                        <div class="goces-hdr-right-zone">
+                            <a href="action://act/message_list" class="goces-hdr-glass-btn" aria-label="Messages">
+                                <span class="goces-hdr-status-badge">{jumlah_pesan}</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                            </a>
+
+                            <a href="action://act/cart" class="goces-hdr-glass-btn" aria-label="Cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="goces-hdr-lower-row">
+                        <form action="action://act/search" class="goces-hdr-search-container">
+                            <button type="submit" class="goces-hdr-search-trigger" aria-label="Search">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                 </svg>
                             </button>
+                            <input type="search" name="search" class="goces-hdr-search-input"
+                                placeholder="Cari makanan, toko, atau layanan...">
+                        </form>
+                    </div>
+                </header>
+
+                <section class="goces-wallet-section">
+                    <div class="goces-wallet-card">
+                        <div class="goces-ambient-glow"></div>
+                        <div class="goces-card-highlight"></div>
+                        <div class="goces-card-watermark">G</div>
+
+                        <div class="goces-card-header">
+                            <div class="goces-brand-title">GOCESPAY</div>
+                            <a href="action://act/customer_points" class="goces-badge-points">
+                                <svg class="goces-star-svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2l2.9 6 6.6.6-5 4.3 1.5 6.4L12 16.8 6 19.3l1.5-6.4-5-4.3 6.6-.6L12 2z" />
+                                </svg>
+                                <span class="goces-points-value">{poin} <small>Poin</small></span>
+                            </a>
+                        </div>
+
+                        <div class="goces-balance-display-zone">
+                            <div class="goces-balance-flex-wrapper">
+                                <a href="action://act/account" class="goces-anchor-saldo">
+                                    <span id="walletBalance" data-balance="{saldo}">{saldo}</span>
+                                </a>
+                                <button id="toggleBalance" class="goces-haptic-eye-trigger"
+                                    aria-label="Toggle Balance Visibility">
+                                    <svg class="goces-eye-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path class="eye-contour" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle class="eye-iris" cx="12" cy="12" r="3" />
+                                        <line class="eye-diagonal-mask" x1="2" y1="2" x2="22" y2="22" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="goces-card-hairline"></div>
+
+                        <div class="goces-action-grid-menu">
+                            <a href="action://act/withdraw" class="goces-action-item">
+                                <div class="goces-icon-capsule style-blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <polyline points="19 12 12 19 5 12"></polyline>
+                                    </svg>
+                                </div>
+                                <span>Tarik</span>
+                            </a>
+
+                            <a href="javascript:void(0)" class="goces-action-item">
+                                <div class="goces-icon-capsule style-purple">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </div>
+                                <span>Transfer</span>
+                            </a>
+
+                            <a href="action://act/topup" class="goces-action-item">
+                                <div class="goces-icon-capsule style-green">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                </div>
+                                <span>Top Up</span>
+                            </a>
+
+                            <a href="action://act/account" class="goces-action-item">
+                                <div class="goces-icon-capsule style-orange">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <circle cx="19" cy="12" r="1"></circle>
+                                        <circle cx="5" cy="12" r="1"></circle>
+                                    </svg>
+                                </div>
+                                <span>Lainnya</span>
+                            </a>
                         </div>
                     </div>
+                </section>
 
-                    <div class="goces-card-hairline"></div>
-
-                    <div class="goces-action-grid-menu">
-                        <a href="action://act/withdraw" class="goces-action-item">
-                            <div class="goces-icon-capsule style-blue">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <polyline points="19 12 12 19 5 12"></polyline>
-                                </svg>
+                <section class="goces-shortcuts-section">
+                    <div class="goces-shortcuts-grid">
+                        <button type="button" class="goces-shortcut-item" onclick="gcsRidePopupOpen()">
+                            <div class="goces-shortcut-icon-frame">
+                                <div class="goces-shortcut-ambient-glow"></div>
+                                <div class="goces-service-icon">
+                                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781593613/ChatGPT_Image_16_Jun_2026_15.06.38_zw3ga1.png"
+                                        alt="GoRide" loading="lazy">
+                                </div>
                             </div>
-                            <span>Tarik</span>
+                            <span class="goces-shortcut-label">GoRide</span>
+                        </button>
+
+                        <button type="button" class="goces-shortcut-item" onclick="gcsCarPopupOpen()">
+                            <div class="goces-shortcut-icon-frame">
+                                <div class="goces-shortcut-ambient-glow"></div>
+                                <div class="goces-service-icon">
+                                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594742/ChatGPT_Image_16_Jun_2026_15.10.13_czsgh3.png"
+                                        alt="GoRide" loading="lazy">
+                                </div>
+                            </div>
+                            <span class="goces-shortcut-label">GoCar</span>
+                        </button>
+
+                        <a href="#" class="goces-shortcut-item" onclick="showPage('food');return false;">
+                            <div class="goces-shortcut-icon-frame">
+                                <div class="goces-shortcut-ambient-glow"></div>
+                                <div class="goces-service-icon">
+                                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                                        alt="GoRide" loading="lazy">
+                                </div>
+                            </div>
+                            <span class="goces-shortcut-label">GoFood</span>
                         </a>
 
-                        <a href="javascript:void(0)" class="goces-action-item">
-                            <div class="goces-icon-capsule style-purple">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                                    <polyline points="7 7 17 7 17 17"></polyline>
-                                </svg>
+                        <button type="button" class="goces-shortcut-item" onclick="gcsDeliveryPopupOpen()">
+                            <div class="goces-shortcut-icon-frame">
+                                <div class="goces-shortcut-ambient-glow"></div>
+                                <div class="goces-service-icon">
+                                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594740/ChatGPT_Image_16_Jun_2026_15.13.20_lmhens.png"
+                                        alt="GoRide" loading="lazy">
+                                </div>
                             </div>
-                            <span>Transfer</span>
+                            <span class="goces-shortcut-label">Delivery</span>
+                        </button>
+
+                        <a href="#" class="goces-shortcut-item" onclick="showPage('shop');return false;">
+                            <div class="goces-shortcut-icon-frame">
+                                <div class="goces-shortcut-ambient-glow"></div>
+                                <div class="goces-service-icon">
+                                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595296/file_0000000067287208ac4b23f1557f1083_ssxihp.png"
+                                        alt="GoRide" loading="lazy">
+                                </div>
+                            </div>
+                            <span class="goces-shortcut-label">Shop</span>
                         </a>
 
-                        <a href="action://act/topup" class="goces-action-item">
-                            <div class="goces-icon-capsule style-green">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
+                        <a href="#" class="goces-shortcut-item" onclick="showPage('fresh');return false;">
+                            <div class="goces-shortcut-icon-frame">
+                                <div class="goces-shortcut-ambient-glow"></div>
+                                <div class="goces-service-icon">
+                                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595296/file_00000000dc507208b27f01e0f7f14087_vfvvwi.png"
+                                        alt="GoRide" loading="lazy">
+                                </div>
                             </div>
-                            <span>Top Up</span>
+                            <span class="goces-shortcut-label">Fresh</span>
                         </a>
 
-                        <a href="action://act/account" class="goces-action-item">
-                            <div class="goces-icon-capsule style-orange">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="19" cy="12" r="1"></circle>
-                                    <circle cx="5" cy="12" r="1"></circle>
-                                </svg>
+                        <a href="#" class="goces-shortcut-item" onclick="showPage('ppob');return false;">
+                            <div class="goces-shortcut-icon-frame">
+                                <div class="goces-shortcut-ambient-glow"></div>
+                                <div class="goces-service-icon">
+                                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595598/file_00000000944c7208a505264ab170df30_bzvemn.png"
+                                        alt="GoRide" loading="lazy">
+                                </div>
                             </div>
-                            <span>Lainnya</span>
+                            <span class="goces-shortcut-label">PPOB</span>
                         </a>
+
+                        <a href="#" class="goces-shortcut-item" onclick="showPage('lainnya');return false;">
+                            <div class="goces-shortcut-icon-frame">
+                                <div class="goces-shortcut-ambient-glow"></div>
+                                <div class="goces-service-icon">
+                                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595827/file_0000000091d87208bf6429921e35795f_yy8yxn.png"
+                                        alt="GoRide" loading="lazy">
+                                </div>
+                            </div>
+                            <span class="goces-shortcut-label">Lainnya</span>
+                        </a>
+
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section class="goces-shortcuts-section">
-                <div class="goces-shortcuts-grid">
-                    <button type="button" class="goces-shortcut-item" onclick="gcsRidePopupOpen()">
-                        <div class="goces-shortcut-icon-frame">
-                            <div class="goces-shortcut-ambient-glow"></div>
-                            <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781593613/ChatGPT_Image_16_Jun_2026_15.06.38_zw3ga1.png"
-                                    alt="GoRide" loading="lazy">
-                            </div>
-                        </div>
-                        <span class="goces-shortcut-label">GoRide</span>
-                    </button>
-
-                    <button type="button" class="goces-shortcut-item" onclick="gcsCarPopupOpen()">
-                        <div class="goces-shortcut-icon-frame">
-                            <div class="goces-shortcut-ambient-glow"></div>
-                            <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594742/ChatGPT_Image_16_Jun_2026_15.10.13_czsgh3.png"
-                                    alt="GoRide" loading="lazy">
-                            </div>
-                        </div>
-                        <span class="goces-shortcut-label">GoCar</span>
-                    </button>
-
-                    <a href="#" class="goces-shortcut-item" onclick="showPage('food');return false;">
-                        <div class="goces-shortcut-icon-frame">
-                            <div class="goces-shortcut-ambient-glow"></div>
-                            <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
-                                    alt="GoRide" loading="lazy">
-                            </div>
-                        </div>
-                        <span class="goces-shortcut-label">GoFood</span>
-                    </a>
-
-                    <button type="button" class="goces-shortcut-item" onclick="gcsDeliveryPopupOpen()">
-                        <div class="goces-shortcut-icon-frame">
-                            <div class="goces-shortcut-ambient-glow"></div>
-                            <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594740/ChatGPT_Image_16_Jun_2026_15.13.20_lmhens.png"
-                                    alt="GoRide" loading="lazy">
-                            </div>
-                        </div>
-                        <span class="goces-shortcut-label">Delivery</span>
-                    </button>
-
-                    <a href="#" class="goces-shortcut-item" onclick="showPage('shop');return false;">
-                        <div class="goces-shortcut-icon-frame">
-                            <div class="goces-shortcut-ambient-glow"></div>
-                            <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595296/file_0000000067287208ac4b23f1557f1083_ssxihp.png"
-                                    alt="GoRide" loading="lazy">
-                            </div>
-                        </div>
-                        <span class="goces-shortcut-label">Shop</span>
-                    </a>
-
-                    <a href="#" class="goces-shortcut-item" onclick="showPage('fresh');return false;">
-                        <div class="goces-shortcut-icon-frame">
-                            <div class="goces-shortcut-ambient-glow"></div>
-                            <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595296/file_00000000dc507208b27f01e0f7f14087_vfvvwi.png"
-                                    alt="GoRide" loading="lazy">
-                            </div>
-                        </div>
-                        <span class="goces-shortcut-label">Fresh</span>
-                    </a>
-
-                    <a href="#" class="goces-shortcut-item" onclick="showPage('ppob');return false;">
-                        <div class="goces-shortcut-icon-frame">
-                            <div class="goces-shortcut-ambient-glow"></div>
-                            <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595598/file_00000000944c7208a505264ab170df30_bzvemn.png"
-                                    alt="GoRide" loading="lazy">
-                            </div>
-                        </div>
-                        <span class="goces-shortcut-label">PPOB</span>
-                    </a>
-
-                    <a href="#" class="goces-shortcut-item" onclick="showPage('lainnya');return false;">
-                        <div class="goces-shortcut-icon-frame">
-                            <div class="goces-shortcut-ambient-glow"></div>
-                            <div class="goces-service-icon">
-                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595827/file_0000000091d87208bf6429921e35795f_yy8yxn.png"
-                                    alt="GoRide" loading="lazy">
-                            </div>
-                        </div>
-                        <span class="goces-shortcut-label">Lainnya</span>
-                    </a>
-
-                </div>
-            </section>
-
-            <section class="gcsPromoBannerSection">
-                <div id="gcsPromoBannerContainer" class="gcsPromoBannerContainer"></div>
-            </section>
-
+                <section class="gcsPromoBannerSection">
+                    <div id="gcsPromoBannerContainer" class="gcsPromoBannerContainer"></div>
+                </section>
+            </div>
         </section>
 
         <section id="page-food" class="goces-page">

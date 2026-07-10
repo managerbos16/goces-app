@@ -1,0 +1,2957 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PT. Global selebes tecnology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="gojek.css" />
+</head>
+
+<body>
+    <!--HALAMAN HOME-->
+    <div class="app-wrapper">
+        <div class="page active" id="page-home">
+            <div class="scroll-area">
+                <div class="home-header">
+
+                    <div class="header-row">
+                        <button class="avatar-btn" aria-label="kpz-main-wrap" onclick="showPage('kpz-main-wrap')">
+                            <img src="{foto}" alt="avatar" class="avatar-img">
+                        </button>
+
+                        <form class="search-bar" action="action://act/search" method="GET">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="search" name="search" placeholder="Find services, food, or places" />
+                        </form>
+
+                        <a class="notif-btn" href="action://act/message_list" aria-label="Notifications">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                            </svg>
+                            <span class="notif-badge">{jumlah_pesan}</span>
+                        </a>
+                    </div>
+
+                    <div class="home-hero-slider">
+                        <div class="home-hero-item active" onclick="showPage('promo')">
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781339352/ChatGPT_Image_13_Jun_2026_16.28.42_mizt6i.png">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wallet-card">
+                    <div>
+                        <div class="wallet-brand">
+                            <div class="wallet-g-icon">G</div>
+                            <span>Gocespay</span>
+                        </div>
+
+                        <a href="action://act/balance" class="wallet-balance">
+                            {saldo}
+                        </a>
+
+                        <a href="action://act/customer_points" class="wallet-coins">
+                            ⭐ {poin}
+                        </a>
+
+                    </div>
+
+                    <div class="wallet-actions">
+
+                        <a class="wallet-action" href="action://act/withdraw">
+                            <div class="wallet-action-icon blue">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="7" y1="17" x2="17" y2="7" />
+                                    <polyline points="7 7 17 7 17 17" />
+                                </svg>
+                            </div>
+                            <span>Tarik</span>
+                        </a>
+
+                        <a class="wallet-action" href="https://jgjk.mobi/act/topup">
+                            <div class="wallet-action-icon blue">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                            </div>
+                            <span>Top Up</span>
+                        </a>
+
+                        <a class="wallet-action" onclick="openGocesAI()">
+                            <div class="wallet-action-icon gray">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 8h12" />
+                                    <path d="M13 5l3 3-3 3" />
+                                    <path d="M20 16H8" />
+                                    <path d="M11 13l-3 3 3 3" />
+                                </svg>
+                            </div>
+                            <span>Transfer</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="gox_service_grid">
+
+                    <a href="https://jgjk.mobi/p/6a32d81298f27" class="gox_service_item">
+                        <div class="gox_icon_card gox_bg_green">
+                            <span class="gox_promo_ribbon gox_ribbon_red">20%</span>
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781593613/ChatGPT_Image_16_Jun_2026_15.06.38_zw3ga1.png">
+                        </div>
+                        <p>GoRide</p>
+                    </a>
+
+                    <a href="https://jgjk.mobi/p/6a32d88f49400" class="gox_service_item">
+                        <div class="gox_icon_card gox_bg_blue">
+                            <span class="gox_promo_ribbon gox_ribbon_blue">50%</span>
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594742/ChatGPT_Image_16_Jun_2026_15.10.13_czsgh3.png">
+                        </div>
+                        <p>GoCar</p>
+                    </a>
+
+                    <a class="gox_service_item" onclick="showPage('gofood')">
+                        <div class="gox_icon_card gox_bg_pink">
+                            <span class="gox_promo_ribbon gox_ribbon_red">HALAL</span>
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png">
+                        </div>
+                        <p>GoFood</p>
+                    </a>
+
+                    <a class="gox_service_item" onclick="openGocesAI()">
+                        <div class="gox_icon_card gox_bg_orange">
+                            <span class="gox_promo_ribbon gox_ribbon_orange">FAST</span>
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594740/ChatGPT_Image_16_Jun_2026_15.13.20_lmhens.png">
+                        </div>
+                        <p>Delivery</p>
+                    </a>
+
+                    <a class="gox_service_item" onclick="showPage('Shop')">
+                        <div class="gox_icon_card gox_bg_kuning">
+                            <span class="gox_promo_ribbon gox_ribbon_purple">SALE</span>
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595296/file_0000000067287208ac4b23f1557f1083_ssxihp.png">
+                        </div>
+                        <p>Shop</p>
+                    </a>
+
+                    <a class="gox_service_item" onclick="showPage('Fresh')">
+                        <div class="gox_icon_card gox_bg_merah">
+                            <span class="gox_promo_ribbon gox_ribbon_green">NEW</span>
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595296/file_00000000dc507208b27f01e0f7f14087_vfvvwi.png">
+                        </div>
+                        <p>Fresh</p>
+                    </a>
+
+                    <a class="gox_service_item" onclick="openGocesAI()">
+                        <div class="gox_icon_card gox_bg_coklat">
+                            <span class="gox_promo_ribbon gox_ribbon_green">Segera</span>
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595598/file_00000000944c7208a505264ab170df30_bzvemn.png">
+                        </div>
+                        <p>PPOB</p>
+                    </a>
+
+                    <a class="gox_service_item" onclick="openGocesAI()">
+                        <div class="gox_icon_card gox_bg_hitam">
+                            <span class="gox_promo_ribbon gox_ribbon_orange">Segera</span>
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781595827/file_0000000091d87208bf6429921e35795f_yy8yxn.png">
+                        </div>
+                        <p>More</p>
+                    </a>
+
+                </div>
+
+                <div id="item-promo-strip">
+                    <iframe src="https://jagel-api.vercel.app/promo-strip" style="
+                    width:100%;
+                    height:60px;
+                    border:none;
+                    background:transparent;
+                    overflow:hidden;">
+                    </iframe>
+                </div>
+
+                <div id="item-banner">
+                    <iframe src="https://jagel-api.vercel.app/banner" style="
+                    width:100%;
+                    height:230px;
+                    border:none;
+                    background:transparent;">
+                    </iframe>
+                </div>
+
+                <div class="akb_nearby_section">
+                    <div class="akb_nearby_header">
+                        <div class="gpr_promo_title">
+                            Toko Terdekat
+                        </div>
+                    </div>
+                    <div class="akb_nearby_wrap">
+                        {lokasi_terdekat}
+                    </div>
+                </div>
+
+
+                <div class="gpr_promo_header">
+                    <h2 class="gpr_promo_title">🔥 Promo Spesial Hari Ini</h2>
+                    <button class="gpr_promo_view_all" onclick="showPage('promos')">
+                        See All
+                    </button>
+                </div>
+
+                <!-- VOUCHER HORIZONTAL SLIDER HALAMAN HOME -->
+                <div class="gpr-horizontal-slider">
+
+                    <!-- VOUCHER 1 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                    <!-- VOUCHER 2 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                    <!-- VOUCHER 3 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="akb_new_section">
+                    <div class="akb_new_header">
+                        <div class="gpr_promo_title">
+                            Produk Terbaru
+                        </div>
+                    </div>
+                    <div class="akb_new_product_wrap">
+                        {produk_baru}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ========== AKHIR HALAMAN HOME ==========-->
+
+        <!-- ========== HALAMAN PROMOS BERANDA ==========-->
+        <div class="page" id="page-promos">
+            <div class="scroll-area">
+                <div class="gpr-header">
+                    <div class="gpr-header-top">
+                        <div class="gpr-header-action">
+
+                            <!-- NOTIFIKASI -->
+                            <a href="action://act/message_list" class="gpr-icon-btn">
+                                <svg viewBox="0 0 24 24">
+                                    <path fill="white"
+                                        d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+                                </svg>
+                                <span class="gpr-notif-badge">
+                                    {jumlah_pesan}
+                                </span>
+                            </a>
+
+                            <!-- KERANJANG -->
+                            <a href="https://jgjk.mobi/act/cart" class="gpr-icon-btn">
+
+                                <svg viewBox="0 0 24 24">
+                                    <path fill="white"
+                                        d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zm-9.83-4h9.38c.75 0 1.41-.41 1.75-1.03L21.88 6.48A1 1 0 0 0 21.01 5H5.21L4.27 3H1v2h2l3.6 7.59-1.35 2.45A2 2 0 0 0 7 18h12v-2H7.17l1.1-2z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="gpr-header-content">
+                        <h1>Penawaran Terbaik 🎁</h1>
+                        <p>Dapatkan diskon, cashback, dan voucher pilihan untuk pengalaman belanja yang lebih
+                            menguntungkan.</p>
+                    </div>
+                </div>
+
+                <!-- INFO CARD -->
+                <div class="gpr-info-card" onclick="gprOpenAllVoucher()">
+                    <div class="gpr-info-icon">🎁</div>
+                    <div class="gpr-info-text">
+                        <span>Promo tersedia</span>
+                        <h3 id="gprActiveVoucherCount">0 Voucher Aktif</h3>
+                    </div>
+                </div>
+
+                <!-- BANNER -->
+                <div class="gpr-banner">
+                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781499929/ChatGPT_Image_15_Jun_2026_13.04.59_z3dfr5.png"
+                        alt="Banner Promo">
+                </div>
+
+                <!-- KATEGORI -->
+                <div class="gpr-category">
+
+                    <button id="gprBtnSemua" onclick="gprOpenCategory(event,'semua')">
+                        Semua
+                    </button>
+
+                    <button onclick="gprOpenCategory(event,'populer')">
+                        Populer
+                    </button>
+
+                    <button onclick="gprOpenCategory(event,'terbaru')">
+                        Terbaru
+                    </button>
+
+                    <button onclick="gprOpenCategory(event,'eksklusif')">
+                        Eksklusif
+                    </button>
+
+                    <button onclick="gprOpenCategory(event,'cashback')">
+                        Cashback
+                    </button>
+
+                    <button onclick="gprOpenCategory(event,'terbatas')">
+                        Terbatas
+                    </button>
+
+                </div>
+
+                <div class="gpr-container">
+
+                    <div id="semua" class="gpr-content">
+                    </div>
+
+                    <!-- Halaman pembuka voucher 🍔 Makanan -->
+                    <div id="populer" class="gpr-content">
+
+                        <!-- Voucher 1 Populer -->
+                        <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                            data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                            data-code="MAKAN50" data-title="Diskon Hingga Rp50.000"
+                            data-desc="Minimal pembelian Rp100.000" data-period="21 Juni - 1 Juli 2026"
+                            data-start="2026-06-21 00:00:00" data-end="2026-07-01 23:59:59" data-min-order="100000"
+                            data-max-discount="50000"
+                            data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                            onclick="gprOpenVoucherModal(this)">
+
+                            <div class="gpr-ribbon hot">HOT</div>
+                            <div class="gpr-voucher-image">
+                                <img class="gpr-voucher-img">
+                            </div>
+
+                            <div class="gpr-voucher-info">
+                                <div class="gpr-voucher-top">
+                                    <span class="gpr-badge">Diskon 50%</span>
+                                    <span class="gpr-tag hot">🔥 Terlaris</span>
+                                </div>
+                                <h3 class="gpr-voucher-title"></h3>
+                                <p class="gpr-voucher-desc"></p>
+                                <small class="gpr-voucher-period"></small>
+                                <div class="gpr-countdown"></div>
+                            </div>
+
+                            <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                                Salin
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Halaman pembuka voucher 🥤 Minuman -->
+                    <div id="terbaru" class="gpr-content">
+                    </div>
+
+                    <!-- Halaman pembuka voucher 🚚 Gratis Ongkir -->
+                    <div id="eksklusif" class="gpr-content">
+                    </div>
+
+                    <!-- Halaman pembuka voucher 💰 Cashback -->
+                    <div id="cashback" class="gpr-content">
+                    </div>
+
+                    <!-- Halaman pembuka voucher Terbatas -->
+                    <div id="terbatas" class="gpr-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ========== AKHIR PROMOS BERANDA ==========-->
+
+        <!-- ========== HALAMAN ORDERS BERANDA ==========-->
+        <div class="page" id="page-orders">
+            <div class="scroll-area">
+                <div class="gak_header">
+                    <div class="gak_title">Aktivitas</div>
+                </div>
+
+                <div class="gak_tabs">
+                    <button id="btn_order" class="gak_tab active" onclick="gakShowPage('order')">
+                        Order
+                    </button>
+
+                    <button id="btn_history" class="gak_tab" onclick="openGocesAI()">
+                        History
+                    </button>
+                </div>
+
+                <div id="page_order" class="gak_page active">
+                    <div class="gak_content">
+                        <a href="action://act/cart" class="gak_cart_card">
+                            <div class="gak_cart_icon">🛒</div>
+                            <div class="gak_cart_right">
+                                <div class="gak_cart_title">Halo, {nama}</div>
+                                <div class="gak_cart_desc">
+                                    Produk favoritmu masih menunggu. Lanjutkan pesanan untuk
+                                    pengalaman belanja yang lebih cepat.
+                                </div>
+                                <div class="gak_cart_btn">Lihat Keranjang ›</div>
+                            </div>
+                        </a>
+
+                        <!-- AKTIVITAS TRANSAKSI -->
+                        <div class="gak_menu_title">Aktivitas Transaksi</div>
+
+                        <!-- RIWAYAT PESANAN -->
+                        <a href="action://act/shopping" class="gak_cart_card">
+                            <div class="gak_history_icon">📦</div>
+                            <div class="gak_cart_right">
+                                <div class="gak_cart_title">Riwayat Pesanan</div>
+                                <div class="gak_cart_desc">
+                                    Lihat transaksi, top up, dan pesanan yang sedang berlangsung
+                                    dengan lebih mudah.
+                                </div>
+                                <div class="gak_history_btn">Lihat Aktivitas ›</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- HISTORY -->
+                <div id="page_history" class="gak_page">
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ========== AKHIR HALAMAN ORDERS BERANDA ==========-->
+
+        <!-- ========== HALAMAN CHAT BERANDA ==========-->
+        <div class="page" id="page-chat">
+            <div class="scroll-area">
+                <div class="cyberInboxPage">
+                    <div class="cyberInboxHeader">
+                        <h1>Chat</h1>
+                        <div class="cyberInboxSubtitle">
+                            Pesan dan notifikasi kamu
+                        </div>
+                    </div>
+
+                    <h3 class="cyberInboxTitle">
+                        Pilihan fitur
+                    </h3>
+
+                    <div class="cyberFeatureWrap">
+                        <a href="action://act/message_list" class="cyberFeatureCard">
+                            <div class="cyberFeatureIcon cyberInboxIcon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 8v9H4V8l8 5 8-5zm0-2H4l8 5 8-5z" />
+                                </svg>
+                                <div class="cyberNotifyDot"></div>
+                            </div>
+                            <span>Inbox</span>
+                        </a>
+
+                        <a href="https://jgjk.mobi/act/admin" class="cyberFeatureCard">
+                            <div class="cyberFeatureIcon cyberHelpIcon">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2a8 8 0 0 0-8 8v3a2 2 0 0 0 2 2h1v-5H5a7 7 0 0 1 14 0h-2v5h1a2 2 0 0 0 2-2v-3a8 8 0 0 0-8-8zm-2 17h4a2 2 0 0 1-2 2 2 2 0 0 1-2-2z" />
+                                </svg>
+                            </div>
+                            <span>CS</span>
+                        </a>
+                    </div>
+
+                    <div class="cyberSectionDivider"></div>
+
+                    <h3 class="cyberInboxTitle">
+                        Goces AI
+                    </h3>
+
+                    <div class="cyberAiCard" onclick="openGocesAI()">
+                        <div class="cyberAiLeft">
+                            <div class="cyberAiIcon">
+                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1782139672/Desain_tanpa_judul__7_-removebg-preview_vx1dud.png"
+                                    alt="Goces AI">
+                            </div>
+                            <div class="cyberAiInfo">
+                                <div class="cyberAiTitle">
+                                    Goces AI
+                                </div>
+                                <div class="cyberAiDesc">
+                                    Asisten pintar untuk membantu kebutuhanmu
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cyberAiArrow">
+                            ›
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ========== AKHIR HALAMAN CHAT BERANDA ==========-->
+
+        <!-- ========== HALAMAN PROFILE BERANDA ==========-->
+        <div id="page-kpz-main-wrap" class="page">
+            <div class=" scroll-area">
+                <div class="kpz-head-panel">
+
+                    <div class="kpz-top-tools">
+
+                        <button class="kpz-nav-button kpz-back-button" onclick="goBack()">
+                            <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 18l-6-6 6-6"></path>
+                            </svg>
+                        </button>
+
+                        <div class="kpz-right-tools">
+
+                            <a href="https://jgjk.mobi/act/cart" class="kpz-nav-button">
+                                <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="20" r="1.5"></circle>
+                                    <circle cx="18" cy="20" r="1.5"></circle>
+                                    <path d="M3 4h2l2.2 10.4a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 8H7"></path>
+                                </svg>
+                            </a>
+
+                            <a href="action://act/message_list" class="kpz-nav-button">
+                                <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                <span class="kpz-badge">
+                                    {jumlah_pesan}
+                                </span>
+                            </a>
+
+                            <button class="kpz-nav-button" onclick="showPage('setting')">
+                                <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path
+                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .67.39 1.28 1 1.51.16.06.33.09.51.09H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                    </path>
+                                </svg>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="kpz-user-section">
+                        <div class="kpz-user-left">
+                            <div class="kpz-avatar-box">
+                                <img src="{foto}">
+                            </div>
+                            <div class="kpz-user-info">
+                                <h2>{username}</h2>
+                                <p>{hp}</p>
+                                <small>{email}</small>
+                            </div>
+                        </div>
+                        <label class="kpz-theme-toggle" onclick="openGocesAI()">
+                            <input type="checkbox" id="darkToggle1">
+                            <span class="kpz-theme-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="kpz-section-title">
+                    Pembayaran
+                </div>
+
+                <div class="kpz-list-card">
+
+                    <a class="kpz-list-item" onclick="openGocesAI()">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="5" width="20" height="14" rx="3"></rect>
+                                <line x1="2" y1="10" x2="22" y2="10"></line>
+                                <line x1="6" y1="15" x2="10" y2="15"></line>
+                            </svg>
+                            <span>Pulsa & pembayaran</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="kpz-section-title">
+                    Saldo & Poin
+                </div>
+
+                <div class="kpz-list-card">
+
+                    <a href="action://act/balance" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
+                                <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2H3"></path>
+                                <circle cx="16" cy="12" r="1"></circle>
+                            </svg>
+                            <span>Gocespay</span>
+                        </div>
+                    </a>
+
+                    <a href="action://act/customer_points" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="8"></circle>
+                                <path d="M12 8v8"></path>
+                                <path
+                                    d="M9.5 10c0-1.1 1.1-2 2.5-2s2.5.9 2.5 2-1.1 2-2.5 2-2.5.9-2.5 2 1.1 2 2.5 2 2.5-.9 2.5-2">
+                                </path>
+                            </svg>
+                            <span>Goces Poin</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="kpz-section-title">
+                    Pendaftaran
+                </div>
+
+                <div class="kpz-list-card">
+
+                    <a href="https://jgjk.mobi/act/driver" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 11l2-4h10l2 4"></path>
+                                <path d="M5 11h14v5H5z"></path>
+                                <circle cx="8" cy="18" r="1.5"></circle>
+                                <circle cx="16" cy="18" r="1.5"></circle>
+                            </svg>
+                            <span>Daftar driver</span>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/act/partner" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l1-4h16l1 4"></path>
+                                <path d="M4 9v10h16V9"></path>
+                                <path d="M9 19v-5h6v5"></path>
+                            </svg>
+                            <span>Daftar mitra</span>
+                        </div>
+                    </a>
+
+                    <a href="action://act/verified_email" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="M3 7l9 6 9-6"></path>
+                            </svg>
+                            <span>Verifikasi email</span>
+                        </div>
+                    </a>
+
+                    <a href="action://act/verified_phone" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="7" y="2" width="10" height="20" rx="2"></rect>
+                                <line x1="11" y1="18" x2="13" y2="18"></line>
+                            </svg>
+                            <span>Verifikasi nomor telepon</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="kpz-section-title">
+                    Referensi
+                </div>
+
+                <div class="kpz-list-card">
+
+                    <a href="action://act/referral" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <line x1="19" y1="8" x2="19" y2="14"></line>
+                                <line x1="16" y1="11" x2="22" y2="11"></line>
+                            </svg>
+                            <span>Undang teman</span>
+                        </div>
+                    </a>
+
+                    <a href="action://act/referral_list" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span>Daftar temanmu</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="kpz-section-title">
+                    Bantuan
+                </div>
+
+                <div class="kpz-list-card">
+
+                    <a class="kpz-list-item" onclick="openGocesAI()">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <span>Bantuan & laporan</span>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/act/admin" class="kpz-list-item">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                <path d="M21 19a2 2 0 0 1-2 2h-1v-6h3z"></path>
+                                <path d="M3 19a2 2 0 0 0 2 2h1v-6H3z"></path>
+                            </svg>
+                            <span>Customer service</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- TENTANG -->
+                <div class="kpz-section-title">
+                    Tentang Goces
+                </div>
+
+                <div class="kpz-list-card">
+
+                    <a class="kpz-list-item" onclick="openGocesAI()">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                            <span>Ketentuan layanan</span>
+                        </div>
+                    </a>
+
+                    <a class="kpz-list-item" onclick="openGocesAI()">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                                <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                            </svg>
+                            <span>Kebijakan privasi</span>
+                        </div>
+                    </a>
+
+                    <a class="kpz-list-item" onclick="openGocesAI()">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 7h5l2 2h11v10a2 2 0 0 1-2 2H3z"></path>
+                            </svg>
+                            <span>Atribusi data</span>
+                        </div>
+                    </a>
+
+                    <a class="kpz-list-item" onclick="openGocesAI()">
+                        <div class="kpz-list-left">
+                            <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9">
+                                </polygon>
+                            </svg>
+                            <span>Beri rating</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <a href="action://act/logout" class="kpz-signout-btn">
+                    Keluar Akun
+                </a>
+
+            </div>
+
+        </div>
+        <!-- ========== AKHIR  HALAMAN PROFILE BERANDA ==========-->
+
+        <!-- ========== HALAMAN GOFOOD BERANDA ==========-->
+        <div id="page-gofood" class="page">
+            <div class="scroll-area">
+                <div class="gf2_top_area">
+                    <div class="gf2_header">
+
+                        <button class="gf2_back_btn" onclick="goBack()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+
+                        <div class="gf2_location">
+                            📍 {alamat_kecamatan}
+                        </div>
+
+                        <button class="gf2_cart_btn" onclick="window.location.href='https://jgjk.mobi/act/cart'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.3 4.2a1 1 0 001 1.3H19" />
+                                <circle cx="9" cy="20" r="1" />
+                                <circle cx="18" cy="20" r="1" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="gf2_banner">
+                        <img
+                            src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781499929/ChatGPT_Image_15_Jun_2026_13.04.59_z3dfr5.png">
+                    </div>
+
+                </div>
+
+                <!-- SEARCH -->
+                <form action="action://act/search">
+                    <div class="gf2_search_box">
+                        <div class="gf2_search_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                viewBox="0 0 24 24" stroke="#999" stroke-width="2.2">
+                                <circle cx="11" cy="11" r="7" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-3.5-3.5" />
+                            </svg>
+                        </div>
+                        <input type="search" name="search" placeholder="Cari makanan favoritmu">
+                    </div>
+                </form>
+
+                <div class="gf2_category">
+
+                    <a href="https://jgjk.mobi/m/482013168266a338e404198a9.02087100" class="gf2_category_link">
+                        <div class="gf2_category_item">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795968/Gemini_Generated_Image_36pgrm36pgrm36pg-removebg-preview_lose6t.png"
+                                class="gf2_icon_img">
+                            <p>Kuliner</p>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/m/362313168266a338ee82320d1.04031088" class="gf2_category_link">
+                        <div class="gf2_category_item">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795968/Gemini_Generated_Image_rx89umrx89umrx89-removebg-preview_ra5eua.png"
+                                class="gf2_icon_img">
+                            <p>Ayam</p>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/m/072313168266a338ecb6e9800.07850343" class="gf2_category_link">
+                        <div class="gf2_category_item">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795968/Gemini_Generated_Image_9n7k2t9n7k2t9n7k-removebg-preview_alpycz.png"
+                                class="gf2_icon_img">
+                            <p>Bakso</p>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/m/092113168266a338e55536e99.19442399" class="gf2_category_link">
+                        <div class="gf2_category_item">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795968/Gemini_Generated_Image_ek1ybxek1ybxek1y-removebg-preview_vy4mwo.png"
+                                class="gf2_icon_img">
+                            <p>Minuman</p>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/m/593422168266a341023939574.63916828" class="gf2_category_link">
+                        <div class="gf2_category_item">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795968/Gemini_Generated_Image_i589o6i589o6i589-removebg-preview_kqrrcf.png"
+                                class="gf2_icon_img">
+                            <p>Pizza</p>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/m/362113168266a338e7029f554.04536679" class="gf2_category_link">
+                        <div class="gf2_category_item">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_q6bfkeq6bfkeq6bf-removebg-preview_etbz7u.png"
+                                class="gf2_icon_img">
+                            <p>Snack</p>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/m/062413168266a338f06c83888.03087582" class="gf2_category_link">
+                        <div class="gf2_category_item">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795968/Gemini_Generated_Image_cqsxglcqsxglcqsx-removebg-preview_vc0wyv.png"
+                                class="gf2_icon_img">
+                            <p>Seafood</p>
+                        </div>
+                    </a>
+
+                    <a href="https://jgjk.mobi/m/553522168266a34105b34e765.07780295" class="gf2_category_link">
+                        <div class="gf2_category_item">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_x6e38jx6e38jx6e3-removebg-preview_a1qp1m.png"
+                                class="gf2_icon_img">
+                            <p>Dessert</p>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div id="item-kuliner">
+                    <iframe src="https://jagel-api.vercel.app/kuliner" style="
+                    width:100%;
+                    height:270px;
+                    border:none;
+                    background:transparent;
+                    border-radius:18px;">
+                    </iframe>
+                </div>
+
+                <div id="item-banner-makanan">
+                    <iframe src="https://jagel-api.vercel.app/banner-makanan" style="
+                    width:100%;
+                    height:230px;
+                    border:none;
+                    background:transparent;
+                    overflow:hidden;">
+                    </iframe>
+                </div>
+
+                <div id="item-minuman">
+                    <iframe src="https://jagel-api.vercel.app/minuman" style="
+                    width:100%;
+                    height:270px;
+                    border:none;
+                    background:transparent;
+                    border-radius:18px;">
+                    </iframe>
+                </div>
+
+                <div class="gpr_promo_header">
+                    <h2 class="gpr_promo_title">🔥 Promo Spesial Hari Ini</h2>
+                    <button class="gpr_promo_view_all" onclick="showPage('promos')">
+                        See All
+                    </button>
+                </div>
+
+                <!-- VOUCHER HORIZONTAL SLIDER HALAMAN FOOD -->
+                <div class="gpr-horizontal-slider">
+
+                    <!-- VOUCHER 1 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                    <!-- VOUCHER 2 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                    <!-- VOUCHER 3 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ========== AKHIR  HALAMAN GOFOOD BERANDA ==========-->
+
+        <!-- ========== HALAMAN SHOP BERANDA ==========-->
+        <div id="page-Shop" class="page">
+            <div class="scroll-area">
+                <div class="gmk_wrap">
+                    <header class="gmk_header">
+
+                        <div class="gmk_header_banner">
+                            <img
+                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781499929/ChatGPT_Image_15_Jun_2026_13.04.59_z3dfr5.png">
+
+                            <div class="gmk_topbar">
+
+                                <button class="gmk_back_btn" onclick="goBack()">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 18l-6-6 6-6" />
+                                    </svg>
+                                </button>
+
+                                <form action="action://act/search" class="gmk_search_form">
+                                    <svg class="gmk_search_icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="11" cy="11" r="7" />
+                                        <path d="M20 20L17 17" />
+                                    </svg>
+                                    <input type="search" id="search" name="search" class="gmk_search_input"
+                                        placeholder="Cari">
+                                </form>
+
+                                <a href="action://act/message_list" class="gmk_notif_btn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 8a6 6 0 10-12 0c0 7-3 8-3 8h18s-3-1-3-8" />
+                                        <path d="M13.73 21a2 2 0 01-3.46 0" />
+                                    </svg>
+                                    <span class="gmk_badge">
+                                        {jumlah_pesan}
+                                    </span>
+                                </a>
+
+                                <a href="https://jgjk.mobi/act/cart" class="gmk_cart_btn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="9" cy="21" r="1" />
+                                        <circle cx="20" cy="21" r="1" />
+                                        <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+                                    </svg>
+                                </a>
+
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- WALLET -->
+                    <div class="lq2_wrap">
+                        <div class="lq2_row">
+
+                            <a href="action://act/balance" class="lq2_card lq2_m">
+                                <div class="lq2_t">Saldomu</div>
+                                <div class="lq2_v">{saldo}</div>
+                            </a>
+
+                            <a href="action://act/customer_points" class="lq2_card lq2_p">
+                                <div class="lq2_t">Poin pembelian</div>
+                                <div class="lq2_v">{poin}</div>
+                            </a>
+
+                            <a class="lq2_card lq2_p" onclick="showPage('promos')">
+                                <div class="lq2_t">Diskon mitra</div>
+                                <div class="lq2_v">{mitra_diskon}</div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="gcs_flash_card" id="gcsFlashSale">
+                        <div class="gcs_flash_header">
+                            <div>
+                                <div class="gcs_flash_title">
+                                    🔥 Flash Sale
+                                </div>
+
+                                <div class="gcs_flash_date">
+                                    Promo terbatas hari ini
+                                </div>
+                            </div>
+                            <div class="gcs_flash_timer" id="gcsFlashTimer">
+                                00:00:00
+                            </div>
+                        </div>
+
+                        <div class="gcs_flash_content">
+                            <div class="gcs_flash_products">
+
+                                <div id="item-head">
+                                    <iframe class="gmk_category_frame" data-path="/flashsale"
+                                        src="https://jagel-api.vercel.app/flashsale" style="
+                                        width:100%;
+                                        height:250px;
+                                        border:none;
+                                        background:transparent;
+                                        border-radius:18px;">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="gf8x_menu_category_heading">Menu Category</h2>
+
+                    <!-- KATEGORI -->
+                    <section class="gmk_category">
+
+                        <a href="#" class="gmk_category_item">
+                            <div class="gmk_category_icon">
+                                <img
+                                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781878694/Gemini_Generated_Image_ir257pir257pir25-removebg-preview_ce0e2a.png">
+                            </div>
+                            <div class="gmk_category_name">
+                                Fashion
+                            </div>
+                        </a>
+
+                        <a href="#" class="gmk_category_item">
+                            <div class="gmk_category_icon">
+                                <img
+                                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781878695/Gemini_Generated_Image_anjmr8anjmr8anjm-removebg-preview_wums1d.png">
+                            </div>
+                            <div class="gmk_category_name">
+                                Elektronik
+                            </div>
+                        </a>
+
+                        <a href="#" class="gmk_category_item">
+                            <div class="gmk_category_icon">
+                                <img
+                                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781878693/Gemini_Generated_Image_2exeqg2exeqg2exe-removebg-preview_alotdm.png">
+                            </div>
+                            <div class="gmk_category_name">
+                                Olahraga
+                            </div>
+                        </a>
+
+                        <a href="#" class="gmk_category_item">
+                            <div class="gmk_category_icon">
+                                <img
+                                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781878693/Gemini_Generated_Image_i2a2cqi2a2cqi2a2-removebg-preview_phkmwe.png">
+                            </div>
+                            <div class="gmk_category_name">
+                                Kecantikan
+                            </div>
+                        </a>
+
+                        <a href="#" class="gmk_category_item">
+                            <div class="gmk_category_icon">
+                                <img
+                                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781878693/Gemini_Generated_Image_ahievcahievcahie-removebg-preview_fwqyz3.png">
+                            </div>
+                            <div class="gmk_category_name">
+                                Kesehatan
+                            </div>
+                        </a>
+
+                        <a href="#" class="gmk_category_item">
+                            <div class="gmk_category_icon">
+                                <img
+                                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781878693/Gemini_Generated_Image_wcv0fjwcv0fjwcv0-removebg-preview_h4uuf6.png">
+                            </div>
+                            <div class="gmk_category_name">
+                                Pertanian
+                            </div>
+                        </a>
+
+                        <a href="#" class="gmk_category_item">
+                            <div class="gmk_category_icon">
+                                <img
+                                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781878693/Gemini_Generated_Image_4nkp994nkp994nkp-removebg-preview_d3wyqa.png">
+                            </div>
+                            <div class="gmk_category_name">
+                                Perabot
+                            </div>
+                        </a>
+
+                        <a href="#" class="gmk_category_item">
+                            <div class="gmk_category_icon">
+                                <img
+                                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781879158/Gemini_Generated_Image_qak8clqak8clqak8-removebg-preview_o0d6jn.png">
+                            </div>
+                            <div class="gmk_category_name">
+                                Lainnya
+                            </div>
+                        </a>
+
+                    </section>
+
+                    <!-- FASHION -->
+                    <div id="item-fashion">
+                        <iframe class="gmk_category_frame" data-path="/fashion"
+                            src="https://jagel-api.vercel.app/fashion" style="
+                             width:100%;
+                             height:270px;
+                             border:none;
+                             background:transparent;
+                             border-radius:18px;">
+                        </iframe>
+                    </div>
+
+                    <div id="item-banner-fashion">
+                        <iframe src="https://jagel-api.vercel.app/banner-fashion" style="
+                        width:100%;
+                        height:230px;
+                        border:none;
+                        background:transparent;
+                        overflow:hidden;">
+                        </iframe>
+                    </div>
+
+                    <!-- KECANTIKAN -->
+                    <div id="item-kecantikan">
+                        <iframe class="gmk_category_frame" data-path="/kecantikan"
+                            src="https://jagel-api.vercel.app/kecantikan" style="
+                            width:100%;
+                            height:270px;
+                            border:none;
+                            background:transparent;
+                            border-radius:18px;">
+                        </iframe>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- ========== AKHIR  HALAMAN SHOP BERANDA ==========-->
+
+        <!-- ========== HALAMAN FRESH BERANDA ==========-->
+        <div id="page-Fresh" class="page">
+            <div class="scroll-area">
+                <header class="header-banner">
+
+                    <!-- Tombol Back -->
+                    <button class="header-btn back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                        </svg>
+                    </button>
+
+                    <!-- Tombol kanan -->
+                    <div class="header-right">
+
+                        <!-- Notifikasi -->
+                        <a href="action://act/message_list">
+                            <button class="header-btn">
+                                <span class="badge">{jumlah_pesan}</span>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm6-6V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2z" />
+                                </svg>
+                            </button>
+                        </a>
+
+                        <!-- Keranjang -->
+                        <a href="https://jgjk.mobi/act/cart">
+                            <button class="header-btn">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 14h9.45c.75 0 1.4-.41 1.74-1.03l3.58-6.49A1 1 0 0 0 21.05 5H5.21L4.27 3H1v2h2l3.6 7.59-1.35 2.44C4.52 16.37 5.48 18 7 18h12v-2H7l1.16-2z" />
+                                </svg>
+                            </button>
+                        </a>
+
+                    </div>
+
+                    <!-- Gambar Header -->
+                    <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781336237/file_00000000a1287208855b0758be08f50a_plh59q.png"
+                        alt="Header">
+
+                </header>
+
+                <!-- Search -->
+                <div class="search-wrapper">
+                    <form action="action://act/search" class="search-form">
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79L20 21.49 21.49 20l-5.99-6zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z" />
+                        </svg>
+                        <input type="search" id="search" name="search" class="search-input" placeholder="Cari">
+                    </form>
+                </div>
+
+                <!-- Menu Kategori -->
+                <div class="category-section">
+
+                    <div class="category-grid">
+
+                        <a href="#" class="category-card">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_q6bfkeq6bfkeq6bf-removebg-preview_etbz7u.png"
+                                alt="Sayur">
+                            <span>Sayur</span>
+                        </a>
+
+                        <a href="#" class="category-card">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_x6e38jx6e38jx6e3-removebg-preview_a1qp1m.png"
+                                alt="Buah">
+                            <span>Buah</span>
+                        </a>
+
+                        <a href="#" class="category-card">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_x6e38jx6e38jx6e3-removebg-preview_a1qp1m.png"
+                                alt="Daging">
+                            <span>Daging</span>
+                        </a>
+
+                        <a href="#" class="category-card">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_x6e38jx6e38jx6e3-removebg-preview_a1qp1m.png"
+                                alt="Ikan">
+                            <span>Ikan</span>
+                        </a>
+
+                        <a href="#" class="category-card">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_x6e38jx6e38jx6e3-removebg-preview_a1qp1m.png"
+                                alt="Sembako">
+                            <span>Seafood</span>
+                        </a>
+
+                        <a href="#" class="category-card">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_x6e38jx6e38jx6e3-removebg-preview_a1qp1m.png"
+                                alt="Telur">
+                            <span>Sembako</span>
+                        </a>
+
+                        <a href="#" class="category-card">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781795969/Gemini_Generated_Image_x6e38jx6e38jx6e3-removebg-preview_a1qp1m.png"
+                                alt="Minuman">
+                            <span>Telur & Susu</span>
+                        </a>
+
+                        <a href="#" class="category-card">
+                            <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781879158/Gemini_Generated_Image_qak8clqak8clqak8-removebg-preview_o0d6jn.png"
+                                alt="Lainnya">
+                            <span>Bumbu rempah</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div id="item-sayur">
+                    <iframe src="https://jagel-api.vercel.app/sayur" style="
+                    width:100%;
+                    height: 270px;
+                    border:none;
+                    background:transparent;
+                    overflow:hidden;">
+                    </iframe>
+                </div>
+
+                <div class="gpr_promo_header">
+                    <h2 class="gpr_promo_title">🔥 Promo Spesial Hari Ini</h2>
+                    <button class="gpr_promo_view_all" onclick="showPage('promos')">
+                        See All
+                    </button>
+                </div>
+
+                <!-- VOUCHER HORIZONTAL SLIDER HALAMAN FOOD -->
+                <div class="gpr-horizontal-slider">
+
+                    <!-- VOUCHER 1 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                    <!-- VOUCHER 2 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                    <!-- VOUCHER 3 -->
+                    <div class="gpr-voucher-card" data-card-color="#FFF3E0"
+                        data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                        data-code="MAKAN50" data-title="Diskon Hingga Rp50.000" data-desc="Minimal pembelian Rp100.000"
+                        data-period="21 Juni - 1 Juli 2026" data-start="2026-06-21 00:00:00"
+                        data-end="2026-07-01 23:59:59" data-min-order="100000" data-max-discount="50000"
+                        data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
+                        onclick="gprOpenVoucherModal(this)">
+
+                        <div class="gpr-ribbon hot">HOT</div>
+                        <div class="gpr-voucher-image">
+                            <img class="gpr-voucher-img">
+                        </div>
+                        <div class="gpr-voucher-info">
+                            <div class="gpr-voucher-top">
+                                <span class="gpr-badge">Diskon 50%</span>
+                                <span class="gpr-tag hot">🔥 Terlaris</span>
+                            </div>
+                            <h3 class="gpr-voucher-title"></h3>
+                            <p class="gpr-voucher-desc"></p>
+                            <small class="gpr-voucher-period"></small>
+                            <div class="gpr-countdown"></div>
+                        </div>
+                        <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
+                            Salin
+                        </button>
+                    </div>
+
+                </div>
+
+                <div id="item-daging">
+                    <iframe src="https://jagel-api.vercel.app/daging" style="
+                    width:100%;
+                    height:270px;
+                    border:none;
+                    background:transparent;
+                    overflow:hidden;">
+                    </iframe>
+                </div>
+
+                <div id="item-banner-ongkir">
+                    <iframe src="https://jagel-api.vercel.app/banner-ongkir" style="
+                    width:100%;
+                    height:230px;
+                    border:none;
+                    background:transparent;
+                    overflow:hidden;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <!-- ========== AKHIR FRESH BERANDA ==========-->
+
+        <!-- ========== HALAMAN SETTING ALAMAT ==========-->
+        <div id="page-setting" class="page">
+            <div class="gset_header">
+
+                <button class="gset_back_btn" onclick="goBack()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18L9 12L15 6" />
+                    </svg>
+                </button>
+
+                <div class="gset_header_text">
+                    <div class="gset_header_title">
+                        Pengaturan
+                    </div>
+                    <div class="gset_header_subtitle">
+                        Kelola akun dan keamanan
+                    </div>
+                </div>
+            </div>
+
+            <div class="gset_card">
+                <a href="action://act/profile" class="gset_item">
+                    <div class="gset_icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21a8 8 0 0 0-16 0" />
+                            <circle cx="12" cy="8" r="4" />
+                        </svg>
+                    </div>
+
+                    <div class="gset_content">
+                        <div class="gset_title">
+                            Ubah Profil
+                        </div>
+                        <div class="gset_subtitle">
+                            Nama, email dan nomor telepon
+                        </div>
+                    </div>
+
+                    <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18L15 12L9 6" />
+                    </svg>
+                </a>
+
+                <a href="action://act/address" class="gset_item">
+                    <div class="gset_icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s7-5.5 7-12a7 7 0 1 0-14 0c0 6.5 7 12 7 12z" />
+                            <circle cx="12" cy="10" r="2.5" />
+                        </svg>
+                    </div>
+                    <div class="gset_content">
+                        <div class="gset_title">
+                            Ubah Alamat
+                        </div>
+                        <div class="gset_subtitle">
+                            Kelola alamat utama
+                        </div>
+                    </div>
+                    <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18L15 12L9 6" />
+                    </svg>
+                </a>
+
+                <a href="action://act/password" class="gset_item">
+                    <div class="gset_icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="11" width="14" height="10" rx="2" />
+                            <path d="M8 11V8a4 4 0 1 1 8 0v3" />
+                        </svg>
+                    </div>
+
+                    <div class="gset_content">
+                        <div class="gset_title">
+                            Ubah Password
+                        </div>
+                        <div class="gset_subtitle">
+                            Tingkatkan keamanan akun
+                        </div>
+                    </div>
+                    <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18L15 12L9 6" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+        <!-- ========== AKHIR HALAMAN SETTING ALAMAT ==========-->
+
+    </div>
+
+    <!-- ==========NAVIGASI BOTTOM BAWAH ========== -->
+    <nav class="bottom-nav">
+
+        <button class="nav-item active" data-page="home" onclick="showPage('home', this)">
+            <div class="nav-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+            </div>
+            <span class="nav-label">Home</span>
+        </button>
+
+        <button class="nav-item" data-page="promos" onclick="showPage('promos', this)">
+            <div class="nav-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="5" x2="5" y2="19" />
+                    <circle cx="6.5" cy="6.5" r="2.5" />
+                    <circle cx="17.5" cy="17.5" r="2.5" />
+                </svg>
+            </div>
+            <span class="nav-label">Promos</span>
+        </button>
+
+        <button class="nav-item" data-page="orders" onclick="showPage('orders', this)">
+            <div class="nav-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                </svg>
+            </div>
+            <span class="nav-label">Orders</span>
+        </button>
+
+        <button class="nav-item" data-page="chat" onclick="showPage('chat', this)">
+            <div class="nav-icon-wrap">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+            </div>
+            <span class="nav-label">Chat</span>
+        </button>
+
+    </nav>
+    <!-- ========== AKHIR NAVIGASI BOTTOM BAWAH ========== -->
+
+    <script src="script.js"></script>
+    <script>
+        // =========================
+        // script navigasi button bawah
+        // =========================
+
+        // =========================
+        // STATE
+        // =========================
+
+        let pageHistory = [];
+        let currentPage = 'home';
+
+        history.replaceState(
+            { page: 'home' },
+            '',
+            '#home'
+        );
+
+        // =========================
+        // AKTIFKAN NAVBAR
+        // =========================
+
+        function activateNav(pageName) {
+
+            document
+                .querySelectorAll('.nav-item')
+                .forEach(nav => {
+
+                    nav.classList.remove('active');
+
+                    if (
+                        nav.dataset.page === pageName
+                    ) {
+                        nav.classList.add('active');
+                    }
+
+                });
+
+        }
+
+        // =========================
+        // TAMPILKAN HALAMAN
+        // =========================
+
+        function showPage(name, btn = null) {
+
+            if (currentPage === name) {
+                return;
+            }
+
+            pageHistory.push(currentPage);
+
+            history.pushState(
+                { page: name },
+                '',
+                '#' + name
+            );
+
+            document
+                .querySelectorAll('.page')
+                .forEach(page => {
+                    page.classList.remove('active');
+                });
+
+            const targetPage =
+                document.getElementById(
+                    'page-' + name
+                );
+
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            activateNav(name);
+
+            currentPage = name;
+
+            console.log(
+                'Current Page:',
+                currentPage
+            );
+
+            console.log(
+                'History:',
+                pageHistory
+            );
+
+        }
+
+        // =========================
+        // TOMBOL KEMBALI MANUAL
+        // =========================
+
+        function goBack() {
+
+            if (
+                pageHistory.length === 0
+            ) {
+                return;
+            }
+
+            const previousPage =
+                pageHistory.pop();
+
+            document
+                .querySelectorAll('.page')
+                .forEach(page => {
+                    page.classList.remove('active');
+                });
+
+            const targetPage =
+                document.getElementById(
+                    'page-' + previousPage
+                );
+
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            activateNav(previousPage);
+
+            currentPage =
+                previousPage;
+
+        }
+
+        // =========================
+        // BACK ANDROID
+        // =========================
+
+        window.addEventListener(
+            'popstate',
+            function () {
+
+                if (
+                    pageHistory.length === 0
+                ) {
+                    return;
+                }
+
+                const previousPage =
+                    pageHistory.pop();
+
+                document
+                    .querySelectorAll('.page')
+                    .forEach(page => {
+                        page.classList.remove('active');
+                    });
+
+                const targetPage =
+                    document.getElementById(
+                        'page-' + previousPage
+                    );
+
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+
+                activateNav(previousPage);
+
+                currentPage =
+                    previousPage;
+
+            }
+        );
+
+        // =========================
+        // ORDERS TAB
+        // =========================
+
+        document
+            .querySelectorAll('.orders-tab')
+            .forEach(tab => {
+
+                tab.addEventListener(
+                    'click',
+                    function () {
+
+                        document
+                            .querySelectorAll('.orders-tab')
+                            .forEach(t => {
+                                t.classList.remove('active');
+                            });
+
+                        this.classList.add('active');
+
+                    }
+                );
+
+            });
+
+
+        // =========================
+        // script benner slide
+        // =========================
+        window.addEventListener(
+            "message",
+            function (event) {
+
+                const element =
+                    document.getElementById(
+                        event.data.containerId
+                    );
+
+                if (!element) {
+                    return;
+                }
+
+                if (
+                    event.data.type === "emptyBanner"
+                ) {
+
+                    element.style.display =
+                        "none";
+
+                }
+
+                if (
+                    event.data.type === "bannerLoaded"
+                ) {
+
+                    element.style.display =
+                        "block";
+
+                }
+
+            }
+        );
+
+        // =========================
+        // script lupa nama
+        // =========================
+        window.addEventListener("message", function (event) {
+
+            if (event.data.type === "emptyCategory") {
+
+                const frame = event.source.frameElement;
+
+                if (frame) {
+
+                    const container = frame.parentElement;
+
+                    if (container) {
+
+                        container.style.display = "none";
+
+                    }
+
+                }
+
+            }
+
+        });
+
+        // =========================
+        // script benner promo atau halaman promo
+        // =========================
+        // =============================
+        // KONFIGURASI
+        // =============================
+        let gprCurrentCategory = null;
+        const gprKategoriVoucher = [
+            "populer",
+            "terbaru",
+            "eksklusif",
+            "cashback",
+            "terbatas"
+        ];
+
+        // =============================
+        // KATEGORI
+        // =============================
+        function gprOpenCategory(event, category) {
+
+            const buttons =
+                document.querySelectorAll(
+                    ".gpr-category button"
+                );
+
+            const sections =
+                document.querySelectorAll(
+                    ".gpr-content"
+                );
+
+            if (
+                gprCurrentCategory === category
+            ) {
+
+                document
+                    .getElementById(category)
+                    .style.display = "none";
+
+                event.currentTarget
+                    .classList.remove("active");
+
+                gprCurrentCategory = null;
+
+                return;
+
+            }
+
+            sections.forEach(section => {
+                section.style.display = "none";
+            });
+
+            buttons.forEach(button => {
+                button.classList.remove("active");
+            });
+
+            document
+                .getElementById(category)
+                .style.display = "block";
+
+            event.currentTarget
+                .classList.add("active");
+
+            gprCurrentCategory = category;
+
+        }
+
+        // =============================
+        // BUKA SEMUA
+        // =============================
+        function gprOpenAllVoucher() {
+
+            document
+                .querySelectorAll(".gpr-content")
+                .forEach(section => {
+
+                    section.style.display = "none";
+
+                });
+
+            document
+                .querySelectorAll(".gpr-category button")
+                .forEach(button => {
+
+                    button.classList.remove("active");
+
+                });
+
+            document
+                .getElementById("semua")
+                .style.display = "block";
+
+            document
+                .getElementById("gprBtnSemua")
+                .classList.add("active");
+
+            gprCurrentCategory = "semua";
+
+        }
+
+        // =============================
+        // STATUS VOUCHER
+        // =============================
+        function gprIsVoucherActive(voucher) {
+
+            const now =
+                new Date();
+
+            const start =
+                new Date(
+                    voucher.dataset.start
+                );
+
+            const end =
+                new Date(
+                    voucher.dataset.end
+                );
+
+            return (
+
+                now >= start &&
+
+                now <= end
+
+            );
+
+        }
+
+        // =============================
+        // UPDATE STATUS VOUCHER
+        // =============================
+        function gprUpdateVoucherStatus() {
+
+            gprKategoriVoucher.forEach(id => {
+
+                document
+                    .querySelectorAll(
+                        "#" + id + " .gpr-voucher-card"
+                    )
+                    .forEach(voucher => {
+
+                        if (
+                            gprIsVoucherActive(voucher)
+                        ) {
+
+                            voucher.classList
+                                .remove("hide");
+
+                        } else {
+
+                            voucher.classList
+                                .add("hide");
+
+                        }
+
+                    });
+
+            });
+
+            gprUpdateSemuaVoucher();
+
+            gprUpdateVoucherCount();
+
+        }
+
+        // =============================
+        // HALAMAN SEMUA
+        // =============================
+        function gprUpdateSemuaVoucher() {
+
+            const semua =
+                document.getElementById(
+                    "semua"
+                );
+
+            semua.innerHTML = "";
+
+            gprKategoriVoucher.forEach(id => {
+
+                document
+                    .querySelectorAll(
+                        "#" + id +
+                        " .gpr-voucher-card"
+                    )
+                    .forEach(voucher => {
+
+                        // hanya tampilkan voucher aktif
+                        if (
+                            !voucher.classList.contains(
+                                "hide"
+                            )
+                        ) {
+
+                            semua.innerHTML +=
+                                voucher.outerHTML;
+
+                        }
+
+                    });
+
+            });
+
+        }
+
+        // =============================
+        // JUMLAH VOUCHER AKTIF
+        // =============================
+        function gprUpdateVoucherCount() {
+
+            let total = 0;
+
+            gprKategoriVoucher.forEach(id => {
+
+                document
+                    .querySelectorAll(
+                        "#" + id +
+                        " .gpr-voucher-card"
+                    )
+                    .forEach(voucher => {
+
+                        if (
+                            !voucher.classList.contains(
+                                "hide"
+                            )
+                        ) {
+
+                            total++;
+
+                        }
+
+                    });
+
+            });
+
+            document
+                .getElementById(
+                    "gprActiveVoucherCount"
+                )
+                .innerHTML =
+
+                total + " Voucher Aktif";
+
+        }
+
+        // =============================
+        // SALIN VOUCHER
+        // =============================
+        function gprCopyVoucher(button) {
+
+            const voucher =
+                button.closest(
+                    ".gpr-voucher-card"
+                );
+
+            const code =
+                voucher.dataset.code;
+
+            const input =
+                document.createElement(
+                    "input"
+                );
+
+            input.value = code;
+
+            document.body
+                .appendChild(input);
+
+            input.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+            document.body
+                .removeChild(input);
+
+            button.innerHTML =
+                "Tersalin ✓";
+
+            setTimeout(function () {
+
+                button.innerHTML =
+                    "Salin";
+
+            }, 2000);
+
+            gprShowToast(
+
+                "Kode voucher " +
+                code +
+                " berhasil disalin"
+            );
+
+        }
+
+        // =============================
+        // TOAST
+        // =============================
+        function gprShowToast(message) {
+
+            const toast =
+                document.getElementById(
+                    "gprToast"
+                );
+
+            toast.innerHTML =
+                message;
+
+            toast.style.display =
+                "block";
+
+            clearTimeout(
+                window.gprToastTimer
+            );
+
+            window.gprToastTimer =
+                setTimeout(function () {
+
+                    toast.style.display =
+                        "none";
+
+                }, 2000);
+
+        }
+
+        // =============================
+        // COUNTDOWN
+        // =============================
+        function gprUpdateCountdown() {
+
+            document
+                .querySelectorAll(
+                    ".gpr-voucher-card"
+                )
+                .forEach(voucher => {
+
+                    const box =
+                        voucher.querySelector(
+                            ".gpr-countdown"
+                        );
+
+                    if (!box) return;
+
+                    const end =
+                        new Date(
+                            voucher.dataset.end
+                        );
+
+                    const now =
+                        new Date();
+
+                    let diff =
+                        end - now;
+
+                    if (diff <= 0) {
+
+                        box.innerHTML = "";
+
+                        return;
+
+                    }
+
+                    const day =
+                        Math.floor(
+                            diff / 86400000
+                        );
+
+                    diff %= 86400000;
+
+                    const hour =
+                        Math.floor(
+                            diff / 3600000
+                        );
+
+                    diff %= 3600000;
+
+                    const minute =
+                        Math.floor(
+                            diff / 60000
+                        );
+
+                    box.innerHTML =
+
+                        "⏳ Berakhir dalam " +
+                        day + "h " +
+                        hour + "j " +
+                        minute + "m";
+
+                });
+
+        }
+
+        // =============================
+        // POPUP VOUCHER
+        // =============================
+        function gprOpenVoucherModal(voucher) {
+
+            const title =
+                voucher.dataset.title;
+
+            const desc =
+                voucher.dataset.desc;
+
+            const code =
+                voucher.dataset.code;
+
+            const period =
+                "Berlaku " +
+                voucher.dataset.period;
+
+            const minOrder =
+                Number(
+                    voucher.dataset.minOrder
+                ).toLocaleString("id-ID");
+
+            const maxDiscount =
+                Number(
+                    voucher.dataset.maxDiscount
+                ).toLocaleString("id-ID");
+
+            const terms =
+                voucher.dataset.terms
+                    .split("|")
+                    .map(item =>
+                        `<li>${item}</li>`
+                    )
+                    .join("");
+
+
+            document.getElementById(
+                "gprVoucherModalBody"
+            ).innerHTML = `
+
+        <div class="gpr-modal-section">
+
+            <h2>
+                ${title}
+            </h2>
+
+            <p class="gpr-voucher-desc">
+                ${desc}
+            </p>
+
+        </div>
+
+        <div class="gpr-modal-section">
+
+            <div class="gpr-modal-section-title">
+                Kode Voucher
+            </div>
+
+            <div class="gpr-modal-code">
+                ${code}
+            </div>
+
+        </div>
+
+        <div class="gpr-modal-section">
+
+            <div class="gpr-modal-section-title">
+                Minimum Pembelian
+            </div>
+
+            <div>
+                Rp${minOrder}
+            </div>
+
+        </div>
+
+        <div class="gpr-modal-section">
+
+            <div class="gpr-modal-section-title">
+                Maksimum Diskon
+            </div>
+
+            <div>
+                Rp${maxDiscount}
+            </div>
+
+        </div>
+
+        <div class="gpr-modal-section">
+
+            <div class="gpr-modal-section-title">
+                Periode Promo
+            </div>
+
+            <div>
+                ${period}
+            </div>
+
+        </div>
+
+        <div class="gpr-modal-section">
+
+            <div class="gpr-modal-section-title">
+                Syarat & Ketentuan
+            </div>
+
+            <ul class="gpr-modal-terms">
+
+                ${terms}
+
+            </ul>
+
+        </div>
+
+        <button
+            class="gpr-modal-copy-btn"
+            onclick="gprCopyVoucherCode('${code}')">
+
+            Salin Kode Voucher
+
+        </button>
+
+    `;
+
+            document
+                .getElementById(
+                    "gprVoucherModal"
+                )
+                .classList
+                .add("show");
+
+        }
+
+        // =============================
+        // TUTUP POPUP
+        // =============================
+        function gprCloseVoucherModal() {
+
+            document
+                .getElementById(
+                    "gprVoucherModal"
+                )
+                .classList
+                .remove("show");
+
+        }
+
+        // =============================
+        // SALIN DARI POPUP
+        // =============================
+        function gprCopyVoucherCode(code) {
+
+            const input =
+                document.createElement(
+                    "input"
+                );
+
+            input.value = code;
+
+            document.body.appendChild(
+                input
+            );
+
+            input.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+            document.body.removeChild(
+                input
+            );
+
+            const btn =
+                document.querySelector(
+                    ".gpr-modal-copy-btn"
+                );
+
+            if (btn) {
+
+                btn.innerHTML =
+                    "Tersalin ✓";
+
+                setTimeout(function () {
+
+                    btn.innerHTML =
+                        "Salin Kode Voucher";
+
+                }, 2000);
+
+            }
+
+            gprShowToast(
+
+                "Kode voucher " +
+
+                code +
+
+                " berhasil disalin"
+
+            );
+
+        }
+
+        // =============================
+        // RENDER DATA VOUCHER
+        // =============================
+        function gprRenderVoucherData() {
+
+            document
+                .querySelectorAll(
+                    ".gpr-voucher-card"
+                )
+
+                .forEach(voucher => {
+
+                    voucher.style.background =
+                        voucher.dataset.cardColor;
+
+                    voucher
+                        .querySelector(
+                            ".gpr-voucher-img"
+                        )
+                        .src =
+                        voucher.dataset.image;
+
+                    voucher
+                        .querySelector(
+                            ".gpr-voucher-title"
+                        )
+                        .innerHTML =
+                        voucher.dataset.title;
+
+                    voucher
+                        .querySelector(
+                            ".gpr-voucher-desc"
+                        )
+                        .innerHTML =
+                        voucher.dataset.desc;
+
+                    voucher
+                        .querySelector(
+                            ".gpr-voucher-period"
+                        )
+                        .innerHTML =
+                        "Berlaku " +
+                        voucher.dataset.period;
+
+                });
+
+        }
+
+        // =============================
+        // INISIALISASI
+        // =============================
+        gprRenderVoucherData();
+
+        gprUpdateVoucherStatus();
+
+        gprUpdateCountdown();
+
+        // periksa setiap 1 menit
+        setInterval(function () {
+
+            gprUpdateVoucherStatus();
+
+            gprUpdateCountdown();
+
+        }, 60000);
+
+        // =========================
+        // script pop up goces ai 
+        // =========================
+        function openGocesAI() {
+            document.getElementById(
+                "cyberPopupOverlay"
+            ).style.display = "flex";
+        }
+
+        function closeGocesAI() {
+
+            document.getElementById(
+                "cyberPopupOverlay"
+            ).style.display = "none";
+        }
+
+
+        // =========================
+        // script halaman shop
+        // =========================
+        let gcsFlashEnd = new Date("2026-06-27 23:59:59").getTime();
+
+        let gcsFlashInterval = setInterval(function () {
+
+            let now = new Date().getTime();
+            let distance = gcsFlashEnd - now;
+
+            if (distance <= 0) {
+
+                clearInterval(gcsFlashInterval);
+
+                document.getElementById("gcsFlashSale").style.display = "none";
+
+                return;
+            }
+
+            let jam = Math.floor(distance / (1000 * 60 * 60));
+            let menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let detik = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("gcsFlashTimer").innerHTML =
+                jam.toString().padStart(2, "0") + ":" +
+                menit.toString().padStart(2, "0") + ":" +
+                detik.toString().padStart(2, "0");
+
+        }, 1000);
+
+
+        // =========================
+        // script halaman profile beranda
+        // =========================
+        (function () {
+
+            const KEY = "theme";
+
+            // =========================
+            // SAFE STORAGE (WebView proof)
+            // =========================
+            function getTheme() {
+                try {
+                    return localStorage.getItem(KEY) || "light";
+                } catch (e) {
+                    return "light";
+                }
+            }
+
+            function setThemeStorage(theme) {
+                try {
+                    localStorage.setItem(KEY, theme);
+                } catch (e) { }
+            }
+
+            // =========================
+            // APPLY THEME (CORE ENGINE)
+            // =========================
+            function applyTheme(theme) {
+
+                document.documentElement.setAttribute("data-theme", theme);
+
+                document.body.classList.toggle(
+                    "kpz-dark-mode",
+                    theme === "dark"
+                );
+
+                syncToggle(theme);
+            }
+
+            // =========================
+            // SYNC TOGGLE UI
+            // =========================
+            function syncToggle(theme) {
+                const toggle = document.getElementById("darkToggle");
+                if (toggle) {
+                    toggle.checked = (theme === "dark");
+                }
+            }
+
+            // =========================
+            // PUBLIC SETTER
+            // =========================
+            function setTheme(theme) {
+                setThemeStorage(theme);
+                applyTheme(theme);
+            }
+
+            // =========================
+            // SAFE INIT (ANTI ANDROID BUG)
+            // =========================
+            function initTheme() {
+
+                const theme = getTheme();
+                applyTheme(theme);
+
+                const toggle = document.getElementById("darkToggle");
+
+                if (toggle && !toggle.__bound) {
+
+                    toggle.__bound = true;
+
+                    toggle.addEventListener("change", function () {
+                        setTheme(this.checked ? "dark" : "light");
+                    });
+
+                }
+            }
+
+            // =========================
+            // MULTI-TRIGGER SYSTEM
+            // =========================
+
+            // 1. normal load
+            document.addEventListener("DOMContentLoaded", initTheme);
+
+            // 2. fallback kalau DOM telat / SPA
+            window.addEventListener("load", initTheme);
+
+            // 3. extra safety (WebView / iframe injection)
+            setTimeout(initTheme, 300);
+            setTimeout(initTheme, 1000);
+
+            // expose global (biar bisa dipanggil dari page lain)
+            window.setTheme = setTheme;
+
+        })();
+
+        // =========================
+        // script halaman orders
+        // =========================
+        function gakShowPage(page) {
+
+            // sembunyikan semua isi tab
+            document.querySelectorAll(".gak_page").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            // nonaktifkan semua tombol
+            document.querySelectorAll(".gak_tab").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            // tampilkan halaman yang dipilih
+            document
+                .getElementById("page_" + page)
+                .classList.add("active");
+
+            // aktifkan tombol yang dipilih
+            document
+                .getElementById("btn_" + page)
+                .classList.add("active");
+
+        }
+
+
+
+        // =========================
+        // script halaman home
+        // =========================
+        window.addEventListener(
+            "message",
+            function (event) {
+
+                if (
+                    event.data.type === "emptyVoucher"
+                ) {
+
+                    document.getElementById(
+                        "item-voucher"
+                    ).style.display = "none";
+
+                }
+
+
+                if (
+                    event.data.type === "voucherLoaded"
+                ) {
+
+                    document.getElementById(
+                        "item-voucher"
+                    ).style.display = "block";
+
+                }
+
+            }
+        );
+
+
+
+    </script>
+
+    <!--============= POPUP DETAIL VOUCHER ==============-->
+    <div id="gprVoucherModal" class="gpr-voucher-modal">
+        <div class="gpr-voucher-modal-content">
+            <div class="gpr-modal-header">
+                <h3>
+                    🎁 Detail Voucher
+                </h3>
+
+                <button class="gpr-close-modal" onclick="gprCloseVoucherModal()">
+                    ✕
+                </button>
+            </div>
+            <div id="gprVoucherModalBody"></div>
+        </div>
+    </div>
+    <!--============ AKHIR HALAMAN POPUP DETAIL VOUCHER ===========-->
+
+    <!--=============== POPUP GOCES AI ================-->
+    <div class="cyberPopupOverlay" id="cyberPopupOverlay">
+        <div class="cyberPopup">
+            <div class="cyberPopupTitle">
+                Segera Hadir
+            </div>
+            <div class="cyberPopupText">
+                Fitur ini masih dalam tahap pengembangan.
+                <br><br>
+                Kami sedang menyiapkan fitur ini agar dapat memberikan pengalaman yang lebih baik untukmu.
+                Terima kasih atas kesabaran dan dukunganmu.
+                <br><br>
+                Nantikan pembaruan berikutnya.
+            </div>
+            <button class="cyberPopupButton" onclick="closeGocesAI()">
+                Mengerti
+            </button>
+        </div>
+    </div>
+    <!--=============== AKHIR POPUP GOCES AI ===============-->
+
+    <!--============= NOTIFIKASI VOUCHER ====================-->
+    <div id="gprToast" style="
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#111;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:10px;
+    font-size:13px;
+    display:none;
+    z-index:9999;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);">
+    </div>
+    <!--==============  AKHIR NOTIFIKASI VOUCHER ==============-->
+
+
+</body>
+
+</html>

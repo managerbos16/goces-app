@@ -1,0 +1,259 @@
+.kpz-main-wrap {
+  max-width: 450px;
+  margin: auto;
+  min-height: 100vh;
+  padding-bottom: 20px;
+}
+
+/* HEADER */
+.kpz-head-panel {
+  background: var(--blue-700);
+  padding: 20px 16px;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.kpz-user-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.kpz-user-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.kpz-avatar-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+}
+
+.kpz-avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kpz-user-info h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--gray-50);
+  margin-bottom: 4px;
+}
+
+.kpz-user-info p {
+  font-size: 16px;
+  opacity: 0.9;
+  color: var(--gray-50);
+}
+
+.kpz-user-info small {
+  font-size: 14px;
+  opacity: 0.8;
+  color: var(--gray-50);
+}
+
+/* MENU */
+.kpz-section-title {
+  margin: 24px 16px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-400);
+  letter-spacing: 0.3px;
+}
+
+.kpz-list-card {
+  background: var(--gray-100);
+  margin: 0px 16px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.kpz-list-item {
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.kpz-list-item:hover {
+  background: var(--gray-300);
+}
+
+.kpz-list-item:not(:last-child) {
+  border-bottom: 1px solid var(--gray-50);
+}
+
+.kpz-list-item:active {
+  background: var(--gray-100);
+}
+
+.kpz-list-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kpz-list-left span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-900);
+}
+
+.kpz-list-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--gray-900);
+  flex-shrink: 0;
+}
+
+.kpz-list-icon span {
+  font-size: 14px;
+}
+
+/* LOGOUT */
+.kpz-signout-btn {
+  width: calc(100% - 32px);
+  height: 48px;
+  margin: 24px 16px;
+  border-radius: 16px;
+  background: var(--red);
+  color: var(--gray-50);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(229, 57, 53, 0.08);
+}
+
+.kpz-signout-btn:active {
+  transform: scale(0.98);
+}
+
+/*==CSS Switch Dark Mode Animasi==*/
+.kpz-theme-toggle {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 30px;
+}
+
+.kpz-theme-toggle input {
+  display: none;
+}
+
+.kpz-theme-slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background: var(--gray-900);
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.kpz-theme-slider:before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 3px;
+  top: 3px;
+  background: var(--blue-700);
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 6px 6px rgba(32, 32, 32, 0.144);
+}
+
+input:checked + .kpz-theme-slider {
+  background: var(--gray-50);
+}
+
+input:checked + .kpz-theme-slider:before {
+  transform: translateX(24px);
+}
+
+/*==CSS Dark Mode==*/
+.kpz-dark-mode {
+  background: var(--bg-soft);
+}
+
+.kpz-dark-mode .kpz-nav-image,
+.kpz-dark-mode .kpz-list-icon {
+  filter: brightness(0) invert(1);
+}
+
+.kpz-nav-button {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  color: var(--gray-50);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.151);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.kpz-nav-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.kpz-nav-button:active {
+  transform: scale(0.95);
+}
+
+.kpz-nav-image {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+}
+
+.kpz-top-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.kpz-right-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kpz-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 20px;
+  background: var(--red);
+  color: var(--gray-50);
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}

@@ -1,0 +1,487 @@
+.gpr-header {
+  background: var(--blue-700);
+  padding: 20px 15px 80px;
+  border-radius: 0 0 30px 30px;
+  color: var(--gray-50);
+}
+
+.gpr-header-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gpr-header-action {
+  display: flex;
+  gap: 10px;
+}
+
+.gpr-icon-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.gpr-icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.gpr-notif-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background: var(--red);
+  color: var(--gray-50);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gpr-header-content {
+  margin-top: 20px;
+}
+
+.gpr-header-content h1 {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.gpr-header-content p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray-50);
+}
+
+.gpr-info-card {
+  background: var(--gray-50);
+  margin: -45px 15px 20px;
+  padding: 18px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.gpr-info-card:active {
+  transform: scale(0.98);
+}
+
+.gpr-info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 18px;
+  background: var(--gray-100);
+  color: var(--gray-900);
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gpr-info-text span {
+  font-size: 13px;
+  color: var(--gray-900);
+}
+
+.gpr-info-text h3 {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #1d1d1f;
+}
+
+/* BANNER */
+.gpr-banner {
+  padding: 0 15px;
+}
+
+.gpr-banner img {
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  object-fit: cover;
+  display: block;
+  border-radius: 22px;
+}
+
+.gpr-category {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 20px 15px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gpr-category::-webkit-scrollbar {
+  display: none;
+}
+
+.gpr-category button {
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  padding: 12px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.gpr-category button:active {
+  transform: scale(0.96);
+}
+
+.gpr-category button.active {
+  background: var(--blue-700);
+  color: var(--gray-50);
+  box-shadow: 0 6px 16px rgba(0, 170, 19, 0.25);
+}
+
+@media (hover: hover) {
+  .gpr-category button:hover:not(.active) {
+    background: var(--gray-100);
+  }
+}
+
+.gpr-content {
+  display: none;
+  padding: 0 15px 20px;
+}
+
+.gpr-voucher-card {
+  position: relative;
+  background: #fff;
+  border-radius: 24px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.gpr-voucher-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.gpr-voucher-card:active {
+  transform: scale(0.98);
+}
+
+.gpr-voucher-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 88px;
+  border-right: 2px dashed #ececec;
+}
+
+.gpr-voucher-card::before {
+  content: "";
+  position: absolute;
+  right: 78px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  background: #f5f6f8;
+  border-radius: 50%;
+  box-shadow: 0 calc(100% + 20px) 0 #f5f6f8;
+}
+
+.gpr-voucher-card .gpr-voucher-info {
+  position: relative;
+}
+
+.gpr-voucher-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.gpr-voucher-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gpr-voucher-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.gpr-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 30px;
+  background: #ffe8e8;
+  color: #ff4d4f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gpr-badge.green {
+  background: #e9f9ec;
+  color: #00aa13;
+}
+
+.gpr-badge.blue {
+  background: #e8f4ff;
+  color: #2196f3;
+}
+
+.gpr-badge.orange {
+  background: #fff3e0;
+  color: #ff9800;
+}
+
+.gpr-voucher-title {
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.gpr-voucher-desc {
+  margin-top: 2px;
+  color: #666;
+  font-size: 10px;
+}
+
+.gpr-voucher-period {
+  display: block;
+  margin-top: 3px;
+  color: #999;
+  font-size: 9px;
+}
+
+.gpr-copy-btn {
+  width: 75px;
+  height: 42px;
+  border: none;
+  background: var(--blue-700);
+  color: var(--gray-50);
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.gpr-copy-btn:active {
+  transform: scale(0.95);
+}
+
+.gpr-voucher-card.hide {
+  display: none !important;
+}
+
+@media (max-width: 480px) {
+  .gpr-voucher-card {
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .gpr-voucher-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .gpr-voucher-card::after {
+    right: 78px;
+  }
+
+  .gpr-voucher-card::before {
+    right: 68px;
+  }
+
+  .gpr-copy-btn {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+}
+
+.gpr-voucher-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.gpr-tag {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.gpr-tag.hot {
+  background: #fff3e0;
+  color: #ff9800;
+}
+
+.gpr-tag.new {
+  background: #e8f5ff;
+  color: #2196f3;
+}
+
+.gpr-tag.exclusive {
+  background: #f3e8ff;
+  color: #9c27b0;
+}
+
+.gpr-tag.limit {
+  background: #ffeaea;
+  color: #f44336;
+}
+
+.gpr-countdown {
+  margin-top: 3px;
+  color: #ff5722;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.gpr-ribbon {
+  position: absolute;
+  top: 12px;
+  right: -28px;
+  width: 95px;
+  padding: 4px 0;
+  text-align: center;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  transform: rotate(45deg);
+  z-index: 2;
+}
+
+.gpr-ribbon.hot {
+  background: #ff5722;
+}
+
+.gpr-ribbon.new {
+  background: #2196f3;
+}
+
+.gpr-ribbon.exclusive {
+  background: #9c27b0;
+}
+
+.gpr-ribbon.limit {
+  background: #f44336;
+}
+
+.gpr-voucher-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 99999;
+}
+
+.gpr-voucher-modal.show {
+  display: flex;
+}
+
+.gpr-voucher-modal-content {
+  width: 100%;
+  max-height: 85vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 25px 25px 0 0;
+  padding: 20px;
+}
+
+.gpr-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.gpr-modal-header h3 {
+  font-size: 20px;
+}
+
+.gpr-close-modal {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.gpr-modal-section {
+  margin-bottom: 20px;
+}
+
+.gpr-modal-section-title {
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #888;
+}
+
+.gpr-modal-code {
+  padding: 12px;
+  border-radius: 12px;
+  background: #f6fff7;
+  border: 1px dashed var(--blue-700);
+  color: var(--blue-700);
+  font-weight: 700;
+}
+
+.gpr-modal-terms {
+  padding-left: 20px;
+  color: #666;
+  line-height: 1.8;
+}
+
+.gpr-modal-copy-btn {
+  width: 100%;
+  border: none;
+  background: var(--blue-700);
+  color: var(--gray-50);
+  padding: 15px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.gpr-modal-copy-btn:active {
+  transform: scale(0.98);
+}
