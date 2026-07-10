@@ -209,3 +209,16 @@
     opacity: 0;
   }
 }
+
+/* Tambahkan ini ke file delivery.css */
+.gcsDeliveryPopupSheet {
+  /* Mencegah pull-to-refresh bawaan browser */
+  overscroll-behavior-y: contain;
+  /* Memberikan sedikit efek transisi saat ditarik */
+  transition: transform 0.2s ease-out;
+}
+
+/* Membuat area handle lebih mudah di-tap */
+.gcsDeliveryPopupHandleWrapper {
+  touch-action: none;
+}
