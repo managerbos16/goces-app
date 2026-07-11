@@ -64,3 +64,19 @@ const GocesCart = {
     }
 
 };
+
+document.addEventListener("click", function (e) {
+
+    const button = e.target.closest(".gc-card__add");
+
+    if (!button) return;
+
+    e.preventDefault();
+
+    e.stopPropagation();
+
+    e.stopImmediatePropagation();
+
+    GocesCart.add(button);
+
+}, true);
