@@ -48,13 +48,14 @@ function renderProductCard(product) {
         ${renderProductPrice(product)}
 
         <button
-            type="button"
-            class="gc-card__add"
-            data-view-uid="${product.view_uid}">
+    type="button"
+    class="gc-card__add"
+    data-view-uid="${product.view_uid}"
+    onclick="alert(typeof GocesCart)"
 
-            +
+    +
 
-        </button>
+</button>
 
     </div>
 

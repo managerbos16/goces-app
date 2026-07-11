@@ -2,7 +2,7 @@
                 GOCES CART
 ==================================================*/
 
-const GocesCart = {
+window.GocesCart = {
 
     async add(button) {
         alert("Tombol + berhasil diklik");
