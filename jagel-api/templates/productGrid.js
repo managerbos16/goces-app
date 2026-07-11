@@ -31,7 +31,7 @@ content="width=device-width,initial-scale=1">
 rel="stylesheet"
 href="/css/app.css">
 
-<script src="/js/core/cart.js"></script>
+<script src="/js/cart.js"></script>
 
 </head>
 
