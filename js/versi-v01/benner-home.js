@@ -12,7 +12,7 @@ const gcsPromoBannerData = [
         end: "2026-07-25 23:59:59"
     },
     {
-        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1781341128/ChatGPT_Image_13_Jun_2026_16.58.33_cnhr35.png",
         link: "promo-audio.html",
         start: "2026-07-08 00:00:00",
         end: "2026-07-15 23:59:59"
