@@ -13,6 +13,14 @@ async function categoryHandler(req, res) {
                 req.category.componentId
             );
 
+        console.log(
+            JSON.stringify(
+                response.data.lists.data[0],
+                null,
+                2
+            )
+        );
+
         const data = {
 
             page: req.category.page,

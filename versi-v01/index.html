@@ -145,7 +145,7 @@
                             <span>Tarik</span>
                         </a>
 
-                        <a href="javascript:void(0)" class="goces-action-item">
+                        <a class="goces-action-item" onclick="showDevelopmentNotice()">
                             <div class="goces-icon-capsule style-purple">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -167,7 +167,7 @@
                             <span>Top Up</span>
                         </a>
 
-                        <a href="action://act/account" class="goces-action-item">
+                        <a class="goces-action-item" onclick="showDevelopmentNotice()">
                             <div class="goces-icon-capsule style-orange">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -250,7 +250,7 @@
                         <span class="goces-shortcut-label">Fresh</span>
                     </a>
 
-                    <a href="#" class="goces-shortcut-item" onclick="showPage('ppob');return false;">
+                    <a href="#" class="goces-shortcut-item" onclick="showDevelopmentNotice()">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
@@ -261,7 +261,7 @@
                         <span class="goces-shortcut-label">PPOB</span>
                     </a>
 
-                    <a href="#" class="goces-shortcut-item" onclick="showPage('lainnya');return false;">
+                    <a href="#" class="goces-shortcut-item" onclick="showDevelopmentNotice()">
                         <div class="goces-shortcut-icon-frame">
                             <div class="goces-shortcut-ambient-glow"></div>
                             <div class="goces-service-icon">
@@ -359,6 +359,7 @@
                 </section>
 
             </main>
+
         </section>
 
         <section id="page-shop" class="goces-page">
@@ -1211,8 +1212,6 @@
                 <nav class="ios-nav">
                     <div class="nav-scroll-wrapper">
                         <button class="tab-pill active" data-tab="pembelian">Pembelian</button>
-                        <button class="tab-pill" data-tab="saldo">Saldo</button>
-                        <button class="tab-pill" data-tab="poin">Poin</button>
                     </div>
                 </nav>
             </div>
@@ -1335,163 +1334,9 @@
             </main>
 
             <div class="tab-content" data-content="saldo">
-                <div class="activity-list">
-
-                    <div class="activity-card">
-                        <div class="card-left">
-                            <div class="icon-wrapper icon-income">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Top Up</h3>
-                                <p class="card-desc">via Mobile Banking BCA</p>
-                                <span class="card-time">Hari ini • 09:00</span>
-                            </div>
-                        </div>
-                        <div class="card-right">
-                            <span class="card-amount text-income">+Rp100.000</span>
-                        </div>
-                    </div>
-
-                    <div class="activity-card">
-                        <div class="card-left">
-                            <div class="icon-wrapper icon-income">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M17 11l-5-5-5 5M12 6v12" />
-                                </svg>
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Transfer Masuk</h3>
-                                <p class="card-desc">Dari Ahmad S.</p>
-                                <span class="card-time">Kemarin • 14:15</span>
-                            </div>
-                        </div>
-                        <div class="card-right">
-                            <span class="card-amount text-income">+Rp50.000</span>
-                        </div>
-                    </div>
-
-                    <div class="activity-card">
-                        <div class="card-left">
-                            <div class="icon-wrapper icon-expense">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M7 13l5 5 5-5M12 18V6" />
-                                </svg>
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">GoRide</h3>
-                                <p class="card-desc">Transaksi Layanan</p>
-                                <span class="card-time">Kemarin • 08:00</span>
-                            </div>
-                        </div>
-                        <div class="card-right">
-                            <span class="card-amount text-expense">-Rp18.000</span>
-                        </div>
-                    </div>
-
-                    <div class="activity-card">
-                        <div class="card-left">
-                            <div class="icon-wrapper icon-expense">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M7 13l5 5 5-5M12 18V6" />
-                                </svg>
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">GoFood</h3>
-                                <p class="card-desc">Transaksi Layanan</p>
-                                <span class="card-time">3 hari lalu • 13:00</span>
-                            </div>
-                        </div>
-                        <div class="card-right">
-                            <span class="card-amount text-expense">-Rp42.000</span>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
             <div class="tab-content" data-content="poin">
-                <div class="activity-list">
-
-                    <div class="activity-card">
-                        <div class="card-left">
-                            <div class="icon-wrapper icon-poin-plus">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <polygon
-                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                    </polygon>
-                                </svg>
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Selesai Perjalanan</h3>
-                                <p class="card-desc">Reward loyalitas berkendara</p>
-                                <span class="card-time">Hari ini • 18:20</span>
-                            </div>
-                        </div>
-                        <div class="card-right flex-column-end">
-                            <span class="poin-badge badge-plus">+120 Poin</span>
-                        </div>
-                    </div>
-
-                    <div class="activity-card">
-                        <div class="card-left">
-                            <div class="icon-wrapper icon-poin-plus">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
-                                    </path>
-                                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
-                                </svg>
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Promo</h3>
-                                <p class="card-desc">Bonus akhir pekan ceria</p>
-                                <span class="card-time">Kemarin • 11:00</span>
-                            </div>
-                        </div>
-                        <div class="card-right flex-column-end">
-                            <span class="poin-badge badge-plus">+50 Poin</span>
-                        </div>
-                    </div>
-
-                    <div class="activity-card">
-                        <div class="card-left">
-                            <div class="icon-wrapper icon-poin-minus">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Tukar Voucher</h3>
-                                <p class="card-desc">Diskon Makan GoFood Rp10k</p>
-                                <span class="card-time">3 hari lalu • 15:40</span>
-                            </div>
-                        </div>
-                        <div class="card-right flex-column-end">
-                            <span class="poin-badge badge-minus">-80 Poin</span>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
             </main>
@@ -1530,7 +1375,7 @@
                     </h2>
                     <div class="gcsChatCardGroup">
 
-                        <a href="inbox.html" class="gcsChatCard gcsChatMenuCard">
+                        <a href="action://act/message_list" class="gcsChatCard gcsChatMenuCard">
                             <div class="gcsChatCardLeft">
                                 <div class="gcsChatCardIcon gcsChatIconInbox">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -1556,7 +1401,7 @@
                             </div>
                         </a>
 
-                        <a href="customer-service.html" class="gcsChatCard gcsChatMenuCard">
+                        <a href="https://jgjk.mobi/act/admin" class="gcsChatCard gcsChatMenuCard">
                             <div class="gcsChatCardLeft">
                                 <div class="gcsChatCardIcon gcsChatIconCs">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -1581,7 +1426,7 @@
                             </div>
                         </a>
 
-                        <a href="bantuan.html" class="gcsChatCard gcsChatMenuCard">
+                        <a class="gcsChatCard gcsChatMenuCard" onclick="showDevelopmentNotice()">
                             <div class="gcsChatCardLeft">
                                 <div class="gcsChatCardIcon gcsChatIconBantuan">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -1616,7 +1461,7 @@
                     </h2>
                     <div class="gcsChatCardGroup">
 
-                        <a href="goces-ai.html" class="gcsChatCard gcsChatAiCard">
+                        <a class="gcsChatCard gcsChatAiCard" onclick="showDevelopmentNotice()">
                             <div class="gcsChatCardLeft">
                                 <div class="gcsChatCardIcon gcsChatIconAi">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -1654,16 +1499,16 @@
         <section id="page-profile" class="goces-page">
             <div class="gcsProfileTopBarContainer">
                 <header class="gcsProfileTopBar">
+
                     <div class="gcsProfileTopBarLeft">
-                        <a href="home.html" class="gcsProfileBackButton" aria-label="Kembali">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="15 18 9 12 15 6"></polyline>
-                            </svg>
-                        </a>
+                        <button type="button" class="icon-circle-btn" onclick="goBack()" aria-label="Kembali">
+                            <i class="ph ph-arrow-left"></i>
+                        </button>
                     </div>
+
                     <div class="gcsProfileTopBarRight">
-                        <div class="gcsProfileLevelBadge">
+
+                        <div class="gcsProfileLevelBadge" onclick="showDevelopmentNotice()">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
@@ -1671,6 +1516,7 @@
                             </svg>
                             <span>Diamond</span>
                         </div>
+
                         <a href="privacy-settings.html" class="gcsProfileSettingButton" aria-label="Pengaturan">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1689,30 +1535,29 @@
                 <section class="gcsProfileIdentitySection">
                     <div class="gcsProfileIdentityCard">
                         <div class="gcsProfileAvatarWrapper">
-                            <img class="gcsProfileAvatarImage"
-                                src="https://ui-avatars.com/api/?name=Akbar&background=1d4ed8&color=ffffff&size=200"
-                                alt="Foto Profile">
+                            <img class="gcsProfileAvatarImage" src="{foto}" alt="Foto Profile">
                         </div>
+
                         <div class="gcsProfileIdentityInfo">
                             <div class="gcsProfileNameWrapper">
-                                <h2 class="gcsProfileUserName">Akbar</h2>
+                                <h2 class="gcsProfileUserName">{nama}</h2>
                                 <span class="gcsProfileVerifiedBadge">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z">
                                         </path>
                                     </svg>
-                                    Terverifikasi
+                                    {verifikasi_email}
                                 </span>
                             </div>
-                            <p class="gcsProfileUserEmail">akbar@email.com</p>
-                            <p class="gcsProfileUserPhone">+62 812 3456 7890</p>
+                            <p class="gcsProfileUserEmail">{email}</p>
+                            <p class="gcsProfileUserPhone">{hp}</p>
                         </div>
                     </div>
                 </section>
 
                 <section class="gcsProfileWalletSection">
                     <div class="gcsProfileWalletGrid">
-                        <a href="wallet.html" class="gcsProfileWalletCard">
+                        <a href="action://act/balance" class="gcsProfileWalletCard">
                             <div class="gcsProfileWalletHeader">
                                 <div class="gcsProfileWalletIcon gcsProfileWalletIconBlue">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -1723,11 +1568,12 @@
                                         <line x1="2" y1="10" x2="22" y2="10"></line>
                                     </svg>
                                 </div>
-                                <span class="gcsProfileWalletTitle">Saldo</span>
+                                <span class="gcsProfileWalletTitle">Gocespay</span>
                             </div>
-                            <span class="gcsProfileWalletValue">Rp 2.500.000</span>
+                            <span class="gcsProfileWalletValue">{saldo}</span>
                         </a>
-                        <a href="points.html" class="gcsProfileWalletCard">
+
+                        <a href="action://act/customer_points" class="gcsProfileWalletCard">
                             <div class="gcsProfileWalletHeader">
                                 <div class="gcsProfileWalletIcon gcsProfileWalletIconOrange">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -1739,7 +1585,7 @@
                                 </div>
                                 <span class="gcsProfileWalletTitle">Poin</span>
                             </div>
-                            <span class="gcsProfileWalletValue">12.580 Poin</span>
+                            <span class="gcsProfileWalletValue">{poin}</span>
                         </a>
                     </div>
                 </section>
@@ -2292,7 +2138,7 @@
             </div>
         </button>
 
-        <button class="goces-qris-btn" data-page="qris">
+        <button class="goces-qris-btn" onclick="showDevelopmentNotice()">
             <div class="goces-qris-circle">
                 <svg viewBox="0 0 24 24">
                     <rect x="4" y="4" width="5" height="5" rx="1" />

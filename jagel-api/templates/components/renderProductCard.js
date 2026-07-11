@@ -39,11 +39,14 @@ href="action://p/${product.view_uid}">
 
         ${renderProductPrice(product)}
 
-        <button class="gc-card__add">
+        <button
+    class="gc-card__add"
+    data-view-uid="${product.view_uid}"
+    onclick="event.preventDefault(); event.stopPropagation(); GocesCart.add(this);">
 
-            +
+    +
 
-        </button>
+</button>
 
     </div>
 
