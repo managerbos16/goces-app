@@ -7,52 +7,58 @@ function renderProductCard(product) {
 
     return `
 
-<a
-class="gc-card"
-href="action://p/${product.view_uid}">
+<div class="gc-card">
 
-<div class="gc-card__image">
+    <a
+        class="gc-card__link"
+        href="action://p/${product.view_uid}">
 
-    ${renderProductImage(product)}
+        <div class="gc-card__image">
 
-    <button class="gc-card__favorite">
+            ${renderProductImage(product)}
 
-        ♡
+            <button
+                type="button"
+                class="gc-card__favorite">
 
-    </button>
+                ♡
 
-    <span class="gc-card__badge">
+            </button>
 
-        NEW
+            <span class="gc-card__badge">
 
-    </span>
+                NEW
 
-</div>
+            </span>
 
-<div class="gc-card__body">
+        </div>
 
-    ${renderProductTitle(product)}
+        <div class="gc-card__body">
 
-    ${renderProductMerchant(product)}
+            ${renderProductTitle(product)}
+
+            ${renderProductMerchant(product)}
+
+        </div>
+
+    </a>
 
     <div class="gc-card__footer">
 
         ${renderProductPrice(product)}
 
         <button
-    type="button"
-    class="gc-card__add"
-    data-view-uid="${product.view_uid}">
+            type="button"
+            class="gc-card__add"
+            data-view-uid="${product.view_uid}">
 
-    +
+            +
 
-</button>
+        </button>
 
     </div>
 
 </div>
-
-</a>
 
 `;
 

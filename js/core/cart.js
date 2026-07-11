@@ -5,6 +5,7 @@
 const GocesCart = {
 
     async add(button) {
+        alert("Tombol + berhasil diklik");
 
         const viewUid = button.dataset.viewUid;
 
