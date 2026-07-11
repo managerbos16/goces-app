@@ -51,7 +51,7 @@ function renderProductCard(product) {
     type="button"
     class="gc-card__add"
     data-view-uid="${product.view_uid}"
-    onclick="alert(typeof GocesCart)"
+    onclick="alert(typeof GocesCart)">
 
     +
 
