@@ -25,7 +25,7 @@ module.exports = [
         path: "/kuliner",
         page: "kuliner",
         componentId: "482013168266a338e404198a9.02087100",
-        title: "Kuliner"
+        title: "🍽️ Rekomendasi Untukmu"
     },
 
     {

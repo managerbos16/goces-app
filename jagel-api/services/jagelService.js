@@ -9,7 +9,7 @@ async function getComponent(componentId) {
                 codename: "gocesapp",
                 page: 1,
                 app_mode: 1,
-                per_page: 8
+                per_page: 50
             }
         }
     );

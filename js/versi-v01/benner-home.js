@@ -1,31 +1,12 @@
-// ===================================================
-// PENGATURAN BANNER GOCES
-// ===================================================
-
-// ===================================================
-// TAMBAH BANNER BARU
-// Salin atau tambahkan object baru di dalam array ini.
-// Pastikan format penulisan properti valid.
-// ===================================================
 const gcsPromoBannerData = [
     {
-        // ===================================================
-        // GANTI GAMBAR BANNER (Skenario: Aktif)
-        // ===================================================
-        image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80",
-        // ===================================================
-        // ATUR LINK BANNER
-        // ===================================================
+        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1782284731/ChatGPT_Image_24_Jun_2026_15.05.10_qvp4cm.png",
         link: "promo-gajian.html",
-        // ===================================================
-        // ATUR TANGGAL MULAI & BERAKHIR PROMO
-        // Format: YYYY-MM-DD HH:mm:ss
-        // ===================================================
         start: "2026-07-01 00:00:00",
         end: "2026-07-31 23:59:59"
     },
     {
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
+        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1781341610/ChatGPT_Image_13_Jun_2026_17.06.23_ykgu3b.png",
         link: "promo-sneakers.html",
         start: "2026-07-05 00:00:00",
         end: "2026-07-25 23:59:59"
@@ -37,7 +18,6 @@ const gcsPromoBannerData = [
         end: "2026-07-15 23:59:59"
     },
     {
-        // Contoh Banner Kadaluarsa (Otomatis Tidak Muncul di Layout)
         image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
         link: "promo-jam-tangan.html",
         start: "2026-05-01 00:00:00",
@@ -61,10 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * Fungsi Utama Inisialisasi Jalur Alur Komponen Banner Promo
  */
 function gcsPromoBannerInit() {
-    // 1. Filter data banner berdasarkan validitas waktu
     gcsPromoBannerActiveItems = gcsPromoBannerCheckSchedule(gcsPromoBannerData);
-
-    // 2. Render elemen ke layar
     gcsPromoBannerRender(gcsPromoBannerActiveItems);
 }
 

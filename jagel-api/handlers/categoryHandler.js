@@ -4,6 +4,9 @@ const jagelService =
 const renderProductGrid =
     require("../templates/productGrid");
 
+const renderProductHorizontal =
+    require("../templates/productHorizontal");
+
 async function categoryHandler(req, res) {
 
     try {
@@ -13,13 +16,15 @@ async function categoryHandler(req, res) {
                 req.category.componentId
             );
 
-        console.log(
-            JSON.stringify(
-                response.data.lists.data[0],
-                null,
-                2
-            )
-        );
+        response.data.lists.data.forEach((item, index) => {
+
+            console.log(
+                index + 1,
+                item.title,
+                item.content
+            );
+
+        });
 
         const data = {
 
@@ -31,11 +36,25 @@ async function categoryHandler(req, res) {
 
         };
 
-        res.send(
+        if (req.layout === "horizontal") {
 
-            renderProductGrid(data)
+            res.send(
 
-        );
+                renderProductHorizontal(data)
+
+            );
+
+        }
+
+        else {
+
+            res.send(
+
+                renderProductGrid(data)
+
+            );
+
+        }
 
     }
 

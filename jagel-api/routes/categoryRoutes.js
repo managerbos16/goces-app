@@ -12,6 +12,18 @@ categories.forEach(category => {
 
         req.category = category;
 
+        req.layout = "grid";
+
+        categoryHandler(req, res);
+
+    });
+
+    router.get("/horizontal" + category.path, (req, res) => {
+
+        req.category = category;
+
+        req.layout = "horizontal";
+
         categoryHandler(req, res);
 
     });

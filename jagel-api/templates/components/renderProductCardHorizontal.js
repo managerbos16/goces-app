@@ -5,17 +5,17 @@ const renderProductPrice = require("./renderProductPrice");
 const renderProductPromo = require("./renderProductPromo");
 const renderProductDescription = require("./renderProductDescription");
 
-function renderProductCard(product) {
+function renderProductCardHorizontal(product) {
 
     return `
 
-<div class="gc-card">
+<div class="gch-card">
 
     <a
-        class="gc-card__link"
+        class="gch-card__link"
         href="action://p/${product.view_uid}">
 
-        <div class="gc-card__image">
+        <div class="gch-card__image">
 
             ${renderProductImage(product)}
 
@@ -29,44 +29,46 @@ function renderProductCard(product) {
 
         </div>
 
-        <div class="gc-card__body">
+        <div class="gch-card__body">
 
             ${renderProductTitle(product)}
+
             ${renderProductDescription(product)}
+
             ${renderProductMerchant(product)}
 
         </div>
 
     </a>
 
-    <div class="gc-card__footer">
+    <div class="gch-card__footer">
 
-${product.type === 4 ? `
+        ${product.type === 4 ? `
 
-    <a
-        class="gc-card__shop"
-        href="action://p/${product.view_uid}">
+            <a
+                class="gc-card__shop"
+                href="action://p/${product.view_uid}">
 
-        Lihat Toko
+                Lihat Toko
 
-    </a>
+            </a>
 
-` : `
+        ` : `
 
-    ${renderProductPrice(product)}
+            ${renderProductPrice(product)}
 
-    <button
-        type="button"
-        class="gc-card__add"
-        data-view-uid="${product.view_uid}">
+            <button
+                type="button"
+                class="gc-card__add"
+                data-view-uid="${product.view_uid}">
 
-        +
+                +
 
-    </button>
+            </button>
 
-`}
+        `}
 
-</div>
+    </div>
 
 </div>
 
@@ -74,4 +76,4 @@ ${product.type === 4 ? `
 
 }
 
-module.exports = renderProductCard;
+module.exports = renderProductCardHorizontal;

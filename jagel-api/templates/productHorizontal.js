@@ -1,13 +1,13 @@
-const renderProductCard =
-    require("./components/renderProductCard");
+const renderProductCardHorizontal =
+    require("./components/renderProductCardHorizontal");
 
-function renderProductGrid(data) {
+function renderProductHorizontal(data) {
 
     let cards = "";
 
     data.items.forEach(product => {
 
-        cards += renderProductCard(product);
+        cards += renderProductCardHorizontal(product);
 
     });
 
@@ -27,25 +27,30 @@ content="width=device-width,initial-scale=1">
 
 <title>${data.title}</title>
 
-<link
-rel="stylesheet"
-href="/css/app.css">
+<link rel="stylesheet" href="/css/app.css">
 
-<script src="/js/cart.js"></script>
+<link rel="stylesheet" href="/css/horizontal.css">
+
+<script
+src="/js/cart.js"></script>
 
 </head>
 
 <body>
 
-<div class="gc-container">
+<div class="gch-container">
 
-    <h2 class="gc-title">
+    ${data.title ? `
 
-        
+        <h2 class="gc-section-title">
 
-    </h2>
+            ${data.title}
 
-    <div class="gc-grid">
+        </h2>
+
+    ` : ""}
+
+    <div class="gch-list">
 
         ${cards}
 
@@ -57,8 +62,6 @@ href="/css/app.css">
 
 function sendHeight() {
 
-    const totalItems = ${data.items.length};
-
     window.parent.postMessage({
 
         type: "goces-frame",
@@ -67,9 +70,9 @@ function sendHeight() {
 
         height: document.documentElement.scrollHeight,
 
-        totalItems: totalItems,
+        totalItems: ${data.items.length},
 
-        empty: totalItems === 0
+        empty: ${data.items.length} === 0
 
     }, "*");
 
@@ -93,4 +96,4 @@ if (window.ResizeObserver) {
 
 }
 
-module.exports = renderProductGrid;
+module.exports = renderProductHorizontal;
