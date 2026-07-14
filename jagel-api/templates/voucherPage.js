@@ -105,7 +105,13 @@ function sendHeight() {
 
         page: "voucher",
 
-        height: document.documentElement.scrollHeight,
+      height: Math.max(
+
+    document.body.scrollHeight,
+
+    document.documentElement.scrollHeight
+
+),
 
         totalItems: ${data.items.length},
 
@@ -119,6 +125,8 @@ window.addEventListener("load", () => {
 
     sendHeight();
 
+    requestAnimationFrame(sendHeight);
+
     setTimeout(sendHeight, 300);
 
     setTimeout(sendHeight, 800);
@@ -127,7 +135,7 @@ window.addEventListener("load", () => {
 
 if (window.ResizeObserver) {
 
-    new ResizeObserver(sendHeight).observe(document.body);
+    new ResizeObserver(sendHeight).observe(document.documentElement);
 
 }
 

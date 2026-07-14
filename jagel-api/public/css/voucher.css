@@ -21,6 +21,19 @@
   --gcv-transition: 0.25s ease;
 }
 
+html,
+body {
+  margin: 0;
+
+  padding: 0;
+
+  width: 100%;
+
+  overflow-x: hidden;
+
+  background: #f9fafb;
+}
+
 /*==================================================
                 WRAPPER
 ==================================================*/
@@ -37,6 +50,8 @@
   gap: 14px;
 
   box-sizing: border-box;
+
+  overflow: hidden;
 }
 
 /*==================================================
@@ -737,4 +752,6 @@
   display: block;
 
   overflow: hidden;
+
+  transition: height 0.25s ease;
 }
