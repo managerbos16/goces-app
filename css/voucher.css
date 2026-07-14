@@ -769,3 +769,27 @@ body {
 
   transition: height 0.25s ease;
 }
+
+/*==================================
+        COUNTDOWN
+==================================*/
+
+.gcv-countdown {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  margin-top: 6px;
+}
+
+.gcv-countdown.active {
+  color: #16a34a;
+}
+
+.gcv-countdown.upcoming {
+  color: #2563eb;
+}
+
+.gcv-countdown.expired {
+  color: #dc2626;
+}
