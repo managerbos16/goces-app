@@ -1,0 +1,740 @@
+/*==================================================
+                GOCES VOUCHER V2
+==================================================*/
+
+:root {
+  --gcv-primary: #2563eb;
+  --gcv-danger: #ef4444;
+  --gcv-warning: #f59e0b;
+  --gcv-success: #10b981;
+
+  --gcv-text: #111827;
+  --gcv-muted: #6b7280;
+
+  --gcv-white: #ffffff;
+  --gcv-border: #e5e7eb;
+
+  --gcv-radius: 22px;
+
+  --gcv-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+  --gcv-transition: 0.25s ease;
+}
+
+/*==================================================
+                WRAPPER
+==================================================*/
+
+.gcv-wrapper {
+  width: 100%;
+
+  padding: 12px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  box-sizing: border-box;
+}
+
+/*==================================================
+                CARD
+==================================================*/
+
+.gcv-card {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  background: var(--gcv-white);
+
+  border-radius: var(--gcv-radius);
+
+  overflow: hidden;
+
+  padding: 14px;
+
+  box-shadow: var(--gcv-shadow);
+
+  transition: var(--gcv-transition);
+
+  cursor: pointer;
+}
+
+.gcv-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+.gcv-card:active {
+  transform: scale(0.98);
+}
+
+/*==================================================
+                IMAGE
+==================================================*/
+
+.gcv-image {
+  width: 82px;
+
+  height: 82px;
+
+  flex-shrink: 0;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background: #f3f4f6;
+}
+
+.gcv-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+/*==================================================
+                CONTENT
+==================================================*/
+
+.gcv-content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.gcv-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 6px;
+}
+
+.gcv-title {
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: var(--gcv-text);
+
+  line-height: 1.35;
+
+  margin: 0 0 4px;
+}
+
+.gcv-description {
+  font-size: 13px;
+
+  color: var(--gcv-muted);
+
+  line-height: 1.45;
+
+  margin: 0 0 6px;
+}
+
+.gcv-period {
+  font-size: 12px;
+
+  color: #9ca3af;
+
+  margin-bottom: 6px;
+}
+
+.gcv-countdown {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #ea580c;
+}
+
+/*==================================================
+                RIBBON
+==================================================*/
+
+.gcv-ribbon {
+  position: absolute;
+
+  top: 12px;
+
+  right: -34px;
+
+  width: 120px;
+
+  text-align: center;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #fff;
+
+  padding: 4px 0;
+
+  transform: rotate(45deg);
+
+  z-index: 20;
+
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.gcv-ribbon--hot {
+  background: #ef4444;
+}
+
+.gcv-ribbon--new {
+  background: #2563eb;
+}
+
+.gcv-ribbon--limit {
+  background: #f59e0b;
+}
+
+.gcv-ribbon--exclusive {
+  background: #7c3aed;
+}
+
+.gcv-ribbon--cashback {
+  background: #10b981;
+}
+
+/*==================================================
+                BADGE
+==================================================*/
+
+.gcv-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  color: #fff;
+}
+
+.gcv-badge--discount {
+  background: #ef4444;
+}
+
+.gcv-badge--cashback {
+  background: #10b981;
+}
+
+.gcv-badge--shipping {
+  background: #2563eb;
+}
+
+.gcv-badge--member {
+  background: #7c3aed;
+}
+
+.gcv-badge--point {
+  background: #f59e0b;
+}
+
+/*==================================================
+                TAG
+==================================================*/
+
+.gcv-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  background: #f3f4f6;
+
+  color: #374151;
+
+  white-space: nowrap;
+}
+
+.gcv-tag--hot {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+.gcv-tag--new {
+  background: #dbeafe;
+
+  color: #2563eb;
+}
+
+.gcv-tag--exclusive {
+  background: #ede9fe;
+
+  color: #7c3aed;
+}
+
+.gcv-tag--limited {
+  background: #fef3c7;
+
+  color: #b45309;
+}
+
+/*==================================================
+            COPY BUTTON
+==================================================*/
+
+.gcv-copy {
+  border: none;
+
+  outline: none;
+
+  cursor: pointer;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background: #2563eb;
+
+  color: #fff;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  transition: 0.25s;
+
+  flex-shrink: 0;
+}
+
+.gcv-copy:hover {
+  background: #1d4ed8;
+}
+
+.gcv-copy:active {
+  transform: scale(0.95);
+}
+
+/*==================================================
+            VOUCHER HOLE
+==================================================*/
+
+.gcv-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: -10px;
+
+  top: 50%;
+
+  width: 20px;
+
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  transform: translateY(-50%);
+}
+
+.gcv-card::after {
+  content: "";
+
+  position: absolute;
+
+  right: -10px;
+
+  top: 50%;
+
+  width: 20px;
+
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  transform: translateY(-50%);
+}
+
+/*==================================================
+            DIVIDER
+==================================================*/
+
+.gcv-card-divider {
+  position: absolute;
+
+  left: 110px;
+
+  top: 14px;
+
+  bottom: 14px;
+
+  border-left: 2px dashed #e5e7eb;
+
+  opacity: 0.9;
+}
+
+/*==================================================
+            EXPIRED
+==================================================*/
+
+.gcv-card.gcv-expired {
+  opacity: 0.65;
+
+  filter: grayscale(1);
+}
+
+.gcv-card.gcv-expired .gcv-copy {
+  background: #9ca3af;
+
+  cursor: not-allowed;
+}
+
+.gcv-card.gcv-expired .gcv-countdown {
+  color: #dc2626;
+}
+
+/*==================================================
+            ACTIVE
+==================================================*/
+
+.gcv-card.gcv-active {
+  border: 2px solid #2563eb;
+}
+
+/*==================================================
+            DISABLED
+==================================================*/
+
+.gcv-card.gcv-disabled {
+  pointer-events: none;
+}
+
+/*==================================================
+            TOAST
+==================================================*/
+
+.gcv-toast {
+  position: fixed;
+
+  left: 50%;
+
+  bottom: 25px;
+
+  transform: translateX(-50%) translateY(30px);
+
+  background: #111827;
+
+  color: #fff;
+
+  padding: 12px 20px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  z-index: 99999;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: 0.3s;
+}
+
+.gcv-toast.show {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateX(-50%) translateY(0);
+}
+
+/*==================================================
+            MODAL
+==================================================*/
+
+.gcv-modal {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: 0.25s;
+
+  z-index: 99999;
+}
+
+.gcv-modal.show {
+  opacity: 1;
+
+  visibility: visible;
+}
+
+.gcv-modal-content {
+  width: 100%;
+
+  max-width: 500px;
+
+  background: #fff;
+
+  border-radius: 28px 28px 0 0;
+
+  padding: 24px;
+
+  max-height: 85vh;
+
+  overflow: auto;
+
+  animation: gcvUp 0.25s ease;
+}
+
+@keyframes gcvUp {
+  from {
+    transform: translateY(40px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.gcv-modal-title {
+  font-size: 22px;
+
+  font-weight: 700;
+
+  color: #111827;
+
+  margin-bottom: 8px;
+}
+
+.gcv-modal-description {
+  font-size: 14px;
+
+  color: #6b7280;
+
+  line-height: 1.6;
+
+  margin-bottom: 18px;
+}
+
+.gcv-modal-code {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 16px;
+
+  border: 2px dashed #2563eb;
+
+  border-radius: 18px;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #2563eb;
+
+  margin-bottom: 20px;
+}
+
+.gcv-modal-copy {
+  width: 100%;
+
+  border: none;
+
+  cursor: pointer;
+
+  background: #2563eb;
+
+  color: #fff;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  padding: 14px;
+
+  border-radius: 16px;
+}
+
+.gcv-modal-copy:active {
+  transform: scale(0.98);
+}
+
+.gcv-modal-close {
+  position: absolute;
+
+  top: 16px;
+
+  right: 18px;
+
+  width: 36px;
+
+  height: 36px;
+
+  border: none;
+
+  background: #f3f4f6;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+/*==================================================
+                MODAL IMAGE
+==================================================*/
+
+.gcv-modal-header {
+  display: flex;
+
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+
+.gcv-modal-image {
+  width: 110px;
+
+  height: 110px;
+
+  border-radius: 20px;
+
+  object-fit: cover;
+}
+
+/*==================================================
+            TERMS
+==================================================*/
+
+.gcv-terms {
+  margin-top: 22px;
+}
+
+.gcv-terms-title {
+  font-size: 15px;
+
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}
+
+.gcv-terms ul {
+  padding-left: 18px;
+}
+
+.gcv-terms li {
+  margin-bottom: 8px;
+
+  color: #4b5563;
+
+  line-height: 1.5;
+}
+
+/*==================================================
+            MOBILE
+==================================================*/
+
+@media (max-width: 520px) {
+  .gcv-card {
+    gap: 10px;
+
+    padding: 12px;
+  }
+
+  .gcv-image {
+    width: 72px;
+
+    height: 72px;
+  }
+
+  .gcv-title {
+    font-size: 15px;
+  }
+
+  .gcv-copy {
+    padding: 8px 14px;
+
+    font-size: 12px;
+  }
+}
+
+/*==================================================
+            END
+==================================================*/
+
+.goces-voucher-section {
+  width: 100%;
+
+  margin-top: 16px;
+}
+
+/*====================================
+        GOCES IFRAME
+====================================*/
+
+.goces-frame {
+  width: 100%;
+
+  height: 0;
+
+  min-height: 0;
+
+  border: none;
+
+  display: block;
+
+  overflow: hidden;
+}

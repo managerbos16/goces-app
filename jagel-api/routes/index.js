@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const categoryRoutes = require("./categoryRoutes");
+const voucherRoutes = require("./voucherRoutes");
 
 router.get("/", (req, res) => {
 
@@ -14,5 +15,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/", categoryRoutes);
+router.use("/", voucherRoutes);
 
 module.exports = router;
