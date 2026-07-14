@@ -4,174 +4,77 @@
 
 window.GocesVoucherLoader = {
 
+    api: "https://goces-api.vercel.app/voucher",
+
+    data: {
+
+        populer: [],
+
+        terbaru: [],
+
+        eksklusif: [],
+
+        cashback: [],
+
+        terbatas: []
+
+    },
+
     categories: [
 
-        {
-            page: "populer",
-            container: "gocesVoucherPopuler"
-        },
+        "populer",
 
-        {
-            page: "terbaru",
-            container: "gocesVoucherTerbaru"
-        },
+        "terbaru",
 
-        {
-            page: "eksklusif",
-            container: "gocesVoucherEksklusif"
-        },
+        "eksklusif",
 
-        {
-            page: "cashback",
-            container: "gocesVoucherCashback"
-        },
+        "cashback",
 
-        {
-            page: "terbatas",
-            container: "gocesVoucherTerbatas"
-        }
+        "terbatas"
 
     ],
 
-    async load(category, containerId) {
+    async loadCategory(category) {
 
         try {
 
             const response = await fetch(
 
-                "https://goces-api.vercel.app/voucher?category=" + category
+                this.api +
+
+                "?category=" +
+
+                category
 
             );
 
             const result = await response.json();
 
-            const container = document.getElementById(containerId);
+            if (
 
-            if (!container) return;
+                result.success
 
-            container.innerHTML = "";
+            ) {
 
-            if (!result.success) {
+                this.data[category] =
 
-                return;
+                    result.data || [];
 
             }
 
-            const vouchers = result.data || [];
+            else {
 
-            vouchers.forEach(voucher => {
+                this.data[category] = [];
 
-                container.insertAdjacentHTML(
-
-                    "beforeend",
-
-                    renderVoucherCard(voucher)
-
-                );
-
-            });
+            }
 
         }
 
-        catch (err) {
+        catch (e) {
 
-            console.error(
+            console.error(e);
 
-                "Voucher Loader Error:",
-
-                err
-
-            );
-
-        }
-
-    },
-
-    updateSemua() {
-
-        const semua = document.getElementById(
-
-            "gocesVoucherSemua"
-
-        );
-
-        if (!semua) return;
-
-        semua.innerHTML = "";
-
-        this.categories.forEach(item => {
-
-            const source = document.getElementById(
-
-                item.container
-
-            );
-
-            if (!source) return;
-
-            source.querySelectorAll(".gcv-card").forEach(card => {
-
-                semua.insertAdjacentHTML(
-
-                    "beforeend",
-
-                    card.outerHTML
-
-                );
-
-            });
-
-        });
-
-    },
-
-    updateVoucherCount() {
-
-        const total = document.querySelectorAll(
-
-            "#gocesVoucherSemua .gcv-card"
-
-        ).length;
-
-        const text = document.getElementById(
-
-            "gprActiveVoucherCount"
-
-        );
-
-        if (text) {
-
-            text.textContent =
-
-                total +
-
-                " Voucher Aktif";
-
-        }
-
-    },
-
-    async init() {
-
-        for (const item of this.categories) {
-
-            await this.load(
-
-                item.page,
-
-                item.container
-
-            );
-
-        }
-
-        this.updateSemua();
-
-        this.updateVoucherCount();
-
-        if (window.GocesVoucherCountdown) {
-
-            GocesVoucherCountdown.update();
+            this.data[category] = [];
 
         }
 
@@ -183,9 +86,19 @@ document.addEventListener(
 
     "DOMContentLoaded",
 
-    function () {
+    async () => {
 
-        GocesVoucherLoader.init();
+        await GocesVoucherLoader.loadCategory(
+
+            "populer"
+
+        );
+
+        console.log(
+
+            GocesVoucherLoader.data
+
+        );
 
     }
 
