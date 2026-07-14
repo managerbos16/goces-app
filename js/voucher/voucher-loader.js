@@ -66,7 +66,14 @@ window.GocesVoucherLoader = {
 
             const vouchers = result.data || [];
 
-            alert(category + " = " + vouchers.length);
+            alert(
+                "URL : " +
+                response.url +
+                "\n\nKategori : " +
+                category +
+                "\n\nJumlah : " +
+                vouchers.length
+            );
 
             vouchers.forEach(voucher => {
 
