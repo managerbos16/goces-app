@@ -1,23 +1,31 @@
-window.addEventListener("message", function (e) {
+/*==================================
+        GOCES FRAME MANAGER
+==================================*/
 
-    console.log("PESAN MASUK:", e.data);
+window.addEventListener("message", function (event) {
 
-    if (!e.data) return;
+    const data = event.data;
 
-    if (e.data.type !== "goces-frame") return;
+    if (!data) return;
 
-    const frame = document.getElementById("frame-" + e.data.page);
+    if (data.type !== "goces-frame") return;
 
-    if (!frame) {
+    const frame = document.getElementById("frame-" + data.page);
 
-        console.log("FRAME TIDAK DITEMUKAN");
+    if (!frame) return;
+
+    // Tidak ada produk
+    if (data.empty) {
+
+        frame.style.display = "none";
+        frame.style.height = "0px";
 
         return;
 
     }
 
-    console.log("TINGGI BARU:", e.data.height);
-
-    frame.style.height = e.data.height + "px";
+    // Ada produk
+    frame.style.display = "block";
+    frame.style.height = data.height + "px";
 
 });
