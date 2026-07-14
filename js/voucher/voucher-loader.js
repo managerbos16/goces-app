@@ -66,6 +66,8 @@ window.GocesVoucherLoader = {
 
             const vouchers = result.data || [];
 
+            alert(category + " = " + vouchers.length);
+
             vouchers.forEach(voucher => {
 
                 container.insertAdjacentHTML(
