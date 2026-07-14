@@ -39,17 +39,13 @@ window.GocesVoucherLoader = {
 
             const response = await fetch(
 
-                "https://goces-api.vercel.app/voucher?category=" +
-
-                category
+                "https://goces-api.vercel.app/voucher?category=" + category
 
             );
 
             const result = await response.json();
 
-            const container =
-
-                document.getElementById(containerId);
+            const container = document.getElementById(containerId);
 
             if (!container) return;
 
@@ -75,17 +71,6 @@ window.GocesVoucherLoader = {
 
             });
 
-            if (window.GocesVoucherCountdown) {
-
-                GocesVoucherCountdown.update();
-
-            }
-
-            // setelah selesai render
-            this.updateSemua();
-
-            this.updateVoucherCount();
-
         }
 
         catch (err) {
@@ -104,13 +89,11 @@ window.GocesVoucherLoader = {
 
     updateSemua() {
 
-        const semua =
+        const semua = document.getElementById(
 
-            document.getElementById(
+            "gocesVoucherSemua"
 
-                "gocesVoucherSemua"
-
-            );
+        );
 
         if (!semua) return;
 
@@ -118,29 +101,25 @@ window.GocesVoucherLoader = {
 
         this.categories.forEach(item => {
 
-            const source =
+            const source = document.getElementById(
 
-                document.getElementById(
+                item.container
 
-                    item.container
-
-                );
+            );
 
             if (!source) return;
 
-            source
+            source.querySelectorAll(".gcv-card").forEach(card => {
 
-                .querySelectorAll(".gcv-card")
+                semua.insertAdjacentHTML(
 
-                .forEach(card => {
+                    "beforeend",
 
-                    semua.appendChild(
+                    card.outerHTML
 
-                        card.cloneNode(true)
+                );
 
-                    );
-
-                });
+            });
 
         });
 
@@ -148,23 +127,17 @@ window.GocesVoucherLoader = {
 
     updateVoucherCount() {
 
-        const total =
+        const total = document.querySelectorAll(
 
-            document
+            "#gocesVoucherSemua .gcv-card"
 
-                .querySelectorAll(
+        ).length;
 
-                    "#gocesVoucherSemua .gcv-card"
+        const text = document.getElementById(
 
-                ).length;
+            "gprActiveVoucherCount"
 
-        const text =
-
-            document.getElementById(
-
-                "gprActiveVoucherCount"
-
-            );
+        );
 
         if (text) {
 
@@ -178,11 +151,11 @@ window.GocesVoucherLoader = {
 
     },
 
-    init() {
+    async init() {
 
-        this.categories.forEach(item => {
+        for (const item of this.categories) {
 
-            this.load(
+            await this.load(
 
                 item.page,
 
@@ -190,7 +163,17 @@ window.GocesVoucherLoader = {
 
             );
 
-        });
+        }
+
+        this.updateSemua();
+
+        this.updateVoucherCount();
+
+        if (window.GocesVoucherCountdown) {
+
+            GocesVoucherCountdown.update();
+
+        }
 
     }
 
