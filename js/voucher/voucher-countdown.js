@@ -18,15 +18,9 @@ window.GocesVoucherCountdown = {
 
     update() {
 
-        const cards = document.querySelectorAll(
-
-            "#gocesVoucherSemua .gcv-card"
-
-        );
+        const cards = document.querySelectorAll(".gcv-card");
 
         const now = Date.now();
-
-        let totalAktif = 0;
 
         cards.forEach(card => {
 
@@ -34,51 +28,55 @@ window.GocesVoucherCountdown = {
 
             if (!countdown) return;
 
-            const status =
-                card.dataset.status === "true";
+            const id = card.dataset.id;
 
-            const start =
-                new Date(
-                    card.dataset.start.replace(" ", "T")
-                ).getTime();
+            const status = card.dataset.status === "true";
 
-            const end =
-                new Date(
-                    card.dataset.end.replace(" ", "T")
-                ).getTime();
+            const start = new Date(
 
-            // ===========================
+                card.dataset.start.replace(" ", "T")
+
+            ).getTime();
+
+            const end = new Date(
+
+                card.dataset.end.replace(" ", "T")
+
+            ).getTime();
+
+            // ==================================
             // STATUS ADMIN
-            // ===========================
+            // ==================================
 
             if (!status) {
 
-                card.style.display = "none";
+                this.syncVoucher(id, false);
 
                 return;
 
             }
 
-            // ===========================
-            // SUDAH BERAKHIR
-            // ===========================
+            // ==================================
+            // VOUCHER BERAKHIR
+            // ==================================
 
             if (now > end) {
 
-                card.style.display = "none";
+                this.syncVoucher(id, false);
 
                 return;
 
             }
 
-            // tampilkan kembali bila aktif
-            card.style.display = "";
+            // ==================================
+            // VOUCHER MASIH AKTIF
+            // ==================================
 
-            totalAktif++;
+            this.syncVoucher(id, true);
 
-            // ===========================
+            // ==================================
             // BELUM DIMULAI
-            // ===========================
+            // ==================================
 
             if (now < start) {
 
@@ -96,9 +94,9 @@ window.GocesVoucherCountdown = {
 
             }
 
-            // ===========================
+            // ==================================
             // SEDANG BERLANGSUNG
-            // ===========================
+            // ==================================
 
             countdown.textContent =
 
@@ -112,26 +110,73 @@ window.GocesVoucherCountdown = {
 
         });
 
-        // ===========================
-        // UPDATE JUMLAH VOUCHER
-        // ===========================
-
-        const total =
-            document.getElementById(
-                "gprActiveVoucherCount"
-            );
-
-        if (total) {
-
-            total.textContent =
-
-                totalAktif +
-
-                " Voucher Aktif";
-
-        }
+        this.updateVoucherCount();
 
     },
+
+    // ==================================
+    // SINKRONKAN SEMUA HALAMAN
+    // ==================================
+
+    syncVoucher(id, visible) {
+
+        document
+
+            .querySelectorAll(
+
+                `.gcv-card[data-id="${id}"]`
+
+            )
+
+            .forEach(card => {
+
+                card.style.display =
+
+                    visible
+
+                        ? ""
+
+                        : "none";
+
+            });
+
+    },
+
+    // ==================================
+    // HITUNG HANYA HALAMAN SEMUA
+    // ==================================
+
+    updateVoucherCount() {
+
+        const total =
+
+            document.getElementById(
+
+                "gprActiveVoucherCount"
+
+            );
+
+        if (!total) return;
+
+        const aktif =
+
+            document.querySelectorAll(
+
+                "#gocesVoucherSemua .gcv-card:not([style*='display: none'])"
+
+            ).length;
+
+        total.textContent =
+
+            aktif +
+
+            " Voucher Aktif";
+
+    },
+
+    // ==================================
+    // FORMAT COUNTDOWN
+    // ==================================
 
     format(ms) {
 
@@ -141,7 +186,11 @@ window.GocesVoucherCountdown = {
 
         const day = hour * 24;
 
-        const days = Math.floor(ms / day);
+        const days = Math.floor(
+
+            ms / day
+
+        );
 
         const hours = Math.floor(
 
