@@ -82,11 +82,52 @@ const GocesVoucher = {
 
         return `
 
-<div class="gcv-card">
+<div
+class="gcv-card"
+data-code="${item.code || ""}">
 
-    <div class="gcv-title">
+    <div class="gcv-image-wrap">
 
-        ${item.title}
+        <img
+
+            class="gcv-image"
+
+            src="${item.image}"
+
+            alt="${item.title}">
+
+    </div>
+
+    <div class="gcv-content">
+
+        <div class="gcv-title">
+
+            ${item.title}
+
+        </div>
+
+        <div class="gcv-description">
+
+            ${item.description || ""}
+
+        </div>
+
+        <div class="gcv-bottom">
+
+            <div class="gcv-expired">
+
+                ${item.period || ""}
+
+            </div>
+
+            <button
+                class="gcv-button">
+
+                Pakai
+
+            </button>
+
+        </div>
 
     </div>
 
