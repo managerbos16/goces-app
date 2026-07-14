@@ -370,10 +370,6 @@ body {
   transform: none !important;
 }
 
-.gcv-copy.copied::after {
-  content: " ✓";
-}
-
 /*==================================================
             VOUCHER HOLE
 ==================================================*/
