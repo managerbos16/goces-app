@@ -368,32 +368,7 @@
                     <div id="gcsPromoBannerContainer" class="gcsPromoBannerContainer"></div>
                 </section>
 
-                <section class="gocesVoucherSection">
-                    <div id="gocesVoucherContainer"></div>
-                    <div id="gocesVoucherModal" class="gcv-modal">
-                        <div class="gcv-modal-content">
-                            <button class="gcv-modal-close">✕</button>
-                            <div class="gcv-modal-header">
-                                <img class="gcv-modal-image">
-                            </div>
-                            <h2 class="gcv-modal-title"></h2>
-                            <p class="gcv-modal-description"></p>
-                            <div class="gcv-modal-code"></div>
-                            <div class="gcv-modal-period"></div>
-                            <div class="gcv-modal-min-order"></div>
-                            <div class="gcv-modal-max-discount"></div>
-                            <div class="gcv-terms">
-                                <div class="gcv-terms-title">
-                                    Syarat & Ketentuan
-                                </div>
-                                <ul class="gcv-terms-list"></ul>
-                            </div>
-                            <button class="gcv-modal-copy">
-                                Salin Voucher
-                            </button>
-                        </div>
-                    </div>
-                </section>
+
 
             </div>
 
@@ -483,85 +458,44 @@
                 <div class="gpr-container">
 
                     <div id="semua" class="gpr-content">
+                        <section class="gocesVoucherSection">
+                            <div id="gocesVoucherSemua"></div>
+                        </section>
                     </div>
 
                     <!-- Halaman pembuka voucher 🍔 Makanan -->
                     <div id="populer" class="gpr-content">
-
-                        <!-- Voucher 1 Populer -->
-                        <div class="gpr-voucher-card" data-card-color="#FFF3E0"
-                            data-image="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
-                            data-code="MAKAN50" data-title="Diskon Hingga Rp50.000"
-                            data-desc="Minimal pembelian Rp100.000" data-period="21 Juni - 1 Juli 2026"
-                            data-start="2026-06-21 00:00:00" data-end="2026-07-01 23:59:59" data-min-order="100000"
-                            data-max-discount="50000"
-                            data-terms="Berlaku untuk semua merchant makanan|Tidak dapat digabung dengan promo lain|Maksimal 1x penggunaan per akun"
-                            onclick="gprOpenVoucherModal(this)">
-
-                            <div class="gpr-ribbon hot">HOT</div>
-                            <div class="gpr-voucher-image">
-                                <img class="gpr-voucher-img">
-                            </div>
-
-                            <div class="gpr-voucher-info">
-                                <div class="gpr-voucher-top">
-                                    <span class="gpr-badge">Diskon 50%</span>
-                                    <span class="gpr-tag hot">🔥 Terlaris</span>
-                                </div>
-                                <h3 class="gpr-voucher-title"></h3>
-                                <p class="gpr-voucher-desc"></p>
-                                <small class="gpr-voucher-period"></small>
-                                <div class="gpr-countdown"></div>
-                            </div>
-
-                            <button class="gpr-copy-btn" onclick="event.stopPropagation(); gprCopyVoucher(this)">
-                                Salin
-                            </button>
-
-                        </div>
-
+                        <section class="gocesVoucherSection">
+                            <div id="gocesVoucherPopuler"></div>
+                        </section>
                     </div>
 
                     <!-- Halaman pembuka voucher 🥤 Minuman -->
                     <div id="terbaru" class="gpr-content">
                         <section class="gocesVoucherSection">
-                            <div id="gocesVoucherContainer"></div>
-                            <div id="gocesVoucherModal" class="gcv-modal">
-                                <div class="gcv-modal-content">
-                                    <button class="gcv-modal-close">✕</button>
-                                    <div class="gcv-modal-header">
-                                        <img class="gcv-modal-image">
-                                    </div>
-                                    <h2 class="gcv-modal-title"></h2>
-                                    <p class="gcv-modal-description"></p>
-                                    <div class="gcv-modal-code"></div>
-                                    <div class="gcv-modal-period"></div>
-                                    <div class="gcv-modal-min-order"></div>
-                                    <div class="gcv-modal-max-discount"></div>
-                                    <div class="gcv-terms">
-                                        <div class="gcv-terms-title">
-                                            Syarat & Ketentuan
-                                        </div>
-                                        <ul class="gcv-terms-list"></ul>
-                                    </div>
-                                    <button class="gcv-modal-copy">
-                                        Salin Voucher
-                                    </button>
-                                </div>
-                            </div>
+                            <div id="gocesVoucherTerbaru"></div>
                         </section>
                     </div>
 
                     <!-- Halaman pembuka voucher 🚚 Gratis Ongkir -->
                     <div id="eksklusif" class="gpr-content">
+                        <section class="gocesVoucherSection">
+                            <div id="gocesVoucherEksklusif"></div>
+                        </section>
                     </div>
 
                     <!-- Halaman pembuka voucher 💰 Cashback -->
                     <div id="cashback" class="gpr-content">
+                        <section class="gocesVoucherSection">
+                            <div id="gocesVoucherCashback"></div>
+                        </section>
                     </div>
 
                     <!-- Halaman pembuka voucher Terbatas -->
                     <div id="terbatas" class="gpr-content">
+                        <section class="gocesVoucherSection">
+                            <div id="gocesVoucherTerbatas"></div>
+                        </section>
                     </div>
 
                 </div>
@@ -1746,19 +1680,35 @@
     <script src="https://goces-app.vercel.app/js/voucher/voucher-countdown.js"></script>
     <script src="https://goces-app.vercel.app/js/voucher/voucher-loader.js"></script>
 
-    <!--============= POPUP DETAIL VOUCHER ==============-->
-    <div id="gprVoucherModal" class="gpr-voucher-modal">
-        <div class="gpr-voucher-modal-content">
-            <div class="gpr-modal-header">
-                <h3>
-                    🎁 Detail Voucher
-                </h3>
+    <!--==================================
+    GOCES VOUCHER MODAL
+    ===================================-->
+    <div id="gocesVoucherModal" class="gcv-modal">
+        <div class="gcv-modal-content">
+            <button type="button" class="gcv-modal-close">
+                ✕
+            </button>
 
-                <button class="gpr-close-modal" onclick="gprCloseVoucherModal()">
-                    ✕
-                </button>
+            <div class="gcv-modal-header">
+                <img class="gcv-modal-image" src="" alt="Voucher">
             </div>
-            <div id="gprVoucherModalBody"></div>
+
+            <h2 class="gcv-modal-title"></h2>
+            <p class="gcv-modal-description"></p>
+            <div class="gcv-modal-code"></div>
+            <div class="gcv-modal-period"></div>
+            <div class="gcv-modal-min-order"></div>
+            <div class="gcv-modal-max-discount"></div>
+            <div class="gcv-terms">
+                <div class="gcv-terms-title">
+                    Syarat & Ketentuan
+                </div>
+                <ul class="gcv-terms-list"></ul>
+            </div>
+
+            <button type="button" class="gcv-modal-copy">
+                Salin Voucher
+            </button>
         </div>
     </div>
     <!--============ AKHIR HALAMAN POPUP DETAIL VOUCHER ===========-->

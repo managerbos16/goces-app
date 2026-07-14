@@ -2,81 +2,142 @@
         GOCES VOUCHER LOADER
 ==================================*/
 
-const GocesVoucher = {
+window.GocesVoucherLoader = {
 
-    container: null,
-
-    async load() {
-
-        this.container = document.getElementById(
-
-            "gocesVoucherContainer"
-
-        );
-
-        if (!this.container) return;
-
-        this.container.innerHTML =
-
-            "<div class='goces-loading'>Memuat voucher...</div>";
+    async load(category, containerId) {
 
         try {
 
             const response = await fetch(
 
-                "https://goces-api.vercel.app/voucher"
+                "https://goces-api.vercel.app/voucher?category=" + category
 
             );
 
             const result = await response.json();
 
+            const container = document.getElementById(containerId);
+
+            if (!container) return;
+
+            container.innerHTML = "";
+
             if (!result.success) {
 
-                this.container.innerHTML =
-
-                    "<div class='goces-empty'>Voucher tidak tersedia.</div>";
+                container.innerHTML = "";
 
                 return;
 
             }
 
-            this.render(
+            const vouchers = result.data || [];
 
-                result.data
+            vouchers.forEach(voucher => {
+
+                container.insertAdjacentHTML(
+
+                    "beforeend",
+
+                    renderVoucherCard(voucher)
+
+                );
+
+            });
+
+            // Jumlah voucher aktif hanya dihitung dari halaman "Semua"
+            if (category === "semua") {
+
+                const total = document.getElementById(
+
+                    "gprActiveVoucherCount"
+
+                );
+
+                if (total) {
+
+                    total.textContent =
+
+                        vouchers.length +
+
+                        " Voucher Aktif";
+
+                }
+
+            }
+
+            if (window.GocesVoucherCountdown) {
+
+                GocesVoucherCountdown.update();
+
+            }
+
+        }
+
+        catch (err) {
+
+            console.error(
+
+                "Voucher Loader Error:",
+
+                err
 
             );
 
         }
 
-        catch (error) {
-
-            console.error(error);
-
-            this.container.innerHTML =
-
-                "<div class='goces-empty'>Gagal memuat voucher.</div>";
-
-        }
-
     },
 
-    render(items) {
+    init() {
 
-        this.container.innerHTML = "";
+        this.load(
 
-        items.forEach(item => {
+            "semua",
 
-            this.container.insertAdjacentHTML(
+            "gocesVoucherSemua"
 
-                "beforeend",
+        );
 
-                renderVoucherCard(item)
+        this.load(
 
-            );
+            "populer",
 
-        });
+            "gocesVoucherPopuler"
 
-    },
+        );
+
+        this.load(
+
+            "terbaru",
+
+            "gocesVoucherTerbaru"
+
+        );
+
+        this.load(
+
+            "eksklusif",
+
+            "gocesVoucherEksklusif"
+
+        );
+
+        this.load(
+
+            "cashback",
+
+            "gocesVoucherCashback"
+
+        );
+
+        this.load(
+
+            "terbatas",
+
+            "gocesVoucherTerbatas"
+
+        );
+
+    }
 
 };
 
@@ -84,6 +145,10 @@ document.addEventListener(
 
     "DOMContentLoaded",
 
-    () => GocesVoucher.load()
+    function () {
+
+        GocesVoucherLoader.init();
+
+    }
 
 );
