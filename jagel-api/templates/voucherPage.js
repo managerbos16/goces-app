@@ -99,25 +99,39 @@ ${cards}
 
 function sendHeight() {
 
+    alert(
+
+    "Height = " +
+
+    Math.max(
+
+        document.body.scrollHeight,
+
+        document.documentElement.scrollHeight
+
+    )
+
+);
+
     window.parent.postMessage({
 
-        type: "goces-frame",
+        type:"goces-frame",
 
-        page: "voucher",
+        page:"voucher",
 
-      height: Math.max(
+        height:Math.max(
 
-    document.body.scrollHeight,
+            document.body.scrollHeight,
 
-    document.documentElement.scrollHeight
+            document.documentElement.scrollHeight
 
-),
+        ),
 
-        totalItems: ${data.items.length},
+        totalItems:${data.items.length},
 
-        empty: ${data.items.length} === 0
+        empty:${data.items.length}===0
 
-    }, "*");
+    },"*");
 
 }
 

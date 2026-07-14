@@ -1,6 +1,3 @@
-const renderVoucherPage =
-    require("../templates/voucherPage");
-
 const voucherService =
     require("../services/voucherService");
 
@@ -11,43 +8,27 @@ async function voucherHandler(req, res) {
         const vouchers =
             await voucherService(req);
 
-        res.send(
+        res.json({
 
-            renderVoucherPage({
+            success: true,
 
-                items: vouchers
+            data: vouchers
 
-            })
-
-        );
+        });
 
     }
 
     catch (error) {
 
-        console.error(
+        console.error(error);
 
-            "Voucher Error:",
+        res.status(500).json({
 
-            error
+            success: false,
 
-        );
+            message: "Gagal mengambil voucher."
 
-        res.status(500).send(`
-
-<h2>
-
-500 Internal Server Error
-
-</h2>
-
-<p>
-
-Gagal memuat data voucher.
-
-</p>
-
-`);
+        });
 
     }
 
