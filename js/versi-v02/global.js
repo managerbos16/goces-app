@@ -497,7 +497,7 @@ function gprOpenAllVoucher() {
 // =============================
 // SALIN VOUCHER
 // =============================
-function gprCopyVoucher(button) {
+/* function gprCopyVoucher(button) {
 
     const voucher =
         button.closest(
@@ -543,12 +543,12 @@ function gprCopyVoucher(button) {
         " berhasil disalin"
     );
 
-}
+} */
 
 // =============================
 // TOAST
 // =============================
-function gprShowToast(message) {
+/* function gprShowToast(message) {
 
     const toast =
         document.getElementById(
@@ -573,12 +573,12 @@ function gprShowToast(message) {
 
         }, 2000);
 
-}
+} */
 
 // =============================
 // COUNTDOWN
 // =============================
-function gprUpdateCountdown() {
+/* function gprUpdateCountdown() {
 
     document
         .querySelectorAll(
@@ -640,12 +640,12 @@ function gprUpdateCountdown() {
 
         });
 
-}
+} */
 
 // =============================
 // POPUP VOUCHER
 // =============================
-function gprOpenVoucherModal(voucher) {
+/* function gprOpenVoucherModal(voucher) {
 
     const title =
         voucher.dataset.title;
@@ -774,12 +774,12 @@ function gprOpenVoucherModal(voucher) {
         .classList
         .add("show");
 
-}
+} */
 
 // =============================
 // TUTUP POPUP
 // =============================
-function gprCloseVoucherModal() {
+/* function gprCloseVoucherModal() {
 
     document
         .getElementById(
@@ -788,12 +788,12 @@ function gprCloseVoucherModal() {
         .classList
         .remove("show");
 
-}
+} */
 
 // =============================
 // SALIN DARI POPUP
 // =============================
-function gprCopyVoucherCode(code) {
+/* function gprCopyVoucherCode(code) {
 
     const input =
         document.createElement(
@@ -845,12 +845,12 @@ function gprCopyVoucherCode(code) {
 
     );
 
-}
+} */
 
 // =============================
 // RENDER DATA VOUCHER
 // =============================
-function gprRenderVoucherData() {
+/* function gprRenderVoucherData() {
 
     document
         .querySelectorAll(
@@ -893,7 +893,7 @@ function gprRenderVoucherData() {
 
         });
 
-}
+} */
 
 // =============================
 // INISIALISASI

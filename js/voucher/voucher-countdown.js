@@ -18,7 +18,11 @@ window.GocesVoucherCountdown = {
 
     update() {
 
-        const cards = document.querySelectorAll(".gcv-card");
+        const cards = document.querySelectorAll(
+
+            "#gocesVoucherSemua .gcv-card"
+
+        );
 
         const now = Date.now();
 
