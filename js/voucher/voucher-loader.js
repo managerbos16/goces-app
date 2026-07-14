@@ -4,27 +4,58 @@
 
 window.GocesVoucherLoader = {
 
+    categories: [
+
+        {
+            page: "populer",
+            container: "gocesVoucherPopuler"
+        },
+
+        {
+            page: "terbaru",
+            container: "gocesVoucherTerbaru"
+        },
+
+        {
+            page: "eksklusif",
+            container: "gocesVoucherEksklusif"
+        },
+
+        {
+            page: "cashback",
+            container: "gocesVoucherCashback"
+        },
+
+        {
+            page: "terbatas",
+            container: "gocesVoucherTerbatas"
+        }
+
+    ],
+
     async load(category, containerId) {
 
         try {
 
             const response = await fetch(
 
-                "https://goces-api.vercel.app/voucher?category=" + category
+                "https://goces-api.vercel.app/voucher?category=" +
+
+                category
 
             );
 
             const result = await response.json();
 
-            const container = document.getElementById(containerId);
+            const container =
+
+                document.getElementById(containerId);
 
             if (!container) return;
 
             container.innerHTML = "";
 
             if (!result.success) {
-
-                container.innerHTML = "";
 
                 return;
 
@@ -44,32 +75,16 @@ window.GocesVoucherLoader = {
 
             });
 
-            // Jumlah voucher aktif hanya dihitung dari halaman "Semua"
-            if (category === "semua") {
-
-                const total = document.getElementById(
-
-                    "gprActiveVoucherCount"
-
-                );
-
-                if (total) {
-
-                    total.textContent =
-
-                        vouchers.length +
-
-                        " Voucher Aktif";
-
-                }
-
-            }
-
             if (window.GocesVoucherCountdown) {
 
                 GocesVoucherCountdown.update();
 
             }
+
+            // setelah selesai render
+            this.updateSemua();
+
+            this.updateVoucherCount();
 
         }
 
@@ -87,55 +102,95 @@ window.GocesVoucherLoader = {
 
     },
 
+    updateSemua() {
+
+        const semua =
+
+            document.getElementById(
+
+                "gocesVoucherSemua"
+
+            );
+
+        if (!semua) return;
+
+        semua.innerHTML = "";
+
+        this.categories.forEach(item => {
+
+            const source =
+
+                document.getElementById(
+
+                    item.container
+
+                );
+
+            if (!source) return;
+
+            source
+
+                .querySelectorAll(".gcv-card")
+
+                .forEach(card => {
+
+                    semua.appendChild(
+
+                        card.cloneNode(true)
+
+                    );
+
+                });
+
+        });
+
+    },
+
+    updateVoucherCount() {
+
+        const total =
+
+            document
+
+                .querySelectorAll(
+
+                    "#gocesVoucherSemua .gcv-card"
+
+                ).length;
+
+        const text =
+
+            document.getElementById(
+
+                "gprActiveVoucherCount"
+
+            );
+
+        if (text) {
+
+            text.textContent =
+
+                total +
+
+                " Voucher Aktif";
+
+        }
+
+    },
+
     init() {
 
-        this.load(
+        this.categories.forEach(item => {
 
-            "semua",
+            this.load(
 
-            "gocesVoucherSemua"
+                item.page,
 
-        );
+                item.container
 
-        this.load(
+            );
 
-            "populer",
-
-            "gocesVoucherPopuler"
-
-        );
-
-        this.load(
-
-            "terbaru",
-
-            "gocesVoucherTerbaru"
-
-        );
-
-        this.load(
-
-            "eksklusif",
-
-            "gocesVoucherEksklusif"
-
-        );
-
-        this.load(
-
-            "cashback",
-
-            "gocesVoucherCashback"
-
-        );
-
-        this.load(
-
-            "terbatas",
-
-            "gocesVoucherTerbatas"
-
-        );
+        });
 
     }
 
