@@ -6,41 +6,13 @@ window.GocesVoucherLoader = {
 
     api: "https://goces-api.vercel.app/voucher",
 
-    pages: [
+    async load(options = {}) {
 
-        {
-            category: "semua",
-            container: "gocesVoucherSemua"
-        },
+        const category = options.category || "semua";
 
-        {
-            category: "populer",
-            container: "gocesVoucherPopuler"
-        },
+        const containerId = options.container;
 
-        {
-            category: "terbaru",
-            container: "gocesVoucherTerbaru"
-        },
-
-        {
-            category: "eksklusif",
-            container: "gocesVoucherEksklusif"
-        },
-
-        {
-            category: "cashback",
-            container: "gocesVoucherCashback"
-        },
-
-        {
-            category: "terbatas",
-            container: "gocesVoucherTerbatas"
-        }
-
-    ],
-
-    async load(category, containerId) {
+        const limit = options.limit || 0;
 
         try {
 
@@ -52,19 +24,23 @@ window.GocesVoucherLoader = {
 
             const result = await response.json();
 
-            const container = document.getElementById(containerId);
+            if (!result.success) return;
+
+            const container =
+
+                document.getElementById(containerId);
 
             if (!container) return;
 
             container.innerHTML = "";
 
-            if (!result.success) {
+            let vouchers = result.data || [];
 
-                return;
+            if (limit > 0) {
+
+                vouchers = vouchers.slice(0, limit);
 
             }
-
-            const vouchers = result.data || [];
 
             vouchers.forEach(voucher => {
 
@@ -78,23 +54,9 @@ window.GocesVoucherLoader = {
 
             });
 
-            if (category === "semua") {
+            if (window.GocesVoucherCountdown) {
 
-                const total = document.getElementById(
-
-                    "gprActiveVoucherCount"
-
-                );
-
-                if (total) {
-
-                    total.textContent =
-
-                        vouchers.length +
-
-                        " Voucher Aktif";
-
-                }
+                GocesVoucherCountdown.update();
 
             }
 
@@ -104,7 +66,7 @@ window.GocesVoucherLoader = {
 
             console.error(
 
-                "Voucher Loader:",
+                "Voucher Loader",
 
                 err
 
@@ -114,25 +76,69 @@ window.GocesVoucherLoader = {
 
     },
 
-    async init() {
+    init() {
 
-        for (const page of this.pages) {
+        // =====================
+        // HALAMAN PROMO
+        // =====================
 
-            await this.load(
+        this.load({
 
-                page.category,
+            category: "semua",
 
-                page.container
+            container: "gocesVoucherSemua"
 
-            );
+        });
 
-        }
+        this.load({
 
-        if (window.GocesVoucherCountdown) {
+            category: "populer",
 
-            GocesVoucherCountdown.update();
+            container: "gocesVoucherPopuler"
 
-        }
+        });
+
+        this.load({
+
+            category: "terbaru",
+
+            container: "gocesVoucherTerbaru"
+
+        });
+
+        this.load({
+
+            category: "eksklusif",
+
+            container: "gocesVoucherEksklusif"
+
+        });
+
+        this.load({
+
+            category: "cashback",
+
+            container: "gocesVoucherCashback"
+
+        });
+
+        this.load({
+
+            category: "terbatas",
+
+            container: "gocesVoucherTerbatas"
+
+        });
+
+        this.load({
+
+            category: "populer",
+
+            container: "gocesVoucherHome",
+
+            limit: 5
+
+        });
 
     }
 
