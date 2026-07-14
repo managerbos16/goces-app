@@ -84,7 +84,20 @@ const GocesVoucher = {
 
 <div
 class="gcv-card"
-data-code="${item.code || ""}">
+data-code="${item.code}"
+data-title="${item.title}"
+data-description="${item.description}"
+data-image="${item.image}"
+data-period="${item.period}"
+data-minimum="${item.minimumOrder}"
+data-maximum="${item.maximumDiscount}"
+data-terms='${JSON.stringify(item.terms)}'>
+
+    <div class="gcv-ribbon">
+
+        ${item.ribbon}
+
+    </div>
 
     <div class="gcv-image-wrap">
 
@@ -100,6 +113,12 @@ data-code="${item.code || ""}">
 
     <div class="gcv-content">
 
+        <div class="gcv-tag ${item.tagType}">
+
+            ${item.tag}
+
+        </div>
+
         <div class="gcv-title">
 
             ${item.title}
@@ -108,15 +127,25 @@ data-code="${item.code || ""}">
 
         <div class="gcv-description">
 
-            ${item.description || ""}
+            ${item.description}
 
         </div>
 
-        <div class="gcv-bottom">
+        <div class="gcv-footer">
 
-            <div class="gcv-expired">
+            <div>
 
-                ${item.period || ""}
+                <div class="gcv-badge ${item.badgeType}">
+
+                    ${item.badge}
+
+                </div>
+
+                <div class="gcv-period">
+
+                    ${item.period}
+
+                </div>
 
             </div>
 
