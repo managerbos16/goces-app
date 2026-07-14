@@ -1,0 +1,71 @@
+/*==================================
+        GOCES HORIZONTAL VOUCHER
+==================================*/
+
+.gcvh-section {
+  margin-top: 18px;
+}
+
+.gcvh-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+
+  padding: 0 16px;
+}
+
+.gcvh-title {
+  margin: 0;
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.gcvh-seeall {
+  border: none;
+
+  background: none;
+
+  color: var(--blue);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.gcvh-container {
+  display: flex;
+
+  overflow-x: auto;
+
+  gap: 16px;
+
+  padding: 0 16px 6px;
+
+  scroll-snap-type: x proximity;
+
+  scrollbar-width: none;
+}
+
+.gcvh-container::-webkit-scrollbar {
+  display: none;
+}
+
+.gcvh-container .gcv-card {
+  flex: 0 0 330px;
+
+  width: 330px;
+
+  margin: 0;
+
+  scroll-snap-align: start;
+}
