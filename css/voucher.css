@@ -127,7 +127,15 @@ body {
 .gcv-content {
   flex: 1;
 
-  min-width: 0;
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 4px 0;
 }
 
 .gcv-top {
@@ -137,7 +145,7 @@ body {
 
   gap: 8px;
 
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
 .gcv-title {
@@ -419,17 +427,13 @@ body {
 ==================================================*/
 
 .gcv-card-divider {
-  position: absolute;
+  width: 1px;
 
-  left: 110px;
+  align-self: stretch;
 
-  top: 14px;
+  margin: 0 12px;
 
-  bottom: 14px;
-
-  border-left: 2px dashed #e5e7eb;
-
-  opacity: 0.9;
+  border-left: 2px dashed #e4e4e4;
 }
 
 /*==================================================

@@ -97,11 +97,7 @@ data-terms='${JSON.stringify(voucher.terms || [])}'>
 
         </div>
 
-        <div class="gcv-countdown">
-
-            Memuat...
-
-        </div>
+        <div class="gcv-countdown"></div>
 
     </div>
 
