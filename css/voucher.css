@@ -125,17 +125,13 @@ body {
 ==================================================*/
 
 .gcv-content {
-  flex: 1;
-
   display: flex;
 
   flex-direction: column;
 
-  justify-content: center;
+  gap: 4px;
 
-  gap: 6px;
-
-  padding: 4px 0;
+  flex: 1;
 }
 
 .gcv-top {
@@ -149,25 +145,23 @@ body {
 }
 
 .gcv-title {
-  font-size: 16px;
+  margin: 0;
+
+  font-size: 17px;
 
   font-weight: 700;
 
-  color: var(--gcv-text);
-
-  line-height: 1.35;
-
-  margin: 0 0 4px;
+  line-height: 1.25;
 }
 
 .gcv-description {
+  margin: 0;
+
+  color: #6b7280;
+
   font-size: 13px;
 
-  color: var(--gcv-muted);
-
-  line-height: 1.45;
-
-  margin: 0 0 6px;
+  line-height: 1.35;
 }
 
 .gcv-period {
@@ -178,12 +172,12 @@ body {
   margin-bottom: 6px;
 }
 
-.gcv-countdown {
+.gcv-period {
+  margin: 0;
+
+  color: #9ca3af;
+
   font-size: 12px;
-
-  font-weight: 700;
-
-  color: #ea580c;
 }
 
 /*==================================================
@@ -775,11 +769,11 @@ body {
 ==================================*/
 
 .gcv-countdown {
-  font-size: 13px;
+  margin-top: 2px;
+
+  font-size: 12px;
 
   font-weight: 600;
-
-  margin-top: 6px;
 }
 
 .gcv-countdown.active {
@@ -792,4 +786,32 @@ body {
 
 .gcv-countdown.expired {
   color: #dc2626;
+}
+
+.gocesVoucherSection {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+#gocesVoucherSemua {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+#gocesVoucherPopuler,
+#gocesVoucherTerbaru,
+#gocesVoucherEksklusif,
+#gocesVoucherCashback,
+#gocesVoucherTerbatas {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
 }
