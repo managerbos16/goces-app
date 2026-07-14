@@ -2,87 +2,118 @@
         GOCES VOUCHER CARD
 ==================================*/
 
-window.renderVoucherCard = function (item) {
+window.renderVoucherCard = function (voucher) {
+
+    const ribbon = voucher.ribbon
+        ? `
+<div class="gcv-ribbon gcv-ribbon--${(voucher.ribbon || "hot").toLowerCase()}">
+    ${voucher.ribbon}
+</div>
+`
+        : "";
+
+    const badge = voucher.badge
+        ? `
+<span class="gcv-badge gcv-badge--${(voucher.badgeType || "discount").toLowerCase()}">
+    ${voucher.badge}
+</span>
+`
+        : "";
+
+    const tag = voucher.tag
+        ? `
+<span class="gcv-tag gcv-tag--${(voucher.tagType || "hot").toLowerCase()}">
+    ${voucher.tag}
+</span>
+`
+        : "";
 
     return `
 
 <div
 class="gcv-card"
-data-code="${item.code}"
-data-title="${item.title}"
-data-description="${item.description}"
-data-image="${item.image}"
-data-period="${item.period}"
-data-minimum="${item.minimumOrder}"
-data-maximum="${item.maximumDiscount}"
-data-terms='${JSON.stringify(item.terms)}'>
 
-    <div class="gcv-ribbon">
+data-id="${voucher.id}"
 
-        ${item.ribbon}
+data-code="${voucher.code}"
 
-    </div>
+data-title="${voucher.title}"
 
-    <div class="gcv-image-wrap">
+data-description="${voucher.description}"
+
+data-image="${voucher.image}"
+
+data-period="${voucher.period}"
+
+data-minimum="${voucher.minimumOrder}"
+
+data-maximum="${voucher.maximumDiscount}"
+
+data-start="${voucher.startDate}"
+
+data-end="${voucher.endDate}"
+
+data-terms='${JSON.stringify(voucher.terms || [])}'>
+
+    ${ribbon}
+
+    <div class="gcv-image">
 
         <img
 
-            class="gcv-image"
+            src="${voucher.image}"
 
-            src="${item.image}"
-
-            alt="${item.title}">
+            alt="${voucher.title}">
 
     </div>
+
+    <div class="gcv-card-divider"></div>
 
     <div class="gcv-content">
 
-        <div class="gcv-tag ${item.tagType}">
+        <div class="gcv-top">
 
-            ${item.tag}
+            ${badge}
 
-        </div>
-
-        <div class="gcv-title">
-
-            ${item.title}
+            ${tag}
 
         </div>
 
-        <div class="gcv-description">
+        <h3 class="gcv-title">
 
-            ${item.description}
+            ${voucher.title}
+
+        </h3>
+
+        <p class="gcv-description">
+
+            ${voucher.description}
+
+        </p>
+
+        <div class="gcv-period">
+
+            ${voucher.period}
 
         </div>
 
-        <div class="gcv-footer">
+        <div class="gcv-countdown">
 
-            <div>
-
-                <div class="gcv-badge ${item.badgeType}">
-
-                    ${item.badge}
-
-                </div>
-
-                <div class="gcv-period">
-
-                    ${item.period}
-
-                </div>
-
-            </div>
-
-            <button
-            class="gcv-button">
-
-                Pakai
-
-            </button>
+            Memuat...
 
         </div>
 
     </div>
+
+    <button
+
+        type="button"
+
+        class="gcv-copy">
+
+        Salin
+
+    </button>
 
 </div>
 
