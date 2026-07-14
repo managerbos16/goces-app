@@ -1,31 +1,23 @@
-/*==================================
-        GOCES FRAME MANAGER
-==================================*/
+window.addEventListener("message", function (e) {
 
-window.addEventListener("message", function (event) {
+    console.log("PESAN MASUK:", e.data);
 
-    const data = event.data;
+    if (!e.data) return;
 
-    if (!data) return;
+    if (e.data.type !== "goces-frame") return;
 
-    if (data.type !== "goces-frame") return;
+    const frame = document.getElementById("frame-" + e.data.page);
 
-    const frame = document.getElementById("frame-" + data.page);
+    if (!frame) {
 
-    if (!frame) return;
-
-    // Tidak ada produk
-    if (data.empty) {
-
-        frame.style.display = "none";
-        frame.style.height = "0px";
+        console.log("FRAME TIDAK DITEMUKAN");
 
         return;
 
     }
 
-    // Ada produk
-    frame.style.display = "block";
-    frame.style.height = data.height + "px";
+    console.log("TINGGI BARU:", e.data.height);
+
+    frame.style.height = e.data.height + "px";
 
 });
