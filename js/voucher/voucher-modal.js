@@ -22,25 +22,28 @@ window.GocesVoucherModal = {
 
             (e) => {
 
+                // Tombol Salin jangan membuka modal
+                if (e.target.closest(".gcv-copy")) {
+
+                    return;
+
+                }
+
+                // Tombol Tutup
+                if (e.target.classList.contains("gcv-modal-close")) {
+
+                    this.close();
+
+                    return;
+
+                }
+
+                // Klik Card
                 const card = e.target.closest(".gcv-card");
 
                 if (card) {
 
                     this.open(card);
-
-                }
-
-                if (
-
-                    e.target.classList.contains(
-
-                        "gcv-modal-close"
-
-                    )
-
-                ) {
-
-                    this.close();
 
                 }
 
