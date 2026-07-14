@@ -6,75 +6,131 @@ window.GocesVoucherLoader = {
 
     api: "https://goces-api.vercel.app/voucher",
 
-    data: {
+    pages: [
 
-        populer: [],
+        {
+            category: "semua",
+            container: "gocesVoucherSemua"
+        },
 
-        terbaru: [],
+        {
+            category: "populer",
+            container: "gocesVoucherPopuler"
+        },
 
-        eksklusif: [],
+        {
+            category: "terbaru",
+            container: "gocesVoucherTerbaru"
+        },
 
-        cashback: [],
+        {
+            category: "eksklusif",
+            container: "gocesVoucherEksklusif"
+        },
 
-        terbatas: []
+        {
+            category: "cashback",
+            container: "gocesVoucherCashback"
+        },
 
-    },
-
-    categories: [
-
-        "populer",
-
-        "terbaru",
-
-        "eksklusif",
-
-        "cashback",
-
-        "terbatas"
+        {
+            category: "terbatas",
+            container: "gocesVoucherTerbatas"
+        }
 
     ],
 
-    async loadCategory(category) {
+    async load(category, containerId) {
 
         try {
 
             const response = await fetch(
 
-                this.api +
-
-                "?category=" +
-
-                category
+                `${this.api}?category=${category}`
 
             );
 
             const result = await response.json();
 
-            if (
+            const container = document.getElementById(containerId);
 
-                result.success
+            if (!container) return;
 
-            ) {
+            container.innerHTML = "";
 
-                this.data[category] =
+            if (!result.success) {
 
-                    result.data || [];
+                return;
 
             }
 
-            else {
+            const vouchers = result.data || [];
 
-                this.data[category] = [];
+            vouchers.forEach(voucher => {
+
+                container.insertAdjacentHTML(
+
+                    "beforeend",
+
+                    renderVoucherCard(voucher)
+
+                );
+
+            });
+
+            if (category === "semua") {
+
+                const total = document.getElementById(
+
+                    "gprActiveVoucherCount"
+
+                );
+
+                if (total) {
+
+                    total.textContent =
+
+                        vouchers.length +
+
+                        " Voucher Aktif";
+
+                }
 
             }
 
         }
 
-        catch (e) {
+        catch (err) {
 
-            console.error(e);
+            console.error(
 
-            this.data[category] = [];
+                "Voucher Loader:",
+
+                err
+
+            );
+
+        }
+
+    },
+
+    async init() {
+
+        for (const page of this.pages) {
+
+            await this.load(
+
+                page.category,
+
+                page.container
+
+            );
+
+        }
+
+        if (window.GocesVoucherCountdown) {
+
+            GocesVoucherCountdown.update();
 
         }
 
@@ -86,19 +142,9 @@ document.addEventListener(
 
     "DOMContentLoaded",
 
-    async () => {
+    () => {
 
-        await GocesVoucherLoader.loadCategory(
-
-            "populer"
-
-        );
-
-        console.log(
-
-            GocesVoucherLoader.data
-
-        );
+        GocesVoucherLoader.init();
 
     }
 

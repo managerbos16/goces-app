@@ -7,22 +7,42 @@ async function voucherService(req) {
     switch (page) {
 
         case "populer":
+
             return voucher.populer;
 
         case "terbaru":
+
             return voucher.terbaru;
 
         case "eksklusif":
+
             return voucher.eksklusif;
 
         case "cashback":
+
             return voucher.cashback;
 
         case "terbatas":
+
             return voucher.terbatas;
 
+        case "semua":
+
         default:
-            return voucher.semua;
+
+            return [
+
+                ...voucher.populer,
+
+                ...voucher.terbaru,
+
+                ...voucher.eksklusif,
+
+                ...voucher.cashback,
+
+                ...voucher.terbatas
+
+            ];
 
     }
 
