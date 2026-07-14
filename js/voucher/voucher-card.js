@@ -35,6 +35,10 @@ class="gcv-card"
 
 data-id="${voucher.id}"
 
+data-status="${voucher.status}"
+
+data-priority="${voucher.priority}"
+
 data-code="${voucher.code}"
 
 data-title="${voucher.title}"

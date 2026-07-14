@@ -353,7 +353,7 @@ function gprOpenAllVoucher() {
 // =============================
 // STATUS VOUCHER
 // =============================
-function gprIsVoucherActive(voucher) {
+/*  function gprIsVoucherActive(voucher) {
 
     const now =
         new Date();
@@ -376,12 +376,12 @@ function gprIsVoucherActive(voucher) {
 
     );
 
-}
+}  */
 
 // =============================
 // UPDATE STATUS VOUCHER
 // =============================
-function gprUpdateVoucherStatus() {
+/*  function gprUpdateVoucherStatus() {
 
     gprKategoriVoucher.forEach(id => {
 
@@ -413,12 +413,12 @@ function gprUpdateVoucherStatus() {
 
     gprUpdateVoucherCount();
 
-}
+}  */
 
 // =============================
 // HALAMAN SEMUA
 // =============================
-function gprUpdateSemuaVoucher() {
+/*  function gprUpdateSemuaVoucher() {
 
     const semua =
         document.getElementById(
@@ -452,12 +452,12 @@ function gprUpdateSemuaVoucher() {
 
     });
 
-}
+}  */
 
 // =============================
 // JUMLAH VOUCHER AKTIF
 // =============================
-function gprUpdateVoucherCount() {
+/* function gprUpdateVoucherCount() {
 
     let total = 0;
 
@@ -492,7 +492,7 @@ function gprUpdateVoucherCount() {
 
         total + " Voucher Aktif";
 
-}
+} */
 
 // =============================
 // SALIN VOUCHER

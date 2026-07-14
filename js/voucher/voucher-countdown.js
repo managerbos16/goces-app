@@ -8,7 +8,6 @@ window.GocesVoucherCountdown = {
 
         this.update();
 
-        // Update setiap 1 menit
         setInterval(() => {
 
             this.update();
@@ -21,7 +20,9 @@ window.GocesVoucherCountdown = {
 
         const cards = document.querySelectorAll(".gcv-card");
 
-        const now = new Date().getTime();
+        const now = Date.now();
+
+        let totalAktif = 0;
 
         cards.forEach(card => {
 
@@ -29,28 +30,59 @@ window.GocesVoucherCountdown = {
 
             if (!countdown) return;
 
-            const start = new Date(
+            const status =
+                card.dataset.status === "true";
 
-                card.dataset.start.replace(" ", "T")
+            const start =
+                new Date(
+                    card.dataset.start.replace(" ", "T")
+                ).getTime();
 
-            ).getTime();
+            const end =
+                new Date(
+                    card.dataset.end.replace(" ", "T")
+                ).getTime();
 
-            const end = new Date(
+            // ===========================
+            // STATUS ADMIN
+            // ===========================
 
-                card.dataset.end.replace(" ", "T")
+            if (!status) {
 
-            ).getTime();
+                card.style.display = "none";
 
-            // Voucher belum dimulai
+                return;
+
+            }
+
+            // ===========================
+            // SUDAH BERAKHIR
+            // ===========================
+
+            if (now > end) {
+
+                card.style.display = "none";
+
+                return;
+
+            }
+
+            // tampilkan kembali bila aktif
+            card.style.display = "";
+
+            totalAktif++;
+
+            // ===========================
+            // BELUM DIMULAI
+            // ===========================
+
             if (now < start) {
 
-                const diff = start - now;
-
-                countdown.innerHTML =
+                countdown.textContent =
 
                     "🕒 Dimulai dalam " +
 
-                    this.format(diff);
+                    this.format(start - now);
 
                 countdown.className =
 
@@ -60,29 +92,15 @@ window.GocesVoucherCountdown = {
 
             }
 
-            // Voucher sudah berakhir
-            if (now > end) {
+            // ===========================
+            // SEDANG BERLANGSUNG
+            // ===========================
 
-                countdown.innerHTML =
-
-                    "❌ Voucher telah berakhir";
-
-                countdown.className =
-
-                    "gcv-countdown expired";
-
-                return;
-
-            }
-
-            // Voucher sedang aktif
-            const diff = end - now;
-
-            countdown.innerHTML =
+            countdown.textContent =
 
                 "⏳ Berakhir dalam " +
 
-                this.format(diff);
+                this.format(end - now);
 
             countdown.className =
 
@@ -90,15 +108,34 @@ window.GocesVoucherCountdown = {
 
         });
 
+        // ===========================
+        // UPDATE JUMLAH VOUCHER
+        // ===========================
+
+        const total =
+            document.getElementById(
+                "gprActiveVoucherCount"
+            );
+
+        if (total) {
+
+            total.textContent =
+
+                totalAktif +
+
+                " Voucher Aktif";
+
+        }
+
     },
 
     format(ms) {
 
-        const minute = 60 * 1000;
+        const minute = 60000;
 
-        const hour = 60 * minute;
+        const hour = minute * 60;
 
-        const day = 24 * hour;
+        const day = hour * 24;
 
         const days = Math.floor(ms / day);
 
@@ -116,23 +153,17 @@ window.GocesVoucherCountdown = {
 
         if (days > 0) {
 
-            return days +
-
-                " hari";
+            return days + " hari";
 
         }
 
         if (hours > 0) {
 
-            return hours +
-
-                " jam";
+            return hours + " jam";
 
         }
 
-        return minutes +
-
-            " menit";
+        return minutes + " menit";
 
     }
 
