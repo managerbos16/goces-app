@@ -88,7 +88,7 @@ body {
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
 }
 
-.gcv-card:active {
+.gcv-card:active:not(.gcv-copy-click) {
   transform: scale(0.98);
 }
 
@@ -358,6 +358,20 @@ body {
 
 .gcv-copy:active {
   transform: scale(0.95);
+}
+
+.gcv-copy.copied {
+  background: #10b981;
+
+  transform: scale(0.95);
+}
+
+.gcv-copy-click {
+  transform: none !important;
+}
+
+.gcv-copy.copied::after {
+  content: " ✓";
 }
 
 /*==================================================

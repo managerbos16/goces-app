@@ -4,6 +4,8 @@
 
 window.GocesVoucherCopy = {
 
+    timer: null,
+
     async copy(button) {
 
         const card = button.closest(".gcv-card");
@@ -12,33 +14,63 @@ window.GocesVoucherCopy = {
 
         const code = card.dataset.code;
 
+        // Mencegah card ikut animasi
+        card.classList.add("gcv-copy-click");
+
         try {
 
             await navigator.clipboard.writeText(code);
-
-            this.toast("Kode voucher berhasil disalin");
 
         }
 
         catch (err) {
 
-            // Fallback Android WebView
+            try {
 
-            const input = document.createElement("input");
+                const input = document.createElement("input");
 
-            input.value = code;
+                input.value = code;
 
-            document.body.appendChild(input);
+                document.body.appendChild(input);
 
-            input.select();
+                input.select();
 
-            document.execCommand("copy");
+                document.execCommand("copy");
 
-            document.body.removeChild(input);
+                document.body.removeChild(input);
 
-            this.toast("Kode voucher berhasil disalin");
+            }
+
+            catch (e) {
+
+                console.error(e);
+
+                this.toast("Gagal menyalin kode");
+
+                card.classList.remove("gcv-copy-click");
+
+                return;
+
+            }
 
         }
+
+        // Efek tombol
+        button.classList.add("copied");
+
+        button.textContent = "Disalin ✓";
+
+        this.toast("Kode " + code + " berhasil disalin");
+
+        setTimeout(() => {
+
+            button.classList.remove("copied");
+
+            button.textContent = "Salin";
+
+            card.classList.remove("gcv-copy-click");
+
+        }, 1500);
 
     },
 
@@ -64,18 +96,30 @@ window.GocesVoucherCopy = {
 
 };
 
-document.addEventListener("click", function (e) {
+/*==================================
+        CLICK EVENT
+==================================*/
 
-    const button = e.target.closest(".gcv-copy");
+document.addEventListener(
 
-    if (!button) return;
+    "click",
 
-    e.preventDefault();
+    function (e) {
 
-    e.stopPropagation();
+        const button = e.target.closest(".gcv-copy");
 
-    e.stopImmediatePropagation();
+        if (!button) return;
 
-    GocesVoucherCopy.copy(button);
+        e.preventDefault();
 
-}, true);
+        e.stopPropagation();
+
+        e.stopImmediatePropagation();
+
+        GocesVoucherCopy.copy(button);
+
+    },
+
+    true
+
+);
