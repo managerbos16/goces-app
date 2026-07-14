@@ -898,7 +898,7 @@ function gprRenderVoucherData() {
 // =============================
 // INISIALISASI
 // =============================
-gprRenderVoucherData();
+/*gprRenderVoucherData();
 
 gprUpdateVoucherStatus();
 
@@ -911,7 +911,7 @@ setInterval(function () {
 
     gprUpdateCountdown();
 
-}, 60000);
+}, 60000); */
 
 // =========================
 // script pop up goces ai 
