@@ -145,7 +145,7 @@ svg {
 }
 
 .home-header {
-  background-color: var(--blue-800);
+  background-color: var(--blue-700);
   border-radius: 0 0 24px 24px;
   overflow: hidden;
   position: relative;
