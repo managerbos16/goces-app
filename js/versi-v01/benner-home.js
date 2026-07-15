@@ -1,12 +1,12 @@
 const gcsPromoBannerData = [
     {
-        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1782284731/ChatGPT_Image_24_Jun_2026_15.05.10_qvp4cm.png",
+        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784093398/ChatGPT_Image_15_Jul_2026_13.27.18_ntcsbk.png",
         link: "https://jgjk.mobi/m/423311195266a570da62f20f1.00665946",
         start: "2026-07-01 00:00:00",
         end: "2027-05-31 23:59:59"
     },
     {
-        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1781341610/ChatGPT_Image_13_Jun_2026_17.06.23_ykgu3b.png",
+        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784093577/ChatGPT_Image_15_Jul_2026_13.32.44_kzbuq9.png",
         link: "https://jgjk.mobi/m/065911195266a57139a54caf9.11693405",
         start: "2026-07-05 00:00:00",
         end: "2027-07-25 23:59:59"
