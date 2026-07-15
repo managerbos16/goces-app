@@ -1,7 +1,7 @@
 const gcsHalamanPromoBannerData = [
     {
         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784097642/ChatGPT_Image_15_Jul_2026_14.39.32_yp5ijn.png",
-        link: "promo-detail-1.html",
+        link: "#",
         start: "2026-07-01 00:00:00",
         end: "2027-07-31 23:59:59"
     }
