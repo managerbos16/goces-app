@@ -105,7 +105,7 @@ function gcsFoodBannerRender(activeBanners) {
 
     const title = document.createElement("h2");
     title.className = "gcsFoodBannerTitle";
-    title.textContent = "Promo Makanan";
+    title.textContent = "";
 
     header.appendChild(title);
     wrapper.appendChild(header);
