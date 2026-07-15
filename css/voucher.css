@@ -615,7 +615,7 @@ body {
 
   cursor: pointer;
 
-  background: #2563eb;
+  background: var(--blue-700);
 
   color: #fff;
 

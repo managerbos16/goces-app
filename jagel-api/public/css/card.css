@@ -65,7 +65,7 @@
   height: 34px;
   border: none;
   border-radius: 50%;
-  background: #1d4ed8;
+  background: var(--blue-700);
   color: #fff;
   font-size: 22px;
   cursor: pointer;
@@ -156,7 +156,7 @@
 
   border-radius: 999px;
 
-  background: #1a47de;
+  background: var(--blue-700);
 
   color: #fff;
 
@@ -282,7 +282,7 @@
 .gc-card__price {
   font-size: 17px;
   font-weight: 700;
-  color: #1a47de;
+  color: var(--blue-700);
   line-height: 1.2;
 }
 
@@ -299,7 +299,7 @@
 
   border-radius: 50%;
 
-  background: #1a47de;
+  background: var(--blue-700);
 
   color: #fff;
 
