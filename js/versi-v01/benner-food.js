@@ -1,7 +1,7 @@
 const gcsFoodBannerData = [
     {
-        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784097737/ChatGPT_Image_15_Jul_2026_14.42.05_c7if8c.png",
-        link: "merchant-food-1.html",
+        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784098093/ChatGPT_Image_15_Jul_2026_14.47.55_jo4few.png",
+        link: "https://jgjk.mobi/m/065911195266a57139a54caf9.11693405",
         start: "2026-07-01 00:00:00",
         end: "2027-07-31 23:59:59"
     },
