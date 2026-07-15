@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dokumentasi Merchant</title>
+    <style>
+        /* ==========================================================================
+           CSS VARIABLES (iOS Style)
+           ========================================================================== */
+        :root {
+            --bg: #F7F8FA;
+            --card: #FFFFFF;
+            --primary: #0A84FF;
+            --primary-active: #0070DF;
+            --border: #E5E7EB;
+            --text: #1C1C1E;
+            --subtitle: #6E6E73;
+            --success: #34C759;
+            --warning: #FF9F0A;
+            --danger: #FF3B30;
+            --danger-bg: #FFF5F5;
+            --warning-bg: #FFF9F0;
+            --radius-card: 20px;
+            --radius-btn: 14px;
+            --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.03);
+            --shadow-header: 0 1px 0 rgba(0, 0, 0, 0.05);
+            --shadow-bottom: 0 -1px 15px rgba(0, 0, 0, 0.04);
+            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+        }
+
+        /* ==========================================================================
+           RESET & BASE
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 110px;
+            /* Space for bottom action bar */
+        }
+
+        /* ==========================================================================
+           ANIMATIONS
+           ========================================================================== */
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        /* Staggered animation delays */
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        /* ==========================================================================
+           HEADER
+           ========================================================================== */
+        header {
+            position: sticky;
+            top: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-header);
+            z-index: 100;
+        }
+
+        .header-content {
+            width: 100%;
+            max-width: 700px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            background: none;
+            border: none;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        .btn-back svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .btn-back:active {
+            opacity: 0.6;
+        }
+
+        .header-title {
+            width: 100%;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+        }
+
+        /* ==========================================================================
+           CARDS & LAYOUT
+           ========================================================================== */
+        .card {
+            background-color: var(--card);
+            border-radius: var(--radius-card);
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-soft);
+            border: 0.5px solid var(--border);
+            transition: transform 0.25s ease;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card-red {
+            background-color: var(--danger-bg);
+            border: 0.5px solid rgba(255, 59, 48, 0.3);
+        }
+
+        .card-warning {
+            background-color: var(--warning-bg);
+            border: 0.5px solid rgba(255, 159, 10, 0.3);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .text-content {
+            font-size: 15px;
+            color: var(--subtitle);
+            margin-bottom: 12px;
+        }
+
+        .text-content:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Hero */
+        .hero-card {
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        .hero-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        /* ==========================================================================
+           COMPONENTS (Timelines, Checklists, Grids, Badges)
+           ========================================================================== */
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            margin-top: 8px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background-color: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--card);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: var(--subtitle);
+        }
+
+        .checklist li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Green Checkmark */
+        .check-green li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334C759' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* Red Cross */
+        .check-red li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF3B30' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* Simple List / Labels */
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .data-item {
+            background: var(--bg);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--subtitle);
+            border: 0.5px solid var(--border);
+        }
+
+        /* Grid Card for Documents */
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .doc-card {
+            background: var(--bg);
+            border: 0.5px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doc-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .doc-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        /* Badges */
+        .badges-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .badge-wait {
+            background: #F2F2F7;
+            color: #8E8E93;
+        }
+
+        .badge-review {
+            background: #E5F3FF;
+            color: var(--primary);
+        }
+
+        .badge-success {
+            background: #E8F8F0;
+            color: var(--success);
+        }
+
+        .badge-danger {
+            background: #FFEBEB;
+            color: var(--danger);
+        }
+
+        .badge-warning {
+            background: #FFF4E5;
+            color: var(--warning);
+        }
+
+        /* ==========================================================================
+           CUSTOM CHECKBOX
+           ========================================================================== */
+        .agreement-box {
+            margin-top: 16px;
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+
+        .agreement-box input {
+            display: none;
+            /* Hide default */
+        }
+
+        .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            background: var(--card);
+        }
+
+        .agreement-box input:checked+.checkbox-custom {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .agreement-box input:checked+.checkbox-custom::after {
+            content: "";
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-bottom: 2px;
+        }
+
+        .agreement-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.4;
+            padding-top: 2px;
+        }
+
+        /* ==========================================================================
+           BOTTOM ACTION BAR
+           ========================================================================== */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-bottom);
+            border-top: 0.5px solid var(--border);
+            z-index: 100;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .bottom-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            flex: 1;
+            height: 50px;
+            border-radius: var(--radius-btn);
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            letter-spacing: -0.3px;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-outline {
+            background: var(--card);
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #FFF;
+            border: none;
+        }
+
+        .btn-primary.disabled {
+            background: #D1D1D6;
+            color: #FFFFFF;
+            cursor: not-allowed;
+        }
+
+        .btn-primary.disabled:active {
+            transform: none;
+        }
+
+        /* ==========================================================================
+           iOS STYLE MODAL
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            width: 270px;
+            border-radius: 14px;
+            text-align: center;
+            transform: scale(1.1);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-content {
+            padding: 20px 16px;
+        }
+
+        .modal-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.4px;
+        }
+
+        .modal-text {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .modal-footer {
+            border-top: 0.5px solid rgba(60, 60, 67, 0.29);
+            display: flex;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .modal-btn:active {
+            background: rgba(0, 0, 0, 0.05);
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <button class="btn-back" onclick="location.href='action://act/back'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <div class="header-title">Dokumentasi Merchant</div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="card hero-card animate">
+            <div class="hero-icon">🏪</div>
+            <h1 class="hero-title">Dokumentasi Pendaftaran Merchant GOCES</h1>
+            <p class="text-content">Silakan membaca seluruh syarat dan ketentuan sebelum mendaftarkan usaha Anda sebagai
+                Merchant GOCES.</p>
+        </div>
+
+        <div class="card animate delay-1">
+            <h2 class="section-title">Selamat Datang</h2>
+            <p class="text-content">Merchant GOCES adalah mitra resmi yang dapat menjual produk dan layanannya secara
+                langsung melalui platform aplikasi GOCES. Bergabung bersama kami untuk memperluas jangkauan bisnis Anda.
+            </p>
+        </div>
+
+        <div class="card animate delay-1">
+            <h2 class="section-title">Tahapan Pendaftaran</h2>
+            <div class="timeline">
+                <div class="timeline-item">Membuat Akun</div>
+                <div class="timeline-item">Verifikasi Email</div>
+                <div class="timeline-item">Verifikasi Nomor HP</div>
+                <div class="timeline-item">Melengkapi Data Merchant</div>
+                <div class="timeline-item">Upload Dokumen</div>
+                <div class="timeline-item">Verifikasi Admin</div>
+                <div class="timeline-item">Merchant Aktif</div>
+            </div>
+        </div>
+
+        <div class="card animate delay-2">
+            <h2 class="section-title">Verifikasi Email</h2>
+            <p class="text-content">Email yang didaftarkan wajib dalam keadaan aktif. Kode OTP akan dikirimkan ke alamat
+                email tersebut. Merchant wajib melakukan verifikasi. Tanpa verifikasi email, akun tidak dapat diproses
+                lebih lanjut.</p>
+        </div>
+
+        <div class="card animate delay-2">
+            <h2 class="section-title">Verifikasi Nomor HP</h2>
+            <p class="text-content">Sistem akan mengirimkan kode OTP melalui SMS atau WhatsApp. Nomor handphone wajib
+                aktif. Satu nomor handphone hanya boleh digunakan untuk mendaftar pada satu akun merchant GOCES.</p>
+        </div>
+
+        <div class="card animate delay-3">
+            <h2 class="section-title">Persyaratan Merchant</h2>
+            <ul class="checklist check-green">
+                <li>Warga Negara Indonesia</li>
+                <li>Minimal usia 18 tahun</li>
+                <li>Memiliki usaha yang sah</li>
+                <li>Memiliki lokasi usaha yang jelas</li>
+                <li>Memiliki nomor HP aktif</li>
+                <li>Memiliki email aktif</li>
+                <li>Bersedia mengikuti aturan GOCES</li>
+            </ul>
+        </div>
+
+        <div class="card animate delay-3">
+            <h2 class="section-title">Data Merchant</h2>
+            <p class="text-content">Berikut adalah data yang wajib Anda lengkapi pada form pendaftaran:</p>
+            <div class="data-grid">
+                <div class="data-item">Nama Toko & Nama Pemilik</div>
+                <div class="data-item">Kategori Usaha</div>
+                <div class="data-item">Alamat Lengkap & Kode Pos</div>
+                <div class="data-item">Provinsi, Kab/Kota, Kec, Kel</div>
+                <div class="data-item">Jam Operasional Toko</div>
+                <div class="data-item">Nomor HP & Email</div>
+                <div class="data-item">Koordinat Lokasi (GPS)</div>
+            </div>
+        </div>
+
+        <div class="card animate delay-4">
+            <h2 class="section-title">Dokumen Wajib</h2>
+            <div class="doc-grid">
+                <div class="doc-card">
+                    <div class="doc-icon">🪪</div>
+                    <div class="doc-title">e-KTP Pemilik</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">🤳</div>
+                    <div class="doc-title">Selfie dg e-KTP</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">👤</div>
+                    <div class="doc-title">Foto Profil</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">🏪</div>
+                    <div class="doc-title">Tampak Depan</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">🛋️</div>
+                    <div class="doc-title">Dalam Toko</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">🪟</div>
+                    <div class="doc-title">Foto Etalase</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">📦</div>
+                    <div class="doc-title">Foto Produk</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">🖼️</div>
+                    <div class="doc-title">Logo (Opsional)</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-title">NPWP (Opsional)</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">📑</div>
+                    <div class="doc-title">NIB (Jika Ada)</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">📝</div>
+                    <div class="doc-title">SIUP (Jika Ada)</div>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">✅</div>
+                    <div class="doc-title">Halal (Jika Ada)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-warning animate delay-4">
+            <h2 class="section-title" style="color: var(--warning);">Ketentuan Foto</h2>
+            <p class="text-content">Mohon perhatikan panduan berikut agar foto dokumen tidak ditolak:</p>
+            <ul class="checklist check-green">
+                <li>Foto harus asli dan berwarna</li>
+                <li>Tidak blur (buram) atau gelap</li>
+                <li>Tidak melalui proses edit komputer</li>
+                <li>Tidak menggunakan filter kamera</li>
+                <li>Dokumen tidak boleh terpotong</li>
+                <li>Memiliki resolusi yang baik dan jelas</li>
+            </ul>
+        </div>
+
+        <div class="card animate delay-4">
+            <h2 class="section-title">Standar Merchant</h2>
+            <ul class="checklist check-green">
+                <li>Menjual produk yang legal dan sah</li>
+                <li>Tidak menjual barang terlarang</li>
+                <li>Memasang harga yang wajar dan sesuai</li>
+                <li>Memberikan informasi produk dengan jelas</li>
+                <li>Menjaga kualitas pelayanan pelanggan</li>
+                <li>Menjaga mutu dan kualitas produk</li>
+            </ul>
+        </div>
+
+        <div class="card card-red animate delay-5">
+            <h2 class="section-title" style="color: var(--danger);">Kategori Dilarang</h2>
+            <ul class="checklist check-red">
+                <li>Narkotika dan obat terlarang</li>
+                <li>Senjata api dan bahan peledak</li>
+                <li>Produk bajakan atau tiruan</li>
+                <li>Barang hasil curian</li>
+                <li>Jasa ilegal atau prostitusi</li>
+                <li>Konten pornografi</li>
+                <li>Barang berbahaya dan beracun</li>
+                <li>Produk yang melanggar hukum Indonesia</li>
+            </ul>
+        </div>
+
+        <div class="card animate delay-5">
+            <h2 class="section-title">Pemeriksaan Verifikasi</h2>
+            <p class="text-content">Tim Admin GOCES akan memeriksa secara menyeluruh meliputi: Kesesuaian Identitas,
+                kelengkapan Data Merchant, validitas Alamat dan Koordinat Lokasi, Nomor HP, Email, Foto Toko, Foto
+                Produk, serta keaslian Dokumen Usaha Anda.</p>
+        </div>
+
+        <div class="card animate delay-5">
+            <h2 class="section-title">Keamanan Sistem</h2>
+            <p class="text-content">Sistem kami dilengkapi dengan pengamanan cerdas untuk mencegah tindak kecurangan,
+                meliputi:</p>
+            <ul class="checklist check-green">
+                <li>Deteksi pembuatan akun ganda</li>
+                <li>Deteksi manipulasi foto digital</li>
+                <li>Deteksi penggunaan lokasi palsu (Fake GPS)</li>
+                <li>Deteksi indikasi spam system</li>
+                <li>Deteksi penyalahgunaan akun</li>
+            </ul>
+        </div>
+
+        <div class="card animate delay-5">
+            <h2 class="section-title">Penyebab Ditolak</h2>
+            <ul class="checklist check-red">
+                <li>Email belum diverifikasi</li>
+                <li>Nomor HP belum diverifikasi</li>
+                <li>Indikasi dokumen palsu atau editan</li>
+                <li>Foto toko tidak sesuai dengan lokasi</li>
+                <li>Data yang diinput tidak lengkap</li>
+                <li>Fisik usaha tidak ditemukan di lokasi</li>
+                <li>Kategori usaha termasuk barang dilarang</li>
+                <li>Menggunakan data identitas orang lain</li>
+            </ul>
+        </div>
+
+        <div class="card animate">
+            <h2 class="section-title">Estimasi Verifikasi</h2>
+            <div class="timeline">
+                <div class="timeline-item">Pengajuan Pendaftaran</div>
+                <div class="timeline-item">Verifikasi Admin (1-3 hari kerja)</div>
+                <div class="timeline-item">Status Persetujuan</div>
+            </div>
+            <p class="text-content" style="margin-top: 12px; font-size: 14px;">Catatan: Jika diperlukan survei lapangan
+                atau pemeriksaan tambahan, maka proses dapat berlangsung lebih lama dari estimasi standar.</p>
+        </div>
+
+        <div class="card animate">
+            <h2 class="section-title">Keamanan Data</h2>
+            <p class="text-content">Privasi dan keamanan data Anda adalah prioritas kami. Seluruh data merchant akan:
+            </p>
+            <ul class="checklist check-green">
+                <li>Disimpan dengan sistem yang sangat aman</li>
+                <li>Dienkripsi menggunakan standar keamanan tinggi</li>
+                <li>Tidak akan pernah diperjualbelikan</li>
+                <li>Digunakan murni hanya untuk operasional GOCES</li>
+            </ul>
+        </div>
+
+        <div class="card animate">
+            <h2 class="section-title">Hak dan Kewajiban</h2>
+            <p class="text-content" style="font-weight: 600; color: var(--text);">Hak Merchant:</p>
+            <ul class="checklist check-green" style="margin-bottom: 16px;">
+                <li>Menjual produk di platform GOCES</li>
+                <li>Menerima pesanan dari pelanggan</li>
+                <li>Melihat laporan dan metrik penjualan</li>
+                <li>Menggunakan fitur promosi merchant</li>
+            </ul>
+            <p class="text-content" style="font-weight: 600; color: var(--text);">Kewajiban Merchant:</p>
+            <ul class="checklist check-green">
+                <li>Memberikan pelayanan operasional terbaik</li>
+                <li>Menjual produk sesuai foto dan deskripsi</li>
+                <li>Menjaga kualitas dan standar kebersihan produk</li>
+                <li>Mematuhi seluruh aturan dan kebijakan GOCES</li>
+            </ul>
+        </div>
+
+        <div class="card animate">
+            <h2 class="section-title">Status Pendaftaran</h2>
+            <div class="badges-wrapper">
+                <span class="badge badge-wait">Menunggu Verifikasi</span>
+                <span class="badge badge-review">Sedang Ditinjau</span>
+                <span class="badge badge-success">Disetujui</span>
+                <span class="badge badge-danger">Ditolak</span>
+                <span class="badge badge-warning">Perlu Perbaikan Dokumen</span>
+            </div>
+        </div>
+
+        <div class="card animate" style="border: 1px solid var(--primary);">
+            <h2 class="section-title" style="color: var(--primary);">Persetujuan Merchant</h2>
+            <p class="text-content">Saya telah membaca seluruh dokumentasi Merchant GOCES.</p>
+            <p class="text-content">Saya memahami seluruh syarat dan ketentuan.</p>
+            <p class="text-content">Saya menyatakan seluruh data yang saya berikan adalah benar.</p>
+            <p class="text-content">Saya bersedia mematuhi seluruh aturan Merchant GOCES.</p>
+
+            <label class="agreement-box">
+                <input type="checkbox" id="checkAgreement">
+                <div class="checkbox-custom"></div>
+                <div class="agreement-text">Saya telah membaca, memahami, dan menyetujui seluruh syarat dan ketentuan
+                    Merchant GOCES.</div>
+            </label>
+        </div>
+
+    </main>
+
+    <div class="bottom-bar">
+        <div class="bottom-content">
+            <a href="https://jgjk.mobi/act/admin" class="btn btn-outline">Hubungi Admin</a>
+            <div id="btnRegister" class="btn btn-primary disabled">Daftar Sekarang</div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="iosModal">
+        <div class="modal-box">
+            <div class="modal-content">
+                <h3 class="modal-title">Perhatian</h3>
+                <p class="modal-text">Silakan centang persetujuan terlebih dahulu sebelum melanjutkan pendaftaran
+                    Merchant GOCES.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" id="btnModalClose">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkbox = document.getElementById('checkAgreement');
+            const btnRegister = document.getElementById('btnRegister');
+            const modal = document.getElementById('iosModal');
+            const btnModalClose = document.getElementById('btnModalClose');
+
+            // Handle Checkbox Change
+            checkbox.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    btnRegister.classList.remove('disabled');
+                } else {
+                    btnRegister.classList.add('disabled');
+                }
+            });
+
+            // Handle Register Button Click
+            btnRegister.addEventListener('click', () => {
+                if (btnRegister.classList.contains('disabled')) {
+                    // Show custom iOS modal
+                    modal.classList.add('active');
+                } else {
+                    // Redirect to registration
+                    window.location.href = 'https://jgjk.mobi/act/partner';
+                }
+            });
+
+            // Handle Modal Close
+            btnModalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

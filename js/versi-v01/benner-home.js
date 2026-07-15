@@ -1,28 +1,17 @@
 const gcsPromoBannerData = [
     {
         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1782284731/ChatGPT_Image_24_Jun_2026_15.05.10_qvp4cm.png",
-        link: "promo-gajian.html",
+        link: "https://jgjk.mobi/m/423311195266a570da62f20f1.00665946",
         start: "2026-07-01 00:00:00",
-        end: "2026-05-31 23:59:59"
+        end: "2027-05-31 23:59:59"
     },
     {
         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1781341610/ChatGPT_Image_13_Jun_2026_17.06.23_ykgu3b.png",
-        link: "promo-sneakers.html",
+        link: "https://jgjk.mobi/m/065911195266a57139a54caf9.11693405",
         start: "2026-07-05 00:00:00",
-        end: "2026-07-25 23:59:59"
-    },
-    {
-        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1781341128/ChatGPT_Image_13_Jun_2026_16.58.33_cnhr35.png",
-        link: "promo-audio.html",
-        start: "2026-07-08 00:00:00",
-        end: "2026-07-15 23:59:59"
-    },
-    {
-        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
-        link: "promo-jam-tangan.html",
-        start: "2026-05-01 00:00:00",
-        end: "2026-05-30 23:59:59"
+        end: "2027-07-25 23:59:59"
     }
+
 ];
 
 let gcsPromoBannerCurrentIndex = 0;

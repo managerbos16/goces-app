@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dokumentasi Pendaftaran Driver GOCES</title>
+    <style>
+        /* ==========================================================================
+           ROOT VARIABLES (APPLE iOS STYLE COLORS)
+           ========================================================================== */
+        :root {
+            --bg: #F7F8FA;
+            --card: #FFFFFF;
+            --primary: #0A84FF;
+            --border: #E5E7EB;
+            --text: #1C1C1E;
+            --subtitle: #6E6E73;
+            --success: #34C759;
+            --warning: #FF9F0A;
+            --danger: #FF3B30;
+            --radius-card: 20px;
+            --radius-btn: 14px;
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            --shadow-header: 0 1px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        /* ==========================================================================
+           RESET & TYPOGRAPHY
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            /* Remove tap highlight on mobile */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ==========================================================================
+           LAYOUT
+           ========================================================================== */
+        .app-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--bg);
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 110px;
+            /* Space for bottom action bar */
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================================
+           HEADER (STICKY)
+           ========================================================================== */
+        .header {
+            position: sticky;
+            top: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-header);
+            z-index: 100;
+            padding: 0 20px;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 16px;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-back:active {
+            opacity: 0.5;
+        }
+
+        /* ==========================================================================
+           CONTENT & ANIMATIONS
+           ========================================================================== */
+        .content {
+            padding: 20px;
+        }
+
+        @keyframes slideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anim-item {
+            opacity: 0;
+            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Adding slight delays for a cascading effect */
+        .delay-1 {
+            animation-delay: 0.05s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.15s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.2s;
+        }
+
+        /* ==========================================================================
+           CARDS
+           ========================================================================== */
+        .card {
+            background-color: var(--card);
+            border-radius: var(--radius-card);
+            padding: 22px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            /* Very thin border */
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card-header {
+            margin-bottom: 14px;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: var(--text);
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: var(--subtitle);
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+
+        .card-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            text-align: center;
+            padding: 32px 20px;
+            border-radius: 22px;
+        }
+
+        .hero-icon {
+            font-size: 56px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: var(--subtitle);
+            line-height: 1.4;
+        }
+
+        /* ==========================================================================
+           CHECKLISTS
+           ========================================================================== */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: var(--subtitle);
+            line-height: 1.4;
+        }
+
+        .checklist li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Custom SVG Green Checkmark for Checklist */
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2334C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* ==========================================================================
+           TIMELINE
+           ========================================================================== */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 6px;
+            bottom: 6px;
+            width: 1.5px;
+            background-color: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+            font-size: 15px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--card);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* ==========================================================================
+           BADGES
+           ========================================================================== */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .badge {
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .badge-menunggu {
+            background: #F2F2F7;
+            color: var(--subtitle);
+        }
+
+        .badge-diproses {
+            background: #EAF2FF;
+            color: var(--primary);
+        }
+
+        .badge-disetujui {
+            background: #EAF9EE;
+            color: var(--success);
+        }
+
+        .badge-ditolak {
+            background: #FFEBEE;
+            color: var(--danger);
+        }
+
+        .badge-perbaikan {
+            background: #FFF4E5;
+            color: var(--warning);
+        }
+
+        /* ==========================================================================
+           CUSTOM CHECKBOX (BOTTOM AGREEMENT)
+           ========================================================================== */
+        .agreement-card {
+            background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFC 100%);
+            border: 1px solid var(--primary);
+            margin-top: 32px;
+        }
+
+        .custom-checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 16px;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        .custom-checkbox-wrapper input {
+            display: none;
+            /* Hide native browser checkbox */
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            margin-right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+            flex-shrink: 0;
+            background-color: var(--card);
+        }
+
+        .custom-checkbox-wrapper input:checked+.checkmark {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .custom-checkbox-wrapper input:checked+.checkmark::after {
+            content: '';
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-bottom: 2px;
+        }
+
+        .checkbox-label {
+            font-size: 15px;
+            color: var(--text);
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           BOTTOM ACTION BAR
+           ========================================================================== */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 16px 20px 24px 20px;
+            /* Safe area padding */
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.04);
+            display: flex;
+            gap: 12px;
+            z-index: 90;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 52px;
+            border-radius: var(--radius-btn);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            opacity: 0;
+        }
+
+        .btn:active::after {
+            transform: translate(-50%, -50%) scale(2);
+            opacity: 1;
+            transition: 0s;
+        }
+
+        .btn-outline {
+            background: var(--card);
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #FFFFFF;
+            border: none;
+        }
+
+        /* Disabled state styling for Primary Button */
+        .btn-primary.disabled {
+            opacity: 0.4;
+        }
+
+        /* ==========================================================================
+           CUSTOM iOS MODAL (ALERT)
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            width: 270px;
+            border-radius: 14px;
+            text-align: center;
+            transform: scale(1.1);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-overlay.show .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-content {
+            padding: 20px 16px;
+        }
+
+        .modal-content h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.4px;
+            color: var(--text);
+        }
+
+        .modal-content p {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.35;
+            letter-spacing: -0.1px;
+        }
+
+        .modal-footer {
+            border-top: 0.5px solid rgba(60, 60, 67, 0.29);
+        }
+
+        .modal-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 17px;
+            font-weight: 600;
+            padding: 12px 0;
+            cursor: pointer;
+            letter-spacing: -0.4px;
+            transition: background 0.2s;
+        }
+
+        .modal-btn:active {
+            background: rgba(0, 0, 0, 0.05);
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <header class="header">
+            <button class="btn-back" onclick="location.href='action://act/back'" aria-label="Kembali">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <div class="header-title">Dokumentasi Driver</div>
+        </header>
+
+        <main class="content">
+
+            <div class="card hero anim-item delay-1">
+                <div class="hero-icon">👨‍✈️</div>
+                <h1 class="hero-title">Dokumentasi Pendaftaran Driver GOCES</h1>
+                <p class="hero-subtitle">Silakan membaca seluruh persyaratan sebelum melanjutkan proses pendaftaran.</p>
+            </div>
+
+            <div class="card anim-item delay-2">
+                <div class="card-header">
+                    <h2 class="card-title">Selamat Datang</h2>
+                </div>
+                <p class="card-text">Halo, Calon Mitra Driver GOCES!</p>
+                <p class="card-text">Halaman ini memuat seluruh panduan resmi, syarat kelayakan, serta regulasi yang
+                    harus dipenuhi sebelum akun Anda diverifikasi. Proses identifikasi yang ketat diterapkan demi
+                    menjaga keamanan dan kenyamanan seluruh pengguna ekosistem GOCES.</p>
+            </div>
+
+            <div class="card anim-item delay-2">
+                <div class="card-header">
+                    <h2 class="card-title">Tahapan Pendaftaran</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">Membuat akun melalui aplikasi</div>
+                    <div class="timeline-item">Verifikasi Email & Nomor HP</div>
+                    <div class="timeline-item">Melengkapi data diri & dokumen</div>
+                    <div class="timeline-item">Proses review oleh tim Admin GOCES</div>
+                    <div class="timeline-item">Akun Driver diaktifkan</div>
+                </div>
+            </div>
+
+            <div class="card anim-item delay-3">
+                <div class="card-header">
+                    <h2 class="card-title">Verifikasi Email & Nomor HP</h2>
+                </div>
+                <p class="card-text"><strong>Verifikasi Email:</strong> Sistem akan mengirimkan kode OTP ke alamat email
+                    Anda. Pastikan email dalam keadaan aktif dan terhubung dengan perangkat Anda. Akun tidak dapat
+                    digunakan jika email belum diverifikasi.</p>
+                <p class="card-text"><strong>Verifikasi Nomor HP:</strong> Nomor telepon harus aktif untuk menerima kode
+                    OTP via SMS atau WhatsApp. Satu nomor HP hanya diizinkan untuk satu akun GOCES.</p>
+            </div>
+
+            <div class="card anim-item delay-3">
+                <div class="card-header">
+                    <h2 class="card-title">Persyaratan Umum</h2>
+                </div>
+                <ul class="checklist">
+                    <li>Warga Negara Indonesia (WNI)</li>
+                    <li>Minimal berusia 18 tahun</li>
+                    <li>Sehat secara jasmani dan rohani</li>
+                    <li>Memiliki kendaraan bermotor pribadi</li>
+                    <li>Memiliki SIM (Surat Izin Mengemudi) yang masih berlaku</li>
+                    <li>Memiliki STNK kendaraan yang aktif</li>
+                    <li>Tidak masuk dalam daftar hitam (blacklist) aplikator lain</li>
+                    <li>Bersedia mematuhi peraturan komunitas GOCES</li>
+                </ul>
+            </div>
+
+            <div class="card anim-item delay-4">
+                <div class="card-header">
+                    <h2 class="card-title">Dokumen Wajib</h2>
+                </div>
+                <ul class="checklist">
+                    <li>Kartu Tanda Penduduk (e-KTP) asli</li>
+                    <li>Foto selfie sambil memegang e-KTP</li>
+                    <li>Surat Izin Mengemudi (SIM) asli</li>
+                    <li>Surat Tanda Nomor Kendaraan (STNK) asli</li>
+                    <li>Foto kendaraan dari sisi depan, belakang, kanan, dan kiri</li>
+                    <li>Foto plat nomor kendaraan yang terlihat jelas</li>
+                    <li>Pas foto untuk profil aplikasi (terang & sopan)</li>
+                    <li>Surat Keterangan Catatan Kepolisian (SKCK)</li>
+                    <li>NPWP (Opsional)</li>
+                </ul>
+            </div>
+
+            <div class="card anim-item delay-4">
+                <div class="card-header">
+                    <h2 class="card-title">Ketentuan Upload Foto</h2>
+                </div>
+                <ul class="checklist">
+                    <li>Foto tidak boleh blur, buram, atau terdapat pantulan cahaya berlebih</li>
+                    <li>Sisi-sisi dokumen tidak boleh terpotong (harus terlihat utuh)</li>
+                    <li>Dilarang mengedit atau memanipulasi dokumen dalam bentuk apapun</li>
+                    <li>Tidak diperbolehkan menggunakan filter kamera digital</li>
+                    <li>Wajah pada foto selfie harus terlihat sangat jelas dan sesuai e-KTP</li>
+                    <li>Pastikan seluruh dokumen belum melewati masa berlaku (expired)</li>
+                </ul>
+            </div>
+
+            <div class="card anim-item delay-4">
+                <div class="card-header">
+                    <h2 class="card-title">Persyaratan Kendaraan</h2>
+                </div>
+                <ul class="checklist">
+                    <li>Kendaraan dalam kondisi layak jalan secara mekanis dan estetika</li>
+                    <li>Pajak kendaraan dalam status hidup/aktif</li>
+                    <li>STNK kendaraan dalam status aktif</li>
+                    <li>Nomor plat kendaraan fisik harus sama persis dengan di STNK</li>
+                    <li>Kendaraan bukan merupakan hasil tindak pidana/ilegal</li>
+                </ul>
+            </div>
+
+            <div class="card anim-item">
+                <div class="card-header">
+                    <h2 class="card-title">Pemeriksaan Verifikasi & Keamanan</h2>
+                </div>
+                <p class="card-text"><strong>Pemeriksaan Dokumen:</strong> Admin akan meninjau keabsahan identitas, SIM,
+                    STNK, serta mencocokkan wajah pada selfie dengan dokumen resmi Anda.</p>
+                <p class="card-text"><strong>Sistem Keamanan:</strong> GOCES dilengkapi dengan teknologi pintar yang
+                    dapat mendeteksi pendaftaran akun ganda, penggunaan identitas palsu, manipulasi foto digital
+                    (Photoshop/AI), penggunaan perangkat ter-root (mencurigakan), serta manipulasi lokasi (Fake GPS).
+                </p>
+            </div>
+
+            <div class="card anim-item">
+                <div class="card-header">
+                    <h2 class="card-title">Penyebab Penolakan Pendaftaran</h2>
+                </div>
+                <ul class="checklist">
+                    <li>Verifikasi email atau nomor handphone belum diselesaikan</li>
+                    <li>Masa berlaku SIM atau STNK telah habis (mati)</li>
+                    <li>Kualitas foto dokumen blur atau tidak dapat dibaca</li>
+                    <li>Terindikasi melakukan pengeditan atau pemalsuan dokumen</li>
+                    <li>Data diri yang dimasukkan tidak cocok dengan foto dokumen</li>
+                    <li>Menggunakan data identitas milik orang lain</li>
+                    <li>Terdeteksi mencoba mendaftarkan akun ganda</li>
+                </ul>
+            </div>
+
+            <div class="card anim-item">
+                <div class="card-header">
+                    <h2 class="card-title">Estimasi Verifikasi & Keamanan Data</h2>
+                </div>
+                <p class="card-text"><strong>Estimasi Verifikasi:</strong> Pengecekan data standar membutuhkan waktu 1-3
+                    hari kerja. Proses dapat memakan waktu lebih lama jika diperlukan pemeriksaan tingkat lanjut.</p>
+                <p class="card-text"><strong>Keamanan Data:</strong> Privasi Anda adalah prioritas. Seluruh data pribadi
+                    yang Anda unggah disimpan di peladen (server) yang aman, dienkripsi penuh, tidak akan pernah
+                    diperjualbelikan kepada pihak ketiga, dan digunakan murni untuk keperluan operasional aplikasi
+                    GOCES.</p>
+            </div>
+
+            <div class="card anim-item">
+                <div class="card-header">
+                    <h2 class="card-title">Status Pendaftaran</h2>
+                </div>
+                <p class="card-text">Arti dari setiap lencana status di aplikasi Anda:</p>
+                <div class="badge-container">
+                    <span class="badge badge-menunggu">Menunggu</span>
+                    <span class="badge badge-diproses">Diproses</span>
+                    <span class="badge badge-disetujui">Disetujui</span>
+                    <span class="badge badge-ditolak">Ditolak</span>
+                    <span class="badge badge-perbaikan">Perlu Perbaikan</span>
+                </div>
+            </div>
+
+            <div class="card agreement-card anim-item">
+                <div class="card-header">
+                    <h2 class="card-title">Persetujuan Driver</h2>
+                </div>
+                <p class="card-text">Saya telah membaca seluruh dokumentasi pendaftaran Driver GOCES.</p>
+                <p class="card-text">Saya memahami seluruh syarat dan ketentuan.</p>
+                <p class="card-text">Saya menyatakan seluruh data yang akan saya kirim adalah benar.</p>
+                <p class="card-text">Saya bersedia mengikuti seluruh peraturan GOCES.</p>
+
+                <label class="custom-checkbox-wrapper">
+                    <input type="checkbox" id="agreementCheck">
+                    <div class="checkmark"></div>
+                    <div class="checkbox-label">Saya telah membaca, memahami, dan menyetujui seluruh syarat dan
+                        ketentuan Driver GOCES.</div>
+                </label>
+            </div>
+
+        </main>
+
+        <div class="bottom-bar">
+            <a href="https://jgjk.mobi/act/admin" class="btn btn-outline">Hubungi Admin</a>
+            <div id="btnRegister" class="btn btn-primary disabled">Daftar Sekarang</div>
+        </div>
+
+    </div>
+
+    <div id="iosModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-content">
+                <h3>Perhatian</h3>
+                <p>Silakan centang persetujuan terlebih dahulu sebelum melanjutkan pendaftaran.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkbox = document.getElementById('agreementCheck');
+            const btnRegister = document.getElementById('btnRegister');
+            const modal = document.getElementById('iosModal');
+
+            // Listen for checkbox changes to toggle button state
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    btnRegister.classList.remove('disabled');
+                } else {
+                    btnRegister.classList.add('disabled');
+                }
+            });
+
+            // Handle Register button click
+            btnRegister.addEventListener('click', function (e) {
+                // If checkbox is not checked, show iOS modal alert
+                if (!checkbox.checked) {
+                    e.preventDefault();
+                    modal.classList.add('show');
+                } else {
+                    // If checked, redirect to driver registration link
+                    window.location.href = 'https://jgjk.mobi/act/driver';
+                }
+            });
+        });
+
+        // Function to close the custom modal
+        function closeModal() {
+            const modal = document.getElementById('iosModal');
+            modal.classList.remove('show');
+        }
+    </script>
+
+</body>
+
+</html>
