@@ -1,256 +1,254 @@
 const gcsPromoBannerData = [
-
     {
         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1782284731/ChatGPT_Image_24_Jun_2026_15.05.10_qvp4cm.png",
         link: "promo-gajian.html",
         start: "2026-07-01 00:00:00",
         end: "2026-07-31 23:59:59"
     },
-
     {
         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1781341610/ChatGPT_Image_13_Jun_2026_17.06.23_ykgu3b.png",
         link: "promo-sneakers.html",
         start: "2026-07-05 00:00:00",
         end: "2026-07-25 23:59:59"
     },
-
     {
         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1781341128/ChatGPT_Image_13_Jun_2026_16.58.33_cnhr35.png",
         link: "promo-audio.html",
         start: "2026-07-08 00:00:00",
         end: "2026-07-15 23:59:59"
     },
-
     {
         image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
         link: "promo-jam-tangan.html",
         start: "2026-05-01 00:00:00",
         end: "2026-05-30 23:59:59"
     }
-
 ];
 
-// --- VARIABEL KONTROL INTERNAL SLIDER GOCES ---
 let gcsPromoBannerCurrentIndex = 0;
 let gcsPromoBannerActiveItems = [];
 let gcsPromoBannerTimer = null;
+let gcsPromoBannerScheduleTimer = null;
 let gcsPromoBannerTouchStartX = 0;
 let gcsPromoBannerTouchEndX = 0;
 
-// Eksekusi komponen saat DOM selesai dimuat sepenuhnya
 document.addEventListener("DOMContentLoaded", () => {
     gcsPromoBannerInit();
 });
 
-/**
- * Fungsi Utama Inisialisasi Jalur Alur Komponen Banner Promo
- */
 function gcsPromoBannerInit() {
-    gcsPromoBannerActiveItems = gcsPromoBannerCheckSchedule(gcsPromoBannerData);
+    gcsPromoBannerRefresh();
+
+    clearInterval(gcsPromoBannerScheduleTimer);
+
+    gcsPromoBannerScheduleTimer = setInterval(() => {
+        gcsPromoBannerRefresh();
+    }, 60000);
+}
+
+function gcsPromoBannerRefresh() {
+    gcsPromoBannerActiveItems =
+        gcsPromoBannerCheckSchedule(gcsPromoBannerData);
+
+    gcsPromoBannerCurrentIndex = 0;
+
     gcsPromoBannerRender(gcsPromoBannerActiveItems);
 }
 
-/**
- * Melakukan validasi pencocokan waktu internal server/client saat ini
- * @param {Array} bannerList - Koleksi array konfigurasi master banner
- * @returns {Array} - Koleksi data banner yang lolos kualifikasi waktu aktif
- */
 function gcsPromoBannerCheckSchedule(bannerList) {
-    const gcsPromoBannerNow = new Date().getTime();
+    const now = Date.now();
 
     return bannerList.filter(item => {
-        // Parsing string tanggal "YYYY-MM-DD HH:mm:ss" ke format timestamp browser
-        const gcsPromoBannerStartTime = new Date(item.start.replace(/-/g, "/")).getTime();
-        const gcsPromoBannerEndTime = new Date(item.end.replace(/-/g, "/")).getTime();
+        const start = new Date(
+            item.start.replace(" ", "T")
+        ).getTime();
 
-        // Syarat kelayakan tampil: start <= sekarang <= end
-        return gcsPromoBannerNow >= gcsPromoBannerStartTime && gcsPromoBannerNow <= gcsPromoBannerEndTime;
+        const end = new Date(
+            item.end.replace(" ", "T")
+        ).getTime();
+
+        return Number.isFinite(start) &&
+            Number.isFinite(end) &&
+            now >= start &&
+            now <= end;
     });
 }
 
-/**
- * Menyusun komponen visual DOM secara dinamis berdasarkan data terfilter
- * @param {Array} activeBanners - Koleksi data banner aktif
- */
 function gcsPromoBannerRender(activeBanners) {
-    const gcsPromoBannerMainWrapper = document.getElementById("gcsPromoBannerContainer");
-    if (!gcsPromoBannerMainWrapper) return;
+    const wrapper = document.getElementById(
+        "gcsPromoBannerContainer"
+    );
 
-    // JIKA TIDAK ADA BANNER AKTIF: Eksekusi Frame Otomatis Kosong (Kolaps Total)
+    if (!wrapper) return;
+
+    const section = wrapper.closest(
+        ".gcsPromoBannerSection"
+    );
+
+    clearInterval(gcsPromoBannerTimer);
+    gcsPromoBannerTimer = null;
+
+    wrapper.innerHTML = "";
+
     if (activeBanners.length === 0) {
-        gcsPromoBannerMainWrapper.classList.add("gcsPromoBannerCollapse");
-        gcsPromoBannerMainWrapper.innerHTML = "";
+        wrapper.classList.add("gcsPromoBannerCollapse");
+
+        if (section) {
+            section.hidden = true;
+        }
+
         return;
     }
 
-    // JIKA ADA BANNER AKTIF: Cabut status kolaps jika sebelumnya sempat terpasang
-    gcsPromoBannerMainWrapper.classList.remove("gcsPromoBannerCollapse");
+    wrapper.classList.remove("gcsPromoBannerCollapse");
 
-    // Pembuatan Blok Judul Komponen ("Promo Menarik")
-    const gcsPromoBannerHeaderNode = document.createElement("div");
-    gcsPromoBannerHeaderNode.classList.add("gcsPromoBannerHeader");
+    if (section) {
+        section.hidden = false;
+    }
 
-    const gcsPromoBannerTitleNode = document.createElement("h2");
-    gcsPromoBannerTitleNode.classList.add("gcsPromoBannerTitle");
-    gcsPromoBannerTitleNode.textContent = "Promo Menarik";
-    gcsPromoBannerHeaderNode.appendChild(gcsPromoBannerTitleNode);
-    gcsPromoBannerMainWrapper.appendChild(gcsPromoBannerHeaderNode);
+    const header = document.createElement("div");
+    header.className = "gcsPromoBannerHeader";
 
-    // Pembuatan Viewport Slider Utama
-    const gcsPromoBannerSliderNode = document.createElement("div");
-    gcsPromoBannerSliderNode.classList.add("gcsPromoBannerSlider");
+    const title = document.createElement("h2");
+    title.className = "gcsPromoBannerTitle";
+    title.textContent = "Promo Menarik";
 
-    // Pembuatan Flex Track Papan Slide Banner
-    const gcsPromoBannerTrackNode = document.createElement("div");
-    gcsPromoBannerTrackNode.classList.add("gcsPromoBannerTrack");
-    gcsPromoBannerTrackNode.id = "gcsPromoBannerTrackEl";
+    header.appendChild(title);
+    wrapper.appendChild(header);
 
-    // Membangun list item promo secara iteratif
+    const slider = document.createElement("div");
+    slider.className = "gcsPromoBannerSlider";
+
+    const track = document.createElement("div");
+    track.className = "gcsPromoBannerTrack";
+    track.id = "gcsPromoBannerTrackEl";
+
     activeBanners.forEach(banner => {
-        const gcsPromoBannerItemNode = document.createElement("div");
-        gcsPromoBannerItemNode.classList.add("gcsPromoBannerItem");
+        const item = document.createElement("div");
+        item.className = "gcsPromoBannerItem";
 
-        const gcsPromoBannerAnchorNode = document.createElement("a");
-        gcsPromoBannerAnchorNode.classList.add("gcsPromoBannerLink");
-        gcsPromoBannerAnchorNode.setAttribute("href", banner.link);
+        const link = document.createElement("a");
+        link.className = "gcsPromoBannerLink";
+        link.href = banner.link;
 
-        const gcsPromoBannerImgNode = document.createElement("img");
-        gcsPromoBannerImgNode.classList.add("gcsPromoBannerImage");
-        gcsPromoBannerImgNode.setAttribute("src", banner.image);
-        gcsPromoBannerImgNode.setAttribute("alt", "GOCES Promo Banner");
-        gcsPromoBannerImgNode.setAttribute("loading", "lazy");
+        const image = document.createElement("img");
+        image.className = "gcsPromoBannerImage";
+        image.src = banner.image;
+        image.alt = "GOCES Promo Banner";
+        image.loading = "lazy";
 
-        gcsPromoBannerAnchorNode.appendChild(gcsPromoBannerImgNode);
-        gcsPromoBannerItemNode.appendChild(gcsPromoBannerAnchorNode);
-        gcsPromoBannerTrackNode.appendChild(gcsPromoBannerItemNode);
+        link.appendChild(image);
+        item.appendChild(link);
+        track.appendChild(item);
     });
 
-    gcsPromoBannerSliderNode.appendChild(gcsPromoBannerTrackNode);
-    gcsPromoBannerMainWrapper.appendChild(gcsPromoBannerSliderNode);
+    slider.appendChild(track);
+    wrapper.appendChild(slider);
 
-    // Pembuatan Sistem Dot Indikator Navigasi
-    gcsPromoBannerCreateDots(activeBanners.length, gcsPromoBannerMainWrapper);
+    gcsPromoBannerCreateDots(activeBanners.length, wrapper);
 
-    // Mengaktifkan fitur tambahan pendukung interaksi lanjut jika item > 1
     if (activeBanners.length > 1) {
         gcsPromoBannerAutoSlide();
-        gcsPromoBannerSwipe(gcsPromoBannerSliderNode);
+        gcsPromoBannerSwipe(slider);
     }
 }
 
-/**
- * Mengelola visibilitas dan pembuatan Dot Indicator secara presisi sesuai instruksi jumlah
- * @param {number} totalActiveBanners - Total item terhitung aktif saat ini
- * @param {HTMLElement} parentWrapper - Node kontainer tempat menempelkan dot
- */
-function gcsPromoBannerCreateDots(totalActiveBanners, parentWrapper) {
-    const gcsPromoBannerDotsContainer = document.createElement("div");
-    gcsPromoBannerDotsContainer.classList.add("gcsPromoBannerDots");
-    gcsPromoBannerDotsContainer.id = "gcsPromoBannerDotsContainerEl";
+function gcsPromoBannerCreateDots(total, parent) {
+    const dots = document.createElement("div");
+    dots.className = "gcsPromoBannerDots";
+    dots.id = "gcsPromoBannerDotsContainerEl";
 
-    // ATURAN VALIDASI DOT INDICATOR:
-    // Jika aktif hanya 1 ATAU lebih dari 5, dot wajib disembunyikan.
-    if (totalActiveBanners === 1 || totalActiveBanners > 5) {
-        gcsPromoBannerDotsContainer.classList.add("gcsPromoBannerHidden");
+    if (total === 1 || total > 5) {
+        dots.classList.add("gcsPromoBannerHidden");
     }
 
-    // Buat titik navigasi bulat secara berulang
-    for (let i = 0; i < totalActiveBanners; i++) {
-        const gcsPromoBannerDotNode = document.createElement("span");
-        gcsPromoBannerDotNode.classList.add("gcsPromoBannerDot");
-        if (i === 0) {
-            gcsPromoBannerDotNode.classList.add("gcsPromoPromoBannerActive");
+    for (let index = 0; index < total; index++) {
+        const dot = document.createElement("span");
+        dot.className = "gcsPromoBannerDot";
+
+        if (index === 0) {
+            dot.classList.add(
+                "gcsPromoPromoBannerActive"
+            );
         }
-        gcsPromoBannerDotsContainer.appendChild(gcsPromoBannerDotNode);
+
+        dots.appendChild(dot);
     }
 
-    parentWrapper.appendChild(gcsPromoBannerDotsContainer);
+    parent.appendChild(dots);
 }
 
-/**
- * Memindahkan track geser slider ke indeks banner sasaran secara halus
- * @param {number} indexTarget - Indeks urutan slide tujuan
- */
-function gcsPromoBannerGoToSlide(indexTarget) {
-    const gcsPromoBannerTrackEl = document.getElementById("gcsPromoBannerTrackEl");
-    const gcsPromoBannerDotsContainerEl = document.getElementById("gcsPromoBannerDotsContainerEl");
+function gcsPromoBannerGoToSlide(index) {
+    const track = document.getElementById(
+        "gcsPromoBannerTrackEl"
+    );
 
-    if (!gcsPromoBannerTrackEl) return;
+    const dots = document.getElementById(
+        "gcsPromoBannerDotsContainerEl"
+    );
 
-    gcsPromoBannerCurrentIndex = indexTarget;
+    const total = gcsPromoBannerActiveItems.length;
 
-    // Geser posisi track horizontal menggunakan sumbu CSS Transform X%
-    gcsPromoBannerTrackEl.style.transform = `translateX(-${gcsPromoBannerCurrentIndex * 100}%)`;
+    if (!track || total === 0) return;
 
-    // Perbarui visualisasi status dot aktif jika komponen dot tidak disembunyikan
-    if (gcsPromoBannerDotsContainerEl && !gcsPromoBannerDotsContainerEl.classList.contains("gcsPromoBannerHidden")) {
-        const gcsPromoBannerDotCollection = gcsPromoBannerDotsContainerEl.querySelectorAll(".gcsPromoBannerDot");
-        gcsPromoBannerDotCollection.forEach((dot, index) => {
-            if (index === gcsPromoBannerCurrentIndex) {
-                dot.classList.add("gcsPromoPromoBannerActive");
-            } else {
-                dot.classList.remove("gcsPromoPromoBannerActive");
-            }
-        });
+    gcsPromoBannerCurrentIndex =
+        (index + total) % total;
+
+    track.style.transform =
+        `translateX(-${gcsPromoBannerCurrentIndex * 100}%)`;
+
+    if (dots &&
+        !dots.classList.contains("gcsPromoBannerHidden")) {
+        dots.querySelectorAll(".gcsPromoBannerDot")
+            .forEach((dot, dotIndex) => {
+                dot.classList.toggle(
+                    "gcsPromoPromoBannerActive",
+                    dotIndex === gcsPromoBannerCurrentIndex
+                );
+            });
     }
 }
 
-/**
- * Mengatur perputaran interval rotasi berkala otomatis (Auto Slide 4000ms)
- */
 function gcsPromoBannerAutoSlide() {
+    clearInterval(gcsPromoBannerTimer);
+
+    if (gcsPromoBannerActiveItems.length <= 1) return;
+
     gcsPromoBannerTimer = setInterval(() => {
-        let nextIndex = gcsPromoBannerCurrentIndex + 1;
-        if (nextIndex >= gcsPromoBannerActiveItems.length) {
-            nextIndex = 0; // Reset berputar kembali ke slide perdana
-        }
-        gcsPromoBannerGoToSlide(nextIndex);
-    }, 4000); // Batas durasi transisi berkala wajib 4000ms
+        gcsPromoBannerGoToSlide(
+            gcsPromoBannerCurrentIndex + 1
+        );
+    }, 4000);
 }
 
-/**
- * Menghidupkan pendeteksi gestur usapan layar (Touch Support Swipe Kiri / Kanan) perangkat mobile
- * @param {HTMLElement} sliderElement - Elemen sensitif tangkapan sentuh area slider
- */
-function gcsPromoBannerSwipe(sliderElement) {
-    // Tangkap koordinat awal jari menyentuh panel banner
-    sliderElement.addEventListener("touchstart", (e) => {
-        gcsPromoBannerTouchStartX = e.changedTouches[0].screenX;
-        clearInterval(gcsPromoBannerTimer); // Amankan transisi otomatis dari bentrokan interaksi manual
+function gcsPromoBannerSwipe(slider) {
+    slider.addEventListener("touchstart", event => {
+        gcsPromoBannerTouchStartX =
+            event.changedTouches[0].screenX;
+
+        clearInterval(gcsPromoBannerTimer);
     }, { passive: true });
 
-    // Tangkap koordinat akhir saat jari diangkat dari permukaan panel layar
-    sliderElement.addEventListener("touchend", (e) => {
-        gcsPromoBannerTouchEndX = e.changedTouches[0].screenX;
-        gcsPromoBannerHandleSwipeGesture();
+    slider.addEventListener("touchend", event => {
+        gcsPromoBannerTouchEndX =
+            event.changedTouches[0].screenX;
 
-        // Hidupkan kembali putaran auto slide setelah interaksi usap manual selesai dilakukan
-        clearInterval(gcsPromoBannerTimer);
+        const distance =
+            gcsPromoBannerTouchStartX -
+            gcsPromoBannerTouchEndX;
+
+        if (distance > 45) {
+            gcsPromoBannerGoToSlide(
+                gcsPromoBannerCurrentIndex + 1
+            );
+        }
+
+        if (distance < -45) {
+            gcsPromoBannerGoToSlide(
+                gcsPromoBannerCurrentIndex - 1
+            );
+        }
+
         gcsPromoBannerAutoSlide();
     }, { passive: true });
-}
-
-/**
- * Mengevaluasi kalkulasi jarak geser usapan jari untuk memicu perpindahan halaman slide
- */
-function gcsPromoBannerHandleSwipeGesture() {
-    const gcsPromoBannerSwipeThreshold = 45; // Batas minimum piksel usapan agar dinilai sebagai aksi valid
-
-    // Kasus Swipe ke Arah Kiri (Membuka Banner Berikutnya)
-    if (gcsPromoBannerTouchStartX - gcsPromoBannerTouchEndX > gcsPromoBannerSwipeThreshold) {
-        if (gcsPromoBannerCurrentIndex < gcsPromoBannerActiveItems.length - 1) {
-            gcsPromoBannerGoToSlide(gcsPromoBannerCurrentIndex + 1);
-        } else {
-            gcsPromoBannerGoToSlide(0); // Siklus berputar kembali ke awal jika usap di ujung akhir
-        }
-    }
-
-    // Kasus Swipe ke Arah Kanan (Membuka Banner Sebelumnya)
-    if (gcsPromoBannerTouchEndX - gcsPromoBannerTouchStartX > gcsPromoBannerSwipeThreshold) {
-        if (gcsPromoBannerCurrentIndex > 0) {
-            gcsPromoBannerGoToSlide(gcsPromoBannerCurrentIndex - 1);
-        } else {
-            gcsPromoBannerGoToSlide(gcsPromoBannerActiveItems.length - 1); // Lompat ke ujung akhir jika usap di ujung awal
-        }
-    }
 }

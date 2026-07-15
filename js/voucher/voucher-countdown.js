@@ -12,7 +12,7 @@ window.GocesVoucherCountdown = {
 
             this.update();
 
-        }, 60000);
+        }, 1000);
 
     },
 
@@ -110,13 +110,37 @@ window.GocesVoucherCountdown = {
 
         });
 
+        this.updateHorizontalSections();
+
         this.updateVoucherCount();
+
 
     },
 
     // ==================================
     // SINKRONKAN SEMUA HALAMAN
     // ==================================
+
+    updateHorizontalSections() {
+
+        document.querySelectorAll(".gcvh-section").forEach(section => {
+
+            const hasVisibleVoucher = Array.from(
+                section.querySelectorAll(".gcv-card")
+            ).some(card => {
+
+                return card.style.display !== "none";
+
+            });
+
+            section.style.display =
+                hasVisibleVoucher
+                    ? ""
+                    : "none";
+
+        });
+
+    },
 
     syncVoucher(id, visible) {
 
