@@ -1,44 +1,17 @@
-// ===================================================
-// PENGATURAN BANNER HALAMAN PROMO
-// Tambahkan banner baru di bawah ini
-// ===================================================
 const gcsHalamanPromoBannerData = [
     {
-        // ===================================================
-        // GANTI GAMBAR BANNER
-        // ===================================================
         image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80",
-        // ===================================================
-        // GANTI LINK PROMO
-        // ===================================================
         link: "promo-detail-1.html",
-        // ===================================================
-        // ATUR TANGGAL MULAI PROMO
-        // Format: YYYY-MM-DD HH:mm:ss
-        // ===================================================
         start: "2026-07-01 00:00:00",
-        // ===================================================
-        // ATUR TANGGAL BERAKHIR PROMO
-        // Banner otomatis hilang setelah melewati tanggal ini
-        // ===================================================
         end: "2026-07-31 23:59:59"
-    },
-    {
-        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
-        link: "promo-detail-2.html",
-        start: "2026-07-01 00:00:00",
-        end: "2026-07-28 23:59:59"
-    },
-    // ===================================================
-    // TAMBAHKAN BANNER BARU
-    // Salin object di bawah ini
-    // ===================================================
+    }
+
 ];
 
-// --- VARIABEL STATE ---
 let gcsHalamanPromoBannerCurrentIndex = 0;
 let gcsHalamanPromoBannerActiveItems = [];
 let gcsHalamanPromoBannerTimer = null;
+let gcsHalamanPromoBannerScheduleTimer = null;
 let gcsHalamanPromoBannerTouchStartX = 0;
 let gcsHalamanPromoBannerTouchEndX = 0;
 
@@ -46,152 +19,238 @@ document.addEventListener("DOMContentLoaded", () => {
     gcsHalamanPromoBannerInit();
 });
 
-/**
- * Inisialisasi Komponen
- */
 function gcsHalamanPromoBannerInit() {
-    gcsHalamanPromoBannerActiveItems = gcsHalamanPromoBannerCheckSchedule(gcsHalamanPromoBannerData);
-    gcsHalamanPromoBannerRender(gcsHalamanPromoBannerActiveItems);
+    gcsHalamanPromoBannerRefresh();
+
+    clearInterval(gcsHalamanPromoBannerScheduleTimer);
+
+    gcsHalamanPromoBannerScheduleTimer = setInterval(() => {
+        gcsHalamanPromoBannerRefresh();
+    }, 60000);
 }
 
-/**
- * Filter data berdasarkan jadwal
- */
+function gcsHalamanPromoBannerRefresh() {
+    gcsHalamanPromoBannerActiveItems =
+        gcsHalamanPromoBannerCheckSchedule(
+            gcsHalamanPromoBannerData
+        );
+
+    gcsHalamanPromoBannerCurrentIndex = 0;
+
+    gcsHalamanPromoBannerRender(
+        gcsHalamanPromoBannerActiveItems
+    );
+}
+
 function gcsHalamanPromoBannerCheckSchedule(bannerList) {
-    const gcsHalamanPromoBannerNow = new Date().getTime();
+    const now = Date.now();
+
     return bannerList.filter(item => {
-        const gcsHalamanPromoBannerStartTime = new Date(item.start.replace(/-/g, "/")).getTime();
-        const gcsHalamanPromoBannerEndTime = new Date(item.end.replace(/-/g, "/")).getTime();
-        return gcsHalamanPromoBannerNow >= gcsHalamanPromoBannerStartTime && gcsHalamanPromoBannerNow <= gcsHalamanPromoBannerEndTime;
+        const start = new Date(
+            item.start.replace(" ", "T")
+        ).getTime();
+
+        const end = new Date(
+            item.end.replace(" ", "T")
+        ).getTime();
+
+        return Number.isFinite(start) &&
+            Number.isFinite(end) &&
+            now >= start &&
+            now <= end;
     });
 }
 
-/**
- * Render DOM
- */
 function gcsHalamanPromoBannerRender(activeBanners) {
-    const gcsHalamanPromoBannerMainWrapper = document.getElementById("gcsHalamanPromoBannerContainer");
-    if (!gcsHalamanPromoBannerMainWrapper) return;
+    const wrapper = document.getElementById(
+        "gcsHalamanPromoBannerContainer"
+    );
+
+    if (!wrapper) return;
+
+    const section = wrapper.closest(
+        ".gcsHalamanPromoBannerSection"
+    );
+
+    clearInterval(gcsHalamanPromoBannerTimer);
+    gcsHalamanPromoBannerTimer = null;
+
+    wrapper.innerHTML = "";
 
     if (activeBanners.length === 0) {
-        gcsHalamanPromoBannerMainWrapper.classList.add("gcsHalamanPromoBannerCollapse");
-        gcsHalamanPromoBannerMainWrapper.innerHTML = "";
+        wrapper.classList.add(
+            "gcsHalamanPromoBannerCollapse"
+        );
+
+        if (section) {
+            section.hidden = true;
+        }
+
         return;
     }
 
-    gcsHalamanPromoBannerMainWrapper.classList.remove("gcsHalamanPromoBannerCollapse");
+    wrapper.classList.remove(
+        "gcsHalamanPromoBannerCollapse"
+    );
 
-    // Title
-    const gcsHalamanPromoBannerHeaderNode = document.createElement("div");
-    gcsHalamanPromoBannerHeaderNode.classList.add("gcsHalamanPromoBannerHeader");
-    const gcsHalamanPromoBannerTitleNode = document.createElement("h2");
-    gcsHalamanPromoBannerTitleNode.classList.add("gcsHalamanPromoBannerTitle");
-    gcsHalamanPromoBannerTitleNode.textContent = "Promo Pilihan";
-    gcsHalamanPromoBannerHeaderNode.appendChild(gcsHalamanPromoBannerTitleNode);
-    gcsHalamanPromoBannerMainWrapper.appendChild(gcsHalamanPromoBannerHeaderNode);
+    if (section) {
+        section.hidden = false;
+    }
 
-    // Slider
-    const gcsHalamanPromoBannerSliderNode = document.createElement("div");
-    gcsHalamanPromoBannerSliderNode.classList.add("gcsHalamanPromoBannerSlider");
-    const gcsHalamanPromoBannerTrackNode = document.createElement("div");
-    gcsHalamanPromoBannerTrackNode.classList.add("gcsHalamanPromoBannerTrack");
-    gcsHalamanPromoBannerTrackNode.id = "gcsHalamanPromoBannerTrackEl";
+    const header = document.createElement("div");
+    header.className = "gcsHalamanPromoBannerHeader";
+
+    const title = document.createElement("h2");
+    title.className = "gcsHalamanPromoBannerTitle";
+    title.textContent = "";
+
+    header.appendChild(title);
+    wrapper.appendChild(header);
+
+    const slider = document.createElement("div");
+    slider.className = "gcsHalamanPromoBannerSlider";
+
+    const track = document.createElement("div");
+    track.className = "gcsHalamanPromoBannerTrack";
+    track.id = "gcsHalamanPromoBannerTrackEl";
 
     activeBanners.forEach(banner => {
         const item = document.createElement("div");
-        item.classList.add("gcsHalamanPromoBannerItem");
+        item.className = "gcsHalamanPromoBannerItem";
+
         const link = document.createElement("a");
-        link.classList.add("gcsHalamanPromoBannerLink");
+        link.className = "gcsHalamanPromoBannerLink";
         link.href = banner.link;
-        const img = document.createElement("img");
-        img.classList.add("gcsHalamanPromoBannerImage");
-        img.src = banner.image;
-        img.loading = "lazy";
-        link.appendChild(img);
+
+        const image = document.createElement("img");
+        image.className = "gcsHalamanPromoBannerImage";
+        image.src = banner.image;
+        image.alt = "GOCES Promo";
+        image.loading = "lazy";
+
+        link.appendChild(image);
         item.appendChild(link);
-        gcsHalamanPromoBannerTrackNode.appendChild(item);
+        track.appendChild(item);
     });
 
-    gcsHalamanPromoBannerSliderNode.appendChild(gcsHalamanPromoBannerTrackNode);
-    gcsHalamanPromoBannerMainWrapper.appendChild(gcsHalamanPromoBannerSliderNode);
+    slider.appendChild(track);
+    wrapper.appendChild(slider);
 
-    gcsHalamanPromoBannerCreateDots(activeBanners.length, gcsHalamanPromoBannerMainWrapper);
+    gcsHalamanPromoBannerCreateDots(
+        activeBanners.length,
+        wrapper
+    );
 
     if (activeBanners.length > 1) {
         gcsHalamanPromoBannerAutoSlide();
-        gcsHalamanPromoBannerSwipe(gcsHalamanPromoBannerSliderNode);
+        gcsHalamanPromoBannerSwipe(slider);
     }
 }
 
-/**
- * Indikator Dot
- */
-function gcsHalamanPromoBannerCreateDots(count, parent) {
-    const container = document.createElement("div");
-    container.classList.add("gcsHalamanPromoBannerDots");
-    container.id = "gcsHalamanPromoBannerDotsContainerEl";
+function gcsHalamanPromoBannerCreateDots(total, parent) {
+    const dots = document.createElement("div");
+    dots.className = "gcsHalamanPromoBannerDots";
+    dots.id = "gcsHalamanPromoBannerDotsContainerEl";
 
-    if (count === 1 || count > 5) container.classList.add("gcsHalamanPromoBannerHidden");
+    if (total === 1 || total > 5) {
+        dots.classList.add(
+            "gcsHalamanPromoBannerHidden"
+        );
+    }
 
-    for (let i = 0; i < count; i++) {
+    for (let index = 0; index < total; index++) {
         const dot = document.createElement("span");
-        dot.classList.add("gcsHalamanPromoBannerDot");
-        if (i === 0) dot.classList.add("gcsHalamanPromoBannerActive");
-        container.appendChild(dot);
+        dot.className = "gcsHalamanPromoBannerDot";
+
+        if (index === 0) {
+            dot.classList.add(
+                "gcsHalamanPromoBannerActive"
+            );
+        }
+
+        dots.appendChild(dot);
     }
-    parent.appendChild(container);
+
+    parent.appendChild(dots);
 }
 
-/**
- * Slide Logic
- */
 function gcsHalamanPromoBannerGoToSlide(index) {
-    const track = document.getElementById("gcsHalamanPromoBannerTrackEl");
-    const dotsContainer = document.getElementById("gcsHalamanPromoBannerDotsContainerEl");
-    if (!track) return;
-    gcsHalamanPromoBannerCurrentIndex = index;
-    track.style.transform = `translateX(-${gcsHalamanPromoBannerCurrentIndex * 100}%)`;
+    const track = document.getElementById(
+        "gcsHalamanPromoBannerTrackEl"
+    );
 
-    if (dotsContainer && !dotsContainer.classList.contains("gcsHalamanPromoBannerHidden")) {
-        const dots = dotsContainer.querySelectorAll(".gcsHalamanPromoBannerDot");
-        dots.forEach((dot, idx) => {
-            dot.classList.toggle("gcsHalamanPromoBannerActive", idx === index);
+    const dots = document.getElementById(
+        "gcsHalamanPromoBannerDotsContainerEl"
+    );
+
+    const total = gcsHalamanPromoBannerActiveItems.length;
+
+    if (!track || total === 0) return;
+
+    gcsHalamanPromoBannerCurrentIndex =
+        (index + total) % total;
+
+    track.style.transform =
+        `translateX(-${gcsHalamanPromoBannerCurrentIndex * 100}%)`;
+
+    if (dots &&
+        !dots.classList.contains(
+            "gcsHalamanPromoBannerHidden"
+        )) {
+        dots.querySelectorAll(
+            ".gcsHalamanPromoBannerDot"
+        ).forEach((dot, dotIndex) => {
+            dot.classList.toggle(
+                "gcsHalamanPromoBannerActive",
+                dotIndex ===
+                gcsHalamanPromoBannerCurrentIndex
+            );
         });
     }
 }
 
-function gcsHalamanPromoBannerNext() {
-    gcsHalamanPromoBannerGoToSlide(
-        gcsHalamanPromoBannerCurrentIndex < gcsHalamanPromoBannerActiveItems.length - 1
-            ? gcsHalamanPromoBannerCurrentIndex + 1
-            : 0
-    );
-}
-
-function gcsHalamanPromoBannerPrevious() {
-    gcsHalamanPromoBannerGoToSlide(
-        gcsHalamanPromoBannerCurrentIndex > 0
-            ? gcsHalamanPromoBannerCurrentIndex - 1
-            : gcsHalamanPromoBannerActiveItems.length - 1
-    );
-}
-
 function gcsHalamanPromoBannerAutoSlide() {
-    gcsHalamanPromoBannerTimer = setInterval(gcsHalamanPromoBannerNext, 4000);
+    clearInterval(gcsHalamanPromoBannerTimer);
+
+    if (gcsHalamanPromoBannerActiveItems.length <= 1) {
+        return;
+    }
+
+    gcsHalamanPromoBannerTimer = setInterval(() => {
+        gcsHalamanPromoBannerGoToSlide(
+            gcsHalamanPromoBannerCurrentIndex + 1
+        );
+    }, 4000);
 }
 
-function gcsHalamanPromoBannerSwipe(el) {
-    el.addEventListener("touchstart", (e) => {
-        gcsHalamanPromoBannerTouchStartX = e.changedTouches[0].screenX;
+function gcsHalamanPromoBannerSwipe(slider) {
+    slider.addEventListener("touchstart", event => {
+        gcsHalamanPromoBannerTouchStartX =
+            event.changedTouches[0].screenX;
+
         clearInterval(gcsHalamanPromoBannerTimer);
     }, { passive: true });
 
-    el.addEventListener("touchend", (e) => {
-        gcsHalamanPromoBannerTouchEndX = e.changedTouches[0].screenX;
-        const diff = gcsHalamanPromoBannerTouchStartX - gcsHalamanPromoBannerTouchEndX;
-        if (diff > 45) gcsHalamanPromoBannerNext();
-        else if (diff < -45) gcsHalamanPromoBannerPrevious();
-        clearInterval(gcsHalamanPromoBannerTimer);
+    slider.addEventListener("touchend", event => {
+        gcsHalamanPromoBannerTouchEndX =
+            event.changedTouches[0].screenX;
+
+        const distance =
+            gcsHalamanPromoBannerTouchStartX -
+            gcsHalamanPromoBannerTouchEndX;
+
+        if (distance > 45) {
+            gcsHalamanPromoBannerGoToSlide(
+                gcsHalamanPromoBannerCurrentIndex + 1
+            );
+        }
+
+        if (distance < -45) {
+            gcsHalamanPromoBannerGoToSlide(
+                gcsHalamanPromoBannerCurrentIndex - 1
+            );
+        }
+
         gcsHalamanPromoBannerAutoSlide();
     }, { passive: true });
 }
