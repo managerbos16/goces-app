@@ -1,22 +1,11 @@
 const gcsFoodBannerData = [
     {
-        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80",
+        image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784097737/ChatGPT_Image_15_Jul_2026_14.42.05_c7if8c.png",
         link: "merchant-food-1.html",
         start: "2026-07-01 00:00:00",
-        end: "2026-07-31 23:59:59"
+        end: "2027-07-31 23:59:59"
     },
-    {
-        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
-        link: "merchant-food-2.html",
-        start: "2026-07-01 00:00:00",
-        end: "2026-07-31 23:59:59"
-    },
-    {
-        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
-        link: "merchant-food-3.html",
-        start: "2026-07-05 00:00:00",
-        end: "2026-07-28 23:59:59"
-    }
+
 ];
 
 let gcsFoodBannerCurrentIndex = 0;
