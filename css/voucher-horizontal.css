@@ -44,16 +44,12 @@
 
 .gcvh-container {
   display: flex;
-
+  gap: 12px;
+  padding: 0 16px 8px;
   overflow-x: auto;
-
-  gap: 16px;
-
-  padding: 0 16px 6px;
-
-  scroll-snap-type: x proximity;
-
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gcvh-container::-webkit-scrollbar {
@@ -61,11 +57,13 @@
 }
 
 .gcvh-container .gcv-card {
-  flex: 0 0 330px;
-
-  width: 330px;
-
+  flex: 0 0 calc(100vw - 32px);
+  width: calc(100vw - 32px);
+  box-sizing: border-box;
   margin: 0;
-
   scroll-snap-align: start;
+}
+
+.gcvh-container .gcv-content {
+  min-width: 0;
 }
