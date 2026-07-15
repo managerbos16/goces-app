@@ -15,7 +15,7 @@
 /* --- HEADER / JUDUL PROMO --- */
 .gcsPromoBannerHeader {
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   transition: opacity var(--transition);
 }
 
