@@ -337,7 +337,7 @@ body {
 
   border-radius: 999px;
 
-  background: #2563eb;
+  background: var(--blue-700);
 
   color: #fff;
 
