@@ -75,7 +75,8 @@ body {
 
   padding: 14px;
 
-  box-shadow: var(--gcv-shadow);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  border: 1px solid #edf2f7;
 
   transition: var(--gcv-transition);
 
@@ -85,7 +86,8 @@ body {
 .gcv-card:hover {
   transform: translateY(-2px);
 
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  border: 1px solid #edf2f7;
 }
 
 .gcv-card:active:not(.gcv-copy-click) {

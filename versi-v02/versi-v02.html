@@ -50,6 +50,257 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/voucher-horizontal.css">
 </head>
 
+<style>
+    /*==================================
+        RESTO TERDEKAT
+==================================*/
+
+    .gpr-nearby-section {
+        margin: 24px 0;
+    }
+
+    .gpr-nearby-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px;
+        margin-bottom: 14px;
+    }
+
+    .gpr-nearby-header h2 {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .gpr-nearby-header button {
+        border: none;
+        background: none;
+        color: #2563eb;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    /*==========================
+        SCROLL
+==========================*/
+
+    .gpr-nearby-scroll {
+
+        display: flex;
+
+        flex-wrap: nowrap;
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        gap: 14px;
+
+        padding: 0 16px 10px;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+
+    }
+
+    .gpr-nearby-scroll::-webkit-scrollbar {
+
+        display: none;
+
+    }
+
+    /*==========================
+          CARD
+==========================*/
+
+    .item-nearby-row {
+
+        position: relative;
+
+        width: 170px;
+
+        min-width: 170px;
+
+        max-width: 170px;
+
+        border-radius: 18px;
+
+        overflow: hidden;
+
+        background: #fff;
+
+        border: 1px solid #edf2f7;
+
+        box-shadow: 0 2px 8px rgba(15, 23, 42, .05);
+        border: 1px solid #edf2f7;
+
+        box-sizing: border-box;
+
+    }
+
+    .item-nearby-link {
+
+        display: block;
+
+        color: #111827;
+
+        text-decoration: none;
+
+    }
+
+    /*==========================
+          BADGE
+==========================*/
+
+    .item-nearby-badge {
+
+        position: absolute;
+
+        top: 10px;
+
+        left: 10px;
+
+        z-index: 5;
+
+        padding: 4px 10px;
+
+        border-radius: 999px;
+
+        background: #2563eb;
+
+        color: #fff;
+
+        font-size: 9px;
+
+        font-weight: 700;
+
+    }
+
+    /*==========================
+          IMAGE
+==========================*/
+
+    .item-nearby-image {
+
+        width: 100%;
+
+        height: 120px;
+
+        display: block;
+
+        object-fit: cover;
+
+    }
+
+    /*==========================
+          TITLE
+==========================*/
+
+    .item-nearby-title {
+
+        display: block;
+
+        padding: 12px 12px 6px;
+
+        font-size: 14px;
+
+        font-weight: 700;
+
+        line-height: 1.35;
+
+        overflow: hidden;
+
+        display: -webkit-box;
+
+        -webkit-box-orient: vertical;
+
+        -webkit-line-clamp: 2;
+
+        line-clamp: 2;
+
+        min-height: 38px;
+
+    }
+
+    /*==========================
+       INFO BARIS
+==========================*/
+
+    .item-nearby-info {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        padding: 0 12px 8px;
+
+    }
+
+    .item-nearby-distance {
+
+        font-size: 12px;
+
+        color: #6b7280;
+
+    }
+
+    .item-nearby-rating {
+
+        font-size: 12px;
+
+        color: #f59e0b;
+
+        font-weight: 700;
+
+    }
+
+    /*==========================
+        STATUS
+==========================*/
+
+    .item-nearby-status {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        padding: 0 12px 12px;
+
+    }
+
+    .item-nearby-status-open {
+
+        padding: 3px 9px;
+
+        border-radius: 999px;
+
+        background: #dcfce7;
+
+        color: #16a34a;
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+    }
+
+    .item-nearby-status-note {
+
+        font-size: 11px;
+
+        color: #6b7280;
+
+    }
+</style>
+
 <body>
     <!--HALAMAN HOME-->
     <div class="app-wrapper">
@@ -71,21 +322,29 @@
                             <input type="search" name="search" placeholder="Find services, food, or places" />
                         </form>
 
-                        <a class="notif-btn" href="action://act/message_list" aria-label="Notifications">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <a href="action://act/message_list" class="kpz-nav-button">
+                            <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                             </svg>
-                            <span class="notif-badge">{jumlah_pesan}</span>
+                            <span class="kpz-badge">
+                                {jumlah_pesan}
+                            </span>
                         </a>
+
                     </div>
 
                     <div class="home-hero-slider">
-                        <div class="home-hero-item active" onclick="showPage('promos')">
-                            <img
-                                src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1784095783/ChatGPT_Image_15_Jul_2026_14.09.23_nixjgc.png">
-                        </div>
+                        <a href="https://gocesapp.blogspot.com/2026/07/dokumentasi-pendaftaran-agency-goces.html"
+                            target="_blank" style="display:block; text-decoration:none;">
+
+                            <div class="home-hero-item active">
+                                <img src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1784095783/ChatGPT_Image_15_Jul_2026_14.09.23_nixjgc.png"
+                                    alt="Pendaftaran Agency GOCES">
+                            </div>
+
+                        </a>
                     </div>
                 </div>
 
@@ -375,6 +634,168 @@
                     <div id="gocesVoucherHome" class="gcvh-container"></div>
                 </section>
 
+                <!-- ==========================================
+            RESTO TERDEKAT
+========================================== -->
+
+                <section id="gprNearbySection" class="gpr-nearby-section">
+
+                    <div class="gpr-nearby-header">
+
+                        <h2>Resto Terdekat</h2>
+
+                        <button onclick="showPage('page-food')">
+
+                            Lihat Semua
+
+                        </button>
+
+                    </div>
+
+                    <div id="gprNearbyContainer" class="gpr-nearby-scroll">
+
+                        <!-- ================= CARD 1 ================= -->
+
+                        <div class="item-nearby-row">
+
+                            <a class="item-nearby-link" href="#">
+
+                                <span class="item-nearby-badge">
+                                    TERDEKAT
+                                </span>
+
+                                <img class="item-nearby-image"
+                                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600"
+                                    alt="Pizza Italia">
+
+                                <span class="item-nearby-title">
+                                    Pizza Italia Super Pedas Mozarella
+                                </span>
+
+                                <div class="item-nearby-info">
+
+                                    <span class="item-nearby-distance">
+                                        📍 0.3 Km
+                                    </span>
+
+                                    <span class="item-nearby-rating">
+                                        ⭐ 4.9
+                                    </span>
+
+                                </div>
+
+                            </a>
+
+                            <div class="item-nearby-status">
+
+                                <span class="item-nearby-status-open">
+                                    Buka
+                                </span>
+
+                                <span class="item-nearby-status-note">
+                                    Sampai 22.00
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ================= CARD 2 ================= -->
+
+                        <div class="item-nearby-row">
+
+                            <a class="item-nearby-link" href="#">
+
+                                <span class="item-nearby-badge">
+                                    TERDEKAT
+                                </span>
+
+                                <img class="item-nearby-image"
+                                    src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600"
+                                    alt="Burger King">
+
+                                <span class="item-nearby-title">
+                                    Burger King Double Cheese Beef
+                                </span>
+
+                                <div class="item-nearby-info">
+
+                                    <span class="item-nearby-distance">
+                                        📍 0.8 Km
+                                    </span>
+
+                                    <span class="item-nearby-rating">
+                                        ⭐ 4.8
+                                    </span>
+
+                                </div>
+
+                            </a>
+
+                            <div class="item-nearby-status">
+
+                                <span class="item-nearby-status-open">
+                                    Buka
+                                </span>
+
+                                <span class="item-nearby-status-note">
+                                    Sampai 23.00
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ================= CARD 3 ================= -->
+
+                        <div class="item-nearby-row">
+
+                            <a class="item-nearby-link" href="#">
+
+                                <span class="item-nearby-badge">
+                                    TERDEKAT
+                                </span>
+
+                                <img class="item-nearby-image"
+                                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600"
+                                    alt="Ayam Geprek">
+
+                                <span class="item-nearby-title">
+                                    Ayam Geprek Sambal Matah Crispy
+                                </span>
+
+                                <div class="item-nearby-info">
+
+                                    <span class="item-nearby-distance">
+                                        📍 1.2 Km
+                                    </span>
+
+                                    <span class="item-nearby-rating">
+                                        ⭐ 5.0
+                                    </span>
+
+                                </div>
+
+                            </a>
+
+                            <div class="item-nearby-status">
+
+                                <span class="item-nearby-status-open">
+                                    Buka
+                                </span>
+
+                                <span class="item-nearby-status-note">
+                                    24 Jam
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
             </div>
         </div>
         <!-- ========== AKHIR HALAMAN HOME ==========-->
@@ -387,22 +808,24 @@
                         <div class="gpr-header-action">
 
                             <!-- NOTIFIKASI -->
-                            <a href="action://act/message_list" class="gpr-icon-btn">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="white"
-                                        d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+                            <a href="action://act/message_list" class="kpz-nav-button">
+                                <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                                 </svg>
-                                <span class="gpr-notif-badge">
+                                <span class="kpz-badge">
                                     {jumlah_pesan}
                                 </span>
                             </a>
 
                             <!-- KERANJANG -->
-                            <a href="https://jgjk.mobi/act/cart" class="gpr-icon-btn">
-
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="white"
-                                        d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zm-9.83-4h9.38c.75 0 1.41-.41 1.75-1.03L21.88 6.48A1 1 0 0 0 21.01 5H5.21L4.27 3H1v2h2l3.6 7.59-1.35 2.45A2 2 0 0 0 7 18h12v-2H7.17l1.1-2z" />
+                            <a href="https://jgjk.mobi/act/cart" class="kpz-nav-button">
+                                <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="20" r="1.5"></circle>
+                                    <circle cx="18" cy="20" r="1.5"></circle>
+                                    <path d="M3 4h2l2.2 10.4a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 8H7"></path>
                                 </svg>
                             </a>
                         </div>
@@ -696,14 +1119,16 @@
                                 <small>{email}</small>
                             </div>
                         </div>
-                        <label class="kpz-theme-toggle" onclick="openGocesAI()">
+
+                        <!--  <label class="kpz-theme-toggle" onclick="openGocesAI()">
                             <input type="checkbox" id="darkToggle1">
                             <span class="kpz-theme-slider"></span>
-                        </label>
+                        </label> -->
+
                     </div>
                 </div>
 
-                <div class="kpz-section-title">
+                <!--    <div class="kpz-section-title">
                     Pembayaran
                 </div>
 
@@ -721,7 +1146,7 @@
                         </div>
                     </a>
 
-                </div>
+                </div> -->
 
                 <div class="kpz-section-title">
                     Saldo & Poin
@@ -860,7 +1285,7 @@
 
                 <div class="kpz-list-card">
 
-                    <a class="kpz-list-item" onclick="openGocesAI()">
+                    <a href="https://gocesapp.blogspot.com/2026/07/ketentuan-layanan-goces.html" class="kpz-list-item">
                         <div class="kpz-list-left">
                             <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -873,7 +1298,7 @@
                         </div>
                     </a>
 
-                    <a class="kpz-list-item" onclick="openGocesAI()">
+                    <a href="https://gocesapp.blogspot.com/2026/07/kebijakan-privasi-goces.html" class="kpz-list-item">
                         <div class="kpz-list-left">
                             <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -884,7 +1309,7 @@
                         </div>
                     </a>
 
-                    <a class="kpz-list-item" onclick="openGocesAI()">
+                    <a href="https://gocesapp.blogspot.com/2026/07/atribusi-data-goces.html" class="kpz-list-item">
                         <div class="kpz-list-left">
                             <svg class="kpz-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -925,12 +1350,15 @@
                             <i class="ph ph-arrow-left"></i>
                         </button>
                         <div class="header-right">
+
                             <a href="https://jgjk.mobi/act/cart" class="icon-circle-btn" aria-label="Keranjang">
                                 <i class="ph ph-shopping-cart"></i>
                             </a>
+
                             <a href="action://act/message_list" class="icon-circle-btn" aria-label="Notifikasi">
                                 <i class="ph ph-bell"></i>
                             </a>
+
                         </div>
                     </div>
                 </header>
@@ -1486,9 +1914,10 @@
         <div id="page-setting" class="page">
             <div class="gset_header">
 
-                <button class="gset_back_btn" onclick="goBack()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18L9 12L15 6" />
+                <button class="kpz-nav-button kpz-back-button" onclick="goBack()">
+                    <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 18l-6-6 6-6"></path>
                     </svg>
                 </button>
 
@@ -1663,6 +2092,80 @@
     <script src="https://goces-app.vercel.app/js/voucher/voucher-countdown.js"></script>
     <script src="https://goces-app.vercel.app/js/voucher/voucher-loader.js"></script>
     <script src="https://goces-app.vercel.app/js/voucher/voucher-page.js"></script>
+
+    <script>
+        /*==================================
+                GOCES NEARBY SECTION
+        ==================================*/
+
+        function gocesNearbyUpdate() {
+
+            const section = document.getElementById(
+                "gprNearbySection"
+            );
+
+            const container = document.getElementById(
+                "gprNearbyContainer"
+            );
+
+            if (!section || !container) return;
+
+            const total = container.querySelectorAll(
+                ".item-nearby-row"
+            ).length;
+
+            if (total > 0) {
+
+                section.style.display = "";
+
+            } else {
+
+                section.style.display = "none";
+
+            }
+
+        }
+
+        document.addEventListener(
+
+            "DOMContentLoaded",
+
+            function () {
+
+                let count = 0;
+
+                const timer = setInterval(() => {
+
+                    gocesNearbyUpdate();
+
+                    count++;
+
+                    // berhenti setelah 10 detik
+                    if (count >= 20) {
+
+                        clearInterval(timer);
+
+                    }
+
+                    // kalau produk sudah muncul,
+                    // berhenti lebih cepat
+                    const total =
+                        document.querySelectorAll(
+                            "#gprNearbyContainer .item-nearby-row"
+                        ).length;
+
+                    if (total > 0) {
+
+                        clearInterval(timer);
+
+                    }
+
+                }, 500);
+
+            }
+
+        );
+    </script>
 
     <!--==================================
     GOCES VOUCHER MODAL
