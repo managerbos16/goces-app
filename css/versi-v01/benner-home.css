@@ -15,7 +15,7 @@
 /* --- HEADER / JUDUL PROMO --- */
 .gcsPromoBannerHeader {
   width: 100%;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   transition: opacity var(--transition);
 }
 
@@ -24,6 +24,8 @@
   font-weight: 500;
   color: var(--text);
   letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin: 0;
 }
 
 /* --- SLIDER VIEWPORT (RASIO MASTER 16:7) --- */
