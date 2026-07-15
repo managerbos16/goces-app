@@ -140,6 +140,16 @@ window.GocesVoucherLoader = {
 
         });
 
+        this.load({
+
+            category: "cashback",
+
+            container: "gocesVoucherFood",
+
+            limit: 5
+
+        });
+
     }
 
 };
