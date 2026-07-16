@@ -1,27 +1,6 @@
 module.exports = [
 
     {
-        path: "/flashsale",
-        page: "flashsale",
-        componentId: "464113167266a3241aa7cdf37.67370314",
-        title: ""
-    },
-
-    {
-        path: "/fashion",
-        page: "fashion",
-        componentId: "282513168266a338f586bef13.52829636",
-        title: "Fashion Terbaru"
-    },
-
-    {
-        path: "/kecantikan",
-        page: "kecantikan",
-        componentId: "562513168266a338f74385b73.47876782",
-        title: "Produk Kecantikan"
-    },
-
-    {
         path: "/kuliner",
         page: "kuliner",
         componentId: "482013168266a338e404198a9.02087100",
@@ -38,29 +17,29 @@ module.exports = [
     {
         path: "/snack",
         page: "snack",
-        componentId: "362113168266a338e7029f554.04536679",
+        componentId: "105419195266a5782f2b07806.84367521",
         title: "Snack"
     },
 
     {
         path: "/bakso",
         page: "bakso",
-        componentId: "072313168266a338ecb6e9800.07850343",
+        componentId: "485319195266a5782dc346207.21541794",
         title: "Bakso"
     },
 
     {
         path: "/pizza",
         page: "pizza",
-        componentId: "362313168266a338ee82320d1.04031088",
+        componentId: "175319195266a5782bd911d73.99279096",
         title: "Pizza"
     },
 
     {
-        path: "/elektronik",
-        page: "elektronik",
-        componentId: "202613168266a338f8cd90537.18088295",
-        title: "Elektronik"
+        path: "/kulinerhorizontal",
+        page: "kulinerhorizontal",
+        componentId: "482013168266a338e404198a9.02087100",
+        title: "Rekomendasi untukmu !!"
     },
 
     {

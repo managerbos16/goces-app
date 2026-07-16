@@ -57,10 +57,14 @@
 }
 
 .gcvh-container .gcv-card {
-  flex: 0 0 calc(100vw - 32px);
-  width: calc(100vw - 32px);
+  flex: 0 0 92%;
+
+  width: 92%;
+
   box-sizing: border-box;
+
   margin: 0;
+
   scroll-snap-align: start;
 }
 

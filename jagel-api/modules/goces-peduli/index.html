@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GOCES Peduli</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="gpdl-app">
+
+        <!-- HEADER -->
+
+        <header class="gpdl-header">
+
+            <div class="gpdl-header-left">
+
+                <div class="gpdl-logo">
+
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+
+                </div>
+
+                <div>
+
+                    <h1>GOCES Peduli</h1>
+
+                    <p>Bersama Kita Membantu Sesama</p>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- BANNER -->
+
+        <section class="gpdl-banner">
+
+            <div class="gpdl-banner-overlay"></div>
+
+            <div class="gpdl-banner-content">
+
+                <h2>
+
+                    Setiap Donasi
+
+                    Sangat Berarti
+
+                </h2>
+
+                <p>
+
+                    Salurkan bantuan secara aman,
+
+                    transparan dan terpercaya.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- STATISTIK -->
+
+        <section class="gpdl-statistics">
+
+            <div class="gpdl-stat-card">
+
+                <span>Total Donasi</span>
+
+                <strong class="gpdl-total-collected">
+
+                    Rp0
+
+                </strong>
+
+            </div>
+
+            <div class="gpdl-stat-card">
+
+                <span>Donatur</span>
+
+                <strong class="gpdl-total-donors">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="gpdl-stat-card">
+
+                <span>Campaign</span>
+
+                <strong class="gpdl-total-campaigns">
+
+                    0
+
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- JUDUL -->
+
+        <section class="gpdl-section-title">
+
+            <h3>
+
+                Campaign Donasi
+
+            </h3>
+
+            <button class="gpdl-refresh-btn">
+
+                <i class="fa-solid fa-rotate-right"></i>
+
+            </button>
+
+        </section>
+
+
+
+        <!-- LOADING -->
+
+        <section class="gpdl-loading">
+
+            <div class="gpdl-loading-card"></div>
+
+            <div class="gpdl-loading-card"></div>
+
+            <div class="gpdl-loading-card"></div>
+
+        </section>
+
+
+
+        <!-- ERROR -->
+
+        <section class="gpdl-error" style="display:none;">
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+            <h3>
+
+                Gagal Memuat Data
+
+            </h3>
+
+            <p>
+
+                Silakan coba beberapa saat lagi.
+
+            </p>
+
+            <button class="gpdl-retry">
+
+                Muat Ulang
+
+            </button>
+
+        </section>
+
+
+
+        <!-- EMPTY -->
+
+        <section class="gpdl-empty" style="display:none;">
+
+            <i class="fa-solid fa-box-open"></i>
+
+            <h3>
+
+                Belum Ada Campaign
+
+            </h3>
+
+            <p>
+
+                Campaign akan muncul otomatis
+                setelah dibuat admin.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- LIST CAMPAIGN -->
+
+        <section class="gpdl-list">
+
+            <!--
+            Semua card campaign
+            dibuat otomatis
+            oleh script.js
+        -->
+
+        </section>
+
+
+
+        <!-- TEMPLATE -->
+
+        <template id="gpdl-card-template">
+
+            <article class="gpdl-card">
+
+                <div class="gpdl-card-image">
+
+                    <img src="" alt="Campaign">
+
+                </div>
+
+                <div class="gpdl-card-body">
+
+                    <h3 class="gpdl-card-title">
+
+                    </h3>
+
+                    <div class="gpdl-progress">
+
+                        <div class="gpdl-progress-fill">
+
+                        </div>
+
+                    </div>
+
+                    <div class="gpdl-progress-info">
+
+                        <span class="gpdl-progress-percent">
+
+                        </span>
+
+                        <span class="gpdl-donor-count">
+
+                        </span>
+
+                    </div>
+
+                    <div class="gpdl-money">
+
+                        <div>
+
+                            <small>
+
+                                Terkumpul
+
+                            </small>
+
+                            <strong class="gpdl-collected">
+
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+
+                                Target
+
+                            </small>
+
+                            <strong class="gpdl-target">
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="gpdl-card-footer">
+
+                        <button class="gpdl-detail-btn">
+
+                            Lihat Detail
+
+                        </button>
+
+                        <button class="gpdl-donate-btn">
+
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+
+                            Donasi
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </template>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="gpdl-footer">
+
+            <div class="gpdl-footer-content">
+
+                <i class="fa-solid fa-shield-heart"></i>
+
+                <span>
+
+                    GOCES Peduli © 2026
+
+                </span>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+
+    <!-- SCRIPT -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

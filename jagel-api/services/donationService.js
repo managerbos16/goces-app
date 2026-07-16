@@ -1,0 +1,261 @@
+const db = require("../config/db");
+const tripayService = require("./tripayService");
+
+/*==================================
+        CREATE DONATION
+==================================*/
+
+exports.createDonation = async (data) => {
+
+    const tripay = await tripayService.createPayment({
+
+        type: "DON",
+
+        method: data.method,
+
+        amount: data.amount,
+
+        customer_name: data.donor_name,
+
+        customer_email: data.donor_email,
+
+        customer_phone: data.donor_phone,
+
+        callback_url:
+            process.env.APP_URL +
+            "/api/callback/tripay",
+
+        return_url:
+            process.env.APP_URL +
+            "/donation-success",
+
+        order_items: [
+
+            {
+
+                sku: "DONASI",
+
+                name: data.title,
+
+                price: data.amount,
+
+                quantity: 1
+
+            }
+
+        ]
+
+    });
+
+    const result = await db.query(
+
+        `
+
+        INSERT INTO campaign_donations (
+
+            campaign_id,
+
+            merchant_ref,
+
+            reference,
+
+            donor_name,
+
+            donor_email,
+
+            donor_phone,
+
+            amount,
+
+            payment_channel,
+
+            payment_code,
+
+            payment_type,
+
+            payment_name,
+
+            payment_url,
+
+            checkout_url,
+
+            qr_url,
+
+            qr_string,
+
+            fee_customer,
+
+            fee_merchant,
+
+            expired_at,
+
+            status
+
+        )
+
+        VALUES (
+
+            $1,$2,$3,$4,$5,$6,
+
+            $7,$8,$9,$10,$11,
+
+            $12,$13,$14,$15,
+
+            $16,$17,
+
+            to_timestamp($18),
+
+            $19
+
+        )
+
+        RETURNING *
+
+        `,
+
+        [
+
+            data.campaign_id,
+
+            tripay.merchant_ref,
+
+            tripay.reference,
+
+            data.donor_name,
+
+            data.donor_email,
+
+            data.donor_phone,
+
+            data.amount,
+
+            tripay.payment_method,
+
+            tripay.payment_method,
+
+            tripay.payment_method,
+
+            tripay.payment_name,
+
+            tripay.pay_url || null,
+
+            tripay.checkout_url || null,
+
+            tripay.qr_url || null,
+
+            tripay.qr_string || null,
+
+            tripay.fee_customer || 0,
+
+            tripay.fee_merchant || 0,
+
+            tripay.expired_time,
+
+            tripay.status
+
+        ]
+
+    );
+
+    return {
+
+        success: true,
+
+        donation: {
+
+            ...result.rows[0],
+
+            amount: Number(result.rows[0].amount),
+
+            fee_customer: Number(result.rows[0].fee_customer),
+
+            fee_merchant: Number(result.rows[0].fee_merchant)
+
+        },
+
+        payment: {
+
+            reference: tripay.reference,
+
+            merchant_ref: tripay.merchant_ref,
+
+            payment_method: tripay.payment_method,
+
+            payment_name: tripay.payment_name,
+
+            amount: Number(tripay.amount),
+
+            fee_customer: Number(tripay.fee_customer),
+
+            fee_merchant: Number(tripay.fee_merchant),
+
+            total_fee: Number(tripay.total_fee),
+
+            amount_received: Number(tripay.amount_received),
+
+            qr_url: tripay.qr_url,
+
+            qr_string: tripay.qr_string,
+
+            checkout_url: tripay.checkout_url,
+
+            pay_url: tripay.pay_url,
+
+            expired_time: tripay.expired_time,
+
+            status: tripay.status,
+
+            instructions: tripay.instructions
+
+        }
+
+    };
+
+};
+
+
+/*==================================
+        GET DONATION STATUS
+==================================*/
+
+exports.getDonationStatus = async (reference) => {
+
+    const result = await db.query(
+
+        `
+
+        SELECT *
+
+        FROM campaign_donations
+
+        WHERE reference = $1
+
+        LIMIT 1
+
+        `,
+
+        [reference]
+
+    );
+
+    if (result.rows.length === 0) {
+
+        return null;
+
+    }
+
+    const donation = result.rows[0];
+
+    return {
+
+        ...donation,
+
+        amount: Number(donation.amount),
+
+        fee_customer: Number(donation.fee_customer),
+
+        fee_merchant: Number(donation.fee_merchant)
+
+    };
+
+};

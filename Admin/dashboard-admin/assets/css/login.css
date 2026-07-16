@@ -1,0 +1,49 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  padding: 24px;
+}
+
+.login-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: clamp(32px, 5vw, 48px);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow-soft);
+  animation: fadeIn 0.5s ease;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-header .logo-box {
+  color: var(--accent-blue);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.error-msg {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent-red);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  margin-bottom: 20px;
+  display: none;
+  border-left: 4px solid var(--accent-red);
+}
+
+.app-container {
+  display: none;
+  /* Hidden by default until secure session passes */
+  min-height: 100vh;
+  position: relative;
+}

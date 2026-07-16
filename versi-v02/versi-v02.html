@@ -51,55 +51,85 @@
 </head>
 
 <style>
-    /*==================================
-        RESTO TERDEKAT
-==================================*/
+    .atc-nearby-section {
 
-    .gpr-nearby-section {
-        margin: 24px 0;
+        margin: 14px 0 18px;
+
     }
 
-    .gpr-nearby-header {
+    .atc-nearby-header {
+
         display: flex;
-        justify-content: space-between;
+
         align-items: center;
+
+        justify-content: space-between;
+
         padding: 0 16px;
-        margin-bottom: 14px;
+
+        margin-bottom: 12px;
+
     }
 
-    .gpr-nearby-header h2 {
+    .atc-nearby-title {
+
         margin: 0;
-        font-size: 17px;
-        font-weight: 600;
-        color: #111827;
-    }
 
-    .gpr-nearby-header button {
-        border: none;
-        background: none;
-        color: #2563eb;
-        font-size: 14px;
+        font-size: 18px;
+
         font-weight: 700;
-        cursor: pointer;
+
+        color: #1f2937;
+
     }
 
-    /*==========================
-        SCROLL
-==========================*/
+    .atc-nearby-seeall {
 
-    .gpr-nearby-scroll {
+        border: none;
+
+        background: none;
+
+        padding: 0;
+
+        color: #2563eb;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+    }
+
+    /*==============================
+        WRAPPER
+==============================*/
+
+    .atc-nearby-wrapper {
+
+        width: 100%;
+
+        overflow: hidden;
+
+    }
+
+    /*==============================
+        SCROLL
+==============================*/
+
+    .atc-nearby-wrapper #item-nearby-head {
 
         display: flex;
 
-        flex-wrap: nowrap;
+        gap: 12px;
+
+        padding: 0 16px 8px;
 
         overflow-x: auto;
 
         overflow-y: hidden;
 
-        gap: 14px;
-
-        padding: 0 16px 10px;
+        scroll-behavior: smooth;
 
         scrollbar-width: none;
 
@@ -107,112 +137,117 @@
 
     }
 
-    .gpr-nearby-scroll::-webkit-scrollbar {
+    .atc-nearby-wrapper #item-nearby-head::-webkit-scrollbar {
 
         display: none;
 
     }
 
-    /*==========================
-          CARD
-==========================*/
+    /*==============================
+        CARD
+==============================*/
 
-    .item-nearby-row {
+    .atc-nearby-wrapper .item-nearby-row {
 
         position: relative;
 
-        width: 170px;
+        flex-shrink: 0;
 
-        min-width: 170px;
+        width: 160px;
 
-        max-width: 170px;
+        margin: 0;
+
+        background: #fff;
 
         border-radius: 18px;
 
         overflow: hidden;
 
-        background: #fff;
+        border: 1px solid #eef2f7;
 
-        border: 1px solid #edf2f7;
-
-        box-shadow: 0 2px 8px rgba(15, 23, 42, .05);
-        border: 1px solid #edf2f7;
-
-        box-sizing: border-box;
+        box-shadow: 0 2px 6px rgba(15, 23, 42, .04);
 
     }
 
-    .item-nearby-link {
+    /*==============================
+        BADGE
+==============================*/
 
-        display: block;
+    /*==============================
+        RIBBON TERDEKAT
+==============================*/
 
-        color: #111827;
+    /*==============================
+        PITA KIRI
+==============================*/
 
-        text-decoration: none;
+    .atc-nearby-wrapper .item-nearby-row::before {
 
-    }
-
-    /*==========================
-          BADGE
-==========================*/
-
-    .item-nearby-badge {
+        content: "⭐TERDEKAT";
 
         position: absolute;
 
         top: 10px;
 
-        left: 10px;
+        left: 0;
 
-        z-index: 5;
-
-        padding: 4px 10px;
-
-        border-radius: 999px;
-
-        background: #2563eb;
+        background: #ef4444;
 
         color: #fff;
+
+        padding: 6px 14px;
+
+        border-radius: 0 18px 18px 0;
 
         font-size: 9px;
 
         font-weight: 700;
 
+        letter-spacing: .3px;
+
+        z-index: 20;
+
     }
 
-    /*==========================
-          IMAGE
-==========================*/
+    /*==============================
+        LINK
+==============================*/
 
-    .item-nearby-image {
-
-        width: 100%;
-
-        height: 120px;
+    .atc-nearby-wrapper .item-nearby-link {
 
         display: block;
+
+        text-decoration: none;
+
+        color: #111827;
+
+    }
+
+    /*==============================
+        IMAGE
+==============================*/
+
+    .atc-nearby-wrapper .item-nearby-image {
+
+        margin: 0 !important;
+
+        width: 100% !important;
+
+        display: block;
+
+        aspect-ratio: 1/0.82;
 
         object-fit: cover;
 
+        object-position: center center;
+
     }
 
-    /*==========================
-          TITLE
-==========================*/
+    /*==============================
+        TITLE
+==============================*/
 
-    .item-nearby-title {
-
-        display: block;
-
-        padding: 12px 12px 6px;
-
-        font-size: 14px;
-
-        font-weight: 700;
-
-        line-height: 1.35;
-
-        overflow: hidden;
+    .atc-nearby-wrapper .item-nearby-title {
 
         display: -webkit-box;
 
@@ -222,15 +257,27 @@
 
         line-clamp: 2;
 
+        overflow: hidden;
+
+        padding: 10px 12px 4px;
+
+        font-size: 14px;
+
+        font-weight: 700;
+
+        line-height: 1.35;
+
+        color: #111827;
+
         min-height: 38px;
 
     }
 
-    /*==========================
-       INFO BARIS
-==========================*/
+    /*==============================
+        DISTANCE
+==============================*/
 
-    .item-nearby-info {
+    .atc-nearby-wrapper .item-nearby-distance {
 
         display: flex;
 
@@ -240,45 +287,53 @@
 
         padding: 0 12px 8px;
 
-    }
-
-    .item-nearby-distance {
-
         font-size: 12px;
 
         color: #6b7280;
 
     }
 
-    .item-nearby-rating {
+    .atc-nearby-wrapper .item-nearby-distance::after {
 
-        font-size: 12px;
+        content: "🛵 8-15 mnt";
 
-        color: #f59e0b;
+        font-size: 11px;
 
-        font-weight: 700;
+        color: #6b7280;
+
+        font-weight: 500;
 
     }
 
-    /*==========================
+    /*==============================
         STATUS
-==========================*/
+==============================*/
 
-    .item-nearby-status {
+    .atc-nearby-wrapper .item-nearby-status {
 
         display: flex;
 
-        justify-content: space-between;
-
         align-items: center;
+
+        justify-content: space-between;
 
         padding: 0 12px 12px;
 
     }
 
-    .item-nearby-status-open {
+    /*==============================
+        BUKA
+==============================*/
 
-        padding: 3px 9px;
+    .atc-nearby-wrapper .item-nearby-status-open {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 4px 10px;
 
         border-radius: 999px;
 
@@ -292,11 +347,380 @@
 
     }
 
-    .item-nearby-status-note {
+    /*==============================
+        HAPUS JAM GIMMICK
+==============================*/
+
+    .atc-nearby-wrapper .item-nearby-status-note {
+
+        display: none;
+
+    }
+
+    /*==============================
+        RATING
+==============================*/
+
+    .atc-nearby-wrapper .item-nearby-status::after {
+
+        content: "⭐ 4.9";
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        color: #f59e0b;
+
+    }
+
+    /*==========================
+    WRAPPER
+==========================*/
+
+    .gpdl-wrapper {
+
+        display: flex;
+
+        gap: 12px;
+
+        overflow-x: auto;
+
+        padding-bottom: 16px;
+
+        padding-left: 16px;
+
+        padding-right: 16px;
+
+        box-sizing: border-box;
+
+        scrollbar-width: none;
+
+    }
+
+    .gpdl-wrapper::-webkit-scrollbar {
+
+        display: none;
+
+    }
+
+    /*==========================
+      CARD
+==========================*/
+
+    .gpdl-card {
+
+        flex: 0 0 175px;
+
+        background: #fff;
+
+        border-radius: 18px;
+
+        overflow: hidden;
+
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+
+        scroll-snap-align: start;
+
+    }
+
+    /*==========================
+      IMAGE
+==========================*/
+
+    .gpdl-image {
+
+        width: 100%;
+
+        height: 110px;
+
+    }
+
+    .gpdl-image img {
+
+        width: 100%;
+
+        height: 100%;
+
+        object-fit: cover;
+
+    }
+
+    /*==========================
+      CONTENT
+==========================*/
+
+    .gpdl-content {
+
+        padding: 10px;
+
+    }
+
+    .gpdl-content h3 {
+
+        font-size: 13px;
+
+        line-height: 18px;
+
+        height: 36px;
+
+        overflow: hidden;
+
+        margin-bottom: 8px;
+
+        font-weight: 700;
+
+    }
+
+    /*==========================*/
+
+    .gpdl-target {
+
+        font-size: 10px;
+
+        color: #888;
+
+    }
+
+    .gpdl-target strong {
+
+        display: block;
+
+        margin-top: 2px;
+
+        font-size: 14px;
+
+        color: #111;
+
+    }
+
+    /*==========================*/
+
+    .gpdl-progress {
+
+        margin: 8px 0;
+
+        height: 6px;
+
+        background: #ececec;
+
+        border-radius: 20px;
+
+    }
+
+    .gpdl-progress-bar {
+
+        height: 100%;
+
+        background: #22c55e;
+
+    }
+
+    /*==========================*/
+
+    .gpdl-money {
+
+        display: flex;
+
+        justify-content: space-between;
 
         font-size: 11px;
 
+        font-weight: 600;
+
+    }
+
+    /*==========================*/
+
+    .gpdl-footer {
+
+        margin-top: 8px;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+    }
+
+    .gpdl-footer span {
+
+        font-size: 10px;
+
+        color: #777;
+
+    }
+
+    .gpdl-footer button {
+
+        border: none;
+
+        background: #2563eb;
+
+        color: #fff;
+
+        font-size: 11px;
+
+        font-weight: 600;
+
+        padding: 6px 12px;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+
+    }
+
+    /*==================================
+        HEADER
+==================================*/
+
+    .gpdl-header-section {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        padding: 0 16px 12px;
+        margin-top: 20px;
+
+    }
+
+    .gpdl-header-left {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+    }
+
+    .gpdl-header-icon {
+
+        width: 42px;
+
+        height: 42px;
+
+        border-radius: 12px;
+
+        background: #2563eb;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: #fff;
+
+        font-size: 20px;
+
+    }
+
+    .gpdl-header-left h2 {
+
+        margin: 0;
+
+        font-size: 19px;
+
+        font-weight: 700;
+
+        color: #111827;
+
+    }
+
+    .gpdl-header-left p {
+
+        margin-top: 2px;
+
+        font-size: 12px;
+
         color: #6b7280;
+
+    }
+
+    .gpdl-header-more {
+
+        text-decoration: none;
+
+        color: #2563eb;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+    }
+
+    /*==================================
+        BADGE
+==================================*/
+
+    .gpdl-image {
+
+        position: relative;
+
+    }
+
+    .gpdl-badge {
+
+        position: absolute;
+
+        top: 8px;
+
+        left: 8px;
+
+        padding: 5px 10px;
+
+        border-radius: 20px;
+
+        color: #fff;
+
+        font-size: 10px;
+
+        font-weight: 600;
+
+        z-index: 5;
+
+        backdrop-filter: blur(8px);
+
+    }
+
+    .gpdl-bencana {
+
+        background: #2563eb;
+
+    }
+
+    .gpdl-kemanusiaan {
+
+        background: #16a34a;
+
+    }
+
+    .gpdl-pendidikan {
+
+        background: #f59e0b;
+
+    }
+
+    .gpdl-kesehatan {
+
+        background: #dc2626;
+
+    }
+
+    .gpdl-lingkungan {
+
+        background: #15803d;
+
+    }
+
+    .gpdl-sosial {
+
+        background: #7c3aed;
 
     }
 </style>
@@ -506,7 +930,7 @@
                 </div> -->
 
                 <!--Lokasi terdekat-->
-                <!--  <div class="akb_nearby_section">
+                <!--    <div class="akb_nearby_section">
                     <div class="akb_nearby_header">
                         <div class="gpr_promo_title">
                             Toko Terdekat
@@ -634,169 +1058,227 @@
                     <div id="gocesVoucherHome" class="gcvh-container"></div>
                 </section>
 
-                <!-- ==========================================
-            RESTO TERDEKAT
-========================================== -->
+                <section id="atcNearbySection" class="atc-nearby-section">
+                    <div class="atc-nearby-header">
+                        <h2 class="atc-nearby-title">
+                            📍Resto Terdekat !!
+                        </h2>
 
-                <section id="gprNearbySection" class="gpr-nearby-section">
-
-                    <div class="gpr-nearby-header">
-
-                        <h2>Resto Terdekat</h2>
-
-                        <button onclick="showPage('page-food')">
-
+                        <button class="atc-nearby-seeall" onclick="showPage('gofood')">
                             Lihat Semua
-
                         </button>
-
                     </div>
 
-                    <div id="gprNearbyContainer" class="gpr-nearby-scroll">
-
-                        <!-- ================= CARD 1 ================= -->
-
-                        <div class="item-nearby-row">
-
-                            <a class="item-nearby-link" href="#">
-
-                                <span class="item-nearby-badge">
-                                    TERDEKAT
-                                </span>
-
-                                <img class="item-nearby-image"
-                                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600"
-                                    alt="Pizza Italia">
-
-                                <span class="item-nearby-title">
-                                    Pizza Italia Super Pedas Mozarella
-                                </span>
-
-                                <div class="item-nearby-info">
-
-                                    <span class="item-nearby-distance">
-                                        📍 0.3 Km
-                                    </span>
-
-                                    <span class="item-nearby-rating">
-                                        ⭐ 4.9
-                                    </span>
-
-                                </div>
-
-                            </a>
-
-                            <div class="item-nearby-status">
-
-                                <span class="item-nearby-status-open">
-                                    Buka
-                                </span>
-
-                                <span class="item-nearby-status-note">
-                                    Sampai 22.00
-                                </span>
-
-                            </div>
-
+                    <div id="atcNearbyWrapper" class="atc-nearby-wrapper">
+                        <div id="atcNearbyContainer" class="atc-nearby-container">
+                            {lokasi_terdekat}
                         </div>
-
-                        <!-- ================= CARD 2 ================= -->
-
-                        <div class="item-nearby-row">
-
-                            <a class="item-nearby-link" href="#">
-
-                                <span class="item-nearby-badge">
-                                    TERDEKAT
-                                </span>
-
-                                <img class="item-nearby-image"
-                                    src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600"
-                                    alt="Burger King">
-
-                                <span class="item-nearby-title">
-                                    Burger King Double Cheese Beef
-                                </span>
-
-                                <div class="item-nearby-info">
-
-                                    <span class="item-nearby-distance">
-                                        📍 0.8 Km
-                                    </span>
-
-                                    <span class="item-nearby-rating">
-                                        ⭐ 4.8
-                                    </span>
-
-                                </div>
-
-                            </a>
-
-                            <div class="item-nearby-status">
-
-                                <span class="item-nearby-status-open">
-                                    Buka
-                                </span>
-
-                                <span class="item-nearby-status-note">
-                                    Sampai 23.00
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                        <!-- ================= CARD 3 ================= -->
-
-                        <div class="item-nearby-row">
-
-                            <a class="item-nearby-link" href="#">
-
-                                <span class="item-nearby-badge">
-                                    TERDEKAT
-                                </span>
-
-                                <img class="item-nearby-image"
-                                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600"
-                                    alt="Ayam Geprek">
-
-                                <span class="item-nearby-title">
-                                    Ayam Geprek Sambal Matah Crispy
-                                </span>
-
-                                <div class="item-nearby-info">
-
-                                    <span class="item-nearby-distance">
-                                        📍 1.2 Km
-                                    </span>
-
-                                    <span class="item-nearby-rating">
-                                        ⭐ 5.0
-                                    </span>
-
-                                </div>
-
-                            </a>
-
-                            <div class="item-nearby-status">
-
-                                <span class="item-nearby-status-open">
-                                    Buka
-                                </span>
-
-                                <span class="item-nearby-status-note">
-                                    24 Jam
-                                </span>
-
-                            </div>
-
-                        </div>
-
                     </div>
-
                 </section>
 
+                <!-- =========================================
+        GOCES PEDULI CARD
+========================================= -->
+                <!-- =========================================
+            GOCES PEDULI
+========================================= -->
+
+                <div class="gpdl-header-section">
+
+                    <div class="gpdl-header-left">
+
+                        <div class="gpdl-header-icon">
+
+                            ❤️
+
+                        </div>
+
+                        <div>
+
+                            <h2>GOCES Peduli</h2>
+
+                            <p>Bersama Berbagi Untuk Indonesia</p>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="gpdl-header-more">
+
+                        Lihat Semua
+
+                    </a>
+
+                </div>
+
+                <div class="gpdl-wrapper">
+
+                    <!-- CARD 1 -->
+
+                    <div class="gpdl-card">
+
+                        <div class="gpdl-image">
+
+                            <span class="gpdl-badge gpdl-kemanusiaan">
+
+                                ❤️ Kemanusiaan
+
+                            </span>
+
+                            <img src="https://images.unsplash.com/photo-1469571486292-b53601020f62?w=600" alt="">
+
+                        </div>
+
+                        <div class="gpdl-content">
+
+                            <h3>Bantu Korban Banjir Jakarta</h3>
+
+                            <div class="gpdl-target">
+
+                                Target
+
+                                <strong>Rp100.000.000</strong>
+
+                            </div>
+
+                            <div class="gpdl-progress">
+
+                                <div class="gpdl-progress-bar" style="width:65%;"></div>
+
+                            </div>
+
+                            <div class="gpdl-money">
+
+                                <span>Rp65.000.000</span>
+
+                                <span>65%</span>
+
+                            </div>
+
+                            <div class="gpdl-footer">
+
+                                <span>👥 315 Donatur</span>
+
+                                <button>Donasi</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CARD 2 -->
+
+                    <div class="gpdl-card">
+
+                        <div class="gpdl-image">
+
+                            <span class="gpdl-badge gpdl-bencana">
+
+                                🌊 Bencana
+
+                            </span>
+
+                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600" alt="">
+
+                        </div>
+
+                        <div class="gpdl-content">
+
+                            <h3>Bedah Rumah Keluarga Tidak Mampu</h3>
+
+                            <div class="gpdl-target">
+
+                                Target
+
+                                <strong>Rp50.000.000</strong>
+
+                            </div>
+
+                            <div class="gpdl-progress">
+
+                                <div class="gpdl-progress-bar" style="width:42%;"></div>
+
+                            </div>
+
+                            <div class="gpdl-money">
+
+                                <span>Rp21.000.000</span>
+
+                                <span>42%</span>
+
+                            </div>
+
+                            <div class="gpdl-footer">
+
+                                <span>👥 127 Donatur</span>
+
+                                <button>Donasi</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="gpdl-card">
+
+                        <div class="gpdl-image">
+
+                            <span class="gpdl-badge gpdl-bencana">
+
+                                🌊 Bencana
+
+                            </span>
+
+                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600" alt="">
+
+                        </div>
+
+                        <div class="gpdl-content">
+
+                            <h3>Bedah Rumah Keluarga Tidak Mampu</h3>
+
+                            <div class="gpdl-target">
+
+                                Target
+
+                                <strong>Rp50.000.000</strong>
+
+                            </div>
+
+                            <div class="gpdl-progress">
+
+                                <div class="gpdl-progress-bar" style="width:42%;"></div>
+
+                            </div>
+
+                            <div class="gpdl-money">
+
+                                <span>Rp21.000.000</span>
+
+                                <span>42%</span>
+
+                            </div>
+
+                            <div class="gpdl-footer">
+
+                                <span>👥 127 Donatur</span>
+
+                                <button>Donasi</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
         <!-- ========== AKHIR HALAMAN HOME ==========-->
 
@@ -1391,6 +1873,11 @@
                 <main class="content-body">
 
                     <section id="section-semua" class="menu-section section-visible">
+                        <iframe id="frame-kulinerhorizontal"
+                            src="https://goces-api.vercel.app/horizontal/kulinerhorizontal" scrolling="no"
+                            style="width:100%; height:0; border:none; display:block; overflow:hidden;">
+                        </iframe>
+
                         <section class="gcvh-section">
                             <div class="gcvh-header">
                                 <h2 class="gcvh-title">Cashback Terbatas!!</h2>
@@ -1398,6 +1885,7 @@
                             </div>
                             <div id="gocesVoucherFood" class="gcvh-container"></div>
                         </section>
+
                     </section>
 
                     <section id="section-kuliner" class="menu-section">
@@ -2095,34 +2583,38 @@
 
     <script>
         /*==================================
-                GOCES NEARBY SECTION
+                ATC RESTO TERDEKAT
         ==================================*/
 
-        function gocesNearbyUpdate() {
+        function atcNearbyUpdate() {
 
             const section = document.getElementById(
-                "gprNearbySection"
+                "atcNearbySection"
             );
 
             const container = document.getElementById(
-                "gprNearbyContainer"
+                "atcNearbyContainer"
             );
 
             if (!section || !container) return;
 
-            const total = container.querySelectorAll(
-                ".item-nearby-row"
-            ).length;
+            const nearbyHead = container.querySelector(
+                "#item-nearby-head"
+            );
 
-            if (total > 0) {
-
-                section.style.display = "";
-
-            } else {
+            if (!nearbyHead) {
 
                 section.style.display = "none";
 
+                return;
+
             }
+
+            const total = nearbyHead.querySelectorAll(
+                ".item-nearby-row"
+            ).length;
+
+            section.style.display = total > 0 ? "" : "none";
 
         }
 
@@ -2132,29 +2624,28 @@
 
             function () {
 
-                let count = 0;
+                let retry = 0;
 
-                const timer = setInterval(() => {
+                const timer = setInterval(function () {
 
-                    gocesNearbyUpdate();
+                    atcNearbyUpdate();
 
-                    count++;
+                    retry++;
 
-                    // berhenti setelah 10 detik
-                    if (count >= 20) {
+                    const nearbyHead = document.querySelector(
+                        "#atcNearbyContainer #item-nearby-head"
+                    );
+
+                    if (
+                        nearbyHead &&
+                        nearbyHead.querySelectorAll(".item-nearby-row").length > 0
+                    ) {
 
                         clearInterval(timer);
 
                     }
 
-                    // kalau produk sudah muncul,
-                    // berhenti lebih cepat
-                    const total =
-                        document.querySelectorAll(
-                            "#gprNearbyContainer .item-nearby-row"
-                        ).length;
-
-                    if (total > 0) {
+                    if (retry >= 20) {
 
                         clearInterval(timer);
 
@@ -2165,6 +2656,42 @@
             }
 
         );
+    </script>
+
+    <script>
+        // Klik Card → Detail
+        document.addEventListener("click", function (e) {
+
+            const card = e.target.closest(".gpdl-card");
+
+            if (card && !e.target.closest(".gpdl-btn-donate")) {
+
+                const id = card.dataset.id;
+
+                location.href =
+                    "detail.html?id=" + id;
+
+            }
+
+        });
+
+        // Klik Tombol → Payment
+        document.addEventListener("click", function (e) {
+
+            const btn = e.target.closest(".gpdl-btn-donate");
+
+            if (!btn) return;
+
+            e.stopPropagation();
+
+            const id =
+
+                btn.closest(".gpdl-card").dataset.id;
+
+            location.href =
+                "payment.html?id=" + id;
+
+        });
     </script>
 
     <!--==================================

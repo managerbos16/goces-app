@@ -1,0 +1,32 @@
+<div class="section-container">
+    <div class="section-header">
+        <h3 style="font-weight:600;">Permintaan Penarikan Dana Driver</h3>
+    </div>
+    <div class="responsive-table">
+        <table class="enterprise-table">
+            <thead>
+                <tr>
+                    <th>Nama Driver</th>
+                    <th>Nominal</th>
+                    <th>Rekening Tujuan</th>
+                    <th>Status</th>
+                    <th>Aksi Kontrol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Andi Wijaya (Driver Makassar)</td>
+                    <td>Rp 450.000</td>
+                    <td>BCA - 893247293</td>
+                    <td><span class="badge warning">Pending</span></td>
+                    <td>
+                        <button class="btn-action btn-sm-success"
+                            onclick="showNotification('Withdrawal Approved')">Approve</button>
+                        <button class="btn-action btn-sm-danger"
+                            onclick="showNotification('Withdrawal Rejected')">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

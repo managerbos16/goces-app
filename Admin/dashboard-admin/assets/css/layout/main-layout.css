@@ -1,0 +1,185 @@
+/* ==========================================================
+   GOCES ENTERPRISE MAIN LAYOUT
+========================================================== */
+
+/* ==========================================================
+   APP CONTAINER
+========================================================== */
+
+.app-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: #f6f8fc;
+  overflow: hidden;
+}
+
+/* ==========================================================
+   MAIN CONTENT
+========================================================== */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  margin-left: 260px;
+
+  position: relative;
+
+  background: #f6f8fc;
+
+  transition: 0.28s ease;
+}
+
+/* Sidebar Collapse */
+
+.sidebar.collapsed ~ .main-content {
+  margin-left: 82px;
+}
+
+/* ==========================================================
+   CONTENT WRAPPER
+========================================================== */
+
+.content-wrapper {
+  flex: 1;
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  padding: 0px;
+}
+
+/* ==========================================================
+   CONTENT CONTAINER
+========================================================== */
+
+.content-container {
+  width: 100%;
+
+  max-width: 1700px;
+
+  margin: 0 auto;
+  padding: 18px;
+}
+
+/* ==========================================================
+   WORKSPACE
+========================================================== */
+
+#workspace-view {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+/* ==========================================================
+   DESKTOP XL
+========================================================== */
+
+@media (min-width: 1800px) {
+  .main-content {
+    margin-left: 290px;
+  }
+
+  .content-container {
+    max-width: 1800px;
+  }
+
+  .content-wrapper {
+    padding: 24px;
+  }
+}
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media (min-width: 1400px) and (max-width: 1799px) {
+  .main-content {
+    margin-left: 280px;
+  }
+
+  .content-container {
+    max-width: 1600px;
+  }
+
+  .content-wrapper {
+    padding: 22px;
+  }
+}
+
+/* ==========================================================
+   LAPTOP
+========================================================== */
+
+@media (min-width: 992px) and (max-width: 1399px) {
+  .main-content {
+    margin-left: 260px;
+  }
+
+  .content-container {
+    max-width: none;
+  }
+
+  .content-wrapper {
+    padding: 18px;
+  }
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 991px) {
+  .main-content {
+    margin-left: 0;
+
+    width: 100%;
+  }
+
+  .content-wrapper {
+    padding: 16px;
+  }
+
+  .content-container {
+    max-width: none;
+  }
+
+  #workspace-view {
+    gap: 16px;
+  }
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 576px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .content-wrapper {
+    padding: 10px;
+  }
+
+  .content-container {
+    width: 100%;
+  }
+
+  #workspace-view {
+    gap: 12px;
+  }
+}

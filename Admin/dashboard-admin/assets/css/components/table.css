@@ -1,0 +1,38 @@
+.responsive-table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.enterprise-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.enterprise-table thead {
+  background: #fafafa;
+}
+
+.enterprise-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  white-space: nowrap;
+  border-bottom: 1px solid #ececec;
+}
+
+.enterprise-table td {
+  padding: 16px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.enterprise-table tbody tr:hover {
+  background: #fafcff;
+}

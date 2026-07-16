@@ -1,0 +1,191 @@
+<!-- ==========================================================
+     RBAC
+========================================================== -->
+
+<section class="section-container admin-rbac-section">
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <h2 class="admin-title">
+                Manajemen Hak Akses
+            </h2>
+
+            <p class="admin-subtitle">
+                Kelola hak akses setiap admin berdasarkan role.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="rbac-grid">
+
+        <!-- ==========================================
+             ROLE
+        =========================================== -->
+
+        <section class="rbac-panel role-panel">
+
+            <div class="rbac-panel-header">
+
+                <h3 class="rbac-panel-title">
+
+                    Pilih Role
+
+                </h3>
+
+            </div>
+
+            <div class="rbac-panel-body">
+
+                <div id="role-list-target" class="role-list">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             PERMISSION
+        =========================================== -->
+
+        <section class="rbac-panel permission-panel">
+
+            <div class="rbac-panel-header">
+
+                <h3 class="rbac-panel-title">
+
+                    Hak Akses
+
+                    <span id="matrix-role-title" class="rbac-role-name">
+
+                        -
+
+                    </span>
+
+                </h3>
+
+                <p class="rbac-desc">
+
+                    Centang menu yang boleh diakses role ini.
+
+                </p>
+
+            </div>
+
+            <div id="menu-matrix-target" class="matrix-box">
+
+            </div>
+
+            <div class="permission-footer">
+
+                <button class="btn-primary permission-save" onclick="saveRbacMatrixConfig()">
+
+                    Simpan Hak Akses
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+     ADMIN LIST
+========================================================== -->
+
+<section class="section-container admin-list-section">
+
+    <div class="admin-list-header">
+
+        <div>
+
+            <h2 class="admin-title">
+
+                Daftar Akun Pengelola Admin
+
+            </h2>
+
+            <p class="admin-subtitle">
+
+                Kelola seluruh akun administrator GOCES Enterprise.
+
+            </p>
+
+        </div>
+
+        <button class="btn-action btn-sm-success admin-add-btn" onclick="openAdminRegisterModal()">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            Daftarkan Admin Baru
+
+        </button>
+
+    </div>
+
+    <!-- ==========================================
+         TAB
+    =========================================== -->
+
+    <div class="admin-tabs">
+
+        <button id="tab-active" class="admin-tab active" onclick="switchAdminTab('active')">
+
+            Admin Aktif
+
+        </button>
+
+        <button id="tab-pending" class="admin-tab" onclick="switchAdminTab('pending')">
+
+            Permintaan Admin
+
+        </button>
+
+    </div>
+
+    <!-- ==========================================
+         TABLE
+    =========================================== -->
+
+    <div class="admin-table-wrapper">
+
+        <div class="responsive-table">
+
+            <table class="enterprise-table">
+
+                <thead id="admin-table-head">
+
+                    <tr>
+
+                        <th>Nama Akun</th>
+
+                        <th>Email</th>
+
+                        <th>Role</th>
+
+                        <th>Status</th>
+
+                        <th>Aksi</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="admin-list-target">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>

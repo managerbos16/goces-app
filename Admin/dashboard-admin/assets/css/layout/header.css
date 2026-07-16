@@ -1,0 +1,413 @@
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+
+  width: 100%;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding: 12px 24px;
+
+  background: #fff;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  box-sizing: border-box;
+  border-radius: 0;
+  box-shadow: none;
+  left: 0;
+}
+
+.main-content > .main-header {
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.main-content > .content-wrapper {
+  margin-top: 0;
+}
+
+.header-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  flex-shrink: 0;
+
+  min-width: 0;
+}
+
+.header-title {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+}
+
+#page-title {
+  margin: 0;
+
+  font-size: clamp(24px, 2vw, 34px);
+
+  font-weight: 600;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.3px;
+
+  color: #1e293b;
+
+  white-space: nowrap;
+}
+
+.page-subtitle {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: clamp(12px, 0.9vw, 14px);
+
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  color: #64748b;
+}
+
+.header-center {
+  flex: 1;
+
+  display: flex;
+
+  justify-content: center;
+
+  min-width: 0;
+
+  padding: 0 12px;
+}
+
+.header-search {
+  width: 100%;
+
+  max-width: 560px;
+
+  min-width: 180px;
+
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 16px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  background: #f8fafc;
+}
+
+.header-search:focus-within {
+  border-color: #2563eb;
+
+  background: #fff;
+
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+}
+
+.header-search i {
+  font-size: 15px;
+
+  color: #94a3b8;
+}
+
+.header-search input {
+  flex: 1;
+
+  border: none;
+
+  outline: none;
+
+  background: none;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  color: #334155;
+}
+
+.header-search input::placeholder {
+  color: #94a3b8;
+
+  font-weight: 400;
+}
+
+.header-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+/* ==========================================================
+ICON
+========================================================== */
+
+.header-icon {
+  position: relative;
+
+  width: 44px;
+
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #fff;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.header-icon:hover {
+  background: #eef4ff;
+
+  color: #2563eb;
+}
+
+.header-icon:active {
+  background: #2563eb;
+
+  color: #fff;
+
+  transform: scale(0.96);
+}
+
+.header-icon:focus-visible {
+  outline: none;
+
+  background: #2563eb;
+
+  color: #fff;
+}
+
+.notification-dot {
+  position: absolute;
+
+  top: 8px;
+
+  right: 8px;
+
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  border: 2px solid #fff;
+
+  z-index: 5;
+}
+
+/* ==========================================================
+PROFILE
+========================================================== */
+
+.admin-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 4px 8px;
+
+  border-radius: 12px;
+
+  background: #fff;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: 0.25s;
+}
+
+.admin-profile:hover {
+  background: #f8fafc;
+}
+
+.admin-profile:active {
+  transform: scale(0.98);
+}
+
+.admin-profile img {
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.profile-info span {
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #1e293b;
+}
+
+.profile-info small {
+  font-size: 12px;
+
+  font-weight: 400;
+
+  color: #64748b;
+}
+
+/* ==========================================================
+DESKTOP BESAR
+========================================================== */
+
+@media (min-width: 1600px) {
+  .main-header {
+    padding: 16px 28px;
+  }
+
+  .header-search {
+    max-width: 620px;
+  }
+}
+
+/* ==========================================================
+LAPTOP
+========================================================== */
+
+@media (max-width: 1366px) {
+  .main-header {
+    padding: 12px 20px;
+  }
+
+  .header-search {
+    max-width: 420px;
+  }
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 991px) {
+  .main-header {
+    padding: 0 16px;
+
+    height: 68px;
+
+    gap: 14px;
+  }
+
+  .header-search {
+    max-width: 320px;
+  }
+
+  .profile-info {
+    display: none;
+  }
+
+  #page-title {
+    font-size: 24px;
+  }
+
+  .page-subtitle {
+    display: none;
+  }
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+  .main-header {
+    padding: 10px 14px;
+
+    height: auto;
+
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    width: 100%;
+  }
+
+  .header-center {
+    width: 100%;
+
+    flex: 0 0 100%;
+
+    padding: 0;
+  }
+
+  .header-search {
+    max-width: none;
+
+    width: 100%;
+
+    min-width: 0;
+  }
+
+  .header-right {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+
+  #page-title {
+    font-size: 21px;
+  }
+
+  .header-icon {
+    width: 38px;
+
+    height: 38px;
+  }
+
+  .admin-profile img {
+    width: 34px;
+
+    height: 34px;
+  }
+}

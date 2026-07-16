@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOCES Enterprise Admin Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/core/main.css">
+    <link rel="stylesheet" href="assets/css/core/responsive.css">
+    <link rel="stylesheet" href="assets/css/layout/sidebar.css">
+    <link rel="stylesheet" href="assets/css/layout/header.css">
+    <link rel="stylesheet" href="assets/css/layout/card.css">
+    <link rel="stylesheet" href="assets/css/components/form.css">
+    <link rel="stylesheet" href="assets/css/components/button.css">
+    <link rel="stylesheet" href="assets/css/components/badge.css">
+    <link rel="stylesheet" href="assets/css/components/table.css">
+    <link rel="stylesheet" href="assets/css/components/modal.css">
+    <link rel="stylesheet" href="assets/css/components/toast.css">
+    <link rel="stylesheet" href="assets/css/pages/dashboard.css">
+    <link rel="stylesheet" href="assets/css/pages/merchant.css">
+    <link rel="stylesheet" href="assets/css/layout/main-layout.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+
+
+    <link rel="stylesheet" href="modules/admin/admin.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div id="login-view" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-box"><i class="fa-solid fa-layer-group"></i> GOCES</div>
+                <p style="color: var(--text-muted); font-size: 14px;">Enterprise Operational Control Panel</p>
+            </div>
+            <div id="login-error" class="error-msg">Email atau password salah. Akses ditolak.</div>
+            <form id="form-login-gate" onsubmit="handleSecureLogin(event)">
+                <div class="form-group">
+                    <label>Alamat Email Kerja</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="name@goces.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Kata Sandi</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">Masuk ke System</button>
+                <div style="margin-top:20px;text-align:center;">
+                    <span style="color:var(--text-muted);">
+                        Belum memiliki akun?
+                    </span>
+                    <br><br>
+                    <button type="button" class="btn-action" onclick="showRegisterPage()">
+                        Daftar Admin
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= REGISTER PAGE ================= -->
+    <div id="register-view" class="login-container" style="display:none;">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-box">
+                    <i class="fa-solid fa-user-plus"></i> GOCES
+                </div>
+                <p style="color: var(--text-muted); font-size:14px;">
+                    Pendaftaran Admin Baru
+                </p>
+            </div>
+            <div id="register-error" class="error-msg"></div>
+            <form id="register-form" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="register-full-name" class="form-control" placeholder="Masukkan nama lengkap"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label>Alamat Email</label>
+                    <input type="email" id="register-email" class="form-control" placeholder="admin@goces.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Nomor HP</label>
+                    <input type="text" id="register-phone" class="form-control" placeholder="08xxxxxxxxxx" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="register-password" class="form-control" placeholder="Minimal 6 karakter"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label>Konfirmasi Password</label>
+                    <input type="password" id="register-confirm-password" class="form-control"
+                        placeholder="Ulangi password" required>
+                </div>
+                <button type="submit" class="btn-primary">
+                    Daftarkan Admin
+                </button>
+            </form>
+            <div style="margin-top:20px;text-align:center;">
+                <span style="color:var(--text-muted);">
+                    Sudah memiliki akun?
+                </span>
+                <br><br>
+                <button type="button" class="btn-action" onclick="showLoginPage()">
+                    Kembali ke Login
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-view" class="app-container">
+
+        <!-- ========================= -->
+        <!-- SIDEBAR -->
+        <!-- ========================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-name">
+
+                    <i class="fa-solid fa-layer-group" style="color: var(--accent-blue);"></i>
+
+                    GOCES ADMIN
+
+                </span>
+
+                <!-- Tombol Close Sidebar (Mobile) -->
+
+                <button id="sidebar-close" class="sidebar-close">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+            <nav class="sidebar-menu" id="dynamic-sidebar-menu">
+
+            </nav>
+
+        </aside>
+
+        <!-- Overlay Mobile -->
+
+        <div id="sidebar-overlay" class="sidebar-overlay">
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ========================= -->
+
+        <main class="main-content">
+
+            <!-- =========================
+         HEADER
+    ========================== -->
+            <header class="main-header">
+
+                <!-- LEFT -->
+                <div class="header-left">
+
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div class="header-title">
+
+                        <h2 id="page-title">
+                            Dashboard
+                        </h2>
+
+                        <span class="page-subtitle">
+                            Selamat datang di GOCES Enterprise Dashboard
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- CENTER -->
+                <div class="header-center">
+
+                    <div class="header-search">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input type="text" placeholder="Cari merchant, admin, transaksi...">
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="header-right">
+
+                    <button class="header-icon">
+
+                        <i class="fa-regular fa-bell"></i>
+
+                        <span class="notification-dot"></span>
+
+                    </button>
+
+                    <button class="header-icon">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                    </button>
+
+                    <button class="header-icon">
+
+                        <i class="fa-solid fa-gear"></i>
+
+                    </button>
+
+                    <div class="admin-profile" id="profile-toggle">
+
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop"
+                            alt="Avatar">
+
+                        <div class="profile-info">
+
+                            <span id="session-user-name">
+
+                                M. Akbar Amrullah
+
+                            </span>
+
+                            <small id="session-user-role">
+
+                                Super Admin
+
+                            </small>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- =========================
+         CONTENT WRAPPER
+    ========================== -->
+
+            <div class="content-wrapper">
+
+                <div class="content-container">
+
+                    <div id="workspace-view">
+
+                        <!-- Semua module akan dimuat di sini -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <div id="toast" class="toast-box"></div>
+
+    <script src="js/pageLoader.js"></script>
+
+    <script src="modules/dashboard/dashboard.js"></script>
+    <script src="modules/merchant/merchant.js"></script>
+    <script src="modules/pembayaran/pembayaran.js"></script>
+    <script src="modules/withdraw/withdraw.js"></script>
+    <script src="modules/voucher/voucher.js"></script>
+    <script src="modules/banner/banner.js"></script>
+    <script src="modules/pengaturan/pengaturan.js"></script>
+    <script src="modules/admin/admin.js"></script>
+
+    <script src="js/toast.js"></script>
+    <script src="js/session.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/workspace.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+
+    <div id="approve-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Approve Admin</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama Admin</label>
+                    <input id="approve-name" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input id="approve-email" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Pilih Role</label>
+                    <select id="approve-role" class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-danger" onclick="openResetPasswordModal()">
+                    <i class="fa-solid fa-key"></i>
+                    Reset Password
+                </button>
+                <div style="flex:1;"></div>
+                <button class="btn-action" onclick="closeManageAdmin()">
+                    Batal
+                </button>
+                <button class="btn-primary" onclick="saveManageAdmin()">
+                    Simpan Perubahan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-register-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Daftarkan Admin Baru</h3>
+                <button class="modal-close" onclick="closeAdminRegisterModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="new-admin-name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="new-admin-email">
+                </div>
+                <div class="form-group">
+                    <label>Nomor HP</label>
+                    <input type="text" id="new-admin-phone">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="new-admin-password">
+                </div>
+                <div class="form-group">
+                    <label>Konfirmasi Password</label>
+                    <input type="password" id="new-admin-confirm">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeAdminRegisterModal()">
+                    Batal
+                </button>
+                <button class="btn-primary" onclick="registerAdminFromDashboard()">
+                    Simpan Admin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="reject-admin-modal" class="modal-overlay">
+        <div class="modal-box" style="max-width:420px;">
+            <div class="modal-header">
+                <h3>Tolak Pendaftaran Admin</h3>
+            </div>
+            <div class="modal-body">
+                <p style="line-height:24px;">
+                    Apakah Anda yakin ingin menolak pendaftaran admin:
+                </p>
+                <h3 id="reject-admin-name" style="margin-top:12px;color:#d32f2f;">
+                </h3>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeRejectModal()">
+                    Batal
+                </button>
+                <button class="btn-danger" onclick="processRejectAdmin()">
+                    Ya, Tolak
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="manage-admin-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Kelola Admin</h3>
+                <button class="modal-close" onclick="closeManageAdmin()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="manage-admin-id">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="manage-admin-name" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" id="manage-admin-email" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select id="manage-admin-role" class="form-control">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Status Akun</label>
+                    <select id="manage-admin-status" class="form-control">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Suspend">Suspend</option>
+                        <option value="Nonaktif">Nonaktif</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-danger" onclick="openResetPasswordModal()">
+                    <i class="fa-solid fa-key"></i>
+                    Reset Password
+                </button>
+                <div style="flex:1;"></div>
+                <button type="button" class="btn-action" onclick="closeManageAdmin()">
+                    Batal
+                </button>
+                <button type="button" class="btn-primary" onclick="saveManageAdmin()">
+                    Simpan Perubahan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="reset-password-modal" class="modal-overlay">
+        <div class="modal-box" style="max-width:450px;">
+            <div class="modal-header">
+                <h3>Reset Password Admin</h3>
+                <button class="modal-close" onclick="closeResetPasswordModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Password Baru</label>
+                    <input type="password" id="reset-password">
+                </div>
+                <div class="form-group">
+                    <label>Konfirmasi Password Baru</label>
+                    <input type="password" id="reset-confirm-password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-action" onclick="closeResetPasswordModal()">
+                    Batal
+                </button>
+                <button class="btn-primary" onclick="resetAdminPassword()">
+                    Simpan Password
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
