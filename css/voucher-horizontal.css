@@ -42,20 +42,26 @@
   cursor: pointer;
 }
 
-.gcvh-container {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
+.gcvh-section {
+  margin-top: 18px;
+
+  padding: 0 16px;
 }
 
-.gcvh-container::before,
-.gcvh-container::after {
-  content: "";
-  flex: 0 0 16px;
+.gcvh-container {
+  display: flex;
+
+  gap: 12px;
+
+  overflow-x: auto;
+
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  padding-bottom: 8px;
 }
 
 .gcvh-container::-webkit-scrollbar {
