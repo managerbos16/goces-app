@@ -4,6 +4,8 @@
 
 .gcvh-section {
   margin-top: 18px;
+
+  padding: 0 12px;
 }
 
 .gcvh-header {
@@ -15,7 +17,7 @@
 
   margin-bottom: 14px;
 
-  padding: 0 16px;
+  padding: 0;
 }
 
 .gcvh-title {
