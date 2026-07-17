@@ -8,13 +8,11 @@
   box-sizing: border-box;
 }
 
-body {
+#page-goces-payment {
+  min-height: 100vh;
   background: #f5f7fb;
-
-  font-family: Arial, Helvetica, sans-serif;
-
   color: #111827;
-
+  font-family: Arial, Helvetica, sans-serif;
   padding-bottom: 90px;
 }
 
@@ -58,6 +56,9 @@ body {
   font-size: 22px;
 
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gpay-header h1 {
@@ -206,7 +207,8 @@ body {
   outline: none;
 }
 
-.gpay-group input:focus {
+.gpay-group input:focus,
+#donationAmount:focus {
   border-color: #2563eb;
 }
 
@@ -280,6 +282,13 @@ body {
 
 .gpay-quick button:active {
   transform: scale(0.97);
+  background: #2563eb;
+
+  color: #fff;
+}
+
+.gpay-quick button:hover {
+  background: #dbeafe;
 }
 
 /*==================================
@@ -358,6 +367,8 @@ body {
   padding: 14px 16px;
 
   box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  padding-bottom: calc(14px + env(safe-area-inset-bottom));
 }
 
 .gpay-footer button {
@@ -382,4 +393,27 @@ body {
 
 .gpay-footer button:active {
   transform: scale(0.98);
+}
+
+.gpay-footer button:hover {
+  background: #1d4ed8;
+}
+
+.gpay-footer button:focus-visible,
+.gpay-back:focus-visible {
+  outline: 2px solid #2563eb;
+
+  outline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .gpay-campaign {
+    flex-direction: column;
+  }
+
+  .gpay-campaign img {
+    width: 100%;
+
+    height: 180px;
+  }
 }

@@ -8,14 +8,12 @@
   box-sizing: border-box;
 }
 
-body {
+#page-goces-detail {
   background: #f5f7fb;
-
-  font-family: Arial, Helvetica, sans-serif;
-
   color: #111827;
-
+  font-family: Arial, Helvetica, sans-serif;
   padding-bottom: 90px;
+  min-height: 100vh;
 }
 
 /*==================================
@@ -58,6 +56,12 @@ body {
   font-size: 22px;
 
   cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
 }
 
 .gpd-header h1 {
@@ -103,7 +107,9 @@ body {
 .gpd-banner img {
   width: 100%;
 
-  height: 230px;
+  aspect-ratio: 16/9;
+
+  height: auto;
 
   object-fit: cover;
 
@@ -211,7 +217,7 @@ body {
 
   border-radius: 30px;
 
-  transition: 0.4s;
+  transition: width 0.35s ease;
 }
 
 /*==================================
@@ -293,9 +299,12 @@ body {
 
   bottom: 0;
 
+  width: 100%;
+
   background: #fff;
 
   padding: 14px 16px;
+  padding-bottom: calc(14px + env(safe-area-inset-bottom));
 
   box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
 }
@@ -322,4 +331,27 @@ body {
 
 .gpd-footer button:active {
   transform: scale(0.98);
+}
+
+.gpd-footer button:hover {
+  background: #1d4ed8;
+}
+
+.gpd-footer button:focus-visible,
+.gpd-back:focus-visible {
+  outline: 2px solid #2563eb;
+
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .gpd-card h2 {
+    font-size: 20px;
+
+    line-height: 28px;
+  }
+
+  .gpd-progress-info span:first-child {
+    font-size: 20px;
+  }
 }

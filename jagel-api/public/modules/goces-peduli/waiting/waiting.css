@@ -8,13 +8,11 @@
   box-sizing: border-box;
 }
 
-body {
+#page-goces-waiting {
+  min-height: 100vh;
   background: #f5f7fb;
-
   font-family: Arial, Helvetica, sans-serif;
-
   color: #111827;
-
   padding-bottom: 30px;
 }
 
@@ -58,6 +56,9 @@ body {
   font-size: 22px;
 
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gwait-header h1 {
@@ -157,9 +158,9 @@ body {
 #gwaitQR {
   display: block;
 
-  width: 230px;
-
-  height: 230px;
+  width: min(230px, 100%);
+  height: auto;
+  aspect-ratio: 1/1;
 
   margin: 0 auto 18px;
 
@@ -184,6 +185,18 @@ body {
   font-weight: 700;
 
   cursor: pointer;
+  transition: 0.25s;
+}
+
+#gwaitDownload:hover {
+  background: #1d4ed8;
+}
+
+.gwait-back:focus-visible,
+#gwaitDownload:focus-visible {
+  outline: 2px solid #2563eb;
+
+  outline-offset: 3px;
 }
 
 /*==================================
@@ -200,6 +213,7 @@ body {
   color: #dc2626;
 
   letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
 }
 
 /*==================================
@@ -214,6 +228,7 @@ body {
   align-items: center;
 
   padding: 10px 0;
+  gap: 12px;
 
   border-bottom: 1px solid #ececec;
 }
@@ -260,4 +275,14 @@ body {
   line-height: 24px;
 
   color: #4b5563;
+}
+
+@media (max-width: 420px) {
+  .gwait-status h2 {
+    font-size: 28px;
+  }
+
+  .gwait-countdown {
+    font-size: 28px;
+  }
 }

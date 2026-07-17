@@ -1,0 +1,328 @@
+/* ==========================
+   GOCES PEDULI
+========================== */
+
+.gpdl-section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.gpdl-header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-top: 20px;
+  padding: 0 16px 12px;
+}
+
+.gpdl-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.gpdl-header-icon {
+  display: flex;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 20px;
+}
+
+.gpdl-header-left h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.gpdl-header-left p {
+  margin: 2px 0 0;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.gpdl-header-more {
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  padding: 6px 0;
+
+  color: #0d3bb8;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gpdl-header-more:focus-visible,
+.gpdl-donate:focus-visible,
+.gpdl-card:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* ==========================
+   WRAPPER
+========================== */
+
+.gpdl-wrapper {
+  display: flex;
+  gap: 12px;
+
+  overflow-x: auto;
+  padding: 0 16px 16px;
+  box-sizing: border-box;
+
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.gpdl-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.gpdl-card {
+  flex: 0 0 175px;
+  overflow: hidden;
+
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gpdl-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================
+   IMAGE & BADGE
+========================== */
+
+.gpdl-image {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.gpdl-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gpdl-badge {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 8px;
+
+  padding: 5px 10px;
+  border-radius: 20px;
+
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  backdrop-filter: blur(8px);
+}
+
+.gpdl-bencana {
+  background: #2563eb;
+}
+
+.gpdl-kemanusiaan {
+  background: #16a34a;
+}
+
+.gpdl-pendidikan {
+  background: #f59e0b;
+}
+
+.gpdl-kesehatan {
+  background: #dc2626;
+}
+
+.gpdl-lingkungan {
+  background: #15803d;
+}
+
+.gpdl-sosial {
+  background: #7c3aed;
+}
+
+/* ==========================
+   CONTENT
+========================== */
+
+.gpdl-content {
+  padding: 10px;
+}
+
+.gpdl-content h3 {
+  display: -webkit-box;
+  overflow: hidden;
+
+  height: 36px;
+  margin: 0 0 8px;
+
+  color: #111827;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 18px;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.gpdl-target {
+  color: #888;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.gpdl-target strong {
+  display: block;
+  margin-top: 2px;
+
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gpdl-progress {
+  height: 6px;
+  margin: 8px 0;
+  overflow: hidden;
+
+  border-radius: 20px;
+  background: #ececec;
+}
+
+.gpdl-progress-bar {
+  width: 0;
+  height: 100%;
+
+  border-radius: inherit;
+  background: #22c55e;
+  transition: width 0.35s ease;
+}
+
+.gpdl-money {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+
+  color: #111827;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.gpdl-money span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gpdl-money span:last-child {
+  flex-shrink: 0;
+}
+
+.gpdl-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+
+  margin-top: 8px;
+}
+
+.gpdl-footer span {
+  overflow: hidden;
+
+  color: #777;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gpdl-footer button {
+  flex-shrink: 0;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  padding: 6px 12px;
+
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.gpdl-footer button:hover {
+  background: #1d4ed8;
+}
+
+/* ==========================
+   LOADING / ERROR MESSAGE
+========================== */
+
+.gpdl-message {
+  width: 100%;
+  margin: 0;
+  padding: 16px;
+  box-sizing: border-box;
+
+  color: #6b7280;
+  text-align: center;
+  font-size: 14px;
+}
+
+.gpdl-message-error {
+  color: #dc2626;
+}
+
+/* Tidak mengubah model card pada layar kecil */
+@media (max-width: 360px) {
+  .gpdl-header-section {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .gpdl-wrapper {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}

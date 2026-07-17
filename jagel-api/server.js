@@ -24,7 +24,6 @@ app.use("/api", campaignRoutes);
 app.use("/api/donations", donationRoutes);
 app.use("/api/callback", callbackRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use("/modules", express.static("modules"));
 
 const PORT = process.env.PORT || 3000;
 
