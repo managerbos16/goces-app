@@ -48,6 +48,8 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/versi-v01/development.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/voucher.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/voucher-horizontal.css">
+
+    <link rel="stylesheet" href="http://localhost:3000/modules/goces-peduli/assets/css/style.css">
 </head>
 
 <style>
@@ -373,354 +375,25 @@
 
     }
 
-    /*==========================
-    WRAPPER
-==========================*/
-
-    .gpdl-wrapper {
-
-        display: flex;
-
-        gap: 12px;
-
-        overflow-x: auto;
-
-        padding-bottom: 16px;
-
-        padding-left: 16px;
-
-        padding-right: 16px;
-
-        box-sizing: border-box;
-
-        scrollbar-width: none;
-
-    }
-
-    .gpdl-wrapper::-webkit-scrollbar {
-
-        display: none;
-
-    }
-
-    /*==========================
-      CARD
-==========================*/
-
-    .gpdl-card {
-
-        flex: 0 0 175px;
-
-        background: #fff;
-
-        border-radius: 18px;
-
-        overflow: hidden;
-
-        box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
-
-        scroll-snap-align: start;
-
-    }
-
-    /*==========================
-      IMAGE
-==========================*/
-
-    .gpdl-image {
+    .home-goces-peduli {
 
         width: 100%;
 
-        height: 110px;
-
-    }
-
-    .gpdl-image img {
-
-        width: 100%;
-
-        height: 100%;
-
-        object-fit: cover;
-
-    }
-
-    /*==========================
-      CONTENT
-==========================*/
-
-    .gpdl-content {
-
-        padding: 10px;
-
-    }
-
-    .gpdl-content h3 {
-
-        font-size: 13px;
-
-        line-height: 18px;
-
-        height: 36px;
-
-        overflow: hidden;
-
-        margin-bottom: 8px;
-
-        font-weight: 700;
-
-    }
-
-    /*==========================*/
-
-    .gpdl-target {
-
-        font-size: 10px;
-
-        color: #888;
-
-    }
-
-    .gpdl-target strong {
-
-        display: block;
-
-        margin-top: 2px;
-
-        font-size: 14px;
-
-        color: #111;
-
-    }
-
-    /*==========================*/
-
-    .gpdl-progress {
-
-        margin: 8px 0;
-
-        height: 6px;
-
-        background: #ececec;
-
-        border-radius: 20px;
-
-    }
-
-    .gpdl-progress-bar {
-
-        height: 100%;
-
-        background: #22c55e;
-
-    }
-
-    /*==========================*/
-
-    .gpdl-money {
-
-        display: flex;
-
-        justify-content: space-between;
-
-        font-size: 11px;
-
-        font-weight: 600;
-
-    }
-
-    /*==========================*/
-
-    .gpdl-footer {
-
-        margin-top: 8px;
-
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-    }
-
-    .gpdl-footer span {
-
-        font-size: 10px;
-
-        color: #777;
-
-    }
-
-    .gpdl-footer button {
-
-        border: none;
-
-        background: #2563eb;
-
-        color: #fff;
-
-        font-size: 11px;
-
-        font-weight: 600;
-
-        padding: 6px 12px;
-
-        border-radius: 8px;
-
-        cursor: pointer;
-
-    }
-
-    /*==================================
-        HEADER
-==================================*/
-
-    .gpdl-header-section {
-
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        padding: 0 16px 12px;
         margin-top: 20px;
 
     }
 
-    .gpdl-header-left {
+    .goces-peduli-frame {
 
-        display: flex;
+        width: 100%;
 
-        align-items: center;
+        height: 420px;
 
-        gap: 10px;
+        border: none;
 
-    }
+        display: block;
 
-    .gpdl-header-icon {
-
-        width: 42px;
-
-        height: 42px;
-
-        border-radius: 12px;
-
-        background: #2563eb;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        color: #fff;
-
-        font-size: 20px;
-
-    }
-
-    .gpdl-header-left h2 {
-
-        margin: 0;
-
-        font-size: 17px;
-
-        font-weight: 700;
-
-        color: #111827;
-
-    }
-
-    .gpdl-header-left p {
-
-        margin-top: 2px;
-
-        font-size: 12px;
-
-        color: #6b7280;
-
-    }
-
-    .gpdl-header-more {
-
-        text-decoration: none;
-
-        color: #0d4bd2;
-
-        font-size: 14px;
-
-        font-weight: 700;
-
-    }
-
-    /*==================================
-        BADGE
-==================================*/
-
-    .gpdl-image {
-
-        position: relative;
-
-    }
-
-    .gpdl-badge {
-
-        position: absolute;
-
-        top: 8px;
-
-        left: 8px;
-
-        padding: 5px 10px;
-
-        border-radius: 20px;
-
-        color: #fff;
-
-        font-size: 10px;
-
-        font-weight: 600;
-
-        z-index: 5;
-
-        backdrop-filter: blur(8px);
-
-    }
-
-    .gpdl-bencana {
-
-        background: #2563eb;
-
-    }
-
-    .gpdl-kemanusiaan {
-
-        background: #16a34a;
-
-    }
-
-    .gpdl-pendidikan {
-
-        background: #f59e0b;
-
-    }
-
-    .gpdl-kesehatan {
-
-        background: #dc2626;
-
-    }
-
-    .gpdl-lingkungan {
-
-        background: #15803d;
-
-    }
-
-    .gpdl-sosial {
-
-        background: #7c3aed;
+        background: #fff;
 
     }
 </style>
@@ -1076,206 +749,13 @@
                     </div>
                 </section>
 
-                <!-- =========================================
-        GOCES PEDULI CARD
-========================================= -->
-                <!-- =========================================
-            GOCES PEDULI
-========================================= -->
+                <section class="home-goces-peduli">
 
-                <div class="gpdl-header-section">
+                    <iframe src="http://localhost:3000/modules/goces-peduli/index.html" class="goces-peduli-frame"
+                        frameborder="0" scrolling="no">
+                    </iframe>
 
-                    <div class="gpdl-header-left">
-
-                        <div class="gpdl-header-icon">
-
-                            ❤️
-
-                        </div>
-
-                        <div>
-
-                            <h2>GOCES Peduli</h2>
-
-                            <p>Bersama Berbagi Untuk Indonesia</p>
-
-                        </div>
-
-                    </div>
-
-                    <a href="#" class="gpdl-header-more">
-
-                        Lihat Semua
-
-                    </a>
-
-                </div>
-
-                <div class="gpdl-wrapper">
-
-                    <!-- CARD 1 -->
-
-                    <div class="gpdl-card">
-
-                        <div class="gpdl-image">
-
-                            <span class="gpdl-badge gpdl-kemanusiaan">
-
-                                ❤️ Kemanusiaan
-
-                            </span>
-
-                            <img src="https://images.unsplash.com/photo-1469571486292-b53601020f62?w=600" alt="">
-
-                        </div>
-
-                        <div class="gpdl-content">
-
-                            <h3>Bantu Korban Banjir Jakarta</h3>
-
-                            <div class="gpdl-target">
-
-                                Target
-
-                                <strong>Rp100.000.000</strong>
-
-                            </div>
-
-                            <div class="gpdl-progress">
-
-                                <div class="gpdl-progress-bar" style="width:65%;"></div>
-
-                            </div>
-
-                            <div class="gpdl-money">
-
-                                <span>Rp65.000.000</span>
-
-                                <span>65%</span>
-
-                            </div>
-
-                            <div class="gpdl-footer">
-
-                                <span>👥 315 Donatur</span>
-
-                                <button>Donasi</button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- CARD 2 -->
-
-                    <div class="gpdl-card">
-
-                        <div class="gpdl-image">
-
-                            <span class="gpdl-badge gpdl-bencana">
-
-                                🌊 Bencana
-
-                            </span>
-
-                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600" alt="">
-
-                        </div>
-
-                        <div class="gpdl-content">
-
-                            <h3>Bedah Rumah Keluarga Tidak Mampu</h3>
-
-                            <div class="gpdl-target">
-
-                                Target
-
-                                <strong>Rp50.000.000</strong>
-
-                            </div>
-
-                            <div class="gpdl-progress">
-
-                                <div class="gpdl-progress-bar" style="width:42%;"></div>
-
-                            </div>
-
-                            <div class="gpdl-money">
-
-                                <span>Rp21.000.000</span>
-
-                                <span>42%</span>
-
-                            </div>
-
-                            <div class="gpdl-footer">
-
-                                <span>👥 127 Donatur</span>
-
-                                <button>Donasi</button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="gpdl-card">
-
-                        <div class="gpdl-image">
-
-                            <span class="gpdl-badge gpdl-bencana">
-
-                                🌊 Bencana
-
-                            </span>
-
-                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600" alt="">
-
-                        </div>
-
-                        <div class="gpdl-content">
-
-                            <h3>Bedah Rumah Keluarga Tidak Mampu</h3>
-
-                            <div class="gpdl-target">
-
-                                Target
-
-                                <strong>Rp50.000.000</strong>
-
-                            </div>
-
-                            <div class="gpdl-progress">
-
-                                <div class="gpdl-progress-bar" style="width:42%;"></div>
-
-                            </div>
-
-                            <div class="gpdl-money">
-
-                                <span>Rp21.000.000</span>
-
-                                <span>42%</span>
-
-                            </div>
-
-                            <div class="gpdl-footer">
-
-                                <span>👥 127 Donatur</span>
-
-                                <button>Donasi</button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                </section>
 
             </div>
 
@@ -2573,6 +2053,8 @@
     <script src="https://goces-app.vercel.app/js/voucher/voucher-loader.js"></script>
     <script src="https://goces-app.vercel.app/js/voucher/voucher-page.js"></script>
 
+    <script src="http://localhost:3000/modules/goces-peduli/assets/js/script.js"></script>
+
     <script>
         /*==================================
                 ATC RESTO TERDEKAT
@@ -2648,42 +2130,6 @@
             }
 
         );
-    </script>
-
-    <script>
-        // Klik Card → Detail
-        document.addEventListener("click", function (e) {
-
-            const card = e.target.closest(".gpdl-card");
-
-            if (card && !e.target.closest(".gpdl-btn-donate")) {
-
-                const id = card.dataset.id;
-
-                location.href =
-                    "detail.html?id=" + id;
-
-            }
-
-        });
-
-        // Klik Tombol → Payment
-        document.addEventListener("click", function (e) {
-
-            const btn = e.target.closest(".gpdl-btn-donate");
-
-            if (!btn) return;
-
-            e.stopPropagation();
-
-            const id =
-
-                btn.closest(".gpdl-card").dataset.id;
-
-            location.href =
-                "payment.html?id=" + id;
-
-        });
     </script>
 
     <!--==================================

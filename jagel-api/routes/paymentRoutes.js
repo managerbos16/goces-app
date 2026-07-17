@@ -36,7 +36,7 @@ router.get(
 
     "/detail/:reference",
 
-    paymentController.detailPayment
+    paymentController.getPaymentDetail
 
 );
 

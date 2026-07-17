@@ -56,7 +56,7 @@ async function getAllCampaigns() {
 
         FROM campaigns
 
-        WHERE status = 'ACTIVE'
+        WHERE status='ACTIVE'
 
         ORDER BY id DESC
 
@@ -116,7 +116,99 @@ async function getCampaignById(id) {
 
         FROM campaigns
 
-        WHERE id = $1
+        WHERE id=$1
+
+        LIMIT 1
+
+        `,
+
+        [id]
+
+    );
+
+    if (result.rows.length === 0) {
+
+        return null;
+
+    }
+
+    const campaign = result.rows[0];
+
+    return {
+
+        ...campaign,
+
+        target_amount: Number(campaign.target_amount),
+
+        collected_amount: Number(campaign.collected_amount),
+
+        donor_count: Number(campaign.donor_count),
+
+        progress: Number(campaign.progress)
+
+    };
+
+}
+
+/*==================================
+        GET CAMPAIGN DETAIL
+==================================*/
+
+async function getCampaignDetail(id) {
+
+    const result = await db.query(
+
+        `
+
+        SELECT
+
+            id,
+
+            title,
+
+            slug,
+
+            description,
+
+            cover_image,
+
+            target_amount,
+
+            collected_amount,
+
+            donor_count,
+
+            status,
+
+            created_at,
+
+            updated_at,
+
+            CASE
+
+                WHEN target_amount = 0
+
+                THEN 0
+
+                ELSE ROUND(
+
+                    (collected_amount::numeric /
+
+                    target_amount::numeric)
+
+                    * 100,
+
+                    0
+
+                )
+
+            END::INTEGER AS progress
+
+        FROM campaigns
+
+        WHERE id=$1
+
+        LIMIT 1
 
         `,
 
@@ -158,7 +250,7 @@ async function createCampaign(data) {
 
         `
 
-        INSERT INTO campaigns (
+        INSERT INTO campaigns(
 
             title,
 
@@ -174,7 +266,7 @@ async function createCampaign(data) {
 
         )
 
-        VALUES (
+        VALUES(
 
             $1,
 
@@ -228,11 +320,17 @@ async function createCampaign(data) {
 
 }
 
+/*==================================
+        EXPORT
+==================================*/
+
 module.exports = {
 
     getAllCampaigns,
 
     getCampaignById,
+
+    getCampaignDetail,
 
     createCampaign
 

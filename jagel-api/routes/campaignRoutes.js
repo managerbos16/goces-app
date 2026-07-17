@@ -1,42 +1,30 @@
 const express = require("express");
+
 const router = express.Router();
+
 const campaignController = require("../controllers/campaignController");
-const upload = require("../middlewares/uploadCampaign");
 
 /*==================================
-        GET ALL CAMPAIGNS
+        HOME CAMPAIGNS
 ==================================*/
 
 router.get(
 
-    "/",
+    "/goces-peduli/home",
 
-    campaignController.getAllCampaigns
-
-);
-/*==================================
-        UPLOAD IMAGE
-==================================*/
-
-router.post(
-
-    "/upload",
-
-    upload.single("image"),
-
-    campaignController.uploadImage
+    campaignController.getHome
 
 );
 
 /*==================================
-        GET CAMPAIGN BY ID
+        DETAIL CAMPAIGN
 ==================================*/
 
 router.get(
 
-    "/:id",
+    "/campaigns/:id",
 
-    campaignController.getCampaignById
+    campaignController.getCampaignDetail
 
 );
 
@@ -46,7 +34,7 @@ router.get(
 
 router.post(
 
-    "/",
+    "/campaigns",
 
     campaignController.createCampaign
 

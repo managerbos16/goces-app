@@ -145,9 +145,9 @@ exports.createDonation = async (data) => {
 
             tripay.qr_string || null,
 
-            tripay.fee_customer || 0,
+            Number(tripay.fee_customer || 0),
 
-            tripay.fee_merchant || 0,
+            Number(tripay.fee_merchant || 0),
 
             tripay.expired_time,
 
@@ -157,19 +157,19 @@ exports.createDonation = async (data) => {
 
     );
 
-    return {
+    const donation = result.rows[0];
 
-        success: true,
+    return {
 
         donation: {
 
-            ...result.rows[0],
+            ...donation,
 
-            amount: Number(result.rows[0].amount),
+            amount: Number(donation.amount),
 
-            fee_customer: Number(result.rows[0].fee_customer),
+            fee_customer: Number(donation.fee_customer),
 
-            fee_merchant: Number(result.rows[0].fee_merchant)
+            fee_merchant: Number(donation.fee_merchant)
 
         },
 
@@ -185,13 +185,13 @@ exports.createDonation = async (data) => {
 
             amount: Number(tripay.amount),
 
-            fee_customer: Number(tripay.fee_customer),
+            fee_customer: Number(tripay.fee_customer || 0),
 
-            fee_merchant: Number(tripay.fee_merchant),
+            fee_merchant: Number(tripay.fee_merchant || 0),
 
-            total_fee: Number(tripay.total_fee),
+            total_fee: Number(tripay.total_fee || 0),
 
-            amount_received: Number(tripay.amount_received),
+            amount_received: Number(tripay.amount_received || 0),
 
             qr_url: tripay.qr_url,
 
@@ -205,14 +205,13 @@ exports.createDonation = async (data) => {
 
             status: tripay.status,
 
-            instructions: tripay.instructions
+            instructions: tripay.instructions || []
 
         }
 
     };
 
 };
-
 
 /*==================================
         GET DONATION STATUS
@@ -224,7 +223,49 @@ exports.getDonationStatus = async (reference) => {
 
         `
 
-        SELECT *
+        SELECT
+
+            id,
+
+            campaign_id,
+
+            merchant_ref,
+
+            reference,
+
+            donor_name,
+
+            donor_email,
+
+            donor_phone,
+
+            amount,
+
+            payment_channel,
+
+            payment_name,
+
+            payment_url,
+
+            checkout_url,
+
+            qr_url,
+
+            qr_string,
+
+            fee_customer,
+
+            fee_merchant,
+
+            expired_at,
+
+            status,
+
+            paid_at,
+
+            created_at,
+
+            updated_at
 
         FROM campaign_donations
 

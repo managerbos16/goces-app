@@ -16,4 +16,16 @@ router.post(
 
 );
 
+/*==================================
+        DONATION STATUS
+==================================*/
+
+router.get(
+
+    "/status/:reference",
+
+    donationController.getDonationStatus
+
+);
+
 module.exports = router;

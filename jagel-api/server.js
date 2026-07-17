@@ -10,7 +10,6 @@ const campaignRoutes = require("./routes/campaignRoutes");
 const path = require("path");
 const donationRoutes = require("./routes/donationRoutes");
 const callbackRoutes = require("./routes/callbackRoutes");
-const homeRoutes = require("./routes/homeRoutes");
 
 const app = express();
 
@@ -21,11 +20,10 @@ app.use("/", routes);
 app.use("/api/cart", cartRoutes);
 app.use("/api", testRoute);
 app.use("/api/payment", paymentRoutes);
-app.use("/api/campaigns", campaignRoutes);
+app.use("/api", campaignRoutes);
 app.use("/api/donations", donationRoutes);
 app.use("/api/callback", callbackRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use("/api/goces-peduli", homeRoutes);
 app.use("/modules", express.static("modules"));
 
 const PORT = process.env.PORT || 3000;

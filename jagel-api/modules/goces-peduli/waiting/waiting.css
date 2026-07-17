@@ -1,0 +1,263 @@
+/*==================================
+        RESET
+==================================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f7fb;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #111827;
+
+  padding-bottom: 30px;
+}
+
+/*==================================
+        HEADER
+==================================*/
+
+.gwait-header {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  background: #fff;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.gwait-back {
+  width: 40px;
+
+  height: 40px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #eef4ff;
+
+  color: #2563eb;
+
+  font-size: 22px;
+
+  cursor: pointer;
+}
+
+.gwait-header h1 {
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+/*==================================
+        LOADING
+==================================*/
+
+.gwait-loading {
+  padding: 60px 20px;
+
+  text-align: center;
+
+  color: #6b7280;
+}
+
+/*==================================
+        CONTENT
+==================================*/
+
+.gwait-content {
+  padding: 16px;
+}
+
+/*==================================
+        STATUS
+==================================*/
+
+.gwait-status {
+  text-align: center;
+
+  margin-bottom: 18px;
+}
+
+.gwait-status-badge {
+  display: inline-block;
+
+  background: #f59e0b;
+
+  color: #fff;
+
+  padding: 8px 18px;
+
+  border-radius: 30px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  margin-bottom: 12px;
+}
+
+.gwait-status h2 {
+  font-size: 34px;
+
+  color: #16a34a;
+
+  margin-bottom: 8px;
+}
+
+.gwait-status p {
+  color: #6b7280;
+
+  line-height: 24px;
+}
+
+/*==================================
+        CARD
+==================================*/
+
+.gwait-card {
+  background: #fff;
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  margin-bottom: 18px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.gwait-card h3 {
+  margin-bottom: 16px;
+
+  font-size: 17px;
+}
+
+/*==================================
+        QR
+==================================*/
+
+#gwaitQR {
+  display: block;
+
+  width: 230px;
+
+  height: 230px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 12px;
+
+  background: #fff;
+}
+
+#gwaitDownload {
+  width: 100%;
+
+  height: 46px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #2563eb;
+
+  color: #fff;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+/*==================================
+        COUNTDOWN
+==================================*/
+
+.gwait-countdown {
+  text-align: center;
+
+  font-size: 34px;
+
+  font-weight: 700;
+
+  color: #dc2626;
+
+  letter-spacing: 2px;
+}
+
+/*==================================
+        ROW
+==================================*/
+
+.gwait-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 10px 0;
+
+  border-bottom: 1px solid #ececec;
+}
+
+.gwait-row:last-child {
+  border-bottom: none;
+}
+
+.gwait-row span {
+  color: #6b7280;
+}
+
+.gwait-row strong {
+  color: #111827;
+}
+
+/*==================================
+        INSTRUCTION
+==================================*/
+
+.gwait-step {
+  margin-bottom: 16px;
+}
+
+.gwait-step:last-child {
+  margin-bottom: 0;
+}
+
+.gwait-step h4 {
+  color: #2563eb;
+
+  margin-bottom: 10px;
+
+  font-size: 15px;
+}
+
+.gwait-step ol {
+  padding-left: 18px;
+}
+
+.gwait-step li {
+  margin-bottom: 8px;
+
+  line-height: 24px;
+
+  color: #4b5563;
+}

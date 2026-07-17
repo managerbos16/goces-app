@@ -1,25 +1,69 @@
-const Campaign = require("../models/campaignModel");
+const campaignModel = require("../models/campaignModel");
 
 /*==================================
-        GET ALL CAMPAIGNS
+        HOME CAMPAIGNS
 ==================================*/
 
-exports.getAllCampaigns = async (req, res) => {
+exports.getHome = async (req, res) => {
 
     try {
 
         const campaigns =
-            await Campaign.getAllCampaigns();
+            await campaignModel.getAllCampaigns();
 
-        res.status(200).json({
+        const statistics = {
+
+            campaigns: campaigns.length,
+
+            total_collected: campaigns.reduce(
+
+                (total, item) =>
+
+                    total + item.collected_amount,
+
+                0
+
+            ),
+
+            donors: campaigns.reduce(
+
+                (total, item) =>
+
+                    total + item.donor_count,
+
+                0
+
+            ),
+
+            donations: campaigns.reduce(
+
+                (total, item) =>
+
+                    total + item.donor_count,
+
+                0
+
+            )
+
+        };
+
+        res.json({
 
             success: true,
 
-            data: campaigns
+            data: {
+
+                campaigns,
+
+                statistics
+
+            }
 
         });
 
-    } catch (err) {
+    }
+
+    catch (err) {
 
         console.error(err);
 
@@ -36,15 +80,15 @@ exports.getAllCampaigns = async (req, res) => {
 };
 
 /*==================================
-        GET CAMPAIGN BY ID
+        DETAIL CAMPAIGN
 ==================================*/
 
-exports.getCampaignById = async (req, res) => {
+exports.getCampaignDetail = async (req, res) => {
 
     try {
 
         const campaign =
-            await Campaign.getCampaignById(
+            await campaignModel.getCampaignDetail(
 
                 req.params.id
 
@@ -56,13 +100,13 @@ exports.getCampaignById = async (req, res) => {
 
                 success: false,
 
-                message: "Campaign tidak ditemukan"
+                message: "Campaign tidak ditemukan."
 
             });
 
         }
 
-        res.status(200).json({
+        res.json({
 
             success: true,
 
@@ -70,7 +114,9 @@ exports.getCampaignById = async (req, res) => {
 
         });
 
-    } catch (err) {
+    }
+
+    catch (err) {
 
         console.error(err);
 
@@ -94,26 +140,10 @@ exports.createCampaign = async (req, res) => {
 
     try {
 
-        const data = req.body;
-
-        /*==============================
-            AUTO GENERATE SLUG
-        ==============================*/
-
-        data.slug = data.title
-
-            .toLowerCase()
-
-            .trim()
-
-            .replace(/[^\w\s-]/g, "")
-
-            .replace(/\s+/g, "-");
-
         const campaign =
-            await Campaign.createCampaign(
+            await campaignModel.createCampaign(
 
-                data
+                req.body
 
             );
 
@@ -121,71 +151,15 @@ exports.createCampaign = async (req, res) => {
 
             success: true,
 
-            message: "Campaign berhasil dibuat",
+            message: "Campaign berhasil dibuat.",
 
             data: campaign
 
         });
 
-    } catch (err) {
-
-        console.error(err);
-
-        res.status(500).json({
-
-            success: false,
-
-            message: err.message
-
-        });
-
     }
 
-};
-
-/*==================================
-        UPLOAD CAMPAIGN IMAGE
-==================================*/
-
-exports.uploadImage = async (req, res) => {
-
-    try {
-
-        if (!req.file) {
-
-            return res.status(400).json({
-
-                success: false,
-
-                message: "Gambar belum dipilih."
-
-            });
-
-        }
-
-        const imageUrl =
-
-            req.protocol +
-
-            "://" +
-
-            req.get("host") +
-
-            "/uploads/campaigns/" +
-
-            req.file.filename;
-
-        res.status(200).json({
-
-            success: true,
-
-            message: "Upload berhasil",
-
-            url: imageUrl
-
-        });
-
-    } catch (err) {
+    catch (err) {
 
         console.error(err);
 

@@ -1,4 +1,5 @@
 const tripayService = require("../services/tripayService");
+const paymentService = require("../services/paymentService");
 
 /*==================================
         PAYMENT CHANNEL
@@ -68,29 +69,45 @@ exports.createPayment = async (req, res) => {
         DETAIL PAYMENT
 ==================================*/
 
-exports.detailPayment = async (req, res) => {
+exports.getPaymentDetail = async (req, res) => {
 
     try {
 
-        const result = await tripayService.detailPayment(
+        const payment = await paymentService.getPaymentDetail(
 
             req.params.reference
 
         );
 
-        res.status(200).json(result);
+        if (!payment) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message: "Pembayaran tidak ditemukan."
+
+            });
+
+        }
+
+        return res.json({
+
+            success: true,
+
+            data: payment
+
+        });
 
     } catch (err) {
 
         console.error(err);
 
-        res.status(500).json({
+        return res.status(500).json({
 
             success: false,
 
-            message: "Gagal mengambil detail pembayaran",
-
-            error: err.response?.data || err.message
+            message: err.message
 
         });
 

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menunggu Pembayaran</title>
+
+    <link rel="stylesheet" href="waiting.css">
+
+</head>
+
+<body>
+
+    <!--==================================
+            HEADER
+    ==================================-->
+
+    <header class="gwait-header">
+
+        <button class="gwait-back" onclick="history.back()">
+
+            ←
+
+        </button>
+
+        <h1>Pembayaran Donasi</h1>
+
+    </header>
+
+    <!--==================================
+            LOADING
+    ==================================-->
+
+    <div id="gwaitLoading" class="gwait-loading">
+
+        Memuat data pembayaran...
+
+    </div>
+
+    <!--==================================
+            CONTENT
+    ==================================-->
+
+    <main id="gwaitContent" class="gwait-content" style="display:none;">
+
+        <!-- STATUS -->
+
+        <section class="gwait-status">
+
+            <div id="gwaitStatusBadge" class="gwait-status-badge">
+
+                MENUNGGU PEMBAYARAN
+
+            </div>
+
+            <h2 id="gwaitAmount">
+
+                Rp0
+
+            </h2>
+
+            <p>
+
+                Silakan selesaikan pembayaran sebelum waktu habis.
+
+            </p>
+
+        </section>
+
+        <!-- QRIS -->
+
+        <section class="gwait-card">
+
+            <h3>Scan QRIS</h3>
+
+            <img id="gwaitQR" src="" alt="QRIS">
+
+            <button id="gwaitDownload">
+
+                Download QRIS
+
+            </button>
+
+        </section>
+
+        <!-- COUNTDOWN -->
+
+        <section class="gwait-card">
+
+            <h3>Batas Waktu Pembayaran</h3>
+
+            <div id="gwaitCountdown" class="gwait-countdown">
+
+                00:00:00
+
+            </div>
+
+        </section>
+
+        <!-- METODE -->
+
+        <section class="gwait-card">
+
+            <div class="gwait-row">
+
+                <span>Metode</span>
+
+                <strong id="gwaitMethod">
+
+                    QRIS
+
+                </strong>
+
+            </div>
+
+            <div class="gwait-row">
+
+                <span>Referensi</span>
+
+                <strong id="gwaitReference">
+
+                </strong>
+
+            </div>
+
+        </section>
+
+        <!-- PETUNJUK -->
+
+        <section class="gwait-card">
+
+            <h3>Cara Pembayaran</h3>
+
+            <div id="gwaitInstructions">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="waiting.js"></script>
+
+</body>
+
+</html>

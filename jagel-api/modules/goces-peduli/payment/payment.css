@@ -1,0 +1,385 @@
+/*==================================
+        RESET
+==================================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f7fb;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #111827;
+
+  padding-bottom: 90px;
+}
+
+/*==================================
+        HEADER
+==================================*/
+
+.gpay-header {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  background: #fff;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.gpay-back {
+  width: 40px;
+
+  height: 40px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #eef4ff;
+
+  color: #2563eb;
+
+  font-size: 22px;
+
+  cursor: pointer;
+}
+
+.gpay-header h1 {
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+/*==================================
+        LOADING
+==================================*/
+
+.gpay-loading {
+  text-align: center;
+
+  padding: 60px 20px;
+
+  color: #6b7280;
+}
+
+/*==================================
+        CONTENT
+==================================*/
+
+.gpay-content {
+  padding: 16px;
+}
+
+/*==================================
+        CAMPAIGN
+==================================*/
+
+.gpay-campaign {
+  display: flex;
+
+  gap: 14px;
+
+  background: #fff;
+
+  border-radius: 18px;
+
+  padding: 14px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  margin-bottom: 18px;
+}
+
+.gpay-campaign img {
+  width: 90px;
+
+  height: 90px;
+
+  border-radius: 14px;
+
+  object-fit: cover;
+}
+
+.gpay-info {
+  flex: 1;
+}
+
+.gpay-info h2 {
+  font-size: 17px;
+
+  line-height: 24px;
+
+  margin: 8px 0;
+}
+
+.gpay-info p {
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.gpay-badge {
+  display: inline-block;
+
+  background: #16a34a;
+
+  color: #fff;
+
+  padding: 5px 12px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+/*==================================
+        CARD
+==================================*/
+
+.gpay-card {
+  background: #fff;
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  margin-bottom: 18px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.gpay-card h3 {
+  margin-bottom: 18px;
+
+  font-size: 17px;
+}
+
+/*==================================
+        FORM
+==================================*/
+
+.gpay-group {
+  margin-bottom: 16px;
+}
+
+.gpay-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.gpay-group input {
+  width: 100%;
+
+  height: 48px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 12px;
+
+  padding: 0 14px;
+
+  font-size: 15px;
+
+  outline: none;
+}
+
+.gpay-group input:focus {
+  border-color: #2563eb;
+}
+
+/*==================================
+        CHECKBOX
+==================================*/
+
+.gpay-check {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 6px;
+}
+
+.gpay-check input {
+  width: 18px;
+
+  height: 18px;
+}
+
+/*==================================
+        NOMINAL
+==================================*/
+
+#donationAmount {
+  width: 100%;
+
+  height: 50px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 12px;
+
+  padding: 0 14px;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  margin-bottom: 16px;
+}
+
+.gpay-quick {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+}
+
+.gpay-quick button {
+  height: 44px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #eef4ff;
+
+  color: #2563eb;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.gpay-quick button:active {
+  transform: scale(0.97);
+}
+
+/*==================================
+        PAYMENT
+==================================*/
+
+.gpay-method {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  cursor: pointer;
+}
+
+.gpay-method input {
+  width: 18px;
+
+  height: 18px;
+}
+
+/*==================================
+        SUMMARY
+==================================*/
+
+.gpay-summary {
+  background: #fff;
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.gpay-summary div {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.gpay-summary span {
+  color: #6b7280;
+}
+
+.gpay-summary strong {
+  color: #16a34a;
+
+  font-size: 22px;
+}
+
+/*==================================
+        FOOTER
+==================================*/
+
+.gpay-footer {
+  position: fixed;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  background: #fff;
+
+  padding: 14px 16px;
+
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.gpay-footer button {
+  width: 100%;
+
+  height: 52px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: #2563eb;
+
+  color: #fff;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.gpay-footer button:active {
+  transform: scale(0.98);
+}
