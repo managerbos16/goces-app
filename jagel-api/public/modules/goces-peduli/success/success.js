@@ -1,209 +1,204 @@
-/*==================================
-        CONFIG
-==================================*/
+(() => {
 
-const API_BASE = "https://goces-api.vercel.app/api";
+    const API_BASE = "https://goces-api.vercel.app/api";
 
-let payment =
-    window.currentPayment || null;
+    let payment =
+        window.currentPayment || null;
 
-let reference =
-    window.currentReference || null;
+    let reference =
+        window.currentReference || null;
 
-let campaign =
-    window.selectedCampaign || null;
+    let campaign =
+        window.selectedCampaign || null;
 
-/*==================================
-        FORMAT RUPIAH
-==================================*/
+    /*==================================
+            FORMAT RUPIAH
+    ==================================*/
 
-function formatRupiah(number) {
+    function formatRupiah(number) {
 
-    return new Intl.NumberFormat(
+        return new Intl.NumberFormat(
 
-        "id-ID",
+            "id-ID",
 
-        {
+            {
 
-            style: "currency",
+                style: "currency",
 
-            currency: "IDR",
+                currency: "IDR",
 
-            maximumFractionDigits: 0
-
-        }
-
-    ).format(Number(number) || 0);
-
-}
-
-/*==================================
-        LOAD DONATION
-==================================*/
-
-async function loadDonation() {
-
-    payment = window.currentPayment || payment;
-    reference = window.currentReference || reference;
-    campaign = window.selectedCampaign || campaign;
-
-    try {
-
-        if (!reference) {
-
-            alert("Data pembayaran tidak ditemukan.");
-
-            showPage("home");
-
-            if (typeof loadCampaigns === "function") {
-
-                loadCampaigns();
+                maximumFractionDigits: 0
 
             }
 
-            return;
+        ).format(Number(number) || 0);
 
-        }
+    }
 
-        if (!payment) {
+    /*==================================
+            LOAD DONATION
+    ==================================*/
 
-            const response = await fetch(
+    async function loadDonation() {
 
-                API_BASE +
-                "/donations/status/" +
-                encodeURIComponent(reference)
+        document.getElementById("successReference").textContent = "-";
+        document.getElementById("successCampaign").textContent = "-";
+        document.getElementById("successDonor").textContent = "-";
+        document.getElementById("successMethod").textContent = "-";
+        document.getElementById("successAmount").textContent = "Rp0";
+        document.getElementById("successStatus").textContent = "BERHASIL";
 
-            );
+        payment = window.currentPayment || payment;
+        reference = window.currentReference || reference;
+        campaign = window.selectedCampaign || campaign;
 
-            const json =
-                await response.json();
+        try {
 
-            if (!json.success) {
+            if (!reference) {
 
-                throw new Error(
+                alert("Data pembayaran tidak ditemukan.");
 
-                    json.message ||
+                showPage("home");
 
-                    "Data donasi tidak ditemukan."
+                if (typeof loadCampaigns === "function") {
+                    loadCampaigns();
+                }
+
+                return;
+
+            }
+
+            if (!payment) {
+
+                const response = await fetch(
+
+                    API_BASE +
+                    "/donations/status/" +
+                    encodeURIComponent(reference)
 
                 );
 
+                const json =
+                    await response.json();
+
+                if (!json.success) {
+
+                    throw new Error(
+
+                        json.message ||
+
+                        "Data donasi tidak ditemukan."
+
+                    );
+
+                }
+
+                payment =
+                    json.data;
+
+                window.currentPayment =
+                    payment;
+
             }
 
-            payment =
-                json.data;
+            document.getElementById(
 
-            window.currentPayment =
-                payment;
+                "successReference"
+
+            ).textContent =
+
+                payment.reference || "-";
+
+            document.getElementById(
+
+                "successDonor"
+
+            ).textContent =
+
+                payment.is_anonymous
+
+                    ? "Anonim"
+
+                    : payment.donor_name;
+
+            document.getElementById(
+
+                "successMethod"
+
+            ).textContent =
+
+                payment.payment_name ||
+
+                "QRIS";
+
+            document.getElementById(
+
+                "successAmount"
+
+            ).textContent =
+
+                formatRupiah(
+
+                    payment.amount
+
+                );
+
+            document.getElementById(
+
+                "successCampaign"
+
+            ).textContent =
+
+                payment.campaign_title ||
+
+                campaign?.title ||
+
+                "GOCES Peduli";
+
+            document.getElementById(
+
+                "successStatus"
+
+            ).textContent =
+
+                "BERHASIL";
 
         }
 
-        document.getElementById(
+        catch (err) {
 
-            "successReference"
+            console.error(err);
 
-        ).textContent =
+            alert(err.message);
 
-            payment.reference || "-";
-
-        document.getElementById(
-
-            "successDonor"
-
-        ).textContent =
-
-            payment.is_anonymous
-
-                ? "Anonim"
-
-                : payment.donor_name;
-
-        document.getElementById(
-
-            "successMethod"
-
-        ).textContent =
-
-            payment.payment_name ||
-
-            "QRIS";
-
-        document.getElementById(
-
-            "successAmount"
-
-        ).textContent =
-
-            formatRupiah(
-
-                payment.amount
-
-            );
-
-        document.getElementById(
-
-            "successCampaign"
-
-        ).textContent =
-
-            payment.campaign_title ||
-
-            campaign?.title ||
-
-            "GOCES Peduli";
-
-        document.getElementById(
-
-            "successStatus"
-
-        ).textContent =
-
-            "BERHASIL";
+        }
 
     }
 
-    catch (err) {
+    /*==================================
+            BUTTON HOME
+    ==================================*/
 
-        console.error(err);
+    document.getElementById(
 
-        alert(err.message);
+        "btnBackHome"
 
-    }
+    ).onclick = function () {
 
-}
+        window.currentPayment = null;
 
-/*==================================
-        BUTTON HOME
-==================================*/
+        window.currentReference = null;
 
-document.getElementById(
+        window.selectedCampaign = null;
 
-    "btnBackHome"
+        showPage("home");
 
-).onclick = function () {
+        if (typeof loadCampaigns === "function") {
+            loadCampaigns();
+        }
 
-    window.currentPayment = null;
+    };
 
-    window.currentReference = null;
+    window.loadDonation = loadDonation;
 
-    window.selectedCampaign = null;
-
-    showPage(
-
-        "home"
-
-    );
-
-};
-
-/*==================================
-        START
-==================================*/
-
-document.addEventListener(
-
-    "DOMContentLoaded",
-
-    loadDonation
-
-);
+})();

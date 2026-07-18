@@ -74,6 +74,28 @@ function showPage(name, btn = null) {
 
     currentPage = name;
 
+    /*==================================
+        SHOW / HIDE BOTTOM NAV
+==================================*/
+
+    const bottomNav = document.querySelector(".bottom-nav");
+
+    if (bottomNav) {
+
+        const hideNavPages = [
+            "goces-detail",
+            "goces-payment",
+            "goces-waiting",
+            "goces-success"
+        ];
+
+        bottomNav.style.display =
+            hideNavPages.includes(name)
+                ? "none"
+                : "flex";
+
+    }
+
     console.log(
         'Current Page:',
         currentPage
