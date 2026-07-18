@@ -1,4 +1,3 @@
-const db = require("../config/db");
 const tripayService = require("./tripayService");
 
 /*==================================
@@ -6,44 +5,20 @@ const tripayService = require("./tripayService");
 ==================================*/
 
 exports.getPaymentDetail = async (reference) => {
-
     const payment = await tripayService.detailPayment(reference);
 
     if (!payment) {
-
         return null;
-
     }
 
-    await db.query(
+    /*
+        Endpoint ini hanya mengambil status terbaru dari Tripay
+        untuk ditampilkan di halaman QRIS.
 
-        `
-    UPDATE campaign_donations
-    SET
-        status = $1::varchar,
-
-        paid_at = CASE
-            WHEN $1::varchar = 'PAID'
-            AND paid_at IS NULL
-            THEN CURRENT_TIMESTAMP
-            ELSE paid_at
-        END,
-
-        updated_at = CURRENT_TIMESTAMP
-
-    WHERE reference = $2
-    `,
-
-        [
-
-            payment.status,
-
-            reference
-
-        ]
-
-    );
-
+        Jangan update tabel campaign_donations di sini.
+        Update status donasi, total terkumpul, dan jumlah donatur
+        hanya dilakukan oleh callback Tripay agar datanya tidak
+        terlambat, dobel, atau tidak sinkron.
+    */
     return payment;
-
 };

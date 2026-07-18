@@ -286,3 +286,37 @@
     font-size: 28px;
   }
 }
+
+.gwait-payment-code {
+  padding: 16px;
+  border-radius: 12px;
+  background: #eef4ff;
+  color: #1d4ed8;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+  margin-bottom: 14px;
+}
+
+#gwaitCopyCode,
+.gwait-pay-link {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#gwaitCopyCode:hover,
+.gwait-pay-link:hover {
+  background: #1d4ed8;
+}

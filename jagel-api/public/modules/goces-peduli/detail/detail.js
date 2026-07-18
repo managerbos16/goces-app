@@ -90,9 +90,9 @@
 
             showPage("goces-payment");
 
-            if (typeof loadPayment === "function") {
+            if (typeof loadCampaign === "function") {
 
-                loadPayment();
+                loadCampaign();
 
             }
 

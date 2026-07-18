@@ -7,13 +7,74 @@ const tripayService = require("./tripayService");
 
 exports.createDonation = async (data) => {
 
+    const amount = Number(data.amount);
+
+    if (!Number.isInteger(amount) || amount < 10000) {
+        throw new Error("Nominal donasi minimal Rp10.000.");
+    }
+
+    const campaignResult = await db.query(
+        `
+        SELECT id, title
+        FROM campaigns
+        WHERE id = $1
+        AND status = 'ACTIVE'
+        LIMIT 1
+        `,
+        [data.campaign_id]
+    );
+
+    if (campaignResult.rows.length === 0) {
+        throw new Error("Campaign tidak ditemukan atau tidak aktif.");
+    }
+
+    const campaign = campaignResult.rows[0];
+
+    const paymentMethod = String(data.method || "")
+        .trim()
+        .toUpperCase();
+
+    const channels = await tripayService.getPaymentChannels();
+
+    const selectedChannel = channels.find(channel =>
+        channel.code === paymentMethod &&
+        channel.active !== false
+    );
+
+    if (!selectedChannel) {
+        throw new Error("Metode pembayaran tidak tersedia.");
+    }
+
+    const minimumAmount = Number(selectedChannel.minimum_amount || 0);
+    const maximumAmount = Number(selectedChannel.maximum_amount || 0);
+
+    if (minimumAmount && amount < minimumAmount) {
+        throw new Error(
+            "Minimal pembayaran untuk " +
+            selectedChannel.name +
+            " adalah Rp" +
+            minimumAmount.toLocaleString("id-ID") +
+            "."
+        );
+    }
+
+    if (maximumAmount && amount > maximumAmount) {
+        throw new Error(
+            "Maksimal pembayaran untuk " +
+            selectedChannel.name +
+            " adalah Rp" +
+            maximumAmount.toLocaleString("id-ID") +
+            "."
+        );
+    }
+
     const tripay = await tripayService.createPayment({
 
         type: "DON",
 
-        method: data.method,
+        method: paymentMethod,
 
-        amount: data.amount,
+        amount,
 
         customer_name: data.donor_name,
 
@@ -35,9 +96,8 @@ exports.createDonation = async (data) => {
 
                 sku: "DONASI",
 
-                name: data.title,
-
-                price: data.amount,
+                name: campaign.title,
+                price: amount,
 
                 quantity: 1
 
@@ -67,9 +127,9 @@ exports.createDonation = async (data) => {
 
             amount,
 
-            payment_channel,
+           payment_channel,
 
-            payment_code,
+           payment_code,
 
             payment_type,
 
@@ -115,7 +175,7 @@ exports.createDonation = async (data) => {
 
         [
 
-            data.campaign_id,
+            campaign.id,
 
             tripay.merchant_ref,
 
@@ -127,13 +187,13 @@ exports.createDonation = async (data) => {
 
             data.donor_phone,
 
-            data.amount,
+            amount,
 
             tripay.payment_method,
 
-            tripay.payment_method,
+            tripay.pay_code || null,
 
-            tripay.payment_method,
+            tripay.payment_selection_type || tripay.payment_method,
 
             tripay.payment_name,
 
@@ -182,6 +242,8 @@ exports.createDonation = async (data) => {
             payment_method: tripay.payment_method,
 
             payment_name: tripay.payment_name,
+
+            pay_code: tripay.pay_code || null,
 
             amount: Number(tripay.amount),
 

@@ -8,8 +8,23 @@
     let reference =
         window.currentReference || null;
 
-    let countdownInterval = null;
-    let statusInterval = null;
+    // Dipakai bersama agar tidak ada interval baru jika script termuat ulang.
+    const paymentMonitor = window.gocesPaymentMonitor || {
+        countdownInterval: null,
+        statusInterval: null,
+        isCheckingStatus: false
+    };
+
+    window.gocesPaymentMonitor = paymentMonitor;
+
+    function stopPaymentMonitor() {
+        clearInterval(paymentMonitor.countdownInterval);
+        clearInterval(paymentMonitor.statusInterval);
+
+        paymentMonitor.countdownInterval = null;
+        paymentMonitor.statusInterval = null;
+        paymentMonitor.isCheckingStatus = false;
+    }
 
     /*==================================
             FORMAT RUPIAH
@@ -40,6 +55,7 @@
     ==================================*/
 
     async function loadPayment() {
+        stopPaymentMonitor();
         payment = window.currentPayment || payment;
         reference = window.currentReference || reference;
         document.getElementById("gwaitLoading").style.display = "block";
@@ -125,26 +141,10 @@
                 payment.payment_name ||
                 "QRIS";
 
-            document.getElementById(
-
-                "gwaitReference"
-
-            ).textContent =
-
-                payment.reference;
-
-            document.getElementById(
-
-                "gwaitQR"
-
-            ).src =
-
-                payment.qr_url;
+            renderPaymentGuide(payment);
 
             buildInstructions(
-
                 payment.instructions || []
-
             );
 
             updateStatus(
@@ -153,15 +153,12 @@
 
             );
 
-            clearInterval(statusInterval);
-
             startCountdown(
-
                 payment.expired_time
-
             );
 
-            statusInterval = setInterval(checkStatus, 5000);
+            // Tetap cek setiap 5 detik, tetapi hanya satu interval yang aktif.
+            paymentMonitor.statusInterval = setInterval(checkStatus, 5000);
 
         }
 
@@ -214,6 +211,64 @@
 
         }
 
+    }
+
+
+    function renderPaymentGuide(payment) {
+        const qrCard = document.getElementById("gwaitQrCard");
+        const qrImage = document.getElementById("gwaitQR");
+        const downloadButton = document.getElementById("gwaitDownload");
+
+        const codeCard = document.getElementById("gwaitCodeCard");
+        const codeTitle = document.getElementById("gwaitCodeTitle");
+        const codeElement = document.getElementById("gwaitPaymentCode");
+
+        const payLinkCard = document.getElementById("gwaitPayLinkCard");
+        const payLink = document.getElementById("gwaitPayLink");
+
+        const qrUrl = payment.qr_url || "";
+        const paymentCode =
+            payment.pay_code ||
+            payment.payment_code ||
+            "";
+
+        const paymentLink =
+            payment.pay_url ||
+            payment.checkout_url ||
+            "";
+
+        // QRIS
+        if (qrUrl) {
+            qrCard.style.display = "block";
+            qrImage.src = qrUrl;
+            downloadButton.style.display = "block";
+        } else {
+            qrCard.style.display = "none";
+            qrImage.removeAttribute("src");
+        }
+
+        // Virtual Account, Alfamart, Indomaret, dan metode berkode lainnya.
+        if (paymentCode) {
+            codeCard.style.display = "block";
+
+            codeTitle.textContent =
+                payment.payment_name ||
+                "Kode Pembayaran";
+
+            codeElement.textContent = paymentCode;
+        } else {
+            codeCard.style.display = "none";
+            codeElement.textContent = "";
+        }
+
+        // E-wallet atau channel yang menggunakan halaman pembayaran Tripay.
+        if (paymentLink && !qrUrl) {
+            payLinkCard.style.display = "block";
+            payLink.href = paymentLink;
+        } else {
+            payLinkCard.style.display = "none";
+            payLink.removeAttribute("href");
+        }
     }
 
     /*==================================
@@ -270,14 +325,9 @@
 
     function startCountdown(expiredTime) {
 
-        clearInterval(
+        clearInterval(paymentMonitor.countdownInterval);
 
-            countdownInterval
-
-        );
-
-        countdownInterval =
-
+        paymentMonitor.countdownInterval =
             setInterval(() => {
 
                 const now =
@@ -293,11 +343,8 @@
 
                 if (diff <= 0) {
 
-                    clearInterval(
-
-                        countdownInterval
-
-                    );
+                    clearInterval(paymentMonitor.countdownInterval);
+                    paymentMonitor.countdownInterval = null;
 
                     document.getElementById(
 
@@ -352,104 +399,68 @@
     ==================================*/
 
     async function checkStatus() {
+        const waitingPage = document.getElementById("page-goces-waiting");
+
+        // Jika pengguna sudah keluar dari halaman QRIS, hentikan polling.
+        if (!waitingPage || !waitingPage.classList.contains("active")) {
+            stopPaymentMonitor();
+            return;
+        }
+
+        // Jangan mulai request baru bila request sebelumnya belum selesai.
+        if (paymentMonitor.isCheckingStatus || !reference) {
+            return;
+        }
+
+        paymentMonitor.isCheckingStatus = true;
 
         try {
-
-            if (!reference) {
-
-                return;
-
-            }
-
             const response = await fetch(
-
                 API_BASE +
                 "/payment/detail/" +
                 encodeURIComponent(reference)
-
             );
 
-            const json =
-                await response.json();
+            const json = await response.json();
 
-            if (!json.success) {
-
+            // Pengguna mungkin berpindah halaman saat request sedang berjalan.
+            if (!waitingPage.classList.contains("active") || !json.success) {
                 return;
-
             }
 
-            payment =
-                json.data;
+            payment = json.data;
+            window.currentPayment = payment;
 
-            window.currentPayment =
-                payment;
-
-            updateStatus(
-
-                payment.status
-
-            );
-
-            /*==============================
-                    PAID
-            ==============================*/
+            updateStatus(payment.status);
 
             if (payment.status === "PAID") {
-
-                clearInterval(statusInterval);
-
-                clearInterval(countdownInterval);
+                stopPaymentMonitor();
 
                 window.currentPayment = payment;
-
                 window.currentReference = payment.reference;
 
                 showPage("goces-success");
 
                 if (typeof loadDonation === "function") {
-
                     loadDonation();
-
                 }
 
                 return;
-
             }
-
-            /*==============================
-                    EXPIRED
-            ==============================*/
 
             if (payment.status === "EXPIRED") {
-
-                clearInterval(
-
-                    statusInterval
-
-                );
-
-                clearInterval(
-
-                    countdownInterval
-
-                );
+                stopPaymentMonitor();
 
                 alert("Pembayaran telah kedaluwarsa.");
-
                 showPage("goces-payment");
-
-                return;
-
             }
 
-        }
-
-        catch (err) {
-
+        } catch (err) {
             console.error(err);
 
+        } finally {
+            paymentMonitor.isCheckingStatus = false;
         }
-
     }
 
     /*==================================
@@ -486,31 +497,42 @@
 
     }
 
+    const copyCodeButton = document.getElementById("gwaitCopyCode");
+
+    if (copyCodeButton) {
+        copyCodeButton.onclick = async function () {
+            const paymentCode =
+                document.getElementById("gwaitPaymentCode")
+                    .textContent
+                    .trim();
+
+            if (!paymentCode || paymentCode === "-") {
+                return;
+            }
+
+            try {
+                await navigator.clipboard.writeText(paymentCode);
+
+                const originalText = copyCodeButton.textContent;
+
+                copyCodeButton.textContent = "Kode Berhasil Disalin";
+
+                setTimeout(function () {
+                    copyCodeButton.textContent = originalText;
+                }, 2000);
+
+            } catch (err) {
+                console.error(err);
+                alert("Kode pembayaran: " + paymentCode);
+            }
+        };
+    }
+
     /*==================================
             CLEANUP
     ==================================*/
 
-    window.addEventListener(
-
-        "beforeunload",
-
-        function () {
-
-            clearInterval(
-
-                countdownInterval
-
-            );
-
-            clearInterval(
-
-                statusInterval
-
-            );
-
-        }
-
-    );
+    window.addEventListener("beforeunload", stopPaymentMonitor);
 
     window.loadPayment = loadPayment;
 

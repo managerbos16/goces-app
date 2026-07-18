@@ -1,11 +1,3 @@
-// =========================
-// script navigasi button bawah
-// =========================
-
-// =========================
-// STATE
-// =========================
-
 let pageHistory = [];
 let currentPage = 'home';
 
@@ -73,6 +65,10 @@ function showPage(name, btn = null) {
     activateNav(name);
 
     currentPage = name;
+
+    window.dispatchEvent(new CustomEvent("goces:pagechange", {
+        detail: { page: name }
+    }));
 
     /*==================================
         SHOW / HIDE BOTTOM NAV
@@ -143,6 +139,10 @@ function goBack() {
     currentPage =
         previousPage;
 
+    window.dispatchEvent(new CustomEvent("goces:pagechange", {
+        detail: { page: previousPage }
+    }));
+
 }
 
 // =========================
@@ -181,6 +181,10 @@ window.addEventListener(
 
         currentPage =
             previousPage;
+
+        window.dispatchEvent(new CustomEvent("goces:pagechange", {
+            detail: { page: previousPage }
+        }));
 
     }
 );

@@ -417,3 +417,42 @@
     height: 180px;
   }
 }
+
+.gpay-methods {
+  display: grid;
+  gap: 10px;
+}
+
+.gpay-method {
+  justify-content: flex-start;
+}
+
+.gpay-method-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gpay-method-info small {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.gpay-method-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  margin-left: auto;
+}
+
+.gpay-method-group {
+  margin: 16px 0 8px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.gpay-method-message {
+  color: #6b7280;
+  font-size: 14px;
+}
