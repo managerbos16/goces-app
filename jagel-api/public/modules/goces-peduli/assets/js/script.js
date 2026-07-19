@@ -24,18 +24,30 @@
         const progressApi = Number(apiProgress);
 
         if (Number.isFinite(progressApi)) {
-            return Math.min(Math.max(Math.round(progressApi), 0), 100);
+            return Math.min(Math.max(progressApi, 0), 100);
         }
 
         if (targetAmount <= 0) return 0;
 
         return Math.min(
             Math.max(
-                Math.round((collectedAmount / targetAmount) * 100),
+                Math.round((collectedAmount / targetAmount) * 1000) / 10,
                 0
             ),
             100
         );
+    }
+
+    function formatProgress(progress) {
+        return new Intl.NumberFormat("id-ID", {
+            maximumFractionDigits: 1
+        }).format(progress) + "%";
+    }
+
+    function setProgressBar(progressBar, progress) {
+        progressBar.style.width = progress + "%";
+        progressBar.style.minWidth = progress > 0 ? "4px" : "0";
+        progressBar.setAttribute("aria-valuenow", String(progress));
     }
 
     function badgeClass(category = "") {
@@ -166,8 +178,8 @@
         title.textContent = campaign.title || "-";
         target.textContent = formatRupiah(campaign.target_amount);
         collected.textContent = formatRupiah(campaign.collected_amount);
-        percent.textContent = progress + "%";
-        progressBar.style.width = progress + "%";
+        percent.textContent = formatProgress(progress);
+        setProgressBar(progressBar, progress);
         donor.textContent = `👥 ${campaign.donor_count || 0} Donatur`;
 
         card.setAttribute("role", "button");

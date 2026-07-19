@@ -31,8 +31,18 @@ exports.getPaymentChannels = async () => {
 exports.createPayment = async (data) => {
     const amount = Number(data.amount);
 
+    // TAMBAHKAN: ambil metode pembayaran yang dikirim dari donationService
+    const paymentMethod = String(data.method || "")
+        .trim()
+        .toUpperCase();
+
     if (!Number.isInteger(amount) || amount <= 0) {
         throw new Error("Nominal pembayaran tidak valid.");
+    }
+
+    // TAMBAHKAN: cegah request tanpa metode pembayaran
+    if (!paymentMethod) {
+        throw new Error("Metode pembayaran tidak valid.");
     }
 
     const merchantRef =
@@ -47,7 +57,9 @@ exports.createPayment = async (data) => {
     );
 
     const payload = {
+        // paymentMethod sekarang sudah tersedia/terdefinisi
         method: paymentMethod,
+
         merchant_ref: merchantRef,
         amount,
         customer_name: data.customer_name,

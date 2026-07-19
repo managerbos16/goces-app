@@ -40,7 +40,6 @@ exports.tripayCallback = async (req) => {
     try {
         await client.query("BEGIN");
 
-        // Mengunci satu baris donasi agar callback bersamaan tidak menghitung dua kali.
         const donationResult = await client.query(
             `
             SELECT *
@@ -57,18 +56,20 @@ exports.tripayCallback = async (req) => {
 
         const donation = donationResult.rows[0];
 
-        // Pastikan callback benar-benar untuk transaksi lokal yang sama.
         if (donation.merchant_ref !== merchant_ref) {
             throw new Error("Merchant reference tidak sesuai.");
         }
 
-        if (
-            Number(req.body.total_amount) !== Number(donation.amount)
-        ) {
+        // total_amount dapat mencakup biaya yang dibebankan kepada pelanggan.
+        const donationAmount =
+            Number(req.body.total_amount) -
+            Number(req.body.fee_customer || 0);
+
+        if (donationAmount !== Number(donation.amount)) {
             throw new Error("Nominal callback tidak sesuai dengan data donasi.");
         }
 
-        // PAID bersifat final: callback terlambat tidak boleh mengubahnya ke EXPIRED/FAILED.
+        // Mencegah callback PAID yang dikirim ulang menghitung donasi dua kali.
         if (donation.status === "PAID") {
             await client.query("COMMIT");
 
@@ -79,25 +80,25 @@ exports.tripayCallback = async (req) => {
 
         await client.query(
             `
-            UPDATE campaign_donations
-            SET
-                status = $1,
-                callback_data = $2,
-                paid_at = CASE
-                    WHEN $1 = 'PAID' THEN CURRENT_TIMESTAMP
-                    ELSE paid_at
-                END,
-                updated_at = CURRENT_TIMESTAMP
-            WHERE reference = $3
-            `,
+    UPDATE campaign_donations
+    SET
+        status = $1,
+        callback_data = $2,
+        paid_at = CASE
+            WHEN $3 THEN CURRENT_TIMESTAMP
+            ELSE paid_at
+        END,
+        updated_at = CURRENT_TIMESTAMP
+    WHERE reference = $4
+    `,
             [
                 paymentStatus,
                 JSON.stringify(req.body),
+                paymentStatus === "PAID",
                 reference
             ]
         );
 
-        // Hanya pembayaran sukses yang mengubah angka campaign.
         if (paymentStatus === "PAID") {
             const campaignResult = await client.query(
                 `
@@ -125,11 +126,9 @@ exports.tripayCallback = async (req) => {
         return {
             message: "Callback berhasil diproses."
         };
-
     } catch (err) {
         await client.query("ROLLBACK");
         throw err;
-
     } finally {
         client.release();
     }

@@ -17,6 +17,27 @@
 
     }
 
+    function getProgress(campaign) {
+        const apiProgress = Number(campaign.progress);
+
+        if (Number.isFinite(apiProgress)) {
+            return Math.min(Math.max(apiProgress, 0), 100);
+        }
+
+        const target = Number(campaign.target_amount) || 0;
+        const collected = Number(campaign.collected_amount) || 0;
+
+        return target > 0
+            ? Math.min(Math.max(Math.round((collected / target) * 1000) / 10, 0), 100)
+            : 0;
+    }
+
+    function formatProgress(progress) {
+        return new Intl.NumberFormat("id-ID", {
+            maximumFractionDigits: 1
+        }).format(progress) + "%";
+    }
+
     /*==================================
             LOAD DETAIL
     ==================================*/
@@ -60,9 +81,6 @@
         document.getElementById("gpdTitle").textContent =
             campaign.title || "-";
 
-        document.getElementById("gpdDescription").textContent =
-            campaign.description || "-";
-
         document.getElementById("gpdAbout").textContent =
             campaign.description || "-";
 
@@ -75,14 +93,15 @@
         document.getElementById("gpdDonor").textContent =
             Number(campaign.donor_count) || 0;
 
-        const progress =
-            Number(campaign.progress) || 0;
+        const progress = getProgress(campaign);
 
         document.getElementById("gpdPercent").textContent =
-            progress + "%";
+            formatProgress(progress);
 
-        document.getElementById("gpdBar").style.width =
-            progress + "%";
+        const progressBar = document.getElementById("gpdBar");
+        progressBar.style.width = progress + "%";
+        progressBar.style.minWidth = progress > 0 ? "4px" : "0";
+        progressBar.setAttribute("aria-valuenow", String(progress));
 
         document.getElementById("gpdDonate").onclick = function () {
 

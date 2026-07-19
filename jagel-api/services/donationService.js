@@ -30,6 +30,7 @@ exports.createDonation = async (data) => {
 
     const campaign = campaignResult.rows[0];
 
+
     const paymentMethod = String(data.method || "")
         .trim()
         .toUpperCase();

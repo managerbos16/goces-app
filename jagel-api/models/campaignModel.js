@@ -48,11 +48,11 @@ async function getAllCampaigns() {
 
                     * 100,
 
-                    0
+                    1
 
                 )
 
-            END::INTEGER AS progress
+            END AS progress
 
         FROM campaigns
 
@@ -108,11 +108,11 @@ async function getCampaignById(id) {
 
                     * 100,
 
-                    0
+                    1
 
                 )
 
-            END::INTEGER AS progress
+            END AS progress
 
         FROM campaigns
 
@@ -198,11 +198,11 @@ async function getCampaignDetail(id) {
 
                     * 100,
 
-                    0
+                    1
 
                 )
 
-            END::INTEGER AS progress
+            END AS progress
 
         FROM campaigns
 

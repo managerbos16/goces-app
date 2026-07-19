@@ -46,11 +46,11 @@ exports.getHome = async () => {
 
                     * 100,
 
-                    0
+                    1
 
                 )
 
-            END::INTEGER AS progress
+            END AS progress
 
         FROM campaigns
 
