@@ -277,19 +277,153 @@
     /*==========================================
             EXPORT
     ==========================================*/
+    function createAllCampaignCard(campaign, container) {
+        const fragment = gpdlTemplate.content.cloneNode(true);
+
+        const card = fragment.querySelector(".gpdl-card");
+        const badge = fragment.querySelector(".gpdl-badge");
+        const image = fragment.querySelector(".gpdl-cover");
+        const title = fragment.querySelector(".gpdl-title");
+        const target = fragment.querySelector(".gpdl-target-amount");
+        const collected = fragment.querySelector(".gpdl-collected");
+        const percent = fragment.querySelector(".gpdl-percent");
+        const progressBar = fragment.querySelector(".gpdl-progress-bar");
+        const donor = fragment.querySelector(".gpdl-donor");
+        const donateButton = fragment.querySelector(".gpdl-donate");
+
+        const progress = getProgress(
+            campaign.collected_amount,
+            campaign.target_amount,
+            campaign.progress
+        );
+
+        card.classList.add("gpa-card");
+
+        badge.textContent = campaign.category || "Donasi";
+        badge.classList.add(badgeClass(campaign.category));
+
+        image.src = campaign.cover_image || FALLBACK_IMAGE;
+        image.alt = campaign.title || "Campaign";
+
+        image.onerror = function () {
+            image.onerror = null;
+            image.src = FALLBACK_IMAGE;
+        };
+
+        title.textContent = campaign.title || "-";
+        target.textContent = formatRupiah(campaign.target_amount);
+        collected.textContent = formatRupiah(campaign.collected_amount);
+        percent.textContent = formatProgress(progress);
+
+        setProgressBar(progressBar, progress);
+
+        donor.textContent =
+            `👥 ${campaign.donor_count || 0} Donatur`;
+
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("aria-label", campaign.title || "Campaign");
+
+        card.onclick = function () {
+            openDetailPage(campaign);
+        };
+
+        card.onkeydown = function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openDetailPage(campaign);
+            }
+        };
+
+        donateButton.onclick = function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            openPaymentPage(campaign);
+        };
+
+        container.appendChild(fragment);
+    }
+
+    async function loadAllCampaigns() {
+        const allWrapper =
+            document.getElementById("gpa-wrapper");
+
+        const count =
+            document.getElementById("gpa-count");
+
+        if (!allWrapper || !count) {
+            return;
+        }
+
+        allWrapper.innerHTML =
+            '<p class="gpa-message">Memuat campaign aktif...</p>';
+
+        count.textContent = "Memuat campaign...";
+
+        try {
+            const response = await fetch(GPDL_API);
+
+            if (!response.ok) {
+                throw new Error("HTTP " + response.status);
+            }
+
+            const json = await response.json();
+
+            if (!json.success) {
+                throw new Error(
+                    json.message || "Gagal memuat campaign."
+                );
+            }
+
+            const campaigns =
+                json.data.campaigns || [];
+
+            allWrapper.innerHTML = "";
+
+            count.textContent =
+                `${campaigns.length} campaign tersedia`;
+
+            if (campaigns.length === 0) {
+                allWrapper.innerHTML =
+                    '<p class="gpa-message">Belum ada campaign aktif saat ini.</p>';
+
+                return;
+            }
+
+            campaigns.forEach(function (campaign) {
+                createAllCampaignCard(
+                    campaign,
+                    allWrapper
+                );
+            });
+
+        } catch (error) {
+            console.error(error);
+
+            count.textContent =
+                "Campaign tidak tersedia";
+
+            allWrapper.innerHTML =
+                '<p class="gpa-message gpa-message-error">Tidak dapat memuat campaign. Silakan coba lagi.</p>';
+        }
+    }
 
     window.loadCampaigns = loadCampaigns;
+    /* window.loadAllCampaigns = loadAllCampaigns; */
     window.openDetailPage = openDetailPage;
     window.openPaymentPage = openPaymentPage;
 
+    /* window.addEventListener("goces:pagechange", function (event) {
+         if (event.detail?.page === "goces-peduli") {
+             loadAllCampaigns();
+         }
+     }); */
+
     if (document.readyState === "loading") {
-
         document.addEventListener("DOMContentLoaded", loadCampaigns);
-
     } else {
-
         loadCampaigns();
-
     }
 
 })();

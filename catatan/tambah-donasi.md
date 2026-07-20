@@ -79,7 +79,7 @@ Deploy kode tidak memindahkan data campaign dari database local ke production.
 Untuk menambahkan card pada aplikasi production, kirim request yang sama ke API Vercel:
 
 ```text
-POST https://goces-api.vercel.app/api/campaigns
+
 ```
 
 Gunakan body JSON yang sama. Campaign akan masuk ke database production dan card akan tampil setelah halaman di-refresh.

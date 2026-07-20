@@ -29,6 +29,28 @@ function activateNav(pageName) {
 
 }
 
+function syncBottomNav(pageName) {
+    const bottomNav =
+        document.querySelector(".bottom-nav");
+
+    if (!bottomNav) {
+        return;
+    }
+
+    const hideNavPages = [
+        "goces-detail",
+        "goces-payment",
+        "goces-waiting",
+        "goces-success",
+        "goces-peduli"
+    ];
+
+    bottomNav.style.display =
+        hideNavPages.includes(pageName)
+            ? "none"
+            : "flex";
+}
+
 // =========================
 // TAMPILKAN HALAMAN
 // =========================
@@ -73,24 +95,7 @@ function showPage(name, btn = null) {
     /*==================================
         SHOW / HIDE BOTTOM NAV
 ==================================*/
-
-    const bottomNav = document.querySelector(".bottom-nav");
-
-    if (bottomNav) {
-
-        const hideNavPages = [
-            "goces-detail",
-            "goces-payment",
-            "goces-waiting",
-            "goces-success"
-        ];
-
-        bottomNav.style.display =
-            hideNavPages.includes(name)
-                ? "none"
-                : "flex";
-
-    }
+    syncBottomNav(name);
 
     console.log(
         'Current Page:',
@@ -135,9 +140,9 @@ function goBack() {
     }
 
     activateNav(previousPage);
+    syncBottomNav(previousPage);
 
-    currentPage =
-        previousPage;
+    currentPage = previousPage;
 
     window.dispatchEvent(new CustomEvent("goces:pagechange", {
         detail: { page: previousPage }
@@ -178,9 +183,9 @@ window.addEventListener(
         }
 
         activateNav(previousPage);
+        syncBottomNav(previousPage);
 
-        currentPage =
-            previousPage;
+        currentPage = previousPage;
 
         window.dispatchEvent(new CustomEvent("goces:pagechange", {
             detail: { page: previousPage }

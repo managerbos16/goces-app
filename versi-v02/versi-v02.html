@@ -393,6 +393,20 @@
         border: 0;
 
     }
+
+    #page-goces-detail.page.active {
+        display: flex;
+        flex: 1 1 auto;
+        min-height: 0;
+        height: 100%;
+
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+
+        padding-bottom: 90px;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
+    }
 </style>
 
 <body>
@@ -2669,6 +2683,44 @@
 
         </div>
         <!-- ========== AKHIR HALAMAN GOCES SUCCESS ==========-->
+
+        <!-- ========== HALAMAN SEMUA CAMPAIGN GOCES PEDULI ==========
+        <div id="page-goces-peduli" class="page">
+            <div class="gpa-page">
+
+                <header class="gpa-header">
+                    <button type="button" class="gpa-back" onclick="goBack()" aria-label="Kembali">
+                        <i class="ph ph-arrow-left"></i>
+                    </button>
+
+                    <div>
+                        <p class="gpa-eyebrow">GOCES PEDULI</p>
+                        <h1>Campaign untuk Indonesia</h1>
+                    </div>
+                </header>
+
+                <section class="gpa-hero">
+                    <div class="gpa-hero-icon">❤</div>
+
+                    <div>
+                        <strong>Kebaikanmu berarti</strong>
+                        <p>Pilih campaign yang ingin kamu bantu hari ini.</p>
+                    </div>
+                </section>
+
+                <div class="gpa-section-heading">
+                    <div>
+                        <h2>Campaign aktif</h2>
+                        <p id="gpa-count">Memuat campaign...</p>
+                    </div>
+                </div>
+
+                <div id="gpa-wrapper" class="gpa-grid" aria-live="polite">
+                </div>
+
+            </div>
+        </div>
+         ========== AKHIR HALAMAN SEMUA CAMPAIGN GOCES PEDULI ==========-->
 
     </div>
 
