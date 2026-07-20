@@ -331,7 +331,7 @@
    HALAMAN SEMUA CAMPAIGN
 ========================== */
 
-/* #page-goces-peduli {
+#page-goces-peduli {
   background: #f7f9fc;
 }
 
@@ -340,7 +340,7 @@
   box-sizing: border-box;
   padding: 22px 16px 34px;
   color: #172033;
-} */
+}
 
 .gpa-header {
   display: flex;

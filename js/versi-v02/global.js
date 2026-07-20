@@ -42,7 +42,6 @@ function syncBottomNav(pageName) {
         "goces-payment",
         "goces-waiting",
         "goces-success",
-        "goces-peduli"
     ];
 
     bottomNav.style.display =
