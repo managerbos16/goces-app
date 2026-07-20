@@ -410,15 +410,15 @@
     }
 
     window.loadCampaigns = loadCampaigns;
-    /* window.loadAllCampaigns = loadAllCampaigns; */
+    window.loadAllCampaigns = loadAllCampaigns;
     window.openDetailPage = openDetailPage;
     window.openPaymentPage = openPaymentPage;
 
-    /* window.addEventListener("goces:pagechange", function (event) {
-         if (event.detail?.page === "goces-peduli") {
-             loadAllCampaigns();
-         }
-     }); */
+    window.addEventListener("goces:pagechange", function (event) {
+        if (event.detail?.page === "goces-peduli") {
+            loadAllCampaigns();
+        }
+    });
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", loadCampaigns);

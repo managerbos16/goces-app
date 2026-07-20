@@ -329,7 +329,7 @@
 
 /* ==========================
    HALAMAN SEMUA CAMPAIGN
-========================== 
+========================== */
 
 #page-goces-peduli {
   background: #f7f9fc;
@@ -469,4 +469,4 @@
   .gpa-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-} */
+}

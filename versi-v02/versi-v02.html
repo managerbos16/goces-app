@@ -2021,7 +2021,7 @@
         <div id="page-goces-detail" class="page">
             <header class="gpd-header">
 
-                <button type="button" class="gpd-back" onclick="showPage('home')">
+                <button type="button" class="gpd-back" onclick="goBack()">
 
                     ←
 
@@ -2030,6 +2030,7 @@
                 <h1>Detail Donasi</h1>
 
             </header>
+
 
             <!--==============================
             LOADING
@@ -2143,6 +2144,7 @@
 
             </main>
 
+
             <!--==============================
             FOOTER
 ===============================-->
@@ -2169,7 +2171,7 @@
 
             <header class="gpay-header">
 
-                <button type="button" class="gpay-back" onclick="showPage('goces-detail')">
+                <button type="button" class="gpay-back" onclick="goBack()">
 
                     ←
 
@@ -2374,7 +2376,7 @@
 
             <header class="gwait-header">
 
-                <button type="button" class="gwait-back" onclick="showPage('goces-payment')">
+                <button type="button" class="gwait-back" onclick="goBack()">
 
                     ←
 
@@ -2684,43 +2686,41 @@
         </div>
         <!-- ========== AKHIR HALAMAN GOCES SUCCESS ==========-->
 
-        <!-- ========== HALAMAN SEMUA CAMPAIGN GOCES PEDULI ==========
+        <!-- ========== HALAMAN SEMUA CAMPAIGN GOCES PEDULI ========== -->
         <div id="page-goces-peduli" class="page">
-            <div class="gpa-page">
 
-                <header class="gpa-header">
-                    <button type="button" class="gpa-back" onclick="goBack()" aria-label="Kembali">
-                        <i class="ph ph-arrow-left"></i>
-                    </button>
+            <header class="gpa-header">
+                <button type="button" class="gpa-back" onclick="goBack()" aria-label="Kembali">
+                    <i class="ph ph-arrow-left"></i>
+                </button>
 
-                    <div>
-                        <p class="gpa-eyebrow">GOCES PEDULI</p>
-                        <h1>Campaign untuk Indonesia</h1>
-                    </div>
-                </header>
-
-                <section class="gpa-hero">
-                    <div class="gpa-hero-icon">❤</div>
-
-                    <div>
-                        <strong>Kebaikanmu berarti</strong>
-                        <p>Pilih campaign yang ingin kamu bantu hari ini.</p>
-                    </div>
-                </section>
-
-                <div class="gpa-section-heading">
-                    <div>
-                        <h2>Campaign aktif</h2>
-                        <p id="gpa-count">Memuat campaign...</p>
-                    </div>
+                <div>
+                    <p class="gpa-eyebrow">GOCES PEDULI</p>
+                    <h1>Campaign untuk Indonesia</h1>
                 </div>
+            </header>
 
-                <div id="gpa-wrapper" class="gpa-grid" aria-live="polite">
+            <section class="gpa-hero">
+                <div class="gpa-hero-icon">❤</div>
+
+                <div>
+                    <strong>Kebaikanmu berarti</strong>
+                    <p>Pilih campaign yang ingin kamu bantu hari ini.</p>
                 </div>
+            </section>
 
+            <div class="gpa-section-heading">
+                <div>
+                    <h2>Campaign aktif</h2>
+                    <p id="gpa-count">Memuat campaign...</p>
+                </div>
             </div>
+
+            <div id="gpa-wrapper" class="gpa-grid" aria-live="polite">
+            </div>
+
         </div>
-         ========== AKHIR HALAMAN SEMUA CAMPAIGN GOCES PEDULI ==========-->
+        <!--========== AKHIR HALAMAN SEMUA CAMPAIGN GOCES PEDULI ==========-->
 
     </div>
 
