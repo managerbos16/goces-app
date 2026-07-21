@@ -1,5 +1,5 @@
 /*==================================================
-        GOCES FEEDBACK ENGINE v3.0 FINAL
+        GOCES FEEDBACK ENGINE v3.0 FINAL (Fixed)
 ==================================================*/
 
 const GocesFeedback = (() => {
@@ -42,8 +42,7 @@ const GocesFeedback = (() => {
 
         audio.volume = CONFIG.volume;
 
-        audio.load();
-
+        // DIUBAH: Hapus audio.load() langsung di sini agar tidak diintervensi browser saat awal load
     }
 
     /*==================================
@@ -56,7 +55,12 @@ const GocesFeedback = (() => {
 
         if (!navigator.vibrate) return;
 
-        navigator.vibrate(CONFIG.vibrationTime);
+        // DIUBAH: Bungkus try-catch agar kegagalan getar di browser tertentu tidak menghentikan fungsi lain
+        try {
+            navigator.vibrate(CONFIG.vibrationTime);
+        } catch (e) {
+            console.warn("Vibration blocked or not supported:", e);
+        }
 
     }
 
@@ -66,6 +70,11 @@ const GocesFeedback = (() => {
 
     function playSound() {
 
+        // DIUBAH: Inisialisasi audio secara dinamis di sini jika belum ada
+        if (!audio) {
+            initSound();
+        }
+
         if (!audio) return;
 
         try {
@@ -74,7 +83,9 @@ const GocesFeedback = (() => {
 
             audio.currentTime = 0;
 
-            audio.play().catch(() => { });
+            audio.play().catch((err) => {
+                console.log("Audio play delayed until user gesture:", err);
+            });
 
         } catch (e) { }
 
@@ -144,7 +155,7 @@ const GocesFeedback = (() => {
 
     function enableAuto() {
 
-        initSound();
+        // DIUBAH: Hapus initSound() dari awal load halaman
 
         document.addEventListener(
 
@@ -172,7 +183,9 @@ const GocesFeedback = (() => {
 
             if (!document.hidden && audio) {
 
-                audio.load();
+                try {
+                    audio.load();
+                } catch (e) { }
 
             }
 
