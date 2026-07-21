@@ -2,9 +2,9 @@
                 GOCES ROUTER v3.0
 ==================================================*/
 
-let currentPage = "home";
-let pageHistory = [];
-
+// MENGGUNAKAN 'var' AGAR TIDAK BENTROK DENGAN LET/CONST GLOBAL LAINNYA
+var currentPage = window.currentPage || "home";
+var pageHistory = window.pageHistory || [];
 /*==================================================
                 CACHE
 ==================================================*/
