@@ -246,23 +246,33 @@
             selectedRadio?.value || selectedMethod;
 
         if (!donor_name) {
-            return alert("Nama wajib diisi.");
+            showToast("Nama wajib diisi.");
+
+            return;
         }
 
         if (!donor_email) {
-            return alert("Email wajib diisi.");
+            showToast("Email wajib diisi.");
+
+            return;
         }
 
         if (!donor_phone) {
-            return alert("Nomor WhatsApp wajib diisi.");
+            showToast("Nomor WhatsApp wajib diisi.");
+
+            return;
         }
 
         if (amount < 10000) {
-            return alert("Minimal donasi Rp10.000");
+            showToast("Minimal donasi Rp10.000");
+
+            return;
         }
 
         if (!method) {
-            return alert("Silakan pilih metode pembayaran.");
+            showToast("Silakan pilih metode pembayaran.");
+
+            return;
         }
 
         try {
@@ -314,7 +324,7 @@
             }
 
         } catch (err) {
-            alert(err.message);
+            showToast(err.message);
             console.error(err);
 
             const submit =

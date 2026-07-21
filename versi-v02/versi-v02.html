@@ -860,6 +860,41 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
     }
+
+    .goces-toast {
+        position: fixed;
+        left: 50%;
+        bottom: 90px;
+
+        transform: translateX(-50%) translateY(20px);
+
+        max-width: 90%;
+        padding: 14px 18px;
+
+        border-radius: 12px;
+
+        background: #111827;
+        color: #fff;
+
+        font-size: 14px;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition: .25s;
+
+        z-index: 99999;
+    }
+
+    .goces-toast.show {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform: translateX(-50%) translateY(0);
+
+    }
 </style>
 
 <body>
@@ -2956,6 +2991,26 @@
             }
 
         );
+
+        window.showToast = function (message) {
+
+            const toast = document.getElementById("gocesToast");
+
+            if (!toast) return;
+
+            toast.textContent = message;
+
+            toast.classList.add("show");
+
+            clearTimeout(window.toastTimer);
+
+            window.toastTimer = setTimeout(() => {
+
+                toast.classList.remove("show");
+
+            }, 2000);
+
+        }
     </script>
 
     <!--============ HALAMAN POPUP DETAIL VOUCHER =================-->
@@ -3026,6 +3081,8 @@
     box-shadow:0 4px 12px rgba(0,0,0,.2);">
     </div>
     <!--==============  AKHIR NOTIFIKASI VOUCHER ==============-->
+
+    <div id="gocesToast" class="goces-toast"></div>
 
 
 </body>
