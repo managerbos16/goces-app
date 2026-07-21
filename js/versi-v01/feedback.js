@@ -1,5 +1,5 @@
 /*==================================================
-        GOCES FEEDBACK ENGINE v3.0 FINAL (Fixed)
+        GOCES FEEDBACK ENGINE v3.0 FINAL (Safe Localhost)
 ==================================================*/
 
 const GocesFeedback = (() => {
@@ -10,11 +10,12 @@ const GocesFeedback = (() => {
 
     const CONFIG = {
 
-        vibration: true,
+        // Otomatis matikan getar & suara jika dijalankan di localhost/127.0.0.1 agar tidak diblokir browser laptop
+        vibration: !["localhost", "127.0.0.1"].includes(window.location.hostname),
 
         vibrationTime: 10,
 
-        sound: true,
+        sound: !["localhost", "127.0.0.1"].includes(window.location.hostname),
 
         volume: 0.35,
 
@@ -36,13 +37,12 @@ const GocesFeedback = (() => {
 
         if (audio) return;
 
-        audio = new Audio(CONFIG.soundFile);
+        try {
+            audio = new Audio(CONFIG.soundFile);
+            audio.preload = "auto";
+            audio.volume = CONFIG.volume;
+        } catch (e) { }
 
-        audio.preload = "auto";
-
-        audio.volume = CONFIG.volume;
-
-        // DIUBAH: Hapus audio.load() langsung di sini agar tidak diintervensi browser saat awal load
     }
 
     /*==================================
@@ -55,12 +55,9 @@ const GocesFeedback = (() => {
 
         if (!navigator.vibrate) return;
 
-        // DIUBAH: Bungkus try-catch agar kegagalan getar di browser tertentu tidak menghentikan fungsi lain
         try {
             navigator.vibrate(CONFIG.vibrationTime);
-        } catch (e) {
-            console.warn("Vibration blocked or not supported:", e);
-        }
+        } catch (e) { }
 
     }
 
@@ -70,7 +67,8 @@ const GocesFeedback = (() => {
 
     function playSound() {
 
-        // DIUBAH: Inisialisasi audio secara dinamis di sini jika belum ada
+        if (!CONFIG.sound) return;
+
         if (!audio) {
             initSound();
         }
@@ -83,9 +81,7 @@ const GocesFeedback = (() => {
 
             audio.currentTime = 0;
 
-            audio.play().catch((err) => {
-                console.log("Audio play delayed until user gesture:", err);
-            });
+            audio.play().catch(() => { });
 
         } catch (e) { }
 
@@ -107,17 +103,11 @@ const GocesFeedback = (() => {
 
                 [
 
-                    {
-                        transform: "scale(1)"
-                    },
+                    { transform: "scale(1)" },
 
-                    {
-                        transform: "scale(.95)"
-                    },
+                    { transform: "scale(.95)" },
 
-                    {
-                        transform: "scale(1)"
-                    }
+                    { transform: "scale(1)" }
 
                 ],
 
@@ -155,11 +145,10 @@ const GocesFeedback = (() => {
 
     function enableAuto() {
 
-        // DIUBAH: Hapus initSound() dari awal load halaman
-
+        // UBAH: Menggunakan 'click' bukan 'pointerdown' agar gesture user tercatat valid oleh browser
         document.addEventListener(
 
-            "pointerdown",
+            "click",
 
             function (e) {
 
@@ -173,23 +162,9 @@ const GocesFeedback = (() => {
 
                 play(target);
 
-            },
-
-            { passive: true }
-
-        );
-
-        document.addEventListener("visibilitychange", function () {
-
-            if (!document.hidden && audio) {
-
-                try {
-                    audio.load();
-                } catch (e) { }
-
             }
 
-        });
+        );
 
     }
 
