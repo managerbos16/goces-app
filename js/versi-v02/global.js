@@ -959,6 +959,42 @@ function closeGocesAI() {
     ).style.display = "none";
 }
 
+// =========================
+// script halaman shop
+// =========================
+let gcsFlashEnd = new Date("2026-06-27 23:59:59").getTime();
+
+let gcsFlashInterval = setInterval(function () {
+
+    let now = new Date().getTime();
+    let distance = gcsFlashEnd - now;
+
+    if (distance <= 0) {
+        clearInterval(gcsFlashInterval);
+
+        // Amankan elemen container Flash Sale
+        let flashSaleEl = document.getElementById("gcsFlashSale");
+        if (flashSaleEl) {
+            flashSaleEl.style.display = "none";
+        }
+
+        return;
+    }
+
+    let jam = Math.floor(distance / (1000 * 60 * 60));
+    let menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let detik = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Amankan elemen teks Timer agar tidak menghasilkan error null
+    let flashTimerEl = document.getElementById("gcsFlashTimer");
+    if (flashTimerEl) {
+        flashTimerEl.innerHTML =
+            jam.toString().padStart(2, "0") + ":" +
+            menit.toString().padStart(2, "0") + ":" +
+            detik.toString().padStart(2, "0");
+    }
+
+}, 1000);
 
 // =========================
 // script halaman shop
@@ -971,10 +1007,13 @@ let gcsFlashInterval = setInterval(function () {
     let distance = gcsFlashEnd - now;
 
     if (distance <= 0) {
-
         clearInterval(gcsFlashInterval);
 
-        document.getElementById("gcsFlashSale").style.display = "none";
+        // Amankan elemen container Flash Sale
+        let flashSaleEl = document.getElementById("gcsFlashSale");
+        if (flashSaleEl) {
+            flashSaleEl.style.display = "none";
+        }
 
         return;
     }
@@ -983,13 +1022,16 @@ let gcsFlashInterval = setInterval(function () {
     let menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let detik = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("gcsFlashTimer").innerHTML =
-        jam.toString().padStart(2, "0") + ":" +
-        menit.toString().padStart(2, "0") + ":" +
-        detik.toString().padStart(2, "0");
+    // Amankan elemen teks Timer agar tidak menghasilkan error null
+    let flashTimerEl = document.getElementById("gcsFlashTimer");
+    if (flashTimerEl) {
+        flashTimerEl.innerHTML =
+            jam.toString().padStart(2, "0") + ":" +
+            menit.toString().padStart(2, "0") + ":" +
+            detik.toString().padStart(2, "0");
+    }
 
 }, 1000);
-
 
 // =========================
 // script halaman profile beranda
