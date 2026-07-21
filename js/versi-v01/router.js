@@ -2,8 +2,8 @@
                 GOCES ROUTER v3.0
 ==================================================*/
 
-currentPage = "home";
-let gocesPageHistory = [];
+let currentPage = "home";
+let pageHistory = [];
 
 /*==================================================
                 CACHE
