@@ -1,5 +1,5 @@
 /*==================================================
-        GOCES FEEDBACK ENGINE v3.0 FINAL (Safe Localhost)
+        GOCES FEEDBACK ENGINE v3.0 FINAL
 ==================================================*/
 
 const GocesFeedback = (() => {
@@ -10,12 +10,11 @@ const GocesFeedback = (() => {
 
     const CONFIG = {
 
-        // Otomatis matikan getar & suara jika dijalankan di localhost/127.0.0.1 agar tidak diblokir browser laptop
-        vibration: !["localhost", "127.0.0.1"].includes(window.location.hostname),
+        vibration: true,
 
         vibrationTime: 10,
 
-        sound: !["localhost", "127.0.0.1"].includes(window.location.hostname),
+        sound: true,
 
         volume: 0.35,
 
@@ -37,11 +36,13 @@ const GocesFeedback = (() => {
 
         if (audio) return;
 
-        try {
-            audio = new Audio(CONFIG.soundFile);
-            audio.preload = "auto";
-            audio.volume = CONFIG.volume;
-        } catch (e) { }
+        audio = new Audio(CONFIG.soundFile);
+
+        audio.preload = "auto";
+
+        audio.volume = CONFIG.volume;
+
+        audio.load();
 
     }
 
@@ -55,9 +56,7 @@ const GocesFeedback = (() => {
 
         if (!navigator.vibrate) return;
 
-        try {
-            navigator.vibrate(CONFIG.vibrationTime);
-        } catch (e) { }
+        navigator.vibrate(CONFIG.vibrationTime);
 
     }
 
@@ -66,12 +65,6 @@ const GocesFeedback = (() => {
     ==================================*/
 
     function playSound() {
-
-        if (!CONFIG.sound) return;
-
-        if (!audio) {
-            initSound();
-        }
 
         if (!audio) return;
 
@@ -103,11 +96,17 @@ const GocesFeedback = (() => {
 
                 [
 
-                    { transform: "scale(1)" },
+                    {
+                        transform: "scale(1)"
+                    },
 
-                    { transform: "scale(.95)" },
+                    {
+                        transform: "scale(.95)"
+                    },
 
-                    { transform: "scale(1)" }
+                    {
+                        transform: "scale(1)"
+                    }
 
                 ],
 
@@ -145,10 +144,11 @@ const GocesFeedback = (() => {
 
     function enableAuto() {
 
-        // UBAH: Menggunakan 'click' bukan 'pointerdown' agar gesture user tercatat valid oleh browser
+        initSound();
+
         document.addEventListener(
 
-            "click",
+            "pointerdown",
 
             function (e) {
 
@@ -162,9 +162,21 @@ const GocesFeedback = (() => {
 
                 play(target);
 
-            }
+            },
+
+            { passive: true }
 
         );
+
+        document.addEventListener("visibilitychange", function () {
+
+            if (!document.hidden && audio) {
+
+                audio.load();
+
+            }
+
+        });
 
     }
 
