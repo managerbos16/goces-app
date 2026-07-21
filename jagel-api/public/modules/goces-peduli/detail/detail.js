@@ -6,15 +6,12 @@
     /*==================================
             FORMAT RUPIAH
     ==================================*/
-
     function formatRupiah(number) {
-
         return new Intl.NumberFormat("id-ID", {
             style: "currency",
             currency: "IDR",
             maximumFractionDigits: 0
         }).format(Number(number) || 0);
-
     }
 
     function getProgress(campaign) {
@@ -42,61 +39,37 @@
             LOAD DETAIL
     ==================================*/
     function loadCampaignDetail() {
-
         document.getElementById("gpdLoading").style.display = "block";
         document.getElementById("gpdContent").style.display = "none";
         const campaign = window.selectedCampaign;
 
         if (!campaign) {
-
             console.error("Campaign belum dipilih.");
-
             alert("Campaign tidak ditemukan.");
-
             showPage("home");
-
             return;
-
         }
 
         document.getElementById("gpdLoading").style.display = "none";
         document.getElementById("gpdContent").style.display = "block";
 
         const image = document.getElementById("gpdImage");
-
-        image.src =
-            campaign.cover_image || FALLBACK_IMAGE;
+        image.src = campaign.cover_image || FALLBACK_IMAGE;
 
         image.onerror = function () {
-
             this.onerror = null;
-
             this.src = FALLBACK_IMAGE;
-
         };
 
-        document.getElementById("gpdCategory").textContent =
-            campaign.category || "Donasi";
-
-        document.getElementById("gpdTitle").textContent =
-            campaign.title || "-";
-
-        document.getElementById("gpdAbout").textContent =
-            campaign.description || "-";
-
-        document.getElementById("gpdCollected").textContent =
-            formatRupiah(campaign.collected_amount);
-
-        document.getElementById("gpdTarget").textContent =
-            formatRupiah(campaign.target_amount);
-
-        document.getElementById("gpdDonor").textContent =
-            Number(campaign.donor_count) || 0;
+        document.getElementById("gpdCategory").textContent = campaign.category || "Donasi";
+        document.getElementById("gpdTitle").textContent = campaign.title || "-";
+        document.getElementById("gpdAbout").textContent = campaign.description || "-";
+        document.getElementById("gpdCollected").textContent = formatRupiah(campaign.collected_amount);
+        document.getElementById("gpdTarget").textContent = formatRupiah(campaign.target_amount);
+        document.getElementById("gpdDonor").textContent = Number(campaign.donor_count) || 0;
 
         const progress = getProgress(campaign);
-
-        document.getElementById("gpdPercent").textContent =
-            formatProgress(progress);
+        document.getElementById("gpdPercent").textContent = formatProgress(progress);
 
         const progressBar = document.getElementById("gpdBar");
         progressBar.style.width = progress + "%";
@@ -104,22 +77,49 @@
         progressBar.setAttribute("aria-valuenow", String(progress));
 
         document.getElementById("gpdDonate").onclick = function () {
-
             window.selectedCampaign = campaign;
-
             showPage("goces-payment");
-
             if (typeof loadCampaign === "function") {
-
                 loadCampaign();
-
             }
-
         };
-
     }
 
     window.loadCampaignDetail = loadCampaignDetail;
 
-})();
+    /*===================================================
+      ANTI PULL-TO-REFRESH KHUSUS APLIKASI (JAGEL/WEBVIEW)
+    ===================================================*/
+    // Langsung daftarkan event listener ke document body / element agar tidak terlewat event DOM
+    let touchStartYSrc = 0;
 
+    document.addEventListener('touchstart', function (e) {
+        // Hanya kunci jika touch terjadi di dalam area page detail
+        const detailPage = e.target.closest("#page-goces-detail");
+        if (!detailPage) return;
+
+        if (e.touches.length === 1) {
+            touchStartYSrc = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function (e) {
+        // Pastikan target sentuhan berada di dalam area page detail
+        const detailPage = e.target.closest("#page-goces-detail");
+        if (!detailPage) return;
+
+        const scrollArea = detailPage.querySelector(".scroll-area");
+        if (!scrollArea) return;
+
+        const touchMoveY = e.touches[0].clientY;
+        const direction = touchMoveY - touchStartYSrc;
+
+        // JIKA posisi scroll area berada di paling atas DAN user men-scroll ke bawah
+        if (scrollArea.scrollTop <= 0 && direction > 0) {
+            if (e.cancelable) {
+                e.preventDefault(); // Menghentikan pull-to-refresh native aplikasi Jagel
+            }
+        }
+    }, { passive: false }); // Wajib false
+
+})();
