@@ -3,7 +3,7 @@
 ==================================================*/
 
 currentPage = "home";
-pageHistory = pageHistory || [];
+let gocesPageHistory = [];
 
 /*==================================================
                 CACHE
