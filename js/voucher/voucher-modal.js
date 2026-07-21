@@ -38,6 +38,8 @@ window.GocesVoucherModal = {
 
                 }
 
+
+
                 // Klik Card
                 const card = e.target.closest(".gcv-card");
 

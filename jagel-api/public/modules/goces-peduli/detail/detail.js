@@ -41,6 +41,7 @@
     function loadCampaignDetail() {
         document.getElementById("gpdLoading").style.display = "block";
         document.getElementById("gpdContent").style.display = "none";
+
         const campaign = window.selectedCampaign;
 
         if (!campaign) {
@@ -79,6 +80,7 @@
         document.getElementById("gpdDonate").onclick = function () {
             window.selectedCampaign = campaign;
             showPage("goces-payment");
+
             if (typeof loadCampaign === "function") {
                 loadCampaign();
             }
@@ -89,22 +91,30 @@
 
     /*===================================================
       ANTI PULL-TO-REFRESH KHUSUS APLIKASI (JAGEL/WEBVIEW)
+      ===================================================
+      DINONAKTIFKAN SEMENTARA UNTUK PENGUJIAN SCROLL.
+
+      Jika setelah bagian ini dinonaktifkan halaman detail
+      bisa di-scroll, berarti penyebabnya memang berasal dari
+      logika anti pull-to-refresh.
     ===================================================*/
-    // Langsung daftarkan event listener ke document body / element agar tidak terlewat event DOM
+
+    /*
     let touchStartYSrc = 0;
 
     document.addEventListener('touchstart', function (e) {
-        // Hanya kunci jika touch terjadi di dalam area page detail
+
         const detailPage = e.target.closest("#page-goces-detail");
         if (!detailPage) return;
 
         if (e.touches.length === 1) {
             touchStartYSrc = e.touches[0].clientY;
         }
+
     }, { passive: true });
 
     document.addEventListener('touchmove', function (e) {
-        // Pastikan target sentuhan berada di dalam area page detail
+
         const detailPage = e.target.closest("#page-goces-detail");
         if (!detailPage) return;
 
@@ -114,12 +124,15 @@
         const touchMoveY = e.touches[0].clientY;
         const direction = touchMoveY - touchStartYSrc;
 
-        // JIKA posisi scroll area berada di paling atas DAN user men-scroll ke bawah
         if (scrollArea.scrollTop <= 0 && direction > 0) {
+
             if (e.cancelable) {
-                e.preventDefault(); // Menghentikan pull-to-refresh native aplikasi Jagel
+                e.preventDefault();
             }
+
         }
-    }, { passive: false }); // Wajib false
+
+    }, { passive: false });
+    */
 
 })();

@@ -6,16 +6,23 @@ window.GocesVoucherCopy = {
 
     timer: null,
 
-    async copy(button) {
+    async copy(button, code = null) {
 
-        const card = button.closest(".gcv-card");
+        let card = null;
 
-        if (!card) return;
+        // Jika kode tidak dikirim, berarti berasal dari Card Voucher
+        if (!code) {
 
-        const code = card.dataset.code;
+            card = button.closest(".gcv-card");
 
-        // Mencegah card ikut animasi
-        card.classList.add("gcv-copy-click");
+            if (!card) return;
+
+            code = card.dataset.code;
+
+            // Efek animasi hanya untuk card
+            card.classList.add("gcv-copy-click");
+
+        }
 
         try {
 
@@ -47,7 +54,11 @@ window.GocesVoucherCopy = {
 
                 this.toast("Gagal menyalin kode");
 
-                card.classList.remove("gcv-copy-click");
+                if (card) {
+
+                    card.classList.remove("gcv-copy-click");
+
+                }
 
                 return;
 
@@ -58,6 +69,8 @@ window.GocesVoucherCopy = {
         // Efek tombol
         button.classList.add("copied");
 
+        const originalText = button.textContent;
+
         button.textContent = "Disalin ✓";
 
         this.toast("Kode " + code + " berhasil disalin");
@@ -66,9 +79,13 @@ window.GocesVoucherCopy = {
 
             button.classList.remove("copied");
 
-            button.textContent = "Salin";
+            button.textContent = originalText;
 
-            card.classList.remove("gcv-copy-click");
+            if (card) {
+
+                card.classList.remove("gcv-copy-click");
+
+            }
 
         }, 1500);
 
@@ -106,17 +123,54 @@ document.addEventListener(
 
     function (e) {
 
-        const button = e.target.closest(".gcv-copy");
+        /*==============================
+            Tombol Salin pada Card
+        ==============================*/
+        const cardButton = e.target.closest(".gcv-copy");
 
-        if (!button) return;
+        if (cardButton) {
 
-        e.preventDefault();
+            e.preventDefault();
 
-        e.stopPropagation();
+            e.stopPropagation();
 
-        e.stopImmediatePropagation();
+            e.stopImmediatePropagation();
 
-        GocesVoucherCopy.copy(button);
+            GocesVoucherCopy.copy(cardButton);
+
+            return;
+
+        }
+
+        /*==============================
+            Tombol Salin pada Modal
+        ==============================*/
+        const modalButton = e.target.closest(".gcv-modal-copy");
+
+        if (modalButton) {
+
+            e.preventDefault();
+
+            e.stopPropagation();
+
+            e.stopImmediatePropagation();
+
+            const modal = document.getElementById("gocesVoucherModal");
+
+            if (!modal) return;
+
+            const code = modal
+                .querySelector(".gcv-modal-code")
+                .textContent
+                .trim();
+
+            if (!code) return;
+
+            GocesVoucherCopy.copy(modalButton, code);
+
+            return;
+
+        }
 
     },
 

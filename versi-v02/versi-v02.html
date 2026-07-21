@@ -34,7 +34,6 @@
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/versi-v01/development.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/voucher.css">
     <link rel="stylesheet" href="https://goces-app.vercel.app/css/voucher-horizontal.css">
-    <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/detail/detail.css">
     <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/assets/css/style.css">
     <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/payment/payment.css">
     <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/success/success.css">
@@ -382,6 +381,484 @@
 
         border: 0;
 
+    }
+
+    /*==================================
+        HEADER
+==================================*/
+
+    .gpd-header {
+        position: sticky;
+
+        top: 0;
+
+        z-index: 100;
+
+        background: #fff;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        padding: 14px 16px;
+
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .gpd-back {
+        width: 40px;
+
+        height: 40px;
+
+        border: none;
+
+        border-radius: 12px;
+
+        background: #eef4ff;
+
+        color: #2563eb;
+
+        font-size: 22px;
+
+        cursor: pointer;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+    .gpd-header h1 {
+        font-size: 18px;
+
+        font-weight: 700;
+    }
+
+    /*==================================
+        LOADING
+==================================*/
+
+    .gpd-loading {
+        padding: 50px 20px;
+
+        text-align: center;
+
+        color: #6b7280;
+    }
+
+    /*==================================
+        CONTENT
+==================================*/
+
+    .gpd-content {
+        padding: 16px;
+    }
+
+    /*==================================
+        BANNER
+==================================*/
+
+    .gpd-banner {
+        position: relative;
+
+        overflow: hidden;
+
+        border-radius: 18px;
+
+        margin-bottom: 16px;
+    }
+
+    .gpd-banner img {
+        width: 100%;
+
+        aspect-ratio: 16/9;
+
+        height: auto;
+
+        object-fit: cover;
+
+        display: block;
+    }
+
+    .gpd-category {
+        position: absolute;
+
+        left: 14px;
+
+        top: 14px;
+
+        background: #16a34a;
+
+        color: #fff;
+
+        padding: 7px 14px;
+
+        border-radius: 30px;
+
+        font-size: 12px;
+
+        font-weight: 700;
+    }
+
+    /*==================================
+        CARD
+==================================*/
+
+    .gpd-card {
+        background: #fff;
+
+        border-radius: 18px;
+
+        padding: 18px;
+
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .gpd-card h2 {
+        font-size: 22px;
+
+        line-height: 30px;
+
+        margin-bottom: 10px;
+    }
+
+    .gpd-card p {
+        color: #6b7280;
+
+        line-height: 24px;
+
+        margin-bottom: 20px;
+    }
+
+    /*==================================
+        PROGRESS
+==================================*/
+
+    .gpd-progress-info {
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        margin-bottom: 10px;
+    }
+
+    .gpd-progress-info span:first-child {
+        font-size: 22px;
+
+        color: #16a34a;
+
+        font-weight: 700;
+    }
+
+    .gpd-progress-info span:last-child {
+        color: #2563eb;
+
+        font-weight: 700;
+    }
+
+    .gpd-progress {
+        width: 100%;
+
+        height: 10px;
+
+        background: #e5e7eb;
+
+        border-radius: 30px;
+
+        overflow: hidden;
+
+        margin-bottom: 16px;
+    }
+
+    .gpd-progress-bar {
+        width: 0%;
+
+        height: 100%;
+
+        background: #16a34a;
+
+        border-radius: 30px;
+
+        transition: width 0.35s ease;
+    }
+
+    /*==================================
+        TARGET
+==================================*/
+
+    .gpd-target {
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        margin-bottom: 16px;
+    }
+
+    .gpd-target span {
+        color: #6b7280;
+    }
+
+    .gpd-target strong {
+        font-size: 18px;
+    }
+
+    /*==================================
+        DONATUR
+==================================*/
+
+    .gpd-donatur {
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        color: #4b5563;
+
+        font-size: 15px;
+    }
+
+    /*==================================
+        ABOUT
+==================================*/
+
+    .gpd-about {
+        margin-top: 18px;
+
+        background: #fff;
+
+        border-radius: 18px;
+
+        padding: 18px;
+
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .gpd-about h3 {
+        margin-bottom: 14px;
+
+        font-size: 18px;
+    }
+
+    .gpd-about p {
+        color: #4b5563;
+
+        line-height: 28px;
+    }
+
+    /*==================================
+        FOOTER
+==================================*/
+
+    /* Tambahkan aturan ini untuk menyembunyikan footer jika halamannya sedang tidak aktif */
+    #page-goces-detail:not(.active) .gpd-footer {
+        display: none !important;
+    }
+
+    .gpd-footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: #fff;
+        padding: 14px 16px;
+        padding-bottom: calc(14px + env(safe-area-inset-bottom));
+        box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .gpd-footer button {
+        width: 100%;
+
+        height: 52px;
+
+        border: none;
+
+        border-radius: 14px;
+
+        background: #2563eb;
+
+        color: #fff;
+
+        font-size: 16px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+    }
+
+    .gpd-footer button:active {
+        transform: scale(0.98);
+    }
+
+    .gpd-footer button:hover {
+        background: #1d4ed8;
+    }
+
+    .gpd-footer button:focus-visible,
+    .gpd-back:focus-visible {
+        outline: 2px solid #2563eb;
+
+        outline-offset: 3px;
+    }
+
+    @media (max-width: 480px) {
+        .gpd-card h2 {
+            font-size: 20px;
+
+            line-height: 28px;
+        }
+
+        .gpd-progress-info span:first-child {
+            font-size: 20px;
+        }
+    }
+
+    #page-goces-peduli {
+        background: #f7f9fc;
+    }
+
+    /*
+.gpa-page {
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 22px 16px 34px;
+  color: #172033;
+} */
+
+    .gpa-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        margin: 16px 16px 20px;
+    }
+
+    .gpa-back {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        place-items: center;
+        border: 1px solid #e4e9f1;
+        border-radius: 14px;
+        background: #fff;
+        color: #172033;
+        cursor: pointer;
+        font-size: 21px;
+        box-shadow: 0 3px 12px rgba(23, 32, 51, 0.05);
+    }
+
+    .gpa-eyebrow {
+        margin: 0 0 3px;
+        color: #e84b55;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+    }
+
+    .gpa-header h1,
+    .gpa-section-heading h2 {
+        margin: 0;
+        color: #172033;
+    }
+
+    .gpa-header h1 {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    .gpa-hero {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+
+        margin: 0 16px 24px;
+        padding: 17px;
+
+        border: 1px solid #ffe1df;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #fff0f1, #fff8ed);
+    }
+
+    .gpa-hero-icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        place-items: center;
+        border-radius: 14px;
+        background: #e84b55;
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .gpa-hero strong {
+        font-size: 14px;
+    }
+
+    .gpa-hero p,
+    .gpa-section-heading p {
+        margin: 4px 0 0;
+        color: #697386;
+        font-size: 12px;
+    }
+
+    .gpa-section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        margin: 0 16px 14px;
+    }
+
+    .gpa-section-heading h2 {
+        font-size: 16px;
+    }
+
+    .gpa-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin: 0 16px;
+    }
+
+    .gpa-card {
+        width: auto;
+        min-width: 0;
+        box-shadow: 0 5px 16px rgba(23, 32, 51, 0.08);
+    }
+
+    .gpa-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .gpa-message {
+        grid-column: 1 / -1;
+        margin: 0;
+        padding: 28px 16px;
+        border: 1px dashed #d8e0eb;
+        border-radius: 16px;
+        background: #fff;
+        color: #697386;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .gpa-message-error {
+        color: #c23842;
+    }
+
+    @media (min-width: 640px) {
+        .gpa-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
     }
 </style>
 
@@ -1973,10 +2450,7 @@
 
         <!-- ========== HALAMAN GOCES DETAIL ========== -->
         <div class="page" id="page-goces-detail">
-            <!-- 1. BUNGKUS HANYA KONTEN YANG BOLEH DI-SCROLL DI SINI -->
-            <!-- Cari bagian ini di HTML kamu dan ubah menjadi seperti ini: -->
-            <div class="scroll-area"
-                style="height: calc(100vh - 80px); overflow-y: auto !important; -webkit-overflow-scrolling: touch;">
+            <div class="scroll-area">
                 <header class="gpd-header">
                     <button type="button" class="gpd-back" onclick="goBack()">
                         ←
@@ -2399,7 +2873,6 @@
 
 
     <script src="https://goces-app.vercel.app/js/versi-v02/global.js"></script>
-    <script src="https://goces-app.vercel.app/js/versi-v01/router.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v01/navigation.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v01/feedback.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v01/app.js"></script>
@@ -2484,8 +2957,6 @@
 
         );
     </script>
-
-
 
     <!--============ HALAMAN POPUP DETAIL VOUCHER =================-->
     <div id="gocesVoucherModal" class="gcv-modal">
