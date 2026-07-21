@@ -963,32 +963,32 @@ function closeGocesAI() {
 // =========================
 // script halaman shop
 // =========================
-let gcsFlashEnd = new Date("2026-06-27 23:59:59").getTime();
+// let gcsFlashEnd = new Date("2026-06-27 23:59:59").getTime();
 
-let gcsFlashInterval = setInterval(function () {
+//let gcsFlashInterval = setInterval(function () {
 
-    let now = new Date().getTime();
-    let distance = gcsFlashEnd - now;
+//   let now = new Date().getTime();
+//   let distance = gcsFlashEnd - now;
 
-    if (distance <= 0) {
+//   if (distance <= 0) {
 
-        clearInterval(gcsFlashInterval);
+//       clearInterval(gcsFlashInterval);
 
-        document.getElementById("gcsFlashSale").style.display = "none";
+//      document.getElementById("gcsFlashSale").style.display = "none";
 
-        return;
-    }
+//      return;
+//  }
 
-    let jam = Math.floor(distance / (1000 * 60 * 60));
-    let menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let detik = Math.floor((distance % (1000 * 60)) / 1000);
+//  let jam = Math.floor(distance / (1000 * 60 * 60));
+//  let menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//  let detik = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("gcsFlashTimer").innerHTML =
-        jam.toString().padStart(2, "0") + ":" +
-        menit.toString().padStart(2, "0") + ":" +
-        detik.toString().padStart(2, "0");
+//  document.getElementById("gcsFlashTimer").innerHTML =
+//      jam.toString().padStart(2, "0") + ":" +
+//      menit.toString().padStart(2, "0") + ":" +
+//      detik.toString().padStart(2, "0");
 
-}, 1000);
+//}, 1000);
 
 
 // =========================
