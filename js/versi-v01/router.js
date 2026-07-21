@@ -2,7 +2,7 @@
                 GOCES ROUTER v3.0
 ==================================================*/
 
-let currentPage = "home";
+currentPage = "home";
 let pageHistory = [];
 
 /*==================================================
