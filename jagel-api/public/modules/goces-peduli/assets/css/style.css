@@ -335,12 +335,13 @@
   background: #f7f9fc;
 }
 
+/*
 .gpa-page {
   min-height: 100%;
   box-sizing: border-box;
   padding: 22px 16px 34px;
   color: #172033;
-}
+} */
 
 .gpa-header {
   display: flex;

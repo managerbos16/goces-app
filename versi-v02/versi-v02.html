@@ -990,7 +990,6 @@
                 </div>
 
             </div>
-
         </div>
         <!-- ========== AKHIR HALAMAN ORDERS BERANDA ==========-->
 
@@ -1065,7 +1064,7 @@
         <!-- ========== AKHIR HALAMAN CHAT BERANDA ==========-->
 
         <!-- ========== HALAMAN PROFILE BERANDA ==========-->
-        <div id="page-kpz-main-wrap" class="page">
+        <div class="page" id="page-kpz-main-wrap">
             <div class=" scroll-area">
                 <div class="kpz-head-panel">
 
@@ -1348,7 +1347,7 @@
         <!-- ========== AKHIR  HALAMAN PROFILE BERANDA ==========-->
 
         <!-- ========== HALAMAN GOFOOD BERANDA ==========-->
-        <div id="page-gofood" class="page">
+        <div class="page" id="page-gofood">
             <div class="scroll-area">
                 <header class="goces-header">
                     <div class="header-inner">
@@ -1442,7 +1441,7 @@
         <!-- ========== AKHIR  HALAMAN GOFOOD BERANDA ==========-->
 
         <!-- ========== HALAMAN SHOP BERANDA ==========-->
-        <div id="page-Shop" class="page">
+        <div class="page" id="page-Shop">
             <div class="scroll-area">
                 <div class="gmk_wrap">
                     <header class="gmk_header">
@@ -1674,7 +1673,7 @@
         <!-- ========== AKHIR  HALAMAN SHOP BERANDA ==========-->
 
         <!-- ========== HALAMAN FRESH BERANDA ==========-->
-        <div id="page-Fresh" class="page">
+        <div class="page" id="page-Fresh">
             <div class="scroll-area">
                 <header class="header-banner">
 
@@ -1915,769 +1914,433 @@
         <!-- ========== AKHIR FRESH BERANDA ==========-->
 
         <!-- ========== HALAMAN SETTING ALAMAT ==========-->
-        <div id="page-setting" class="page">
-            <div class="gset_header">
+        <div class="page" id="page-setting">
+            <div class="scroll-area">
+                <div class="gset_header">
 
-                <button class="kpz-nav-button kpz-back-button" onclick="goBack()">
-                    <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M15 18l-6-6 6-6"></path>
-                    </svg>
-                </button>
+                    <button class="kpz-nav-button kpz-back-button" onclick="goBack()">
+                        <svg class="kpz-nav-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 18l-6-6 6-6"></path>
+                        </svg>
+                    </button>
 
-                <div class="gset_header_text">
-                    <div class="gset_header_title">
-                        Pengaturan
-                    </div>
-                    <div class="gset_header_subtitle">
-                        Kelola akun dan keamanan
+                    <div class="gset_header_text">
+                        <div class="gset_header_title">
+                            Pengaturan
+                        </div>
+                        <div class="gset_header_subtitle">
+                            Kelola akun dan keamanan
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="gset_card">
-                <a href="action://act/profile" class="gset_item">
-                    <div class="gset_icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21a8 8 0 0 0-16 0" />
-                            <circle cx="12" cy="8" r="4" />
+                <div class="gset_card">
+                    <a href="action://act/profile" class="gset_item">
+                        <div class="gset_icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21a8 8 0 0 0-16 0" />
+                                <circle cx="12" cy="8" r="4" />
+                            </svg>
+                        </div>
+
+                        <div class="gset_content">
+                            <div class="gset_title">
+                                Ubah Profil
+                            </div>
+                            <div class="gset_subtitle">
+                                Nama, email dan nomor telepon
+                            </div>
+                        </div>
+
+                        <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18L15 12L9 6" />
                         </svg>
-                    </div>
+                    </a>
 
-                    <div class="gset_content">
-                        <div class="gset_title">
-                            Ubah Profil
+                    <a href="action://act/address" class="gset_item">
+                        <div class="gset_icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s7-5.5 7-12a7 7 0 1 0-14 0c0 6.5 7 12 7 12z" />
+                                <circle cx="12" cy="10" r="2.5" />
+                            </svg>
                         </div>
-                        <div class="gset_subtitle">
-                            Nama, email dan nomor telepon
+                        <div class="gset_content">
+                            <div class="gset_title">
+                                Ubah Alamat
+                            </div>
+                            <div class="gset_subtitle">
+                                Kelola alamat utama
+                            </div>
                         </div>
-                    </div>
-
-                    <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18L15 12L9 6" />
-                    </svg>
-                </a>
-
-                <a href="action://act/address" class="gset_item">
-                    <div class="gset_icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s7-5.5 7-12a7 7 0 1 0-14 0c0 6.5 7 12 7 12z" />
-                            <circle cx="12" cy="10" r="2.5" />
+                        <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18L15 12L9 6" />
                         </svg>
-                    </div>
-                    <div class="gset_content">
-                        <div class="gset_title">
-                            Ubah Alamat
-                        </div>
-                        <div class="gset_subtitle">
-                            Kelola alamat utama
-                        </div>
-                    </div>
-                    <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18L15 12L9 6" />
-                    </svg>
-                </a>
+                    </a>
 
-                <a href="action://act/password" class="gset_item">
-                    <div class="gset_icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="5" y="11" width="14" height="10" rx="2" />
-                            <path d="M8 11V8a4 4 0 1 1 8 0v3" />
+                    <a href="action://act/password" class="gset_item">
+                        <div class="gset_icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="11" width="14" height="10" rx="2" />
+                                <path d="M8 11V8a4 4 0 1 1 8 0v3" />
+                            </svg>
+                        </div>
+
+                        <div class="gset_content">
+                            <div class="gset_title">
+                                Ubah Password
+                            </div>
+                            <div class="gset_subtitle">
+                                Tingkatkan keamanan akun
+                            </div>
+                        </div>
+                        <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18L15 12L9 6" />
                         </svg>
-                    </div>
+                    </a>
+                </div>
 
-                    <div class="gset_content">
-                        <div class="gset_title">
-                            Ubah Password
-                        </div>
-                        <div class="gset_subtitle">
-                            Tingkatkan keamanan akun
-                        </div>
-                    </div>
-                    <svg class="gset_arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18L15 12L9 6" />
-                    </svg>
-                </a>
             </div>
 
         </div>
         <!-- ========== AKHIR HALAMAN SETTING ALAMAT ==========-->
 
-        <!-- ========== HALAMAN GOCES PEDULI ==========-->
-        <div id="page-goces-detail" class="page">
-            <header class="gpd-header">
+        <!-- ========== HALAMAN GOCES DETAIL ========== -->
+        <div class="page" id="page-goces-detail">
+            <!-- 1. BUNGKUS HANYA KONTEN YANG BOLEH DI-SCROLL DI SINI -->
+            <div class="scroll-area">
+                <header class="gpd-header">
+                    <button type="button" class="gpd-back" onclick="goBack()">
+                        ←
+                    </button>
+                    <h1>Detail Donasi</h1>
+                </header>
 
-                <button type="button" class="gpd-back" onclick="goBack()">
-
-                    ←
-
-                </button>
-
-                <h1>Detail Donasi</h1>
-
-            </header>
-
-            <!-- <div class="gpd-scroll"> -->
-
-            <!--==============================
-            LOADING
-===============================-->
-
-            <div id="gpdLoading" class="gpd-loading">
-
-                Memuat data...
-
-            </div>
-
-            <!--==============================
-            CONTENT
-===============================-->
-
-            <main id="gpdContent" class="gpd-content" style="display:none;">
-
-                <!-- Banner -->
-
-                <div class="gpd-banner">
-
-                    <img id="gpdImage" src="" alt="Campaign Donasi">
-
-                    <span id="gpdCategory" class="gpd-category">
-
-                    </span>
-
+                <div id="gpdLoading" class="gpd-loading">
+                    Memuat data...
                 </div>
 
-                <!-- Card -->
-
-                <section class="gpd-card">
-
-                    <h2 id="gpdTitle">
-
-                    </h2>
-
-                    <!-- Progress -->
-
-                    <div class="gpd-progress-info">
-
-                        <span id="gpdCollected">
-
-                            Rp0
-
-                        </span>
-
-                        <span id="gpdPercent">
-
-                            0%
-
-                        </span>
-
+                <main id="gpdContent" class="gpd-content" style="display:none;">
+                    <!-- Banner -->
+                    <div class="gpd-banner">
+                        <img id="gpdImage" src="" alt="Campaign Donasi">
+                        <span id="gpdCategory" class="gpd-category"></span>
                     </div>
 
-                    <div class="gpd-progress">
+                    <section class="gpd-card">
+                        <h2 id="gpdTitle"></h2>
 
-                        <div id="gpdBar" class="gpd-progress-bar">
-
+                        <!-- Progress -->
+                        <div class="gpd-progress-info">
+                            <span id="gpdCollected">Rp0</span>
+                            <span id="gpdPercent">0%</span>
+                        </div>
+                        <div class="gpd-progress">
+                            <div id="gpdBar" class="gpd-progress-bar"></div>
                         </div>
 
-                    </div>
+                        <div class="gpd-target">
+                            <span>Target Donasi</span>
+                            <strong id="gpdTarget">Rp0</strong>
+                        </div>
 
-                    <div class="gpd-target">
+                        <div class="gpd-donatur">
+                            👥 <strong id="gpdDonor">0</strong> Donatur
+                        </div>
+                    </section>
 
-                        <span>
+                    <!-- Tentang -->
+                    <section class="gpd-about">
+                        <h3>Tentang Donasi</h3>
+                        <p id="gpdAbout"></p>
+                    </section>
+                </main>
+            </div> <!-- /scroll-area (Tutup di sini) -->
 
-                            Target Donasi
-
-                        </span>
-
-                        <strong id="gpdTarget">
-
-                            Rp0
-
-                        </strong>
-
-                    </div>
-
-                    <div class="gpd-donatur">
-
-                        👥
-
-                        <strong id="gpdDonor">
-
-                            0
-
-                        </strong>
-
-                        Donatur
-
-                    </div>
-
-                </section>
-
-                <!-- Tentang -->
-
-                <section class="gpd-about">
-
-                    <h3>
-
-                        Tentang Donasi
-
-                    </h3>
-
-                    <p id="gpdAbout">
-
-                    </p>
-
-                </section>
-
-            </main>
-
-            <!-- </div> -->
-
-            <!--==============================
-            FOOTER
-===============================-->
-
+            <!-- 2. FOOTER HARUS BERADA DI LUAR SCROLL AREA -->
             <footer class="gpd-footer">
-
                 <button id="gpdDonate" type="button">
-
                     Donasi Sekarang
-
                 </button>
-
             </footer>
 
         </div>
-        <!-- ========== AKHIR HALAMAN GOCES PEDULI ==========-->
+        <!-- ========== AKHIR HALAMAN GOCES DETAIL ==========-->
 
         <!-- ========== HALAMAN GOCES PAYMENT ==========-->
-        <div id="page-goces-payment" class="page">
-
-            <!--==================================
-                HEADER
-    ==================================-->
-
+        <div class="page" id="page-goces-payment">
             <header class="gpay-header">
-
                 <button type="button" class="gpay-back" onclick="goBack()">
-
                     ←
-
                 </button>
-
                 <h1>Donasi</h1>
-
             </header>
 
-            <!--==================================
-                LOADING
-    ==================================-->
-
             <div id="gpayLoading" class="gpay-loading">
-
                 Memuat campaign...
-
             </div>
 
-            <!--==================================
-                CONTENT
-    ==================================-->
-
             <main id="gpayContent" class="gpay-content" style="display:none;">
-
                 <!-- Campaign -->
-
                 <section class="gpay-campaign">
-
                     <img id="gpayImage" src="" alt="Campaign Donasi">
-
                     <div class="gpay-info">
-
                         <span id="gpayCategory" class="gpay-badge">
-
                             ❤️ GOCES Peduli
-
                         </span>
-
                         <h2 id="gpayTitle"></h2>
-
                         <p id="gpayTarget"></p>
-
                     </div>
-
                 </section>
 
-                <!--==================================
-                    DATA DONATUR
-        ==================================-->
-
                 <section class="gpay-card">
-
                     <h3>Data Donatur</h3>
-
                     <div class="gpay-group">
-
                         <label for="donorName">
-
                             Nama Lengkap
-
                         </label>
-
                         <input id="donorName" type="text" autocomplete="name" placeholder="Masukkan nama lengkap">
-
                     </div>
-
                     <div class="gpay-group">
-
                         <label for="donorEmail">
-
                             Email
-
                         </label>
-
                         <input id="donorEmail" type="email" autocomplete="email" placeholder="contoh@email.com">
-
                     </div>
-
                     <div class="gpay-group">
-
                         <label for="donorPhone">
-
                             Nomor WhatsApp
-
                         </label>
-
                         <input id="donorPhone" type="tel" inputmode="numeric" autocomplete="tel"
                             placeholder="08xxxxxxxxxx">
-
                     </div>
-
                     <div class="gpay-check">
-
                         <input id="isAnonymous" type="checkbox">
-
                         <label for="isAnonymous">
-
                             Tampilkan sebagai Donatur Anonim
-
                         </label>
-
                     </div>
-
                 </section>
 
-                <!--==================================
-                    NOMINAL
-        ==================================-->
-
                 <section class="gpay-card">
-
                     <h3>Nominal Donasi</h3>
-
                     <input id="donationAmount" type="number" min="10000" step="1000" value="10000">
-
                     <div class="gpay-quick">
-
                         <button type="button" data-value="10000">
-
                             10 Ribu
-
                         </button>
-
                         <button type="button" data-value="25000">
-
                             25 Ribu
-
                         </button>
-
                         <button type="button" data-value="50000">
-
                             50 Ribu
-
                         </button>
-
                         <button type="button" data-value="100000">
-
                             100 Ribu
-
                         </button>
-
                     </div>
-
                 </section>
 
-                <!--==================================
-                METODE PEMBAYARAN
-        ==================================-->
-
                 <section class="gpay-card">
-
                     <h3>Metode Pembayaran</h3>
-
                     <div id="gpayMethods" class="gpay-methods">
                         Memuat metode pembayaran...
                     </div>
-
                 </section>
-
-                <!--==================================
-                    TOTAL
-        ==================================-->
 
                 <section class="gpay-summary">
-
                     <div>
-
                         <span>Total Donasi</span>
-
                         <strong id="gpayTotal">
-
                             Rp10.000
-
                         </strong>
-
                     </div>
-
                 </section>
-
             </main>
 
-            <!--==================================
-                FOOTER
-    ==================================-->
-
             <footer class="gpay-footer">
-
                 <button id="gpaySubmit" type="button">
-
                     Lanjutkan Pembayaran
-
                 </button>
-
             </footer>
 
         </div>
         <!-- ========== AKHIR HALAMAN GOCES PAYMENT ==========-->
 
         <!-- ========== HALAMAN GOCES WAITING ==========-->
-        <div id="page-goces-waiting" class="page">
-
+        <div class="page" id="page-goces-waiting">
             <header class="gwait-header">
-
                 <button type="button" class="gwait-back" onclick="goBack()">
-
                     ←
-
                 </button>
-
                 <h1>Pembayaran Donasi</h1>
-
             </header>
 
-
             <div id="gwaitLoading" class="gwait-loading">
-
                 Memuat data pembayaran...
-
             </div>
 
-
             <main id="gwaitContent" class="gwait-content" style="display:none;">
-
                 <!-- STATUS -->
-
                 <section class="gwait-status">
-
                     <div id="gwaitStatusBadge" class="gwait-status-badge">
-
                         MENUNGGU PEMBAYARAN
-
                     </div>
-
                     <h2 id="gwaitAmount">
-
                         Rp0
-
                     </h2>
-
                     <p>
-
                         Silakan selesaikan pembayaran sebelum waktu habis.
-
                     </p>
-
                 </section>
 
-                <!-- QRIS -->
-
                 <section id="gwaitQrCard" class="gwait-card">
-
                     <h3>
                         Scan QRIS
                     </h3>
-
                     <img id="gwaitQR" src="" alt="QRIS GOCES Peduli">
-
                     <button id="gwaitDownload" type="button">
                         Download QRIS
                     </button>
-
                 </section>
 
                 <section id="gwaitCodeCard" class="gwait-card" style="display:none;">
-
                     <h3 id="gwaitCodeTitle">
                         Kode Pembayaran
                     </h3>
-
                     <div id="gwaitPaymentCode" class="gwait-payment-code">
                         -
                     </div>
-
                     <button id="gwaitCopyCode" type="button">
                         Salin Kode Pembayaran
                     </button>
-
                 </section>
 
                 <section id="gwaitPayLinkCard" class="gwait-card" style="display:none;">
-
                     <h3>
                         Lanjutkan Pembayaran
                     </h3>
-
                     <a id="gwaitPayLink" class="gwait-pay-link" href="#" target="_blank" rel="noopener">
                         Buka Halaman Pembayaran
                     </a>
-
                 </section>
 
                 <!-- COUNTDOWN -->
-
                 <section class="gwait-card">
-
                     <h3>
-
                         Batas Waktu Pembayaran
-
                     </h3>
-
                     <div id="gwaitCountdown" class="gwait-countdown">
-
                         00:00:00
-
                     </div>
-
                 </section>
-
                 <!-- METODE -->
-
                 <section class="gwait-card">
-
                     <div class="gwait-row">
-
                         <span>
-
                             Metode
-
                         </span>
-
                         <strong id="gwaitMethod">
-
                             QRIS
-
                         </strong>
-
                     </div>
-
                     <div class="gwait-row">
-
                         <span>
-
                             Referensi
-
                         </span>
-
                         <strong id="gwaitReference">
-
                             -
-
                         </strong>
-
                     </div>
-
                 </section>
-
                 <!-- PETUNJUK -->
-
                 <section class="gwait-card">
-
                     <h3>
-
                         Cara Pembayaran
-
                     </h3>
-
                     <div id="gwaitInstructions">
-
                     </div>
-
                 </section>
-
             </main>
 
         </div>
         <!-- ========== AKHIR HALAMAN GOCES WAITING ==========-->
 
         <!-- ========== HALAMAN GOCES SUCCESS ==========-->
-        <div id="page-goces-success" class="page">
+        <div class="page" id="page-goces-success">
             <main class="gsuccess-container">
                 <div class="gsuccess-icon">
                     ✓
-
                 </div>
-
-                <!--==================================
-                    TITLE
-        ==================================-->
-
                 <h1>
-
                     Terima Kasih
-
                 </h1>
-
                 <p class="gsuccess-subtitle">
-
                     Donasi Anda telah berhasil diterima.
                     Terima kasih telah berbagi kebaikan
                     bersama GOCES Peduli.
-
                 </p>
-
-                <!--==================================
-                    DETAIL
-        ==================================-->
-
                 <section class="gsuccess-card">
-
                     <div class="gsuccess-row">
-
                         <span>
-
                             Referensi
-
                         </span>
-
                         <strong id="successReference">
-
                             -
-
                         </strong>
-
                     </div>
-
                     <div class="gsuccess-row">
-
                         <span>
-
                             Campaign
-
                         </span>
-
                         <strong id="successCampaign">
-
                             -
-
                         </strong>
-
                     </div>
-
                     <div class="gsuccess-row">
-
                         <span>
-
                             Donatur
-
                         </span>
-
                         <strong id="successDonor">
-
                             -
-
                         </strong>
-
                     </div>
-
                     <div class="gsuccess-row">
-
                         <span>
-
                             Metode
-
                         </span>
-
                         <strong id="successMethod">
-
                             -
-
                         </strong>
-
                     </div>
-
                     <div class="gsuccess-row">
-
                         <span>
-
                             Nominal
-
                         </span>
-
                         <strong id="successAmount">
-
                             Rp0
-
                         </strong>
-
                     </div>
-
                     <div class="gsuccess-row">
-
                         <span>
-
                             Status
-
                         </span>
-
                         <strong id="successStatus" class="gsuccess-paid">
-
                             BERHASIL
-
                         </strong>
-
                     </div>
-
                 </section>
-
-                <!--==================================
-                    BUTTON
-        ==================================-->
-
                 <button id="btnBackHome" type="button" class="gsuccess-button">
-
                     Kembali ke Beranda
-
                 </button>
-
             </main>
 
         </div>
         <!-- ========== AKHIR HALAMAN GOCES SUCCESS ==========-->
 
         <!-- ========== HALAMAN SEMUA CAMPAIGN GOCES PEDULI ========== -->
-        <div id="page-goces-peduli" class="page">
-            <div class="gpa-page">
-
+        <div class="page" id="page-goces-peduli">
+            <div class="scroll-area">
                 <header class="gpa-header">
                     <button type="button" class="gpa-back" onclick="goBack()" aria-label="Kembali">
                         <i class="ph ph-arrow-left"></i>
@@ -2766,6 +2429,7 @@
     </nav>
     <!-- ========== AKHIR NAVIGASI BOTTOM BAWAH ========== -->
 
+
     <script src="script.js"></script>
     <script src="food.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v02/global.js"></script>
@@ -2804,14 +2468,8 @@
     <script src="https://goces-api.vercel.app/modules/goces-peduli/success/success.js"></script>
     <script src="https://goces-api.vercel.app/modules/goces-peduli/waiting/waiting.js"></script>
 
-
     <script>
-        /*==================================
-                ATC RESTO TERDEKAT
-        ==================================*/
-
         function atcNearbyUpdate() {
-
             const section = document.getElementById(
                 "atcNearbySection"
             );
@@ -2827,11 +2485,8 @@
             );
 
             if (!nearbyHead) {
-
                 section.style.display = "none";
-
                 return;
-
             }
 
             const total = nearbyHead.querySelectorAll(
@@ -2839,23 +2494,15 @@
             ).length;
 
             section.style.display = total > 0 ? "" : "none";
-
         }
 
         document.addEventListener(
-
             "DOMContentLoaded",
-
             function () {
-
                 let retry = 0;
-
                 const timer = setInterval(function () {
-
                     atcNearbyUpdate();
-
                     retry++;
-
                     const nearbyHead = document.querySelector(
                         "#atcNearbyContainer #item-nearby-head"
                     );
@@ -2864,17 +2511,12 @@
                         nearbyHead &&
                         nearbyHead.querySelectorAll(".item-nearby-row").length > 0
                     ) {
-
                         clearInterval(timer);
-
                     }
 
                     if (retry >= 20) {
-
                         clearInterval(timer);
-
                     }
-
                 }, 500);
 
             }
@@ -2882,9 +2524,7 @@
         );
     </script>
 
-    <!--==================================
-    GOCES VOUCHER MODAL
-    ===================================-->
+    <!--============ HALAMAN POPUP DETAIL VOUCHER =================-->
     <div id="gocesVoucherModal" class="gcv-modal">
         <div class="gcv-modal-content">
             <button type="button" class="gcv-modal-close">
