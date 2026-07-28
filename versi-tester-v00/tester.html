@@ -936,14 +936,14 @@
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
-        bottom: 70px;
+        bottom: 0;
         width: 100%;
         max-width: 480px;
-        padding: 16px;
+        padding: 16px 16px calc(env(safe-area-inset-bottom) + 16px);
         background: #fff;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, .08);
         z-index: 999;
         box-sizing: border-box;
-        box-shadow: 0 -4px 12px rgba(0, 0, 0, .08);
     }
 
     .gtp-submit-btn {
@@ -3070,123 +3070,120 @@
 
         <!-- ========== HALAMAN TOP UP  ========== -->
         <div class="page" id="page-gtp-wrapper">
-            <div class="scroll-area">
-                <header class="gtp-header">
-                    <button class="gtp-icon-btn" onclick="goBack()">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="19" y1="12" x2="5" y2="12"></line>
-                            <polyline points="12 19 5 12 12 5"></polyline>
-                        </svg>
-                    </button>
-                    <h1 class="gtp-title">Top Up Saldo</h1>
-                    <button class="gtp-icon-btn" onclick="console.log('Riwayat')">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </button>
-                </header>
+            <header class="gtp-header">
+                <button class="gtp-icon-btn" onclick="goBack()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <h1 class="gtp-title">Top Up Saldo</h1>
+                <button class="gtp-icon-btn" onclick="console.log('Riwayat')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </button>
+            </header>
 
-                <!-- Area Konten yang Bisa di-Scroll -->
-                <main class="gtp-content">
+            <!-- Area Konten yang Bisa di-Scroll -->
+            <main class="gtp-content">
 
-                    <!-- Card Saldo Premium -->
-                    <div class="gtp-balance-card">
-                        <div class="gtp-balance-inner">
-                            <p class="gtp-balance-label">Saldo Aktif</p>
-                            <h2 class="gtp-balance-amount">{saldo}</h2>
-                            <p class="gtp-balance-desc">Saldo dapat digunakan untuk seluruh layanan GOCES.</p>
+                <!-- Card Saldo Premium -->
+                <div class="gtp-balance-card">
+                    <div class="gtp-balance-inner">
+                        <p class="gtp-balance-label">Saldo Aktif</p>
+                        <h2 class="gtp-balance-amount">{saldo}</h2>
+                        <p class="gtp-balance-desc">Saldo dapat digunakan untuk seluruh layanan GOCES.</p>
 
-                            <!-- Hiasan Background Card -->
-                            <div class="gtp-card-decoration"></div>
-                        </div>
+                        <!-- Hiasan Background Card -->
+                        <div class="gtp-card-decoration"></div>
                     </div>
-
-                    <!-- Bagian Pilih Nominal -->
-                    <section class="gtp-section">
-                        <h3 class="gtp-section-title">Pilih Nominal</h3>
-                        <div class="gtp-nominal-grid" id="gtp-nominal-grid">
-                            <button class="gtp-nominal-btn" data-value="10000">10.000</button>
-                            <button class="gtp-nominal-btn" data-value="20000">20.000</button>
-                            <button class="gtp-nominal-btn" data-value="50000">50.000</button>
-                            <button class="gtp-nominal-btn" data-value="100000">100.000</button>
-                            <button class="gtp-nominal-btn" data-value="200000">200.000</button>
-                            <button class="gtp-nominal-btn" data-value="500000">500.000</button>
-                            <button class="gtp-nominal-btn" data-value="1000000">1.000.000</button>
-                            <button class="gtp-nominal-btn" data-value="custom">Nominal Lain</button>
-                        </div>
-
-                        <!-- Input Nominal Kustom (Tersembunyi by default) -->
-                        <div class="gtp-custom-input-wrapper" id="gtp-custom-wrapper">
-                            <span class="gtp-currency-prefix">Rp</span>
-                            <input type="tel" id="gtp-custom-input" class="gtp-custom-input" placeholder="Min. 10.000"
-                                maxlength="11">
-                        </div>
-                    </section>
-
-                    <section class="gtp-section">
-                        <h3 class="gtp-section-title">
-                            Metode Pembayaran
-                        </h3>
-
-                        <button id="gtp-payment-method" class="gtp-payment-method">
-                            <div class="gtp-payment-left">
-                                <div class="gtp-payment-icon">
-                                    <svg viewBox="0 0 24 24" width="24" height="24">
-                                        <path fill="#00A859"
-                                            d="M2 6a2 2 0 012-2h16a2 2 0 012 2v2H2V6zm0 4h20v8a2 2 0 01-2 2H4a2 2 0 01-2-2v-8zm4 5h5v2H6v-2z" />
-                                    </svg>
-                                </div>
-                                <div class="gtp-payment-info">
-                                    <span id="gtp-payment-name" class="gtp-payment-name">
-                                        Pilih Metode Pembayaran
-                                    </span>
-                                    <small id="gtp-payment-fee" class="gtp-payment-fee">
-                                        Semua channel Tripay
-                                    </small>
-                                </div>
-                            </div>
-
-                            <svg class="gtp-arrow" viewBox="0 0 24 24">
-                                <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </section>
-
-                    <!-- Bagian Ringkasan -->
-                    <section class="gtp-section gtp-summary-box">
-                        <h3 class="gtp-section-title">Ringkasan Pembayaran</h3>
-                        <div class="gtp-summary-row">
-                            <span class="gtp-summary-label">Top Up</span>
-                            <span class="gtp-summary-value" id="gtp-sum-topup">Rp 0</span>
-                        </div>
-                        <div class="gtp-summary-row">
-                            <span class="gtp-summary-label">Biaya Admin</span>
-                            <span class="gtp-summary-value" id="gtp-sum-admin">Rp 0</span>
-                        </div>
-                        <div class="gtp-divider"></div>
-                        <div class="gtp-summary-row gtp-total-row">
-                            <span class="gtp-summary-label">Total Pembayaran</span>
-                            <span class="gtp-summary-value gtp-text-primary" id="gtp-sum-total">Rp 0</span>
-                        </div>
-                    </section>
-
-                    <!-- Spacer untuk footer sticky -->
-                    <div class="gtp-bottom-spacer"></div>
-
-                </main>
-
-
-                <!-- Footer Sticky (Tombol Aksi) -->
-                <div class="gtp-action">
-                    <button id="gtp-submit-btn" class="gtp-submit-btn" disabled>
-                        Lanjutkan Pembayaran
-                    </button>
                 </div>
 
+                <!-- Bagian Pilih Nominal -->
+                <section class="gtp-section">
+                    <h3 class="gtp-section-title">Pilih Nominal</h3>
+                    <div class="gtp-nominal-grid" id="gtp-nominal-grid">
+                        <button class="gtp-nominal-btn" data-value="10000">10.000</button>
+                        <button class="gtp-nominal-btn" data-value="20000">20.000</button>
+                        <button class="gtp-nominal-btn" data-value="50000">50.000</button>
+                        <button class="gtp-nominal-btn" data-value="100000">100.000</button>
+                        <button class="gtp-nominal-btn" data-value="200000">200.000</button>
+                        <button class="gtp-nominal-btn" data-value="500000">500.000</button>
+                        <button class="gtp-nominal-btn" data-value="1000000">1.000.000</button>
+                        <button class="gtp-nominal-btn" data-value="custom">Nominal Lain</button>
+                    </div>
+
+                    <!-- Input Nominal Kustom (Tersembunyi by default) -->
+                    <div class="gtp-custom-input-wrapper" id="gtp-custom-wrapper">
+                        <span class="gtp-currency-prefix">Rp</span>
+                        <input type="tel" id="gtp-custom-input" class="gtp-custom-input" placeholder="Min. 10.000"
+                            maxlength="11">
+                    </div>
+                </section>
+
+                <section class="gtp-section">
+                    <h3 class="gtp-section-title">
+                        Metode Pembayaran
+                    </h3>
+
+                    <button id="gtp-payment-method" class="gtp-payment-method">
+                        <div class="gtp-payment-left">
+                            <div class="gtp-payment-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="#00A859"
+                                        d="M2 6a2 2 0 012-2h16a2 2 0 012 2v2H2V6zm0 4h20v8a2 2 0 01-2 2H4a2 2 0 01-2-2v-8zm4 5h5v2H6v-2z" />
+                                </svg>
+                            </div>
+                            <div class="gtp-payment-info">
+                                <span id="gtp-payment-name" class="gtp-payment-name">
+                                    Pilih Metode Pembayaran
+                                </span>
+                                <small id="gtp-payment-fee" class="gtp-payment-fee">
+                                    Semua channel Tripay
+                                </small>
+                            </div>
+                        </div>
+
+                        <svg class="gtp-arrow" viewBox="0 0 24 24">
+                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </section>
+
+                <!-- Bagian Ringkasan -->
+                <section class="gtp-section gtp-summary-box">
+                    <h3 class="gtp-section-title">Ringkasan Pembayaran</h3>
+                    <div class="gtp-summary-row">
+                        <span class="gtp-summary-label">Top Up</span>
+                        <span class="gtp-summary-value" id="gtp-sum-topup">Rp 0</span>
+                    </div>
+                    <div class="gtp-summary-row">
+                        <span class="gtp-summary-label">Biaya Admin</span>
+                        <span class="gtp-summary-value" id="gtp-sum-admin">Rp 0</span>
+                    </div>
+                    <div class="gtp-divider"></div>
+                    <div class="gtp-summary-row gtp-total-row">
+                        <span class="gtp-summary-label">Total Pembayaran</span>
+                        <span class="gtp-summary-value gtp-text-primary" id="gtp-sum-total">Rp 0</span>
+                    </div>
+                </section>
+
+                <!-- Spacer untuk footer sticky -->
+                <div class="gtp-bottom-spacer"></div>
+
+            </main>
+
+
+            <!-- Footer Sticky (Tombol Aksi) -->
+            <div class="gtp-action">
+                <button id="gtp-submit-btn" class="gtp-submit-btn" disabled>
+                    Lanjutkan Pembayaran
+                </button>
             </div>
 
         </div>
@@ -3368,6 +3365,7 @@
     <script>
             (function () {
                 const jagelSession = "{session}";
+                console.log("SESSION =", jagelSession);
                 let paymentChannels = [];
                 let selectedMethod = null;
                 let selectedFee = 0;

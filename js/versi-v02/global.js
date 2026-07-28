@@ -1,11 +1,19 @@
 let pageHistory = [];
 let currentPage = 'home';
 
-history.replaceState(
-    { page: 'home' },
-    '',
-    '#home'
-);
+try {
+
+    history.replaceState(
+        { page: 'home' },
+        '',
+        '#home'
+    );
+
+} catch (e) {
+
+    console.log("History API tidak didukung Jagel");
+
+}
 
 // =========================
 // AKTIFKAN NAVBAR
@@ -63,11 +71,19 @@ function showPage(name, btn = null) {
 
     pageHistory.push(currentPage);
 
-    history.pushState(
-        { page: name },
-        '',
-        '#' + name
-    );
+    try {
+
+        history.pushState(
+            { page: name },
+            '',
+            '#' + name
+        );
+
+    } catch (e) {
+
+        console.log("PushState dilewati");
+
+    }
 
     document
         .querySelectorAll('.page')
