@@ -1119,6 +1119,203 @@
     }
 </style>
 
+<style>
+    .gtpw-wrapper {
+        width: 100%;
+        min-height: 100%;
+        background: #f5f7fb;
+        overflow-y: auto;
+        padding-bottom: 30px;
+    }
+
+    .gtpw-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 18px 16px;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+    }
+
+    .gtpw-header h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    .gtpw-back {
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        background: #eef4ff;
+        color: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .gtpw-card {
+        background: #ffffff;
+        margin: 14px 16px 0;
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .06);
+    }
+
+    .gtpw-logo {
+        width: 70px;
+        height: 70px;
+        margin: auto;
+        border-radius: 16px;
+        background: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gtpw-logo img {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+    }
+
+    .gtpw-method {
+        margin-top: 14px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    .gtpw-status {
+        margin-top: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        color: #ca8a04;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .gtpw-status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #f59e0b;
+        animation: gtpwBlink 1s infinite;
+    }
+
+    @keyframes gtpwBlink {
+
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: .35;
+        }
+
+        100% {
+            opacity: 1;
+        }
+
+    }
+
+    .gtpw-label {
+        color: #6b7280;
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .gtpw-paycode {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-align: center;
+        color: #111827;
+        word-break: break-word;
+    }
+
+    .gtpw-copy-btn {
+        margin-top: 18px;
+        width: 100%;
+        height: 46px;
+        border: none;
+        border-radius: 12px;
+        background: #2563eb;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .gtpw-copy-btn:active {
+        transform: scale(.98);
+    }
+
+    .gtpw-countdown {
+        text-align: center;
+        font-size: 34px;
+        font-weight: 700;
+        color: #dc2626;
+        letter-spacing: 2px;
+    }
+
+    .gtpw-summary-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 14px;
+    }
+
+    .gtpw-summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+        color: #4b5563;
+        font-size: 15px;
+    }
+
+    .gtpw-total {
+        border-top: 1px dashed #d1d5db;
+        margin-top: 14px;
+        padding-top: 14px;
+        font-weight: 700;
+        color: #111827;
+        font-size: 17px;
+    }
+
+    .gtpw-check-btn {
+        width: calc(100% - 32px);
+        margin: 24px auto;
+        min-height: 52px;
+        border: none;
+        border-radius: 14px;
+        background: #16a34a;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 12px 25px rgba(22, 163, 74, .25);
+    }
+
+    .gtpw-check-btn:active {
+        transform: scale(.98);
+    }
+</style>
+
 <body>
     <!--HALAMAN HOME-->
     <div class="app-wrapper">
@@ -1843,10 +2040,10 @@
                             </div>
                         </div>
 
-                        <label class="kpz-theme-toggle" onclick="openGocesAI()">
+                        <!--  <label class="kpz-theme-toggle" onclick="openGocesAI()">
                             <input type="checkbox" id="darkToggle1">
                             <span class="kpz-theme-slider"></span>
-                        </label>
+                        </label> -->
 
                     </div>
                 </div>
@@ -3187,7 +3384,9 @@
             </div>
 
         </div>
+        <!--========== AKHIR HALAMAN TOP UP ==========-->
 
+        <!-- ========== HALAMAN SHEET  ========== -->
         <div id="payment-sheet" class="payment-sheet">
             <div class="payment-sheet-box">
                 <div class="payment-sheet-handle"></div>
@@ -3199,7 +3398,91 @@
                 </div>
             </div>
         </div>
-        <!--========== AKHIR HALAMAN TOP UP ==========-->
+        <!--========== AKHIR HALAMAN SHEET ==========-->
+
+        <!-- ========== HALAMAN TOPUP WAITING  ========== -->
+        <div class="page" id="page-gtpw">
+            <section class="gtpw-wrapper">
+                <div class="gtpw-header">
+                    <button class="gtpw-back" id="gtpwBackBtn">
+                        <i class="zmdi zmdi-arrow-left"></i>
+                    </button>
+                    <h2>Menunggu Pembayaran</h2>
+                </div>
+
+                <div class="gtpw-card">
+                    <div class="gtpw-method">
+                        <h3 id="gtpwMethodName">
+                            Memuat Metode Pembayaran...
+                        </h3>
+
+                        <div class="gtpw-status">
+                            <span class="gtpw-status-dot"></span>
+                            Menunggu Pembayaran
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gtpw-card">
+                    <div class="gtpw-label">
+                        Nomor Pembayaran
+                    </div>
+
+                    <div id="gtpwPayCodeBox">
+                        <div id="gtpwPayCode" class="gtpw-paycode">-</div>
+                        <button id="gtpwCopyBtn" class="gtpw-copy-btn">
+                            Salin Nomor
+                        </button>
+                    </div>
+
+                    <div id="gtpwQrBox" style="display:none;">
+                        <img id="gtpwQrImage" class="gtpw-qr-image" src="" alt="QRIS">
+                    </div>
+                </div>
+
+                <div class="gtpw-card">
+                    <div class="gtpw-label">
+                        Sisa Waktu
+                    </div>
+
+                    <div id="gtpwCountdown" class="gtpw-countdown">
+                        24:00:00
+                    </div>
+                </div>
+
+                <div class="gtpw-card">
+                    <div class="gtpw-summary-title">
+                        Ringkasan Pembayaran
+                    </div>
+
+                    <div class="gtpw-summary-row">
+                        <span>Top Up</span>
+                        <span id="gtpwAmount">
+                            Rp0
+                        </span>
+                    </div>
+
+                    <div class="gtpw-summary-row">
+                        <span>Biaya Admin</span>
+                        <span id="gtpwFee">
+                            Rp0
+                        </span>
+                    </div>
+
+                    <div class="gtpw-summary-row gtpw-total">
+                        <span>Total</span>
+                        <span id="gtpwTotal">
+                            Rp0
+                        </span>
+                    </div>
+                </div>
+
+                <button id="gtpwCheckBtn" class="gtpw-check-btn">
+                    Saya Sudah Bayar
+                </button>
+            </section>
+        </div>
+        <!-- ========== AKHIR HALAMAN TOPUP WAITING  ========== -->
 
     </div>
 
@@ -3597,13 +3880,22 @@
 
                     console.log("Session sebelum create =", jagelSession);
 
-                    if (!jagelSession || jagelSession === "{session}") {
+                    console.log("Kosong =", !jagelSession);
+                    console.log("Placeholder =", jagelSession === "{session}");
+                    console.log("Panjang Session =", jagelSession.length);
+
+                    if (
+                        typeof jagelSession !== "string" ||
+                        jagelSession.trim().length === 0
+                    ) {
 
                         alert("VALIDASI SESSION GAGAL");
 
                         return;
 
                     }
+
+                    console.log(">>> LOLOS VALIDASI <<<");
 
                     submitBtn.disabled = true;
 
@@ -3659,7 +3951,9 @@
 
                         }
 
-                        window.location.href = result.data.checkout_url;
+                        // window.location.href = result.data.checkout_url;
+                        console.log(result.data);
+                        showTopupWaiting(result.data);
 
                     } catch (err) {
 
@@ -3710,6 +4004,56 @@
                 );
 
             }
+
+        }
+    </script>
+
+    <script>
+        /*==================================
+      GOCES TOPUP WAITING
+==================================*/
+
+        function showTopupWaiting(data) {
+
+            // buka halaman waiting
+            showPage("gtpw");
+
+            // icon pembayaran
+            document.getElementById("gtpwMethodIcon").src =
+                data.payment_method_icon ||
+                data.icon_url ||
+                "";
+
+            // nama metode
+            document.getElementById("gtpwMethodName").innerText =
+                data.payment_method || "-";
+
+            // nomor pembayaran
+            document.getElementById("gtpwPayCode").innerText =
+                data.pay_code ||
+                data.reference ||
+                "-";
+
+            // nominal
+            document.getElementById("gtpwAmount").innerText =
+                "Rp " +
+                Number(data.amount).toLocaleString("id-ID");
+
+            // biaya admin
+            document.getElementById("gtpwFee").innerText =
+                "Rp " +
+                Number(data.total_fee).toLocaleString("id-ID");
+
+            // total
+            document.getElementById("gtpwTotal").innerText =
+                "Rp " +
+                (
+                    Number(data.amount) +
+                    Number(data.total_fee)
+                ).toLocaleString("id-ID");
+
+            // simpan transaksi
+            window.gtpwTransaction = data;
 
         }
     </script>
