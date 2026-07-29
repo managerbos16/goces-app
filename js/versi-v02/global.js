@@ -1011,6 +1011,7 @@ function closeGocesAI() {
 // =========================
 // script halaman profile beranda
 // =========================
+/*
 (function () {
 
     const KEY = "theme";
@@ -1104,6 +1105,7 @@ function closeGocesAI() {
     window.setTheme = setTheme;
 
 })();
+*/
 
 // =========================
 // script halaman orders
