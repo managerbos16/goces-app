@@ -3595,9 +3595,11 @@
 
                     }
 
+                    console.log("Session sebelum create =", jagelSession);
+
                     if (!jagelSession || jagelSession === "{session}") {
 
-                        alert("Session pengguna tidak ditemukan.");
+                        alert("VALIDASI SESSION GAGAL");
 
                         return;
 
@@ -3608,6 +3610,16 @@
                     submitBtn.innerText = "Memproses...";
 
                     try {
+
+                        console.log("Payload yang dikirim:", {
+
+                            session: jagelSession,
+
+                            amount: currentNominal,
+
+                            method: selectedMethod
+
+                        });
 
                         const response = await fetch(
 
@@ -3639,6 +3651,8 @@
 
                         const result = await response.json();
 
+                        console.log("Response Backend:", result);
+
                         if (!result.success) {
 
                             throw new Error(result.message);
@@ -3648,6 +3662,8 @@
                         window.location.href = result.data.checkout_url;
 
                     } catch (err) {
+
+                        console.error(err);
 
                         alert(err.message);
 
