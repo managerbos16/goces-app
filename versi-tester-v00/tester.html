@@ -1736,6 +1736,517 @@
     }
 </style>
 
+<style>
+    /*==================================================
+                    HEADER
+==================================================*/
+
+    .gtps-header {
+        height: 64px;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        flex-shrink: 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .gtps-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    .gtps-back {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border: none;
+        outline: none;
+        background: transparent;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .25s;
+        color: #374151;
+    }
+
+    .gtps-back:hover {
+        background: #eef2ff;
+    }
+
+    .gtps-back:active {
+        transform: translateY(-50%) scale(.94);
+    }
+
+
+    /*==================================================
+                    CONTENT
+==================================================*/
+
+    .gtps-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 28px 18px 130px;
+    }
+
+
+    /*==================================================
+                SUCCESS SECTION
+==================================================*/
+
+    .gtps-success {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 26px;
+    }
+
+
+    /*==================================================
+                SUCCESS ICON
+==================================================*/
+
+    .gtps-success-circle {
+
+        width: 110px;
+        height: 110px;
+
+        border-radius: 50%;
+
+        background: #22c55e;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #ffffff;
+
+        box-shadow:
+            0 12px 30px rgba(34, 197, 94, .30);
+
+        animation:
+            gtpsPop .55s ease;
+
+    }
+
+
+    .gtps-check {
+
+        width: 52px;
+        height: 52px;
+
+    }
+
+
+    /*==================================================
+                SUCCESS TITLE
+==================================================*/
+
+    .gtps-success-title {
+
+        margin-top: 22px;
+
+        font-size: 24px;
+
+        font-weight: 700;
+
+        color: #111827;
+
+        text-align: center;
+
+    }
+
+
+    .gtps-success-subtitle {
+
+        margin-top: 10px;
+
+        max-width: 320px;
+
+        line-height: 1.7;
+
+        text-align: center;
+
+        color: #6b7280;
+
+        font-size: 15px;
+
+    }
+
+
+    /*==================================================
+                ANIMATION
+==================================================*/
+
+    @keyframes gtpsPop {
+
+        0% {
+
+            opacity: 0;
+
+            transform: scale(.45);
+
+        }
+
+        60% {
+
+            transform: scale(1.08);
+
+        }
+
+        100% {
+
+            opacity: 1;
+
+            transform: scale(1);
+
+        }
+
+    }
+
+    /*==================================================
+                DETAIL CARD
+==================================================*/
+
+    .gtps-card {
+
+        background: #ffffff;
+
+        border-radius: 22px;
+
+        padding: 10px 18px;
+
+        box-shadow:
+            0 8px 28px rgba(0, 0, 0, .06);
+
+        border: 1px solid #edf0f5;
+
+        animation: gtpsCard .45s ease;
+
+    }
+
+
+    @keyframes gtpsCard {
+
+        from {
+
+            opacity: 0;
+
+            transform: translateY(25px);
+
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+    }
+
+
+    /*==================================================
+                    ROW
+==================================================*/
+
+    .gtps-row {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 18px;
+
+        min-height: 58px;
+
+    }
+
+
+    .gtps-row span {
+
+        color: #6b7280;
+
+        font-size: 14px;
+
+    }
+
+
+    .gtps-row strong {
+
+        color: #111827;
+
+        font-size: 15px;
+
+        font-weight: 700;
+
+        text-align: right;
+
+        word-break: break-word;
+
+    }
+
+
+    /*==================================================
+                PRIMARY VALUE
+==================================================*/
+
+    .gtps-primary {
+
+        color: #1d4ed8 !important;
+
+        font-size: 18px !important;
+
+    }
+
+
+    /*==================================================
+                REFERENCE
+==================================================*/
+
+    .gtps-reference {
+
+        font-family: monospace;
+
+        letter-spacing: .6px;
+
+        font-size: 13px !important;
+
+    }
+
+
+    /*==================================================
+                DIVIDER
+==================================================*/
+
+    .gtps-divider {
+
+        height: 1px;
+
+        background: #eef2f7;
+
+    }
+
+
+    /*==================================================
+                INFO BOX
+==================================================*/
+
+    .gtps-info {
+
+        margin-top: 22px;
+
+        padding: 16px 18px;
+
+        border-radius: 16px;
+
+        background: #eff6ff;
+
+        color: #1e40af;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+
+        border: 1px solid #bfdbfe;
+
+    }
+
+    /*==================================================
+                BOTTOM ACTION
+==================================================*/
+
+    .gtps-action {
+
+        position: sticky;
+
+        bottom: 0;
+
+        left: 0;
+
+        width: 100%;
+
+        background: #ffffff;
+
+        border-top: 1px solid #e5e7eb;
+
+        padding: 18px;
+
+        padding-bottom: calc(18px + env(safe-area-inset-bottom));
+
+        flex-shrink: 0;
+
+        box-shadow: 0 -6px 20px rgba(0, 0, 0, .05);
+
+    }
+
+
+    /*==================================================
+                HOME BUTTON
+==================================================*/
+
+    .gtps-home-btn {
+
+        width: 100%;
+
+        height: 54px;
+
+        border: none;
+
+        border-radius: 16px;
+
+        background: #1d4ed8;
+
+        color: #ffffff;
+
+        font-size: 16px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: .25s;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+    }
+
+
+    .gtps-home-btn:hover {
+
+        background: #1e40af;
+
+    }
+
+
+    .gtps-home-btn:active {
+
+        transform: scale(.98);
+
+    }
+
+
+    /*==================================================
+                DISABLED
+==================================================*/
+
+    .gtps-home-btn:disabled {
+
+        background: #9ca3af;
+
+        cursor: not-allowed;
+
+    }
+
+    /*==================================================
+                RESPONSIVE
+==================================================*/
+
+    @media (max-width:480px) {
+
+        .gtps-content {
+
+            padding: 22px 14px 120px;
+
+        }
+
+        .gtps-success-circle {
+
+            width: 92px;
+
+            height: 92px;
+
+        }
+
+        .gtps-check {
+
+            width: 44px;
+
+            height: 44px;
+
+        }
+
+        .gtps-success-title {
+
+            font-size: 21px;
+
+        }
+
+        .gtps-success-subtitle {
+
+            font-size: 14px;
+
+        }
+
+        .gtps-row {
+
+            min-height: 52px;
+
+        }
+
+        .gtps-row span {
+
+            font-size: 13px;
+
+        }
+
+        .gtps-row strong {
+
+            font-size: 14px;
+
+        }
+
+        .gtps-primary {
+
+            font-size: 17px !important;
+
+        }
+
+    }
+
+
+    @media (min-width:768px) {
+
+        .gtps-content {
+
+            max-width: 560px;
+
+            width: 100%;
+
+            margin: 0 auto;
+
+        }
+
+        .gtps-action {
+
+            max-width: 560px;
+
+            margin: 0 auto;
+
+            border-left: 1px solid #e5e7eb;
+
+            border-right: 1px solid #e5e7eb;
+
+        }
+
+    }
+</style>
+
 <body>
     <!--HALAMAN HOME-->
     <div class="app-wrapper">
@@ -3954,6 +4465,183 @@
         </div>
         <!-- ========== AKHIR HALAMAN TOPUP WAITING  ========== -->
 
+        <!-- ========== HALAMAN TOP UP BERHASIL ========== -->
+        <div class="page" id="page-gtps">
+
+            <!-- Header -->
+            <div class="gtps-header">
+
+                <button class="gtps-back" id="gtpsBackBtn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M15 18l-6-6 6-6" />
+
+                    </svg>
+
+                </button>
+
+                <div class="gtps-title">
+
+                    Top Up Berhasil
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Content -->
+            <div class="gtps-content">
+
+
+                <!-- Success Icon -->
+                <div class="gtps-success">
+
+                    <div class="gtps-success-circle">
+
+                        <svg class="gtps-check" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                            stroke-linecap="round" stroke-linejoin="round">
+
+                            <polyline points="20 6 9 17 4 12"></polyline>
+
+                        </svg>
+
+                    </div>
+
+                    <h2 class="gtps-success-title">
+
+                        Top Up Berhasil
+
+                    </h2>
+
+                    <p class="gtps-success-subtitle">
+
+                        Saldo berhasil ditambahkan ke akun GOCES Anda.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Detail Card -->
+                <div class="gtps-card">
+
+                    <div class="gtps-row">
+
+                        <span>Nominal Top Up</span>
+
+                        <strong id="gtpsAmount">
+
+                            Rp 0
+
+                        </strong>
+
+                    </div>
+
+                    <div class="gtps-divider"></div>
+
+                    <div class="gtps-row">
+
+                        <span>Biaya Admin</span>
+
+                        <strong id="gtpsFee">
+
+                            Rp 0
+
+                        </strong>
+
+                    </div>
+
+                    <div class="gtps-divider"></div>
+
+                    <div class="gtps-row">
+
+                        <span>Total Pembayaran</span>
+
+                        <strong id="gtpsTotal" class="gtps-primary">
+
+                            Rp 0
+
+                        </strong>
+
+                    </div>
+
+                    <div class="gtps-divider"></div>
+
+                    <div class="gtps-row">
+
+                        <span>Metode Pembayaran</span>
+
+                        <strong id="gtpsMethod">
+
+                            -
+
+                        </strong>
+
+                    </div>
+
+                    <div class="gtps-divider"></div>
+
+                    <div class="gtps-row">
+
+                        <span>Reference</span>
+
+                        <strong id="gtpsReference" class="gtps-reference">
+
+                            -
+
+                        </strong>
+
+                    </div>
+
+                    <div class="gtps-divider"></div>
+
+                    <div class="gtps-row">
+
+                        <span>Waktu Pembayaran</span>
+
+                        <strong id="gtpsPaidAt">
+
+                            -
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Info -->
+                <div class="gtps-info">
+
+                    Simpan Reference transaksi apabila suatu saat diperlukan
+                    untuk proses pengecekan pembayaran.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Bottom Action -->
+            <div class="gtps-action">
+
+                <button id="gtpsHomeBtn" class="gtps-home-btn">
+
+                    Kembali ke Beranda
+
+                </button>
+
+            </div>
+
+        </div>
+        <!-- ========== AKHIR HALAMAN TOP UP BERHASIL ========== -->
+
     </div>
 
     <!-- ==========NAVIGASI BOTTOM BAWAH ========== -->
@@ -4958,7 +5646,7 @@ Terima kasih.`;
             try {
 
                 const response = await fetch(
-                    `/api/topup/status/${trx.reference}`
+                    `https://goces-api.vercel.app/api/topup/status/${trx.reference}`
                 );
 
                 const result = await response.json();
@@ -4967,66 +5655,16 @@ Terima kasih.`;
                     throw new Error(result.message || "Terjadi kesalahan.");
                 }
 
-                function handlePaymentStatus(result) {
-
-                    if (!result.success) {
-
-                        alert(result.message || "Gagal mengecek status.");
-
-                        return;
-
-                    }
-
-                    const trx = result.data;
-
-                    const status = String(trx.status).toUpperCase();
-
-                    switch (status) {
-
-                        case "PAID":
-
-                            alert("🎉 Pembayaran berhasil.");
-
-                            // nanti refresh saldo
-                            // nanti redirect ke Home
-
-                            break;
-
-                        case "UNPAID":
-
-                            alert("Pembayaran belum diterima.");
-
-                            break;
-
-                        case "PENDING":
-
-                            alert("Pembayaran sedang diproses.");
-
-                            break;
-
-                        case "EXPIRED":
-
-                            alert("Transaksi telah kedaluwarsa.");
-
-                            break;
-
-                        case "FAILED":
-
-                            alert("Pembayaran gagal.");
-
-                            break;
-
-                        default:
-
-                            alert("Status : " + status);
-
-                    }
-
-                }
+                handlePaymentStatus(result);
 
             } catch (err) {
 
-                alert(err.message || "Gagal mengecek pembayaran.");
+                console.error(err);
+
+                alert(
+                    err.message ||
+                    "Gagal mengecek status pembayaran."
+                );
 
             } finally {
 
@@ -5037,53 +5675,161 @@ Terima kasih.`;
 
         }
 
-        function handlePaymentStatus(data) {
+        function handlePaymentStatus(result) {
 
-            const status = String(data.status).toUpperCase();
+            if (!result.success) {
+
+                alert(result.message || "Gagal mengecek status.");
+
+                return;
+
+            }
+
+            const trx = result.data;
+
+            const status =
+                String(trx.status).toUpperCase();
+
+            const adjustStatus =
+                String(trx.adjust_status || "")
+                    .toUpperCase();
+
+            if (
+                status === "PAID" &&
+                adjustStatus === "SUCCESS"
+            ) {
+
+                showTopupSuccess(trx);
+
+                return;
+
+            }
+
+            if (
+                status === "PAID" &&
+                adjustStatus === "FAILED"
+            ) {
+
+                alert(
+                    "Pembayaran sudah diterima tetapi saldo gagal ditambahkan.\nSilakan hubungi Admin."
+                );
+
+                return;
+
+            }
 
             switch (status) {
 
-                case "PAID":
-
-                    alert("Pembayaran berhasil.");
-
-                    // nanti kita refresh saldo di sini
-
-                    // nanti kita redirect ke home di sini
-
-                    break;
-
                 case "UNPAID":
 
-                    alert("Pembayaran belum diterima.");
+                    alert(
+                        "Pembayaran belum diterima.\nSilakan selesaikan pembayaran terlebih dahulu."
+                    );
 
                     break;
-
-                case "PROCESS":
 
                 case "PENDING":
 
-                    alert("Pembayaran sedang diproses.");
+                case "PROCESS":
+
+                    alert(
+                        "Pembayaran sedang diproses.\nSilakan tunggu beberapa saat."
+                    );
 
                     break;
 
                 case "EXPIRED":
 
-                    alert("Transaksi telah kedaluwarsa.");
+                    alert(
+                        "Transaksi telah kedaluwarsa."
+                    );
 
                     break;
 
                 case "FAILED":
 
-                    alert("Pembayaran gagal.");
+                    alert(
+                        "Pembayaran gagal."
+                    );
 
                     break;
 
                 default:
 
-                    alert("Status : " + status);
+                    alert(
+                        "Status transaksi : " + status
+                    );
 
             }
+
+        }
+    </script>
+
+    <script>
+
+        function formatRupiah(value) {
+
+            return "Rp " + Number(value || 0).toLocaleString("id-ID");
+
+        }
+
+        function showTopupSuccess(trx) {
+
+            if (!trx) return;
+
+            // Stop countdown
+            if (window.gtpwCountdownInterval) {
+                clearInterval(window.gtpwCountdownInterval);
+                window.gtpwCountdownInterval = null;
+            }
+
+            // Ambil metode pembayaran
+            const paymentMethod =
+                trx.callback_payload?.payment_method ||
+                trx.payment_method ||
+                "-";
+
+            // Format waktu pembayaran
+            let paidAt = "-";
+
+            if (trx.paid_at) {
+
+                const date = new Date(trx.paid_at);
+
+                paidAt = date.toLocaleString("id-ID", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                });
+
+            }
+
+            // Isi data ke halaman
+            document.getElementById("gtpsAmount").textContent =
+                formatRupiah(trx.amount);
+
+            document.getElementById("gtpsFee").textContent =
+                formatRupiah(trx.fee);
+
+            document.getElementById("gtpsTotal").textContent =
+                formatRupiah(trx.total_amount);
+
+            document.getElementById("gtpsMethod").textContent =
+                paymentMethod;
+
+            document.getElementById("gtpsReference").textContent =
+                trx.reference;
+
+            document.getElementById("gtpsPaidAt").textContent =
+                paidAt;
+
+            // simpan transaksi terakhir
+            window.lastTopupTransaction = trx;
+
+            // buka halaman sukses
+            showPage("gtps");
 
         }
     </script>
