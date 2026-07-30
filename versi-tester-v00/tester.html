@@ -1737,10 +1737,6 @@
 </style>
 
 <style>
-    /*==================================================
-                    HEADER
-==================================================*/
-
     .gtps-header {
         height: 64px;
         background: #ffffff;
@@ -2247,10 +2243,384 @@
     }
 </style>
 
+<style>
+    /* Header GWD */
+    .gwd-header {
+        background-color: #ffffff;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #e2e8f0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .gwd-header i {
+        font-size: 20px;
+        color: #0f172a;
+        cursor: pointer;
+        width: 36px;
+    }
+
+    .gwd-header h1 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #0f172a;
+        flex: 1;
+        text-align: center;
+        margin-right: 36px;
+    }
+
+    /* Content Area */
+    .gwd-content {
+        padding: 20px;
+    }
+
+    /* Saldo Card */
+    .gwd-balance-card {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        border-radius: 16px;
+        padding: 24px;
+        color: #ffffff;
+        margin-bottom: 24px;
+        box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+    }
+
+    .gwd-balance-label {
+        font-size: 14px;
+        opacity: 0.8;
+        margin-bottom: 8px;
+    }
+
+    .gwd-balance-amount {
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    /* Section Title & Inputs */
+    .gwd-section-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #64748b;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .gwd-input-group {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        transition: border 0.2s;
+    }
+
+    .gwd-input-group:focus-within {
+        border-color: #3b82f6;
+    }
+
+    .gwd-currency-prefix {
+        font-size: 20px;
+        font-weight: 600;
+        color: #0f172a;
+        margin-right: 8px;
+    }
+
+    .gwd-amount-input {
+        border: none;
+        outline: none;
+        font-size: 24px;
+        font-weight: 600;
+        color: #0f172a;
+        width: 100%;
+        background: transparent;
+    }
+
+    .gwd-amount-input::placeholder {
+        color: #cbd5e1;
+    }
+
+    /* Quick Amount Buttons */
+    .gwd-quick-amounts {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 24px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .gwd-quick-btn {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #0f172a;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s;
+    }
+
+    .gwd-quick-btn:hover {
+        background-color: #f8fafc;
+        border-color: #64748b;
+    }
+
+    /* Bank / Account Card */
+    .gwd-account-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;
+        cursor: pointer;
+    }
+
+    .gwd-bank-logo {
+        width: 44px;
+        height: 44px;
+        background-color: #f1f5f9;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 14px;
+        color: #3b82f6;
+        font-size: 22px;
+    }
+
+    .gwd-account-details {
+        flex: 1;
+    }
+
+    .gwd-bank-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 4px;
+    }
+
+    .gwd-account-number {
+        font-size: 13px;
+        color: #64748b;
+    }
+
+    .gwd-chevron {
+        color: #64748b;
+    }
+
+    /* Rincian Box */
+    .gwd-summary-box {
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 28px;
+        border: 1px solid #e2e8f0;
+    }
+
+    .gwd-summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: #64748b;
+    }
+
+    .gwd-summary-row:last-child {
+        margin-bottom: 0;
+        padding-top: 12px;
+        border-top: 1px dashed #e2e8f0;
+        font-weight: 600;
+        color: #0f172a;
+        font-size: 16px;
+    }
+
+    /* Buttons */
+    .gwd-btn-primary {
+        background-color: #3b82f6;
+        color: #ffffff;
+        border: none;
+        width: 100%;
+        padding: 16px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+        transition: background 0.2s;
+    }
+
+    .gwd-btn-primary:hover {
+        background-color: #2563eb;
+    }
+
+    .gwd-btn-outline {
+        background-color: transparent;
+        color: #3b82f6;
+        border: 2px dashed #3b82f6;
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    /* Overlay & Bottom Sheet GWD */
+    .gwd-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(2px);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .gwd-overlay.gwd-active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .gwd-bottom-sheet {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        width: 100%;
+        max-width: 480px;
+        background-color: #ffffff;
+        border-radius: 24px 24px 0 0;
+        padding: 24px;
+        z-index: 1000;
+        transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .gwd-bottom-sheet.gwd-active {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .gwd-sheet-indicator {
+        width: 40px;
+        height: 4px;
+        background-color: #cbd5e1;
+        border-radius: 4px;
+        margin: 0 auto 20px auto;
+    }
+
+    .gwd-sheet-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .gwd-sheet-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #0f172a;
+    }
+
+    .gwd-close-sheet {
+        background: #f1f5f9;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        color: #64748b;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gwd-account-list {
+        max-height: 280px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+    }
+
+    .gwd-account-item {
+        display: flex;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid #e2e8f0;
+        cursor: pointer;
+    }
+
+    .gwd-account-item:last-child {
+        border-bottom: none;
+    }
+
+    .gwd-account-item.gwd-selected .gwd-bank-name {
+        color: #3b82f6;
+    }
+
+    .gwd-check-icon {
+        color: #3b82f6;
+        font-size: 18px;
+        display: none;
+    }
+
+    .gwd-account-item.gwd-selected .gwd-check-icon {
+        display: block;
+    }
+
+    /* Form Controls */
+    .gwd-form-group {
+        margin-bottom: 16px;
+    }
+
+    .gwd-form-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: #64748b;
+        margin-bottom: 8px;
+    }
+
+    .gwd-form-control {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 15px;
+        outline: none;
+    }
+
+    .gwd-form-control:focus {
+        border-color: #3b82f6;
+    }
+
+    select.gwd-form-control {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2364748b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px top 50%;
+        background-size: 12px auto;
+    }
+</style>
+
 <body>
     <!--HALAMAN HOME-->
     <div class="app-wrapper">
-        <div class="page" id="page-home">
+        <div class="page active" id="page-home">
             <div class="scroll-area">
 
                 <div class="home-header">
@@ -2300,13 +2670,13 @@
                             <div class="wallet-g-icon">G</div>
                             <span>Gocespay</span>
                         </div>
-                        <a href="action://act/balance" class="wallet-balance">{saldo}</a>
+                        <a class="wallet-balance">{saldo}</a>
                         <a href="action://act/customer_points" class="wallet-coins">⭐ {poin}</a>
                     </div>
 
                     <div class="wallet-actions">
 
-                        <a class="wallet-action" href="action://act/withdraw">
+                        <a class="wallet-action" onclick="showPage('gwd-container')">
                             <div class="wallet-action-icon blue">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -4196,7 +4566,7 @@
         <!--========== AKHIR HALAMAN SEMUA CAMPAIGN GOCES PEDULI ==========-->
 
         <!-- ========== HALAMAN TOP UP  ========== -->
-        <div class="page active" id="page-gtp-wrapper">
+        <div class="page" id="page-gtp-wrapper">
             <header class="gtp-header">
                 <button class="gtp-icon-btn" onclick="goBack()">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -4467,180 +4837,1247 @@
 
         <!-- ========== HALAMAN TOP UP BERHASIL ========== -->
         <div class="page" id="page-gtps">
-
-            <!-- Header -->
             <div class="gtps-header">
-
-                <button class="gtps-back" id="gtpsBackBtn">
-
+                <button class="gtps-back" id="gtpsBackBtn" onclick="goBack()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-
                         <path d="M15 18l-6-6 6-6" />
-
                     </svg>
-
                 </button>
 
-                <div class="gtps-title">
-
-                    Top Up Berhasil
-
+                <div class="gtps-title" id="gtpsHeaderTitle">
+                    Status Pembayaran
                 </div>
-
             </div>
-
-
 
             <!-- Content -->
             <div class="gtps-content">
-
-
-                <!-- Success Icon -->
                 <div class="gtps-success">
 
-                    <div class="gtps-success-circle">
-
-                        <svg class="gtps-check" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                    <div class="gtps-success-circle" id="gtpsIconCircle">
+                        <svg id="gtpsIcon" class="gtps-check" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                             stroke-linecap="round" stroke-linejoin="round">
-
                             <polyline points="20 6 9 17 4 12"></polyline>
-
                         </svg>
-
                     </div>
 
-                    <h2 class="gtps-success-title">
-
+                    <h2 class="gtps-success-title" id="gtpsTitle">
                         Top Up Berhasil
-
                     </h2>
 
-                    <p class="gtps-success-subtitle">
-
+                    <p class="gtps-success-subtitle" id="gtpsSubtitle">
                         Saldo berhasil ditambahkan ke akun GOCES Anda.
-
                     </p>
-
                 </div>
-
-
 
                 <!-- Detail Card -->
-                <div class="gtps-card">
-
+                <div class="gtps-card" id="gtpsCard">
                     <div class="gtps-row">
-
                         <span>Nominal Top Up</span>
-
                         <strong id="gtpsAmount">
-
                             Rp 0
-
                         </strong>
-
                     </div>
 
                     <div class="gtps-divider"></div>
 
                     <div class="gtps-row">
-
                         <span>Biaya Admin</span>
-
                         <strong id="gtpsFee">
-
                             Rp 0
-
                         </strong>
-
                     </div>
 
                     <div class="gtps-divider"></div>
 
                     <div class="gtps-row">
-
                         <span>Total Pembayaran</span>
-
                         <strong id="gtpsTotal" class="gtps-primary">
-
                             Rp 0
-
                         </strong>
-
                     </div>
 
                     <div class="gtps-divider"></div>
 
                     <div class="gtps-row">
-
                         <span>Metode Pembayaran</span>
-
                         <strong id="gtpsMethod">
-
                             -
-
                         </strong>
-
                     </div>
 
                     <div class="gtps-divider"></div>
 
                     <div class="gtps-row">
-
                         <span>Reference</span>
-
                         <strong id="gtpsReference" class="gtps-reference">
-
                             -
-
                         </strong>
-
                     </div>
 
                     <div class="gtps-divider"></div>
 
                     <div class="gtps-row">
-
                         <span>Waktu Pembayaran</span>
-
                         <strong id="gtpsPaidAt">
-
                             -
-
                         </strong>
-
                     </div>
 
                 </div>
-
-
 
                 <!-- Info -->
-                <div class="gtps-info">
-
+                <div class="gtps-info" id="gtpsInfo">
                     Simpan Reference transaksi apabila suatu saat diperlukan
                     untuk proses pengecekan pembayaran.
-
                 </div>
-
             </div>
-
-
 
             <!-- Bottom Action -->
             <div class="gtps-action">
-
-                <button id="gtpsHomeBtn" class="gtps-home-btn">
-
+                <button id="gtpsActionBtn" class="gtps-home-btn">
                     Kembali ke Beranda
-
                 </button>
-
             </div>
 
         </div>
         <!-- ========== AKHIR HALAMAN TOP UP BERHASIL ========== -->
+
+        <!-- ========== HALAMAN PENARIKAN ========== -->
+        <div class="page" id="page-gwd-container">
+            <style>
+                .gwd-container {
+                    width: 100%;
+                    max-width: 480px;
+                    min-height: 100vh;
+                    min-height: 100dvh;
+                    background-color: #f8fafc;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    box-shadow: 0 0 40px rgba(15, 23, 42, 0.05);
+                }
+
+                /* Header Navbar */
+                .gwd-header {
+                    position: sticky;
+                    top: 0;
+                    z-index: 20;
+                    background-color: #ffffff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 56px;
+                    padding: 0 16px;
+                    border-bottom: 1px solid #f1f5f9;
+                }
+
+                .gwd-btn-back {
+                    background: transparent;
+                    border: none;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    color: #0f172a;
+                    transition: background-color 0.2s ease;
+                }
+
+                .gwd-btn-back:active {
+                    background-color: #f1f5f9;
+                }
+
+                .gwd-icon-back {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                .gwd-header-title {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #0f172a;
+                    letter-spacing: -0.2px;
+                }
+
+                .gwd-header-spacer {
+                    width: 40px;
+                }
+
+                /* Scrollable Content */
+                .gwd-content {
+                    flex: 1;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    padding-bottom: 32px;
+                }
+
+                /* Section Wrapper & Titles */
+                .gwd-section {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .gwd-section-title {
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: #64748b;
+                    text-transform: uppercase;
+                    letter-spacing: 0.6px;
+                    padding-left: 2px;
+                }
+
+                /* Balance Card Section */
+                .gwd-balance-card {
+                    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+                    border-radius: 20px;
+                    padding: 22px 20px;
+                    color: #ffffff;
+                    box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.28);
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .gwd-balance-info {
+                    position: relative;
+                    z-index: 2;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                }
+
+                .gwd-balance-label {
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: rgba(255, 255, 255, 0.82);
+                    letter-spacing: 0.2px;
+                }
+
+                .gwd-balance-amount {
+                    font-size: 28px;
+                    font-weight: 800;
+                    letter-spacing: -0.5px;
+                    line-height: 1.2;
+                }
+
+                .gwd-balance-bg-decoration {
+                    position: absolute;
+                    right: -24px;
+                    bottom: -24px;
+                    width: 130px;
+                    height: 130px;
+                    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+                    border-radius: 50%;
+                    pointer-events: none;
+                }
+
+                /* Rekening Tujuan Card */
+                .gwd-account-card {
+                    background-color: #ffffff;
+                    border: 1.5px solid #e2e8f0;
+                    border-radius: 16px;
+                    padding: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+                }
+
+                .gwd-account-card:active {
+                    border-color: #1d4ed8;
+                    background-color: #f8fafc;
+                    transform: scale(0.995);
+                }
+
+                .gwd-account-info-group {
+                    display: flex;
+                    align-items: center;
+                    gap: 14px;
+                    overflow: hidden;
+                }
+
+                .gwd-bank-badge {
+                    width: 44px;
+                    height: 44px;
+                    background-color: #eff6ff;
+                    color: #1d4ed8;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                }
+
+                .gwd-bank-icon {
+                    width: 22px;
+                    height: 22px;
+                }
+
+                .gwd-bank-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                    overflow: hidden;
+                }
+
+                .gwd-bank-name {
+                    font-size: 15px;
+                    font-weight: 700;
+                    color: #0f172a;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .gwd-account-number {
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: #64748b;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .gwd-account-holder {
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: #94a3b8;
+                    text-transform: uppercase;
+                }
+
+                .gwd-chevron-icon {
+                    width: 20px;
+                    height: 20px;
+                    color: #94a3b8;
+                    flex-shrink: 0;
+                    margin-left: 8px;
+                }
+
+                /* Empty State Rekening */
+                .gwd-empty-account-card {
+                    background-color: #ffffff;
+                    border: 1.5px dashed #cbd5e1;
+                    border-radius: 16px;
+                    padding: 24px 20px;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .gwd-empty-account-icon-wrapper {
+                    width: 52px;
+                    height: 52px;
+                    background-color: #f1f5f9;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #64748b;
+                    margin-bottom: 4px;
+                }
+
+                .gwd-empty-account-icon {
+                    width: 26px;
+                    height: 26px;
+                }
+
+                .gwd-empty-account-title {
+                    font-size: 15px;
+                    font-weight: 700;
+                    color: #0f172a;
+                }
+
+                .gwd-empty-account-desc {
+                    font-size: 13px;
+                    color: #64748b;
+                    line-height: 1.4;
+                    max-width: 280px;
+                    margin-bottom: 8px;
+                }
+
+                .gwd-btn-add-account {
+                    background-color: #eff6ff;
+                    color: #1d4ed8;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 24px;
+                    font-size: 13px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    transition: background-color 0.2s ease;
+                }
+
+                .gwd-btn-add-account:active {
+                    background-color: #dbeafe;
+                }
+
+                .gwd-add-icon {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                /* Nominal Input Card */
+                .gwd-amount-card {
+                    background-color: #ffffff;
+                    border: 1.5px solid #e2e8f0;
+                    border-radius: 16px;
+                    padding: 18px 16px;
+                    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+                }
+
+                .gwd-amount-input-container {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 10px;
+                    border-bottom: 2px solid #e2e8f0;
+                    padding-bottom: 8px;
+                    transition: border-color 0.2s ease;
+                }
+
+                .gwd-amount-input-container:focus-within {
+                    border-color: #1d4ed8;
+                }
+
+                .gwd-currency-symbol {
+                    font-size: 24px;
+                    font-weight: 800;
+                    color: #0f172a;
+                }
+
+                .gwd-amount-input {
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    font-size: 32px;
+                    font-weight: 800;
+                    color: #0f172a;
+                    background: transparent;
+                    letter-spacing: -0.5px;
+                }
+
+                .gwd-amount-input::placeholder {
+                    color: #cbd5e1;
+                    font-weight: 700;
+                }
+
+                /* Hide Spin Buttons on Number Input */
+                .gwd-amount-input::-webkit-outer-spin-button,
+                .gwd-amount-input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+
+                .gwd-amount-input[type=number] {
+                    -moz-appearance: textfield;
+                }
+
+                /* Summary Card */
+                .gwd-summary-card {
+                    background-color: #ffffff;
+                    border: 1.5px solid #e2e8f0;
+                    border-radius: 16px;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+
+                .gwd-summary-row {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 13.5px;
+                }
+
+                .gwd-summary-label {
+                    color: #64748b;
+                    font-weight: 500;
+                }
+
+                .gwd-summary-value {
+                    font-weight: 700;
+                    color: #0f172a;
+                }
+
+                .gwd-summary-highlight {
+                    color: #1d4ed8;
+                    font-size: 15px;
+                }
+
+                .gwd-summary-divider {
+                    height: 1px;
+                    background-color: #f1f5f9;
+                    width: 100%;
+                }
+
+                /* Action Button Wrapper */
+                .gwd-action-wrapper {
+                    margin-top: 4px;
+                }
+
+                .gwd-btn-submit {
+                    width: 100%;
+                    background-color: #1d4ed8;
+                    color: #ffffff;
+                    border: none;
+                    padding: 16px;
+                    border-radius: 14px;
+                    font-size: 15px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+                    transition: all 0.2s ease;
+                }
+
+                .gwd-btn-submit:active {
+                    background-color: #1e40af;
+                    transform: scale(0.99);
+                }
+
+                .gwd-btn-submit:disabled {
+                    background-color: #cbd5e1;
+                    box-shadow: none;
+                    cursor: not-allowed;
+                }
+
+                /* Overlay / Backdrop */
+                .gwd-sheet-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(15, 23, 42, 0.5);
+                    backdrop-filter: blur(2px);
+                    z-index: 99;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.3s ease, visibility 0.3s ease;
+                }
+
+                .gwd-sheet-overlay.gwd-active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                /* Bottom Sheet Component */
+                .gwd-bottom-sheet {
+                    position: fixed;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(100%);
+                    width: 100%;
+                    max-width: 480px;
+                    background-color: #ffffff;
+                    border-radius: 24px 24px 0 0;
+                    padding: 20px 20px 32px 20px;
+                    z-index: 100;
+                    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+                    box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.15);
+                }
+
+                .gwd-bottom-sheet.gwd-active {
+                    transform: translateX(-50%) translateY(0);
+                }
+
+                .gwd-sheet-handle {
+                    width: 38px;
+                    height: 4px;
+                    background-color: #cbd5e1;
+                    border-radius: 2px;
+                    margin: 0 auto 16px auto;
+                }
+
+                .gwd-sheet-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 16px;
+                }
+
+                .gwd-sheet-title {
+                    font-size: 17px;
+                    font-weight: 700;
+                    color: #0f172a;
+                }
+
+                .gwd-sheet-close {
+                    background: none;
+                    border: none;
+                    font-size: 24px;
+                    color: #94a3b8;
+                    cursor: pointer;
+                    line-height: 1;
+                    padding: 4px;
+                }
+
+                /* Bottom Sheet Account List */
+                .gwd-account-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    max-height: 280px;
+                    overflow-y: auto;
+                    margin-bottom: 16px;
+                    padding-right: 2px;
+                }
+
+                .gwd-account-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 14px;
+                    border: 1.5px solid #e2e8f0;
+                    border-radius: 14px;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                .gwd-account-item:active,
+                .gwd-account-item.gwd-selected {
+                    border-color: #1d4ed8;
+                    background-color: #eff6ff;
+                }
+
+                .gwd-account-item-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                }
+
+                .gwd-account-item-bank {
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: #0f172a;
+                }
+
+                .gwd-account-item-number {
+                    font-size: 13px;
+                    color: #64748b;
+                }
+
+                .gwd-account-item-holder {
+                    font-size: 11px;
+                    color: #94a3b8;
+                    text-transform: uppercase;
+                }
+
+                .gwd-radio-icon {
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid #cbd5e1;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .gwd-account-item.gwd-selected .gwd-radio-icon {
+                    border-color: #1d4ed8;
+                    background-color: #1d4ed8;
+                }
+
+                .gwd-account-item.gwd-selected .gwd-radio-icon::after {
+                    content: "";
+                    width: 8px;
+                    height: 8px;
+                    background-color: #ffffff;
+                    border-radius: 50%;
+                }
+
+                .gwd-btn-sheet-add {
+                    width: 100%;
+                    background-color: #f1f5f9;
+                    color: #1d4ed8;
+                    border: none;
+                    padding: 14px;
+                    border-radius: 12px;
+                    font-size: 14px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    transition: background-color 0.2s ease;
+                }
+
+                .gwd-btn-sheet-add:active {
+                    background-color: #e2e8f0;
+                }
+
+                /* Forms in Bottom Sheet */
+                .gwd-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 14px;
+                }
+
+                .gwd-form-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                }
+
+                .gwd-form-label {
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: #64748b;
+                }
+
+                .gwd-select-wrapper {
+                    position: relative;
+                    width: 100%;
+                }
+
+                .gwd-form-control {
+                    width: 100%;
+                    padding: 14px;
+                    border: 1.5px solid #cbd5e1;
+                    border-radius: 12px;
+                    font-size: 14.5px;
+                    outline: none;
+                    color: #0f172a;
+                    background-color: #ffffff;
+                    transition: border-color 0.2s ease;
+                    appearance: none;
+                    -webkit-appearance: none;
+                }
+
+                .gwd-form-control:focus {
+                    border-color: #1d4ed8;
+                }
+
+                .gwd-select-arrow {
+                    position: absolute;
+                    right: 14px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 18px;
+                    height: 18px;
+                    color: #64748b;
+                    pointer-events: none;
+                }
+
+                .gwd-btn-save {
+                    margin-top: 6px;
+                }
+
+                /* Confirmation Modal */
+                .gwd-modal-card {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(0.92);
+                    width: calc(100% - 32px);
+                    max-width: 400px;
+                    background-color: #ffffff;
+                    border-radius: 24px;
+                    padding: 24px 20px;
+                    z-index: 101;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+                    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+                }
+
+                .gwd-modal-card.gwd-active {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+
+                .gwd-modal-title {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: #0f172a;
+                    text-align: center;
+                    margin-bottom: 18px;
+                }
+
+                .gwd-modal-body {
+                    background-color: #f8fafc;
+                    border-radius: 16px;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    margin-bottom: 20px;
+                    border: 1px solid #f1f5f9;
+                }
+
+                .gwd-modal-row {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 13.5px;
+                }
+
+                .gwd-modal-label {
+                    color: #64748b;
+                    font-weight: 500;
+                }
+
+                .gwd-modal-value {
+                    font-weight: 700;
+                    color: #0f172a;
+                    text-align: right;
+                }
+
+                .gwd-modal-bank {
+                    max-width: 180px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .gwd-modal-divider {
+                    height: 1px;
+                    background-color: #e2e8f0;
+                    margin: 2px 0;
+                }
+
+                .gwd-modal-row-total {
+                    padding-top: 2px;
+                }
+
+                .gwd-modal-total-label {
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: #0f172a;
+                }
+
+                .gwd-modal-total-value {
+                    font-size: 16px;
+                    font-weight: 800;
+                    color: #1d4ed8;
+                }
+
+                .gwd-modal-actions {
+                    display: flex;
+                    gap: 10px;
+                }
+
+                .gwd-btn-modal-cancel {
+                    flex: 1;
+                    background-color: #f1f5f9;
+                    color: #64748b;
+                    border: none;
+                    padding: 14px;
+                    border-radius: 12px;
+                    font-weight: 700;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: background-color 0.2s ease;
+                }
+
+                .gwd-btn-modal-cancel:active {
+                    background-color: #e2e8f0;
+                }
+
+                .gwd-btn-modal-confirm {
+                    flex: 1;
+                    background-color: #1d4ed8;
+                    color: #ffffff;
+                    border: none;
+                    padding: 14px;
+                    border-radius: 12px;
+                    font-weight: 700;
+                    font-size: 14px;
+                    cursor: pointer;
+                    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+                    transition: background-color 0.2s ease;
+                }
+
+                .gwd-btn-modal-confirm:active {
+                    background-color: #1e40af;
+                }
+
+                /* Skeleton Loading Animation State */
+                .gwd-skeleton {
+                    background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+                    background-size: 200% 100%;
+                    animation: gwd-skeleton-loading 1.5s infinite;
+                    border-radius: 6px;
+                    color: transparent !important;
+                    user-select: none;
+                }
+
+                @keyframes gwd-skeleton-loading {
+                    0% {
+                        background-position: 200% 0;
+                    }
+
+                    100% {
+                        background-position: -200% 0;
+                    }
+                }
+
+                /* Media Query Adaptations for Narrow Devices (320px - 360px) */
+                @media screen and (max-width: 360px) {
+                    .gwd-content {
+                        padding: 12px;
+                        gap: 16px;
+                    }
+
+                    .gwd-balance-amount {
+                        font-size: 24px;
+                    }
+
+                    .gwd-amount-input {
+                        font-size: 26px;
+                    }
+
+                    .gwd-currency-symbol {
+                        font-size: 20px;
+                    }
+                }
+            </style>
+
+            <div class="gwd-container">
+
+                <!-- Header Navigation -->
+                <header class="gwd-header">
+                    <button type="button" class="gwd-btn-back" id="btn-back" aria-label="Kembali">
+                        <svg class="gwd-icon-back" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <h1 class="gwd-header-title">Tarik Saldo</h1>
+                    <div class="gwd-header-spacer"></div>
+                </header>
+
+                <!-- Main Content Scrollable Area -->
+                <main class="gwd-content">
+
+                    <!-- Balance Card -->
+                    <section class="gwd-balance-card">
+                        <div class="gwd-balance-info">
+                            <span class="gwd-balance-label">Saldo Tersedia</span>
+                            <div class="gwd-balance-amount" id="available-balance">Rp --</div>
+                        </div>
+                        <div class="gwd-balance-bg-decoration"></div>
+                    </section>
+
+                    <!-- Rekening Tujuan Section -->
+                    <section class="gwd-section">
+                        <h2 class="gwd-section-title">Rekening Tujuan</h2>
+
+                        <!-- State 1: Rekening Terpilih -->
+                        <div class="gwd-account-card" id="selected-account-card">
+                            <div class="gwd-account-info-group">
+                                <div class="gwd-bank-badge">
+                                    <svg class="gwd-bank-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 21h18"></path>
+                                        <path d="M3 10h18"></path>
+                                        <path d="M5 6l7-3 7 3"></path>
+                                        <path d="M4 10v11"></path>
+                                        <path d="M20 10v11"></path>
+                                        <path d="M8 14v4"></path>
+                                        <path d="M12 14v4"></path>
+                                        <path d="M16 14v4"></path>
+                                    </svg>
+                                </div>
+                                <div class="gwd-bank-details">
+                                    <div class="gwd-bank-name" id="selected-bank-name">Pilih Rekening</div>
+                                    <div class="gwd-account-number" id="selected-account-number">Ketuk untuk memilih
+                                        rekening</div>
+                                    <div class="gwd-account-holder" id="selected-account-holder"></div>
+                                </div>
+                            </div>
+                            <svg class="gwd-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+
+                        <!-- State 2: Empty State Rekening -->
+                        <div class="gwd-empty-account-card" id="empty-account-state" style="display: none;">
+                            <div class="gwd-empty-account-icon-wrapper">
+                                <svg class="gwd-empty-account-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                                </svg>
+                            </div>
+                            <h3 class="gwd-empty-account-title">Belum Ada Rekening</h3>
+                            <p class="gwd-empty-account-desc">Tambahkan rekening bank atau e-wallet untuk menerima
+                                pencairan saldo kamu.</p>
+                            <button type="button" class="gwd-btn-add-account" id="btn-open-add-account">
+                                <svg class="gwd-add-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                Tambah Rekening
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Nominal Penarikan Section -->
+                    <section class="gwd-section">
+                        <h2 class="gwd-section-title">Nominal Penarikan</h2>
+                        <div class="gwd-amount-card">
+                            <div class="gwd-amount-input-container">
+                                <span class="gwd-currency-symbol">Rp</span>
+                                <input type="number" id="withdraw-amount-input" class="gwd-amount-input" placeholder="0"
+                                    inputmode="numeric" autocomplete="off" />
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Information Summary Card -->
+                    <section class="gwd-summary-card">
+                        <div class="gwd-summary-row">
+                            <span class="gwd-summary-label">Estimasi Diterima</span>
+                            <span class="gwd-summary-value gwd-summary-highlight" id="summary-net-amount">Rp 0</span>
+                        </div>
+                        <div class="gwd-summary-divider"></div>
+                        <div class="gwd-summary-row">
+                            <span class="gwd-summary-label">Biaya Admin</span>
+                            <span class="gwd-summary-value" id="summary-admin-fee">Rp 0</span>
+                        </div>
+                        <div class="gwd-summary-divider"></div>
+                        <div class="gwd-summary-row">
+                            <span class="gwd-summary-label">Minimal Withdraw</span>
+                            <span class="gwd-summary-value" id="summary-min-withdraw">Rp 0</span>
+                        </div>
+                    </section>
+
+                    <!-- Submit Button -->
+                    <div class="gwd-action-wrapper">
+                        <button type="button" class="gwd-btn-submit" id="btn-submit-withdraw">
+                            Tarik Saldo
+                        </button>
+                    </div>
+
+                </main>
+
+                <!-- Overlay / Backdrop for Sheets & Modals -->
+                <div class="gwd-sheet-overlay" id="sheet-overlay"></div>
+
+                <!-- Bottom Sheet: Pilih Rekening -->
+                <div class="gwd-bottom-sheet" id="sheet-pilih-rekening">
+                    <div class="gwd-sheet-handle"></div>
+                    <div class="gwd-sheet-header">
+                        <h3 class="gwd-sheet-title">Pilih Rekening</h3>
+                        <button type="button" class="gwd-sheet-close" id="btn-close-account-sheet"
+                            aria-label="Tutup">&times;</button>
+                    </div>
+
+                    <div class="gwd-account-list" id="account-list-container">
+                        <!-- Data rekening dari backend dimuat di sini -->
+                    </div>
+
+                    <button type="button" class="gwd-btn-sheet-add" id="btn-sheet-add-account">
+                        <svg class="gwd-add-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Tambah Rekening Baru
+                    </button>
+                </div>
+
+                <!-- Bottom Sheet: Tambah Rekening -->
+                <div class="gwd-bottom-sheet" id="sheet-tambah-rekening">
+                    <div class="gwd-sheet-handle"></div>
+                    <div class="gwd-sheet-header">
+                        <h3 class="gwd-sheet-title">Tambah Rekening</h3>
+                        <button type="button" class="gwd-sheet-close" id="btn-close-add-sheet"
+                            aria-label="Tutup">&times;</button>
+                    </div>
+
+                    <form id="form-tambah-rekening" class="gwd-form">
+                        <div class="gwd-form-group">
+                            <label class="gwd-form-label" for="input-bank-name">Bank / E-Wallet</label>
+                            <div class="gwd-select-wrapper">
+                                <select class="gwd-form-control gwd-select" id="input-bank-name" required>
+                                    <option value="" disabled selected>Pilih Bank atau E-Wallet</option>
+                                    <option value="BCA">Bank BCA</option>
+                                    <option value="Mandiri">Bank Mandiri</option>
+                                    <option value="BNI">Bank BNI</option>
+                                    <option value="BRI">Bank BRI</option>
+                                    <option value="BSI">Bank Syariah Indonesia (BSI)</option>
+                                    <option value="CIMB">CIMB Niaga</option>
+                                    <option value="GOPAY">GoPay</option>
+                                    <option value="DANA">DANA</option>
+                                    <option value="OVO">OVO</option>
+                                    <option value="SHOPEEPAY">ShopeePay</option>
+                                </select>
+                                <svg class="gwd-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="gwd-form-group">
+                            <label class="gwd-form-label" for="input-account-number">Nomor Rekening / HP</label>
+                            <input type="number" class="gwd-form-control" id="input-account-number"
+                                placeholder="Contoh: 1234567890" inputmode="numeric" required />
+                        </div>
+
+                        <div class="gwd-form-group">
+                            <label class="gwd-form-label" for="input-account-holder">Nama Pemilik Rekening</label>
+                            <input type="text" class="gwd-form-control" id="input-account-holder"
+                                placeholder="Nama sesuai pada rekening" required />
+                        </div>
+
+                        <button type="submit" class="gwd-btn-submit gwd-btn-save" id="btn-save-account">
+                            Simpan Rekening
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Modal Konfirmasi -->
+                <div class="gwd-modal-card" id="modal-konfirmasi">
+                    <h3 class="gwd-modal-title">Konfirmasi Penarikan</h3>
+                    <div class="gwd-modal-body">
+                        <div class="gwd-modal-row">
+                            <span class="gwd-modal-label">Nominal Penarikan</span>
+                            <span class="gwd-modal-value" id="modal-confirm-amount">Rp 0</span>
+                        </div>
+                        <div class="gwd-modal-row">
+                            <span class="gwd-modal-label">Rekening Tujuan</span>
+                            <span class="gwd-modal-value gwd-modal-bank" id="modal-confirm-bank">-</span>
+                        </div>
+                        <div class="gwd-modal-row">
+                            <span class="gwd-modal-label">Biaya Admin</span>
+                            <span class="gwd-modal-value" id="modal-confirm-fee">Rp 0</span>
+                        </div>
+                        <div class="gwd-modal-divider"></div>
+                        <div class="gwd-modal-row gwd-modal-row-total">
+                            <span class="gwd-modal-total-label">Total Diterima</span>
+                            <span class="gwd-modal-total-value" id="modal-confirm-total">Rp 0</span>
+                        </div>
+                    </div>
+                    <div class="gwd-modal-actions">
+                        <button type="button" class="gwd-btn-modal-cancel" id="btn-modal-cancel">Batal</button>
+                        <button type="button" class="gwd-btn-modal-confirm" id="btn-modal-confirm">Tarik</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // --- Elements ---
+                const btnBack = document.getElementById("btn-back");
+                const overlay = document.getElementById("sheet-overlay");
+
+                // Account Cards & Sheets
+                const selectedAccountCard = document.getElementById("selected-account-card");
+                const emptyAccountState = document.getElementById("empty-account-state");
+                const btnOpenAddAccount = document.getElementById("btn-open-add-account");
+
+                const sheetPilihRekening = document.getElementById("sheet-pilih-rekening");
+                const btnCloseAccountSheet = document.getElementById("btn-close-account-sheet");
+                const btnSheetAddAccount = document.getElementById("btn-sheet-add-account");
+
+                const sheetTambahRekening = document.getElementById("sheet-tambah-rekening");
+                const btnCloseAddSheet = document.getElementById("btn-close-add-sheet");
+
+                // Modal Confirmation
+                const modalKonfirmasi = document.getElementById("modal-konfirmasi");
+                const btnSubmitWithdraw = document.getElementById("btn-submit-withdraw");
+                const btnModalCancel = document.getElementById("btn-modal-cancel");
+
+                // --- Navigation Handler ---
+                if (btnBack) {
+                    btnBack.addEventListener("click", () => {
+                        if (window.history.length > 1) {
+                            window.history.back();
+                        } else {
+                            window.location.href = "/";
+                        }
+                    });
+                }
+
+                // --- Helper Functions UI Bottom Sheet & Modal ---
+                function openOverlay() {
+                    if (overlay) overlay.classList.add("gwd-active");
+                }
+
+                function closeAllSheetsAndModals() {
+                    if (overlay) overlay.classList.remove("gwd-active");
+                    if (sheetPilihRekening) sheetPilihRekening.classList.remove("gwd-active");
+                    if (sheetTambahRekening) sheetTambahRekening.classList.remove("gwd-active");
+                    if (modalKonfirmasi) modalKonfirmasi.classList.remove("gwd-active");
+                }
+
+                function openSheet(sheetElement) {
+                    closeAllSheetsAndModals();
+                    openOverlay();
+                    if (sheetElement) sheetElement.classList.add("gwd-active");
+                }
+
+                // --- Overlay / Backdrop Click Listener ---
+                if (overlay) {
+                    overlay.addEventListener("click", closeAllSheetsAndModals);
+                }
+
+                // --- Account Card Interaction ---
+                if (selectedAccountCard) {
+                    selectedAccountCard.addEventListener("click", () => {
+                        openSheet(sheetPilihRekening);
+                    });
+                }
+
+                if (btnOpenAddAccount) {
+                    btnOpenAddAccount.addEventListener("click", () => {
+                        openSheet(sheetTambahRekening);
+                    });
+                }
+
+                if (btnSheetAddAccount) {
+                    btnSheetAddAccount.addEventListener("click", () => {
+                        openSheet(sheetTambahRekening);
+                    });
+                }
+
+                // --- Close Buttons Listeners ---
+                if (btnCloseAccountSheet) {
+                    btnCloseAccountSheet.addEventListener("click", closeAllSheetsAndModals);
+                }
+
+                if (btnCloseAddSheet) {
+                    btnCloseAddSheet.addEventListener("click", closeAllSheetsAndModals);
+                }
+
+                if (btnModalCancel) {
+                    btnModalCancel.addEventListener("click", closeAllSheetsAndModals);
+                }
+
+                // --- Open Modal Confirmation on Withdraw Click ---
+                if (btnSubmitWithdraw) {
+                    btnSubmitWithdraw.addEventListener("click", (e) => {
+                        // Jika ada pengecekan bawaan dari backend, event submit dapat disesuaikan.
+                        // Secara default UI akan membuka modal konfirmasi.
+                        openSheet(modalKonfirmasi);
+                    });
+                }
+            });
+        </script>
+        <!--====================  AKHIR HALAMAN PENARIKAN ==================-->
 
     </div>
 
@@ -5041,7 +6478,7 @@
 
                     if (currentNominal < MIN_TOPUP) {
 
-                        alert("Minimal Top Up Rp10.000");
+                        showToast("Minimal Top Up Rp10.000");
 
                         return;
 
@@ -5049,7 +6486,7 @@
 
                     if (currentNominal > MAX_TOPUP) {
 
-                        alert("Maksimal Top Up Rp1.000.000");
+                        showToast("Maksimal Top Up Rp1.000.000");
 
                         return;
 
@@ -5057,7 +6494,7 @@
 
                     if (!selectedMethod) {
 
-                        alert("Silakan pilih metode pembayaran.");
+                        showToast("Silakan pilih metode pembayaran.");
 
                         return;
 
@@ -5074,7 +6511,7 @@
                         jagelSession.trim().length === 0
                     ) {
 
-                        alert("VALIDASI SESSION GAGAL");
+                        showToast("VALIDASI SESSION GAGAL");
 
                         return;
 
@@ -5171,7 +6608,7 @@
 
             if (!payCode || payCode === "-") {
 
-                alert("Nomor pembayaran tidak tersedia.");
+                showToast("Nomor pembayaran tidak tersedia.");
 
                 return;
 
@@ -5206,8 +6643,6 @@
     </script>
 
     <script>
-
-
         const paymentButton =
             document.getElementById(
                 "gtp-payment-method"
@@ -5354,11 +6789,6 @@
     </script>
 
     <script>
-
-        /*==================================
-        GTPW TOAST
-==================================*/
-
         let gtpwToastTimer = null;
 
         function showTopupToast(message) {
@@ -5699,7 +7129,7 @@ Terima kasih.`;
                 adjustStatus === "SUCCESS"
             ) {
 
-                showTopupSuccess(trx);
+                showTopupStatus("SUCCESS", trx);
 
                 return;
 
@@ -5710,9 +7140,7 @@ Terima kasih.`;
                 adjustStatus === "FAILED"
             ) {
 
-                alert(
-                    "Pembayaran sudah diterima tetapi saldo gagal ditambahkan.\nSilakan hubungi Admin."
-                );
+                showTopupStatus("ADJUST_FAILED", trx);
 
                 return;
 
@@ -5722,43 +7150,40 @@ Terima kasih.`;
 
                 case "UNPAID":
 
-                    alert(
-                        "Pembayaran belum diterima.\nSilakan selesaikan pembayaran terlebih dahulu."
-                    );
+                    showTopupStatus("UNPAID", trx);
 
                     break;
 
                 case "PENDING":
-
                 case "PROCESS":
 
-                    alert(
-                        "Pembayaran sedang diproses.\nSilakan tunggu beberapa saat."
-                    );
+                    showTopupStatus(status, trx);
 
                     break;
 
                 case "EXPIRED":
 
-                    alert(
-                        "Transaksi telah kedaluwarsa."
-                    );
+                    showTopupStatus("EXPIRED", trx);
 
                     break;
 
                 case "FAILED":
 
-                    alert(
-                        "Pembayaran gagal."
-                    );
+                    showTopupStatus("FAILED", trx);
 
                     break;
 
                 default:
 
-                    alert(
-                        "Status transaksi : " + status
-                    );
+                    console.warn("Status transaksi tidak dikenali:", status);
+
+                    showTopupStatus("FAILED", {
+                        ...trx,
+                        customTitle: "Status Tidak Dikenali",
+                        customMessage: "Status transaksi \"" + status + "\" belum didukung oleh aplikasi."
+                    });
+
+                    break;
 
             }
 
@@ -5773,23 +7198,17 @@ Terima kasih.`;
 
         }
 
-        function showTopupSuccess(trx) {
+        /*==================================================
+            FILL TOPUP CARD
+==================================================*/
 
-            if (!trx) return;
+        function fillTopupCard(trx = {}) {
 
-            // Stop countdown
-            if (window.gtpwCountdownInterval) {
-                clearInterval(window.gtpwCountdownInterval);
-                window.gtpwCountdownInterval = null;
-            }
-
-            // Ambil metode pembayaran
             const paymentMethod =
                 trx.callback_payload?.payment_method ||
                 trx.payment_method ||
                 "-";
 
-            // Format waktu pembayaran
             let paidAt = "-";
 
             if (trx.paid_at) {
@@ -5804,9 +7223,20 @@ Terima kasih.`;
                     minute: "2-digit"
                 });
 
+            } else if (trx.created_at) {
+
+                const date = new Date(trx.created_at);
+
+                paidAt = date.toLocaleString("id-ID", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                });
+
             }
 
-            // Isi data ke halaman
             document.getElementById("gtpsAmount").textContent =
                 formatRupiah(trx.amount);
 
@@ -5820,19 +7250,307 @@ Terima kasih.`;
                 paymentMethod;
 
             document.getElementById("gtpsReference").textContent =
-                trx.reference;
+                trx.reference || "-";
 
             document.getElementById("gtpsPaidAt").textContent =
                 paidAt;
 
-            // simpan transaksi terakhir
+        }
+
+        function showTopupSuccess(trx) {
+
+            if (!trx) return;
+
+            if (window.gtpwCountdownInterval) {
+                clearInterval(window.gtpwCountdownInterval);
+                window.gtpwCountdownInterval = null;
+            }
+
+            setTopupStatusUI({
+
+                header: "Status Pembayaran",
+
+                title: "Top Up Berhasil",
+
+                subtitle: "Saldo berhasil ditambahkan ke akun GOCES Anda.",
+
+                info: trx.adjust_message || "Top Up berhasil.",
+
+                button: "Kembali ke Beranda",
+
+                color: "#22c55e",
+
+                showCard: true,
+
+                action() {
+
+                    showPage("home");
+
+                }
+
+            });
+
+            fillTopupCard(trx);
+
             window.lastTopupTransaction = trx;
 
-            // buka halaman sukses
+        }
+
+        /*==================================================
+            SHOW STATUS UNIVERSAL
+==================================================*/
+
+        function showTopupStatus(status, trx = {}) {
+
+            status = String(status || "").toUpperCase();
+
+            switch (status) {
+
+                case "SUCCESS":
+
+                    return showTopupSuccess(trx);
+
+                case "UNPAID":
+
+                    return showTopupUnpaid(trx);
+
+                case "PENDING":
+
+                case "PROCESS":
+
+                    return showTopupPending(trx);
+
+                case "EXPIRED":
+
+                    return showTopupExpired(trx);
+
+                case "FAILED":
+
+                    return showTopupFailed(trx);
+
+                case "ADJUST_FAILED":
+
+                    return showTopupAdjustFailed(trx);
+
+                default:
+
+                    console.warn("Status tidak dikenali :", status);
+
+            }
+
+        }
+
+        /*==================================================
+            SET STATUS UI
+==================================================*/
+
+        function setTopupStatusUI(config = {}) {
+
             showPage("gtps");
+
+            // Header
+            document.getElementById("gtpsHeaderTitle").textContent =
+                config.header || "Status Pembayaran";
+
+            // Judul
+            document.getElementById("gtpsTitle").textContent =
+                config.title || "-";
+
+            // Subtitle
+            document.getElementById("gtpsSubtitle").textContent =
+                config.subtitle || "";
+
+            // Info
+            document.getElementById("gtpsInfo").textContent =
+                config.info || "";
+
+            // Tombol
+            const actionBtn = document.getElementById("gtpsActionBtn");
+
+            // Text tombol
+            actionBtn.textContent =
+                config.button || "Kembali";
+
+            // Simpan aksi tombol
+            actionBtn.onclick =
+                typeof config.action === "function"
+                    ? config.action
+                    : null;
+
+            // Warna Icon
+            document.getElementById("gtpsIconCircle").style.background =
+                config.color || "#22c55e";
+
+            // Card transaksi
+            document.getElementById("gtpsCard").style.display =
+                config.showCard ? "block" : "none";
+
+        }
+
+        /*==================================================
+            UNPAID
+==================================================*/
+
+        function showTopupUnpaid(trx) {
+
+            setTopupStatusUI({
+
+                header: "Status Pembayaran",
+
+                title: "Pembayaran Belum Diterima",
+
+                subtitle: "Kami belum menerima pembayaran Anda.",
+
+                info: "Silakan selesaikan pembayaran terlebih dahulu lalu tekan tombol Cek Lagi.",
+
+                button: "Cek Lagi",
+
+                color: "#f59e0b",
+
+                showCard: true,
+
+                action() {
+
+                    checkPaymentStatus();
+
+                }
+
+            });
+
+            fillTopupCard(trx);
+        }
+
+        function showTopupPending(trx) {
+
+            setTopupStatusUI({
+
+                header: "Status Pembayaran",
+
+                title: "Pembayaran Sedang Diproses",
+
+                subtitle: "Pembayaran telah diterima dan sedang diproses.",
+
+                info: "Mohon tunggu beberapa saat kemudian lakukan pengecekan kembali.",
+
+                button: "Cek Lagi",
+
+                color: "#2563eb",
+
+                showCard: true,
+
+                action() {
+
+                    checkPaymentStatus();
+
+                }
+
+            });
+
+            fillTopupCard(trx);
+
+        }
+
+        function showTopupExpired(trx) {
+
+            setTopupStatusUI({
+
+                header: "Status Pembayaran",
+
+                title: "Transaksi Kedaluwarsa",
+
+                subtitle: "Batas waktu pembayaran telah habis.",
+
+                info: "Silakan membuat transaksi Top Up baru.",
+
+                button: "Top Up Baru",
+
+                color: "#ef4444",
+
+                showCard: true,
+
+                action() {
+
+                    showPage("gtp-wrapper");
+
+                }
+
+            });
+
+            fillTopupCard(trx);
+        }
+
+        function showTopupFailed(trx) {
+
+            setTopupStatusUI({
+
+                header: "Status Pembayaran",
+
+                title: "Pembayaran Gagal",
+
+                subtitle: "Transaksi tidak berhasil diproses.",
+
+                info: "Silakan lakukan transaksi kembali.",
+
+                button: "Top Up Baru",
+
+                color: "#dc2626",
+
+                showCard: true,
+
+                action() {
+
+                    showPage("gtp-wrapper");
+
+                }
+
+            });
+
+            fillTopupCard(trx);
+        }
+
+        function showTopupAdjustFailed(trx) {
+
+            setTopupStatusUI({
+
+                header: "Status Pembayaran",
+
+                title: "Pembayaran Berhasil",
+
+                subtitle: "Namun saldo gagal ditambahkan.",
+
+                info: trx.adjust_message || "Silakan hubungi Admin.",
+
+                button: "Hubungi Admin",
+
+                color: "#f97316",
+
+                showCard: true,
+
+                action() {
+
+                    const pesan =
+                        `Halo Admin GOCES.%0A%0A` +
+                        `Saya mengalami kendala Top Up.%0A%0A` +
+                        `Reference : ${trx.reference}%0A` +
+                        `Nominal : ${formatRupiah(trx.amount)}%0A` +
+                        `Metode : ${trx.callback_payload?.payment_method || trx.payment_method}%0A%0A` +
+                        `Mohon bantu pengecekan. Terima kasih.`;
+
+                    window.open(
+                        "https://wa.me/6281242347274?text=" + pesan,
+                        "_blank"
+                    );
+
+                }
+
+            });
+
+            fillTopupCard(trx);
 
         }
     </script>
+
+
 
     <!--============ HALAMAN POPUP DETAIL VOUCHER =================-->
     <div id="gocesVoucherModal" class="gcv-modal">
@@ -5931,10 +7649,6 @@ Terima kasih.`;
             </div>
         </div>
     </div>
-
-    <!-- =========================
-     HELP SHEET
-========================== -->
 
     <div id="gtpwHelpSheet" class="gtpw-guide-sheet">
         <div class="gtpw-guide-backdrop"></div>
