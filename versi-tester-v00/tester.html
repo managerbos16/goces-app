@@ -1120,206 +1120,626 @@
 </style>
 
 <style>
-    .gtpw-wrapper {
-        width: 100%;
-        min-height: 100%;
-        background: #f5f7fb;
-        overflow-y: auto;
-        padding-bottom: 30px;
-    }
-
+    /* ================= HEADER ================= */
     .gtpw-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 18px 16px;
-        background: #ffffff;
-        border-bottom: 1px solid #e5e7eb;
         position: sticky;
         top: 0;
-        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 56px;
+        background: #fff;
+        border-bottom: 1px solid #f3f4f6;
     }
 
-    .gtpw-header h2 {
-        margin: 0;
-        font-size: 18px;
+    .gtpw-back {
+        position: absolute;
+        left: 16px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #4b5563;
+    }
+
+    .gtpw-title {
+        font-size: 16px;
         font-weight: 700;
         color: #111827;
     }
 
-    .gtpw-back {
-        width: 38px;
-        height: 38px;
-        border: none;
-        border-radius: 50%;
-        background: #eef4ff;
-        color: #2563eb;
+    /* ================= CONTENT CONTAINER ================= */
+    .gtpw-content {
+        padding: 20px;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        cursor: pointer;
+        flex-direction: column;
+        gap: 16px;
+        flex: 1;
+        background-color: #f9fafb;
     }
 
     .gtpw-card {
         background: #ffffff;
-        margin: 14px 16px 0;
-        border-radius: 18px;
-        padding: 18px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, .06);
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
     }
 
-    .gtpw-logo {
-        width: 70px;
-        height: 70px;
-        margin: auto;
-        border-radius: 16px;
-        background: #f8fafc;
+    /* ================= PAYMENT CARD (DI ATAS) ================= */
+    .gtpw-payment-card {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .gtpw-payment-header {
+        padding: 16px;
+        border-bottom: 1px solid #f3f4f6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .gtpw-payment-header h2 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 700;
         display: flex;
         align-items: center;
-        justify-content: center;
-    }
-
-    .gtpw-logo img {
-        width: 54px;
-        height: 54px;
-        object-fit: contain;
-    }
-
-    .gtpw-method {
-        margin-top: 14px;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 700;
+        gap: 8px;
         color: #111827;
     }
 
     .gtpw-status {
-        margin-top: 12px;
         display: flex;
-        justify-content: center;
         align-items: center;
-        gap: 8px;
-        color: #ca8a04;
+        gap: 6px;
+        font-size: 11px;
         font-weight: 600;
-        font-size: 14px;
+        color: #b45309;
+        background-color: #fef3c7;
+        padding: 4px 10px;
+        border-radius: 20px;
     }
 
-    .gtpw-status-dot {
-        width: 10px;
-        height: 10px;
+    .gtpw-dot {
+        width: 6px;
+        height: 6px;
+        background-color: #f59e0b;
         border-radius: 50%;
-        background: #f59e0b;
-        animation: gtpwBlink 1s infinite;
+        display: inline-block;
     }
 
-    @keyframes gtpwBlink {
-
-        0% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: .35;
-        }
-
-        100% {
-            opacity: 1;
-        }
-
-    }
-
-    .gtpw-label {
-        color: #6b7280;
-        font-size: 13px;
-        margin-bottom: 8px;
-    }
-
-    .gtpw-paycode {
-        font-size: 26px;
-        font-weight: 700;
-        letter-spacing: 2px;
+    /* TATA LETAK BARU: MENENGAH & TERSUSUN KE BAWAH */
+    .gtpw-payment-body {
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        /* Mengubah jadi bersusun atas-bawah */
+        align-items: center;
+        /* Menengahkan elemen secara horizontal */
+        justify-content: center;
         text-align: center;
-        color: #111827;
-        word-break: break-word;
+        gap: 24px;
     }
 
-    .gtpw-copy-btn {
-        margin-top: 18px;
-        width: 100%;
-        height: 46px;
-        border: none;
+    /* STYLING QR BOX BARU */
+    #gtpwQrBox {
+        width: 180px;
+        /* Diperbesar */
+        height: 180px;
+        /* Diperbesar */
+        background-color: #ffffff;
         border-radius: 12px;
-        background: #2563eb;
-        color: #fff;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
     }
 
-    .gtpw-copy-btn:active {
-        transform: scale(.98);
+    /* Menyembunyikan div QR jika tidak ada isinya dari JS */
+    #gtpwQrBox:empty {
+        display: none;
     }
 
-    .gtpw-countdown {
-        text-align: center;
-        font-size: 34px;
-        font-weight: 700;
-        color: #dc2626;
-        letter-spacing: 2px;
+    #gtpwQrBox img,
+    #gtpwQrBox svg {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
-    .gtpw-summary-title {
-        font-size: 16px;
+    /* STYLING NOMOR VA BARU */
+    #gtpwPayCodeBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Menengahkan VA horizontal */
+        gap: 8px;
+        width: 100%;
+    }
+
+    /* Menyembunyikan div VA jika tidak ada isinya (opsional) */
+    #gtpwPayCodeBox:empty {
+        display: none;
+    }
+
+    #gtpwPayLabel {
+        font-size: 13px;
+        color: #6b7280;
+        font-weight: 500;
+    }
+
+    #gtpwPayCode {
+        font-size: 24px;
+        /* Diperbesar signifikan */
         font-weight: 700;
         color: #111827;
-        margin-bottom: 14px;
+        letter-spacing: 1px;
+        word-break: break-all;
     }
 
-    .gtpw-summary-row {
+    /* STYLING TOMBOL SALIN BARU (Lebih Profesional) */
+    #gtpwCopyBtn {
+        background-color: #f3f4f6;
+        /* Warna solid abu lembut */
+        border: 1px solid #e5e7eb;
+        color: #374151;
+        font-weight: 600;
+        padding: 8px 20px;
+        border-radius: 20px;
+        /* Bentuk Pill */
+        font-size: 13px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 8px;
+        transition: all 0.2s ease;
+    }
+
+    #gtpwCopyBtn:hover {
+        background-color: #e5e7eb;
+        color: #111827;
+    }
+
+    #gtpwCopyBtn:active {
+        transform: scale(0.96);
+    }
+
+    .gtpw-timer-box {
+        background-color: #fef2f2;
+        padding: 12px 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 10px 0;
-        color: #4b5563;
-        font-size: 15px;
+        border-top: 1px solid #fee2e2;
     }
 
-    .gtpw-total {
-        border-top: 1px dashed #d1d5db;
-        margin-top: 14px;
-        padding-top: 14px;
-        font-weight: 700;
-        color: #111827;
-        font-size: 17px;
+    .gtpw-timer-title {
+        font-size: 11px;
+        color: #991b1b;
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
     }
 
-    .gtpw-check-btn {
-        width: calc(100% - 32px);
-        margin: 24px auto;
-        min-height: 52px;
-        border: none;
-        border-radius: 14px;
-        background: #16a34a;
-        color: #ffffff;
-        font-size: 16px;
+    .gtpw-timer-title span {
+        font-weight: 600;
+        font-size: 13px;
+        color: #7f1d1d;
+    }
+
+    #gtpwCountdown {
+        font-size: 18px;
         font-weight: 700;
+        color: #b91c1c;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* ================= MENU LIST (DI TENGAH) ================= */
+    .gtpw-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .gtpw-menu-item {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
         cursor: pointer;
+        color: #374151;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background-color 0.2s;
+    }
+
+    .gtpw-menu-item:hover {
+        background-color: #f9fafb;
+    }
+
+    .gtpw-menu-item div {
         display: flex;
         align-items: center;
-        justify-content: center;
-        box-shadow: 0 12px 25px rgba(22, 163, 74, .25);
+        gap: 12px;
     }
 
-    .gtpw-check-btn:active {
-        transform: scale(.98);
+    .gtpw-menu-item svg {
+        color: #9ca3af;
+    }
+
+    /* ================= SUMMARY CARD (DI BAWAH) ================= */
+    .gtpw-summary {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gtpw-summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: #4b5563;
+    }
+
+    .gtpw-summary-item strong {
+        color: #111827;
+        font-weight: 600;
+    }
+
+    .gtpw-summary-divider {
+        height: 1px;
+        background-color: #f3f4f6;
+        margin: 4px 0;
+    }
+
+    .gtpw-summary-item:last-child {
+        margin-top: 4px;
+    }
+
+    .gtpw-summary-item:last-child span {
+        font-weight: 700;
+        color: #111827;
+        font-size: 14px;
+    }
+
+    .gtpw-summary-item:last-child strong {
+        font-size: 16px;
+        color: #1e3a8a;
+        font-weight: 700;
+    }
+
+    /* ================= MAIN BUTTON ================= */
+    #gtpwDoneBtn {
+        background-color: #1e3a8a;
+        color: #ffffff;
+        border: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 16px;
+        border-radius: 24px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        transition: background-color 0.2s;
+    }
+
+    #gtpwDoneBtn:hover {
+        background-color: #172554;
+    }
+</style>
+
+<style>
+    .gtpw-toast {
+        position: fixed;
+        left: 50%;
+        bottom: 90px;
+        transform: translate(-50%, 120px);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        background: #1e293b;
+        color: #fff;
+        border-radius: 14px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        opacity: 0;
+        pointer-events: none;
+        transition: .35s;
+        z-index: 999999;
+    }
+
+    .gtpw-toast.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    .gtpw-toast i {
+        color: #22c55e;
+        font-size: 20px;
+    }
+</style>
+
+<style>
+    .gtpw-guide-sheet {
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 99999;
+
+        display: none;
+
+    }
+
+    .gtpw-guide-sheet.show {
+
+        display: block;
+
+    }
+
+    .gtpw-guide-backdrop {
+
+        position: absolute;
+
+        inset: 0;
+
+        background: rgba(0, 0, 0, .45);
+
+    }
+
+    .gtpw-guide-container {
+
+        position: absolute;
+
+        left: 0px;
+
+        right: 0px;
+
+        bottom: 0px;
+
+        max-height: 85vh;
+
+        height: auto;
+
+        background: #fff;
+
+        border-radius: 24px 24px 0 0;
+
+        overflow: hidden;
+
+        display: flex;
+
+        flex-direction: column;
+
+        animation: guideUp .28s ease;
+
+    }
+
+    .gtpw-guide-handle {
+
+        width: 55px;
+
+        height: 5px;
+
+        background: #d1d5db;
+
+        border-radius: 999px;
+
+        margin: 12px auto;
+
+    }
+
+    .gtpw-guide-header {
+
+        padding: 0 20px 16px;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        border-bottom: 1px solid #eceff3;
+
+    }
+
+    .gtpw-guide-header h3 {
+
+        margin: 0;
+
+        font-size: 18px;
+
+    }
+
+    #gtpwGuideClose {
+
+        border: none;
+
+        background: none;
+
+        cursor: pointer;
+
+    }
+
+    #gtpwGuideContent {
+
+        overflow-y: auto;
+
+        max-height: calc(85vh - 70px);
+
+        padding: 20px;
+
+        box-sizing: border-box;
+
+    }
+
+    @keyframes guideUp {
+
+        from {
+
+            transform: translateY(100%);
+
+        }
+
+        to {
+
+            transform: translateY(0);
+
+        }
+
+    }
+</style>
+
+<style>
+    .gtpw-guide-item {
+        border-bottom: 1px solid #eceff3;
+    }
+
+    .gtpw-guide-title {
+        width: 100%;
+        background: #fff;
+        border: none;
+        padding: 18px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .gtpw-guide-body {
+        display: none;
+        padding-bottom: 18px;
+    }
+
+    .gtpw-guide-body.show {
+        display: block;
+    }
+
+    .gtpw-guide-body ol {
+        margin: 0;
+        padding-left: 22px;
+    }
+
+    .gtpw-guide-body li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+        color: #4b5563;
+    }
+
+    .gtpw-guide-empty {
+        text-align: center;
+        padding: 40px;
+        color: #9ca3af;
+    }
+</style>
+
+<style>
+    .gtpw-help-content {
+
+        padding: 20px;
+
+    }
+
+    .gtpw-help-item {
+
+        width: 100%;
+
+        border: none;
+
+        background: #fff;
+
+        border-bottom: 1px solid #eceff3;
+
+        padding: 18px 0;
+
+        cursor: pointer;
+
+        text-align: left;
+
+    }
+
+    .gtpw-help-item:last-child {
+
+        border-bottom: none;
+
+    }
+
+    .gtpw-help-item strong {
+
+        display: block;
+
+        font-size: 15px;
+
+        color: #111827;
+
+        margin-bottom: 6px;
+
+    }
+
+    .gtpw-help-item span {
+
+        display: block;
+
+        font-size: 13px;
+
+        color: #6b7280;
+
+        line-height: 1.6;
+
+    }
+</style>
+
+<style>
+    .spinner {
+
+        width: 18px;
+        height: 18px;
+
+        border: 2px solid rgba(255, 255, 255, .4);
+        border-top-color: #fff;
+
+        border-radius: 50%;
+
+        display: inline-block;
+
+        animation: spin .8s linear infinite;
+
+        margin-right: 8px;
+
+        vertical-align: middle;
+
+    }
+
+    @keyframes spin {
+
+        to {
+
+            transform: rotate(360deg);
+
+        }
+
     }
 </style>
 
 <body>
     <!--HALAMAN HOME-->
     <div class="app-wrapper">
-        <div class="page active" id="page-home">
+        <div class="page" id="page-home">
             <div class="scroll-area">
 
                 <div class="home-header">
@@ -1414,7 +1834,6 @@
 
                 </div>
 
-                {userid}
                 <div class="gox_service_grid">
 
                     <a href="https://jgjk.mobi/p/6a32d81298f27" class="gox_service_item">
@@ -3266,7 +3685,7 @@
         <!--========== AKHIR HALAMAN SEMUA CAMPAIGN GOCES PEDULI ==========-->
 
         <!-- ========== HALAMAN TOP UP  ========== -->
-        <div class="page" id="page-gtp-wrapper">
+        <div class="page active" id="page-gtp-wrapper">
             <header class="gtp-header">
                 <button class="gtp-icon-btn" onclick="goBack()">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -3387,7 +3806,7 @@
         <!--========== AKHIR HALAMAN TOP UP ==========-->
 
         <!-- ========== HALAMAN SHEET  ========== -->
-        <div id="payment-sheet" class="payment-sheet">
+        <div class="payment-sheet" id="payment-sheet">
             <div class="payment-sheet-box">
                 <div class="payment-sheet-handle"></div>
                 <h3>
@@ -3402,85 +3821,136 @@
 
         <!-- ========== HALAMAN TOPUP WAITING  ========== -->
         <div class="page" id="page-gtpw">
-            <section class="gtpw-wrapper">
-                <div class="gtpw-header">
-                    <button class="gtpw-back" id="gtpwBackBtn">
-                        <i class="zmdi zmdi-arrow-left"></i>
-                    </button>
-                    <h2>Menunggu Pembayaran</h2>
+            <div class="gtpw-header">
+                <button class="gtpw-back" onclick="goBack()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+                <div class="gtpw-title">
+                    Menunggu Pembayaran
                 </div>
+            </div>
 
-                <div class="gtpw-card">
-                    <div class="gtpw-method">
-                        <h3 id="gtpwMethodName">
-                            Memuat Metode Pembayaran...
-                        </h3>
+            <!-- CONTENT -->
+            <div class="gtpw-content">
 
+                <!-- 1. PAYMENT CARD (Sekarang di atas) -->
+                <div class="gtpw-card gtpw-payment-card">
+                    <div class="gtpw-payment-header">
+                        <h2 id="gtpwMethodName">
+                            <!-- Placeholder Ikon QRIS (Bisa disesuaikan JS) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <rect x="7" y="7" width="3" height="3"></rect>
+                                <rect x="14" y="7" width="3" height="3"></rect>
+                                <rect x="7" y="14" width="3" height="3"></rect>
+                                <rect x="14" y="14" width="3" height="3"></rect>
+                            </svg>
+                            QRIS
+                        </h2>
                         <div class="gtpw-status">
-                            <span class="gtpw-status-dot"></span>
+                            <span class="gtpw-dot"></span>
                             Menunggu Pembayaran
+                        </div>
+                    </div>
+
+                    <div class="gtpw-payment-body">
+                        <!-- Flexbox akan membuat ini menyamping -->
+                        <div id="gtpwQrBox"></div>
+
+                        <div id="gtpwPayCodeBox">
+                            <div id="gtpwPayLabel">Nomor Virtual Account</div>
+                            <div id="gtpwPayCode">0232-4567-2993</div>
+                            <button id="gtpwCopyBtn">
+                                Salin Nomor
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gtpw-timer-box">
+                        <div class="gtpw-timer-title">
+                            <span>Payment Timer</span>
+                            Batas Waktu Pembayaran
+                        </div>
+                        <div id="gtpwCountdown">
+                            00:15:30
                         </div>
                     </div>
                 </div>
 
-                <div class="gtpw-card">
-                    <div class="gtpw-label">
-                        Nomor Pembayaran
-                    </div>
+                <!-- 2. MENU (Di tengah) -->
+                <div class="gtpw-menu">
+                    <button class="gtpw-menu-item" id="gtpwGuideBtn">
+                        <div>
+                            <!-- Ikon Card -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                            </svg>
+                            Cara Pembayaran
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
 
-                    <div id="gtpwPayCodeBox">
-                        <div id="gtpwPayCode" class="gtpw-paycode">-</div>
-                        <button id="gtpwCopyBtn" class="gtpw-copy-btn">
-                            Salin Nomor
-                        </button>
-                    </div>
-
-                    <div id="gtpwQrBox" style="display:none;">
-                        <img id="gtpwQrImage" class="gtpw-qr-image" src="" alt="QRIS">
-                    </div>
+                    <button id="gtpwHelpBtn" class="gtpw-menu-item">
+                        <!-- Catatan: ID gtpwSupportBtn ganda dengan yg di header bawaan HTML aslimu, tapi tetap dipertahankan sesuai instruksi -->
+                        <div>
+                            <!-- Ikon Question Mark -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            Butuh Bantuan?
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
                 </div>
 
-                <div class="gtpw-card">
-                    <div class="gtpw-label">
-                        Sisa Waktu
-                    </div>
-
-                    <div id="gtpwCountdown" class="gtpw-countdown">
-                        24:00:00
-                    </div>
-                </div>
-
-                <div class="gtpw-card">
-                    <div class="gtpw-summary-title">
-                        Ringkasan Pembayaran
-                    </div>
-
-                    <div class="gtpw-summary-row">
+                <!-- 3. SUMMARY (Di Bawah Menu) -->
+                <div class="gtpw-card gtpw-summary">
+                    <div class="gtpw-summary-item">
                         <span>Top Up</span>
-                        <span id="gtpwAmount">
-                            Rp0
-                        </span>
+                        <strong id="gtpwAmount">Rp 50.000</strong>
                     </div>
-
-                    <div class="gtpw-summary-row">
-                        <span>Biaya Admin</span>
-                        <span id="gtpwFee">
-                            Rp0
-                        </span>
+                    <div class="gtpw-summary-divider"></div>
+                    <div class="gtpw-summary-item">
+                        <span>Admin</span>
+                        <strong id="gtpwFee">Rp 2.500</strong>
                     </div>
-
-                    <div class="gtpw-summary-row gtpw-total">
+                    <div class="gtpw-summary-divider"></div>
+                    <div class="gtpw-summary-item">
                         <span>Total</span>
-                        <span id="gtpwTotal">
-                            Rp0
-                        </span>
+                        <strong id="gtpwTotal">Rp 52.500</strong>
                     </div>
                 </div>
 
-                <button id="gtpwCheckBtn" class="gtpw-check-btn">
+                <!-- 4. BUTTON (Paling Bawah) -->
+                <button id="gtpwDoneBtn" class="gtpw-done-btn">
                     Saya Sudah Bayar
                 </button>
-            </section>
+
+            </div>
         </div>
         <!-- ========== AKHIR HALAMAN TOPUP WAITING  ========== -->
 
@@ -3651,6 +4121,8 @@
                 console.log("SESSION =", jagelSession);
                 let paymentChannels = [];
                 let selectedMethod = null;
+                let selectedFeeFlat = 0;
+                let selectedFeePercent = 0;
                 let selectedFee = 0;
                 let currentNominal = 0;
                 const MIN_TOPUP = 10000;
@@ -3731,7 +4203,13 @@
                 <div class="payment-subtitle">
 
                     Biaya Admin
-                    Rp ${Number(channel.total_fee.flat).toLocaleString("id-ID")}
+                    Rp ${(
+                                Number(channel.total_fee.flat) +
+                                Math.round(
+                                    currentNominal *
+                                    (Number(channel.total_fee.percent) / 100)
+                                )
+                            ).toLocaleString("id-ID")}
 
                 </div>
 
@@ -3757,8 +4235,18 @@
                     selectedMethod =
                         channel.code;
 
-                    selectedFee =
+                    selectedFeeFlat =
                         Number(channel.total_fee.flat);
+
+                    selectedFeePercent =
+                        Number(channel.total_fee.percent);
+
+                    selectedFee =
+                        selectedFeeFlat +
+                        Math.round(
+                            currentNominal *
+                            (selectedFeePercent / 100)
+                        );
 
                     document.getElementById(
                         "gtp-payment-name"
@@ -3780,6 +4268,13 @@
                 }
 
                 const updateSummary = () => {
+
+                    selectedFee =
+                        selectedFeeFlat +
+                        Math.round(
+                            currentNominal *
+                            (selectedFeePercent / 100)
+                        );
 
                     sumTopup.textContent =
                         "Rp " +
@@ -3835,6 +4330,7 @@
                         }
 
                         updateSummary();
+                        renderPaymentChannels();
                     });
                 });
 
@@ -3850,6 +4346,7 @@
                     }
 
                     updateSummary();
+                    renderPaymentChannels();
                 });
 
                 submitBtn.addEventListener("click", async () => {
@@ -3972,6 +4469,52 @@
                 loadPaymentChannels();
 
             })();
+
+        /*==================================
+  COPY PAY CODE
+==================================*/
+
+        document.getElementById("gtpwCopyBtn").addEventListener("click", async () => {
+
+            const payCode = document
+                .getElementById("gtpwPayCode")
+                .innerText
+                .trim();
+
+            if (!payCode || payCode === "-") {
+
+                alert("Nomor pembayaran tidak tersedia.");
+
+                return;
+
+            }
+
+            try {
+
+                await navigator.clipboard.writeText(payCode);
+
+                showToast("Nomor Virtual Account berhasil disalin");
+
+            } catch (err) {
+
+                // Fallback untuk browser lama
+                const input = document.createElement("textarea");
+
+                input.value = payCode;
+
+                document.body.appendChild(input);
+
+                input.select();
+
+                document.execCommand("copy");
+
+                document.body.removeChild(input);
+
+                showTopupToast("Nomor Virtual Account berhasil disalin");
+
+            }
+
+        });
     </script>
 
     <script>
@@ -4009,51 +4552,538 @@
     </script>
 
     <script>
-        /*==================================
-      GOCES TOPUP WAITING
-==================================*/
-
         function showTopupWaiting(data) {
 
-            // buka halaman waiting
+            // tampilkan halaman waiting
             showPage("gtpw");
-
-            // icon pembayaran
-            document.getElementById("gtpwMethodIcon").src =
-                data.payment_method_icon ||
-                data.icon_url ||
-                "";
-
-            // nama metode
-            document.getElementById("gtpwMethodName").innerText =
-                data.payment_method || "-";
-
-            // nomor pembayaran
-            document.getElementById("gtpwPayCode").innerText =
-                data.pay_code ||
-                data.reference ||
-                "-";
-
-            // nominal
-            document.getElementById("gtpwAmount").innerText =
-                "Rp " +
-                Number(data.amount).toLocaleString("id-ID");
-
-            // biaya admin
-            document.getElementById("gtpwFee").innerText =
-                "Rp " +
-                Number(data.total_fee).toLocaleString("id-ID");
-
-            // total
-            document.getElementById("gtpwTotal").innerText =
-                "Rp " +
-                (
-                    Number(data.amount) +
-                    Number(data.total_fee)
-                ).toLocaleString("id-ID");
 
             // simpan transaksi
             window.gtpwTransaction = data;
+
+            // nama metode pembayaran
+            document.getElementById("gtpwMethodName").innerText =
+                data.payment_name || data.payment_method || "-";
+
+            // nominal
+            document.getElementById("gtpwAmount").innerText =
+                "Rp " + Number(data.amount).toLocaleString("id-ID");
+
+            // biaya admin
+            document.getElementById("gtpwFee").innerText =
+                "Rp " + Number(data.total_fee).toLocaleString("id-ID");
+
+            // total
+            document.getElementById("gtpwTotal").innerText =
+                "Rp " + (Number(data.amount) + Number(data.total_fee))
+                    .toLocaleString("id-ID");
+
+            // ==========================
+            // VA ATAU QRIS
+            // ==========================
+
+            const payCodeBox = document.getElementById("gtpwPayCodeBox");
+            const qrBox = document.getElementById("gtpwQrBox");
+
+            if (data.qr_string) {
+
+                // QRIS
+
+                document.getElementById("gtpwPayLabel").innerText =
+                    "Scan QRIS";
+
+                payCodeBox.style.display = "none";
+                qrBox.style.display = "block";
+
+                const qrUrl =
+                    "https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=" +
+                    encodeURIComponent(data.qr_string);
+
+                qrBox.innerHTML = `
+<img
+    id="gtpwQrImage"
+    class="gtpw-qr-image"
+    src="${qrUrl}">
+`;
+
+
+            } else {
+
+                // Virtual Account
+
+                document.getElementById("gtpwPayLabel").innerText =
+                    "Nomor Virtual Account";
+
+                qrBox.style.display = "none";
+                payCodeBox.style.display = "block";
+
+                document.getElementById("gtpwPayCode").innerText =
+                    data.pay_code || "-";
+
+
+            }
+
+            // ==========================
+            // COUNTDOWN
+            // ==========================
+
+            if (window.gtpwTimer) {
+                clearInterval(window.gtpwTimer);
+            }
+
+            function updateCountdown() {
+
+                const now = Math.floor(Date.now() / 1000);
+
+                const remain = data.expired_time - now;
+
+                if (remain <= 0) {
+
+                    document.getElementById("gtpwCountdown").innerText =
+                        "00:00:00";
+
+                    clearInterval(window.gtpwTimer);
+
+                    return;
+                }
+
+                const h = Math.floor(remain / 3600);
+
+                const m = Math.floor((remain % 3600) / 60);
+
+                const s = remain % 60;
+
+                document.getElementById("gtpwCountdown").innerText =
+                    String(h).padStart(2, "0") + ":" +
+                    String(m).padStart(2, "0") + ":" +
+                    String(s).padStart(2, "0");
+            }
+
+            updateCountdown();
+
+            window.gtpwTimer = setInterval(updateCountdown, 1000);
+
+        }
+    </script>
+
+    <script>
+
+        /*==================================
+        GTPW TOAST
+==================================*/
+
+        let gtpwToastTimer = null;
+
+        function showTopupToast(message) {
+
+            const toast =
+                document.getElementById("gtpwToast");
+
+            const text =
+                document.getElementById("gtpwToastText");
+
+            text.innerText = message;
+
+            toast.classList.add("show");
+
+            clearTimeout(gtpwToastTimer);
+
+            gtpwToastTimer = setTimeout(() => {
+
+                toast.classList.remove("show");
+
+            }, 2500);
+
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const guideSheet = document.getElementById("gtpwGuideSheet");
+            const guideBtn = document.getElementById("gtpwGuideBtn");
+            const closeBtn = document.getElementById("gtpwGuideClose");
+            const backdrop = document.querySelector(".gtpw-guide-backdrop");
+            const guideContent = document.getElementById("gtpwGuideContent");
+
+            function showPaymentGuide() {
+
+                const trx = window.gtpwTransaction;
+
+                if (!trx || !trx.instructions || trx.instructions.length === 0) {
+
+                    guideContent.innerHTML = `
+                <div class="gtpw-guide-empty">
+                    Cara pembayaran tidak tersedia.
+                </div>
+            `;
+
+                    guideSheet.classList.add("show");
+                    return;
+                }
+
+                let html = "";
+
+                trx.instructions.forEach((item, index) => {
+
+                    html += `
+                <div class="gtpw-guide-item">
+
+                    <button class="gtpw-guide-title"
+                            data-index="${index}">
+
+                        <span>${item.title}</span>
+
+                        <span class="gtpw-arrow">+</span>
+
+                    </button>
+
+                    <div class="gtpw-guide-body">
+
+                        <ol>
+
+                            ${item.steps.map(step => `<li>${step}</li>`).join("")}
+
+                        </ol>
+
+                    </div>
+
+                </div>
+            `;
+
+                });
+
+                guideContent.innerHTML = html;
+
+                guideContent.querySelectorAll(".gtpw-guide-title").forEach(btn => {
+
+                    btn.onclick = function () {
+
+                        const body = this.nextElementSibling;
+                        const arrow = this.querySelector(".gtpw-arrow");
+
+                        const opened = body.classList.contains("show");
+
+                        guideContent.querySelectorAll(".gtpw-guide-body")
+                            .forEach(el => el.classList.remove("show"));
+
+                        guideContent.querySelectorAll(".gtpw-arrow")
+                            .forEach(el => el.innerText = "+");
+
+                        if (!opened) {
+
+                            body.classList.add("show");
+                            arrow.innerText = "−";
+
+                        }
+
+                    };
+
+                });
+
+                guideSheet.classList.add("show");
+
+            }
+
+            function closePaymentGuide() {
+
+                guideSheet.classList.remove("show");
+
+            }
+
+            guideBtn.onclick = showPaymentGuide;
+            closeBtn.onclick = closePaymentGuide;
+            backdrop.onclick = closePaymentGuide;
+
+        });
+    </script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const helpSheet = document.getElementById("gtpwHelpSheet");
+
+            document.getElementById("gtpwHelpBtn").onclick = () => {
+
+                helpSheet.classList.add("show");
+
+            };
+
+            document.getElementById("gtpwHelpClose").onclick = () => {
+
+                helpSheet.classList.remove("show");
+
+            };
+
+            helpSheet.querySelector(".gtpw-guide-backdrop").onclick = () => {
+
+                helpSheet.classList.remove("show");
+
+            };
+
+            const phone = "6281242347274";
+
+            document.querySelectorAll(".gtpw-help-item").forEach(item => {
+
+                item.onclick = () => {
+
+                    const trx = window.gtpwTransaction || {};
+
+                    const ref = trx.reference || "-";
+
+                    const method = trx.payment_name || "-";
+
+                    const amount = "Rp " + Number(trx.amount || 0).toLocaleString("id-ID");
+
+                    let text = "";
+
+                    switch (item.dataset.type) {
+
+                        case "status":
+
+                            text = `Halo Admin GOCES,
+
+Status pembayaran saya masih "Menunggu Pembayaran".
+
+Reference : ${ref}
+
+Metode : ${method}
+
+Nominal : ${amount}
+
+Mohon bantuannya.
+
+Terima kasih.`;
+
+                            break;
+
+                        case "saldo":
+
+                            text = `Halo Admin GOCES,
+
+Saya sudah berhasil melakukan pembayaran tetapi saldo GOCES belum masuk.
+
+Reference : ${ref}
+
+Metode : ${method}
+
+Nominal : ${amount}
+
+Mohon dilakukan pengecekan.
+
+Terima kasih.`;
+
+                            break;
+
+                        case "va":
+
+                            text = `Halo Admin GOCES,
+
+Nomor Virtual Account tidak dapat digunakan.
+
+Reference : ${ref}
+
+Mohon bantuannya.
+
+Terima kasih.`;
+
+                            break;
+
+                        case "qris":
+
+                            text = `Halo Admin GOCES,
+
+QRIS tidak dapat dipindai saat akan melakukan pembayaran.
+
+Reference : ${ref}
+
+Mohon bantuannya.
+
+Terima kasih.`;
+
+                            break;
+
+                        default:
+
+                            text = `Halo Admin GOCES,
+
+Saya membutuhkan bantuan mengenai transaksi Top Up.
+
+Reference : ${ref}
+
+Mohon bantuannya.
+
+Terima kasih.`;
+
+                    }
+
+                    window.open(
+
+                        `https://wa.me/${phone}?text=${encodeURIComponent(text)}`,
+
+                        "_blank"
+
+                    );
+
+                };
+
+            });
+
+        });
+
+    </script>
+
+    <script>
+        const gtpwDoneBtn = document.getElementById("gtpwDoneBtn");
+
+        gtpwDoneBtn.addEventListener("click", checkPaymentStatus);
+
+        async function checkPaymentStatus() {
+
+            const trx = window.gtpwTransaction;
+
+            if (!trx || !trx.reference) {
+                alert("Data transaksi tidak ditemukan.");
+                return;
+            }
+
+            const originalText = gtpwDoneBtn.innerHTML;
+
+            gtpwDoneBtn.disabled = true;
+            gtpwDoneBtn.innerHTML = `
+        <span class="spinner"></span>
+        Mengecek Pembayaran...
+    `;
+
+            try {
+
+                const response = await fetch(
+                    `/api/topup/status/${trx.reference}`
+                );
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || "Terjadi kesalahan.");
+                }
+
+                function handlePaymentStatus(result) {
+
+                    if (!result.success) {
+
+                        alert(result.message || "Gagal mengecek status.");
+
+                        return;
+
+                    }
+
+                    const trx = result.data;
+
+                    const status = String(trx.status).toUpperCase();
+
+                    switch (status) {
+
+                        case "PAID":
+
+                            alert("🎉 Pembayaran berhasil.");
+
+                            // nanti refresh saldo
+                            // nanti redirect ke Home
+
+                            break;
+
+                        case "UNPAID":
+
+                            alert("Pembayaran belum diterima.");
+
+                            break;
+
+                        case "PENDING":
+
+                            alert("Pembayaran sedang diproses.");
+
+                            break;
+
+                        case "EXPIRED":
+
+                            alert("Transaksi telah kedaluwarsa.");
+
+                            break;
+
+                        case "FAILED":
+
+                            alert("Pembayaran gagal.");
+
+                            break;
+
+                        default:
+
+                            alert("Status : " + status);
+
+                    }
+
+                }
+
+            } catch (err) {
+
+                alert(err.message || "Gagal mengecek pembayaran.");
+
+            } finally {
+
+                gtpwDoneBtn.disabled = false;
+                gtpwDoneBtn.innerHTML = originalText;
+
+            }
+
+        }
+
+        function handlePaymentStatus(data) {
+
+            const status = String(data.status).toUpperCase();
+
+            switch (status) {
+
+                case "PAID":
+
+                    alert("Pembayaran berhasil.");
+
+                    // nanti kita refresh saldo di sini
+
+                    // nanti kita redirect ke home di sini
+
+                    break;
+
+                case "UNPAID":
+
+                    alert("Pembayaran belum diterima.");
+
+                    break;
+
+                case "PROCESS":
+
+                case "PENDING":
+
+                    alert("Pembayaran sedang diproses.");
+
+                    break;
+
+                case "EXPIRED":
+
+                    alert("Transaksi telah kedaluwarsa.");
+
+                    break;
+
+                case "FAILED":
+
+                    alert("Pembayaran gagal.");
+
+                    break;
+
+                default:
+
+                    alert("Status : " + status);
+
+            }
 
         }
     </script>
@@ -4129,6 +5159,90 @@
 
     <div id="gocesToast" class="goces-toast"></div>
 
+    <div id="gtpwToast" class="gtpw-toast">
+        <i class="zmdi zmdi-check-circle"></i>
+        <span id="gtpwToastText">
+            Berhasil
+        </span>
+    </div>
+
+    <div id="gtpwGuideSheet" class="gtpw-guide-sheet">
+        <div class="gtpw-guide-backdrop"></div>
+        <div class="gtpw-guide-container">
+            <div class="gtpw-guide-handle"></div>
+            <div class="gtpw-guide-header">
+                <h3>Cara Pembayaran</h3>
+                <button id="gtpwGuideClose">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="gtpwGuideContent">
+                <!-- diisi otomatis -->
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
+     HELP SHEET
+========================== -->
+
+    <div id="gtpwHelpSheet" class="gtpw-guide-sheet">
+        <div class="gtpw-guide-backdrop"></div>
+        <div class="gtpw-guide-container">
+            <div class="gtpw-guide-handle"></div>
+            <div class="gtpw-guide-header">
+                <h3>Pusat Bantuan</h3>
+                <button id="gtpwHelpClose">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="gtpw-help-content">
+                <button class="gtpw-help-item" data-type="status">
+                    <div>
+                        <strong>📌 Status pembayaran belum berubah</strong>
+                        <span>Status transaksi masih menunggu meskipun Anda sudah melakukan pembayaran.</span>
+                    </div>
+                </button>
+
+                <button class="gtpw-help-item" data-type="saldo">
+                    <div>
+                        <strong>📌 Sudah transfer tapi saldo belum masuk</strong>
+                        <span>Pembayaran berhasil tetapi saldo GOCES belum bertambah.</span>
+                    </div>
+                </button>
+
+                <button class="gtpw-help-item" data-type="va">
+                    <div>
+                        <strong>📌 Nomor Virtual Account tidak bisa digunakan</strong>
+                        <span>Virtual Account ditolak, tidak ditemukan atau telah kedaluwarsa.</span>
+                    </div>
+                </button>
+
+                <button class="gtpw-help-item" data-type="qris">
+                    <div>
+                        <strong>📌 QRIS tidak bisa dipindai</strong>
+                        <span>QR Code gagal dipindai atau tidak dapat digunakan untuk pembayaran.</span>
+                    </div>
+                </button>
+
+                <button class="gtpw-help-item" data-type="cs">
+                    <div>
+                        <strong>💬 Hubungi Customer Service</strong>
+                        <span>Tim GOCES siap membantu Anda.</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
 
 </body>
 
