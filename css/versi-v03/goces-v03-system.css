@@ -3363,89 +3363,64 @@ a.icon-circle-btn[href="action://act/cart"]:active {
 }
 
 /* ============================================================
-   HOME HEADER FULL BANNER - EXTRA FULL
+   GOCES V03 - HOME HEADER BANNER FULL FINAL
+   Banner penuh tanpa crop / tanpa stretch
    ============================================================ */
 
+#page-home .home-header {
+  padding: calc(14px + env(safe-area-inset-top)) 0 0 !important;
+
+  overflow: hidden !important;
+  border-radius: 0 0 24px 24px !important;
+}
+
+/* Search + avatar tetap punya jarak kiri kanan */
+#page-home .header-row {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+/* Banner benar-benar memenuhi header */
 #page-home .home-hero-slider {
-  position: relative !important;
-  width: calc(100% + 28px) !important;
-  margin-left: -14px !important;
-  margin-right: -14px !important;
-  margin-top: 2px !important;
-  margin-bottom: 8px !important;
-  overflow: hidden !important;
-  border-radius: 0 0 24px 24px !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-#page-home .home-hero-slider a {
-  display: block !important;
-  text-decoration: none !important;
-}
-
-#page-home .home-hero-item {
   width: 100% !important;
+  aspect-ratio: 16 / 7 !important;
+
+  margin: 8px 0 0 !important;
+
+  border-radius: 0 !important;
   overflow: hidden !important;
-  border-radius: 0 0 24px 24px !important;
   background: transparent !important;
 }
 
+/* Item banner */
+#page-home .home-hero-item {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+/* PENTING:
+   jangan pakai fixed height,
+   jangan potong gambar */
 #page-home .home-hero-item img {
   display: block !important;
+
   width: 100% !important;
-  height: 210px !important;
-  object-fit: cover !important;
+  height: 100% !important;
+
+  object-fit: fill !important;
   object-position: center !important;
-  border-radius: 0 0 24px 24px !important;
+
+  border-radius: 0 !important;
 }
 
-/* Supaya kartu saldo sedikit naik dan terasa menyatu elegan */
-#page-home .wallet-card,
-#page-home .gocespay-card,
-#page-home .home-wallet-card {
+/* Wallet overlap ke bagian bawah banner */
+#page-home .wallet-card {
+  margin-top: -22px !important;
   position: relative !important;
-  margin-top: -4px !important;
-  z-index: 2 !important;
-}
-
-/* HP kecil */
-@media (max-width: 360px) {
-  #page-home .home-hero-slider {
-    width: calc(100% + 24px) !important;
-    margin-left: -12px !important;
-    margin-right: -12px !important;
-    margin-top: 2px !important;
-    margin-bottom: 8px !important;
-  }
-
-  #page-home .home-hero-item,
-  #page-home .home-hero-item img {
-    border-radius: 0 0 22px 22px !important;
-  }
-
-  #page-home .home-hero-item img {
-    height: 190px !important;
-  }
-}
-
-/* Tablet */
-@media (min-width: 600px) {
-  #page-home .home-hero-slider {
-    width: calc(100% + 36px) !important;
-    margin-left: -18px !important;
-    margin-right: -18px !important;
-    margin-top: 4px !important;
-    margin-bottom: 10px !important;
-    border-radius: 0 0 28px 28px !important;
-  }
-
-  #page-home .home-hero-item,
-  #page-home .home-hero-item img {
-    border-radius: 0 0 28px 28px !important;
-  }
-
-  #page-home .home-hero-item img {
-    height: 250px !important;
-  }
+  z-index: 5 !important;
 }
