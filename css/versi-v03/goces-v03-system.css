@@ -3466,3 +3466,134 @@ a.icon-circle-btn[href="action://act/cart"]:active {
     font-size: 22px !important;
   }
 }
+
+/* ============================================================
+   GOCES V03 - ANDROID MATERIAL HEADER ACTIONS
+   ============================================================ */
+:root {
+  --g3-android-action: 40px;
+  --g3-android-icon: 20px;
+}
+/* BACK / NOTIF / CART / SETTING */
+button[onclick="goBack()"],
+a.kpz-nav-button[href="action://act/message_list"],
+a.kpz-nav-button[href="action://act/cart"],
+button.kpz-nav-button[onclick="showPage('setting')"],
+a.icon-circle-btn[href="action://act/message_list"],
+a.icon-circle-btn[href="action://act/cart"] {
+  width: var(--g3-android-action) !important;
+  height: var(--g3-android-action) !important;
+  min-width: var(--g3-android-action) !important;
+  min-height: var(--g3-android-action) !important;
+  flex: 0 0 var(--g3-android-action) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid rgba(15, 23, 42, 0.07) !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #111827 !important;
+  box-shadow:
+    0 1px 4px rgba(15, 23, 42, 0.08) !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+/* ============================================================
+   MATERIAL ARROW_BACK
+   bukan simbol teks ←
+   bukan chevron <
+   ============================================================ */
+button[onclick="goBack()"] {
+  font-size: 0 !important;
+  color: transparent !important;
+}
+button[onclick="goBack()"] > svg,
+button[onclick="goBack()"] > i {
+  display: none !important;
+}
+button[onclick="goBack()"]::before {
+  content: "" !important;
+  width: var(--g3-android-icon) !important;
+  height: var(--g3-android-icon) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background-color: #111827 !important;
+  -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z'/%3E%3C/svg%3E") !important;
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z'/%3E%3C/svg%3E") !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: center !important;
+  mask-position: center !important;
+  -webkit-mask-size: contain !important;
+  mask-size: contain !important;
+  transform: none !important;
+}
+/* SVG NOTIF / CART / SETTING */
+a.kpz-nav-button[href="action://act/message_list"] svg,
+a.kpz-nav-button[href="action://act/cart"] svg,
+button.kpz-nav-button[onclick="showPage('setting')"] svg {
+  width: var(--g3-android-icon) !important;
+  height: var(--g3-android-icon) !important;
+  color: #111827 !important;
+  stroke: #111827 !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+/* PHOSPHOR ICON GOFOOD */
+a.icon-circle-btn[href="action://act/message_list"] i,
+a.icon-circle-btn[href="action://act/cart"] i {
+  width: var(--g3-android-icon) !important;
+  height: var(--g3-android-icon) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #111827 !important;
+  font-size: var(--g3-android-icon) !important;
+  line-height: 1 !important;
+}
+/* BADGE */
+.kpz-badge,
+.notif-badge,
+.gpr-notif-badge {
+  min-width: 16px !important;
+  height: 16px !important;
+  top: -3px !important;
+  right: -3px !important;
+  padding: 0 4px !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 999px !important;
+  font-size: 8px !important;
+  line-height: 1 !important;
+}
+/* PRESS ANDROID */
+button[onclick="goBack()"]:active,
+a.kpz-nav-button[href="action://act/message_list"]:active,
+a.kpz-nav-button[href="action://act/cart"]:active,
+button.kpz-nav-button[onclick="showPage('setting')"]:active,
+a.icon-circle-btn[href="action://act/message_list"]:active,
+a.icon-circle-btn[href="action://act/cart"]:active {
+  transform: scale(0.95) !important;
+  background: #f8fafc !important;
+}
+/* HP KECIL */
+@media (max-width: 359px) {
+  :root {
+    --g3-android-action: 38px;
+    --g3-android-icon: 19px;
+  }
+}
+/* TABLET */
+@media (min-width: 600px) {
+  :root {
+    --g3-android-action: 42px;
+    --g3-android-icon: 21px;
+  }
+}
