@@ -1,0 +1,2120 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PT. Global selebes tecnology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v02/beranda.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v02/promo.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v02/orders.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v02/chat.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v02/profile.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v02/setting.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v02/nav.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v01/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v01/food.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v01/benner-home.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v01/benner-food.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v01/benner-promo.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/versi-v01/development.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/voucher.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://goces-app.vercel.app/css/voucher-horizontal.css"
+    />
+    <!-- GOCES PEDULI CSS — nonaktif sementara
+    <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/assets/css/style.css">
+    <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/payment/payment.css">
+    <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/success/success.css">
+    <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/waiting/waiting.css">
+    -->
+    <style>
+      .atc-nearby-section {
+        margin: 14px 0 18px;
+      }
+      .atc-nearby-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        margin-bottom: 12px;
+      }
+      .atc-nearby-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1f2937;
+      }
+      .atc-nearby-seeall {
+        border: none;
+        background: none;
+        padding: 0;
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .atc-nearby-wrapper {
+        width: 100%;
+        overflow: hidden;
+      }
+      .atc-nearby-wrapper #item-nearby-head {
+        display: flex;
+        gap: 12px;
+        padding: 0 16px 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .atc-nearby-wrapper #item-nearby-head::-webkit-scrollbar {
+        display: none;
+      }
+      .atc-nearby-wrapper .item-nearby-row {
+        position: relative;
+        flex-shrink: 0;
+        width: 160px;
+        margin: 0;
+        background: #fff;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid #eef2f7;
+        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+      }
+      .atc-nearby-wrapper .item-nearby-row::before {
+        content: "⭐TERDEKAT";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        background: #ef4444;
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 0 18px 18px 0;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        z-index: 20;
+      }
+      .atc-nearby-wrapper .item-nearby-link {
+        display: block;
+        text-decoration: none;
+        color: #111827;
+      }
+      .atc-nearby-wrapper .item-nearby-image {
+        margin: 0 !important;
+        width: 100% !important;
+        display: block;
+        aspect-ratio: 1/0.82;
+        object-fit: cover;
+        object-position: center center;
+      }
+      .atc-nearby-wrapper .item-nearby-title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+        padding: 10px 12px 4px;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.35;
+        color: #111827;
+        min-height: 38px;
+      }
+      .atc-nearby-wrapper .item-nearby-distance {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 12px 8px;
+        font-size: 12px;
+        color: #6b7280;
+      }
+      .atc-nearby-wrapper .item-nearby-distance::after {
+        content: "🛵 8-15 mnt";
+        font-size: 11px;
+        color: #6b7280;
+        font-weight: 500;
+      }
+      .atc-nearby-wrapper .item-nearby-status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 12px 12px;
+      }
+      .atc-nearby-wrapper .item-nearby-status-open {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #dcfce7;
+        color: #16a34a;
+        font-size: 10px;
+        font-weight: 700;
+      }
+      .atc-nearby-wrapper .item-nearby-status-note {
+        display: none;
+      }
+      .atc-nearby-wrapper .item-nearby-status::after {
+        content: "⭐ 4.9";
+        font-size: 12px;
+        font-weight: 700;
+        color: #f59e0b;
+      }
+      /* GOCES PEDULI INLINE CSS — nonaktif sementara
+    .home-goces-peduli {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .goces-peduli-frame {
+        width: 100%;
+        min-height: 420px;
+        height: auto;
+        border: 0;
+    }
+    .gpd-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    .gpd-back {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 12px;
+        background: #eef4ff;
+        color: #2563eb;
+        font-size: 22px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .gpd-header h1 {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .gpd-loading {
+        padding: 50px 20px;
+        text-align: center;
+        color: #6b7280;
+    }
+    .gpd-content {
+        padding: 16px;
+    }
+    .gpd-banner {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        margin-bottom: 16px;
+    }
+    .gpd-banner img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+    .gpd-category {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        background: #16a34a;
+        color: #fff;
+        padding: 7px 14px;
+        border-radius: 30px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+    .gpd-card {
+        background: #fff;
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+    .gpd-card h2 {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+    .gpd-card p {
+        color: #6b7280;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+    .gpd-progress-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .gpd-progress-info span:first-child {
+        font-size: 22px;
+        color: #16a34a;
+        font-weight: 700;
+    }
+    .gpd-progress-info span:last-child {
+        color: #2563eb;
+        font-weight: 700;
+    }
+    .gpd-progress {
+        width: 100%;
+        height: 10px;
+        background: #e5e7eb;
+        border-radius: 30px;
+        overflow: hidden;
+        margin-bottom: 16px;
+    }
+    .gpd-progress-bar {
+        width: 0%;
+        height: 100%;
+        background: #16a34a;
+        border-radius: 30px;
+        transition: width 0.35s ease;
+    }
+    .gpd-target {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+    .gpd-target span {
+        color: #6b7280;
+    }
+    .gpd-target strong {
+        font-size: 18px;
+    }
+    .gpd-donatur {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #4b5563;
+        font-size: 15px;
+    }
+    .gpd-about {
+        margin-top: 18px;
+        background: #fff;
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+    .gpd-about h3 {
+        margin-bottom: 14px;
+        font-size: 18px;
+    }
+    .gpd-about p {
+        color: #4b5563;
+        line-height: 28px;
+    }
+    #page-goces-detail:not(.active) .gpd-footer {
+        display: none !important;
+    }
+    .gpd-footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: #fff;
+        padding: 14px 16px;
+        padding-bottom: calc(14px + env(safe-area-inset-bottom));
+        box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+    }
+    .gpd-footer button {
+        width: 100%;
+        height: 52px;
+        border: none;
+        border-radius: 14px;
+        background: #2563eb;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .gpd-footer button:active {
+        transform: scale(0.98);
+    }
+    .gpd-footer button:hover {
+        background: #1d4ed8;
+    }
+    .gpd-footer button:focus-visible,
+    .gpd-back:focus-visible {
+        outline: 2px solid #2563eb;
+        outline-offset: 3px;
+    }
+    @media (max-width: 480px) {
+        .gpd-card h2 {
+            font-size: 20px;
+            line-height: 28px;
+        }
+        .gpd-progress-info span:first-child {
+            font-size: 20px;
+        }
+    }
+    #page-goces-peduli {
+        background: #f7f9fc;
+    }
+    .gpa-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 16px 16px 20px;
+    }
+    .gpa-back {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        place-items: center;
+        border: 1px solid #e4e9f1;
+        border-radius: 14px;
+        background: #fff;
+        color: #172033;
+        cursor: pointer;
+        font-size: 21px;
+        box-shadow: 0 3px 12px rgba(23, 32, 51, 0.05);
+    }
+    .gpa-eyebrow {
+        margin: 0 0 3px;
+        color: #e84b55;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+    }
+    .gpa-header h1,
+    .gpa-section-heading h2 {
+        margin: 0;
+        color: #172033;
+    }
+    .gpa-header h1 {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+    .gpa-hero {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        margin: 0 16px 24px;
+        padding: 17px;
+        border: 1px solid #ffe1df;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #fff0f1, #fff8ed);
+    }
+    .gpa-hero-icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+        place-items: center;
+        border-radius: 14px;
+        background: #e84b55;
+        color: #fff;
+        font-size: 20px;
+    }
+    .gpa-hero strong {
+        font-size: 14px;
+    }
+    .gpa-hero p,
+    .gpa-section-heading p {
+        margin: 4px 0 0;
+        color: #697386;
+        font-size: 12px;
+    }
+    .gpa-section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        margin: 0 16px 14px;
+    }
+    .gpa-section-heading h2 {
+        font-size: 16px;
+    }
+    .gpa-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin: 0 16px;
+    }
+    .gpa-card {
+        width: auto;
+        min-width: 0;
+        box-shadow: 0 5px 16px rgba(23, 32, 51, 0.08);
+    }
+    .gpa-card:hover {
+        transform: translateY(-2px);
+    }
+    .gpa-message {
+        grid-column: 1 / -1;
+        margin: 0;
+        padding: 28px 16px;
+        border: 1px dashed #d8e0eb;
+        border-radius: 16px;
+        background: #fff;
+        color: #697386;
+        text-align: center;
+        font-size: 13px;
+    }
+    .gpa-message-error {
+        color: #c23842;
+    }
+    @media (min-width: 640px) {
+        .gpa-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+    */
+      .goces-toast {
+        position: fixed;
+        left: 50%;
+        bottom: 90px;
+        transform: translateX(-50%) translateY(20px);
+        max-width: 90%;
+        padding: 14px 18px;
+        border-radius: 12px;
+        background: #111827;
+        color: #fff;
+        font-size: 14px;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.25s;
+        z-index: 99999;
+      }
+      .goces-toast.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+    </style>
+      <link id="goces-v03-system" rel="stylesheet" href="../css/versi-v03/goces-v03-system.css" />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <div class="page active" id="page-home">
+        <div class="scroll-area">
+          <div class="home-header">
+            <div class="header-row">
+              <button
+                class="avatar-btn"
+                aria-label="kpz-main-wrap"
+                onclick="showPage('kpz-main-wrap')"
+              >
+                <img src="{foto}" alt="avatar" class="avatar-img" />
+              </button>
+              <form
+                class="search-bar"
+                action="action://act/search"
+                method="GET"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input
+                  type="search"
+                  name="search"
+                  placeholder="Cari layanan atau makanan"
+                />
+              </form>
+              <a href="action://act/message_list" class="kpz-nav-button">
+                <svg
+                  class="kpz-nav-image"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="kpz-badge"> {jumlah_pesan} </span>
+              </a>
+            </div>
+            <div class="home-hero-slider">
+              <a
+                href="https://gocesapp.blogspot.com/2026/07/dokumentasi-pendaftaran-agency-goces.html"
+                target="_blank"
+                style="display: block; text-decoration: none"
+              >
+                <div class="home-hero-item active">
+                  <img
+                    src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1784095783/ChatGPT_Image_15_Jul_2026_14.09.23_nixjgc.png"
+                    alt="Pendaftaran Agency GOCES"
+                  />
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="wallet-card">
+            <div>
+              <div class="wallet-brand">
+                <div class="wallet-g-icon">G</div>
+                <span>Gocespay</span>
+              </div>
+              <a href="action://act/balance" class="wallet-balance">
+                {saldo}
+              </a>
+              <a href="action://act/customer_points" class="wallet-coins">
+                ⭐ {poin}
+              </a>
+            </div>
+            <div class="wallet-actions">
+              <a class="wallet-action" href="action://act/withdraw">
+                <div class="wallet-action-icon blue">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </div>
+                <span>Tarik</span>
+              </a>
+              <a class="wallet-action" href="action://act/topup">
+                <div class="wallet-action-icon blue">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                </div>
+                <span>Top Up</span>
+              </a>
+            </div>
+          </div>
+          <div class="gox_service_grid">
+            <a href="action://p/6a32d81298f27" class="gox_service_item">
+              <div class="gox_icon_card gox_bg_green">
+                <span class="gox_promo_ribbon gox_ribbon_red">20%</span>
+                <img
+                  src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781593613/ChatGPT_Image_16_Jun_2026_15.06.38_zw3ga1.png"
+                />
+              </div>
+              <p>GoRide</p>
+            </a>
+            <a href="action://p/6a32d88f49400" class="gox_service_item">
+              <div class="gox_icon_card gox_bg_blue">
+                <span class="gox_promo_ribbon gox_ribbon_blue">50%</span>
+                <img
+                  src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594742/ChatGPT_Image_16_Jun_2026_15.10.13_czsgh3.png"
+                />
+              </div>
+              <p>GoCar</p>
+            </a>
+            <a class="gox_service_item" onclick="showPage('gofood')">
+              <div class="gox_icon_card gox_bg_pink">
+                <span class="gox_promo_ribbon gox_ribbon_red">HALAL</span>
+                <img
+                  src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+                />
+              </div>
+              <p>GoFood</p>
+            </a>
+            <a class="gox_service_item" onclick="openGocesAI()">
+              <div class="gox_icon_card gox_bg_orange">
+                <span class="gox_promo_ribbon gox_ribbon_orange">FAST</span>
+                <img
+                  src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594740/ChatGPT_Image_16_Jun_2026_15.13.20_lmhens.png"
+                />
+              </div>
+              <p>Delivery</p>
+            </a>
+          </div>
+          <section class="gcsPromoBannerSection">
+            <div
+              id="gcsPromoBannerContainer"
+              class="gcsPromoBannerContainer"
+            ></div>
+          </section>
+          <section class="gcvh-section">
+            <div class="gcvh-header">
+              <h2 class="gcvh-title">Voucher Menarik</h2>
+              <button class="gcvh-seeall" onclick="showPage('promos')">
+                Lihat Semua
+              </button>
+            </div>
+            <div id="gocesVoucherHome" class="gcvh-container"></div>
+          </section>
+          <section id="atcNearbySection" class="atc-nearby-section">
+            <div class="atc-nearby-header">
+              <h2 class="atc-nearby-title">📍Resto Terdekat !!</h2>
+              <button class="atc-nearby-seeall" onclick="showPage('gofood')">
+                Lihat Semua
+              </button>
+            </div>
+            <div id="atcNearbyWrapper" class="atc-nearby-wrapper">
+              <div id="atcNearbyContainer" class="atc-nearby-container">
+                {lokasi_terdekat}
+              </div>
+            </div>
+          </section>
+          <!-- GOCES PEDULI HOME — nonaktif sementara
+                <section class="gpdl-section">
+                    <div class="gpdl-header-section">
+                        <div class="gpdl-header-left">
+                            <div class="gpdl-header-icon">❤️</div>
+                            <div>
+                                <h2>GOCES Peduli</h2>
+                                <p>Bersama Berbagi Untuk Indonesia</p>
+                            </div>
+                        </div>
+                        <button type="button" class="gpdl-header-more" onclick="showPage('goces-peduli')">
+                            Lihat Semua
+                        </button>
+                    </div>
+                    <div id="gpdl-wrapper" class="gpdl-wrapper">
+                    </div>
+                </section>
+                <template id="gpdl-template">
+                    <div class="gpdl-card">
+                        <div class="gpdl-image">
+                            <span class="gpdl-badge"></span>
+                            <img class="gpdl-cover" src="" alt="Campaign">
+                        </div>
+                        <div class="gpdl-content">
+                            <h3 class="gpdl-title"></h3>
+                            <div class="gpdl-target">
+                                Target
+                                <strong class="gpdl-target-amount"></strong>
+                            </div>
+                            <div class="gpdl-progress">
+                                <div class="gpdl-progress-bar"></div>
+                            </div>
+                            <div class="gpdl-money">
+                                <span class="gpdl-collected"></span>
+                                <span class="gpdl-percent"></span>
+                            </div>
+                            <div class="gpdl-footer">
+                                <span class="gpdl-donor"></span>
+                                <button type="button" class="gpdl-donate">
+                                    Donasi
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                -->
+        </div>
+      </div>
+      <div class="page" id="page-promos">
+        <div class="scroll-area">
+          <div class="gpr-header">
+            <div class="gpr-header-top">
+              <div class="gpr-header-action">
+                <a href="action://act/message_list" class="kpz-nav-button">
+                  <svg
+                    class="kpz-nav-image"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                    ></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                  <span class="kpz-badge"> {jumlah_pesan} </span>
+                </a>
+                <a href="action://act/cart" class="kpz-nav-button">
+                  <svg
+                    class="kpz-nav-image"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="9" cy="20" r="1.5"></circle>
+                    <circle cx="18" cy="20" r="1.5"></circle>
+                    <path
+                      d="M3 4h2l2.2 10.4a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 8H7"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="gpr-header-content">
+              <h1>Voucher Saya</h1>
+              <p>
+                Dapatkan diskon, cashback, dan voucher pilihan untuk pengalaman
+                belanja yang lebih menguntungkan.
+              </p>
+            </div>
+          </div>
+          <div class="gpr-info-card" onclick="gprOpenAllVoucher()">
+            <div class="gpr-info-icon">🎁</div>
+            <div class="gpr-info-text">
+              <span>Promo tersedia</span>
+              <h3 id="gprActiveVoucherCount">0 Voucher Aktif</h3>
+            </div>
+          </div>
+          <section class="gcsHalamanPromoBannerSection">
+            <div
+              id="gcsHalamanPromoBannerContainer"
+              class="gcsHalamanPromoBannerContainer"
+            ></div>
+          </section>
+          <div class="gpr-category">
+            <button id="gprBtnSemua" onclick="gprOpenCategory(event,'semua')">
+              Semua
+            </button>
+            <button onclick="gprOpenCategory(event,'populer')">Populer</button>
+            <button onclick="gprOpenCategory(event,'terbaru')">Terbaru</button>
+            <button onclick="gprOpenCategory(event,'eksklusif')">
+              Eksklusif
+            </button>
+            <button onclick="gprOpenCategory(event,'cashback')">
+              Cashback
+            </button>
+            <button onclick="gprOpenCategory(event,'terbatas')">
+              Terbatas
+            </button>
+          </div>
+          <div class="gpr-container">
+            <div id="semua" class="gpr-content">
+              <section class="gocesVoucherSection">
+                <div id="gocesVoucherSemua"></div>
+              </section>
+            </div>
+            <div id="populer" class="gpr-content">
+              <section class="gocesVoucherSection">
+                <div id="gocesVoucherPopuler"></div>
+              </section>
+            </div>
+            <div id="terbaru" class="gpr-content">
+              <section class="gocesVoucherSection">
+                <div id="gocesVoucherTerbaru"></div>
+              </section>
+            </div>
+            <div id="eksklusif" class="gpr-content">
+              <section class="gocesVoucherSection">
+                <div id="gocesVoucherEksklusif"></div>
+              </section>
+            </div>
+            <div id="cashback" class="gpr-content">
+              <section class="gocesVoucherSection">
+                <div id="gocesVoucherCashback"></div>
+              </section>
+            </div>
+            <div id="terbatas" class="gpr-content">
+              <section class="gocesVoucherSection">
+                <div id="gocesVoucherTerbatas"></div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page" id="page-orders">
+        <div class="scroll-area">
+          <div class="gak_header">
+            <div class="gak_title">Aktivitas</div>
+          </div>
+          <div class="gak_tabs">
+            <button
+              id="btn_order"
+              class="gak_tab active"
+              onclick="gakShowPage('order')"
+            >
+              Order
+            </button>
+            <button
+              id="btn_history"
+              class="gak_tab"
+              onclick="gakShowPage('history')"
+            >
+              History
+            </button>
+          </div>
+          <div id="page_order" class="gak_page active">
+            <div class="gak_content">
+              <a href="action://act/cart" class="gak_cart_card">
+                <div class="gak_cart_icon">🛒</div>
+                <div class="gak_cart_right">
+                  <div class="gak_cart_title">Halo, {nama}</div>
+                  <div class="gak_cart_desc">
+                    Produk favoritmu masih menunggu. Lanjutkan pesanan untuk
+                    pengalaman belanja yang lebih cepat.
+                  </div>
+                  <div class="gak_cart_btn">Lihat Keranjang ›</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div id="page_history" class="gak_page">
+            <div class="gak_content">
+              <div class="gak_menu_title">Aktivitas Transaksi</div>
+              <a href="action://act/shopping" class="gak_cart_card">
+                <div class="gak_history_icon">📦</div>
+                <div class="gak_cart_right">
+                  <div class="gak_cart_title">Riwayat Pesanan</div>
+                  <div class="gak_cart_desc">
+                    Lihat transaksi, top up, dan pesanan yang sedang berlangsung
+                    dengan lebih mudah.
+                  </div>
+                  <div class="gak_history_btn">Lihat Aktivitas ›</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page" id="page-chat">
+        <div class="scroll-area">
+          <div class="cyberInboxPage">
+            <div class="cyberInboxHeader">
+              <h1>Chat</h1>
+              <div class="cyberInboxSubtitle">Pesan dan notifikasi kamu</div>
+            </div>
+            <h3 class="cyberInboxTitle">Pilihan fitur</h3>
+            <div class="cyberFeatureWrap">
+              <a href="action://act/message_list" class="cyberFeatureCard">
+                <div class="cyberFeatureIcon cyberInboxIcon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M20 8v9H4V8l8 5 8-5zm0-2H4l8 5 8-5z" />
+                  </svg>
+                  <div class="cyberNotifyDot"></div>
+                </div>
+                <span>Inbox</span>
+              </a>
+              <a href="action://act/admin" class="cyberFeatureCard">
+                <div class="cyberFeatureIcon cyberHelpIcon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 2a8 8 0 0 0-8 8v3a2 2 0 0 0 2 2h1v-5H5a7 7 0 0 1 14 0h-2v5h1a2 2 0 0 0 2-2v-3a8 8 0 0 0-8-8zm-2 17h4a2 2 0 0 1-2 2 2 2 0 0 1-2-2z"
+                    />
+                  </svg>
+                </div>
+                <span>CS</span>
+              </a>
+            </div>
+            <div class="cyberSectionDivider"></div>
+          </div>
+        </div>
+      </div>
+      <div class="page" id="page-kpz-main-wrap">
+        <div class="scroll-area">
+          <div class="kpz-head-panel">
+            <div class="kpz-top-tools">
+              <button class="kpz-nav-button kpz-back-button" onclick="goBack()">
+                <svg
+                  class="kpz-nav-image"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 18l-6-6 6-6"></path>
+                </svg>
+              </button>
+              <div class="kpz-right-tools">
+                <a href="action://act/cart" class="kpz-nav-button">
+                  <svg
+                    class="kpz-nav-image"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="9" cy="20" r="1.5"></circle>
+                    <circle cx="18" cy="20" r="1.5"></circle>
+                    <path
+                      d="M3 4h2l2.2 10.4a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 8H7"
+                    ></path>
+                  </svg>
+                </a>
+                <a href="action://act/message_list" class="kpz-nav-button">
+                  <svg
+                    class="kpz-nav-image"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                    ></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                  <span class="kpz-badge"> {jumlah_pesan} </span>
+                </a>
+                <button class="kpz-nav-button" onclick="showPage('setting')">
+                  <svg
+                    class="kpz-nav-image"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                      d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .67.39 1.28 1 1.51.16.06.33.09.51.09H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="kpz-user-section">
+              <div class="kpz-user-left">
+                <div class="kpz-avatar-box">
+                  <img src="{foto}" />
+                </div>
+                <div class="kpz-user-info">
+                  <h2>{username}</h2>
+                  <p>{hp}</p>
+                  <small>{email}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="kpz-section-title">Saldo & Poin</div>
+          <div class="kpz-list-card">
+            <a href="action://act/balance" class="kpz-list-item">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
+                  <path
+                    d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2H3"
+                  ></path>
+                  <circle cx="16" cy="12" r="1"></circle>
+                </svg>
+                <span>Gocespay</span>
+              </div>
+            </a>
+            <a href="action://act/customer_points" class="kpz-list-item">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M12 8v8"></path>
+                  <path
+                    d="M9.5 10c0-1.1 1.1-2 2.5-2s2.5.9 2.5 2-1.1 2-2.5 2-2.5.9-2.5 2 1.1 2 2.5 2 2.5-.9 2.5-2"
+                  ></path>
+                </svg>
+                <span>Goces Poin</span>
+              </div>
+            </a>
+          </div>
+          <div class="kpz-section-title">Pendaftaran</div>
+          <div class="kpz-list-card">
+            <a href="action://act/verified_email" class="kpz-list-item">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <path d="M3 7l9 6 9-6"></path>
+                </svg>
+                <span>Verifikasi email</span>
+              </div>
+            </a>
+            <a href="action://act/verified_phone" class="kpz-list-item">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="7" y="2" width="10" height="20" rx="2"></rect>
+                  <line x1="11" y1="18" x2="13" y2="18"></line>
+                </svg>
+                <span>Verifikasi nomor telepon</span>
+              </div>
+            </a>
+          </div>
+          <div class="kpz-section-title">Referensi</div>
+          <div class="kpz-list-card">
+            <a href="action://act/referral" class="kpz-list-item">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <line x1="19" y1="8" x2="19" y2="14"></line>
+                  <line x1="16" y1="11" x2="22" y2="11"></line>
+                </svg>
+                <span>Undang teman</span>
+              </div>
+            </a>
+            <a href="action://act/referral_list" class="kpz-list-item">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Daftar temanmu</span>
+              </div>
+            </a>
+          </div>
+          <div class="kpz-section-title">Bantuan</div>
+          <div class="kpz-list-card">
+            <a class="kpz-list-item" onclick="openGocesAI()">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M9.1 9a3 3 0 1 1 5.8 1c0 2-3 2-3 4"></path>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <span>Bantuan & laporan</span>
+              </div>
+            </a>
+            <a href="action://act/admin" class="kpz-list-item">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                  <path d="M21 19a2 2 0 0 1-2 2h-1v-6h3z"></path>
+                  <path d="M3 19a2 2 0 0 0 2 2h1v-6H3z"></path>
+                </svg>
+                <span>Customer service</span>
+              </div>
+            </a>
+          </div>
+          <div class="kpz-section-title">Tentang Goces</div>
+          <div class="kpz-list-card">
+            <a
+              href="https://gocesapp.blogspot.com/2026/07/ketentuan-layanan-goces.html"
+              class="kpz-list-item"
+            >
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  ></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span>Ketentuan layanan</span>
+              </div>
+            </a>
+            <a
+              href="https://gocesapp.blogspot.com/2026/07/kebijakan-privasi-goces.html"
+              class="kpz-list-item"
+            >
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                  <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                </svg>
+                <span>Kebijakan privasi</span>
+              </div>
+            </a>
+            <a
+              href="https://gocesapp.blogspot.com/2026/07/atribusi-data-goces.html"
+              class="kpz-list-item"
+            >
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 7h5l2 2h11v10a2 2 0 0 1-2 2H3z"></path>
+                </svg>
+                <span>Atribusi data</span>
+              </div>
+            </a>
+            <a class="kpz-list-item" onclick="openGocesAI()">
+              <div class="kpz-list-left">
+                <svg
+                  class="kpz-list-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon
+                    points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"
+                  ></polygon>
+                </svg>
+                <span>Beri rating</span>
+              </div>
+            </a>
+          </div>
+          <a href="action://act/logout" class="kpz-signout-btn">
+            Keluar Akun
+          </a>
+        </div>
+      </div>
+      <div class="page" id="page-gofood">
+        <div class="scroll-area">
+          <header class="goces-header">
+            <div class="header-inner">
+              <button
+                type="button"
+                class="icon-circle-btn"
+                onclick="goBack()"
+                aria-label="Kembali"
+              >
+                <i class="ph ph-arrow-left"></i>
+              </button>
+              <div class="gofood-page-title">
+                <strong>GoFood</strong>
+                <span>Temukan makanan favoritmu</span>
+              </div>
+              <div class="header-right">
+                <a
+                  href="action://act/cart"
+                  class="icon-circle-btn"
+                  aria-label="Keranjang"
+                >
+                  <i class="ph ph-shopping-cart"></i>
+                </a>
+                <a
+                  href="action://act/message_list"
+                  class="icon-circle-btn"
+                  aria-label="Notifikasi"
+                >
+                  <i class="ph ph-bell"></i>
+                </a>
+              </div>
+            </div>
+          </header>
+          <div class="search-section">
+            <div class="search-wrapper">
+              <i class="ph ph-magnifying-glass search-inner-icon"></i>
+              <form action="action://act/search">
+                <input
+                  type="search"
+                  id="search"
+                  name="search"
+                  class="input"
+                  placeholder="Cari makanan favoritmu"
+                />
+              </form>
+            </div>
+          </div>
+          <section class="gcsFoodBannerSection">
+            <div
+              id="gcsFoodBannerContainer"
+              class="gcsFoodBannerContainer"
+            ></div>
+          </section>
+          <nav class="categories-bar">
+            <div class="categories-scroll">
+              <button class="category-chip active" data-category="semua">
+                Semua
+              </button>
+              <button class="category-chip" data-category="kuliner">
+                Kuliner
+              </button>
+              <button class="category-chip" data-category="pizza">Pizza</button>
+              <button class="category-chip" data-category="bakso">Bakso</button>
+              <button class="category-chip" data-category="snack">Snack</button>
+              <button class="category-chip" data-category="minuman">
+                Minuman
+              </button>
+            </div>
+          </nav>
+          <main class="content-body">
+            <section id="section-semua" class="menu-section section-visible">
+              <iframe
+                id="frame-kulinerhorizontal"
+                src="https://goces-api.vercel.app/horizontal/kulinerhorizontal"
+                scrolling="no"
+                title="Rekomendasi kuliner"
+                style="
+                  width: 100%;
+                  height: 0;
+                  border: none;
+                  display: block;
+                  overflow: hidden;
+                "
+              >
+              </iframe>
+            </section>
+            <section id="section-kuliner" class="menu-section">
+              <iframe
+                id="frame-kuliner"
+                src="https://goces-api.vercel.app/kuliner"
+                scrolling="no"
+                title="Menu kuliner"
+                style="
+                  width: 100%;
+                  height: 0;
+                  border: none;
+                  display: block;
+                  overflow: hidden;
+                "
+              >
+              </iframe>
+            </section>
+            <section id="section-pizza" class="menu-section">
+              <iframe
+                id="frame-pizza"
+                src="https://goces-api.vercel.app/pizza"
+                scrolling="no"
+                title="Menu pizza"
+                style="
+                  width: 100%;
+                  height: 0;
+                  border: none;
+                  display: block;
+                  overflow: hidden;
+                "
+              >
+              </iframe>
+            </section>
+            <section id="section-bakso" class="menu-section">
+              <iframe
+                id="frame-bakso"
+                src="https://goces-api.vercel.app/bakso"
+                scrolling="no"
+                title="Menu bakso"
+                style="
+                  width: 100%;
+                  height: 0;
+                  border: none;
+                  display: block;
+                  overflow: hidden;
+                "
+              >
+              </iframe>
+            </section>
+            <section id="section-snack" class="menu-section">
+              <iframe
+                id="frame-snack"
+                src="https://goces-api.vercel.app/snack"
+                scrolling="no"
+                title="Menu snack"
+                style="
+                  width: 100%;
+                  height: 0;
+                  border: none;
+                  display: block;
+                  overflow: hidden;
+                "
+              >
+              </iframe>
+            </section>
+            <section id="section-minuman" class="menu-section">
+              <iframe
+                id="frame-minuman"
+                src="https://goces-api.vercel.app/minuman"
+                scrolling="no"
+                title="Menu minuman"
+                style="
+                  width: 100%;
+                  height: 0;
+                  border: none;
+                  display: block;
+                  overflow: hidden;
+                "
+              >
+              </iframe>
+            </section>
+          </main>
+        </div>
+      </div>
+      <div class="page" id="page-setting">
+        <div class="scroll-area">
+          <div class="gset_header">
+            <button class="kpz-nav-button kpz-back-button" onclick="goBack()">
+              <svg
+                class="kpz-nav-image"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M15 18l-6-6 6-6"></path>
+              </svg>
+            </button>
+            <div class="gset_header_text">
+              <div class="gset_header_title">Pengaturan</div>
+              <div class="gset_header_subtitle">Kelola akun dan keamanan</div>
+            </div>
+          </div>
+          <div class="gset_card">
+            <a href="action://act/profile" class="gset_item">
+              <div class="gset_icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M20 21a8 8 0 0 0-16 0" />
+                  <circle cx="12" cy="8" r="4" />
+                </svg>
+              </div>
+              <div class="gset_content">
+                <div class="gset_title">Ubah Profil</div>
+                <div class="gset_subtitle">Nama, email dan nomor telepon</div>
+              </div>
+              <svg
+                class="gset_arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M9 18L15 12L9 6" />
+              </svg>
+            </a>
+            <a href="action://act/address" class="gset_item">
+              <div class="gset_icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 22s7-5.5 7-12a7 7 0 1 0-14 0c0 6.5 7 12 7 12z" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+              </div>
+              <div class="gset_content">
+                <div class="gset_title">Ubah Alamat</div>
+                <div class="gset_subtitle">Kelola alamat utama</div>
+              </div>
+              <svg
+                class="gset_arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M9 18L15 12L9 6" />
+              </svg>
+            </a>
+            <a href="action://act/password" class="gset_item">
+              <div class="gset_icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="5" y="11" width="14" height="10" rx="2" />
+                  <path d="M8 11V8a4 4 0 1 1 8 0v3" />
+                </svg>
+              </div>
+              <div class="gset_content">
+                <div class="gset_title">Ubah Password</div>
+                <div class="gset_subtitle">Tingkatkan keamanan akun</div>
+              </div>
+              <svg
+                class="gset_arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M9 18L15 12L9 6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- GOCES PEDULI PAGES — nonaktif sementara
+        <div class="page" id="page-goces-detail">
+            <div class="scroll-area">
+                <header class="gpd-header">
+                    <button type="button" class="gpd-back" onclick="goBack()">
+                        ←
+                    </button>
+                    <h1>Detail Donasi</h1>
+                </header>
+                <div id="gpdLoading" class="gpd-loading">
+                    Memuat data...
+                </div>
+                <main id="gpdContent" class="gpd-content" style="display:none;">
+                    <div class="gpd-banner">
+                        <img id="gpdImage" src="" alt="Campaign Donasi">
+                        <span id="gpdCategory" class="gpd-category"></span>
+                    </div>
+                    <section class="gpd-card">
+                        <h2 id="gpdTitle"></h2>
+                        <div class="gpd-progress-info">
+                            <span id="gpdCollected">Rp0</span>
+                            <span id="gpdPercent">0%</span>
+                        </div>
+                        <div class="gpd-progress">
+                            <div id="gpdBar" class="gpd-progress-bar"></div>
+                        </div>
+                        <div class="gpd-target">
+                            <span>Target Donasi</span>
+                            <strong id="gpdTarget">Rp0</strong>
+                        </div>
+                        <div class="gpd-donatur">
+                            👥 <strong id="gpdDonor">0</strong> Donatur
+                        </div>
+                    </section>
+                    <section class="gpd-about">
+                        <h3>Tentang Donasi</h3>
+                        <p id="gpdAbout"></p>
+                    </section>
+                </main>
+            </div>
+            <footer class="gpd-footer">
+                <button id="gpdDonate" type="button">
+                    Donasi Sekarang
+                </button>
+            </footer>
+        </div>
+        <div class="page" id="page-goces-payment">
+            <header class="gpay-header">
+                <button type="button" class="gpay-back" onclick="goBack()">
+                    ←
+                </button>
+                <h1>Donasi</h1>
+            </header>
+            <div id="gpayLoading" class="gpay-loading">
+                Memuat campaign...
+            </div>
+            <main id="gpayContent" class="gpay-content" style="display:none;">
+                <section class="gpay-campaign">
+                    <img id="gpayImage" src="" alt="Campaign Donasi">
+                    <div class="gpay-info">
+                        <span id="gpayCategory" class="gpay-badge">
+                            ❤️ GOCES Peduli
+                        </span>
+                        <h2 id="gpayTitle"></h2>
+                        <p id="gpayTarget"></p>
+                    </div>
+                </section>
+                <section class="gpay-card">
+                    <h3>Data Donatur</h3>
+                    <div class="gpay-group">
+                        <label for="donorName">
+                            Nama Lengkap
+                        </label>
+                        <input id="donorName" type="text" autocomplete="name" placeholder="Masukkan nama lengkap">
+                    </div>
+                    <div class="gpay-group">
+                        <label for="donorEmail">
+                            Email
+                        </label>
+                        <input id="donorEmail" type="email" autocomplete="email" placeholder="contoh@email.com">
+                    </div>
+                    <div class="gpay-group">
+                        <label for="donorPhone">
+                            Nomor WhatsApp
+                        </label>
+                        <input id="donorPhone" type="tel" inputmode="numeric" autocomplete="tel"
+                            placeholder="08xxxxxxxxxx">
+                    </div>
+                    <div class="gpay-check">
+                        <input id="isAnonymous" type="checkbox">
+                        <label for="isAnonymous">
+                            Tampilkan sebagai Donatur Anonim
+                        </label>
+                    </div>
+                </section>
+                <section class="gpay-card">
+                    <h3>Nominal Donasi</h3>
+                    <input id="donationAmount" type="number" min="10000" step="1000" value="10000">
+                    <div class="gpay-quick">
+                        <button type="button" data-value="10000">
+                            10 Ribu
+                        </button>
+                        <button type="button" data-value="25000">
+                            25 Ribu
+                        </button>
+                        <button type="button" data-value="50000">
+                            50 Ribu
+                        </button>
+                        <button type="button" data-value="100000">
+                            100 Ribu
+                        </button>
+                    </div>
+                </section>
+                <section class="gpay-card">
+                    <h3>Metode Pembayaran</h3>
+                    <div id="gpayMethods" class="gpay-methods">
+                        Memuat metode pembayaran...
+                    </div>
+                </section>
+                <section class="gpay-summary">
+                    <div>
+                        <span>Total Donasi</span>
+                        <strong id="gpayTotal">
+                            Rp10.000
+                        </strong>
+                    </div>
+                </section>
+            </main>
+            <footer class="gpay-footer">
+                <button id="gpaySubmit" type="button">
+                    Lanjutkan Pembayaran
+                </button>
+            </footer>
+        </div>
+        <div class="page" id="page-goces-waiting">
+            <header class="gwait-header">
+                <button type="button" class="gwait-back" onclick="goBack()">
+                    ←
+                </button>
+                <h1>Pembayaran Donasi</h1>
+            </header>
+            <div id="gwaitLoading" class="gwait-loading">
+                Memuat data pembayaran...
+            </div>
+            <main id="gwaitContent" class="gwait-content" style="display:none;">
+                <section class="gwait-status">
+                    <div id="gwaitStatusBadge" class="gwait-status-badge">
+                        MENUNGGU PEMBAYARAN
+                    </div>
+                    <h2 id="gwaitAmount">
+                        Rp0
+                    </h2>
+                    <p>
+                        Silakan selesaikan pembayaran sebelum waktu habis.
+                    </p>
+                </section>
+                <section id="gwaitQrCard" class="gwait-card">
+                    <h3>
+                        Scan QRIS
+                    </h3>
+                    <img id="gwaitQR" src="" alt="QRIS GOCES Peduli">
+                    <button id="gwaitDownload" type="button">
+                        Download QRIS
+                    </button>
+                </section>
+                <section id="gwaitCodeCard" class="gwait-card" style="display:none;">
+                    <h3 id="gwaitCodeTitle">
+                        Kode Pembayaran
+                    </h3>
+                    <div id="gwaitPaymentCode" class="gwait-payment-code">
+                        -
+                    </div>
+                    <button id="gwaitCopyCode" type="button">
+                        Salin Kode Pembayaran
+                    </button>
+                </section>
+                <section id="gwaitPayLinkCard" class="gwait-card" style="display:none;">
+                    <h3>
+                        Lanjutkan Pembayaran
+                    </h3>
+                    <a id="gwaitPayLink" class="gwait-pay-link" href="#" target="_blank" rel="noopener">
+                        Buka Halaman Pembayaran
+                    </a>
+                </section>
+                <section class="gwait-card">
+                    <h3>
+                        Batas Waktu Pembayaran
+                    </h3>
+                    <div id="gwaitCountdown" class="gwait-countdown">
+                        00:00:00
+                    </div>
+                </section>
+                <section class="gwait-card">
+                    <div class="gwait-row">
+                        <span>
+                            Metode
+                        </span>
+                        <strong id="gwaitMethod">
+                            QRIS
+                        </strong>
+                    </div>
+                    <div class="gwait-row">
+                        <span>
+                            Referensi
+                        </span>
+                        <strong id="gwaitReference">
+                            -
+                        </strong>
+                    </div>
+                </section>
+                <section class="gwait-card">
+                    <h3>
+                        Cara Pembayaran
+                    </h3>
+                    <div id="gwaitInstructions">
+                    </div>
+                </section>
+            </main>
+        </div>
+        <div class="page" id="page-goces-success">
+            <main class="gsuccess-container">
+                <div class="gsuccess-icon">
+                    ✓
+                </div>
+                <h1>
+                    Terima Kasih
+                </h1>
+                <p class="gsuccess-subtitle">
+                    Donasi Anda telah berhasil diterima.
+                    Terima kasih telah berbagi kebaikan
+                    bersama GOCES Peduli.
+                </p>
+                <section class="gsuccess-card">
+                    <div class="gsuccess-row">
+                        <span>
+                            Referensi
+                        </span>
+                        <strong id="successReference">
+                            -
+                        </strong>
+                    </div>
+                    <div class="gsuccess-row">
+                        <span>
+                            Campaign
+                        </span>
+                        <strong id="successCampaign">
+                            -
+                        </strong>
+                    </div>
+                    <div class="gsuccess-row">
+                        <span>
+                            Donatur
+                        </span>
+                        <strong id="successDonor">
+                            -
+                        </strong>
+                    </div>
+                    <div class="gsuccess-row">
+                        <span>
+                            Metode
+                        </span>
+                        <strong id="successMethod">
+                            -
+                        </strong>
+                    </div>
+                    <div class="gsuccess-row">
+                        <span>
+                            Nominal
+                        </span>
+                        <strong id="successAmount">
+                            Rp0
+                        </strong>
+                    </div>
+                    <div class="gsuccess-row">
+                        <span>
+                            Status
+                        </span>
+                        <strong id="successStatus" class="gsuccess-paid">
+                            BERHASIL
+                        </strong>
+                    </div>
+                </section>
+                <button id="btnBackHome" type="button" class="gsuccess-button">
+                    Kembali ke Beranda
+                </button>
+            </main>
+        </div>
+        <div class="page" id="page-goces-peduli">
+            <div class="scroll-area">
+                <header class="gpa-header">
+                    <button type="button" class="gpa-back" onclick="goBack()" aria-label="Kembali">
+                        <i class="ph ph-arrow-left"></i>
+                    </button>
+                    <div>
+                        <p class="gpa-eyebrow">GOCES PEDULI</p>
+                        <h1>Campaign untuk Indonesia</h1>
+                    </div>
+                </header>
+                <section class="gpa-hero">
+                    <div class="gpa-hero-icon">❤</div>
+                    <div>
+                        <strong>Kebaikanmu berarti</strong>
+                        <p>Pilih campaign yang ingin kamu bantu hari ini.</p>
+                    </div>
+                </section>
+                <div class="gpa-section-heading">
+                    <div>
+                        <h2>Campaign aktif</h2>
+                        <p id="gpa-count">Memuat campaign...</p>
+                    </div>
+                </div>
+                <div id="gpa-wrapper" class="gpa-grid" aria-live="polite">
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+    <nav class="bottom-nav">
+      <button
+        class="nav-item active"
+        data-page="home"
+        onclick="showPage('home', this)"
+      >
+        <div class="nav-icon-wrap">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+        </div>
+        <span class="nav-label">Beranda</span>
+      </button>
+      <button
+        class="nav-item"
+        data-page="promos"
+        onclick="showPage('promos', this)"
+      >
+        <div class="nav-icon-wrap">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="19" y1="5" x2="5" y2="19" />
+            <circle cx="6.5" cy="6.5" r="2.5" />
+            <circle cx="17.5" cy="17.5" r="2.5" />
+          </svg>
+        </div>
+        <span class="nav-label">Promo</span>
+      </button>
+      <button
+        class="nav-item"
+        data-page="orders"
+        onclick="showPage('orders', this)"
+      >
+        <div class="nav-icon-wrap">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+            />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
+        </div>
+        <span class="nav-label">Aktivitas</span>
+      </button>
+      <button
+        class="nav-item"
+        data-page="chat"
+        onclick="showPage('chat', this)"
+      >
+        <div class="nav-icon-wrap">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+            />
+          </svg>
+        </div>
+        <span class="nav-label">Chat</span>
+      </button>
+    </nav>
+    <script src="https://goces-app.vercel.app/js/versi-v02/global.js"></script>
+    <script src="https://goces-app.vercel.app/js/versi-v01/navigation.js"></script>
+    <script src="https://goces-app.vercel.app/js/versi-v01/feedback.js"></script>
+    <script src="https://goces-app.vercel.app/js/versi-v01/app.js"></script>
+    <script src="https://goces-app.vercel.app/js/iframe-resize.js"></script>
+    <script src="https://goces-app.vercel.app/js/core/goces-frame-manager.js"></script>
+    <script src="https://goces-app.vercel.app/js/versi-v01/food.js"></script>
+    <script src="https://goces-app.vercel.app/js/versi-v01/benner-home.js"></script>
+    <script src="https://goces-app.vercel.app/js/versi-v01/benner-food.js"></script>
+    <script src="https://goces-app.vercel.app/js/versi-v01/benner-promo.js"></script>
+    <script src="https://goces-app.vercel.app/js/development.js"></script>
+    <script src="https://goces-app.vercel.app/js/voucher/voucher-card.js"></script>
+    <script src="https://goces-app.vercel.app/js/voucher/voucher-modal.js"></script>
+    <script src="https://goces-app.vercel.app/js/voucher/voucher-copy.js"></script>
+    <script src="https://goces-app.vercel.app/js/voucher/voucher-countdown.js"></script>
+    <script src="https://goces-app.vercel.app/js/voucher/voucher-loader.js"></script>
+    <script src="https://goces-app.vercel.app/js/voucher/voucher-page.js"></script>
+    <!-- GOCES PEDULI SCRIPTS — nonaktif sementara
+    <script src="https://goces-api.vercel.app/modules/goces-peduli/detail/detail.js"></script>
+    <script src="https://goces-api.vercel.app/modules/goces-peduli/assets/js/script.js"></script>
+    <script src="https://goces-api.vercel.app/modules/goces-peduli/payment/payment.js"></script>
+    <script src="https://goces-api.vercel.app/modules/goces-peduli/success/success.js"></script>
+    <script src="https://goces-api.vercel.app/modules/goces-peduli/waiting/waiting.js"></script>
+    -->
+    <script>
+      function atcNearbyUpdate() {
+        const section = document.getElementById("atcNearbySection");
+        const container = document.getElementById("atcNearbyContainer");
+        if (!section || !container) return;
+        const nearbyHead = container.querySelector("#item-nearby-head");
+        if (!nearbyHead) {
+          section.style.display = "none";
+          return;
+        }
+        const total = nearbyHead.querySelectorAll(".item-nearby-row").length;
+        section.style.display = total > 0 ? "" : "none";
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        let retry = 0;
+        const timer = setInterval(function () {
+          atcNearbyUpdate();
+          retry++;
+          const nearbyHead = document.querySelector(
+            "#atcNearbyContainer #item-nearby-head",
+          );
+          if (
+            nearbyHead &&
+            nearbyHead.querySelectorAll(".item-nearby-row").length > 0
+          ) {
+            clearInterval(timer);
+          }
+          if (retry >= 20) {
+            clearInterval(timer);
+          }
+        }, 500);
+      });
+      window.showToast = function (message) {
+        const toast = document.getElementById("gocesToast");
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(window.toastTimer);
+        window.toastTimer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
+      };
+    </script>
+    <div id="gocesVoucherModal" class="gcv-modal">
+      <div class="gcv-modal-content">
+        <button type="button" class="gcv-modal-close">✕</button>
+        <div class="gcv-modal-header">
+          <img class="gcv-modal-image" src="" alt="Voucher" />
+        </div>
+        <h2 class="gcv-modal-title"></h2>
+        <p class="gcv-modal-description"></p>
+        <div class="gcv-modal-code"></div>
+        <div class="gcv-modal-details">
+          <div class="gcv-modal-period"></div>
+          <div class="gcv-modal-min-order"></div>
+          <div class="gcv-modal-max-discount"></div>
+        </div>
+        <div class="gcv-terms">
+          <div class="gcv-terms-title">Syarat & Ketentuan</div>
+          <ul class="gcv-terms-list"></ul>
+        </div>
+        <button type="button" class="gcv-modal-copy">Salin Voucher</button>
+      </div>
+    </div>
+    <div class="cyberPopupOverlay" id="cyberPopupOverlay">
+      <div class="cyberPopup">
+        <div class="cyberPopupTitle">Segera Hadir</div>
+        <div class="cyberPopupText">
+          Fitur ini masih dalam tahap pengembangan.
+          <br /><br />
+          Kami sedang menyiapkan fitur ini agar dapat memberikan pengalaman yang
+          lebih baik untukmu. Terima kasih atas kesabaran dan dukunganmu.
+          <br /><br />
+          Nantikan pembaruan berikutnya.
+        </div>
+        <button class="cyberPopupButton" onclick="closeGocesAI()">
+          Mengerti
+        </button>
+      </div>
+    </div>
+    <div
+      id="gprToast"
+      style="
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #111;
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-size: 13px;
+        display: none;
+        z-index: 9999;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      "
+    ></div>
+    <div id="gocesToast" class="goces-toast"></div>
+  </body>
+</html>

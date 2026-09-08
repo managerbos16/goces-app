@@ -1,0 +1,2954 @@
+﻿/* ============================================================
+   GOCES V03 DESIGN SYSTEM
+   Jagel / Android WebView / Android Tablet
+   ============================================================ */
+/* ============================================================
+   01. DESIGN TOKENS
+   ============================================================ */
+:root {
+  --g3-primary: #1d4ed8;
+  --g3-primary-dark: #1e40af;
+  --g3-primary-soft: #eff6ff;
+  --g3-bg: #f6f8fc;
+  --g3-surface: #ffffff;
+  --g3-surface-soft: #f8fafc;
+  --g3-text: #172033;
+  --g3-text-secondary: #64748b;
+  --g3-text-muted: #94a3b8;
+  --g3-border: #e5eaf1;
+  --g3-border-soft: #eef2f7;
+  --g3-danger: #ef4444;
+  --g3-success: #16a34a;
+  --g3-warning: #f59e0b;
+  --g3-page-pad: 16px;
+  --g3-content-max: 840px;
+  --g3-radius-sm: 10px;
+  --g3-radius-md: 14px;
+  --g3-radius-lg: 18px;
+  --g3-radius-xl: 22px;
+  --g3-shadow-card:
+    0 3px 14px rgba(15, 23, 42, 0.06);
+  --g3-shadow-floating:
+    0 8px 28px rgba(15, 23, 42, 0.10);
+  --g3-nav-height: 72px;
+  --g3-text-caption: 12px;
+  --g3-text-small: 13px;
+  --g3-text-body: 15px;
+  --g3-text-section: 17px;
+  --g3-text-title: 21px;
+  /* Normalisasi variable lama */
+  --blue: #1d4ed8;
+  --blue-dark: #1e40af;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #2563eb;
+  --blue-600: #1e4fd6;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --gray: #f6f8fc;
+  --gray-50: #ffffff;
+  --gray-100: #f8fafc;
+  --gray-200: #e5eaf1;
+  --gray-300: #d5dce6;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #172033;
+  --white: #ffffff;
+  --black: #0f172a;
+  --bg: #f6f8fc;
+  --bg-2: #f1f5f9;
+  --bg-3: #e9eef5;
+  --bg-soft: #f8fafc;
+  --bg-softs: #f6f8fc;
+  --card: #ffffff;
+  --card-2: #fbfcfe;
+  --text: #172033;
+  --text-2: #1e293b;
+  --text-muted: #64748b;
+  --text-soft: #94a3b8;
+  --border: #e5eaf1;
+  --border-soft: #eef2f7;
+  --screen-padding: 16px;
+  --section-gap: 20px;
+  --card-radius: 18px;
+  --icon-radius: 14px;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 20px;
+  --nav-height: 72px;
+  --card-shadow: var(--g3-shadow-card);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 8px 28px rgba(15, 23, 42, 0.10);
+}
+/* ============================================================
+   02. GLOBAL ANDROID BASE
+   ============================================================ */
+html {
+  width: 100%;
+  min-height: 100%;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--g3-bg);
+  color: var(--g3-text);
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  font-size: var(--g3-text-body);
+  font-weight: 400;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-x: none;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  touch-action: manipulation;
+}
+img,
+svg,
+iframe {
+  max-width: 100%;
+}
+.app-wrapper {
+  width: 100%;
+  min-width: 0;
+  min-height: 100dvh;
+  height: 100dvh;
+  position: relative;
+  margin: 0 auto;
+  background: var(--g3-bg);
+  overflow: hidden;
+}
+.page {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  background: var(--g3-bg);
+}
+.page.active {
+  display: flex;
+}
+.scroll-area {
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom:
+    calc(
+      var(--g3-nav-height) +
+      env(safe-area-inset-bottom) +
+      18px
+    );
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+/* ============================================================
+   03. COMMON TYPOGRAPHY
+   ============================================================ */
+.gpr-header-content h1,
+.gak_title,
+.cyberInboxHeader h1,
+.gset_header_title,
+.gofood-page-title strong {
+  letter-spacing: -0.25px;
+}
+.gpr-header-content p,
+.gak_cart_desc,
+.cyberInboxSubtitle,
+.gset_header_subtitle,
+.gofood-page-title span {
+  font-weight: 400;
+}
+/* ============================================================
+   04. HOME HEADER
+   ============================================================ */
+.home-header {
+  width: 100%;
+  padding:
+    calc(14px + env(safe-area-inset-top))
+    var(--g3-page-pad)
+    38px;
+  background: var(--g3-primary);
+  border-radius: 0 0 24px 24px;
+  overflow: hidden;
+}
+.header-row {
+  gap: 10px;
+}
+.home-header .avatar-btn,
+.home-header .kpz-nav-button {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 50%;
+}
+.home-header .avatar-img {
+  width: 100%;
+  height: 100%;
+}
+.search-bar {
+  min-width: 0;
+  height: 46px;
+  padding: 0 14px;
+  gap: 10px;
+  border-radius: 23px;
+  background: #ffffff;
+  box-shadow:
+    0 3px 12px rgba(15, 23, 42, 0.12);
+}
+.search-bar svg {
+  width: 19px;
+  height: 19px;
+}
+.search-bar input {
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--g3-text);
+}
+.search-bar input::placeholder {
+  color: #94a3b8;
+}
+.home-hero-slider {
+  width: 100%;
+  margin-top: 14px;
+  border-radius: 16px;
+  aspect-ratio: 16 / 7;
+}
+/* ============================================================
+   05. HOME WALLET
+   ============================================================ */
+.wallet-card {
+  min-width: 0;
+  min-height: 112px;
+  margin:
+    -28px
+    var(--g3-page-pad)
+    0;
+  padding: 16px;
+  gap: 14px;
+  border: 1px solid var(--g3-border-soft);
+  border-radius: 18px;
+  background: var(--g3-surface);
+  box-shadow: var(--g3-shadow-card);
+}
+.wallet-brand span {
+  font-size: 13px;
+  font-weight: 700;
+}
+.wallet-g-icon {
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+  border-radius: 8px;
+  background: var(--g3-primary);
+}
+.wallet-balance {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.wallet-coins {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--g3-text-secondary);
+}
+.wallet-actions {
+  gap: 14px;
+}
+.wallet-action-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+}
+.wallet-action-icon.blue,
+.wallet-action-icon.gray {
+  background: var(--g3-primary);
+}
+.wallet-action span {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+/* ============================================================
+   06. HOME SERVICES
+   ============================================================ */
+.gox_service_grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px 8px;
+  margin-top: 16px;
+  padding: 0 var(--g3-page-pad);
+}
+.gox_service_item {
+  min-width: 0;
+}
+.gox_icon_card {
+  width: 58px;
+  height: 58px;
+  margin-top: 8px;
+  border-radius: 16px;
+  box-shadow:
+    0 3px 10px rgba(15, 23, 42, 0.09);
+}
+.gox_icon_card img {
+  width: 43px;
+  height: 43px;
+}
+.gox_service_item p {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.gox_promo_ribbon {
+  top: -6px;
+  left: -5px;
+  padding: 3px 6px;
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 5px;
+}
+/* ============================================================
+   07. HOME SECTIONS
+   ============================================================ */
+.gcsPromoBannerSection,
+.gcvh-section,
+.atc-nearby-section {
+  width: 100%;
+}
+.gcsPromoBannerSection {
+  margin-top: 18px;
+}
+.gcsPromoBannerTitle,
+.gcvh-title,
+.atc-nearby-title {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: var(--g3-text) !important;
+}
+.gcvh-header,
+.atc-nearby-header {
+  padding-left: var(--g3-page-pad) !important;
+  padding-right: var(--g3-page-pad) !important;
+}
+.gcvh-seeall,
+.atc-nearby-seeall {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--g3-primary) !important;
+}
+/* Resto terdekat */
+.atc-nearby-wrapper #item-nearby-head {
+  gap: 12px !important;
+  padding-left: var(--g3-page-pad) !important;
+  padding-right: var(--g3-page-pad) !important;
+}
+.atc-nearby-wrapper .item-nearby-row {
+  width: 168px !important;
+  border-radius: 16px !important;
+}
+.atc-nearby-wrapper .item-nearby-row::before {
+  padding: 5px 10px !important;
+  font-size: 10px !important;
+}
+.atc-nearby-wrapper .item-nearby-title {
+  padding: 10px 12px 4px !important;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+}
+.atc-nearby-wrapper .item-nearby-distance {
+  font-size: 12px !important;
+}
+.atc-nearby-wrapper .item-nearby-distance::after {
+  font-size: 11px !important;
+}
+.atc-nearby-wrapper .item-nearby-status-open {
+  font-size: 11px !important;
+}
+/* ============================================================
+   08. PROMOS PAGE
+   ============================================================ */
+#page-promos {
+  background: var(--g3-bg);
+}
+.gpr-header {
+  padding:
+    calc(16px + env(safe-area-inset-top))
+    var(--g3-page-pad)
+    62px;
+  border-radius: 0 0 24px 24px;
+  background: var(--g3-primary);
+}
+.gpr-header-action {
+  gap: 10px;
+}
+#page-promos .kpz-nav-button,
+.gpr-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+.gpr-header-content {
+  margin-top: 18px;
+}
+.gpr-header-content h1 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.gpr-header-content p {
+  margin: 0;
+  max-width: 520px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.gpr-info-card {
+  margin:
+    -34px
+    var(--g3-page-pad)
+    16px;
+  padding: 15px;
+  gap: 13px;
+  border: 1px solid var(--g3-border-soft);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--g3-shadow-card);
+}
+.gpr-info-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 13px;
+  font-size: 24px;
+}
+.gpr-info-text span {
+  font-size: 13px;
+}
+.gpr-info-text h3 {
+  margin-top: 3px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.gpr-category {
+  gap: 8px;
+  padding:
+    12px
+    var(--g3-page-pad)
+    14px;
+}
+.gpr-category button {
+  min-height: 40px;
+  padding: 9px 15px;
+  border: 1px solid var(--g3-border);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+}
+.gpr-category button.active {
+  border-color: var(--g3-primary);
+  background: var(--g3-primary);
+  color: #fff;
+  box-shadow: none;
+}
+.gpr-content {
+  padding:
+    0
+    var(--g3-page-pad)
+    20px;
+}
+/* Voucher promo - hentikan ukuran 9px/10px */
+#page-promos .gcv-card {
+  border-radius: 16px !important;
+}
+#page-promos .gcv-card .gcv-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+#page-promos .gcv-card .gcv-description {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+#page-promos .gcv-card .gcv-period {
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+}
+#page-promos .gcv-card .gcv-countdown {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+#page-promos .gcv-card .gcv-copy {
+  min-height: 36px !important;
+  padding: 8px 11px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+/* ============================================================
+   09. ORDERS / AKTIVITAS
+   ============================================================ */
+#page-orders {
+  background: var(--g3-bg);
+}
+#page-orders .gak_header {
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    var(--g3-page-pad)
+    8px;
+  background: transparent;
+}
+#page-orders .gak_title {
+  font-size: 21px;
+  font-weight: 700;
+}
+#page-orders .gak_header::after {
+  margin-top: 5px;
+  color: var(--g3-text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+#page-orders .gak_tabs {
+  gap: 4px;
+  margin:
+    12px
+    var(--g3-page-pad)
+    20px;
+  padding: 4px;
+  border: 1px solid var(--g3-border);
+  border-radius: 12px;
+  background: #fff;
+}
+#page-orders .gak_tab {
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+#page-orders .gak_content {
+  padding:
+    0
+    var(--g3-page-pad)
+    24px;
+}
+#page-orders .gak_menu_title {
+  margin-bottom: 10px;
+  color: var(--g3-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.45px;
+}
+#page-orders .gak_cart_card {
+  min-height: 92px;
+  margin-bottom: 14px;
+  padding: 16px;
+  gap: 14px;
+  border: 1px solid var(--g3-border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--g3-shadow-card);
+}
+#page-orders .gak_cart_icon,
+#page-orders .gak_history_icon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 13px;
+  font-size: 22px;
+}
+#page-orders .gak_cart_title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+#page-orders .gak_cart_desc {
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--g3-text-secondary);
+}
+#page-orders .gak_cart_btn,
+#page-orders .gak_history_btn {
+  margin-top: 9px;
+  padding: 0;
+  color: var(--g3-primary);
+  font-size: 13px;
+  font-weight: 600;
+}
+/* ============================================================
+   10. CHAT
+   ============================================================ */
+#page-chat {
+  background: var(--g3-bg);
+}
+.cyberInboxPage {
+  padding-bottom: 24px;
+}
+.cyberInboxHeader {
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    var(--g3-page-pad)
+    22px;
+  border-radius: 0 0 22px 22px;
+  background: var(--g3-primary);
+}
+.cyberInboxHeader h1 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+}
+.cyberInboxSubtitle {
+  margin-top: 5px;
+  font-size: 13px;
+}
+.cyberInboxTitle {
+  margin:
+    18px
+    var(--g3-page-pad)
+    10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.cyberFeatureWrap {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding:
+    0
+    var(--g3-page-pad);
+}
+.cyberFeatureCard {
+  width: auto;
+  min-width: 0;
+  min-height: 112px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--g3-border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--g3-shadow-card);
+}
+.cyberFeatureIcon {
+  width: 48px;
+  height: 48px;
+}
+.cyberFeatureIcon svg {
+  width: 25px;
+  height: 25px;
+}
+.cyberFeatureCard span {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.cyberSectionDivider {
+  height: 1px;
+  margin: 20px var(--g3-page-pad);
+  background: var(--g3-border);
+}
+/* ============================================================
+   11. PROFILE
+   ============================================================ */
+#page-kpz-main-wrap {
+  background: var(--g3-bg);
+}
+#page-kpz-main-wrap .kpz-head-panel {
+  padding:
+    calc(14px + env(safe-area-inset-top))
+    var(--g3-page-pad)
+    20px;
+  border-radius: 0 0 22px 22px;
+  background: var(--g3-primary);
+  box-shadow: none;
+}
+#page-kpz-main-wrap .kpz-top-tools {
+  margin-bottom: 20px;
+}
+#page-kpz-main-wrap .kpz-nav-button {
+  width: 44px;
+  height: 44px;
+}
+#page-kpz-main-wrap .kpz-nav-image {
+  width: 21px;
+  height: 21px;
+}
+#page-kpz-main-wrap .kpz-right-tools {
+  gap: 8px;
+}
+#page-kpz-main-wrap .kpz-avatar-box {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+}
+#page-kpz-main-wrap .kpz-user-left {
+  min-width: 0;
+  gap: 13px;
+}
+#page-kpz-main-wrap .kpz-user-info {
+  min-width: 0;
+}
+#page-kpz-main-wrap .kpz-user-info h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+#page-kpz-main-wrap .kpz-user-info p {
+  font-size: 14px;
+}
+#page-kpz-main-wrap .kpz-user-info small {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#page-kpz-main-wrap .kpz-section-title {
+  margin:
+    22px
+    var(--g3-page-pad)
+    9px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--g3-text-secondary);
+}
+#page-kpz-main-wrap .kpz-list-card {
+  margin:
+    0
+    var(--g3-page-pad);
+  border: 1px solid var(--g3-border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: none;
+}
+#page-kpz-main-wrap .kpz-list-item {
+  min-height: 56px;
+  height: auto;
+  padding: 12px 15px;
+}
+#page-kpz-main-wrap .kpz-list-left {
+  gap: 13px;
+}
+#page-kpz-main-wrap .kpz-list-left span {
+  font-size: 14px;
+  font-weight: 500;
+}
+#page-kpz-main-wrap .kpz-list-icon {
+  width: 21px;
+  height: 21px;
+}
+#page-kpz-main-wrap .kpz-signout-btn {
+  width: auto;
+  min-height: 50px;
+  margin:
+    24px
+    var(--g3-page-pad);
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* ============================================================
+   12. SETTINGS
+   ============================================================ */
+#page-setting {
+  background: var(--g3-bg);
+}
+.gset_header {
+  gap: 12px;
+  padding:
+    calc(14px + env(safe-area-inset-top))
+    var(--g3-page-pad)
+    14px;
+  background: var(--g3-primary);
+}
+.gset_header .kpz-nav-button {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+}
+.gset_header_title {
+  font-size: 18px;
+  font-weight: 700;
+}
+.gset_header_subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+}
+.gset_card {
+  margin: 16px var(--g3-page-pad);
+  border: 1px solid var(--g3-border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--g3-shadow-card);
+}
+.gset_item {
+  min-height: 72px;
+  padding: 13px 15px;
+}
+.gset_icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  margin-right: 13px;
+  border-radius: 13px;
+  background: var(--g3-primary-soft);
+  color: var(--g3-primary);
+}
+.gset_icon svg {
+  width: 21px;
+  height: 21px;
+}
+.gset_title {
+  font-size: 15px;
+  font-weight: 600;
+}
+.gset_subtitle {
+  margin-top: 3px;
+  color: var(--g3-text-secondary);
+  font-size: 13px;
+}
+.gset_arrow {
+  width: 19px;
+  height: 19px;
+}
+/* ============================================================
+   13. GOFOOD
+   ============================================================ */
+#page-gofood {
+  background: var(--g3-bg);
+}
+#page-gofood .scroll-area {
+  padding-bottom:
+    calc(
+      var(--g3-nav-height) +
+      env(safe-area-inset-bottom) +
+      18px
+    );
+}
+#page-gofood .goces-header {
+  padding:
+    calc(14px + env(safe-area-inset-top))
+    var(--g3-page-pad)
+    8px;
+  background: var(--g3-bg);
+}
+#page-gofood .header-inner {
+  min-height: 48px;
+  gap: 10px;
+}
+#page-gofood .icon-circle-btn {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border: 1px solid var(--g3-border);
+  border-radius: 13px;
+  background: #fff;
+  color: var(--g3-text);
+  box-shadow: 0 2px 7px rgba(15, 23, 42, 0.04);
+}
+#page-gofood .icon-circle-btn i {
+  font-size: 21px;
+}
+#page-gofood .gofood-page-title {
+  min-width: 0;
+  flex: 1;
+}
+#page-gofood .gofood-page-title strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+#page-gofood .gofood-page-title span {
+  display: block;
+  margin-top: 2px;
+  color: var(--g3-text-secondary);
+  font-size: 12px;
+  line-height: 1.3;
+}
+#page-gofood .header-right {
+  gap: 7px;
+}
+#page-gofood .search-section {
+  padding:
+    8px
+    var(--g3-page-pad)
+    10px;
+}
+#page-gofood .search-wrapper {
+  min-height: 46px;
+  border: 1px solid var(--g3-border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: none;
+}
+#page-gofood .search-wrapper form {
+  width: 100%;
+}
+#page-gofood .input {
+  width: 100%;
+  height: 46px;
+  font-size: 14px;
+}
+#page-gofood .search-inner-icon {
+  font-size: 20px;
+}
+#page-gofood .categories-bar {
+  padding: 0;
+}
+#page-gofood .categories-scroll {
+  gap: 8px;
+  padding:
+    10px
+    var(--g3-page-pad)
+    12px;
+}
+#page-gofood .category-chip {
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+#page-gofood .content-body {
+  padding:
+    0
+    var(--g3-page-pad);
+}
+/* Banner lama membatasi tablet hanya 480px.
+   V03 membolehkan melebar secara responsive. */
+.gcsFoodBannerSection,
+.gcsPromoBannerSection,
+.gcsHalamanPromoBannerSection {
+  max-width: none !important;
+}
+/* ============================================================
+   14. VOUCHER GLOBAL
+   ============================================================ */
+.gcv-wrapper {
+  gap: 12px;
+  padding: 0;
+}
+.gcv-card {
+  border-radius: 16px;
+  border-color: var(--g3-border);
+  box-shadow: var(--g3-shadow-card);
+}
+.gcv-card .gcv-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+.gcv-card .gcv-description {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+.gcv-card .gcv-period {
+  font-size: 11px !important;
+}
+.gcv-card .gcv-copy {
+  font-size: 11px !important;
+}
+/* Horizontal voucher tidak boleh melebihi viewport */
+.gcvh-container .gcv-card {
+  max-width: calc(100vw - (var(--g3-page-pad) * 2));
+}
+/* ============================================================
+   15. MODALS / POPUPS
+   ============================================================ */
+.gcv-modal-content,
+.cyberPopup,
+.goces-dev-box {
+  width: calc(100% - 32px) !important;
+  max-width: 400px !important;
+  border-radius: 20px !important;
+}
+.cyberPopupTitle {
+  font-size: 19px;
+}
+.cyberPopupText {
+  font-size: 14px;
+  line-height: 1.55;
+}
+.cyberPopupButton,
+.goces-dev-button,
+.gcv-modal-copy {
+  min-height: 48px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.goces-toast {
+  max-width: calc(100% - 32px);
+  padding: 12px 16px;
+  font-size: 13px;
+  border-radius: 12px;
+}
+/* ============================================================
+   16. BOTTOM NAVIGATION
+   ============================================================ */
+.bottom-nav {
+  min-height:
+    calc(
+      var(--g3-nav-height) +
+      env(safe-area-inset-bottom)
+    );
+  padding:
+    7px
+    14px
+    calc(7px + env(safe-area-inset-bottom));
+  gap: 2px;
+  justify-content: space-around;
+  border-top: 1px solid var(--g3-border);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow:
+    0 -5px 18px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.nav-item {
+  width: auto;
+  max-width: 110px;
+  min-width: 0;
+  min-height: 56px;
+  flex: 1;
+  gap: 2px;
+  padding: 2px 4px;
+  border-radius: 14px;
+  justify-content: center;
+}
+.nav-icon-wrap {
+  width: 38px;
+  height: 36px;
+  border-radius: 12px;
+}
+.nav-item svg {
+  width: 23px !important;
+  height: 23px !important;
+}
+.nav-item.active .nav-icon-wrap {
+  background: var(--g3-primary-soft);
+}
+.nav-item.active svg {
+  color: var(--g3-primary);
+}
+.nav-item:not(.active) svg {
+  color: #8b98aa;
+}
+.nav-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.nav-item.active .nav-label {
+  color: var(--g3-primary);
+}
+.nav-item:not(.active) .nav-label {
+  color: #778397;
+}
+/* ============================================================
+   17. VERY SMALL ANDROID
+   320 / 340 / 360
+   ============================================================ */
+@media (max-width: 359px) {
+  :root {
+    --g3-page-pad: 12px;
+    --screen-padding: 12px;
+    --g3-text-body: 14px;
+  }
+  .home-header {
+    padding-bottom: 34px;
+  }
+  .home-header .avatar-btn,
+  .home-header .kpz-nav-button {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+  .search-bar {
+    height: 44px;
+    padding: 0 11px;
+  }
+  .search-bar input {
+    font-size: 14px;
+  }
+  .wallet-card {
+    padding: 14px;
+    gap: 10px;
+  }
+  .wallet-balance {
+    font-size: 20px;
+  }
+  .wallet-actions {
+    gap: 9px;
+  }
+  .wallet-action-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .gox_service_grid {
+    gap: 14px 5px;
+  }
+  .gox_icon_card {
+    width: 52px;
+    height: 52px;
+  }
+  .gox_icon_card img {
+    width: 39px;
+    height: 39px;
+  }
+  .gox_service_item p {
+    font-size: 12px;
+  }
+  .nav-label {
+    font-size: 11px;
+  }
+  #page-gofood .header-right {
+    gap: 4px;
+  }
+  #page-gofood .icon-circle-btn {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+}
+/* ============================================================
+   18. LARGE ANDROID / SMALL TABLET
+   ============================================================ */
+@media (min-width: 600px) {
+  :root {
+    --g3-page-pad: 24px;
+    --screen-padding: 24px;
+    --g3-text-body: 16px;
+  }
+  .app-wrapper {
+    width: min(100%, 960px);
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--g3-bg);
+  }
+  .home-header .header-row,
+  .home-header .home-hero-slider {
+    max-width: var(--g3-content-max);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .home-header .home-hero-slider {
+    margin-top: 16px;
+  }
+  .wallet-card {
+    width:
+      min(
+        calc(100% - 48px),
+        var(--g3-content-max)
+      );
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .gox_service_grid,
+  .gcvh-section,
+  .atc-nearby-section,
+  #page-orders .gak_tabs,
+  #page-orders .gak_content,
+  .cyberInboxTitle,
+  .cyberFeatureWrap,
+  .cyberSectionDivider,
+  .gset_card,
+  #page-gofood .search-section,
+  #page-gofood .categories-bar,
+  #page-gofood .content-body,
+  .gcsPromoBannerSection,
+  .gcsFoodBannerSection,
+  .gcsHalamanPromoBannerSection {
+    width: min(100%, var(--g3-content-max));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #page-promos .gpr-info-card,
+  #page-kpz-main-wrap .kpz-list-card,
+  #page-kpz-main-wrap .kpz-section-title,
+  #page-kpz-main-wrap .kpz-signout-btn {
+    width:
+      min(
+        calc(100% - 48px),
+        var(--g3-content-max)
+      );
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #page-kpz-main-wrap .kpz-section-title {
+    margin-top: 22px;
+    margin-bottom: 9px;
+  }
+  #page-kpz-main-wrap .kpz-signout-btn {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+  .gpr-header-content {
+    max-width: var(--g3-content-max);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 18px;
+  }
+  .gpr-header-top {
+    max-width: var(--g3-content-max);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #page-orders .gak_header,
+  .cyberInboxHeader > *,
+  .gset_header,
+  #page-gofood .header-inner {
+    max-width: var(--g3-content-max);
+  }
+  .bottom-nav {
+    left: 50%;
+    right: auto;
+    width: min(100%, 960px);
+    transform: translateX(-50%);
+  }
+  .nav-item {
+    max-width: 150px;
+  }
+}
+/* ============================================================
+   19. LARGE TABLET
+   ============================================================ */
+@media (min-width: 840px) {
+  :root {
+    --g3-page-pad: 28px;
+    --screen-padding: 28px;
+  }
+  .gox_icon_card {
+    width: 62px;
+    height: 62px;
+  }
+  .gox_icon_card img {
+    width: 46px;
+    height: 46px;
+  }
+  .gox_service_item p {
+    font-size: 14px;
+  }
+  .cyberFeatureWrap {
+    grid-template-columns:
+      repeat(2, minmax(0, 240px));
+    justify-content: start;
+  }
+}
+
+/* ============================================================
+   GOCES V03 POLISH 02
+   Android refinement + ultra narrow + tablet
+   ============================================================ */
+/* ------------------------------------------------------------
+   GOFOOD HEADER
+   Tampilkan kembali cart + notification
+   ------------------------------------------------------------ */
+#page-gofood .header-right {
+  display: flex !important;
+  align-items: center;
+  margin-left: auto;
+  gap: 7px;
+}
+#page-gofood .gofood-page-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+#page-gofood .gofood-page-title strong,
+#page-gofood .gofood-page-title span {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* ------------------------------------------------------------
+   PROFILE
+   Hilangkan batas lama 450px
+   ------------------------------------------------------------ */
+#page-kpz-main-wrap .kpz-main-wrap {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+/* ------------------------------------------------------------
+   BOTTOM NAV
+   ------------------------------------------------------------ */
+.nav-label {
+  white-space: nowrap;
+}
+/* ------------------------------------------------------------
+   EXTRA SMALL WEBVIEW
+   Screenshot test sekitar 256-263px
+   ------------------------------------------------------------ */
+@media (max-width: 300px) {
+  :root {
+    --g3-page-pad: 10px;
+    --screen-padding: 10px;
+  }
+  .home-header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .home-header .avatar-btn,
+  .home-header .kpz-nav-button {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+  .search-bar {
+    height: 40px;
+    padding: 0 9px;
+    gap: 7px;
+  }
+  .search-bar svg {
+    width: 17px;
+    height: 17px;
+  }
+  .search-bar input {
+    font-size: 12px;
+  }
+  .wallet-card {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 12px;
+  }
+  .wallet-balance {
+    font-size: 19px;
+  }
+  .wallet-actions {
+    gap: 7px;
+  }
+  .wallet-action-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+  .wallet-action span {
+    font-size: 10.5px;
+  }
+  .gox_service_grid {
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 13px 4px;
+  }
+  .gox_icon_card {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+  }
+  .gox_icon_card img {
+    width: 37px;
+    height: 37px;
+  }
+  .gox_service_item p {
+    font-size: 11px;
+  }
+  /* GoFood harus tetap muat:
+     Back + judul + Cart + Notification */
+  #page-gofood .goces-header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #page-gofood .header-inner {
+    gap: 5px;
+  }
+  #page-gofood .icon-circle-btn {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    border-radius: 10px;
+  }
+  #page-gofood .icon-circle-btn i {
+    font-size: 18px;
+  }
+  #page-gofood .header-right {
+    gap: 4px;
+  }
+  #page-gofood .gofood-page-title strong {
+    font-size: 15px;
+  }
+  #page-gofood .gofood-page-title span {
+    display: none;
+  }
+  #page-gofood .search-section,
+  #page-gofood .categories-scroll,
+  #page-gofood .content-body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /* Bottom nav ultra narrow */
+  .bottom-nav {
+    padding-left: 5px;
+    padding-right: 5px;
+    gap: 0;
+  }
+  .nav-item {
+    min-height: 52px;
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+  .nav-icon-wrap {
+    width: 32px;
+    height: 32px;
+  }
+  .nav-item svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .nav-label {
+    font-size: 10px;
+  }
+}
+/* ------------------------------------------------------------
+   TABLET
+   ------------------------------------------------------------ */
+@media (min-width: 600px) {
+  #page-gofood .header-inner {
+    width: min(100%, var(--g3-content-max));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #page-orders .gak_header {
+    width: min(
+      calc(100% - 48px),
+      var(--g3-content-max)
+    );
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cyberInboxHeader h1,
+  .cyberInboxSubtitle {
+    width: min(
+      calc(100% - 48px),
+      var(--g3-content-max)
+    );
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cyberInboxSubtitle {
+    margin-top: 5px;
+  }
+  .gset_header {
+    width: 100%;
+    max-width: none !important;
+  }
+  #page-kpz-main-wrap .kpz-main-wrap {
+    width: 100%;
+    max-width: none;
+  }
+}
+/* ============================================================
+   GOCES V03 POLISH 03 - GLOBAL BACK BUTTON
+   Semua halaman memakai satu tombol kembali
+   ============================================================ */
+button[onclick="goBack()"] {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.08) !important;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+/* Sembunyikan icon lama.
+   Kita gambar arrow yang sama untuk SEMUA halaman. */
+button[onclick="goBack()"] > svg,
+button[onclick="goBack()"] > i {
+  display: none !important;
+}
+/* Arrow Android-style */
+button[onclick="goBack()"]::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-left: 4px;
+  border-left: 2px solid #1d4ed8;
+  border-bottom: 2px solid #1d4ed8;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+}
+/* Press feedback */
+button[onclick="goBack()"]:active {
+  transform: scale(0.94) !important;
+  background: #f8fafc !important;
+  box-shadow:
+    0 1px 4px rgba(15, 23, 42, 0.06) !important;
+}
+/* Focus accessibility */
+button[onclick="goBack()"]:focus-visible {
+  outline: 2px solid rgba(29, 78, 216, 0.28) !important;
+  outline-offset: 2px;
+}
+/* Ultra-small Android/WebView */
+@media (max-width: 300px) {
+  button[onclick="goBack()"] {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    flex-basis: 40px !important;
+  }
+}
+/* Tablet */
+@media (min-width: 600px) {
+  button[onclick="goBack()"] {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    flex-basis: 46px !important;
+  }
+}
+/* ============================================================
+   GOCES V03 POLISH 04 - UNIFIED HEADER ACTIONS
+   BACK
+   NOTIFICATION
+   CART
+   SETTINGS
+   Semua menggunakan satu standar Android header action.
+   ============================================================ */
+/* ============================================================
+   01. STANDARD SIZE
+   ============================================================ */
+:root {
+  --g3-header-action-size: 44px;
+  --g3-header-icon-size: 21px;
+}
+/* ============================================================
+   02. NOTIFICATION / CART / SETTINGS
+   ============================================================ */
+a.kpz-nav-button[href="action://act/message_list"],
+a.kpz-nav-button[href="action://act/cart"],
+a.icon-circle-btn[href="action://act/message_list"],
+a.icon-circle-btn[href="action://act/cart"],
+button.kpz-nav-button[onclick="showPage('setting')"] {
+  width: var(--g3-header-action-size) !important;
+  height: var(--g3-header-action-size) !important;
+  min-width: var(--g3-header-action-size) !important;
+  min-height: var(--g3-header-action-size) !important;
+  flex:
+    0
+    0
+    var(--g3-header-action-size) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border:
+    1px
+    solid
+    #e2e8f0 !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #1d4ed8 !important;
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.08) !important;
+  text-decoration: none !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease !important;
+}
+/* ============================================================
+   03. SVG ICON
+   ============================================================ */
+a.kpz-nav-button[href="action://act/message_list"] svg,
+a.kpz-nav-button[href="action://act/cart"] svg,
+a.icon-circle-btn[href="action://act/message_list"] svg,
+a.icon-circle-btn[href="action://act/cart"] svg,
+button.kpz-nav-button[onclick="showPage('setting')"] svg {
+  display: block !important;
+  width: var(--g3-header-icon-size) !important;
+  height: var(--g3-header-icon-size) !important;
+  color: #1d4ed8 !important;
+  stroke: currentColor !important;
+  stroke-width: 2.1 !important;
+  flex-shrink: 0;
+}
+/* ============================================================
+   04. PHOSPHOR ICON
+   GOFOOD
+   ============================================================ */
+a.icon-circle-btn[href="action://act/message_list"] i,
+a.icon-circle-btn[href="action://act/cart"] i {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: var(--g3-header-icon-size) !important;
+  height: var(--g3-header-icon-size) !important;
+  color: #1d4ed8 !important;
+  font-size: var(--g3-header-icon-size) !important;
+  line-height: 1 !important;
+}
+/* ============================================================
+   05. PRESSED EFFECT
+   ============================================================ */
+a.kpz-nav-button[href="action://act/message_list"]:active,
+a.kpz-nav-button[href="action://act/cart"]:active,
+a.icon-circle-btn[href="action://act/message_list"]:active,
+a.icon-circle-btn[href="action://act/cart"]:active,
+button.kpz-nav-button[onclick="showPage('setting')"]:active {
+  transform: scale(0.94) !important;
+  background: #f8fafc !important;
+  box-shadow:
+    0 1px 4px rgba(15, 23, 42, 0.06) !important;
+}
+/* Hilangkan hover lama yang naik ke atas */
+a.kpz-nav-button[href="action://act/message_list"]:hover,
+a.kpz-nav-button[href="action://act/cart"]:hover,
+button.kpz-nav-button[onclick="showPage('setting')"]:hover {
+  transform: none;
+  background: #ffffff !important;
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.08) !important;
+}
+/* ============================================================
+   06. NOTIFICATION BADGE
+   ============================================================ */
+.kpz-badge,
+.notif-badge,
+.gpr-notif-badge {
+  top: -4px !important;
+  right: -4px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border:
+    2px
+    solid
+    #ffffff !important;
+  border-radius: 999px !important;
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  box-sizing: border-box;
+  z-index: 5;
+}
+/* ============================================================
+   07. GAP ANTAR ACTION
+   ============================================================ */
+.gpr-header-action,
+.kpz-right-tools,
+#page-gofood .header-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+/* ============================================================
+   08. FOCUS
+   ============================================================ */
+a.kpz-nav-button[href="action://act/message_list"]:focus-visible,
+a.kpz-nav-button[href="action://act/cart"]:focus-visible,
+a.icon-circle-btn[href="action://act/message_list"]:focus-visible,
+a.icon-circle-btn[href="action://act/cart"]:focus-visible,
+button.kpz-nav-button[onclick="showPage('setting')"]:focus-visible {
+  outline:
+    2px
+    solid
+    rgba(29, 78, 216, 0.28) !important;
+  outline-offset: 2px;
+}
+/* ============================================================
+   09. VERY SMALL ANDROID
+   ============================================================ */
+@media (max-width: 300px) {
+  :root {
+    --g3-header-action-size: 40px;
+    --g3-header-icon-size: 19px;
+  }
+  .gpr-header-action,
+  .kpz-right-tools,
+  #page-gofood .header-right {
+    gap: 5px !important;
+  }
+}
+/* ============================================================
+   10. TABLET
+   ============================================================ */
+@media (min-width: 600px) {
+  :root {
+    --g3-header-action-size: 46px;
+    --g3-header-icon-size: 22px;
+  }
+}
+/* ============================================================
+   GOCES V03 POLISH 05 - CONTEXT HEADER ICON COLOR
+   BACKGROUND BIRU  = ICON PUTIH
+   BACKGROUND PUTIH = ICON HITAM
+   ============================================================ */
+/* ============================================================
+   DEFAULT / HEADER TERANG
+   GOFOOD dan header putih lainnya
+   ============================================================ */
+button[onclick="goBack()"],
+a.kpz-nav-button[href="action://act/message_list"],
+a.kpz-nav-button[href="action://act/cart"],
+a.icon-circle-btn[href="action://act/message_list"],
+a.icon-circle-btn[href="action://act/cart"],
+button.kpz-nav-button[onclick="showPage('setting')"] {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border:
+    1px solid
+    #e2e8f0 !important;
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.08) !important;
+}
+/* SVG HEADER TERANG */
+a.kpz-nav-button[href="action://act/message_list"] svg,
+a.kpz-nav-button[href="action://act/cart"] svg,
+button.kpz-nav-button[onclick="showPage('setting')"] svg {
+  color: #111827 !important;
+  stroke: #111827 !important;
+}
+/* PHOSPHOR ICON HEADER TERANG */
+a.icon-circle-btn[href="action://act/message_list"] i,
+a.icon-circle-btn[href="action://act/cart"] i {
+  color: #111827 !important;
+}
+/* BACK ARROW HEADER TERANG */
+button[onclick="goBack()"]::before {
+  border-left-color: #111827 !important;
+  border-bottom-color: #111827 !important;
+}
+/* ============================================================
+   HEADER BIRU
+   HOME
+   ============================================================ */
+.home-header a.kpz-nav-button[href="action://act/message_list"],
+.home-header a.kpz-nav-button[href="action://act/cart"],
+.home-header button.kpz-nav-button[onclick="showPage('setting')"],
+.home-header button[onclick="goBack()"] {
+  background:
+    rgba(255,255,255,0.14) !important;
+  color: #ffffff !important;
+  border:
+    1px solid
+    rgba(255,255,255,0.26) !important;
+  box-shadow: none !important;
+}
+/* ============================================================
+   HEADER BIRU
+   PROMO
+   ============================================================ */
+.gpr-header a.kpz-nav-button[href="action://act/message_list"],
+.gpr-header a.kpz-nav-button[href="action://act/cart"],
+.gpr-header button.kpz-nav-button[onclick="showPage('setting')"],
+.gpr-header button[onclick="goBack()"] {
+  background:
+    rgba(255,255,255,0.14) !important;
+  color: #ffffff !important;
+  border:
+    1px solid
+    rgba(255,255,255,0.26) !important;
+  box-shadow: none !important;
+}
+/* ============================================================
+   HEADER BIRU
+   PROFILE
+   ============================================================ */
+#page-kpz-main-wrap .kpz-head-panel
+a.kpz-nav-button[href="action://act/message_list"],
+#page-kpz-main-wrap .kpz-head-panel
+a.kpz-nav-button[href="action://act/cart"],
+#page-kpz-main-wrap .kpz-head-panel
+button.kpz-nav-button[onclick="showPage('setting')"],
+#page-kpz-main-wrap .kpz-head-panel
+button[onclick="goBack()"] {
+  background:
+    rgba(255,255,255,0.14) !important;
+  color: #ffffff !important;
+  border:
+    1px solid
+    rgba(255,255,255,0.26) !important;
+  box-shadow: none !important;
+}
+/* ============================================================
+   HEADER BIRU
+   SETTINGS
+   ============================================================ */
+.gset_header button[onclick="goBack()"],
+.gset_header a.kpz-nav-button[href="action://act/message_list"],
+.gset_header a.kpz-nav-button[href="action://act/cart"],
+.gset_header button.kpz-nav-button[onclick="showPage('setting')"] {
+  background:
+    rgba(255,255,255,0.14) !important;
+  color: #ffffff !important;
+  border:
+    1px solid
+    rgba(255,255,255,0.26) !important;
+  box-shadow: none !important;
+}
+/* ============================================================
+   SEMUA SVG DI HEADER BIRU = PUTIH
+   ============================================================ */
+.home-header .kpz-nav-button svg,
+.gpr-header .kpz-nav-button svg,
+#page-kpz-main-wrap .kpz-head-panel .kpz-nav-button svg,
+.gset_header .kpz-nav-button svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+/* ============================================================
+   BACK ARROW HEADER BIRU = PUTIH
+   ============================================================ */
+.home-header button[onclick="goBack()"]::before,
+.gpr-header button[onclick="goBack()"]::before,
+#page-kpz-main-wrap .kpz-head-panel button[onclick="goBack()"]::before,
+.gset_header button[onclick="goBack()"]::before {
+  border-left-color: #ffffff !important;
+  border-bottom-color: #ffffff !important;
+}
+/* ============================================================
+   PRESSED — HEADER BIRU
+   ============================================================ */
+.home-header .kpz-nav-button:active,
+.gpr-header .kpz-nav-button:active,
+#page-kpz-main-wrap .kpz-head-panel .kpz-nav-button:active,
+.gset_header .kpz-nav-button:active,
+.home-header button[onclick="goBack()"]:active,
+.gpr-header button[onclick="goBack()"]:active,
+#page-kpz-main-wrap .kpz-head-panel button[onclick="goBack()"]:active,
+.gset_header button[onclick="goBack()"]:active {
+  background:
+    rgba(255,255,255,0.24) !important;
+  transform: scale(0.94) !important;
+}
+/* ============================================================
+   PRESSED — HEADER PUTIH
+   ============================================================ */
+#page-gofood button[onclick="goBack()"]:active,
+#page-gofood .icon-circle-btn:active {
+  background: #f1f5f9 !important;
+  transform: scale(0.94) !important;
+}
+/* ============================================================
+   BADGE NOTIFIKASI
+   SELALU MERAH + PUTIH
+   ============================================================ */
+.kpz-badge,
+.notif-badge,
+.gpr-notif-badge {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border:
+    2px solid
+    #ffffff !important;
+}
+/* ============================================================
+   GOCES V03 POLISH 06 - FINAL WHITE HEADER ACTIONS
+   FINAL STANDARD:
+   - BACK       = WHITE + BLACK
+   - NOTIF      = WHITE + BLACK
+   - CART       = WHITE + BLACK
+   - SETTINGS   = WHITE + BLACK
+   ============================================================ */
+:root {
+  --g3-action-size: 44px;
+  --g3-action-icon: 21px;
+  --g3-action-bg: #ffffff;
+  --g3-action-icon-color: #111827;
+  --g3-action-border: #e2e8f0;
+}
+/* ============================================================
+   01. SEMUA ACTION BUTTON
+   ============================================================ */
+button[onclick="goBack()"],
+a.kpz-nav-button[href="action://act/message_list"],
+a.kpz-nav-button[href="action://act/cart"],
+a.icon-circle-btn[href="action://act/message_list"],
+a.icon-circle-btn[href="action://act/cart"],
+button.kpz-nav-button[onclick="showPage('setting')"] {
+  width: var(--g3-action-size) !important;
+  height: var(--g3-action-size) !important;
+  min-width: var(--g3-action-size) !important;
+  min-height: var(--g3-action-size) !important;
+  flex:
+    0
+    0
+    var(--g3-action-size) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative;
+  border:
+    1px
+    solid
+    var(--g3-action-border) !important;
+  border-radius: 50% !important;
+  background:
+    var(--g3-action-bg) !important;
+  color:
+    var(--g3-action-icon-color) !important;
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.09) !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    transform 0.14s ease,
+    background-color 0.14s ease,
+    box-shadow 0.14s ease !important;
+}
+/* ============================================================
+   02. SEMUA SVG = HITAM
+   ============================================================ */
+a.kpz-nav-button[href="action://act/message_list"] svg,
+a.kpz-nav-button[href="action://act/cart"] svg,
+button.kpz-nav-button[onclick="showPage('setting')"] svg {
+  display: block !important;
+  width: var(--g3-action-icon) !important;
+  height: var(--g3-action-icon) !important;
+  color:
+    var(--g3-action-icon-color) !important;
+  stroke:
+    var(--g3-action-icon-color) !important;
+  stroke-width: 2.1 !important;
+  fill: none;
+  flex-shrink: 0;
+}
+/* ============================================================
+   03. PHOSPHOR GOFOOD = HITAM
+   ============================================================ */
+a.icon-circle-btn[href="action://act/message_list"] i,
+a.icon-circle-btn[href="action://act/cart"] i {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: var(--g3-action-icon) !important;
+  height: var(--g3-action-icon) !important;
+  color:
+    var(--g3-action-icon-color) !important;
+  font-size:
+    var(--g3-action-icon) !important;
+  line-height: 1 !important;
+}
+/* ============================================================
+   04. BACK ARROW FINAL = HITAM
+   ============================================================ */
+button[onclick="goBack()"] {
+  color: transparent !important;
+  font-size: 0 !important;
+}
+/* icon lama back disembunyikan */
+button[onclick="goBack()"] > svg,
+button[onclick="goBack()"] > i {
+  display: none !important;
+}
+/* gambar arrow seragam */
+button[onclick="goBack()"]::before {
+  content: "";
+  display: block !important;
+  width: 10px;
+  height: 10px;
+  margin-left: 4px;
+  border-left:
+    2px
+    solid
+    #111827 !important;
+  border-bottom:
+    2px
+    solid
+    #111827 !important;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+}
+/* ============================================================
+   05. HAPUS SEMUA WARNA TRANSPARAN HEADER BIRU LAMA
+   ============================================================ */
+.home-header .kpz-nav-button,
+.gpr-header .kpz-nav-button,
+#page-kpz-main-wrap .kpz-head-panel .kpz-nav-button,
+.gset_header .kpz-nav-button,
+.home-header button[onclick="goBack()"],
+.gpr-header button[onclick="goBack()"],
+#page-kpz-main-wrap .kpz-head-panel button[onclick="goBack()"],
+.gset_header button[onclick="goBack()"] {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border:
+    1px
+    solid
+    #e2e8f0 !important;
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.09) !important;
+}
+/* SVG pada header biru juga WAJIB HITAM */
+.home-header .kpz-nav-button svg,
+.gpr-header .kpz-nav-button svg,
+#page-kpz-main-wrap .kpz-head-panel .kpz-nav-button svg,
+.gset_header .kpz-nav-button svg {
+  color: #111827 !important;
+  stroke: #111827 !important;
+}
+/* Back header biru juga WAJIB HITAM */
+.home-header button[onclick="goBack()"]::before,
+.gpr-header button[onclick="goBack()"]::before,
+#page-kpz-main-wrap .kpz-head-panel button[onclick="goBack()"]::before,
+.gset_header button[onclick="goBack()"]::before {
+  border-left-color: #111827 !important;
+  border-bottom-color: #111827 !important;
+}
+/* ============================================================
+   06. PRESSED
+   ============================================================ */
+button[onclick="goBack()"]:active,
+a.kpz-nav-button[href="action://act/message_list"]:active,
+a.kpz-nav-button[href="action://act/cart"]:active,
+a.icon-circle-btn[href="action://act/message_list"]:active,
+a.icon-circle-btn[href="action://act/cart"]:active,
+button.kpz-nav-button[onclick="showPage('setting')"]:active {
+  transform: scale(0.93) !important;
+  background: #f1f5f9 !important;
+  box-shadow:
+    0 1px 4px rgba(15, 23, 42, 0.06) !important;
+}
+/* ============================================================
+   07. HOVER
+   ============================================================ */
+button[onclick="goBack()"]:hover,
+a.kpz-nav-button[href="action://act/message_list"]:hover,
+a.kpz-nav-button[href="action://act/cart"]:hover,
+a.icon-circle-btn[href="action://act/message_list"]:hover,
+a.icon-circle-btn[href="action://act/cart"]:hover,
+button.kpz-nav-button[onclick="showPage('setting')"]:hover {
+  background: #ffffff !important;
+  color: #111827 !important;
+  transform: none;
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.09) !important;
+}
+/* ============================================================
+   08. BADGE NOTIFIKASI
+   ============================================================ */
+.kpz-badge,
+.notif-badge,
+.gpr-notif-badge {
+  position: absolute;
+  top: -4px !important;
+  right: -4px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border:
+    2px
+    solid
+    #ffffff !important;
+  border-radius: 999px !important;
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  box-sizing: border-box;
+  z-index: 10;
+}
+/* ============================================================
+   09. GAP ANTAR TOMBOL
+   ============================================================ */
+.gpr-header-action,
+.kpz-right-tools,
+#page-gofood .header-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+/* ============================================================
+   10. SMALL WEBVIEW
+   ============================================================ */
+@media (max-width: 300px) {
+  :root {
+    --g3-action-size: 40px;
+    --g3-action-icon: 19px;
+  }
+  .gpr-header-action,
+  .kpz-right-tools,
+  #page-gofood .header-right {
+    gap: 5px !important;
+  }
+}
+/* ============================================================
+   11. TABLET
+   ============================================================ */
+@media (min-width: 600px) {
+  :root {
+    --g3-action-size: 46px;
+    --g3-action-icon: 22px;
+  }
+}
+/* ============================================================
+   GOCES V03 POLISH 07 - FORCE SOLID HEADER ACTIONS + AVATAR RING
+   ============================================================ */
+/* ============================================================
+   01. PAKSA SEMUA HEADER ACTION JADI PUTIH SOLID
+   ============================================================ */
+.home-header .kpz-nav-button,
+.gpr-header .kpz-nav-button,
+#page-kpz-main-wrap .kpz-head-panel .kpz-nav-button,
+.gset_header .kpz-nav-button,
+#page-gofood .icon-circle-btn,
+button[onclick="goBack()"],
+a.kpz-nav-button[href="action://act/message_list"],
+a.kpz-nav-button[href="action://act/cart"],
+a.icon-circle-btn[href="action://act/message_list"],
+a.icon-circle-btn[href="action://act/cart"],
+button.kpz-nav-button[onclick="showPage('setting')"] {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  flex: 0 0 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #111827 !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.10) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  text-decoration: none !important;
+  overflow: visible !important;
+}
+/* ============================================================
+   02. SEMUA ICON HEADER = HITAM
+   ============================================================ */
+.home-header .kpz-nav-button svg,
+.gpr-header .kpz-nav-button svg,
+#page-kpz-main-wrap .kpz-head-panel .kpz-nav-button svg,
+.gset_header .kpz-nav-button svg,
+a.kpz-nav-button[href="action://act/message_list"] svg,
+a.kpz-nav-button[href="action://act/cart"] svg,
+button.kpz-nav-button[onclick="showPage('setting')"] svg {
+  width: 21px !important;
+  height: 21px !important;
+  color: #111827 !important;
+  stroke: #111827 !important;
+  fill: none !important;
+  stroke-width: 2.1 !important;
+}
+#page-gofood .icon-circle-btn i,
+a.icon-circle-btn[href="action://act/message_list"] i,
+a.icon-circle-btn[href="action://act/cart"] i {
+  color: #111827 !important;
+  font-size: 21px !important;
+  line-height: 1 !important;
+}
+/* ============================================================
+   03. BACK BUTTON SERAGAM HITAM
+   ============================================================ */
+button[onclick="goBack()"] {
+  color: transparent !important;
+  font-size: 0 !important;
+}
+button[onclick="goBack()"] > svg,
+button[onclick="goBack()"] > i {
+  display: none !important;
+}
+button[onclick="goBack()"]::before {
+  content: "";
+  display: block !important;
+  width: 10px;
+  height: 10px;
+  margin-left: 4px;
+  border-left: 2px solid #111827 !important;
+  border-bottom: 2px solid #111827 !important;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+}
+/* ============================================================
+   04. EFEK TEKAN
+   ============================================================ */
+.home-header .kpz-nav-button:active,
+.gpr-header .kpz-nav-button:active,
+#page-kpz-main-wrap .kpz-head-panel .kpz-nav-button:active,
+.gset_header .kpz-nav-button:active,
+#page-gofood .icon-circle-btn:active,
+button[onclick="goBack()"]:active,
+button.kpz-nav-button[onclick="showPage('setting')"]:active {
+  transform: scale(0.93) !important;
+  background: #f1f5f9 !important;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.07) !important;
+}
+/* ============================================================
+   05. BADGE NOTIFIKASI TETAP MERAH
+   ============================================================ */
+.kpz-badge,
+.notif-badge,
+.gpr-notif-badge {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+/* ============================================================
+   06. AVATAR HOME - TAMBAH RING PUTIH
+   ============================================================ */
+.home-header .avatar-btn {
+  width: 44px !important;
+  height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 2px !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.10) !important;
+  overflow: hidden !important;
+}
+.home-header .avatar-img,
+.home-header .avatar-btn img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+/* ============================================================
+   07. AVATAR PROFILE HEADER - TAMBAH RING PUTIH
+   ============================================================ */
+#page-kpz-main-wrap .kpz-avatar-box {
+  width: 64px !important;
+  height: 64px !important;
+  flex: 0 0 64px !important;
+  padding: 3px !important;
+  border: 3px solid #ffffff !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12) !important;
+  overflow: hidden !important;
+}
+#page-kpz-main-wrap .kpz-avatar-box img,
+#page-kpz-main-wrap .kpz-avatar-box .kpz-avatar-img,
+#page-kpz-main-wrap .kpz-avatar-box .kpz-avatar {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+/* ============================================================
+   08. ULTRA SMALL
+   ============================================================ */
+@media (max-width: 300px) {
+  .home-header .kpz-nav-button,
+  .gpr-header .kpz-nav-button,
+  #page-kpz-main-wrap .kpz-head-panel .kpz-nav-button,
+  .gset_header .kpz-nav-button,
+  #page-gofood .icon-circle-btn,
+  button[onclick="goBack()"],
+  button.kpz-nav-button[onclick="showPage('setting')"] {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    flex-basis: 40px !important;
+  }
+  .home-header .avatar-btn {
+    width: 40px !important;
+    height: 40px !important;
+    flex-basis: 40px !important;
+  }
+  #page-kpz-main-wrap .kpz-avatar-box {
+    width: 58px !important;
+    height: 58px !important;
+    flex-basis: 58px !important;
+  }
+}
+/* ============================================================
+   09. TABLET
+   ============================================================ */
+@media (min-width: 600px) {
+  .home-header .kpz-nav-button,
+  .gpr-header .kpz-nav-button,
+  #page-kpz-main-wrap .kpz-head-panel .kpz-nav-button,
+  .gset_header .kpz-nav-button,
+  #page-gofood .icon-circle-btn,
+  button[onclick="goBack()"],
+  button.kpz-nav-button[onclick="showPage('setting')"] {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+    flex-basis: 46px !important;
+  }
+  .home-header .avatar-btn {
+    width: 46px !important;
+    height: 46px !important;
+    flex-basis: 46px !important;
+  }
+  #page-kpz-main-wrap .kpz-avatar-box {
+    width: 68px !important;
+    height: 68px !important;
+    flex-basis: 68px !important;
+  }
+}
+/* ============================================================
+   GOCES V03 POLISH 08 - FORCE SOLID WHITE ACTION BUTTONS
+   NOTIFIKASI / KERANJANG / SETTING
+   ============================================================ */
+/* ============================================================
+   1. PUTIH SOLID - TIDAK BOLEH TRANSPARAN
+   ============================================================ */
+a.kpz-nav-button[href="action://act/message_list"],
+a.kpz-nav-button[href="action://act/cart"],
+button.kpz-nav-button[onclick="showPage('setting')"],
+a.icon-circle-btn[href="action://act/message_list"],
+a.icon-circle-btn[href="action://act/cart"] {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 999px !important;
+  /*
+     WAJIB PUTIH SOLID.
+     Inset shadow sengaja dipakai supaya
+     background rgba lama benar-benar tertutup.
+  */
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  box-shadow:
+    inset 0 0 0 100px #ffffff,
+    0 2px 8px rgba(15, 23, 42, 0.10) !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  color: #111827 !important;
+  overflow: visible !important;
+  isolation: isolate !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+/* ============================================================
+   2. SVG NOTIF / CART / SETTING = HITAM
+   ============================================================ */
+a.kpz-nav-button[href="action://act/message_list"] svg,
+a.kpz-nav-button[href="action://act/cart"] svg,
+button.kpz-nav-button[onclick="showPage('setting')"] svg {
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
+  width: 21px !important;
+  height: 21px !important;
+  color: #111827 !important;
+  stroke: #111827 !important;
+  fill: none !important;
+  opacity: 1 !important;
+}
+/* Semua bagian SVG ikut hitam */
+a.kpz-nav-button[href="action://act/message_list"] svg *,
+a.kpz-nav-button[href="action://act/cart"] svg *,
+button.kpz-nav-button[onclick="showPage('setting')"] svg * {
+  stroke: #111827 !important;
+}
+/* ============================================================
+   3. ICON GOFOOD = HITAM
+   ============================================================ */
+a.icon-circle-btn[href="action://act/message_list"] i,
+a.icon-circle-btn[href="action://act/cart"] i {
+  position: relative !important;
+  z-index: 2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #111827 !important;
+  font-size: 21px !important;
+  opacity: 1 !important;
+}
+/* ============================================================
+   4. PAKSA JUGA SAAT BERADA DI HEADER BIRU
+   ============================================================ */
+.home-header a.kpz-nav-button[href="action://act/message_list"],
+.gpr-header a.kpz-nav-button[href="action://act/message_list"],
+.gpr-header a.kpz-nav-button[href="action://act/cart"],
+#page-kpz-main-wrap .kpz-head-panel
+a.kpz-nav-button[href="action://act/message_list"],
+#page-kpz-main-wrap .kpz-head-panel
+a.kpz-nav-button[href="action://act/cart"],
+#page-kpz-main-wrap .kpz-head-panel
+button.kpz-nav-button[onclick="showPage('setting')"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow:
+    inset 0 0 0 100px #ffffff,
+    0 2px 8px rgba(15, 23, 42, 0.10) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+/* ============================================================
+   5. BADGE NOTIFIKASI
+   ============================================================ */
+.kpz-badge {
+  position: absolute !important;
+  top: -4px !important;
+  right: -4px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 999px !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  z-index: 10 !important;
+}
+/* ============================================================
+   6. PRESS EFFECT
+   ============================================================ */
+a.kpz-nav-button[href="action://act/message_list"]:active,
+a.kpz-nav-button[href="action://act/cart"]:active,
+button.kpz-nav-button[onclick="showPage('setting')"]:active,
+a.icon-circle-btn[href="action://act/message_list"]:active,
+a.icon-circle-btn[href="action://act/cart"]:active {
+  transform: scale(0.93) !important;
+  background: #f1f5f9 !important;
+  box-shadow:
+    inset 0 0 0 100px #f1f5f9,
+    0 1px 4px rgba(15, 23, 42, 0.06) !important;
+}
+/* ============================================================
+   7. GAP SERAGAM
+   ============================================================ */
+.gpr-header-action,
+.kpz-right-tools,
+#page-gofood .header-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+/* ============================================================
+   8. SMALL SCREEN
+   ============================================================ */
+@media (max-width: 300px) {
+  a.kpz-nav-button[href="action://act/message_list"],
+  a.kpz-nav-button[href="action://act/cart"],
+  button.kpz-nav-button[onclick="showPage('setting')"],
+  a.icon-circle-btn[href="action://act/message_list"],
+  a.icon-circle-btn[href="action://act/cart"] {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    flex-basis: 40px !important;
+  }
+}
+/* ============================================================
+   9. TABLET
+   ============================================================ */
+@media (min-width: 600px) {
+  a.kpz-nav-button[href="action://act/message_list"],
+  a.kpz-nav-button[href="action://act/cart"],
+  button.kpz-nav-button[onclick="showPage('setting')"],
+  a.icon-circle-btn[href="action://act/message_list"],
+  a.icon-circle-btn[href="action://act/cart"] {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+    flex-basis: 46px !important;
+  }
+}
+/* ============================================================
+   GOCES V03 POLISH 09 - VOUCHER MODAL WITHOUT IMAGE
+   Popup voucher bersih tanpa gambar
+   ============================================================ */
+/* ============================================================
+   01. HILANGKAN GAMBAR VOUCHER DARI POPUP
+   ============================================================ */
+#gocesVoucherModal .gcv-modal-header,
+#gocesVoucherModal .gcv-modal-image {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+}
+/* ============================================================
+   02. MODAL / BOTTOM SHEET
+   ============================================================ */
+#gocesVoucherModal.gcv-modal {
+  padding: 0 !important;
+  background:
+    rgba(15, 23, 42, 0.52) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+#gocesVoucherModal .gcv-modal-content {
+  width: 100% !important;
+  max-width: 520px !important;
+  position: relative !important;
+  margin: auto 0 0 !important;
+  padding:
+    22px
+    18px
+    calc(16px + env(safe-area-inset-bottom)) !important;
+  border-radius:
+    22px
+    22px
+    0
+    0 !important;
+  background: #ffffff !important;
+  box-shadow:
+    0 -10px 36px rgba(15, 23, 42, 0.18) !important;
+}
+/* ============================================================
+   03. TOMBOL CLOSE
+   ============================================================ */
+#gocesVoucherModal .gcv-modal-close {
+  position: absolute !important;
+  top: 14px !important;
+  right: 14px !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 1px solid #e5eaf1 !important;
+  border-radius: 50% !important;
+  background: #f8fafc !important;
+  color: #64748b !important;
+  font-size: 15px !important;
+  line-height: 1 !important;
+  box-shadow: none !important;
+  z-index: 5;
+}
+#gocesVoucherModal .gcv-modal-close:active {
+  transform: scale(0.93);
+  background: #eef2f7 !important;
+}
+/* ============================================================
+   04. TITLE
+   ============================================================ */
+#gocesVoucherModal .gcv-modal-title {
+  margin:
+    0
+    42px
+    5px
+    0 !important;
+  color: #172033 !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+/* ============================================================
+   05. DESCRIPTION
+   ============================================================ */
+#gocesVoucherModal .gcv-modal-description {
+  margin:
+    0
+    0
+    14px !important;
+  color: #6b778c !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+}
+/* ============================================================
+   06. VOUCHER CODE
+   ============================================================ */
+#gocesVoucherModal .gcv-modal-code {
+  width: 100%;
+  margin-bottom: 14px !important;
+  padding: 13px 12px !important;
+  border:
+    1.5px
+    dashed
+    #93b0ff !important;
+  border-radius: 12px !important;
+  background: #f7f9ff !important;
+  color: #1d4ed8 !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 1.2px !important;
+  text-align: center;
+  box-sizing: border-box;
+}
+/* ============================================================
+   07. DETAIL
+   ============================================================ */
+#gocesVoucherModal .gcv-modal-details {
+  display: grid !important;
+  gap: 7px !important;
+  margin-bottom: 15px !important;
+  color: #334155 !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+#gocesVoucherModal .gcv-modal-details > div {
+  display: grid;
+  grid-template-columns:
+    minmax(92px, 0.85fr)
+    minmax(0, 1.4fr);
+  gap: 10px;
+  align-items: start;
+}
+#gocesVoucherModal .gcv-modal-details > div::before {
+  min-width: 0 !important;
+  color: #7a879b !important;
+  font-weight: 500;
+}
+/* ============================================================
+   08. TERMS
+   ============================================================ */
+#gocesVoucherModal .gcv-terms {
+  margin-top: 0 !important;
+  padding-top: 14px !important;
+  border-top:
+    1px
+    solid
+    #edf0f5 !important;
+}
+#gocesVoucherModal .gcv-terms-title {
+  margin-bottom: 8px !important;
+  color: #172033 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+#gocesVoucherModal .gcv-terms-list {
+  margin: 0;
+  padding-left: 18px;
+}
+#gocesVoucherModal .gcv-terms li {
+  margin-bottom: 6px !important;
+  color: #64748b !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+/* ============================================================
+   09. COPY BUTTON
+   ============================================================ */
+#gocesVoucherModal .gcv-modal-copy {
+  width: 100% !important;
+  min-height: 48px !important;
+  margin-top: 10px !important;
+  padding: 12px 16px !important;
+  border: 0 !important;
+  border-radius: 13px !important;
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  box-shadow: none !important;
+}
+#gocesVoucherModal .gcv-modal-copy:active {
+  transform: scale(0.98);
+  background: #1e40af !important;
+}
+/* ============================================================
+   10. ULTRA SMALL WEBVIEW
+   ============================================================ */
+@media (max-width: 300px) {
+  #gocesVoucherModal .gcv-modal-content {
+    padding:
+      19px
+      14px
+      calc(14px + env(safe-area-inset-bottom)) !important;
+    border-radius:
+      20px
+      20px
+      0
+      0 !important;
+  }
+  #gocesVoucherModal .gcv-modal-title {
+    font-size: 16px !important;
+  }
+  #gocesVoucherModal .gcv-modal-description {
+    font-size: 12px !important;
+  }
+  #gocesVoucherModal .gcv-modal-details {
+    font-size: 11px !important;
+  }
+  #gocesVoucherModal .gcv-terms li {
+    font-size: 11px !important;
+  }
+}
+/* ============================================================
+   11. TABLET
+   ============================================================ */
+@media (min-width: 600px) {
+  #gocesVoucherModal .gcv-modal-content {
+    margin:
+      auto
+      auto
+      24px !important;
+    border-radius:
+      22px !important;
+  }
+}
+/* ============================================================
+   GOCES V03 POLISH 10 - UNIFY HOME AND PROMO VOUCHER SIZE
+   Samakan ukuran voucher Home dan Promo
+   ============================================================ */
+:root {
+  --g3-voucher-radius: 16px;
+  --g3-voucher-min-height: 110px;
+  --g3-voucher-visual-width: 56px;
+  --g3-voucher-title: 15px;
+  --g3-voucher-desc: 12px;
+  --g3-voucher-meta: 11px;
+  --g3-voucher-button-height: 32px;
+  --g3-voucher-button-font: 12px;
+  --g3-voucher-content-pad-y: 12px;
+  --g3-voucher-content-pad-x: 12px;
+}
+/* ============================================================
+   01. TARGET HOME + PROMO
+   ============================================================ */
+#page-promos .gcv-card,
+.gcvh-container .gcv-card,
+.gocesVoucherSection .gcv-card,
+.gcv-wrapper .gcv-card {
+  min-height: var(--g3-voucher-min-height) !important;
+  border-radius: var(--g3-voucher-radius) !important;
+  overflow: hidden !important;
+  box-shadow: var(--g3-shadow-card) !important;
+}
+/* Home horizontal tetap swipe, tapi ukuran kartu disamakan */
+.gcvh-container .gcv-card {
+  width: calc(100vw - (var(--g3-page-pad) * 2)) !important;
+  max-width: calc(100vw - (var(--g3-page-pad) * 2)) !important;
+  flex-basis: calc(100vw - (var(--g3-page-pad) * 2)) !important;
+}
+/* ============================================================
+   02. TICKET VISUAL KIRI
+   ============================================================ */
+#page-promos .gcv-card .gcv-ticket-visual,
+.gcvh-container .gcv-card .gcv-ticket-visual,
+.gocesVoucherSection .gcv-card .gcv-ticket-visual,
+.gcv-wrapper .gcv-card .gcv-ticket-visual {
+  width: var(--g3-voucher-visual-width) !important;
+  min-width: var(--g3-voucher-visual-width) !important;
+}
+/* Notch divider disamakan */
+#page-promos .gcv-card::before,
+#page-promos .gcv-card::after,
+.gcvh-container .gcv-card::before,
+.gcvh-container .gcv-card::after {
+  left: 48px !important;
+}
+/* ============================================================
+   03. CONTENT AREA
+   ============================================================ */
+#page-promos .gcv-card .gcv-content,
+.gcvh-container .gcv-card .gcv-content,
+.gocesVoucherSection .gcv-card .gcv-content,
+.gcv-wrapper .gcv-card .gcv-content {
+  padding:
+    var(--g3-voucher-content-pad-y)
+    var(--g3-voucher-content-pad-x) !important;
+}
+/* ============================================================
+   04. TITLE / DESCRIPTION / PERIOD
+   ============================================================ */
+#page-promos .gcv-card .gcv-title,
+.gcvh-container .gcv-card .gcv-title,
+.gocesVoucherSection .gcv-card .gcv-title,
+.gcv-wrapper .gcv-card .gcv-title {
+  font-size: var(--g3-voucher-title) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+#page-promos .gcv-card .gcv-description,
+.gcvh-container .gcv-card .gcv-description,
+.gocesVoucherSection .gcv-card .gcv-description,
+.gcv-wrapper .gcv-card .gcv-description {
+  margin-top: 4px !important;
+  font-size: var(--g3-voucher-desc) !important;
+  line-height: 1.4 !important;
+}
+#page-promos .gcv-card .gcv-period,
+.gcvh-container .gcv-card .gcv-period,
+.gocesVoucherSection .gcv-card .gcv-period,
+.gcv-wrapper .gcv-card .gcv-period {
+  margin-top: 4px !important;
+  font-size: var(--g3-voucher-meta) !important;
+  line-height: 1.3 !important;
+}
+/* ============================================================
+   05. COUNTDOWN / STATUS
+   ============================================================ */
+#page-promos .gcv-card .gcv-countdown,
+.gcvh-container .gcv-card .gcv-countdown,
+.gocesVoucherSection .gcv-card .gcv-countdown,
+.gcv-wrapper .gcv-card .gcv-countdown {
+  min-height: 20px !important;
+  padding: 3px 6px !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+/* ============================================================
+   06. TOMBOL SALIN
+   ============================================================ */
+#page-promos .gcv-card .gcv-copy,
+.gcvh-container .gcv-card .gcv-copy,
+.gocesVoucherSection .gcv-card .gcv-copy,
+.gcv-wrapper .gcv-card .gcv-copy {
+  min-height: var(--g3-voucher-button-height) !important;
+  padding: 0 11px !important;
+  border-radius: 999px !important;
+  font-size: var(--g3-voucher-button-font) !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  gap: 4px !important;
+}
+#page-promos .gcv-card .gcv-copy i,
+.gcvh-container .gcv-card .gcv-copy i,
+.gocesVoucherSection .gcv-card .gcv-copy i,
+.gcv-wrapper .gcv-card .gcv-copy i {
+  font-size: 11px !important;
+}
+/* ============================================================
+   07. HOME SECTION SPACING
+   ============================================================ */
+.gcvh-section .gcvh-container {
+  padding-left: var(--g3-page-pad) !important;
+  padding-right: var(--g3-page-pad) !important;
+}
+.gcvh-section .gcvh-container .gcv-card:first-child {
+  margin-left: 0 !important;
+}
+/* ============================================================
+   08. ULTRA SMALL WEBVIEW
+   ============================================================ */
+@media (max-width: 300px) {
+  :root {
+    --g3-voucher-min-height: 104px;
+    --g3-voucher-visual-width: 52px;
+    --g3-voucher-title: 14px;
+    --g3-voucher-desc: 11px;
+    --g3-voucher-meta: 10px;
+    --g3-voucher-button-height: 30px;
+    --g3-voucher-button-font: 11px;
+    --g3-voucher-content-pad-y: 11px;
+    --g3-voucher-content-pad-x: 10px;
+  }
+  #page-promos .gcv-card::before,
+  #page-promos .gcv-card::after,
+  .gcvh-container .gcv-card::before,
+  .gcvh-container .gcv-card::after {
+    left: 44px !important;
+  }
+}
+/* ============================================================
+   09. TABLET
+   ============================================================ */
+@media (min-width: 600px) {
+  :root {
+    --g3-voucher-min-height: 116px;
+    --g3-voucher-visual-width: 60px;
+    --g3-voucher-title: 16px;
+    --g3-voucher-desc: 13px;
+    --g3-voucher-meta: 12px;
+    --g3-voucher-button-height: 34px;
+    --g3-voucher-button-font: 12px;
+  }
+  .gcvh-container .gcv-card {
+    width: min(100%, var(--g3-content-max)) !important;
+    max-width: min(100%, var(--g3-content-max)) !important;
+    flex-basis: min(100%, var(--g3-content-max)) !important;
+  }
+}

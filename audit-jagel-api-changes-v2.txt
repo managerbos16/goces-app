@@ -1,0 +1,1034 @@
+
+============================================================
+1. IDENTITAS
+============================================================
+LOCAL HEAD:
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+ORIGIN MAIN:
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+STATUS:
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+============================================================
+2. LOCAL UNCOMMITTED CHANGES VS LOCAL HEAD
+============================================================
+
+------------------------------------------------------------
+LOCAL CHANGE: categories.js
+------------------------------------------------------------
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+------------------------------------------------------------
+LOCAL CHANGE: handlers/categoryHandler.js
+------------------------------------------------------------
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+------------------------------------------------------------
+LOCAL CHANGE: services/jagelService.js
+------------------------------------------------------------
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+============================================================
+3. REMOTE CHANGES SINCE OLD JAGEL-API HEAD
+============================================================
+
+------------------------------------------------------------
+REMOTE CHANGE: categories.js
+------------------------------------------------------------
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+------------------------------------------------------------
+REMOTE CHANGE: handlers/categoryHandler.js
+------------------------------------------------------------
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+------------------------------------------------------------
+REMOTE CHANGE: services/jagelService.js
+------------------------------------------------------------
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   restore    Restore working tree files
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   diff       Show changes between commits, commit and working tree, etc
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   backfill   Download missing objects in a partial clone
+   branch     List, create, or delete branches
+   commit     Record changes to the repository
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   reset      Reset current HEAD to the specified state
+   switch     Switch branches
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+
+============================================================
+4. NEW UNTRACKED FILES
+============================================================
+
+------------------------------------------------------------
+FILE: controllers/bankAccountController.js
+------------------------------------------------------------
+
+------------------------------------------------------------
+FILE: models/bankAccountModel.js
+------------------------------------------------------------
+00001: const pool = require("../config/db");
+00002: 
+00003: /*==================================
+00004:         GET USER ACCOUNTS
+00005: ==================================*/
+00006: 
+00007: exports.getUserAccounts = async (session) => {
+00008: 
+00009:     const query = `
+00010:         SELECT
+00011:             id,
+00012:             bank_code,
+00013:             bank_name,
+00014:             account_number,
+00015:             account_holder,
+00016:             is_default,
+00017:             is_verified,
+00018:             created_at,
+00019:             updated_at
+00020:         FROM user_bank_accounts
+00021:         WHERE user_session = $1
+00022:         ORDER BY
+00023:             is_default DESC,
+00024:             created_at ASC
+00025:     `;
+00026: 
+00027:     const { rows } = await pool.query(query, [session]);
+00028: 
+00029:     return rows;
+00030: 
+00031: };
+00032: 
+00033: 
+00034: /*==================================
+00035:         GET ACCOUNT BY ID
+00036: ==================================*/
+00037: 
+00038: exports.getAccountById = async (id, session) => {
+00039: 
+00040:     const query = `
+00041:         SELECT *
+00042:         FROM user_bank_accounts
+00043:         WHERE
+00044:             id = $1
+00045:             AND user_session = $2
+00046:         LIMIT 1
+00047:     `;
+00048: 
+00049:     const { rows } = await pool.query(query, [
+00050:         id,
+00051:         session
+00052:     ]);
+00053: 
+00054:     return rows[0];
+00055: 
+00056: };
+00057: 
+00058: 
+00059: /*==================================
+00060:         COUNT USER ACCOUNT
+00061: ==================================*/
+00062: 
+00063: exports.countUserAccounts = async (session) => {
+00064: 
+00065:     const query = `
+00066:         SELECT COUNT(*)::INTEGER AS total
+00067:         FROM user_bank_accounts
+00068:         WHERE user_session = $1
+00069:     `;
+00070: 
+00071:     const { rows } = await pool.query(query, [session]);
+00072: 
+00073:     return rows[0].total;
+00074: 
+00075: };
+00076: 
+00077: 
+00078: /*==================================
+00079:       CHECK DUPLICATE ACCOUNT
+00080: ==================================*/
+00081: 
+00082: exports.findDuplicateAccount = async (
+00083:     session,
+00084:     bankCode,
+00085:     accountNumber
+00086: ) => {
+00087: 
+00088:     const query = `
+00089:         SELECT id
+00090:         FROM user_bank_accounts
+00091:         WHERE
+00092:             user_session = $1
+00093:             AND bank_code = $2
+00094:             AND account_number = $3
+00095:         LIMIT 1
+00096:     `;
+00097: 
+00098:     const { rows } = await pool.query(query, [
+00099:         session,
+00100:         bankCode,
+00101:         accountNumber
+00102:     ]);
+00103: 
+00104:     return rows[0];
+00105: 
+00106: };
+00107: 
+00108: 
+00109: /*==================================
+00110:         CREATE ACCOUNT
+00111: ==================================*/
+00112: 
+00113: exports.createAccount = async (data) => {
+00114: 
+00115:     const query = `
+00116:         INSERT INTO user_bank_accounts
+00117:         (
+00118:             user_session,
+00119:             bank_code,
+00120:             bank_name,
+00121:             account_number,
+00122:             account_holder,
+00123:             is_default,
+00124:             is_verified
+00125:         )
+00126:         VALUES
+00127:         (
+00128:             $1,$2,$3,$4,$5,$6,$7
+00129:         )
+00130:         RETURNING *
+00131:     `;
+00132: 
+00133:     const values = [
+00134: 
+00135:         data.session,
+00136: 
+00137:         data.bankCode,
+00138: 
+00139:         data.bankName,
+00140: 
+00141:         data.accountNumber,
+00142: 
+00143:         data.accountHolder,
+00144: 
+00145:         data.isDefault,
+00146: 
+00147:         data.isVerified
+00148: 
+00149:     ];
+00150: 
+00151:     const { rows } = await pool.query(query, values);
+00152: 
+00153:     return rows[0];
+00154: 
+00155: };
+00156: 
+00157: 
+00158: /*==================================
+00159:         UPDATE ACCOUNT
+00160: ==================================*/
+00161: 
+00162: exports.updateAccount = async (
+00163:     id,
+00164:     session,
+00165:     data
+00166: ) => {
+00167: 
+00168:     const query = `
+00169:         UPDATE user_bank_accounts
+00170:         SET
+00171:             bank_code = $1,
+00172:             bank_name = $2,
+00173:             account_number = $3,
+00174:             account_holder = $4,
+00175:             is_verified = $5,
+00176:             updated_at = NOW()
+00177:         WHERE
+00178:             id = $6
+00179:             AND user_session = $7
+00180:         RETURNING *
+00181:     `;
+00182: 
+00183:     const values = [
+00184: 
+00185:         data.bankCode,
+00186: 
+00187:         data.bankName,
+00188: 
+00189:         data.accountNumber,
+00190: 
+00191:         data.accountHolder,
+00192: 
+00193:         data.isVerified,
+00194: 
+00195:         id,
+00196: 
+00197:         session
+00198: 
+00199:     ];
+00200: 
+00201:     const { rows } = await pool.query(query, values);
+00202: 
+00203:     return rows[0];
+00204: 
+00205: };
+00206: 
+00207: 
+00208: /*==================================
+00209:         DELETE ACCOUNT
+00210: ==================================*/
+00211: 
+00212: exports.deleteAccount = async (
+00213:     id,
+00214:     session
+00215: ) => {
+00216: 
+00217:     const query = `
+00218:         DELETE FROM user_bank_accounts
+00219:         WHERE
+00220:             id = $1
+00221:             AND user_session = $2
+00222:     `;
+00223: 
+00224:     await pool.query(query, [
+00225:         id,
+00226:         session
+00227:     ]);
+00228: 
+00229: };
+00230: 
+00231: 
+00232: /*==================================
+00233:         RESET DEFAULT
+00234: ==================================*/
+00235: 
+00236: exports.resetDefault = async (
+00237:     session
+00238: ) => {
+00239: 
+00240:     const query = `
+00241:         UPDATE user_bank_accounts
+00242:         SET
+00243:             is_default = FALSE,
+00244:             updated_at = NOW()
+00245:         WHERE
+00246:             user_session = $1
+00247:     `;
+00248: 
+00249:     await pool.query(query, [session]);
+00250: 
+00251: };
+00252: 
+00253: 
+00254: /*==================================
+00255:         SET DEFAULT
+00256: ==================================*/
+00257: 
+00258: exports.setDefault = async (
+00259:     id,
+00260:     session
+00261: ) => {
+00262: 
+00263:     const query = `
+00264:         UPDATE user_bank_accounts
+00265:         SET
+00266:             is_default = TRUE,
+00267:             updated_at = NOW()
+00268:         WHERE
+00269:             id = $1
+00270:             AND user_session = $2
+00271:         RETURNING *
+00272:     `;
+00273: 
+00274:     const { rows } = await pool.query(query, [
+00275:         id,
+00276:         session
+00277:     ]);
+00278: 
+00279:     return rows[0];
+00280: 
+00281: };
+
+------------------------------------------------------------
+FILE: routes/bankAccountRoutes.js
+------------------------------------------------------------
+
+------------------------------------------------------------
+FILE: services/bankAccountService.js
+------------------------------------------------------------
+
+------------------------------------------------------------
+FILE: services/tripayDisbursementService.js
+------------------------------------------------------------
+
+------------------------------------------------------------
+FILE: templates/categoryError.js
+------------------------------------------------------------
+00001: function escapeHtml(value) {
+00002:     return String(value)
+00003:         .replaceAll("&", "&amp;")
+00004:         .replaceAll("<", "&lt;")
+00005:         .replaceAll(">", "&gt;")
+00006:         .replaceAll('"', "&quot;")
+00007:         .replaceAll("'", "&#039;");
+00008: }
+00009: 
+00010: function renderCategoryError(data) {
+00011:     const page = escapeHtml(data.page || "semua");
+00012: 
+00013:     return `<!DOCTYPE html>
+00014: <html lang="id">
+00015: <head>
+00016: <meta charset="UTF-8">
+00017: <meta name="viewport" content="width=device-width,initial-scale=1">
+00018: <style>
+00019: *{box-sizing:border-box}body{margin:0;background:transparent;font-family:Inter,Arial,sans-serif;color:#374151}
+00020: .state{margin:12px 16px;padding:22px 18px;text-align:center;background:#fff7ed;border:1px solid #fed7aa;border-radius:16px}
+00021: .icon{font-size:28px;margin-bottom:8px}.title{font-size:15px;font-weight:700;color:#9a3412}.text{margin:6px 0 0;font-size:13px;line-height:1.5;color:#7c2d12}
+00022: </style>
+00023: </head>
+00024: <body>
+00025: <div class="state" role="status">
+00026:   <div class="icon">&#127869;&#65039;</div>
+00027:   <div class="title">Menu sedang diperbarui</div>
+00028:   <p class="text">Data menu belum tersedia. Silakan coba kembali beberapa saat lagi.</p>
+00029: </div>
+00030: <script>
+00031: function sendHeight(){window.parent.postMessage({type:"goces-frame",page:"${page}",height:document.documentElement.scrollHeight,totalItems:0,empty:false,error:true},"*")}
+00032: window.addEventListener("load",sendHeight);
+00033: if(window.ResizeObserver){new ResizeObserver(sendHeight).observe(document.body)}
+00034: </script>
+00035: </body>
+00036: </html>`;
+00037: }
+00038: 
+00039: module.exports = renderCategoryError;
+
+============================================================
+5. ENTRY POINT / ROUTE REGISTRATION
+============================================================
+
+------------------------------------------------------------
+FILE: api/index.js
+------------------------------------------------------------
+00001: const app = require("../server");
+00002: 
+00003: module.exports = app;
+
+------------------------------------------------------------
+FILE: server.js
+------------------------------------------------------------
+00001: require("dotenv").config();
+00002: 
+00003: const express = require("express");
+00004: const cors = require("cors");
+00005: const path = require("path");
+00006: 
+00007: const routes = require("./routes");
+00008: const cartRoutes = require("./routes/cart");
+00009: const testRoute = require("./routes/test");
+00010: const paymentRoutes = require("./routes/paymentRoutes");
+00011: const campaignRoutes = require("./routes/campaignRoutes");
+00012: const donationRoutes = require("./routes/donationRoutes");
+00013: const callbackRoutes = require("./routes/callbackRoutes");
+00014: const topupRoutes = require("./routes/topupRoutes");
+00015: 
+00016: const app = express();
+00017: 
+00018: /*==================================
+00019:         MIDDLEWARE
+00020: ==================================*/
+00021: 
+00022: app.disable("x-powered-by");
+00023: 
+00024: app.use(express.json({
+00025:     limit: "1mb"
+00026: }));
+00027: 
+00028: app.use(express.urlencoded({
+00029:     extended: true,
+00030:     limit: "1mb"
+00031: }));
+00032: 
+00033: // Development
+00034: app.use(cors());
+00035: 
+00036: /*
+00037: ==================================
+00038:         CORS PRODUCTION
+00039: ==================================
+00040: 
+00041: const allowedOrigins = [
+00042:     "https://goces-app.vercel.app",
+00043:     "https://goces-api.vercel.app",
+00044:     "http://localhost:3000"
+00045: ];
+00046: 
+00047: app.use(cors({
+00048:     origin(origin, callback) {
+00049: 
+00050:         if (!origin) {
+00051:             return callback(null, true);
+00052:         }
+00053: 
+00054:         if (allowedOrigins.includes(origin)) {
+00055:             return callback(null, true);
+00056:         }
+00057: 
+00058:         return callback(
+00059:             new Error("Origin tidak diizinkan.")
+00060:         );
+00061: 
+00062:     },
+00063: 
+00064:     methods: [
+00065:         "GET",
+00066:         "POST",
+00067:         "PUT",
+00068:         "PATCH",
+00069:         "DELETE"
+00070:     ],
+00071: 
+00072:     allowedHeaders: [
+00073:         "Content-Type",
+00074:         "Authorization"
+00075:     ]
+00076: 
+00077: }));
+00078: */
+00079: 
+00080: /*==================================
+00081:         STATIC
+00082: ==================================*/
+00083: 
+00084: app.use(express.static("public"));
+00085: 
+00086: app.use(
+00087:     "/uploads",
+00088:     express.static(
+00089:         path.join(__dirname, "uploads")
+00090:     )
+00091: );
+00092: 
+00093: /*==================================
+00094:         ROUTES
+00095: ==================================*/
+00096: 
+00097: app.use("/", routes);
+00098: 
+00099: app.use("/api", testRoute);
+00100: 
+00101: app.use("/api/cart", cartRoutes);
+00102: 
+00103: app.use("/api/payment", paymentRoutes);
+00104: 
+00105: app.use("/api", campaignRoutes);
+00106: 
+00107: app.use("/api/donations", donationRoutes);
+00108: 
+00109: app.use("/api/callback", callbackRoutes);
+00110: 
+00111: app.use("/api/topup", topupRoutes);
+00112: 
+00113: /*==================================
+00114:         404
+00115: ==================================*/
+00116: 
+00117: app.use((req, res) => {
+00118: 
+00119:     return res.status(404).json({
+00120: 
+00121:         success: false,
+00122: 
+00123:         message: "Endpoint tidak ditemukan."
+00124: 
+00125:     });
+00126: 
+00127: });
+00128: 
+00129: /*==================================
+00130:         ERROR HANDLER
+00131: ==================================*/
+00132: 
+00133: app.use((err, req, res, next) => {
+00134: 
+00135:     console.error(err);
+00136: 
+00137:     return res.status(500).json({
+00138: 
+00139:         success: false,
+00140: 
+00141:         message: err.message || "Internal Server Error"
+00142: 
+00143:     });
+00144: 
+00145: });
+00146: 
+00147: /*==================================
+00148:         SERVER
+00149: ==================================*/
+00150: 
+00151: const PORT =
+00152:     process.env.PORT || 3000;
+00153: 
+00154: app.listen(PORT, () => {
+00155: 
+00156:     console.log(
+00157:         `🚀 Server berjalan di port ${PORT}`
+00158:     );
+00159: 
+00160: });
+00161: 
+00162: module.exports = app;
+
+------------------------------------------------------------
+FILE: package.json
+------------------------------------------------------------
+00001: {
+00002:   "name": "jagel-api",
+00003:   "version": "1.0.0",
+00004:   "description": "",
+00005:   "main": "server.js",
+00006:   "scripts": {
+00007:     "test": "echo \"Error: no test specified\" && exit 1",
+00008:     "start": "node server.js"
+00009:   },
+00010:   "keywords": [],
+00011:   "author": "",
+00012:   "license": "ISC",
+00013:   "type": "commonjs",
+00014:   "dependencies": {
+00015:     "axios": "^1.18.1",
+00016:     "cheerio": "^1.2.0",
+00017:     "cors": "^2.8.6",
+00018:     "crypto": "^1.0.1",
+00019:     "dotenv": "^17.4.2",
+00020:     "express": "^5.2.1",
+00021:     "multer": "^2.2.0",
+00022:     "pg": "^8.22.0"
+00023:   }
+00024: }
+
+------------------------------------------------------------
+FILE: vercel.json
+------------------------------------------------------------
+00001: {
+00002:   "functions": {
+00003:     "api/index.js": {
+00004:       "maxDuration": 30
+00005:     }
+00006:   },
+00007:   "rewrites": [
+00008:     {
+00009:       "source": "/(.*)",
+00010:       "destination": "/api/index.js"
+00011:     }
+00012:   ]
+00013: }
+
+============================================================
+6. SUMMARY
+============================================================
+SOURCE TIDAK DIUBAH.
+BELUM MERGE.
+BELUM RESET.
+BELUM COMMIT.
+BELUM DEPLOY.

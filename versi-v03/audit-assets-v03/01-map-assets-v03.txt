@@ -1,0 +1,146 @@
+﻿============================================================
+GOCES V03 - ASSET MAP
+============================================================
+ROOT:
+C:\Users\Akbar\OneDrive\Desktop\Goces v12
+HTML:
+C:\Users\Akbar\OneDrive\Desktop\Goces v12\versi-v03\versi-v03.html
+TOTAL ASSET TERDETEKSI:
+32
+SOURCE TIDAK DIUBAH.
+============================================================
+
+URL   : https://goces-app.vercel.app/css/versi-v01/benner-food.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v01\benner-food.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v01/benner-home.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v01\benner-home.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v01/benner-promo.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v01\benner-promo.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v01/development.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v01\development.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v01/food.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v01\food.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v01/style.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v01\style.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v02/beranda.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v02\beranda.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v02/chat.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v02\chat.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v02/nav.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v02\nav.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v02/orders.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v02\orders.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v02/profile.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v02\profile.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v02/promo.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v02\promo.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/versi-v02/setting.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\versi-v02\setting.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/voucher.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\voucher.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/css/voucher-horizontal.css
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\css\voucher-horizontal.css
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/core/goces-frame-manager.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\core\goces-frame-manager.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/development.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\development.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/iframe-resize.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\iframe-resize.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/versi-v01/app.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\versi-v01\app.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/versi-v01/benner-food.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\versi-v01\benner-food.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/versi-v01/benner-home.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\versi-v01\benner-home.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/versi-v01/benner-promo.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\versi-v01\benner-promo.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/versi-v01/feedback.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\versi-v01\feedback.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/versi-v01/food.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\versi-v01\food.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/versi-v01/navigation.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\versi-v01\navigation.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/versi-v02/global.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\versi-v02\global.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/voucher/voucher-card.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\voucher\voucher-card.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/voucher/voucher-copy.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\voucher\voucher-copy.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/voucher/voucher-countdown.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\voucher\voucher-countdown.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/voucher/voucher-loader.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\voucher\voucher-loader.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/voucher/voucher-modal.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\voucher\voucher-modal.js
+STATUS: ADA
+
+URL   : https://goces-app.vercel.app/js/voucher/voucher-page.js
+LOCAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\js\voucher\voucher-page.js
+STATUS: ADA
+
+============================================================
+HASIL
+============================================================
+CSS DIBACA     : 15
+JS DIBACA      : 17
+TIDAK DITEMUKAN: 0

@@ -1,0 +1,928 @@
+﻿============================================================
+AUDIT GOCES JAGEL - VERSI V03
+============================================================
+FILE:
+C:\Users\Akbar\OneDrive\Desktop\Goces v12\versi-v03\versi-v03.html
+UKURAN:
+76103 bytes
+JUMLAH BARIS:
+2131
+WAKTU AUDIT:
+2026-09-08 14:21:45
+CATATAN:
+- Source TIDAK diubah
+- Fokus hanya versi-v03.html
+- Folder versi-v01 / versi-v02 tidak disentuh
+============================================================
+DETEKSI STRUKTUR
+============================================================
+STYLE TAG       : 1
+SCRIPT TAG      : 24
+MEDIA QUERY     : 2
+BUTTON          : 43
+INPUT           : 7
+IMAGE           : 12
+IFRAME          : 6
+============================================================
+JAGEL / NAVIGASI
+============================================================
+action://act/address
+action://act/admin
+action://act/balance
+action://act/cart
+action://act/customer_points
+action://act/logout
+action://act/message_list
+action://act/password
+action://act/profile
+action://act/referral
+action://act/referral_list
+action://act/search
+action://act/shopping
+action://act/topup
+action://act/verified_email
+action://act/verified_phone
+action://act/withdraw
+action://p/6a32d81298f27
+action://p/6a32d88f49400
+
+============================================================
+PLACEHOLDER JAGEL
+============================================================
+{email}
+{foto}
+{hp}
+{jumlah_pesan}
+{lokasi_terdekat}
+{nama}
+{poin}
+{saldo}
+{username}
+
+============================================================
+FUNCTION JAVASCRIPT
+============================================================
+atcNearbyUpdate
+
+============================================================
+MEDIA QUERY / RESPONSIVE
+============================================================
+@media (max-width: 480px) {
+@media (min-width: 640px) {
+
+============================================================
+CSS VARIABLES
+============================================================
+Tidak ditemukan CSS variable.
+
+============================================================
+UKURAN PX YANG DIGUNAKAN
+============================================================
+
+Count Name 
+----- ---- 
+   20 14px 
+   19 16px 
+   17 18px 
+   16 12px 
+   10 10px 
+   10 20px 
+    7 4px  
+    6 42px 
+    4 8px  
+    4 13px 
+    4 30px 
+    4 2px  
+    4 1px  
+    3 28px 
+    3 3px  
+    3 22px 
+    2 40px 
+    2 6px  
+    2 24px 
+    1 17px 
+    1 52px 
+    1 21px 
+    1 5px  
+    1 640px
+    1 480px
+    1 90px 
+    1 11px 
+    1 999px
+    1 38px 
+    1 9px  
+    1 0.3px
+    1 7px  
+    1 15px 
+    1 50px 
+    1 420px
+    1 160px
+
+
+
+
+============================================================
+SOURCE LENGKAP versi-v03.html
+============================================================
+
+00001: <!doctype html>
+00002: <html lang="id">
+00003:   <head>
+00004:     <meta charset="UTF-8" />
+00005:     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+00006:     <title>PT. Global selebes tecnology</title>
+00007:     <link rel="preconnect" href="https://fonts.googleapis.com" />
+00008:     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+00009:     <link
+00010:       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+00011:       rel="stylesheet"
+00012:     />
+00013:     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+00014:     <link
+00015:       rel="stylesheet"
+00016:       href="https://goces-app.vercel.app/css/versi-v02/beranda.css"
+00017:     />
+00018:     <link
+00019:       rel="stylesheet"
+00020:       href="https://goces-app.vercel.app/css/versi-v02/promo.css"
+00021:     />
+00022:     <link
+00023:       rel="stylesheet"
+00024:       href="https://goces-app.vercel.app/css/versi-v02/orders.css"
+00025:     />
+00026:     <link
+00027:       rel="stylesheet"
+00028:       href="https://goces-app.vercel.app/css/versi-v02/chat.css"
+00029:     />
+00030:     <link
+00031:       rel="stylesheet"
+00032:       href="https://goces-app.vercel.app/css/versi-v02/profile.css"
+00033:     />
+00034:     <link
+00035:       rel="stylesheet"
+00036:       href="https://goces-app.vercel.app/css/versi-v02/setting.css"
+00037:     />
+00038:     <link
+00039:       rel="stylesheet"
+00040:       href="https://goces-app.vercel.app/css/versi-v02/nav.css"
+00041:     />
+00042:     <link
+00043:       rel="stylesheet"
+00044:       href="https://goces-app.vercel.app/css/versi-v01/style.css"
+00045:     />
+00046:     <link
+00047:       rel="stylesheet"
+00048:       href="https://goces-app.vercel.app/css/versi-v01/food.css"
+00049:     />
+00050:     <link
+00051:       rel="stylesheet"
+00052:       href="https://goces-app.vercel.app/css/versi-v01/benner-home.css"
+00053:     />
+00054:     <link
+00055:       rel="stylesheet"
+00056:       href="https://goces-app.vercel.app/css/versi-v01/benner-food.css"
+00057:     />
+00058:     <link
+00059:       rel="stylesheet"
+00060:       href="https://goces-app.vercel.app/css/versi-v01/benner-promo.css"
+00061:     />
+00062:     <link
+00063:       rel="stylesheet"
+00064:       href="https://goces-app.vercel.app/css/versi-v01/development.css"
+00065:     />
+00066:     <link
+00067:       rel="stylesheet"
+00068:       href="https://goces-app.vercel.app/css/voucher.css"
+00069:     />
+00070:     <link
+00071:       rel="stylesheet"
+00072:       href="https://goces-app.vercel.app/css/voucher-horizontal.css"
+00073:     />
+00074:     <!-- GOCES PEDULI CSS â€” nonaktif sementara
+00075:     <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/assets/css/style.css">
+00076:     <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/payment/payment.css">
+00077:     <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/success/success.css">
+00078:     <link rel="stylesheet" href="https://goces-api.vercel.app/modules/goces-peduli/waiting/waiting.css">
+00079:     -->
+00080:     <style>
+00081:       .atc-nearby-section {
+00082:         margin: 14px 0 18px;
+00083:       }
+00084:       .atc-nearby-header {
+00085:         display: flex;
+00086:         align-items: center;
+00087:         justify-content: space-between;
+00088:         padding: 0 16px;
+00089:         margin-bottom: 12px;
+00090:       }
+00091:       .atc-nearby-title {
+00092:         margin: 0;
+00093:         font-size: 18px;
+00094:         font-weight: 700;
+00095:         color: #1f2937;
+00096:       }
+00097:       .atc-nearby-seeall {
+00098:         border: none;
+00099:         background: none;
+00100:         padding: 0;
+00101:         color: #2563eb;
+00102:         font-size: 13px;
+00103:         font-weight: 700;
+00104:         cursor: pointer;
+00105:       }
+00106:       .atc-nearby-wrapper {
+00107:         width: 100%;
+00108:         overflow: hidden;
+00109:       }
+00110:       .atc-nearby-wrapper #item-nearby-head {
+00111:         display: flex;
+00112:         gap: 12px;
+00113:         padding: 0 16px 8px;
+00114:         overflow-x: auto;
+00115:         overflow-y: hidden;
+00116:         scroll-behavior: smooth;
+00117:         scrollbar-width: none;
+00118:         -webkit-overflow-scrolling: touch;
+00119:       }
+00120:       .atc-nearby-wrapper #item-nearby-head::-webkit-scrollbar {
+00121:         display: none;
+00122:       }
+00123:       .atc-nearby-wrapper .item-nearby-row {
+00124:         position: relative;
+00125:         flex-shrink: 0;
+00126:         width: 160px;
+00127:         margin: 0;
+00128:         background: #fff;
+00129:         border-radius: 18px;
+00130:         overflow: hidden;
+00131:         border: 1px solid #eef2f7;
+00132:         box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+00133:       }
+00134:       .atc-nearby-wrapper .item-nearby-row::before {
+00135:         content: "â­TERDEKAT";
+00136:         position: absolute;
+00137:         top: 10px;
+00138:         left: 0;
+00139:         background: #ef4444;
+00140:         color: #fff;
+00141:         padding: 6px 14px;
+00142:         border-radius: 0 18px 18px 0;
+00143:         font-size: 9px;
+00144:         font-weight: 700;
+00145:         letter-spacing: 0.3px;
+00146:         z-index: 20;
+00147:       }
+00148:       .atc-nearby-wrapper .item-nearby-link {
+00149:         display: block;
+00150:         text-decoration: none;
+00151:         color: #111827;
+00152:       }
+00153:       .atc-nearby-wrapper .item-nearby-image {
+00154:         margin: 0 !important;
+00155:         width: 100% !important;
+00156:         display: block;
+00157:         aspect-ratio: 1/0.82;
+00158:         object-fit: cover;
+00159:         object-position: center center;
+00160:       }
+00161:       .atc-nearby-wrapper .item-nearby-title {
+00162:         display: -webkit-box;
+00163:         -webkit-box-orient: vertical;
+00164:         -webkit-line-clamp: 2;
+00165:         line-clamp: 2;
+00166:         overflow: hidden;
+00167:         padding: 10px 12px 4px;
+00168:         font-size: 14px;
+00169:         font-weight: 700;
+00170:         line-height: 1.35;
+00171:         color: #111827;
+00172:         min-height: 38px;
+00173:       }
+00174:       .atc-nearby-wrapper .item-nearby-distance {
+00175:         display: flex;
+00176:         justify-content: space-between;
+00177:         align-items: center;
+00178:         padding: 0 12px 8px;
+00179:         font-size: 12px;
+00180:         color: #6b7280;
+00181:       }
+00182:       .atc-nearby-wrapper .item-nearby-distance::after {
+00183:         content: "ðŸ›µ 8-15 mnt";
+00184:         font-size: 11px;
+00185:         color: #6b7280;
+00186:         font-weight: 500;
+00187:       }
+00188:       .atc-nearby-wrapper .item-nearby-status {
+00189:         display: flex;
+00190:         align-items: center;
+00191:         justify-content: space-between;
+00192:         padding: 0 12px 12px;
+00193:       }
+00194:       .atc-nearby-wrapper .item-nearby-status-open {
+00195:         display: inline-flex;
+00196:         align-items: center;
+00197:         justify-content: center;
+00198:         padding: 4px 10px;
+00199:         border-radius: 999px;
+00200:         background: #dcfce7;
+00201:         color: #16a34a;
+00202:         font-size: 10px;
+00203:         font-weight: 700;
+00204:       }
+00205:       .atc-nearby-wrapper .item-nearby-status-note {
+00206:         display: none;
+00207:       }
+00208:       .atc-nearby-wrapper .item-nearby-status::after {
+00209:         content: "â­ 4.9";
+00210:         font-size: 12px;
+00211:         font-weight: 700;
+00212:         color: #f59e0b;
+00213:       }
+00214:       /* GOCES PEDULI INLINE CSS â€” nonaktif sementara
+00215:     .home-goces-peduli {
+00216:         width: 100%;
+00217:         margin-top: 20px;
+00218:     }
+00219:     .goces-peduli-frame {
+00220:         width: 100%;
+00221:         min-height: 420px;
+00222:         height: auto;
+00223:         border: 0;
+00224:     }
+00225:     .gpd-header {
+00226:         position: sticky;
+00227:         top: 0;
+00228:         z-index: 100;
+00229:         background: #fff;
+00230:         display: flex;
+00231:         align-items: center;
+00232:         gap: 12px;
+00233:         padding: 14px 16px;
+00234:         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+00235:     }
+00236:     .gpd-back {
+00237:         width: 40px;
+00238:         height: 40px;
+00239:         border: none;
+00240:         border-radius: 12px;
+00241:         background: #eef4ff;
+00242:         color: #2563eb;
+00243:         font-size: 22px;
+00244:         cursor: pointer;
+00245:         display: flex;
+00246:         align-items: center;
+00247:         justify-content: center;
+00248:     }
+00249:     .gpd-header h1 {
+00250:         font-size: 18px;
+00251:         font-weight: 700;
+00252:     }
+00253:     .gpd-loading {
+00254:         padding: 50px 20px;
+00255:         text-align: center;
+00256:         color: #6b7280;
+00257:     }
+00258:     .gpd-content {
+00259:         padding: 16px;
+00260:     }
+00261:     .gpd-banner {
+00262:         position: relative;
+00263:         overflow: hidden;
+00264:         border-radius: 18px;
+00265:         margin-bottom: 16px;
+00266:     }
+00267:     .gpd-banner img {
+00268:         width: 100%;
+00269:         aspect-ratio: 16/9;
+00270:         height: auto;
+00271:         object-fit: cover;
+00272:         display: block;
+00273:     }
+00274:     .gpd-category {
+00275:         position: absolute;
+00276:         left: 14px;
+00277:         top: 14px;
+00278:         background: #16a34a;
+00279:         color: #fff;
+00280:         padding: 7px 14px;
+00281:         border-radius: 30px;
+00282:         font-size: 12px;
+00283:         font-weight: 700;
+00284:     }
+00285:     .gpd-card {
+00286:         background: #fff;
+00287:         border-radius: 18px;
+00288:         padding: 18px;
+00289:         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+00290:     }
+00291:     .gpd-card h2 {
+00292:         font-size: 22px;
+00293:         line-height: 30px;
+00294:         margin-bottom: 10px;
+00295:     }
+00296:     .gpd-card p {
+00297:         color: #6b7280;
+00298:         line-height: 24px;
+00299:         margin-bottom: 20px;
+00300:     }
+00301:     .gpd-progress-info {
+00302:         display: flex;
+00303:         justify-content: space-between;
+00304:         align-items: center;
+00305:         margin-bottom: 10px;
+00306:     }
+00307:     .gpd-progress-info span:first-child {
+00308:         font-size: 22px;
+00309:         color: #16a34a;
+00310:         font-weight: 700;
+00311:     }
+00312:     .gpd-progress-info span:last-child {
+00313:         color: #2563eb;
+00314:         font-weight: 700;
+00315:     }
+00316:     .gpd-progress {
+00317:         width: 100%;
+00318:         height: 10px;
+00319:         background: #e5e7eb;
+00320:         border-radius: 30px;
+00321:         overflow: hidden;
+00322:         margin-bottom: 16px;
+00323:     }
+00324:     .gpd-progress-bar {
+00325:         width: 0%;
+00326:         height: 100%;
+00327:         background: #16a34a;
+00328:         border-radius: 30px;
+00329:         transition: width 0.35s ease;
+00330:     }
+00331:     .gpd-target {
+00332:         display: flex;
+00333:         justify-content: space-between;
+00334:         align-items: center;
+00335:         margin-bottom: 16px;
+00336:     }
+00337:     .gpd-target span {
+00338:         color: #6b7280;
+00339:     }
+00340:     .gpd-target strong {
+00341:         font-size: 18px;
+00342:     }
+00343:     .gpd-donatur {
+00344:         display: flex;
+00345:         align-items: center;
+00346:         gap: 8px;
+00347:         color: #4b5563;
+00348:         font-size: 15px;
+00349:     }
+00350:     .gpd-about {
+00351:         margin-top: 18px;
+00352:         background: #fff;
+00353:         border-radius: 18px;
+00354:         padding: 18px;
+00355:         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+00356:     }
+00357:     .gpd-about h3 {
+00358:         margin-bottom: 14px;
+00359:         font-size: 18px;
+00360:     }
+00361:     .gpd-about p {
+00362:         color: #4b5563;
+00363:         line-height: 28px;
+00364:     }
+00365:     #page-goces-detail:not(.active) .gpd-footer {
+00366:         display: none !important;
+00367:     }
+00368:     .gpd-footer {
+00369:         position: fixed;
+00370:         left: 0;
+00371:         right: 0;
+00372:         bottom: 0;
+00373:         width: 100%;
+00374:         background: #fff;
+00375:         padding: 14px 16px;
+00376:         padding-bottom: calc(14px + env(safe-area-inset-bottom));
+00377:         box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+00378:     }
+00379:     .gpd-footer button {
+00380:         width: 100%;
+00381:         height: 52px;
+00382:         border: none;
+00383:         border-radius: 14px;
+00384:         background: #2563eb;
+00385:         color: #fff;
+00386:         font-size: 16px;
+00387:         font-weight: 700;
+00388:         cursor: pointer;
+00389:     }
+00390:     .gpd-footer button:active {
+00391:         transform: scale(0.98);
+00392:     }
+00393:     .gpd-footer button:hover {
+00394:         background: #1d4ed8;
+00395:     }
+00396:     .gpd-footer button:focus-visible,
+00397:     .gpd-back:focus-visible {
+00398:         outline: 2px solid #2563eb;
+00399:         outline-offset: 3px;
+00400:     }
+00401:     @media (max-width: 480px) {
+00402:         .gpd-card h2 {
+00403:             font-size: 20px;
+00404:             line-height: 28px;
+00405:         }
+00406:         .gpd-progress-info span:first-child {
+00407:             font-size: 20px;
+00408:         }
+00409:     }
+00410:     #page-goces-peduli {
+00411:         background: #f7f9fc;
+00412:     }
+00413:     .gpa-header {
+00414:         display: flex;
+00415:         align-items: center;
+00416:         gap: 12px;
+00417:         margin: 16px 16px 20px;
+00418:     }
+00419:     .gpa-back {
+00420:         display: grid;
+00421:         width: 42px;
+00422:         height: 42px;
+00423:         flex: 0 0 42px;
+00424:         place-items: center;
+00425:         border: 1px solid #e4e9f1;
+00426:         border-radius: 14px;
+00427:         background: #fff;
+00428:         color: #172033;
+00429:         cursor: pointer;
+00430:         font-size: 21px;
+00431:         box-shadow: 0 3px 12px rgba(23, 32, 51, 0.05);
+00432:     }
+00433:     .gpa-eyebrow {
+00434:         margin: 0 0 3px;
+00435:         color: #e84b55;
+00436:         font-size: 10px;
+00437:         font-weight: 800;
+00438:         letter-spacing: 0.1em;
+00439:     }
+00440:     .gpa-header h1,
+00441:     .gpa-section-heading h2 {
+00442:         margin: 0;
+00443:         color: #172033;
+00444:     }
+00445:     .gpa-header h1 {
+00446:         font-size: 20px;
+00447:         line-height: 1.2;
+00448:     }
+00449:     .gpa-hero {
+00450:         display: flex;
+00451:         align-items: center;
+00452:         gap: 13px;
+00453:         margin: 0 16px 24px;
+00454:         padding: 17px;
+00455:         border: 1px solid #ffe1df;
+00456:         border-radius: 18px;
+00457:         background: linear-gradient(135deg, #fff0f1, #fff8ed);
+00458:     }
+00459:     .gpa-hero-icon {
+00460:         display: grid;
+00461:         width: 42px;
+00462:         height: 42px;
+00463:         flex: 0 0 42px;
+00464:         place-items: center;
+00465:         border-radius: 14px;
+00466:         background: #e84b55;
+00467:         color: #fff;
+00468:         font-size: 20px;
+00469:     }
+00470:     .gpa-hero strong {
+00471:         font-size: 14px;
+00472:     }
+00473:     .gpa-hero p,
+00474:     .gpa-section-heading p {
+00475:         margin: 4px 0 0;
+00476:         color: #697386;
+00477:         font-size: 12px;
+00478:     }
+00479:     .gpa-section-heading {
+00480:         display: flex;
+00481:         align-items: end;
+00482:         justify-content: space-between;
+00483:         margin: 0 16px 14px;
+00484:     }
+00485:     .gpa-section-heading h2 {
+00486:         font-size: 16px;
+00487:     }
+00488:     .gpa-grid {
+00489:         display: grid;
+00490:         grid-template-columns: repeat(2, minmax(0, 1fr));
+00491:         gap: 14px;
+00492:         margin: 0 16px;
+00493:     }
+00494:     .gpa-card {
+00495:         width: auto;
+00496:         min-width: 0;
+00497:         box-shadow: 0 5px 16px rgba(23, 32, 51, 0.08);
+00498:     }
+00499:     .gpa-card:hover {
+00500:         transform: translateY(-2px);
+00501:     }
+00502:     .gpa-message {
+00503:         grid-column: 1 / -1;
+00504:         margin: 0;
+00505:         padding: 28px 16px;
+00506:         border: 1px dashed #d8e0eb;
+00507:         border-radius: 16px;
+00508:         background: #fff;
+00509:         color: #697386;
+00510:         text-align: center;
+00511:         font-size: 13px;
+00512:     }
+00513:     .gpa-message-error {
+00514:         color: #c23842;
+00515:     }
+00516:     @media (min-width: 640px) {
+00517:         .gpa-grid {
+00518:             grid-template-columns: repeat(3, minmax(0, 1fr));
+00519:         }
+00520:     }
+00521:     */
+00522:       .goces-toast {
+00523:         position: fixed;
+00524:         left: 50%;
+00525:         bottom: 90px;
+00526:         transform: translateX(-50%) translateY(20px);
+00527:         max-width: 90%;
+00528:         padding: 14px 18px;
+00529:         border-radius: 12px;
+00530:         background: #111827;
+00531:         color: #fff;
+00532:         font-size: 14px;
+00533:         opacity: 0;
+00534:         visibility: hidden;
+00535:         transition: 0.25s;
+00536:         z-index: 99999;
+00537:       }
+00538:       .goces-toast.show {
+00539:         opacity: 1;
+00540:         visibility: visible;
+00541:         transform: translateX(-50%) translateY(0);
+00542:       }
+00543:     </style>
+00544:   </head>
+00545:   <body>
+00546:     <div class="app-wrapper">
+00547:       <div class="page active" id="page-home">
+00548:         <div class="scroll-area">
+00549:           <div class="home-header">
+00550:             <div class="header-row">
+00551:               <button
+00552:                 class="avatar-btn"
+00553:                 aria-label="kpz-main-wrap"
+00554:                 onclick="showPage('kpz-main-wrap')"
+00555:               >
+00556:                 <img src="{foto}" alt="avatar" class="avatar-img" />
+00557:               </button>
+00558:               <form
+00559:                 class="search-bar"
+00560:                 action="action://act/search"
+00561:                 method="GET"
+00562:               >
+00563:                 <svg
+00564:                   width="16"
+00565:                   height="16"
+00566:                   viewBox="0 0 24 24"
+00567:                   fill="none"
+00568:                   stroke="currentColor"
+00569:                   stroke-width="2.5"
+00570:                   stroke-linecap="round"
+00571:                   stroke-linejoin="round"
+00572:                 >
+00573:                   <circle cx="11" cy="11" r="8"></circle>
+00574:                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+00575:                 </svg>
+00576:                 <input
+00577:                   type="search"
+00578:                   name="search"
+00579:                   placeholder="Find services, food, or places"
+00580:                 />
+00581:               </form>
+00582:               <a href="action://act/message_list" class="kpz-nav-button">
+00583:                 <svg
+00584:                   class="kpz-nav-image"
+00585:                   viewBox="0 0 24 24"
+00586:                   fill="none"
+00587:                   stroke="currentColor"
+00588:                   stroke-width="2.2"
+00589:                   stroke-linecap="round"
+00590:                   stroke-linejoin="round"
+00591:                 >
+00592:                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+00593:                   <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+00594:                 </svg>
+00595:                 <span class="kpz-badge"> {jumlah_pesan} </span>
+00596:               </a>
+00597:             </div>
+00598:             <div class="home-hero-slider">
+00599:               <a
+00600:                 href="https://gocesapp.blogspot.com/2026/07/dokumentasi-pendaftaran-agency-goces.html"
+00601:                 target="_blank"
+00602:                 style="display: block; text-decoration: none"
+00603:               >
+00604:                 <div class="home-hero-item active">
+00605:                   <img
+00606:                     src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1784095783/ChatGPT_Image_15_Jul_2026_14.09.23_nixjgc.png"
+00607:                     alt="Pendaftaran Agency GOCES"
+00608:                   />
+00609:                 </div>
+00610:               </a>
+00611:             </div>
+00612:           </div>
+00613:           <div class="wallet-card">
+00614:             <div>
+00615:               <div class="wallet-brand">
+00616:                 <div class="wallet-g-icon">G</div>
+00617:                 <span>Gocespay</span>
+00618:               </div>
+00619:               <a href="action://act/balance" class="wallet-balance">
+00620:                 {saldo}
+00621:               </a>
+00622:               <a href="action://act/customer_points" class="wallet-coins">
+00623:                 â­ {poin}
+00624:               </a>
+00625:             </div>
+00626:             <div class="wallet-actions">
+00627:               <a class="wallet-action" href="action://act/withdraw">
+00628:                 <div class="wallet-action-icon blue">
+00629:                   <svg
+00630:                     width="18"
+00631:                     height="18"
+00632:                     viewBox="0 0 24 24"
+00633:                     fill="none"
+00634:                     stroke="currentColor"
+00635:                     stroke-width="2.5"
+00636:                     stroke-linecap="round"
+00637:                     stroke-linejoin="round"
+00638:                   >
+00639:                     <line x1="7" y1="17" x2="17" y2="7" />
+00640:                     <polyline points="7 7 17 7 17 17" />
+00641:                   </svg>
+00642:                 </div>
+00643:                 <span>Tarik</span>
+00644:               </a>
+00645:               <a class="wallet-action" href="action://act/topup">
+00646:                 <div class="wallet-action-icon blue">
+00647:                   <svg
+00648:                     width="18"
+00649:                     height="18"
+00650:                     viewBox="0 0 24 24"
+00651:                     fill="none"
+00652:                     stroke="currentColor"
+00653:                     stroke-width="2.5"
+00654:                     stroke-linecap="round"
+00655:                     stroke-linejoin="round"
+00656:                   >
+00657:                     <line x1="12" y1="5" x2="12" y2="19" />
+00658:                     <line x1="5" y1="12" x2="19" y2="12" />
+00659:                   </svg>
+00660:                 </div>
+00661:                 <span>Top Up</span>
+00662:               </a>
+00663:             </div>
+00664:           </div>
+00665:           <div class="gox_service_grid">
+00666:             <a href="action://p/6a32d81298f27" class="gox_service_item">
+00667:               <div class="gox_icon_card gox_bg_green">
+00668:                 <span class="gox_promo_ribbon gox_ribbon_red">20%</span>
+00669:                 <img
+00670:                   src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781593613/ChatGPT_Image_16_Jun_2026_15.06.38_zw3ga1.png"
+00671:                 />
+00672:               </div>
+00673:               <p>GoRide</p>
+00674:             </a>
+00675:             <a href="action://p/6a32d88f49400" class="gox_service_item">
+00676:               <div class="gox_icon_card gox_bg_blue">
+00677:                 <span class="gox_promo_ribbon gox_ribbon_blue">50%</span>
+00678:                 <img
+00679:                   src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594742/ChatGPT_Image_16_Jun_2026_15.10.13_czsgh3.png"
+00680:                 />
+00681:               </div>
+00682:               <p>GoCar</p>
+00683:             </a>
+00684:             <a class="gox_service_item" onclick="showPage('gofood')">
+00685:               <div class="gox_icon_card gox_bg_pink">
+00686:                 <span class="gox_promo_ribbon gox_ribbon_red">HALAL</span>
+00687:                 <img
+00688:                   src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594741/ChatGPT_Image_16_Jun_2026_15.11.52_ljy4go.png"
+00689:                 />
+00690:               </div>
+00691:               <p>GoFood</p>
+00692:             </a>
+00693:             <a class="gox_service_item" onclick="openGocesAI()">
+00694:               <div class="gox_icon_card gox_bg_orange">
+00695:                 <span class="gox_promo_ribbon gox_ribbon_orange">FAST</span>
+00696:                 <img
+00697:                   src="https://res.cloudinary.com/dutuhbbg2/image/upload/v1781594740/ChatGPT_Image_16_Jun_2026_15.13.20_lmhens.png"
+00698:                 />
+00699:               </div>
+00700:               <p>Delivery</p>
+00701:             </a>
+00702:           </div>
+00703:           <section class="gcsPromoBannerSection">
+00704:             <div
+00705:               id="gcsPromoBannerContainer"
+00706:               class="gcsPromoBannerContainer"
+00707:             ></div>
+00708:           </section>
+00709:           <section class="gcvh-section">
+00710:             <div class="gcvh-header">
+00711:               <h2 class="gcvh-title">Voucher Menarik</h2>
+00712:               <button class="gcvh-seeall" onclick="showPage('promos')">
+00713:                 Lihat Semua
+00714:               </button>
+00715:             </div>
+00716:             <div id="gocesVoucherHome" class="gcvh-container"></div>
+00717:           </section>
+00718:           <section id="atcNearbySection" class="atc-nearby-section">
+00719:             <div class="atc-nearby-header">
+00720:               <h2 class="atc-nearby-title">ðŸ“Resto Terdekat !!</h2>
+00721:               <button class="atc-nearby-seeall" onclick="showPage('gofood')">
+00722:                 Lihat Semua
+00723:               </button>
+00724:             </div>
+00725:             <div id="atcNearbyWrapper" class="atc-nearby-wrapper">
+00726:               <div id="atcNearbyContainer" class="atc-nearby-container">
+00727:                 {lokasi_terdekat}
+00728:               </div>
+00729:             </div>
+00730:           </section>
+00731:           <!-- GOCES PEDULI HOME â€” nonaktif sementara
+00732:                 <section class="gpdl-section">
+00733:                     <div class="gpdl-header-section">
+00734:                         <div class="gpdl-header-left">
+00735:                             <div class="gpdl-header-icon">â¤ï¸</div>
+00736:                             <div>
+00737:                                 <h2>GOCES Peduli</h2>
+00738:                                 <p>Bersama Berbagi Untuk Indonesia</p>
+00739:                             </div>
+00740:                         </div>
+00741:                         <button type="button" class="gpdl-header-more" onclick="showPage('goces-peduli')">
+00742:                             Lihat Semua
+00743:                         </button>
+00744:                     </div>
+00745:                     <div id="gpdl-wrapper" class="gpdl-wrapper">
+00746:                     </div>
+00747:                 </section>
+00748:                 <template id="gpdl-template">
+00749:                     <div class="gpdl-card">
+00750:                         <div class="gpdl-image">
+00751:                             <span class="gpdl-badge"></span>
+00752:                             <img class="gpdl-cover" src="" alt="Campaign">
+00753:                         </div>
+00754:                         <div class="gpdl-content">
+00755:                             <h3 class="gpdl-title"></h3>
+00756:                             <div class="gpdl-target">
+00757:                                 Target
+00758:                                 <strong class="gpdl-target-amount"></strong>
+00759:                             </div>
+00760:                             <div class="gpdl-progress">
+00761:                                 <div class="gpdl-progress-bar"></div>
+00762:                             </div>
+00763:                             <div class="gpdl-money">
+00764:                                 <span class="gpdl-collected"></span>
+00765:                                 <span class="gpdl-percent"></span>
+00766:                             </div>
+00767:                             <div class="gpdl-footer">
+00768:                                 <span class="gpdl-donor"></span>
+00769:                                 <button type="button" class="gpdl-donate">
+00770:                                     Donasi
+00771:                                 </button>
+00772:                             </div>
+00773:                         </div>
+00774:                     </div>
+00775:                 </template>
+00776:                 -->
+00777:         </div>
+00778:       </div>
+00779:       <div class="page" id="page-promos">
+00780:         <div class="scroll-area">
+00781:           <div class="gpr-header">
+00782:             <div class="gpr-header-top">
+00783:               <div class="gpr-header-action">
+00784:                 <a href="action://act/message_list" class="kpz-nav-button">
+00785:                   <svg
+00786:                     class="kpz-nav-image"
+00787:                     viewBox="0 0 24 24"
+00788:                     fill="none"
+00789:                     stroke="currentColor"
+00790:                     stroke-width="2.2"
+00791:                     stroke-linecap="round"
+00792:                     stroke-linejoin="round"
+00793:                   >
+00794:                     <path
+00795:                       d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+00796:                     ></path>
+00797:                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+00798:                   </svg>
+00799:                   <span class="kpz-badge"> {jumlah_pesan} </span>
+00800:                 </a>
+00801:                 <a href="action://act/cart" class="kpz-nav-button">

@@ -1,0 +1,227 @@
+﻿GOCES V12 - FINAL UI + DEPLOY AUDIT
+ROOT : C:\Users\Akbar\OneDrive\Desktop\Goces v12
+TIME : 2026-09-08 15:43:32
+
+AUDIT ONLY - TIDAK ADA FILE SOURCE YANG DIUBAH
+
+============================================================
+1. FILE UTAMA GOCES V03
+============================================================
+ADA   : versi-v03\versi-v03.html
+ADA   : css\versi-v03\goces-v03-system.css
+ADA   : .vercelignore
+ADA   : .gitignore
+
+============================================================
+2. VALIDASI FINAL HTML V03
+============================================================
+OK    : CSS V03 terpasang
+OK    : Voucher GoFood ada
+OK    : Banner GoFood container sudah hilang
+OK    : benner-food.js sudah dilepas
+OK    : benner-food.css sudah dilepas
+OK    : Emoji keranjang UTF8 benar
+OK    : Emoji paket UTF8 benar
+OK    : Simbol panah UTF8 benar
+
+============================================================
+3. CSS DESIGN SYSTEM V03
+============================================================
+ADA : GOCES V03 DESIGN SYSTEM
+ADA : GLOBAL BACK BUTTON
+ADA : FINAL WHITE HEADER ACTIONS
+ADA : VOUCHER MODAL WITHOUT IMAGE
+ADA : UNIFY HOME AND PROMO VOUCHER SIZE
+ADA : WIDER VOUCHER LEFT PANEL
+ADA : GOFOOD VOUCHER SECTION
+
+CSS SIZE: 87691 bytes
+
+============================================================
+4. DOMAIN / URL YANG DIPAKAI V03
+============================================================
+https://goces-api.vercel.app/bakso
+https://goces-api.vercel.app/horizontal/kulinerhorizontal
+https://goces-api.vercel.app/kuliner
+https://goces-api.vercel.app/minuman
+https://goces-api.vercel.app/modules/goces-peduli/assets/css/style.css
+https://goces-api.vercel.app/modules/goces-peduli/assets/js/script.js
+https://goces-api.vercel.app/modules/goces-peduli/detail/detail.js
+https://goces-api.vercel.app/modules/goces-peduli/payment/payment.css
+https://goces-api.vercel.app/modules/goces-peduli/payment/payment.js
+https://goces-api.vercel.app/modules/goces-peduli/success/success.css
+https://goces-api.vercel.app/modules/goces-peduli/success/success.js
+https://goces-api.vercel.app/modules/goces-peduli/waiting/waiting.css
+https://goces-api.vercel.app/modules/goces-peduli/waiting/waiting.js
+https://goces-api.vercel.app/pizza
+https://goces-api.vercel.app/snack
+https://goces-app.vercel.app/css/versi-v01/benner-home.css
+https://goces-app.vercel.app/css/versi-v01/benner-promo.css
+https://goces-app.vercel.app/css/versi-v01/development.css
+https://goces-app.vercel.app/css/versi-v01/food.css
+https://goces-app.vercel.app/css/versi-v01/style.css
+https://goces-app.vercel.app/css/versi-v02/beranda.css
+https://goces-app.vercel.app/css/versi-v02/chat.css
+https://goces-app.vercel.app/css/versi-v02/nav.css
+https://goces-app.vercel.app/css/versi-v02/orders.css
+https://goces-app.vercel.app/css/versi-v02/profile.css
+https://goces-app.vercel.app/css/versi-v02/promo.css
+https://goces-app.vercel.app/css/versi-v02/setting.css
+https://goces-app.vercel.app/css/voucher.css
+https://goces-app.vercel.app/css/voucher-horizontal.css
+https://goces-app.vercel.app/js/core/goces-frame-manager.js
+https://goces-app.vercel.app/js/development.js
+https://goces-app.vercel.app/js/iframe-resize.js
+https://goces-app.vercel.app/js/versi-v01/app.js
+https://goces-app.vercel.app/js/versi-v01/benner-home.js
+https://goces-app.vercel.app/js/versi-v01/benner-promo.js
+https://goces-app.vercel.app/js/versi-v01/feedback.js
+https://goces-app.vercel.app/js/versi-v01/food.js
+https://goces-app.vercel.app/js/versi-v01/navigation.js
+https://goces-app.vercel.app/js/versi-v02/global.js
+https://goces-app.vercel.app/js/voucher/voucher-card.js
+https://goces-app.vercel.app/js/voucher/voucher-copy.js
+https://goces-app.vercel.app/js/voucher/voucher-countdown.js
+https://goces-app.vercel.app/js/voucher/voucher-loader.js
+https://goces-app.vercel.app/js/voucher/voucher-modal.js
+https://goces-app.vercel.app/js/voucher/voucher-page.js
+
+============================================================
+5. VERCEL PROJECT LINKAGE
+============================================================
+
+FOLDER: C:\Users\Akbar\OneDrive\Desktop\Goces v12
+  .vercel/project.json = TIDAK ADA
+  vercel.json = TIDAK ADA
+  package.json = TIDAK ADA
+
+FOLDER: C:\Users\Akbar\OneDrive\Desktop\Goces v12\Goces V03
+  .vercel/project.json = TIDAK ADA
+  vercel.json = TIDAK ADA
+  package.json = TIDAK ADA
+
+FOLDER: C:\Users\Akbar\OneDrive\Desktop\Goces v12\goces-api-repo
+  .vercel/project.json = TIDAK ADA
+  vercel.json = ADA
+----- vercel.json -----
+  {
+    "functions": {
+      "api/index.js": {
+        "maxDuration": 30
+      }
+    },
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/api/index.js"
+      }
+    ]
+  }
+-----------------------
+  package.json = ADA
+  package name = jagel-api
+  scripts:
+    test = echo "Error: no test specified" && exit 1
+    start = node server.js
+
+FOLDER: C:\Users\Akbar\OneDrive\Desktop\Goces v12\jagel-api
+  .vercel/project.json = TIDAK ADA
+  vercel.json = ADA
+----- vercel.json -----
+  {
+    "functions": {
+      "api/index.js": {
+        "maxDuration": 30
+      }
+    },
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/api/index.js"
+      }
+    ]
+  }
+-----------------------
+  package.json = ADA
+  package name = jagel-api
+  scripts:
+    test = echo "Error: no test specified" && exit 1
+    start = node server.js
+
+FOLDER: C:\Users\Akbar\OneDrive\Desktop\Goces v12\versi-v03
+  .vercel/project.json = TIDAK ADA
+  vercel.json = TIDAK ADA
+  package.json = TIDAK ADA
+
+============================================================
+6. .VERCELIGNORE
+============================================================
+jagel-api/
+goces-api-repo/
+Admin/backend/
+**/.env
+**/.env.*
+**/node_modules/
+.git/
+.agents/
+.codex/
+catatan/
+versi-tester-v00/
+
+============================================================
+7. AUDIT / BACKUP YANG ADA
+============================================================
+ADA -> HARUS DIIGNORE: versi-v03\_backup-ui-v03
+ADA -> HARUS DIIGNORE: versi-v03\audit-assets-v03
+ADA -> HARUS DIIGNORE: versi-v03\audit-full-v03
+ADA -> HARUS DIIGNORE: versi-v03\audit-versi-v03.txt
+
+============================================================
+8. GIT STATUS
+============================================================
+BRANCH: main
+
+CHANGED FILES:
+ M versi-tester-v00/tester.html
+ M versi-v03/versi-v03.html
+?? "Goces V03/"
+?? audit-final-deploy-goces-v12.txt
+?? css/versi-v03/
+?? versi-tester-v00/contoh.html
+?? versi-v03/_backup-ui-v03/
+?? versi-v03/audit-assets-v03/
+?? versi-v03/audit-full-v03/
+?? versi-v03/audit-versi-v03.txt
+
+============================================================
+9. VERCEL CLI
+============================================================
+VERCEL CLI = TIDAK DITEMUKAN
+
+============================================================
+10. ROOT FOLDERS
+============================================================
+[DIR ] .agents
+[DIR ] .git
+[DIR ] Admin
+[DIR ] assets
+[DIR ] berkas
+[DIR ] catatan
+[DIR ] css
+[DIR ] Goces V03
+[DIR ] goces-api-repo
+[DIR ] jagel-api
+[DIR ] js
+[DIR ] versi-tester-v00
+[DIR ] versi-v01
+[DIR ] versi-v02
+[DIR ] versi-v03
+[FILE] .gitignore
+[FILE] .vercelignore
+[FILE] audit-final-deploy-goces-v12.txt
+
+============================================================
+AUDIT SELESAI
+============================================================
+BELUM ADA DEPLOY YANG DIJALANKAN.
+JANGAN jalankan vercel --prod sebelum mapping 2 project dipastikan.

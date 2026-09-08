@@ -1,0 +1,114 @@
+GOCES V12 - JAGEL API BEFORE MERGE AUDIT
+TIME      : 2026-09-08 16:06:22
+WORKSPACE : C:\Users\Akbar\OneDrive\Desktop\Goces v12\jagel-api
+CANONICAL : C:\Users\Akbar\OneDrive\Desktop\Goces v12\goces-api-repo
+
+AUDIT ONLY - SOURCE TIDAK DIUBAH
+
+============================================================
+1. CANONICAL: goces-api-repo
+============================================================
+
+> git remote -v
+origin	https://github.com/managerbos16/goces-api.git (fetch)
+origin	https://github.com/managerbos16/goces-api.git (push)
+
+> git branch --show-current
+main
+
+> git rev-parse HEAD
+22a81a764b0fe64e4e02ac70db38f7ff570462c6
+
+> git rev-parse origin/main
+22a81a764b0fe64e4e02ac70db38f7ff570462c6
+
+> git log -1 --oneline
+22a81a7 add voucher icon categories for ticket styling
+
+> git status --short
+(tidak ada output)
+
+============================================================
+2. WORKSPACE: jagel-api
+============================================================
+
+> git remote -v
+origin	https://github.com/managerbos16/goces-api.git (fetch)
+origin	https://github.com/managerbos16/goces-api.git (push)
+
+> git branch --show-current
+main
+
+> git rev-parse HEAD
+63bdfcfb778cba2a06a74ad899cff887b9e2e783
+
+> git rev-parse origin/main
+22a81a764b0fe64e4e02ac70db38f7ff570462c6
+
+> git merge-base HEAD origin/main
+63bdfcfb778cba2a06a74ad899cff887b9e2e783
+
+> git rev-list --left-right --count HEAD...origin/main
+0	3
+
+> git status --short
+ M categories.js
+ M handlers/categoryHandler.js
+ M services/jagelService.js
+?? controllers/bankAccountController.js
+?? models/bankAccountModel.js
+?? routes/bankAccountRoutes.js
+?? services/bankAccountService.js
+?? services/tripayDisbursementService.js
+?? templates/categoryError.js
+
+============================================================
+3. COMMIT DIVERGENCE
+============================================================
+
+> LOCAL ONLY: git log origin/main..HEAD
+(tidak ada output)
+
+> REMOTE ONLY: git log HEAD..origin/main
+22a81a7 (origin/main) add voucher icon categories for ticket styling
+29794ba remove dependencies from API deployment source
+8044d8c fix GoFood Jagel component loading
+
+> CURRENT LOCAL HEAD
+commit 63bdfcfb778cba2a06a74ad899cff887b9e2e783
+Author:     Akbartrader <managerbos16@gmail.com>
+AuthorDate: Thu Jul 30 13:45:46 2026 +0800
+Commit:     Akbartrader <managerbos16@gmail.com>
+CommitDate: Thu Jul 30 13:45:46 2026 +0800
+
+    add
+
+============================================================
+4. NET CHANGE jagel-api VS origin/main
+============================================================
+
+> git diff --name-status origin/main
+ERROR: warning: in the working copy of 'categories.js', LF will be replaced by CRLF the next time Git touches it
+
+> git diff --stat origin/main
+ERROR: warning: in the working copy of 'categories.js', LF will be replaced by CRLF the next time Git touches it
+
+============================================================
+5. TRACKED FILE PATCHES
+============================================================
+
+------------------------------------------------------------
+FILE: categories.js
+------------------------------------------------------------
+
+============================================================
+9. AUDIT RESULT
+============================================================
+BELUM ADA MERGE.
+BELUM ADA RESET.
+BELUM ADA COMMIT.
+BELUM ADA DEPLOY.
+
+Tujuan selanjutnya:
+Menentukan perubahan jagel-api mana yang valid untuk dipindahkan
+ke canonical goces-api-repo tanpa merusak production.

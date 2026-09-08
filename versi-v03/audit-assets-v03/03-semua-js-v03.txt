@@ -1,0 +1,3402 @@
+﻿============================================================
+SEMUA JAVASCRIPT YANG DIGUNAKAN V03
+============================================================
+
+============================================================
+FILE: js/core/goces-frame-manager.js
+============================================================
+
+00001: /*==================================
+00002:         GOCES FRAME MANAGER
+00003: ==================================*/
+00004: 
+00005: window.addEventListener("message", function (event) {
+00006: 
+00007:     const data = event.data;
+00008: 
+00009:     if (!data) return;
+00010: 
+00011:     if (data.type !== "goces-frame") return;
+00012: 
+00013:     const frame = document.getElementById("frame-" + data.page);
+00014: 
+00015:     if (!frame) return;
+00016: 
+00017:     // Tidak ada produk
+00018:     if (data.empty) {
+00019: 
+00020:         frame.style.display = "none";
+00021:         frame.style.height = "0px";
+00022: 
+00023:         return;
+00024: 
+00025:     }
+00026: 
+00027:     // Ada produk
+00028:     frame.style.display = "block";
+00029:     frame.style.height = data.height + "px";
+00030: 
+00031: });
+
+============================================================
+FILE: js/development.js
+============================================================
+
+00001: /*==================================================
+00002:         GOCES DEVELOPMENT NOTICE
+00003: ==================================================*/
+00004: 
+00005: function showDevelopmentNotice() {
+00006: 
+00007:     const old = document.getElementById("goces-dev-popup");
+00008: 
+00009:     if (old) old.remove();
+00010: 
+00011:     const popup = document.createElement("div");
+00012: 
+00013:     popup.id = "goces-dev-popup";
+00014: 
+00015:     popup.innerHTML = `
+00016:         <div class="goces-dev-overlay"></div>
+00017: 
+00018:         <div class="goces-dev-box">
+00019: 
+00020:             <div class="goces-dev-icon">ðŸš§</div>
+00021: 
+00022:             <h3>Fitur Masih Dalam Pengembangan</h3>
+00023: 
+00024:             <p>
+00025:                 Maaf, fitur ini masih dalam tahap pengembangan.
+00026:                 Silakan tunggu pembaruan GOCES berikutnya.
+00027:             </p>
+00028: 
+00029:             <button class="goces-dev-button">
+00030:                 Mengerti
+00031:             </button>
+00032: 
+00033:         </div>
+00034:     `;
+00035: 
+00036:     document.body.appendChild(popup);
+00037: 
+00038:     popup
+00039:         .querySelector(".goces-dev-button")
+00040:         .onclick = () => popup.remove();
+00041: 
+00042:     popup
+00043:         .querySelector(".goces-dev-overlay")
+00044:         .onclick = () => popup.remove();
+00045: 
+00046: }
+
+============================================================
+FILE: js/iframe-resize.js
+============================================================
+
+00001: window.addEventListener("message", function (e) {
+00002: 
+00003:     if (!e.data) return;
+00004: 
+00005:     if (e.data.type !== "goces-frame") return;
+00006: 
+00007:     const page = e.data.page;
+00008: 
+00009:     const frame = document.getElementById("frame-" + page);
+00010: 
+00011:     const section = document.getElementById("section-" + page);
+00012: 
+00013:     if (!frame || !section) return;
+00014: 
+00015:     if (e.data.empty) {
+00016: 
+00017:         section.style.display = "none";
+00018: 
+00019:         return;
+00020: 
+00021:     }
+00022: 
+00023:     section.style.display = "";
+00024: 
+00025:     frame.style.height = e.data.height + "px";
+00026: 
+00027: });
+
+============================================================
+FILE: js/versi-v01/app.js
+============================================================
+
+00001: document.addEventListener("DOMContentLoaded", function () {
+00002: 
+00003:   replacePage("home");
+00004: 
+00005:   GocesFeedback.enableAuto();
+00006: 
+00007: });
+
+============================================================
+FILE: js/versi-v01/benner-food.js
+============================================================
+
+00001: const gcsFoodBannerData = [
+00002:     {
+00003:         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784098093/ChatGPT_Image_15_Jul_2026_14.47.55_jo4few.png",
+00004:         link: "https://jgjk.mobi/m/065911195266a57139a54caf9.11693405",
+00005:         start: "2026-07-01 00:00:00",
+00006:         end: "2027-07-31 23:59:59"
+00007:     },
+00008: 
+00009: ];
+00010: 
+00011: let gcsFoodBannerCurrentIndex = 0;
+00012: let gcsFoodBannerActiveItems = [];
+00013: let gcsFoodBannerTimer = null;
+00014: let gcsFoodBannerScheduleTimer = null;
+00015: let gcsFoodBannerTouchStartX = 0;
+00016: let gcsFoodBannerTouchEndX = 0;
+00017: 
+00018: document.addEventListener("DOMContentLoaded", () => {
+00019:     gcsFoodBannerInit();
+00020: });
+00021: 
+00022: function gcsFoodBannerInit() {
+00023:     gcsFoodBannerRefresh();
+00024: 
+00025:     clearInterval(gcsFoodBannerScheduleTimer);
+00026: 
+00027:     gcsFoodBannerScheduleTimer = setInterval(() => {
+00028:         gcsFoodBannerRefresh();
+00029:     }, 60000);
+00030: }
+00031: 
+00032: function gcsFoodBannerRefresh() {
+00033:     gcsFoodBannerActiveItems =
+00034:         gcsFoodBannerCheckSchedule(gcsFoodBannerData);
+00035: 
+00036:     gcsFoodBannerCurrentIndex = 0;
+00037: 
+00038:     gcsFoodBannerRender(gcsFoodBannerActiveItems);
+00039: }
+00040: 
+00041: function gcsFoodBannerCheckSchedule(bannerList) {
+00042:     const now = Date.now();
+00043: 
+00044:     return bannerList.filter(item => {
+00045:         const start = new Date(
+00046:             item.start.replace(" ", "T")
+00047:         ).getTime();
+00048: 
+00049:         const end = new Date(
+00050:             item.end.replace(" ", "T")
+00051:         ).getTime();
+00052: 
+00053:         return Number.isFinite(start) &&
+00054:             Number.isFinite(end) &&
+00055:             now >= start &&
+00056:             now <= end;
+00057:     });
+00058: }
+00059: 
+00060: function gcsFoodBannerRender(activeBanners) {
+00061:     const wrapper = document.getElementById(
+00062:         "gcsFoodBannerContainer"
+00063:     );
+00064: 
+00065:     if (!wrapper) return;
+00066: 
+00067:     const section = wrapper.closest(
+00068:         ".gcsFoodBannerSection"
+00069:     );
+00070: 
+00071:     clearInterval(gcsFoodBannerTimer);
+00072:     gcsFoodBannerTimer = null;
+00073: 
+00074:     wrapper.innerHTML = "";
+00075: 
+00076:     if (activeBanners.length === 0) {
+00077:         wrapper.classList.add("gcsFoodBannerCollapse");
+00078: 
+00079:         if (section) {
+00080:             section.hidden = true;
+00081:         }
+00082: 
+00083:         return;
+00084:     }
+00085: 
+00086:     wrapper.classList.remove("gcsFoodBannerCollapse");
+00087: 
+00088:     if (section) {
+00089:         section.hidden = false;
+00090:     }
+00091: 
+00092:     const header = document.createElement("div");
+00093:     header.className = "gcsFoodBannerHeader";
+00094: 
+00095:     const title = document.createElement("h2");
+00096:     title.className = "gcsFoodBannerTitle";
+00097:     title.textContent = "";
+00098: 
+00099:     header.appendChild(title);
+00100:     wrapper.appendChild(header);
+00101: 
+00102:     const slider = document.createElement("div");
+00103:     slider.className = "gcsFoodBannerSlider";
+00104: 
+00105:     const track = document.createElement("div");
+00106:     track.className = "gcsFoodBannerTrack";
+00107:     track.id = "gcsFoodBannerTrackEl";
+00108: 
+00109:     activeBanners.forEach(banner => {
+00110:         const item = document.createElement("div");
+00111:         item.className = "gcsFoodBannerItem";
+00112: 
+00113:         const link = document.createElement("a");
+00114:         link.className = "gcsFoodBannerLink";
+00115:         link.href = banner.link;
+00116: 
+00117:         const image = document.createElement("img");
+00118:         image.className = "gcsFoodBannerImage";
+00119:         image.src = banner.image;
+00120:         image.alt = "GOCES Food Promo";
+00121:         image.loading = "lazy";
+00122: 
+00123:         link.appendChild(image);
+00124:         item.appendChild(link);
+00125:         track.appendChild(item);
+00126:     });
+00127: 
+00128:     slider.appendChild(track);
+00129:     wrapper.appendChild(slider);
+00130: 
+00131:     gcsFoodBannerCreateDots(activeBanners.length, wrapper);
+00132: 
+00133:     if (activeBanners.length > 1) {
+00134:         gcsFoodBannerAutoSlide();
+00135:         gcsFoodBannerSwipe(slider);
+00136:     }
+00137: }
+00138: 
+00139: function gcsFoodBannerCreateDots(total, parent) {
+00140:     const dots = document.createElement("div");
+00141:     dots.className = "gcsFoodBannerDots";
+00142:     dots.id = "gcsFoodBannerDotsContainerEl";
+00143: 
+00144:     if (total === 1 || total > 5) {
+00145:         dots.classList.add("gcsFoodBannerHidden");
+00146:     }
+00147: 
+00148:     for (let index = 0; index < total; index++) {
+00149:         const dot = document.createElement("span");
+00150:         dot.className = "gcsFoodBannerDot";
+00151: 
+00152:         if (index === 0) {
+00153:             dot.classList.add("gcsFoodBannerActive");
+00154:         }
+00155: 
+00156:         dots.appendChild(dot);
+00157:     }
+00158: 
+00159:     parent.appendChild(dots);
+00160: }
+00161: 
+00162: function gcsFoodBannerGoToSlide(index) {
+00163:     const track = document.getElementById(
+00164:         "gcsFoodBannerTrackEl"
+00165:     );
+00166: 
+00167:     const dots = document.getElementById(
+00168:         "gcsFoodBannerDotsContainerEl"
+00169:     );
+00170: 
+00171:     const total = gcsFoodBannerActiveItems.length;
+00172: 
+00173:     if (!track || total === 0) return;
+00174: 
+00175:     gcsFoodBannerCurrentIndex =
+00176:         (index + total) % total;
+00177: 
+00178:     track.style.transform =
+00179:         `translateX(-${gcsFoodBannerCurrentIndex * 100}%)`;
+00180: 
+00181:     if (dots &&
+00182:         !dots.classList.contains("gcsFoodBannerHidden")) {
+00183:         dots.querySelectorAll(".gcsFoodBannerDot")
+00184:             .forEach((dot, dotIndex) => {
+00185:                 dot.classList.toggle(
+00186:                     "gcsFoodBannerActive",
+00187:                     dotIndex === gcsFoodBannerCurrentIndex
+00188:                 );
+00189:             });
+00190:     }
+00191: }
+00192: 
+00193: function gcsFoodBannerAutoSlide() {
+00194:     clearInterval(gcsFoodBannerTimer);
+00195: 
+00196:     if (gcsFoodBannerActiveItems.length <= 1) return;
+00197: 
+00198:     gcsFoodBannerTimer = setInterval(() => {
+00199:         gcsFoodBannerGoToSlide(
+00200:             gcsFoodBannerCurrentIndex + 1
+00201:         );
+00202:     }, 4000);
+00203: }
+00204: 
+00205: function gcsFoodBannerSwipe(slider) {
+00206:     slider.addEventListener("touchstart", event => {
+00207:         gcsFoodBannerTouchStartX =
+00208:             event.changedTouches[0].screenX;
+00209: 
+00210:         clearInterval(gcsFoodBannerTimer);
+00211:     }, { passive: true });
+00212: 
+00213:     slider.addEventListener("touchend", event => {
+00214:         gcsFoodBannerTouchEndX =
+00215:             event.changedTouches[0].screenX;
+00216: 
+00217:         const distance =
+00218:             gcsFoodBannerTouchStartX -
+00219:             gcsFoodBannerTouchEndX;
+00220: 
+00221:         if (distance > 45) {
+00222:             gcsFoodBannerGoToSlide(
+00223:                 gcsFoodBannerCurrentIndex + 1
+00224:             );
+00225:         }
+00226: 
+00227:         if (distance < -45) {
+00228:             gcsFoodBannerGoToSlide(
+00229:                 gcsFoodBannerCurrentIndex - 1
+00230:             );
+00231:         }
+00232: 
+00233:         gcsFoodBannerAutoSlide();
+00234:     }, { passive: true });
+00235: }
+
+============================================================
+FILE: js/versi-v01/benner-home.js
+============================================================
+
+00001: const gcsPromoBannerData = [
+00002:     {
+00003:         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784093398/ChatGPT_Image_15_Jul_2026_13.27.18_ntcsbk.png",
+00004:         link: "https://jgjk.mobi/m/423311195266a570da62f20f1.00665946",
+00005:         start: "2026-07-01 00:00:00",
+00006:         end: "2027-05-31 23:59:59"
+00007:     },
+00008:     {
+00009:         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784093577/ChatGPT_Image_15_Jul_2026_13.32.44_kzbuq9.png",
+00010:         link: "https://jgjk.mobi/m/065911195266a57139a54caf9.11693405",
+00011:         start: "2026-07-05 00:00:00",
+00012:         end: "2027-07-25 23:59:59"
+00013:     }
+00014: 
+00015: ];
+00016: 
+00017: let gcsPromoBannerCurrentIndex = 0;
+00018: let gcsPromoBannerActiveItems = [];
+00019: let gcsPromoBannerTimer = null;
+00020: let gcsPromoBannerScheduleTimer = null;
+00021: let gcsPromoBannerTouchStartX = 0;
+00022: let gcsPromoBannerTouchEndX = 0;
+00023: 
+00024: document.addEventListener("DOMContentLoaded", () => {
+00025:     gcsPromoBannerInit();
+00026: });
+00027: 
+00028: function gcsPromoBannerInit() {
+00029:     gcsPromoBannerRefresh();
+00030: 
+00031:     clearInterval(gcsPromoBannerScheduleTimer);
+00032: 
+00033:     gcsPromoBannerScheduleTimer = setInterval(() => {
+00034:         gcsPromoBannerRefresh();
+00035:     }, 60000);
+00036: }
+00037: 
+00038: function gcsPromoBannerRefresh() {
+00039:     gcsPromoBannerActiveItems =
+00040:         gcsPromoBannerCheckSchedule(gcsPromoBannerData);
+00041: 
+00042:     gcsPromoBannerCurrentIndex = 0;
+00043: 
+00044:     gcsPromoBannerRender(gcsPromoBannerActiveItems);
+00045: }
+00046: 
+00047: function gcsPromoBannerCheckSchedule(bannerList) {
+00048:     const now = Date.now();
+00049: 
+00050:     return bannerList.filter(item => {
+00051:         const start = new Date(
+00052:             item.start.replace(" ", "T")
+00053:         ).getTime();
+00054: 
+00055:         const end = new Date(
+00056:             item.end.replace(" ", "T")
+00057:         ).getTime();
+00058: 
+00059:         return Number.isFinite(start) &&
+00060:             Number.isFinite(end) &&
+00061:             now >= start &&
+00062:             now <= end;
+00063:     });
+00064: }
+00065: 
+00066: function gcsPromoBannerRender(activeBanners) {
+00067:     const wrapper = document.getElementById(
+00068:         "gcsPromoBannerContainer"
+00069:     );
+00070: 
+00071:     if (!wrapper) return;
+00072: 
+00073:     const section = wrapper.closest(
+00074:         ".gcsPromoBannerSection"
+00075:     );
+00076: 
+00077:     clearInterval(gcsPromoBannerTimer);
+00078:     gcsPromoBannerTimer = null;
+00079: 
+00080:     wrapper.innerHTML = "";
+00081: 
+00082:     if (activeBanners.length === 0) {
+00083:         wrapper.classList.add("gcsPromoBannerCollapse");
+00084: 
+00085:         if (section) {
+00086:             section.hidden = true;
+00087:         }
+00088: 
+00089:         return;
+00090:     }
+00091: 
+00092:     wrapper.classList.remove("gcsPromoBannerCollapse");
+00093: 
+00094:     if (section) {
+00095:         section.hidden = false;
+00096:     }
+00097: 
+00098:     const header = document.createElement("div");
+00099:     header.className = "gcsPromoBannerHeader";
+00100: 
+00101:     const title = document.createElement("h2");
+00102:     title.className = "gcsPromoBannerTitle";
+00103:     title.textContent = "Promo Menarik";
+00104: 
+00105:     header.appendChild(title);
+00106:     wrapper.appendChild(header);
+00107: 
+00108:     const slider = document.createElement("div");
+00109:     slider.className = "gcsPromoBannerSlider";
+00110: 
+00111:     const track = document.createElement("div");
+00112:     track.className = "gcsPromoBannerTrack";
+00113:     track.id = "gcsPromoBannerTrackEl";
+00114: 
+00115:     activeBanners.forEach(banner => {
+00116:         const item = document.createElement("div");
+00117:         item.className = "gcsPromoBannerItem";
+00118: 
+00119:         const link = document.createElement("a");
+00120:         link.className = "gcsPromoBannerLink";
+00121:         link.href = banner.link;
+00122: 
+00123:         const image = document.createElement("img");
+00124:         image.className = "gcsPromoBannerImage";
+00125:         image.src = banner.image;
+00126:         image.alt = "GOCES Promo Banner";
+00127:         image.loading = "lazy";
+00128: 
+00129:         link.appendChild(image);
+00130:         item.appendChild(link);
+00131:         track.appendChild(item);
+00132:     });
+00133: 
+00134:     slider.appendChild(track);
+00135:     wrapper.appendChild(slider);
+00136: 
+00137:     gcsPromoBannerCreateDots(activeBanners.length, wrapper);
+00138: 
+00139:     if (activeBanners.length > 1) {
+00140:         gcsPromoBannerAutoSlide();
+00141:         gcsPromoBannerSwipe(slider);
+00142:     }
+00143: }
+00144: 
+00145: function gcsPromoBannerCreateDots(total, parent) {
+00146:     const dots = document.createElement("div");
+00147:     dots.className = "gcsPromoBannerDots";
+00148:     dots.id = "gcsPromoBannerDotsContainerEl";
+00149: 
+00150:     if (total === 1 || total > 5) {
+00151:         dots.classList.add("gcsPromoBannerHidden");
+00152:     }
+00153: 
+00154:     for (let index = 0; index < total; index++) {
+00155:         const dot = document.createElement("span");
+00156:         dot.className = "gcsPromoBannerDot";
+00157: 
+00158:         if (index === 0) {
+00159:             dot.classList.add(
+00160:                 "gcsPromoPromoBannerActive"
+00161:             );
+00162:         }
+00163: 
+00164:         dots.appendChild(dot);
+00165:     }
+00166: 
+00167:     parent.appendChild(dots);
+00168: }
+00169: 
+00170: function gcsPromoBannerGoToSlide(index) {
+00171:     const track = document.getElementById(
+00172:         "gcsPromoBannerTrackEl"
+00173:     );
+00174: 
+00175:     const dots = document.getElementById(
+00176:         "gcsPromoBannerDotsContainerEl"
+00177:     );
+00178: 
+00179:     const total = gcsPromoBannerActiveItems.length;
+00180: 
+00181:     if (!track || total === 0) return;
+00182: 
+00183:     gcsPromoBannerCurrentIndex =
+00184:         (index + total) % total;
+00185: 
+00186:     track.style.transform =
+00187:         `translateX(-${gcsPromoBannerCurrentIndex * 100}%)`;
+00188: 
+00189:     if (dots &&
+00190:         !dots.classList.contains("gcsPromoBannerHidden")) {
+00191:         dots.querySelectorAll(".gcsPromoBannerDot")
+00192:             .forEach((dot, dotIndex) => {
+00193:                 dot.classList.toggle(
+00194:                     "gcsPromoPromoBannerActive",
+00195:                     dotIndex === gcsPromoBannerCurrentIndex
+00196:                 );
+00197:             });
+00198:     }
+00199: }
+00200: 
+00201: function gcsPromoBannerAutoSlide() {
+00202:     clearInterval(gcsPromoBannerTimer);
+00203: 
+00204:     if (gcsPromoBannerActiveItems.length <= 1) return;
+00205: 
+00206:     gcsPromoBannerTimer = setInterval(() => {
+00207:         gcsPromoBannerGoToSlide(
+00208:             gcsPromoBannerCurrentIndex + 1
+00209:         );
+00210:     }, 4000);
+00211: }
+00212: 
+00213: function gcsPromoBannerSwipe(slider) {
+00214:     slider.addEventListener("touchstart", event => {
+00215:         gcsPromoBannerTouchStartX =
+00216:             event.changedTouches[0].screenX;
+00217: 
+00218:         clearInterval(gcsPromoBannerTimer);
+00219:     }, { passive: true });
+00220: 
+00221:     slider.addEventListener("touchend", event => {
+00222:         gcsPromoBannerTouchEndX =
+00223:             event.changedTouches[0].screenX;
+00224: 
+00225:         const distance =
+00226:             gcsPromoBannerTouchStartX -
+00227:             gcsPromoBannerTouchEndX;
+00228: 
+00229:         if (distance > 45) {
+00230:             gcsPromoBannerGoToSlide(
+00231:                 gcsPromoBannerCurrentIndex + 1
+00232:             );
+00233:         }
+00234: 
+00235:         if (distance < -45) {
+00236:             gcsPromoBannerGoToSlide(
+00237:                 gcsPromoBannerCurrentIndex - 1
+00238:             );
+00239:         }
+00240: 
+00241:         gcsPromoBannerAutoSlide();
+00242:     }, { passive: true });
+00243: }
+
+============================================================
+FILE: js/versi-v01/benner-promo.js
+============================================================
+
+00001: const gcsHalamanPromoBannerData = [
+00002:     {
+00003:         image: "https://res.cloudinary.com/dutuhbbg2/image/upload/v1784097642/ChatGPT_Image_15_Jul_2026_14.39.32_yp5ijn.png",
+00004:         link: "#",
+00005:         start: "2026-07-01 00:00:00",
+00006:         end: "2027-07-31 23:59:59"
+00007:     }
+00008: 
+00009: ];
+00010: 
+00011: let gcsHalamanPromoBannerCurrentIndex = 0;
+00012: let gcsHalamanPromoBannerActiveItems = [];
+00013: let gcsHalamanPromoBannerTimer = null;
+00014: let gcsHalamanPromoBannerScheduleTimer = null;
+00015: let gcsHalamanPromoBannerTouchStartX = 0;
+00016: let gcsHalamanPromoBannerTouchEndX = 0;
+00017: 
+00018: document.addEventListener("DOMContentLoaded", () => {
+00019:     gcsHalamanPromoBannerInit();
+00020: });
+00021: 
+00022: function gcsHalamanPromoBannerInit() {
+00023:     gcsHalamanPromoBannerRefresh();
+00024: 
+00025:     clearInterval(gcsHalamanPromoBannerScheduleTimer);
+00026: 
+00027:     gcsHalamanPromoBannerScheduleTimer = setInterval(() => {
+00028:         gcsHalamanPromoBannerRefresh();
+00029:     }, 60000);
+00030: }
+00031: 
+00032: function gcsHalamanPromoBannerRefresh() {
+00033:     gcsHalamanPromoBannerActiveItems =
+00034:         gcsHalamanPromoBannerCheckSchedule(
+00035:             gcsHalamanPromoBannerData
+00036:         );
+00037: 
+00038:     gcsHalamanPromoBannerCurrentIndex = 0;
+00039: 
+00040:     gcsHalamanPromoBannerRender(
+00041:         gcsHalamanPromoBannerActiveItems
+00042:     );
+00043: }
+00044: 
+00045: function gcsHalamanPromoBannerCheckSchedule(bannerList) {
+00046:     const now = Date.now();
+00047: 
+00048:     return bannerList.filter(item => {
+00049:         const start = new Date(
+00050:             item.start.replace(" ", "T")
+00051:         ).getTime();
+00052: 
+00053:         const end = new Date(
+00054:             item.end.replace(" ", "T")
+00055:         ).getTime();
+00056: 
+00057:         return Number.isFinite(start) &&
+00058:             Number.isFinite(end) &&
+00059:             now >= start &&
+00060:             now <= end;
+00061:     });
+00062: }
+00063: 
+00064: function gcsHalamanPromoBannerRender(activeBanners) {
+00065:     const wrapper = document.getElementById(
+00066:         "gcsHalamanPromoBannerContainer"
+00067:     );
+00068: 
+00069:     if (!wrapper) return;
+00070: 
+00071:     const section = wrapper.closest(
+00072:         ".gcsHalamanPromoBannerSection"
+00073:     );
+00074: 
+00075:     clearInterval(gcsHalamanPromoBannerTimer);
+00076:     gcsHalamanPromoBannerTimer = null;
+00077: 
+00078:     wrapper.innerHTML = "";
+00079: 
+00080:     if (activeBanners.length === 0) {
+00081:         wrapper.classList.add(
+00082:             "gcsHalamanPromoBannerCollapse"
+00083:         );
+00084: 
+00085:         if (section) {
+00086:             section.hidden = true;
+00087:         }
+00088: 
+00089:         return;
+00090:     }
+00091: 
+00092:     wrapper.classList.remove(
+00093:         "gcsHalamanPromoBannerCollapse"
+00094:     );
+00095: 
+00096:     if (section) {
+00097:         section.hidden = false;
+00098:     }
+00099: 
+00100:     const header = document.createElement("div");
+00101:     header.className = "gcsHalamanPromoBannerHeader";
+00102: 
+00103:     const title = document.createElement("h2");
+00104:     title.className = "gcsHalamanPromoBannerTitle";
+00105:     title.textContent = "";
+00106: 
+00107:     header.appendChild(title);
+00108:     wrapper.appendChild(header);
+00109: 
+00110:     const slider = document.createElement("div");
+00111:     slider.className = "gcsHalamanPromoBannerSlider";
+00112: 
+00113:     const track = document.createElement("div");
+00114:     track.className = "gcsHalamanPromoBannerTrack";
+00115:     track.id = "gcsHalamanPromoBannerTrackEl";
+00116: 
+00117:     activeBanners.forEach(banner => {
+00118:         const item = document.createElement("div");
+00119:         item.className = "gcsHalamanPromoBannerItem";
+00120: 
+00121:         const link = document.createElement("a");
+00122:         link.className = "gcsHalamanPromoBannerLink";
+00123:         link.href = banner.link;
+00124: 
+00125:         const image = document.createElement("img");
+00126:         image.className = "gcsHalamanPromoBannerImage";
+00127:         image.src = banner.image;
+00128:         image.alt = "GOCES Promo";
+00129:         image.loading = "lazy";
+00130: 
+00131:         link.appendChild(image);
+00132:         item.appendChild(link);
+00133:         track.appendChild(item);
+00134:     });
+00135: 
+00136:     slider.appendChild(track);
+00137:     wrapper.appendChild(slider);
+00138: 
+00139:     gcsHalamanPromoBannerCreateDots(
+00140:         activeBanners.length,
+00141:         wrapper
+00142:     );
+00143: 
+00144:     if (activeBanners.length > 1) {
+00145:         gcsHalamanPromoBannerAutoSlide();
+00146:         gcsHalamanPromoBannerSwipe(slider);
+00147:     }
+00148: }
+00149: 
+00150: function gcsHalamanPromoBannerCreateDots(total, parent) {
+00151:     const dots = document.createElement("div");
+00152:     dots.className = "gcsHalamanPromoBannerDots";
+00153:     dots.id = "gcsHalamanPromoBannerDotsContainerEl";
+00154: 
+00155:     if (total === 1 || total > 5) {
+00156:         dots.classList.add(
+00157:             "gcsHalamanPromoBannerHidden"
+00158:         );
+00159:     }
+00160: 
+00161:     for (let index = 0; index < total; index++) {
+00162:         const dot = document.createElement("span");
+00163:         dot.className = "gcsHalamanPromoBannerDot";
+00164: 
+00165:         if (index === 0) {
+00166:             dot.classList.add(
+00167:                 "gcsHalamanPromoBannerActive"
+00168:             );
+00169:         }
+00170: 
+00171:         dots.appendChild(dot);
+00172:     }
+00173: 
+00174:     parent.appendChild(dots);
+00175: }
+00176: 
+00177: function gcsHalamanPromoBannerGoToSlide(index) {
+00178:     const track = document.getElementById(
+00179:         "gcsHalamanPromoBannerTrackEl"
+00180:     );
+00181: 
+00182:     const dots = document.getElementById(
+00183:         "gcsHalamanPromoBannerDotsContainerEl"
+00184:     );
+00185: 
+00186:     const total = gcsHalamanPromoBannerActiveItems.length;
+00187: 
+00188:     if (!track || total === 0) return;
+00189: 
+00190:     gcsHalamanPromoBannerCurrentIndex =
+00191:         (index + total) % total;
+00192: 
+00193:     track.style.transform =
+00194:         `translateX(-${gcsHalamanPromoBannerCurrentIndex * 100}%)`;
+00195: 
+00196:     if (dots &&
+00197:         !dots.classList.contains(
+00198:             "gcsHalamanPromoBannerHidden"
+00199:         )) {
+00200:         dots.querySelectorAll(
+00201:             ".gcsHalamanPromoBannerDot"
+00202:         ).forEach((dot, dotIndex) => {
+00203:             dot.classList.toggle(
+00204:                 "gcsHalamanPromoBannerActive",
+00205:                 dotIndex ===
+00206:                 gcsHalamanPromoBannerCurrentIndex
+00207:             );
+00208:         });
+00209:     }
+00210: }
+00211: 
+00212: function gcsHalamanPromoBannerAutoSlide() {
+00213:     clearInterval(gcsHalamanPromoBannerTimer);
+00214: 
+00215:     if (gcsHalamanPromoBannerActiveItems.length <= 1) {
+00216:         return;
+00217:     }
+00218: 
+00219:     gcsHalamanPromoBannerTimer = setInterval(() => {
+00220:         gcsHalamanPromoBannerGoToSlide(
+00221:             gcsHalamanPromoBannerCurrentIndex + 1
+00222:         );
+00223:     }, 4000);
+00224: }
+00225: 
+00226: function gcsHalamanPromoBannerSwipe(slider) {
+00227:     slider.addEventListener("touchstart", event => {
+00228:         gcsHalamanPromoBannerTouchStartX =
+00229:             event.changedTouches[0].screenX;
+00230: 
+00231:         clearInterval(gcsHalamanPromoBannerTimer);
+00232:     }, { passive: true });
+00233: 
+00234:     slider.addEventListener("touchend", event => {
+00235:         gcsHalamanPromoBannerTouchEndX =
+00236:             event.changedTouches[0].screenX;
+00237: 
+00238:         const distance =
+00239:             gcsHalamanPromoBannerTouchStartX -
+00240:             gcsHalamanPromoBannerTouchEndX;
+00241: 
+00242:         if (distance > 45) {
+00243:             gcsHalamanPromoBannerGoToSlide(
+00244:                 gcsHalamanPromoBannerCurrentIndex + 1
+00245:             );
+00246:         }
+00247: 
+00248:         if (distance < -45) {
+00249:             gcsHalamanPromoBannerGoToSlide(
+00250:                 gcsHalamanPromoBannerCurrentIndex - 1
+00251:             );
+00252:         }
+00253: 
+00254:         gcsHalamanPromoBannerAutoSlide();
+00255:     }, { passive: true });
+00256: }
+
+============================================================
+FILE: js/versi-v01/feedback.js
+============================================================
+
+00001: /*==================================================
+00002:         GOCES FEEDBACK ENGINE v3.0 FINAL
+00003: ==================================================*/
+00004: 
+00005: const GocesFeedback = (() => {
+00006: 
+00007:     /*==================================
+00008:                 CONFIG
+00009:     ==================================*/
+00010: 
+00011:     const CONFIG = {
+00012: 
+00013:         vibration: true,
+00014: 
+00015:         vibrationTime: 10,
+00016: 
+00017:         sound: true,
+00018: 
+00019:         volume: 0.35,
+00020: 
+00021:         soundFile: "https://goces-app.vercel.app/assets/audio/click.wav",
+00022: 
+00023:         animationDuration: 120
+00024: 
+00025:     };
+00026: 
+00027:     /*==================================
+00028:                 AUDIO
+00029:     ==================================*/
+00030: 
+00031:     let audio = null;
+00032: 
+00033:     function initSound() {
+00034: 
+00035:         if (!CONFIG.sound) return;
+00036: 
+00037:         if (audio) return;
+00038: 
+00039:         audio = new Audio(CONFIG.soundFile);
+00040: 
+00041:         audio.preload = "auto";
+00042: 
+00043:         audio.volume = CONFIG.volume;
+00044: 
+00045:         audio.load();
+00046: 
+00047:     }
+00048: 
+00049:     /*==================================
+00050:             HAPTIC FEEDBACK
+00051:     ==================================*/
+00052: 
+00053:     function vibrate() {
+00054: 
+00055:         if (!CONFIG.vibration) return;
+00056: 
+00057:         if (!navigator.vibrate) return;
+00058: 
+00059:         navigator.vibrate(CONFIG.vibrationTime);
+00060: 
+00061:     }
+00062: 
+00063:     /*==================================
+00064:                 SOUND
+00065:     ==================================*/
+00066: 
+00067:     function playSound() {
+00068: 
+00069:         if (!audio) return;
+00070: 
+00071:         try {
+00072: 
+00073:             audio.pause();
+00074: 
+00075:             audio.currentTime = 0;
+00076: 
+00077:             audio.play().catch(() => { });
+00078: 
+00079:         } catch (e) { }
+00080: 
+00081:     }
+00082: 
+00083:     /*==================================
+00084:             SCALE EFFECT
+00085:     ==================================*/
+00086: 
+00087:     function animate(element) {
+00088: 
+00089:         if (!element) return;
+00090: 
+00091:         if (element.animate) {
+00092: 
+00093:             element.getAnimations().forEach(anim => anim.cancel());
+00094: 
+00095:             element.animate(
+00096: 
+00097:                 [
+00098: 
+00099:                     {
+00100:                         transform: "scale(1)"
+00101:                     },
+00102: 
+00103:                     {
+00104:                         transform: "scale(.95)"
+00105:                     },
+00106: 
+00107:                     {
+00108:                         transform: "scale(1)"
+00109:                     }
+00110: 
+00111:                 ],
+00112: 
+00113:                 {
+00114: 
+00115:                     duration: CONFIG.animationDuration,
+00116: 
+00117:                     easing: "ease-out"
+00118: 
+00119:                 }
+00120: 
+00121:             );
+00122: 
+00123:         }
+00124: 
+00125:     }
+00126: 
+00127:     /*==================================
+00128:                 PLAY
+00129:     ==================================*/
+00130: 
+00131:     function play(element = null) {
+00132: 
+00133:         vibrate();
+00134: 
+00135:         playSound();
+00136: 
+00137:         animate(element);
+00138: 
+00139:     }
+00140: 
+00141:     /*==================================
+00142:             AUTO ENABLE
+00143:     ==================================*/
+00144: 
+00145:     function enableAuto() {
+00146: 
+00147:         initSound();
+00148: 
+00149:         document.addEventListener(
+00150: 
+00151:             "pointerdown",
+00152: 
+00153:             function (e) {
+00154: 
+00155:                 const target = e.target.closest(
+00156: 
+00157:                     "button,a,[data-feedback],.goces-click"
+00158: 
+00159:                 );
+00160: 
+00161:                 if (!target) return;
+00162: 
+00163:                 play(target);
+00164: 
+00165:             },
+00166: 
+00167:             { passive: true }
+00168: 
+00169:         );
+00170: 
+00171:         document.addEventListener("visibilitychange", function () {
+00172: 
+00173:             if (!document.hidden && audio) {
+00174: 
+00175:                 audio.load();
+00176: 
+00177:             }
+00178: 
+00179:         });
+00180: 
+00181:     }
+00182: 
+00183:     /*==================================
+00184:                 API
+00185:     ==================================*/
+00186: 
+00187:     return {
+00188: 
+00189:         enableAuto,
+00190: 
+00191:         play
+00192: 
+00193:     };
+00194: 
+00195: })();
+
+============================================================
+FILE: js/versi-v01/food.js
+============================================================
+
+00001: document.addEventListener("DOMContentLoaded", () => {
+00002:     "use strict";
+00003: 
+00004:     // --- DOM Cache Elements ---
+00005:     const chips = document.querySelectorAll(".category-chip");
+00006:     const sections = document.querySelectorAll(".menu-section");
+00007:     const searchInput = document.getElementById("search");
+00008:     const cards = document.querySelectorAll(".product-card");
+00009: 
+00010:     /**
+00011:      * Navigation Switcher Engine
+00012:      * Uses display blocks and safe requestAnimationFrame macro-task toggles.
+00013:      */
+00014:     const renderCategoryView = (targetCategory) => {
+00015:         const targetId = `section-${targetCategory}`;
+00016:         let activeSection = document.getElementById(targetId);
+00017: 
+00018:         // Fallback safety to render All Section
+00019:         if (!activeSection) {
+00020:             activeSection = document.getElementById("section-semua");
+00021:         }
+00022: 
+00023:         // Wipe clean active visibilities 
+00024:         sections.forEach((sec) => {
+00025:             sec.classList.remove("animate-fade", "section-visible");
+00026:         });
+00027: 
+00028:         // Toggle visibility target layer
+00029:         activeSection.classList.add("section-visible");
+00030: 
+00031:         // Render smoothly using engine style injection rules
+00032:         requestAnimationFrame(() => {
+00033:             setTimeout(() => {
+00034:                 activeSection.classList.add("animate-fade");
+00035:             }, 10);
+00036:         });
+00037:     };
+00038: 
+00039:     // Chip Delegation Event Mapping
+00040:     chips.forEach((chip) => {
+00041:         chip.addEventListener("click", function (e) {
+00042:             e.preventDefault();
+00043:             if (this.classList.contains("active")) return;
+00044: 
+00045:             chips.forEach((c) => c.classList.remove("active"));
+00046:             this.classList.add("active");
+00047: 
+00048:             const selectedCat = this.getAttribute("data-category");
+00049:             renderCategoryView(selectedCat);
+00050: 
+00051:             // Auto center chip focus state structure inside viewports
+00052:             this.scrollIntoView({
+00053:                 behavior: "smooth",
+00054:                 block: "nearest",
+00055:                 inline: "center"
+00056:             });
+00057:         });
+00058:     });
+00059: 
+00060:     // Booting up configuration states sequence
+00061:     const initPageStates = () => {
+00062:         const baseActive = document.querySelector(".menu-section.section-visible");
+00063:         if (baseActive) {
+00064:             baseActive.classList.add("animate-fade");
+00065:         }
+00066:     };
+00067:     initPageStates();
+00068: 
+00069:     /**
+00070:      * Clean Local Inline Search Filter 
+00071:      * Optimizes search matches on active cards.
+00072:      */
+00073:     if (searchInput) {
+00074:         searchInput.addEventListener("input", (e) => {
+00075:             const query = e.target.value.toLowerCase().trim();
+00076: 
+00077:             if (query === "") {
+00078:                 // If text input is blank reset to standard current active category section views
+00079:                 const activeChip = document.querySelector(".category-chip.active");
+00080:                 const currentCat = activeChip ? activeChip.getAttribute("data-category") : "semua";
+00081:                 renderCategoryView(currentCat);
+00082:                 cards.forEach(card => card.style.display = "flex");
+00083:                 return;
+00084:             }
+00085: 
+00086:             // Expose structural spaces for real-time validation checks
+00087:             sections.forEach(sec => sec.classList.add("section-visible", "animate-fade"));
+00088: 
+00089:             cards.forEach((card) => {
+00090:                 const searchData = card.getAttribute("data-tags") || "";
+00091:                 const title = card.querySelector(".product-title").textContent.toLowerCase();
+00092:                 const merchant = card.querySelector(".merchant-name").textContent.toLowerCase();
+00093: 
+00094:                 if (searchData.includes(query) || title.includes(query) || merchant.includes(query)) {
+00095:                     card.style.display = "flex";
+00096:                 } else {
+00097:                     card.style.display = "none";
+00098:                 }
+00099:             });
+00100:         });
+00101:     }
+00102: 
+00103:     /**
+00104:      * Interaction Canvas Ripple Effect Module
+00105:      */
+00106:     cards.forEach((card) => {
+00107:         card.addEventListener("click", function (e) {
+00108:             const rippleSpan = document.createElement("span");
+00109:             rippleSpan.classList.add("ripple");
+00110: 
+00111:             const sizeMetrics = Math.max(this.offsetWidth, this.offsetHeight);
+00112:             rippleSpan.style.width = rippleSpan.style.height = `${sizeMetrics}px`;
+00113: 
+00114:             const boundRect = this.getBoundingClientRect();
+00115:             const coordX = e.clientX - boundRect.left - (sizeMetrics / 2);
+00116:             const coordY = e.clientY - boundRect.top - (sizeMetrics / 2);
+00117: 
+00118:             rippleSpan.style.left = `${coordX}px`;
+00119:             rippleSpan.style.top = `${coordY}px`;
+00120: 
+00121:             this.appendChild(rippleSpan);
+00122: 
+00123:             rippleSpan.addEventListener("animationend", () => {
+00124:                 rippleSpan.remove();
+00125:             });
+00126:         });
+00127:     });
+00128: });
+
+============================================================
+FILE: js/versi-v01/navigation.js
+============================================================
+
+00001: /*==================================================
+00002:             GOCES NAVIGATION
+00003: ==================================================*/
+00004: 
+00005: document.addEventListener("DOMContentLoaded", () => {
+00006: 
+00007:     document
+00008:         .querySelectorAll(".goces-nav-item, .goces-qris-btn")
+00009:         .forEach(button => {
+00010: 
+00011:             button.addEventListener("click", function () {
+00012: 
+00013:                 const page = this.dataset.page;
+00014: 
+00015:                 if (!page) return;
+00016: 
+00017:                 showPage(page);
+00018: 
+00019:             });
+00020: 
+00021:         });
+00022: 
+00023: });
+
+============================================================
+FILE: js/versi-v02/global.js
+============================================================
+
+00001: let pageHistory = [];
+00002: let currentPage = 'home';
+00003: 
+00004: try {
+00005: 
+00006:     history.replaceState(
+00007:         { page: 'home' },
+00008:         '',
+00009:         '#home'
+00010:     );
+00011: 
+00012: } catch (e) {
+00013: 
+00014:     console.log("History API tidak didukung Jagel");
+00015: 
+00016: }
+00017: 
+00018: // =========================
+00019: // AKTIFKAN NAVBAR
+00020: // =========================
+00021: 
+00022: function activateNav(pageName) {
+00023: 
+00024:     document
+00025:         .querySelectorAll('.nav-item')
+00026:         .forEach(nav => {
+00027: 
+00028:             nav.classList.remove('active');
+00029: 
+00030:             if (
+00031:                 nav.dataset.page === pageName
+00032:             ) {
+00033:                 nav.classList.add('active');
+00034:             }
+00035: 
+00036:         });
+00037: 
+00038: }
+00039: 
+00040: function syncBottomNav(pageName) {
+00041:     const bottomNav =
+00042:         document.querySelector(".bottom-nav");
+00043: 
+00044:     if (!bottomNav) {
+00045:         return;
+00046:     }
+00047: 
+00048:     const hideNavPages = [
+00049:         "goces-detail",
+00050:         "goces-payment",
+00051:         "goces-waiting",
+00052:         "goces-success",
+00053:         "gtp-wrapper",
+00054:         "gtpw",
+00055:         "gtps",
+00056:         "gwd-container"
+00057:     ];
+00058: 
+00059:     bottomNav.style.display =
+00060:         hideNavPages.includes(pageName)
+00061:             ? "none"
+00062:             : "flex";
+00063: }
+00064: 
+00065: // =========================
+00066: // TAMPILKAN HALAMAN
+00067: // =========================
+00068: 
+00069: function showPage(name, btn = null) {
+00070: 
+00071:     if (currentPage === name) {
+00072:         return;
+00073:     }
+00074: 
+00075:     pageHistory.push(currentPage);
+00076: 
+00077:     try {
+00078: 
+00079:         history.pushState(
+00080:             { page: name },
+00081:             '',
+00082:             '#' + name
+00083:         );
+00084: 
+00085:     } catch (e) {
+00086: 
+00087:         console.log("PushState dilewati");
+00088: 
+00089:     }
+00090: 
+00091:     document
+00092:         .querySelectorAll('.page')
+00093:         .forEach(page => {
+00094:             page.classList.remove('active');
+00095:         });
+00096: 
+00097:     const targetPage =
+00098:         document.getElementById(
+00099:             'page-' + name
+00100:         );
+00101: 
+00102:     if (targetPage) {
+00103:         targetPage.classList.add('active');
+00104:     }
+00105: 
+00106:     activateNav(name);
+00107: 
+00108:     currentPage = name;
+00109: 
+00110:     window.dispatchEvent(new CustomEvent("goces:pagechange", {
+00111:         detail: { page: name }
+00112:     }));
+00113: 
+00114:     /*==================================
+00115:         SHOW / HIDE BOTTOM NAV
+00116: ==================================*/
+00117:     syncBottomNav(name);
+00118: 
+00119:     console.log(
+00120:         'Current Page:',
+00121:         currentPage
+00122:     );
+00123: 
+00124:     console.log(
+00125:         'History:',
+00126:         pageHistory
+00127:     );
+00128: 
+00129: }
+00130: 
+00131: // =========================
+00132: // TOMBOL KEMBALI MANUAL
+00133: // =========================
+00134: 
+00135: function goBack() {
+00136: 
+00137:     if (
+00138:         pageHistory.length === 0
+00139:     ) {
+00140:         return;
+00141:     }
+00142: 
+00143:     const previousPage =
+00144:         pageHistory.pop();
+00145: 
+00146:     document
+00147:         .querySelectorAll('.page')
+00148:         .forEach(page => {
+00149:             page.classList.remove('active');
+00150:         });
+00151: 
+00152:     const targetPage =
+00153:         document.getElementById(
+00154:             'page-' + previousPage
+00155:         );
+00156: 
+00157:     if (targetPage) {
+00158:         targetPage.classList.add('active');
+00159:     }
+00160: 
+00161:     activateNav(previousPage);
+00162:     syncBottomNav(previousPage);
+00163: 
+00164:     currentPage = previousPage;
+00165: 
+00166:     window.dispatchEvent(new CustomEvent("goces:pagechange", {
+00167:         detail: { page: previousPage }
+00168:     }));
+00169: 
+00170: }
+00171: 
+00172: // =========================
+00173: // BACK ANDROID
+00174: // =========================
+00175: 
+00176: window.addEventListener(
+00177:     'popstate',
+00178:     function () {
+00179: 
+00180:         if (
+00181:             pageHistory.length === 0
+00182:         ) {
+00183:             return;
+00184:         }
+00185: 
+00186:         const previousPage =
+00187:             pageHistory.pop();
+00188: 
+00189:         document
+00190:             .querySelectorAll('.page')
+00191:             .forEach(page => {
+00192:                 page.classList.remove('active');
+00193:             });
+00194: 
+00195:         const targetPage =
+00196:             document.getElementById(
+00197:                 'page-' + previousPage
+00198:             );
+00199: 
+00200:         if (targetPage) {
+00201:             targetPage.classList.add('active');
+00202:         }
+00203: 
+00204:         activateNav(previousPage);
+00205:         syncBottomNav(previousPage);
+00206: 
+00207:         currentPage = previousPage;
+00208: 
+00209:         window.dispatchEvent(new CustomEvent("goces:pagechange", {
+00210:             detail: { page: previousPage }
+00211:         }));
+00212: 
+00213:     }
+00214: );
+00215: 
+00216: // =========================
+00217: // ORDERS TAB
+00218: // =========================
+00219: 
+00220: document
+00221:     .querySelectorAll('.orders-tab')
+00222:     .forEach(tab => {
+00223: 
+00224:         tab.addEventListener(
+00225:             'click',
+00226:             function () {
+00227: 
+00228:                 document
+00229:                     .querySelectorAll('.orders-tab')
+00230:                     .forEach(t => {
+00231:                         t.classList.remove('active');
+00232:                     });
+00233: 
+00234:                 this.classList.add('active');
+00235: 
+00236:             }
+00237:         );
+00238: 
+00239:     });
+00240: 
+00241: 
+00242: // =========================
+00243: // script benner slide
+00244: // =========================
+00245: window.addEventListener(
+00246:     "message",
+00247:     function (event) {
+00248: 
+00249:         const element =
+00250:             document.getElementById(
+00251:                 event.data.containerId
+00252:             );
+00253: 
+00254:         if (!element) {
+00255:             return;
+00256:         }
+00257: 
+00258:         if (
+00259:             event.data.type === "emptyBanner"
+00260:         ) {
+00261: 
+00262:             element.style.display =
+00263:                 "none";
+00264: 
+00265:         }
+00266: 
+00267:         if (
+00268:             event.data.type === "bannerLoaded"
+00269:         ) {
+00270: 
+00271:             element.style.display =
+00272:                 "block";
+00273: 
+00274:         }
+00275: 
+00276:     }
+00277: );
+00278: 
+00279: // =========================
+00280: // script lupa nama
+00281: // =========================
+00282: window.addEventListener("message", function (event) {
+00283: 
+00284:     if (event.data.type === "emptyCategory") {
+00285: 
+00286:         const frame = event.source.frameElement;
+00287: 
+00288:         if (frame) {
+00289: 
+00290:             const container = frame.parentElement;
+00291: 
+00292:             if (container) {
+00293: 
+00294:                 container.style.display = "none";
+00295: 
+00296:             }
+00297: 
+00298:         }
+00299: 
+00300:     }
+00301: 
+00302: });
+00303: 
+00304: // =========================
+00305: // script benner promo atau halaman promo
+00306: // =========================
+00307: // =============================
+00308: // KONFIGURASI
+00309: // =============================
+00310: let gprCurrentCategory = null;
+00311: const gprKategoriVoucher = [
+00312:     "populer",
+00313:     "terbaru",
+00314:     "eksklusif",
+00315:     "cashback",
+00316:     "terbatas"
+00317: ];
+00318: 
+00319: // =============================
+00320: // KATEGORI
+00321: // =============================
+00322: function gprOpenCategory(event, category) {
+00323: 
+00324:     const buttons =
+00325:         document.querySelectorAll(
+00326:             ".gpr-category button"
+00327:         );
+00328: 
+00329:     const sections =
+00330:         document.querySelectorAll(
+00331:             ".gpr-content"
+00332:         );
+00333: 
+00334:     if (
+00335:         gprCurrentCategory === category
+00336:     ) {
+00337: 
+00338:         document
+00339:             .getElementById(category)
+00340:             .style.display = "none";
+00341: 
+00342:         event.currentTarget
+00343:             .classList.remove("active");
+00344: 
+00345:         gprCurrentCategory = null;
+00346: 
+00347:         return;
+00348: 
+00349:     }
+00350: 
+00351:     sections.forEach(section => {
+00352:         section.style.display = "none";
+00353:     });
+00354: 
+00355:     buttons.forEach(button => {
+00356:         button.classList.remove("active");
+00357:     });
+00358: 
+00359:     document
+00360:         .getElementById(category)
+00361:         .style.display = "block";
+00362: 
+00363:     event.currentTarget
+00364:         .classList.add("active");
+00365: 
+00366:     gprCurrentCategory = category;
+00367: 
+00368: }
+00369: 
+00370: // =============================
+00371: // BUKA SEMUA
+00372: // =============================
+00373: function gprOpenAllVoucher() {
+00374: 
+00375:     document
+00376:         .querySelectorAll(".gpr-content")
+00377:         .forEach(section => {
+00378: 
+00379:             section.style.display = "none";
+00380: 
+00381:         });
+00382: 
+00383:     document
+00384:         .querySelectorAll(".gpr-category button")
+00385:         .forEach(button => {
+00386: 
+00387:             button.classList.remove("active");
+00388: 
+00389:         });
+00390: 
+00391:     document
+00392:         .getElementById("semua")
+00393:         .style.display = "block";
+00394: 
+00395:     document
+00396:         .getElementById("gprBtnSemua")
+00397:         .classList.add("active");
+00398: 
+00399:     gprCurrentCategory = "semua";
+00400: 
+00401: }
+00402: 
+00403: // =============================
+00404: // STATUS VOUCHER
+00405: // =============================
+00406: /*  function gprIsVoucherActive(voucher) {
+00407: 
+00408:     const now =
+00409:         new Date();
+00410: 
+00411:     const start =
+00412:         new Date(
+00413:             voucher.dataset.start
+00414:         );
+00415: 
+00416:     const end =
+00417:         new Date(
+00418:             voucher.dataset.end
+00419:         );
+00420: 
+00421:     return (
+00422: 
+00423:         now >= start &&
+00424: 
+00425:         now <= end
+00426: 
+00427:     );
+00428: 
+00429: }  */
+00430: 
+00431: // =============================
+00432: // UPDATE STATUS VOUCHER
+00433: // =============================
+00434: /*  function gprUpdateVoucherStatus() {
+00435: 
+00436:     gprKategoriVoucher.forEach(id => {
+00437: 
+00438:         document
+00439:             .querySelectorAll(
+00440:                 "#" + id + " .gpr-voucher-card"
+00441:             )
+00442:             .forEach(voucher => {
+00443: 
+00444:                 if (
+00445:                     gprIsVoucherActive(voucher)
+00446:                 ) {
+00447: 
+00448:                     voucher.classList
+00449:                         .remove("hide");
+00450: 
+00451:                 } else {
+00452: 
+00453:                     voucher.classList
+00454:                         .add("hide");
+00455: 
+00456:                 }
+00457: 
+00458:             });
+00459: 
+00460:     });
+00461: 
+00462:     gprUpdateSemuaVoucher();
+00463: 
+00464:     gprUpdateVoucherCount();
+00465: 
+00466: }  */
+00467: 
+00468: // =============================
+00469: // HALAMAN SEMUA
+00470: // =============================
+00471: /*  function gprUpdateSemuaVoucher() {
+00472: 
+00473:     const semua =
+00474:         document.getElementById(
+00475:             "semua"
+00476:         );
+00477: 
+00478:     semua.innerHTML = "";
+00479: 
+00480:     gprKategoriVoucher.forEach(id => {
+00481: 
+00482:         document
+00483:             .querySelectorAll(
+00484:                 "#" + id +
+00485:                 " .gpr-voucher-card"
+00486:             )
+00487:             .forEach(voucher => {
+00488: 
+00489:                 // hanya tampilkan voucher aktif
+00490:                 if (
+00491:                     !voucher.classList.contains(
+00492:                         "hide"
+00493:                     )
+00494:                 ) {
+00495: 
+00496:                     semua.innerHTML +=
+00497:                         voucher.outerHTML;
+00498: 
+00499:                 }
+00500: 
+00501:             });
+00502: 
+00503:     });
+00504: 
+00505: }  */
+00506: 
+00507: // =============================
+00508: // JUMLAH VOUCHER AKTIF
+00509: // =============================
+00510: /* function gprUpdateVoucherCount() {
+00511: 
+00512:     let total = 0;
+00513: 
+00514:     gprKategoriVoucher.forEach(id => {
+00515: 
+00516:         document
+00517:             .querySelectorAll(
+00518:                 "#" + id +
+00519:                 " .gpr-voucher-card"
+00520:             )
+00521:             .forEach(voucher => {
+00522: 
+00523:                 if (
+00524:                     !voucher.classList.contains(
+00525:                         "hide"
+00526:                     )
+00527:                 ) {
+00528: 
+00529:                     total++;
+00530: 
+00531:                 }
+00532: 
+00533:             });
+00534: 
+00535:     });
+00536: 
+00537:     document
+00538:         .getElementById(
+00539:             "gprActiveVoucherCount"
+00540:         )
+00541:         .innerHTML =
+00542: 
+00543:         total + " Voucher Aktif";
+00544: 
+00545: } */
+00546: 
+00547: // =============================
+00548: // SALIN VOUCHER
+00549: // =============================
+00550: /* function gprCopyVoucher(button) {
+00551: 
+00552:     const voucher =
+00553:         button.closest(
+00554:             ".gpr-voucher-card"
+00555:         );
+00556: 
+00557:     const code =
+00558:         voucher.dataset.code;
+00559: 
+00560:     const input =
+00561:         document.createElement(
+00562:             "input"
+00563:         );
+00564: 
+00565:     input.value = code;
+00566: 
+00567:     document.body
+00568:         .appendChild(input);
+00569: 
+00570:     input.select();
+00571: 
+00572:     document.execCommand(
+00573:         "copy"
+00574:     );
+00575: 
+00576:     document.body
+00577:         .removeChild(input);
+00578: 
+00579:     button.innerHTML =
+00580:         "Tersalin âœ“";
+00581: 
+00582:     setTimeout(function () {
+00583: 
+00584:         button.innerHTML =
+00585:             "Salin";
+00586: 
+00587:     }, 2000);
+00588: 
+00589:     gprShowToast(
+00590: 
+00591:         "Kode voucher " +
+00592:         code +
+00593:         " berhasil disalin"
+00594:     );
+00595: 
+00596: } */
+00597: 
+00598: // =============================
+00599: // TOAST
+00600: // =============================
+00601: /* function gprShowToast(message) {
+00602: 
+00603:     const toast =
+00604:         document.getElementById(
+00605:             "gprToast"
+00606:         );
+00607: 
+00608:     toast.innerHTML =
+00609:         message;
+00610: 
+00611:     toast.style.display =
+00612:         "block";
+00613: 
+00614:     clearTimeout(
+00615:         window.gprToastTimer
+00616:     );
+00617: 
+00618:     window.gprToastTimer =
+00619:         setTimeout(function () {
+00620: 
+00621:             toast.style.display =
+00622:                 "none";
+00623: 
+00624:         }, 2000);
+00625: 
+00626: } */
+00627: 
+00628: // =============================
+00629: // COUNTDOWN
+00630: // =============================
+00631: /* function gprUpdateCountdown() {
+00632: 
+00633:     document
+00634:         .querySelectorAll(
+00635:             ".gpr-voucher-card"
+00636:         )
+00637:         .forEach(voucher => {
+00638: 
+00639:             const box =
+00640:                 voucher.querySelector(
+00641:                     ".gpr-countdown"
+00642:                 );
+00643: 
+00644:             if (!box) return;
+00645: 
+00646:             const end =
+00647:                 new Date(
+00648:                     voucher.dataset.end
+00649:                 );
+00650: 
+00651:             const now =
+00652:                 new Date();
+00653: 
+00654:             let diff =
+00655:                 end - now;
+00656: 
+00657:             if (diff <= 0) {
+00658: 
+00659:                 box.innerHTML = "";
+00660: 
+00661:                 return;
+00662: 
+00663:             }
+00664: 
+00665:             const day =
+00666:                 Math.floor(
+00667:                     diff / 86400000
+00668:                 );
+00669: 
+00670:             diff %= 86400000;
+00671: 
+00672:             const hour =
+00673:                 Math.floor(
+00674:                     diff / 3600000
+00675:                 );
+00676: 
+00677:             diff %= 3600000;
+00678: 
+00679:             const minute =
+00680:                 Math.floor(
+00681:                     diff / 60000
+00682:                 );
+00683: 
+00684:             box.innerHTML =
+00685: 
+00686:                 "â³ Berakhir dalam " +
+00687:                 day + "h " +
+00688:                 hour + "j " +
+00689:                 minute + "m";
+00690: 
+00691:         });
+00692: 
+00693: } */
+00694: 
+00695: // =============================
+00696: // POPUP VOUCHER
+00697: // =============================
+00698: /* function gprOpenVoucherModal(voucher) {
+00699: 
+00700:     const title =
+00701:         voucher.dataset.title;
+00702: 
+00703:     const desc =
+00704:         voucher.dataset.desc;
+00705: 
+00706:     const code =
+00707:         voucher.dataset.code;
+00708: 
+00709:     const period =
+00710:         "Berlaku " +
+00711:         voucher.dataset.period;
+00712: 
+00713:     const minOrder =
+00714:         Number(
+00715:             voucher.dataset.minOrder
+00716:         ).toLocaleString("id-ID");
+00717: 
+00718:     const maxDiscount =
+00719:         Number(
+00720:             voucher.dataset.maxDiscount
+00721:         ).toLocaleString("id-ID");
+00722: 
+00723:     const terms =
+00724:         voucher.dataset.terms
+00725:             .split("|")
+00726:             .map(item =>
+00727:                 `<li>${item}</li>`
+00728:             )
+00729:             .join("");
+00730: 
+00731: 
+00732:     document.getElementById(
+00733:         "gprVoucherModalBody"
+00734:     ).innerHTML = `
+00735: 
+00736:         <div class="gpr-modal-section">
+00737: 
+00738:             <h2>
+00739:                 ${title}
+00740:             </h2>
+00741: 
+00742:             <p class="gpr-voucher-desc">
+00743:                 ${desc}
+00744:             </p>
+00745: 
+00746:         </div>
+00747: 
+00748:         <div class="gpr-modal-section">
+00749: 
+00750:             <div class="gpr-modal-section-title">
+00751:                 Kode Voucher
+00752:             </div>
+00753: 
+00754:             <div class="gpr-modal-code">
+00755:                 ${code}
+00756:             </div>
+00757: 
+00758:         </div>
+00759: 
+00760:         <div class="gpr-modal-section">
+00761: 
+00762:             <div class="gpr-modal-section-title">
+00763:                 Minimum Pembelian
+00764:             </div>
+00765: 
+00766:             <div>
+00767:                 Rp${minOrder}
+00768:             </div>
+00769: 
+00770:         </div>
+00771: 
+00772:         <div class="gpr-modal-section">
+00773: 
+00774:             <div class="gpr-modal-section-title">
+00775:                 Maksimum Diskon
+00776:             </div>
+00777: 
+00778:             <div>
+00779:                 Rp${maxDiscount}
+00780:             </div>
+00781: 
+00782:         </div>
+00783: 
+00784:         <div class="gpr-modal-section">
+00785: 
+00786:             <div class="gpr-modal-section-title">
+00787:                 Periode Promo
+00788:             </div>
+00789: 
+00790:             <div>
+00791:                 ${period}
+00792:             </div>
+00793: 
+00794:         </div>
+00795: 
+00796:         <div class="gpr-modal-section">
+00797: 
+00798:             <div class="gpr-modal-section-title">
+00799:                 Syarat & Ketentuan
+00800:             </div>
+00801: 
+00802:             <ul class="gpr-modal-terms">
+00803: 
+00804:                 ${terms}
+00805: 
+00806:             </ul>
+00807: 
+00808:         </div>
+00809: 
+00810:         <button
+00811:             class="gpr-modal-copy-btn"
+00812:             onclick="gprCopyVoucherCode('${code}')">
+00813: 
+00814:             Salin Kode Voucher
+00815: 
+00816:         </button>
+00817: 
+00818:     `;
+00819: 
+00820:     document
+00821:         .getElementById(
+00822:             "gprVoucherModal"
+00823:         )
+00824:         .classList
+00825:         .add("show");
+00826: 
+00827: } */
+00828: 
+00829: // =============================
+00830: // TUTUP POPUP
+00831: // =============================
+00832: /* function gprCloseVoucherModal() {
+00833: 
+00834:     document
+00835:         .getElementById(
+00836:             "gprVoucherModal"
+00837:         )
+00838:         .classList
+00839:         .remove("show");
+00840: 
+00841: } */
+00842: 
+00843: // =============================
+00844: // SALIN DARI POPUP
+00845: // =============================
+00846: /* function gprCopyVoucherCode(code) {
+00847: 
+00848:     const input =
+00849:         document.createElement(
+00850:             "input"
+00851:         );
+00852: 
+00853:     input.value = code;
+00854: 
+00855:     document.body.appendChild(
+00856:         input
+00857:     );
+00858: 
+00859:     input.select();
+00860: 
+00861:     document.execCommand(
+00862:         "copy"
+00863:     );
+00864: 
+00865:     document.body.removeChild(
+00866:         input
+00867:     );
+00868: 
+00869:     const btn =
+00870:         document.querySelector(
+00871:             ".gpr-modal-copy-btn"
+00872:         );
+00873: 
+00874:     if (btn) {
+00875: 
+00876:         btn.innerHTML =
+00877:             "Tersalin âœ“";
+00878: 
+00879:         setTimeout(function () {
+00880: 
+00881:             btn.innerHTML =
+00882:                 "Salin Kode Voucher";
+00883: 
+00884:         }, 2000);
+00885: 
+00886:     }
+00887: 
+00888:     gprShowToast(
+00889: 
+00890:         "Kode voucher " +
+00891: 
+00892:         code +
+00893: 
+00894:         " berhasil disalin"
+00895: 
+00896:     );
+00897: 
+00898: } */
+00899: 
+00900: // =============================
+00901: // RENDER DATA VOUCHER
+00902: // =============================
+00903: /* function gprRenderVoucherData() {
+00904: 
+00905:     document
+00906:         .querySelectorAll(
+00907:             ".gpr-voucher-card"
+00908:         )
+00909: 
+00910:         .forEach(voucher => {
+00911: 
+00912:             voucher.style.background =
+00913:                 voucher.dataset.cardColor;
+00914: 
+00915:             voucher
+00916:                 .querySelector(
+00917:                     ".gpr-voucher-img"
+00918:                 )
+00919:                 .src =
+00920:                 voucher.dataset.image;
+00921: 
+00922:             voucher
+00923:                 .querySelector(
+00924:                     ".gpr-voucher-title"
+00925:                 )
+00926:                 .innerHTML =
+00927:                 voucher.dataset.title;
+00928: 
+00929:             voucher
+00930:                 .querySelector(
+00931:                     ".gpr-voucher-desc"
+00932:                 )
+00933:                 .innerHTML =
+00934:                 voucher.dataset.desc;
+00935: 
+00936:             voucher
+00937:                 .querySelector(
+00938:                     ".gpr-voucher-period"
+00939:                 )
+00940:                 .innerHTML =
+00941:                 "Berlaku " +
+00942:                 voucher.dataset.period;
+00943: 
+00944:         });
+00945: 
+00946: } */
+00947: 
+00948: // =============================
+00949: // INISIALISASI
+00950: // =============================
+00951: /*gprRenderVoucherData();
+00952: 
+00953: gprUpdateVoucherStatus();
+00954: 
+00955: gprUpdateCountdown();
+00956: 
+00957: // periksa setiap 1 menit
+00958: setInterval(function () {
+00959: 
+00960:     gprUpdateVoucherStatus();
+00961: 
+00962:     gprUpdateCountdown();
+00963: 
+00964: }, 60000); */
+00965: 
+00966: // =========================
+00967: // script pop up goces ai 
+00968: // =========================
+00969: function openGocesAI() {
+00970:     document.getElementById(
+00971:         "cyberPopupOverlay"
+00972:     ).style.display = "flex";
+00973: }
+00974: 
+00975: function closeGocesAI() {
+00976: 
+00977:     document.getElementById(
+00978:         "cyberPopupOverlay"
+00979:     ).style.display = "none";
+00980: }
+00981: 
+00982: 
+00983: // =========================
+00984: // script halaman shop
+00985: // =========================
+00986: // let gcsFlashEnd = new Date("2026-06-27 23:59:59").getTime();
+00987: 
+00988: //let gcsFlashInterval = setInterval(function () {
+00989: 
+00990: //   let now = new Date().getTime();
+00991: //   let distance = gcsFlashEnd - now;
+00992: 
+00993: //   if (distance <= 0) {
+00994: 
+00995: //       clearInterval(gcsFlashInterval);
+00996: 
+00997: //      document.getElementById("gcsFlashSale").style.display = "none";
+00998: 
+00999: //      return;
+01000: //  }
+01001: 
+01002: //  let jam = Math.floor(distance / (1000 * 60 * 60));
+01003: //  let menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+01004: //  let detik = Math.floor((distance % (1000 * 60)) / 1000);
+01005: 
+01006: //  document.getElementById("gcsFlashTimer").innerHTML =
+01007: //      jam.toString().padStart(2, "0") + ":" +
+01008: //      menit.toString().padStart(2, "0") + ":" +
+01009: //      detik.toString().padStart(2, "0");
+01010: 
+01011: //}, 1000);
+01012: 
+01013: 
+01014: // =========================
+01015: // script halaman profile beranda
+01016: // =========================
+01017: /*
+01018: (function () {
+01019: 
+01020:     const KEY = "theme";
+01021: 
+01022:     // =========================
+01023:     // SAFE STORAGE (WebView proof)
+01024:     // =========================
+01025:     function getTheme() {
+01026:         try {
+01027:             return localStorage.getItem(KEY) || "light";
+01028:         } catch (e) {
+01029:             return "light";
+01030:         }
+01031:     }
+01032: 
+01033:     function setThemeStorage(theme) {
+01034:         try {
+01035:             localStorage.setItem(KEY, theme);
+01036:         } catch (e) { }
+01037:     }
+01038: 
+01039:     // =========================
+01040:     // APPLY THEME (CORE ENGINE)
+01041:     // =========================
+01042:     function applyTheme(theme) {
+01043: 
+01044:         document.documentElement.setAttribute("data-theme", theme);
+01045: 
+01046:         document.body.classList.toggle(
+01047:             "kpz-dark-mode",
+01048:             theme === "dark"
+01049:         );
+01050: 
+01051:         syncToggle(theme);
+01052:     }
+01053: 
+01054:     // =========================
+01055:     // SYNC TOGGLE UI
+01056:     // =========================
+01057:     function syncToggle(theme) {
+01058:         const toggle = document.getElementById("darkToggle");
+01059:         if (toggle) {
+01060:             toggle.checked = (theme === "dark");
+01061:         }
+01062:     }
+01063: 
+01064:     // =========================
+01065:     // PUBLIC SETTER
+01066:     // =========================
+01067:     function setTheme(theme) {
+01068:         setThemeStorage(theme);
+01069:         applyTheme(theme);
+01070:     }
+01071: 
+01072:     // =========================
+01073:     // SAFE INIT (ANTI ANDROID BUG)
+01074:     // =========================
+01075:     function initTheme() {
+01076: 
+01077:         const theme = getTheme();
+01078:         applyTheme(theme);
+01079: 
+01080:         const toggle = document.getElementById("darkToggle");
+01081: 
+01082:         if (toggle && !toggle.__bound) {
+01083: 
+01084:             toggle.__bound = true;
+01085: 
+01086:             toggle.addEventListener("change", function () {
+01087:                 setTheme(this.checked ? "dark" : "light");
+01088:             });
+01089: 
+01090:         }
+01091:     }
+01092: 
+01093:     // =========================
+01094:     // MULTI-TRIGGER SYSTEM
+01095:     // =========================
+01096: 
+01097:     // 1. normal load
+01098:     document.addEventListener("DOMContentLoaded", initTheme);
+01099: 
+01100:     // 2. fallback kalau DOM telat / SPA
+01101:     window.addEventListener("load", initTheme);
+01102: 
+01103:     // 3. extra safety (WebView / iframe injection)
+01104:     setTimeout(initTheme, 300);
+01105:     setTimeout(initTheme, 1000);
+01106: 
+01107:     // expose global (biar bisa dipanggil dari page lain)
+01108:     window.setTheme = setTheme;
+01109: 
+01110: })();
+01111: */
+01112: 
+01113: // =========================
+01114: // script halaman orders
+01115: // =========================
+01116: function gakShowPage(page) {
+01117: 
+01118:     // sembunyikan semua isi tab
+01119:     document.querySelectorAll(".gak_page").forEach(item => {
+01120:         item.classList.remove("active");
+01121:     });
+01122: 
+01123:     // nonaktifkan semua tombol
+01124:     document.querySelectorAll(".gak_tab").forEach(item => {
+01125:         item.classList.remove("active");
+01126:     });
+01127: 
+01128:     // tampilkan halaman yang dipilih
+01129:     document
+01130:         .getElementById("page_" + page)
+01131:         .classList.add("active");
+01132: 
+01133:     // aktifkan tombol yang dipilih
+01134:     document
+01135:         .getElementById("btn_" + page)
+01136:         .classList.add("active");
+01137: 
+01138: }
+01139: 
+01140: 
+01141: 
+01142: // =========================
+01143: // script halaman home
+01144: // =========================
+01145: window.addEventListener(
+01146:     "message",
+01147:     function (event) {
+01148: 
+01149:         if (
+01150:             event.data.type === "emptyVoucher"
+01151:         ) {
+01152: 
+01153:             document.getElementById(
+01154:                 "item-voucher"
+01155:             ).style.display = "none";
+01156: 
+01157:         }
+01158: 
+01159: 
+01160:         if (
+01161:             event.data.type === "voucherLoaded"
+01162:         ) {
+01163: 
+01164:             document.getElementById(
+01165:                 "item-voucher"
+01166:             ).style.display = "block";
+01167: 
+01168:         }
+01169: 
+01170:     }
+01171: );
+
+============================================================
+FILE: js/voucher/voucher-card.js
+============================================================
+
+00001: /* GOCES VOUCHER CARD */
+00002: (function () {
+00003:   function getVoucherVisual(voucher) {
+00004:     const selectedIcon = String(voucher.icon || "")
+00005:       .toLowerCase()
+00006:       .trim();
+00007:     const iconMap = {
+00008:       food: { type: "food", icon: "ph-hamburger" },
+00009:       coffee: { type: "food", icon: "ph-coffee" },
+00010:       ride: { type: "ride", icon: "ph-motorcycle" },
+00011:       car: { type: "car", icon: "ph-car" },
+00012:       pay: { type: "pay", icon: "ph-wallet" },
+00013:       delivery: { type: "delivery", icon: "ph-package" },
+00014:     };
+00015:     if (iconMap[selectedIcon]) return iconMap[selectedIcon];
+00016:     const identity = [
+00017:       voucher.title,
+00018:       voucher.description,
+00019:       voucher.badge,
+00020:       voucher.badgeType,
+00021:       voucher.tag,
+00022:       voucher.tagType,
+00023:     ]
+00024:       .filter(Boolean)
+00025:       .join(" ")
+00026:       .toLowerCase();
+00027:     if (/ride|motor/.test(identity))
+00028:       return { type: "ride", icon: "ph-motorcycle" };
+00029:     if (/car|mobil/.test(identity)) return { type: "car", icon: "ph-car" };
+00030:     if (/pay|pulsa|wallet|dompet|tagihan/.test(identity))
+00031:       return { type: "pay", icon: "ph-wallet" };
+00032:     if (/delivery|kirim|antar/.test(identity))
+00033:       return { type: "delivery", icon: "ph-package" };
+00034:     if (/kopi|coffee|cemilan|snack/.test(identity))
+00035:       return { type: "food", icon: "ph-coffee" };
+00036:     return { type: "food", icon: "ph-hamburger" };
+00037:   }
+00038:   function getOfferLabel(voucher) {
+00039:     const badge = String(voucher.badge || "").trim();
+00040:     if (badge)
+00041:       return badge.replace(/^diskon\s*/i, "").replace(/\s*cashback$/i, "");
+00042:     if (Number(voucher.maximumDiscount) > 0)
+00043:       return "Rp " + Math.round(Number(voucher.maximumDiscount) / 1000) + "rb";
+00044:     return "PROMO";
+00045:   }
+00046:   window.renderVoucherCard = function (voucher) {
+00047:     const visual = getVoucherVisual(voucher);
+00048:     const offer = getOfferLabel(voucher);
+00049:     return `
+00050: <div class="gcv-card" data-id="${voucher.id}" data-status="${voucher.status}" data-priority="${voucher.priority}" data-code="${voucher.code}" data-title="${voucher.title}" data-description="${voucher.description}" data-image="${voucher.image}" data-period="${voucher.period}" data-minimum="${voucher.minimumOrder}" data-maximum="${voucher.maximumDiscount}" data-start="${voucher.startDate}" data-end="${voucher.endDate}" data-terms='${JSON.stringify(voucher.terms || [])}'>
+00051:     <div class="gcv-ticket-visual gcv-ticket--${visual.type}">
+00052:         <i class="ph-fill ${visual.icon}" aria-hidden="true"></i>
+00053:         <span>${offer}</span>
+00054:     </div>
+00055:     <div class="gcv-content">
+00056:         <h3 class="gcv-title">${voucher.title}</h3>
+00057:         <p class="gcv-description">${voucher.description}</p>
+00058:         <div class="gcv-period">${voucher.period}</div>
+00059:         <div class="gcv-ticket-bottom">
+00060:             <div class="gcv-countdown"></div>
+00061:             <button type="button" class="gcv-copy"><i class="ph-bold ph-copy" aria-hidden="true"></i><span>Salin</span></button>
+00062:         </div>
+00063:     </div>
+00064: </div>`;
+00065:   };
+00066: })();
+
+============================================================
+FILE: js/voucher/voucher-copy.js
+============================================================
+
+00001: /*==================================
+00002:         GOCES VOUCHER COPY
+00003: ==================================*/
+00004: 
+00005: window.GocesVoucherCopy = {
+00006: 
+00007:     timer: null,
+00008: 
+00009:     async copy(button, code = null) {
+00010: 
+00011:         let card = null;
+00012: 
+00013:         // Jika kode tidak dikirim, berarti berasal dari Card Voucher
+00014:         if (!code) {
+00015: 
+00016:             card = button.closest(".gcv-card");
+00017: 
+00018:             if (!card) return;
+00019: 
+00020:             code = card.dataset.code;
+00021: 
+00022:             // Efek animasi hanya untuk card
+00023:             card.classList.add("gcv-copy-click");
+00024: 
+00025:         }
+00026: 
+00027:         try {
+00028: 
+00029:             await navigator.clipboard.writeText(code);
+00030: 
+00031:         }
+00032: 
+00033:         catch (err) {
+00034: 
+00035:             try {
+00036: 
+00037:                 const input = document.createElement("input");
+00038: 
+00039:                 input.value = code;
+00040: 
+00041:                 document.body.appendChild(input);
+00042: 
+00043:                 input.select();
+00044: 
+00045:                 document.execCommand("copy");
+00046: 
+00047:                 document.body.removeChild(input);
+00048: 
+00049:             }
+00050: 
+00051:             catch (e) {
+00052: 
+00053:                 console.error(e);
+00054: 
+00055:                 this.toast("Gagal menyalin kode");
+00056: 
+00057:                 if (card) {
+00058: 
+00059:                     card.classList.remove("gcv-copy-click");
+00060: 
+00061:                 }
+00062: 
+00063:                 return;
+00064: 
+00065:             }
+00066: 
+00067:         }
+00068: 
+00069:         // Efek tombol
+00070:         button.classList.add("copied");
+00071: 
+00072:         const originalText = button.textContent;
+00073: 
+00074:         button.textContent = "Disalin âœ“";
+00075: 
+00076:         this.toast("Kode " + code + " berhasil disalin");
+00077: 
+00078:         setTimeout(() => {
+00079: 
+00080:             button.classList.remove("copied");
+00081: 
+00082:             button.textContent = originalText;
+00083: 
+00084:             if (card) {
+00085: 
+00086:                 card.classList.remove("gcv-copy-click");
+00087: 
+00088:             }
+00089: 
+00090:         }, 1500);
+00091: 
+00092:     },
+00093: 
+00094:     toast(message) {
+00095: 
+00096:         const toast = document.querySelector(".gcv-toast");
+00097: 
+00098:         if (!toast) return;
+00099: 
+00100:         toast.textContent = message;
+00101: 
+00102:         toast.classList.add("show");
+00103: 
+00104:         clearTimeout(this.timer);
+00105: 
+00106:         this.timer = setTimeout(() => {
+00107: 
+00108:             toast.classList.remove("show");
+00109: 
+00110:         }, 2000);
+00111: 
+00112:     }
+00113: 
+00114: };
+00115: 
+00116: /*==================================
+00117:         CLICK EVENT
+00118: ==================================*/
+00119: 
+00120: document.addEventListener(
+00121: 
+00122:     "click",
+00123: 
+00124:     function (e) {
+00125: 
+00126:         /*==============================
+00127:             Tombol Salin pada Card
+00128:         ==============================*/
+00129:         const cardButton = e.target.closest(".gcv-copy");
+00130: 
+00131:         if (cardButton) {
+00132: 
+00133:             e.preventDefault();
+00134: 
+00135:             e.stopPropagation();
+00136: 
+00137:             e.stopImmediatePropagation();
+00138: 
+00139:             GocesVoucherCopy.copy(cardButton);
+00140: 
+00141:             return;
+00142: 
+00143:         }
+00144: 
+00145:         /*==============================
+00146:             Tombol Salin pada Modal
+00147:         ==============================*/
+00148:         const modalButton = e.target.closest(".gcv-modal-copy");
+00149: 
+00150:         if (modalButton) {
+00151: 
+00152:             e.preventDefault();
+00153: 
+00154:             e.stopPropagation();
+00155: 
+00156:             e.stopImmediatePropagation();
+00157: 
+00158:             const modal = document.getElementById("gocesVoucherModal");
+00159: 
+00160:             if (!modal) return;
+00161: 
+00162:             const code = modal
+00163:                 .querySelector(".gcv-modal-code")
+00164:                 .textContent
+00165:                 .trim();
+00166: 
+00167:             if (!code) return;
+00168: 
+00169:             GocesVoucherCopy.copy(modalButton, code);
+00170: 
+00171:             return;
+00172: 
+00173:         }
+00174: 
+00175:     },
+00176: 
+00177:     true
+00178: 
+00179: );
+
+============================================================
+FILE: js/voucher/voucher-countdown.js
+============================================================
+
+00001: /*==================================
+00002:         GOCES VOUCHER COUNTDOWN
+00003: ==================================*/
+00004: 
+00005: window.GocesVoucherCountdown = {
+00006: 
+00007:     init() {
+00008: 
+00009:         this.update();
+00010: 
+00011:         setInterval(() => {
+00012: 
+00013:             this.update();
+00014: 
+00015:         }, 1000);
+00016: 
+00017:     },
+00018: 
+00019:     update() {
+00020: 
+00021:         const cards = document.querySelectorAll(".gcv-card");
+00022: 
+00023:         const now = Date.now();
+00024: 
+00025:         cards.forEach(card => {
+00026: 
+00027:             const countdown = card.querySelector(".gcv-countdown");
+00028: 
+00029:             if (!countdown) return;
+00030: 
+00031:             const id = card.dataset.id;
+00032: 
+00033:             const status = card.dataset.status === "true";
+00034: 
+00035:             const start = new Date(
+00036: 
+00037:                 card.dataset.start.replace(" ", "T")
+00038: 
+00039:             ).getTime();
+00040: 
+00041:             const end = new Date(
+00042: 
+00043:                 card.dataset.end.replace(" ", "T")
+00044: 
+00045:             ).getTime();
+00046: 
+00047:             // ==================================
+00048:             // STATUS ADMIN
+00049:             // ==================================
+00050: 
+00051:             if (!status) {
+00052: 
+00053:                 this.syncVoucher(id, false);
+00054: 
+00055:                 return;
+00056: 
+00057:             }
+00058: 
+00059:             // ==================================
+00060:             // VOUCHER BERAKHIR
+00061:             // ==================================
+00062: 
+00063:             if (now > end) {
+00064: 
+00065:                 this.syncVoucher(id, false);
+00066: 
+00067:                 return;
+00068: 
+00069:             }
+00070: 
+00071:             // ==================================
+00072:             // VOUCHER MASIH AKTIF
+00073:             // ==================================
+00074: 
+00075:             this.syncVoucher(id, true);
+00076: 
+00077:             // ==================================
+00078:             // BELUM DIMULAI
+00079:             // ==================================
+00080: 
+00081:             if (now < start) {
+00082: 
+00083:                 countdown.textContent =
+00084: 
+00085:                     "ðŸ•’ Dimulai dalam " +
+00086: 
+00087:                     this.format(start - now);
+00088: 
+00089:                 countdown.className =
+00090: 
+00091:                     "gcv-countdown upcoming";
+00092: 
+00093:                 return;
+00094: 
+00095:             }
+00096: 
+00097:             // ==================================
+00098:             // SEDANG BERLANGSUNG
+00099:             // ==================================
+00100: 
+00101:             countdown.textContent =
+00102: 
+00103:                 "â³ Berakhir dalam " +
+00104: 
+00105:                 this.format(end - now);
+00106: 
+00107:             countdown.className =
+00108: 
+00109:                 "gcv-countdown active";
+00110: 
+00111:         });
+00112: 
+00113:         this.updateHorizontalSections();
+00114: 
+00115:         this.updateVoucherCount();
+00116: 
+00117: 
+00118:     },
+00119: 
+00120:     // ==================================
+00121:     // SINKRONKAN SEMUA HALAMAN
+00122:     // ==================================
+00123: 
+00124:     updateHorizontalSections() {
+00125: 
+00126:         document.querySelectorAll(".gcvh-section").forEach(section => {
+00127: 
+00128:             const hasVisibleVoucher = Array.from(
+00129:                 section.querySelectorAll(".gcv-card")
+00130:             ).some(card => {
+00131: 
+00132:                 return card.style.display !== "none";
+00133: 
+00134:             });
+00135: 
+00136:             section.style.display =
+00137:                 hasVisibleVoucher
+00138:                     ? ""
+00139:                     : "none";
+00140: 
+00141:         });
+00142: 
+00143:     },
+00144: 
+00145:     syncVoucher(id, visible) {
+00146: 
+00147:         document
+00148: 
+00149:             .querySelectorAll(
+00150: 
+00151:                 `.gcv-card[data-id="${id}"]`
+00152: 
+00153:             )
+00154: 
+00155:             .forEach(card => {
+00156: 
+00157:                 card.style.display =
+00158: 
+00159:                     visible
+00160: 
+00161:                         ? ""
+00162: 
+00163:                         : "none";
+00164: 
+00165:             });
+00166: 
+00167:     },
+00168: 
+00169:     // ==================================
+00170:     // HITUNG HANYA HALAMAN SEMUA
+00171:     // ==================================
+00172: 
+00173:     updateVoucherCount() {
+00174: 
+00175:         const total =
+00176: 
+00177:             document.getElementById(
+00178: 
+00179:                 "gprActiveVoucherCount"
+00180: 
+00181:             );
+00182: 
+00183:         if (!total) return;
+00184: 
+00185:         const aktif =
+00186: 
+00187:             document.querySelectorAll(
+00188: 
+00189:                 "#gocesVoucherSemua .gcv-card:not([style*='display: none'])"
+00190: 
+00191:             ).length;
+00192: 
+00193:         total.textContent =
+00194: 
+00195:             aktif +
+00196: 
+00197:             " Voucher Aktif";
+00198: 
+00199:     },
+00200: 
+00201:     // ==================================
+00202:     // FORMAT COUNTDOWN
+00203:     // ==================================
+00204: 
+00205:     format(ms) {
+00206: 
+00207:         const minute = 60000;
+00208: 
+00209:         const hour = minute * 60;
+00210: 
+00211:         const day = hour * 24;
+00212: 
+00213:         const days = Math.floor(
+00214: 
+00215:             ms / day
+00216: 
+00217:         );
+00218: 
+00219:         const hours = Math.floor(
+00220: 
+00221:             (ms % day) / hour
+00222: 
+00223:         );
+00224: 
+00225:         const minutes = Math.floor(
+00226: 
+00227:             (ms % hour) / minute
+00228: 
+00229:         );
+00230: 
+00231:         if (days > 0) {
+00232: 
+00233:             return days + " hari";
+00234: 
+00235:         }
+00236: 
+00237:         if (hours > 0) {
+00238: 
+00239:             return hours + " jam";
+00240: 
+00241:         }
+00242: 
+00243:         return minutes + " menit";
+00244: 
+00245:     }
+00246: 
+00247: };
+00248: 
+00249: document.addEventListener(
+00250: 
+00251:     "DOMContentLoaded",
+00252: 
+00253:     () => {
+00254: 
+00255:         GocesVoucherCountdown.init();
+00256: 
+00257:     }
+00258: 
+00259: );
+
+============================================================
+FILE: js/voucher/voucher-loader.js
+============================================================
+
+00001: /*==================================
+00002:         GOCES VOUCHER LOADER
+00003: ==================================*/
+00004: 
+00005: window.GocesVoucherLoader = {
+00006: 
+00007:     api: "https://goces-api.vercel.app/voucher",
+00008: 
+00009:     async load(options = {}) {
+00010: 
+00011:         const category = options.category || "semua";
+00012: 
+00013:         const containerId = options.container;
+00014: 
+00015:         const limit = options.limit || 0;
+00016: 
+00017:         try {
+00018: 
+00019:             const response = await fetch(
+00020: 
+00021:                 `${this.api}?category=${category}`
+00022: 
+00023:             );
+00024: 
+00025:             const result = await response.json();
+00026: 
+00027:             if (!result.success) return;
+00028: 
+00029:             const container =
+00030: 
+00031:                 document.getElementById(containerId);
+00032: 
+00033:             if (!container) return;
+00034: 
+00035:             container.innerHTML = "";
+00036: 
+00037:             let vouchers = result.data || [];
+00038: 
+00039:             if (limit > 0) {
+00040: 
+00041:                 vouchers = vouchers.slice(0, limit);
+00042: 
+00043:             }
+00044: 
+00045:             vouchers.forEach(voucher => {
+00046: 
+00047:                 container.insertAdjacentHTML(
+00048: 
+00049:                     "beforeend",
+00050: 
+00051:                     renderVoucherCard(voucher)
+00052: 
+00053:                 );
+00054: 
+00055:             });
+00056: 
+00057:             if (window.GocesVoucherCountdown) {
+00058: 
+00059:                 GocesVoucherCountdown.update();
+00060: 
+00061:             }
+00062: 
+00063:         }
+00064: 
+00065:         catch (err) {
+00066: 
+00067:             console.error(
+00068: 
+00069:                 "Voucher Loader",
+00070: 
+00071:                 err
+00072: 
+00073:             );
+00074: 
+00075:         }
+00076: 
+00077:     },
+00078: 
+00079:     init() {
+00080: 
+00081:         // =====================
+00082:         // HALAMAN PROMO
+00083:         // =====================
+00084: 
+00085:         this.load({
+00086: 
+00087:             category: "semua",
+00088: 
+00089:             container: "gocesVoucherSemua"
+00090: 
+00091:         });
+00092: 
+00093:         this.load({
+00094: 
+00095:             category: "populer",
+00096: 
+00097:             container: "gocesVoucherPopuler"
+00098: 
+00099:         });
+00100: 
+00101:         this.load({
+00102: 
+00103:             category: "terbaru",
+00104: 
+00105:             container: "gocesVoucherTerbaru"
+00106: 
+00107:         });
+00108: 
+00109:         this.load({
+00110: 
+00111:             category: "eksklusif",
+00112: 
+00113:             container: "gocesVoucherEksklusif"
+00114: 
+00115:         });
+00116: 
+00117:         this.load({
+00118: 
+00119:             category: "cashback",
+00120: 
+00121:             container: "gocesVoucherCashback"
+00122: 
+00123:         });
+00124: 
+00125:         this.load({
+00126: 
+00127:             category: "terbatas",
+00128: 
+00129:             container: "gocesVoucherTerbatas"
+00130: 
+00131:         });
+00132: 
+00133:         this.load({
+00134: 
+00135:             category: "populer",
+00136: 
+00137:             container: "gocesVoucherHome",
+00138: 
+00139:             limit: 5
+00140: 
+00141:         });
+00142: 
+00143:         this.load({
+00144: 
+00145:             category: "cashback",
+00146: 
+00147:             container: "gocesVoucherFood",
+00148: 
+00149:             limit: 5
+00150: 
+00151:         });
+00152: 
+00153:     }
+00154: 
+00155: };
+00156: 
+00157: document.addEventListener(
+00158: 
+00159:     "DOMContentLoaded",
+00160: 
+00161:     () => {
+00162: 
+00163:         GocesVoucherLoader.init();
+00164: 
+00165:     }
+00166: 
+00167: );
+
+============================================================
+FILE: js/voucher/voucher-modal.js
+============================================================
+
+00001: /*==================================
+00002:         GOCES VOUCHER MODAL
+00003: ==================================*/
+00004: 
+00005: window.GocesVoucherModal = {
+00006: 
+00007:     modal: null,
+00008: 
+00009:     init() {
+00010: 
+00011:         this.modal = document.getElementById(
+00012: 
+00013:             "gocesVoucherModal"
+00014: 
+00015:         );
+00016: 
+00017:         if (!this.modal) return;
+00018: 
+00019:         document.addEventListener(
+00020: 
+00021:             "click",
+00022: 
+00023:             (e) => {
+00024: 
+00025:                 // Tombol Salin jangan membuka modal
+00026:                 if (e.target.closest(".gcv-copy")) {
+00027: 
+00028:                     return;
+00029: 
+00030:                 }
+00031: 
+00032:                 // Tombol Tutup
+00033:                 if (e.target.classList.contains("gcv-modal-close")) {
+00034: 
+00035:                     this.close();
+00036: 
+00037:                     return;
+00038: 
+00039:                 }
+00040: 
+00041: 
+00042: 
+00043:                 // Klik Card
+00044:                 const card = e.target.closest(".gcv-card");
+00045: 
+00046:                 if (card) {
+00047: 
+00048:                     this.open(card);
+00049: 
+00050:                 }
+00051: 
+00052:             }
+00053: 
+00054:         );
+00055: 
+00056:     },
+00057: 
+00058:     open(card) {
+00059: 
+00060:         this.modal.querySelector(
+00061: 
+00062:             ".gcv-modal-image"
+00063: 
+00064:         ).src =
+00065: 
+00066:             card.dataset.image;
+00067: 
+00068:         this.modal.querySelector(
+00069: 
+00070:             ".gcv-modal-title"
+00071: 
+00072:         ).textContent =
+00073: 
+00074:             card.dataset.title;
+00075: 
+00076:         this.modal.querySelector(
+00077: 
+00078:             ".gcv-modal-description"
+00079: 
+00080:         ).textContent =
+00081: 
+00082:             card.dataset.description;
+00083: 
+00084:         this.modal.querySelector(
+00085: 
+00086:             ".gcv-modal-code"
+00087: 
+00088:         ).textContent =
+00089: 
+00090:             card.dataset.code;
+00091: 
+00092:         this.modal.querySelector(
+00093: 
+00094:             ".gcv-modal-period"
+00095: 
+00096:         ).textContent =
+00097: 
+00098:             card.dataset.period;
+00099: 
+00100:         this.modal.querySelector(
+00101: 
+00102:             ".gcv-modal-min-order"
+00103: 
+00104:         ).textContent =
+00105: 
+00106:             "Minimal Belanja Rp " +
+00107: 
+00108:             Number(
+00109: 
+00110:                 card.dataset.minimum
+00111: 
+00112:             ).toLocaleString("id-ID");
+00113: 
+00114:         this.modal.querySelector(
+00115: 
+00116:             ".gcv-modal-max-discount"
+00117: 
+00118:         ).textContent =
+00119: 
+00120:             "Maksimal Diskon Rp " +
+00121: 
+00122:             Number(
+00123: 
+00124:                 card.dataset.maximum
+00125: 
+00126:             ).toLocaleString("id-ID");
+00127: 
+00128:         const list =
+00129: 
+00130:             this.modal.querySelector(
+00131: 
+00132:                 ".gcv-terms-list"
+00133: 
+00134:             );
+00135: 
+00136:         list.innerHTML = "";
+00137: 
+00138:         JSON.parse(
+00139: 
+00140:             card.dataset.terms
+00141: 
+00142:         ).forEach(term => {
+00143: 
+00144:             list.insertAdjacentHTML(
+00145: 
+00146:                 "beforeend",
+00147: 
+00148:                 `<li>${term}</li>`
+00149: 
+00150:             );
+00151: 
+00152:         });
+00153: 
+00154:         this.modal.classList.add(
+00155: 
+00156:             "show"
+00157: 
+00158:         );
+00159: 
+00160:     },
+00161: 
+00162:     close() {
+00163: 
+00164:         this.modal.classList.remove(
+00165: 
+00166:             "show"
+00167: 
+00168:         );
+00169: 
+00170:     }
+00171: 
+00172: };
+00173: 
+00174: document.addEventListener(
+00175: 
+00176:     "DOMContentLoaded",
+00177: 
+00178:     () =>
+00179: 
+00180:         GocesVoucherModal.init()
+00181: 
+00182: );
+
+============================================================
+FILE: js/voucher/voucher-page.js
+============================================================
+
+00001: /*==================================
+00002:         GOCES VOUCHER PAGE
+00003: ==================================*/
+00004: 
+00005: window.GocesVoucherPage = {
+00006: 
+00007:     current: "semua",
+00008: 
+00009:     init() {
+00010: 
+00011:         this.show("semua");
+00012: 
+00013:     },
+00014: 
+00015:     show(category) {
+00016: 
+00017:         this.current = category;
+00018: 
+00019:         // Sembunyikan semua halaman
+00020:         document
+00021:             .querySelectorAll(".gpr-content")
+00022:             .forEach(page => {
+00023: 
+00024:                 page.style.display = "none";
+00025: 
+00026:             });
+00027: 
+00028:         // Nonaktifkan semua tombol
+00029:         document
+00030:             .querySelectorAll(".gpr-category button")
+00031:             .forEach(button => {
+00032: 
+00033:                 button.classList.remove("active");
+00034: 
+00035:             });
+00036: 
+00037:         // Tampilkan halaman yang dipilih
+00038:         const page =
+00039:             document.getElementById(category);
+00040: 
+00041:         if (page) {
+00042: 
+00043:             page.style.display = "block";
+00044: 
+00045:         }
+00046: 
+00047:         // Aktifkan tombol yang dipilih
+00048:         const activeButton =
+00049:             document.querySelector(
+00050: 
+00051:                 '.gpr-category button[onclick*="' +
+00052: 
+00053:                 category +
+00054: 
+00055:                 '"]'
+00056: 
+00057:             );
+00058: 
+00059:         if (activeButton) {
+00060: 
+00061:             activeButton.classList.add("active");
+00062: 
+00063:         }
+00064: 
+00065:     }
+00066: 
+00067: };
+00068: 
+00069: /*==================================
+00070:         GLOBAL FUNCTION
+00071: ==================================*/
+00072: 
+00073: function gprOpenCategory(event, category) {
+00074: 
+00075:     GocesVoucherPage.show(category);
+00076: 
+00077: }
+00078: 
+00079: function gprOpenAllVoucher() {
+00080: 
+00081:     GocesVoucherPage.show("semua");
+00082: 
+00083: }
+00084: 
+00085: /*==================================
+00086:         START
+00087: ==================================*/
+00088: 
+00089: document.addEventListener(
+00090: 
+00091:     "DOMContentLoaded",
+00092: 
+00093:     function () {
+00094: 
+00095:         GocesVoucherPage.init();
+00096: 
+00097:     }
+00098: 
+00099: );

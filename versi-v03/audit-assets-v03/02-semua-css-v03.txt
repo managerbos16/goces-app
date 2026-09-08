@@ -1,0 +1,4625 @@
+﻿============================================================
+SEMUA CSS YANG DIGUNAKAN V03
+============================================================
+
+============================================================
+FILE: css/versi-v01/benner-food.css
+============================================================
+
+00001: /* --- WRAPPER SECTION --- */
+00002: .gcsFoodBannerSection {
+00003:   width: 100%;
+00004:   padding: 0 var(--screen-padding);
+00005:   box-sizing: border-box;
+00006: }
+00007: 
+00008: .gcsFoodBannerContainer {
+00009:   width: 100%;
+00010:   display: flex;
+00011:   flex-direction: column;
+00012:   transition: all var(--transition);
+00013: }
+00014: 
+00015: /* --- JUDUL / HEADER BANNER --- */
+00016: .gcsFoodBannerHeader {
+00017:   width: 100%;
+00018:   margin-bottom: 12px;
+00019:   transition: opacity var(--transition);
+00020: }
+00021: 
+00022: .gcsFoodBannerTitle {
+00023:   font-size: 18px;
+00024:   font-weight: 500;
+00025:   color: var(--text);
+00026:   letter-spacing: -0.3px;
+00027: }
+00028: 
+00029: /* --- SLIDER VIEWPORT (RASIO 16:7) --- */
+00030: .gcsFoodBannerSlider {
+00031:   position: relative;
+00032:   width: 100%;
+00033:   aspect-ratio: 16 / 7; /* Menjaga konsistensi rasio secara dinamis */
+00034:   border-radius: var(--card-radius);
+00035:   overflow: hidden;
+00036:   box-shadow: var(--gcsFoodBannerShadow);
+00037:   background-color: rgba(0, 0, 0, 0.03);
+00038:   touch-action: pan-y; /* Membantu akurasi swipe di mobile */
+00039: }
+00040: 
+00041: /* TRACK ANIMASI GESER */
+00042: .gcsFoodBannerTrack {
+00043:   display: flex;
+00044:   width: 100%;
+00045:   height: 100%;
+00046:   transition: transform var(--transition);
+00047:   will-change: transform;
+00048: }
+00049: 
+00050: /* ITEM BANNER INDIVIDUAL */
+00051: .gcsFoodBannerItem {
+00052:   flex: 0 0 100%;
+00053:   width: 100%;
+00054:   height: 100%;
+00055:   overflow: hidden;
+00056: }
+00057: 
+00058: .gcsFoodBannerLink {
+00059:   display: block;
+00060:   width: 100%;
+00061:   height: 100%;
+00062:   text-decoration: none;
+00063:   cursor: pointer;
+00064:   outline: none;
+00065: }
+00066: 
+00067: /* ELEMEN GAMBAR MAKANAN */
+00068: .gcsFoodBannerImage {
+00069:   width: 100%;
+00070:   height: 100%;
+00071:   object-fit: cover;
+00072:   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+00073: }
+00074: 
+00075: /* --- ANIMASI INTERAKSI (HOVER & PRESSED) --- */
+00076: /* Desktop Hover: Sedikit melakukan pembesaran gambar */
+00077: @media (hover: hover) {
+00078:   .gcsFoodBannerLink:hover .gcsFoodBannerImage {
+00079:     transform: scale(1.04);
+00080:   }
+00081: }
+00082: 
+00083: /* Mobile Click/Pressed: Efek mengecil/membal ala iOS native button */
+00084: .gcsFoodBannerLink:active .gcsFoodBannerImage {
+00085:   transform: scale(0.98);
+00086: }
+00087: 
+00088: /* --- DOT INDICATOR NAVIGATION --- */
+00089: .gcsFoodBannerDots {
+00090:   display: flex;
+00091:   justify-content: center;
+00092:   align-items: center;
+00093:   gap: 6px;
+00094:   margin-top: 10px;
+00095:   height: 8px;
+00096:   transition: opacity var(--transition);
+00097: }
+00098: 
+00099: .gcsFoodBannerDot {
+00100:   width: 6px;
+00101:   height: 6px;
+00102:   border-radius: 50%;
+00103:   background-color: #d1d5db;
+00104:   transition: all var(--transition);
+00105: }
+00106: 
+00107: /* Status Titik Aktif / Kapsul */
+00108: .gcsFoodBannerDot.gcsFoodBannerActive {
+00109:   width: 16px;
+00110:   border-radius: 4px;
+00111:   background-color: var(--blue);
+00112: }
+00113: 
+00114: /* --- UTILITY VALIDASI (SEMBUNYI & KOLAPS) --- */
+00115: .gcsFoodBannerHidden {
+00116:   display: none !important;
+00117:   opacity: 0 !important;
+00118:   pointer-events: none !important;
+00119: }
+00120: 
+00121: /* Digunakan oleh JS untuk menghilangkan sisa ruang kosong jika promo nihil */
+00122: .gcsFoodBannerCollapse {
+00123:   height: 0 !important;
+00124:   padding-top: 0 !important;
+00125:   padding-bottom: 0 !important;
+00126:   margin-top: 0 !important;
+00127:   margin-bottom: 0 !important;
+00128:   overflow: hidden !important;
+00129:   opacity: 0 !important;
+00130:   border: none !important;
+00131: }
+00132: 
+00133: /* --- RESPONSIVE OPTIMIZATION --- */
+00134: @media (max-width: 360px) {
+00135:   .gcsFoodBannerTitle {
+00136:     font-size: 16px;
+00137:   }
+00138:   :root {
+00139:     --screen-padding: 12px;
+00140:     --card-radius: 16px;
+00141:   }
+00142: }
+00143: 
+00144: @media (min-width: 768px) {
+00145:   /* Batasan maksimal layout web-view di tablet/desktop demi menjaga aspek rasio */
+00146:   .gcsFoodBannerSection {
+00147:     max-width: 480px;
+00148:     margin: 0 auto;
+00149:   }
+00150: }
+
+============================================================
+FILE: css/versi-v01/benner-home.css
+============================================================
+
+00001: /* --- WRAPPER SECTION --- */
+00002: .gcsPromoBannerSection {
+00003:   width: 100%;
+00004:   padding: 0 var(--screen-padding);
+00005:   box-sizing: border-box;
+00006: }
+00007: 
+00008: .gcsPromoBannerContainer {
+00009:   width: 100%;
+00010:   display: flex;
+00011:   flex-direction: column;
+00012:   transition: all var(--transition);
+00013: }
+00014: 
+00015: /* --- HEADER / JUDUL PROMO --- */
+00016: .gcsPromoBannerHeader {
+00017:   width: 100%;
+00018:   margin-bottom: 6px;
+00019:   transition: opacity var(--transition);
+00020: }
+00021: 
+00022: .gcsPromoBannerTitle {
+00023:   font-size: 18px;
+00024:   font-weight: 600;
+00025:   color: var(--text);
+00026:   letter-spacing: -0.3px;
+00027:   line-height: 1.2;
+00028:   margin: 0;
+00029: }
+00030: 
+00031: /* --- SLIDER VIEWPORT (RASIO MASTER 16:7) --- */
+00032: .gcsPromoBannerSlider {
+00033:   position: relative;
+00034:   width: 100%;
+00035:   aspect-ratio: 16 / 7; /* Memenuhi aspek rasio wajib tanpa hardcode tinggi */
+00036:   border-radius: var(--card-radius);
+00037:   overflow: hidden;
+00038:   box-shadow: var(--gcsPromoBannerShadow);
+00039:   background-color: rgba(0, 0, 0, 0.03);
+00040:   touch-action: pan-y; /* Optimalisasi swipe mobile */
+00041: }
+00042: 
+00043: /* TRACK ANIMASI RUNNING SLIDE */
+00044: .gcsPromoBannerTrack {
+00045:   display: flex;
+00046:   width: 100%;
+00047:   height: 100%;
+00048:   transition: transform var(--transition);
+00049:   will-change: transform;
+00050: }
+00051: 
+00052: /* SLIDE ITEM INDIVIDUAL */
+00053: .gcsPromoBannerItem {
+00054:   flex: 0 0 100%;
+00055:   width: 100%;
+00056:   height: 100%;
+00057:   overflow: hidden;
+00058: }
+00059: 
+00060: .gcsPromoBannerLink {
+00061:   display: block;
+00062:   width: 100%;
+00063:   height: 100%;
+00064:   text-decoration: none;
+00065:   cursor: pointer;
+00066:   outline: none;
+00067: }
+00068: 
+00069: /* GAMBAR BANNER PROMO */
+00070: .gcsPromoBannerImage {
+00071:   width: 100%;
+00072:   height: 100%;
+00073:   object-fit: cover;
+00074:   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+00075: }
+00076: 
+00077: /* INTERAKSI HOVER (DESKTOP) & PRESSED (MOBILE) */
+00078: @media (hover: hover) {
+00079:   .gcsPromoBannerLink:hover .gcsPromoBannerImage {
+00080:     transform: scale(1.035);
+00081:   }
+00082: }
+00083: 
+00084: .gcsPromoBannerLink:active .gcsPromoBannerImage {
+00085:   transform: scale(0.98);
+00086: }
+00087: 
+00088: /* --- DOT INDICATOR NAVIGATION --- */
+00089: .gcsPromoBannerDots {
+00090:   display: flex;
+00091:   justify-content: center;
+00092:   align-items: center;
+00093:   gap: 6px;
+00094:   margin-top: 10px;
+00095:   height: 8px;
+00096:   transition: opacity var(--transition);
+00097: }
+00098: 
+00099: .gcsPromoBannerDot {
+00100:   width: 6px;
+00101:   height: 6px;
+00102:   border-radius: 50%;
+00103:   background-color: #d1d5db;
+00104:   transition: all var(--transition);
+00105: }
+00106: 
+00107: .gcsPromoBannerDot.gcsPromoPromoBannerActive {
+00108:   width: 16px;
+00109:   border-radius: 4px;
+00110:   background-color: var(--blue);
+00111: }
+00112: 
+00113: /* --- UTILITY ATURAN KOSONG (KOLAPS OTOMATIS) --- */
+00114: .gcsPromoBannerHidden {
+00115:   display: none !important;
+00116:   opacity: 0 !important;
+00117:   pointer-events: none !important;
+00118: }
+00119: 
+00120: /* Memaksa kontainer kolaps total ke ukuran 0 saat tidak ada promo aktif */
+00121: .gcsPromoBannerCollapse {
+00122:   height: 0 !important;
+00123:   padding-top: 0 !important;
+00124:   padding-bottom: 0 !important;
+00125:   margin-top: 0 !important;
+00126:   margin-bottom: 0 !important;
+00127:   overflow: hidden !important;
+00128:   opacity: 0 !important;
+00129:   border: none !important;
+00130: }
+00131: 
+00132: /* --- AKOMODASI RESPONSIVE SCREEN SIZES --- */
+00133: @media (max-width: 360px) {
+00134:   .gcsPromoBannerTitle {
+00135:     font-size: 16px;
+00136:   }
+00137:   :root {
+00138:     --screen-padding: 12px;
+00139:     --card-radius: 16px;
+00140:   }
+00141: }
+00142: 
+00143: @media (min-width: 768px) {
+00144:   /* Tampilan Tablet / Desktop Max Web-App Viewport */
+00145:   .gcsPromoBannerSection {
+00146:     max-width: 480px;
+00147:     margin: 0 auto;
+00148:   }
+00149: }
+
+============================================================
+FILE: css/versi-v01/benner-promo.css
+============================================================
+
+00001: /* --- SECTION & CONTAINER --- */
+00002: .gcsHalamanPromoBannerSection {
+00003:   width: 100%;
+00004:   padding: 0 var(--screen-padding);
+00005:   box-sizing: border-box;
+00006: }
+00007: 
+00008: .gcsHalamanPromoBannerContainer {
+00009:   width: 100%;
+00010:   display: flex;
+00011:   flex-direction: column;
+00012:   transition: all var(--transition);
+00013: }
+00014: 
+00015: /* --- HEADER TITLE --- */
+00016: .gcsHalamanPromoBannerHeader {
+00017:   width: 100%;
+00018:   margin-bottom: 12px;
+00019:   transition: opacity var(--transition);
+00020: }
+00021: 
+00022: .gcsHalamanPromoBannerTitle {
+00023:   font-size: 18px;
+00024:   font-weight: 500;
+00025:   color: var(--text);
+00026:   letter-spacing: -0.3px;
+00027:   margin: 0;
+00028: }
+00029: 
+00030: /* --- SLIDER & TRACK --- */
+00031: .gcsHalamanPromoBannerSlider {
+00032:   position: relative;
+00033:   width: 100%;
+00034:   aspect-ratio: 16 / 7;
+00035:   border-radius: var(--card-radius);
+00036:   overflow: hidden;
+00037:   box-shadow: var(--gcsHalamanPromoBannerShadow);
+00038:   background-color: rgba(0, 0, 0, 0.03);
+00039:   touch-action: pan-y;
+00040: }
+00041: 
+00042: .gcsHalamanPromoBannerTrack {
+00043:   display: flex;
+00044:   width: 100%;
+00045:   height: 100%;
+00046:   transition: transform var(--transition);
+00047:   will-change: transform;
+00048: }
+00049: 
+00050: .gcsHalamanPromoBannerItem {
+00051:   flex: 0 0 100%;
+00052:   width: 100%;
+00053:   height: 100%;
+00054:   overflow: hidden;
+00055: }
+00056: 
+00057: .gcsHalamanPromoBannerLink {
+00058:   display: block;
+00059:   width: 100%;
+00060:   height: 100%;
+00061:   text-decoration: none;
+00062:   cursor: pointer;
+00063:   outline: none;
+00064:   -webkit-tap-highlight-color: transparent;
+00065: }
+00066: 
+00067: .gcsHalamanPromoBannerImage {
+00068:   width: 100%;
+00069:   height: 100%;
+00070:   object-fit: cover;
+00071:   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+00072: }
+00073: 
+00074: /* --- INTERAKSI --- */
+00075: @media (hover: hover) {
+00076:   .gcsHalamanPromoBannerLink:hover .gcsHalamanPromoBannerImage {
+00077:     transform: scale(1.035);
+00078:   }
+00079: }
+00080: 
+00081: .gcsHalamanPromoBannerLink:active .gcsHalamanPromoBannerImage {
+00082:   transform: scale(0.97);
+00083: }
+00084: 
+00085: /* --- DOT INDICATOR --- */
+00086: .gcsHalamanPromoBannerDots {
+00087:   display: flex;
+00088:   justify-content: center;
+00089:   align-items: center;
+00090:   gap: 6px;
+00091:   margin-top: 10px;
+00092:   height: 8px;
+00093:   transition: opacity var(--transition);
+00094: }
+00095: 
+00096: .gcsHalamanPromoBannerDot {
+00097:   width: 6px;
+00098:   height: 6px;
+00099:   border-radius: 50%;
+00100:   background-color: #d1d5db;
+00101:   transition: all var(--transition);
+00102: }
+00103: 
+00104: .gcsHalamanPromoBannerDot.gcsHalamanPromoBannerActive {
+00105:   width: 16px;
+00106:   border-radius: 4px;
+00107:   background-color: var(--blue);
+00108: }
+00109: 
+00110: /* --- UTILITY CLASSES --- */
+00111: .gcsHalamanPromoBannerHidden {
+00112:   display: none !important;
+00113:   opacity: 0 !important;
+00114: }
+00115: 
+00116: .gcsHalamanPromoBannerCollapse {
+00117:   height: 0 !important;
+00118:   padding: 0 !important;
+00119:   margin: 0 !important;
+00120:   overflow: hidden !important;
+00121:   opacity: 0 !important;
+00122: }
+00123: 
+00124: /* --- RESPONSIVE --- */
+00125: @media (max-width: 360px) {
+00126:   .gcsHalamanPromoBannerTitle {
+00127:     font-size: 16px;
+00128:   }
+00129:   :root {
+00130:     --screen-padding: 12px;
+00131:     --card-radius: 16px;
+00132:   }
+00133: }
+00134: 
+00135: @media (min-width: 768px) {
+00136:   .gcsHalamanPromoBannerSection {
+00137:     max-width: 480px;
+00138:     margin: 0 auto;
+00139:   }
+00140: }
+
+============================================================
+FILE: css/versi-v01/development.css
+============================================================
+
+00001: /*==================================
+00002:       DEVELOPMENT POPUP
+00003: ==================================*/
+00004: 
+00005: #goces-dev-popup {
+00006:   position: fixed;
+00007: 
+00008:   inset: 0;
+00009: 
+00010:   z-index: 999999;
+00011: }
+00012: 
+00013: .goces-dev-overlay {
+00014:   position: absolute;
+00015: 
+00016:   inset: 0;
+00017: 
+00018:   background: rgba(0, 0, 0, 0.35);
+00019: 
+00020:   backdrop-filter: blur(3px);
+00021: }
+00022: 
+00023: .goces-dev-box {
+00024:   position: absolute;
+00025: 
+00026:   left: 50%;
+00027: 
+00028:   top: 50%;
+00029: 
+00030:   transform: translate(-50%, -50%);
+00031: 
+00032:   width: 90%;
+00033: 
+00034:   max-width: 330px;
+00035: 
+00036:   background: #fff;
+00037: 
+00038:   border-radius: 22px;
+00039: 
+00040:   padding: 24px;
+00041: 
+00042:   text-align: center;
+00043: 
+00044:   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+00045: }
+00046: 
+00047: .goces-dev-icon {
+00048:   font-size: 52px;
+00049: 
+00050:   margin-bottom: 14px;
+00051: }
+00052: 
+00053: .goces-dev-box h3 {
+00054:   font-size: 20px;
+00055: 
+00056:   margin-bottom: 10px;
+00057: 
+00058:   color: #111827;
+00059: }
+00060: 
+00061: .goces-dev-box p {
+00062:   font-size: 14px;
+00063: 
+00064:   line-height: 1.6;
+00065: 
+00066:   color: #6b7280;
+00067: }
+00068: 
+00069: .goces-dev-button {
+00070:   width: 100%;
+00071: 
+00072:   margin-top: 22px;
+00073: 
+00074:   height: 48px;
+00075: 
+00076:   border: none;
+00077: 
+00078:   border-radius: 14px;
+00079: 
+00080:   background: #1d4ed8;
+00081: 
+00082:   color: #fff;
+00083: 
+00084:   font-weight: 700;
+00085: 
+00086:   cursor: pointer;
+00087: }
+
+============================================================
+FILE: css/versi-v01/food.css
+============================================================
+
+00001: /* --- Header Component --- */
+00002: .goces-header {
+00003:   background-color: var(--gray);
+00004:   padding: calc(var(--screen-padding) + var(--safe-top)) var(--screen-padding)
+00005:     calc(var(--screen-padding) / 2);
+00006:   position: sticky;
+00007:   top: 0;
+00008:   z-index: 100;
+00009: }
+00010: 
+00011: .header-inner {
+00012:   display: flex;
+00013:   justify-content: space-between;
+00014:   align-items: center;
+00015: }
+00016: 
+00017: .header-right {
+00018:   display: flex;
+00019:   gap: 12px;
+00020: }
+00021: 
+00022: .icon-circle-btn {
+00023:   display: inline-flex;
+00024:   align-items: center;
+00025:   justify-content: center;
+00026:   width: 44px;
+00027:   height: 44px;
+00028:   border-radius: var(--icon-radius);
+00029:   background-color: var(--white);
+00030:   color: var(--text);
+00031:   font-size: 20px;
+00032:   text-decoration: none;
+00033:   box-shadow: var(--shadow-sm);
+00034:   border: 1px solid var(--border);
+00035:   transition: transform var(--transition);
+00036: }
+00037: 
+00038: .icon-circle-btn:active {
+00039:   transform: scale(0.9);
+00040: }
+00041: 
+00042: /* --- Search Input Area --- */
+00043: .search-section {
+00044:   padding: calc(var(--screen-padding) / 2) var(--screen-padding);
+00045: }
+00046: 
+00047: .search-wrapper {
+00048:   position: relative;
+00049:   width: 100%;
+00050:   display: flex;
+00051:   align-items: center;
+00052: }
+00053: 
+00054: .search-inner-icon {
+00055:   position: absolute;
+00056:   left: 16px;
+00057:   color: var(--text);
+00058:   font-size: 18px;
+00059:   opacity: 0.6;
+00060:   pointer-events: none;
+00061:   z-index: 2;
+00062: }
+00063: 
+00064: .search-wrapper form {
+00065:   width: 100%;
+00066: }
+00067: 
+00068: .search-wrapper .input {
+00069:   width: 100%;
+00070:   height: 48px;
+00071:   border-radius: 999px;
+00072:   /* Rounded Penuh Sesuai Instruksi */
+00073:   border: 1px solid var(--border);
+00074:   background-color: var(--white);
+00075:   padding: 0 var(--screen-padding) 0 46px;
+00076:   font-size: 15px;
+00077:   color: var(--text);
+00078:   box-shadow: var(--shadow-sm);
+00079:   outline: none;
+00080:   font-family: inherit;
+00081:   transition: box-shadow var(--transition);
+00082: }
+00083: 
+00084: .search-wrapper .input:focus {
+00085:   box-shadow:
+00086:     0 0 0 3px rgba(29, 78, 216, 0.1),
+00087:     var(--shadow-sm);
+00088: }
+00089: 
+00090: /* --- Category Chips Scrollbar --- */
+00091: .categories-bar {
+00092:   padding: calc(var(--screen-padding) / 2) 0 var(--screen-padding);
+00093: }
+00094: 
+00095: .categories-scroll {
+00096:   display: flex;
+00097:   gap: 10px;
+00098:   overflow-x: auto;
+00099:   padding: 0 var(--screen-padding);
+00100:   scrollbar-width: none;
+00101: }
+00102: 
+00103: .categories-scroll::-webkit-scrollbar {
+00104:   display: none;
+00105: }
+00106: 
+00107: .category-chip {
+00108:   padding: 10px 20px;
+00109:   border-radius: 999px;
+00110:   /* Rounded Penuh Sesuai Instruksi */
+00111:   font-size: 14px;
+00112:   font-weight: 600;
+00113:   cursor: pointer;
+00114:   white-space: nowrap;
+00115:   background: var(--white);
+00116:   color: var(--text);
+00117:   border: 1px solid var(--border);
+00118:   font-family: inherit;
+00119:   transition:
+00120:     background var(--transition),
+00121:     color var(--transition),
+00122:     transform var(--transition);
+00123: }
+00124: 
+00125: .category-chip.active {
+00126:   background: var(--blue-700);
+00127:   color: var(--white);
+00128:   border-color: var(--blue);
+00129: }
+00130: 
+00131: .category-chip:active {
+00132:   transform: scale(0.95);
+00133: }
+00134: 
+00135: /* --- Dynamic Main Area Sections --- */
+00136: .content-body {
+00137:   padding: 0 var(--screen-padding);
+00138: }
+00139: 
+00140: .menu-section {
+00141:   display: none;
+00142:   opacity: 0;
+00143:   transform: scale(0.98) translateY(10px);
+00144:   transition:
+00145:     opacity var(--transition),
+00146:     transform var(--transition);
+00147: }
+00148: 
+00149: .menu-section.section-visible {
+00150:   display: block;
+00151: }
+00152: 
+00153: .menu-section.animate-fade {
+00154:   opacity: 1;
+00155:   transform: scale(1) translateY(0);
+00156: }
+00157: 
+00158: .section-title-wrapper {
+00159:   display: flex;
+00160:   justify-content: space-between;
+00161:   align-items: center;
+00162:   margin-bottom: var(--section-gap);
+00163: }
+00164: 
+00165: .section-heading {
+00166:   font-size: 18px;
+00167:   font-weight: 700;
+00168:   color: var(--text);
+00169: }
+00170: 
+00171: .see-all-link {
+00172:   font-size: 13px;
+00173:   font-weight: 600;
+00174:   color: var(--blue);
+00175:   text-decoration: none;
+00176: }
+00177: 
+00178: /* --- Premium Products Grid System --- */
+00179: .products-grid {
+00180:   display: grid;
+00181:   grid-template-columns: repeat(2, 1fr);
+00182:   gap: var(--screen-padding);
+00183: }
+00184: 
+00185: .product-card {
+00186:   background-color: var(--white);
+00187:   border-radius: var(--card-radius);
+00188:   border: 1px solid var(--border);
+00189:   overflow: hidden;
+00190:   display: flex;
+00191:   flex-direction: column;
+00192:   position: relative;
+00193:   cursor: pointer;
+00194:   box-shadow: var(--shadow-sm);
+00195:   transition: var(--transition);
+00196: }
+00197: 
+00198: .product-card:active {
+00199:   transform: scale(0.96);
+00200: }
+00201: 
+00202: .card-image-holder {
+00203:   position: relative;
+00204:   width: 100%;
+00205:   padding-top: 85%;
+00206:   background-color: var(--gray);
+00207:   overflow: hidden;
+00208: }
+00209: 
+00210: .card-image-holder img {
+00211:   position: absolute;
+00212:   top: 0;
+00213:   left: 0;
+00214:   width: 100%;
+00215:   height: 100%;
+00216:   object-fit: cover;
+00217: }
+00218: 
+00219: .promo-tag {
+00220:   position: absolute;
+00221:   top: 10px;
+00222:   left: 10px;
+00223:   background-color: var(--blue);
+00224:   color: var(--white);
+00225:   font-size: 11px;
+00226:   font-weight: 700;
+00227:   padding: 4px 8px;
+00228:   border-radius: 8px;
+00229:   z-index: 2;
+00230: }
+00231: 
+00232: .card-info {
+00233:   padding: 12px;
+00234:   display: flex;
+00235:   flex-direction: column;
+00236:   flex-grow: 1;
+00237: }
+00238: 
+00239: .product-title {
+00240:   font-size: 15px;
+00241:   font-weight: 700;
+00242:   color: var(--text);
+00243:   margin-bottom: 4px;
+00244:   display: -webkit-box;
+00245:   -webkit-line-clamp: 2;
+00246:   line-clamp: 2;
+00247:   -webkit-box-orient: vertical;
+00248:   overflow: hidden;
+00249: }
+00250: 
+00251: .merchant-name {
+00252:   font-size: 12px;
+00253:   color: var(--text);
+00254:   opacity: 0.6;
+00255:   margin-bottom: 8px;
+00256:   display: flex;
+00257:   align-items: center;
+00258:   gap: 4px;
+00259: }
+00260: 
+00261: .card-meta {
+00262:   display: flex;
+00263:   justify-content: space-between;
+00264:   align-items: center;
+00265:   font-size: 11px;
+00266:   font-weight: 600;
+00267:   margin-top: auto;
+00268:   margin-bottom: 8px;
+00269: }
+00270: 
+00271: .rating {
+00272:   color: #ff9500;
+00273:   display: flex;
+00274:   align-items: center;
+00275:   gap: 3px;
+00276: }
+00277: 
+00278: .distance {
+00279:   color: var(--text);
+00280:   opacity: 0.5;
+00281:   display: flex;
+00282:   align-items: center;
+00283:   gap: 3px;
+00284: }
+00285: 
+00286: .price-text {
+00287:   font-size: 15px;
+00288:   font-weight: 700;
+00289:   color: var(--blue);
+00290: }
+00291: 
+00292: /* Material Ripple Overlay Effect */
+00293: .ripple {
+00294:   position: absolute;
+00295:   border-radius: 50%;
+00296:   transform: scale(0);
+00297:   animation: ripple-animation 0.5s ease-out;
+00298:   background-color: rgba(29, 78, 216, 0.1);
+00299:   pointer-events: none;
+00300: }
+00301: 
+00302: @keyframes ripple-animation {
+00303:   to {
+00304:     transform: scale(2.5);
+00305:     opacity: 0;
+00306:   }
+00307: }
+00308: 
+00309: /* --- Responsive Scaling --- */
+00310: @media (min-width: 768px) {
+00311:   .products-grid {
+00312:     grid-template-columns: repeat(3, 1fr);
+00313:   }
+00314: 
+00315:   .categories-scroll {
+00316:     justify-content: center;
+00317:   }
+00318: }
+00319: 
+00320: @media (min-width: 1024px) {
+00321:   .products-grid {
+00322:     grid-template-columns: repeat(4, 1fr);
+00323:   }
+00324: }
+00325: 
+00326: /* GOFOOD V3 */
+00327: #page-gofood {
+00328:   background: #f5f7fb;
+00329: }
+00330: #page-gofood .scroll-area {
+00331:   padding-bottom: 88px;
+00332: }
+00333: #page-gofood .goces-header {
+00334:   padding: 13px 15px 6px;
+00335:   background: #f5f7fb;
+00336:   position: static;
+00337: }
+00338: #page-gofood .header-inner {
+00339:   justify-content: flex-start;
+00340:   gap: 10px;
+00341: }
+00342: #page-gofood .icon-circle-btn {
+00343:   width: 28px;
+00344:   height: 28px;
+00345:   border: 0;
+00346:   border-radius: 8px;
+00347:   background: transparent;
+00348:   box-shadow: none;
+00349:   color: #173b79;
+00350:   font-size: 19px;
+00351: }
+00352: #page-gofood .header-right {
+00353:   display: none;
+00354: }
+00355: #page-gofood .gofood-page-title {
+00356:   display: flex;
+00357:   flex-direction: column;
+00358:   gap: 1px;
+00359: }
+00360: #page-gofood .gofood-page-title strong {
+00361:   color: #172033;
+00362:   font-size: 15px;
+00363:   font-weight: 700;
+00364:   line-height: 1.2;
+00365: }
+00366: #page-gofood .gofood-page-title span {
+00367:   color: #789;
+00368:   font-size: 9px;
+00369:   line-height: 1.2;
+00370: }
+00371: #page-gofood .search-section {
+00372:   padding: 8px 15px 7px;
+00373: }
+00374: #page-gofood .search-wrapper .input {
+00375:   height: 40px;
+00376:   border-radius: 11px;
+00377:   border-color: #e3e8f0;
+00378:   padding-left: 37px;
+00379:   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+00380:   font-size: 11px;
+00381: }
+00382: #page-gofood .search-inner-icon {
+00383:   left: 12px;
+00384:   color: #668;
+00385:   font-size: 16px;
+00386: }
+00387: #page-gofood .gcsFoodBannerSection {
+00388:   padding: 6px 15px 0;
+00389: }
+00390: #page-gofood .gcsFoodBannerContainer img {
+00391:   border-radius: 11px;
+00392: }
+00393: #page-gofood .categories-bar {
+00394:   padding: 12px 0 10px;
+00395: }
+00396: #page-gofood .categories-scroll {
+00397:   gap: 8px;
+00398:   padding: 0 15px;
+00399: }
+00400: #page-gofood .category-chip {
+00401:   padding: 7px 14px;
+00402:   border-color: #e4e8f0;
+00403:   background: #fff;
+00404:   color: #657188;
+00405:   font-size: 10px;
+00406:   font-weight: 600;
+00407: }
+00408: #page-gofood .category-chip.active {
+00409:   border-color: #1d4ed8;
+00410:   background: #1d4ed8;
+00411:   color: #fff;
+00412: }
+00413: #page-gofood .content-body {
+00414:   padding: 0 15px;
+00415: }
+
+============================================================
+FILE: css/versi-v01/style.css
+============================================================
+
+00001: * {
+00002:   margin: 0;
+00003:   padding: 0;
+00004:   box-sizing: border-box;
+00005:   -webkit-tap-highlight-color: transparent;
+00006: }
+00007: 
+00008: :root {
+00009:   --blue: #1d4ed8;
+00010:   --blue-dark: #1e40af;
+00011:   --gray: #f9fafb;
+00012:   --white: #ffffff;
+00013:   --text: #111827;
+00014:   --border: #e5e7eb;
+00015:   --radius: 18px;
+00016:   --nav-height: 88px;
+00017:   --transition: 0.25s ease;
+00018:   --safe-top: env(safe-area-inset-top);
+00019:   --safe-bottom: env(safe-area-inset-bottom);
+00020:   --screen-padding: 16px;
+00021:   --section-gap: 18px;
+00022:   --card-radius: 22px;
+00023:   --icon-radius: 18px;
+00024:   --header-radius: 0 0 28px 28px;
+00025: }
+00026: 
+00027: html {
+00028:   font-size: 16px;
+00029:   min-height: 100%;
+00030:   /* Hapus: height: 100%; */
+00031:   overscroll-behavior-y: contain;
+00032: }
+00033: 
+00034: body {
+00035:   width: 100%;
+00036:   min-height: 100%;
+00037:   /* Hapus: height: 100%; */
+00038:   /* Hapus: overflow-y: auto; */
+00039:   background: var(--gray);
+00040:   font-family:
+00041:     -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+00042:   color: var(--text);
+00043:   overscroll-behavior: none;
+00044: }
+00045: 
+00046: .goces-app {
+00047:   position: relative;
+00048:   width: 100%;
+00049:   min-height: 100vh;
+00050:   background: var(--gray);
+00051:   /* Hapus: height: 100dvh; */
+00052:   /* Hapus: overflow: hidden; <--- INI ADALAH PENYEBAB UTAMA KUNCI SCROLL */
+00053: }
+00054: 
+00055: .goces-page {
+00056:   width: 100%;
+00057:   min-height: 100vh;
+00058:   padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 20px);
+00059:   background: var(--gray);
+00060:   display: none;
+00061: 
+00062:   /* Hapus: position: absolute; */
+00063:   /* Hapus: top: 0; left: 0; */
+00064:   /* Hapus: height: 100%; */
+00065:   /* Hapus: overflow-y: auto; */
+00066:   /* Hapus: -webkit-overflow-scrolling: touch; */
+00067: }
+00068: 
+00069: .goces-active {
+00070:   display: block;
+00071: }
+00072: 
+00073: .goces-page::-webkit-scrollbar {
+00074:   display: none;
+00075: }
+00076: 
+00077: button {
+00078:   border: none;
+00079:   background: none;
+00080:   font: inherit;
+00081:   cursor: pointer;
+00082:   outline: none;
+00083: }
+00084: 
+00085: img {
+00086:   display: block;
+00087:   max-width: 100%;
+00088: }
+00089: 
+00090: a {
+00091:   text-decoration: none;
+00092:   color: inherit;
+00093: }
+00094: 
+00095: /*==================================
+00096:         GOCES FEEDBACK
+00097: ==================================*/
+00098: 
+00099: .goces-click-effect {
+00100:   transform: scale(0.95);
+00101:   transition: transform 0.12s ease;
+00102: }
+
+============================================================
+FILE: css/versi-v02/beranda.css
+============================================================
+
+00001: *,
+00002: *::before,
+00003: *::after {
+00004:   box-sizing: border-box;
+00005:   margin: 0;
+00006:   padding: 0;
+00007: }
+00008: 
+00009: :root {
+00010:   --white: #ffffff;
+00011:   --black: #0f172a;
+00012:   --bg: #f6f8fb;
+00013:   --bg-2: #eef2f7;
+00014:   --bg-3: #e9eef5;
+00015:   --bg-soft: #f1f5f9;
+00016:   --card: #ffffff;
+00017:   --card-2: #fbfcfe;
+00018:   --text: #0f172a;
+00019:   --text-2: #111827;
+00020:   --text-muted: #6b7280;
+00021:   --text-soft: #9ca3af;
+00022:   --text-disabled: #cbd5e1;
+00023:   --blue-50: #eff6ff;
+00024:   --blue-100: #dbeafe;
+00025:   --blue-200: #bfdbfe;
+00026:   --blue-300: #93c5fd;
+00027:   --blue-400: #60a5fa;
+00028:   --blue-500: #2563eb;
+00029:   --blue-600: #1e4fd6;
+00030:   --blue-700: #0d3bb8;
+00031:   --blue-800: #1e40af;
+00032:   --blue-900: #1e3a8a;
+00033:   --gray-50: #f9fafb;
+00034:   --gray-100: #f3f4f6;
+00035:   --gray-200: #e5e7eb;
+00036:   --gray-300: #d1d5db;
+00037:   --gray-400: #9ca3af;
+00038:   --gray-500: #6b7280;
+00039:   --gray-600: #4b5563;
+00040:   --gray-700: #374151;
+00041:   --gray-800: #1f2937;
+00042:   --gray-900: #111827;
+00043:   --green: #29e778;
+00044:   --gray: #ffdf61;
+00045:   --red: #f07d7d;
+00046:   --blue: #8dc4fa;
+00047:   --border: #e5e7eb;
+00048:   --border-soft: #f1f3f5;
+00049:   --card-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+00050:   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+00051:   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+00052:   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+00053:   --radius-sm: 8px;
+00054:   --radius-md: 12px;
+00055:   --radius-lg: 16px;
+00056:   --radius-xl: 20px;
+00057:   --radius-full: 9999px;
+00058: }
+00059: 
+00060: body.kpz-dark-mode {
+00061:   --bg: #0b1220;
+00062:   --bg-2: #0f172a;
+00063:   --bg-3: #111c33;
+00064:   --bg-soft: #121c2e;
+00065:   --card: #1e293b;
+00066:   --card-2: #233146;
+00067:   --text: #e2e8f0;
+00068:   --text-2: #f1f5f9;
+00069:   --text-muted: #94a3b8;
+00070:   --text-soft: #64748b;
+00071:   --text-disabled: #475569;
+00072:   --blue-50: #0b1a3a;
+00073:   --blue-100: #1e3a8a;
+00074:   --blue-200: #1e40af;
+00075:   --blue-300: #2563eb;
+00076:   --blue-400: #3b82f6;
+00077:   --blue-500: #60a5fa;
+00078:   --blue-600: #93c5fd;
+00079:   --blue-700: #bfdbfe;
+00080:   --blue-800: #1e40af;
+00081:   --blue-900: #dbeafe;
+00082:   --gray-50: #0f172a;
+00083:   --gray-100: #111827;
+00084:   --gray-200: #1f2937;
+00085:   --gray-300: #374151;
+00086:   --gray-400: #6b7280;
+00087:   --gray-500: #9ca3af;
+00088:   --gray-600: #cbd5e1;
+00089:   --gray-700: #e2e8f0;
+00090:   --gray-800: #f1f5f9;
+00091:   --gray-900: #ffffff;
+00092:   --border: #22304a;
+00093:   --border-soft: #1f2a3d;
+00094:   --card-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+00095:   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+00096:   --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45);
+00097:   --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.55);
+00098: }
+00099: 
+00100: html,
+00101: body {
+00102:   height: 100%;
+00103: }
+00104: 
+00105: body {
+00106:   font-family: "Inter", system-ui, sans-serif;
+00107:   background-color: var(--bg-softs);
+00108:   -webkit-font-smoothing: antialiased;
+00109:   -webkit-overflow-scrolling: touch;
+00110:   overscroll-behavior: none;
+00111: }
+00112: 
+00113: svg {
+00114:   display: inline-block;
+00115:   vertical-align: middle;
+00116: }
+00117: 
+00118: .app-wrapper {
+00119:   display: flex;
+00120:   flex-direction: column;
+00121:   height: 100vh;
+00122:   position: relative;
+00123: }
+00124: 
+00125: .page {
+00126:   display: none;
+00127:   flex: 1;
+00128:   flex-direction: column;
+00129: }
+00130: 
+00131: .page.active {
+00132:   display: flex;
+00133: }
+00134: 
+00135: .scroll-area {
+00136:   flex: 1;
+00137:   overflow-y: auto;
+00138:   overflow-x: hidden;
+00139:   padding-bottom: 88px;
+00140:   scrollbar-width: none;
+00141: }
+00142: 
+00143: .scroll-area::-webkit-scrollbar {
+00144:   display: none;
+00145: }
+00146: 
+00147: .home-header {
+00148:   background-color: var(--blue-700);
+00149:   border-radius: 0 0 24px 24px;
+00150:   overflow: hidden;
+00151:   position: relative;
+00152:   padding-top: 25px;
+00153:   padding-left: 10px;
+00154:   padding-right: 10px;
+00155: }
+00156: 
+00157: .header-image {
+00158:   width: 100%;
+00159:   display: block;
+00160: }
+00161: 
+00162: .header-row {
+00163:   display: flex;
+00164:   align-items: center;
+00165:   gap: 12px;
+00166: }
+00167: 
+00168: .avatar-btn {
+00169:   width: 38px;
+00170:   height: 38px;
+00171:   border: none;
+00172:   background: transparent;
+00173:   padding: 0;
+00174:   border-radius: 50%;
+00175:   overflow: hidden;
+00176:   cursor: pointer;
+00177: }
+00178: 
+00179: .avatar-img {
+00180:   width: 100%;
+00181:   height: 100%;
+00182:   object-fit: cover;
+00183:   border-radius: 50%;
+00184:   display: block;
+00185: }
+00186: 
+00187: .avatar-btn,
+00188: .notif-btn {
+00189:   width: 42px;
+00190:   height: 42px;
+00191:   border-radius: 50%;
+00192:   background: rgba(255, 255, 255, 0.2);
+00193:   border: 1.5px solid rgba(255, 255, 255, 0.35);
+00194:   display: flex;
+00195:   align-items: center;
+00196:   justify-content: center;
+00197:   flex-shrink: 0;
+00198:   cursor: pointer;
+00199: }
+00200: 
+00201: .avatar-btn svg,
+00202: .notif-btn svg {
+00203:   color: var(--gray-50);
+00204: }
+00205: 
+00206: .notif-btn {
+00207:   position: relative;
+00208:   display: inline-flex;
+00209:   align-items: center;
+00210:   justify-content: center;
+00211:   text-decoration: none;
+00212:   color: inherit;
+00213: }
+00214: 
+00215: .notif-badge {
+00216:   position: absolute;
+00217:   top: -3px;
+00218:   right: -3px;
+00219:   min-width: 18px;
+00220:   height: 18px;
+00221:   padding: 0 5px;
+00222:   border-radius: 20px;
+00223:   background: var(--red);
+00224:   color: var(--gray-50);
+00225:   font-size: 10px;
+00226:   display: flex;
+00227:   align-items: center;
+00228:   justify-content: center;
+00229: }
+00230: 
+00231: .search-bar {
+00232:   flex: 1;
+00233:   height: 42px;
+00234:   background: var(--white);
+00235:   border-radius: 22px;
+00236:   display: flex;
+00237:   align-items: center;
+00238:   padding: 0 16px;
+00239:   gap: 10px;
+00240:   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+00241: }
+00242: 
+00243: .search-bar svg {
+00244:   color: var(--gray-400);
+00245:   flex-shrink: 0;
+00246: }
+00247: 
+00248: .search-bar input {
+00249:   flex: 1;
+00250:   border: none;
+00251:   outline: none;
+00252:   font-size: 14px;
+00253:   font-family: inherit;
+00254:   color: var(--gray-700);
+00255:   background: transparent;
+00256: }
+00257: 
+00258: .search-bar input::placeholder {
+00259:   color: var(--gray-400);
+00260: }
+00261: 
+00262: .header img {
+00263:   width: 100%;
+00264: }
+00265: 
+00266: .home-hero-slider {
+00267:   width: 100%;
+00268:   aspect-ratio: 16/7;
+00269:   position: relative;
+00270:   overflow: hidden;
+00271:   border-radius: 18px;
+00272: }
+00273: 
+00274: .home-hero-item {
+00275:   position: absolute;
+00276:   inset: 0;
+00277:   opacity: 0;
+00278:   transition: 0.4s;
+00279:   cursor: pointer;
+00280: }
+00281: 
+00282: .home-hero-item.active {
+00283:   opacity: 1;
+00284: }
+00285: 
+00286: .home-hero-item img {
+00287:   width: 100%;
+00288:   height: 100%;
+00289:   object-fit: cover;
+00290: }
+00291: 
+00292: .wallet-card {
+00293:   background: var(--gray-50);
+00294:   border-radius: var(--radius-xl);
+00295:   padding: 18px 20px;
+00296:   margin: 0 16px;
+00297:   margin-top: -35px;
+00298:   box-shadow: var(--card-shadow);
+00299:   display: flex;
+00300:   justify-content: space-between;
+00301:   align-items: center;
+00302:   position: relative;
+00303: }
+00304: 
+00305: .wallet-brand {
+00306:   display: flex;
+00307:   align-items: center;
+00308:   gap: 6px;
+00309:   margin-bottom: 4px;
+00310: }
+00311: 
+00312: .wallet-g-icon {
+00313:   width: 24px;
+00314:   height: 24px;
+00315:   background: var(--blue-700);
+00316:   border-radius: 7px;
+00317:   display: flex;
+00318:   align-items: center;
+00319:   justify-content: center;
+00320:   color: var(--gray-50);
+00321:   font-size: 12px;
+00322:   font-weight: 800;
+00323: }
+00324: 
+00325: .wallet-brand span {
+00326:   font-size: 13px;
+00327:   font-weight: 700;
+00328:   color: var(--gray-900);
+00329: }
+00330: 
+00331: .wallet-balance {
+00332:   font-size: 22px;
+00333:   font-weight: 800;
+00334:   color: var(--gray-900);
+00335:   letter-spacing: -0.5px;
+00336:   margin-bottom: 2px;
+00337:   line-height: 1.2;
+00338: }
+00339: 
+00340: .wallet-balance,
+00341: .wallet-coins {
+00342:   text-decoration: none;
+00343:   color: inherit;
+00344:   display: block;
+00345:   cursor: pointer;
+00346: }
+00347: 
+00348: .wallet-balance:hover,
+00349: .wallet-coins:hover {
+00350:   opacity: 0.8;
+00351: }
+00352: 
+00353: .wallet-coins {
+00354:   margin-top: 6px;
+00355:   font-size: 15px;
+00356:   font-weight: 600;
+00357:   color: var(--gray-900);
+00358: }
+00359: 
+00360: .wallet-actions {
+00361:   display: flex;
+00362:   gap: 20px;
+00363: }
+00364: 
+00365: .wallet-action {
+00366:   text-decoration: none;
+00367:   color: inherit;
+00368:   cursor: pointer;
+00369:   display: flex;
+00370:   flex-direction: column;
+00371:   align-items: center;
+00372: }
+00373: 
+00374: .wallet-action:hover {
+00375:   opacity: 0.8;
+00376: }
+00377: 
+00378: .wallet-action-icon {
+00379:   width: 48px;
+00380:   height: 48px;
+00381:   border-radius: 16px;
+00382:   display: flex;
+00383:   align-items: center;
+00384:   justify-content: center;
+00385:   transition: transform 0.15s;
+00386: }
+00387: 
+00388: .wallet-action-icon:active {
+00389:   transform: scale(0.92);
+00390: }
+00391: 
+00392: .wallet-action-icon.blue {
+00393:   background: var(--blue-700);
+00394:   color: var(--gray-50);
+00395: }
+00396: 
+00397: .wallet-action-icon.gray {
+00398:   background: var(--blue-700);
+00399:   color: var(--gray-50);
+00400: }
+00401: 
+00402: .wallet-action span {
+00403:   margin-top: 6px;
+00404:   font-size: 11px;
+00405:   font-weight: 600;
+00406:   color: var(--gray-900);
+00407: }
+00408: 
+00409: .gox_service_grid {
+00410:   display: grid;
+00411:   grid-template-columns: repeat(4, 1fr);
+00412:   gap: 18px 12px;
+00413:   padding: 10px 15px;
+00414:   margin-top: 15px;
+00415: }
+00416: 
+00417: .gox_service_item {
+00418:   text-decoration: none;
+00419:   text-align: center;
+00420:   display: flex;
+00421:   flex-direction: column;
+00422:   align-items: center;
+00423:   padding-bottom: 5px;
+00424: }
+00425: 
+00426: .gox_icon_card {
+00427:   width: 56px;
+00428:   height: 56px;
+00429:   border-radius: 18px;
+00430:   display: flex;
+00431:   align-items: center;
+00432:   justify-content: center;
+00433:   position: relative;
+00434:   overflow: visible;
+00435:   box-shadow:
+00436:     4px 4px 10px rgba(0, 0, 0, 0.15),
+00437:     -3px -3px 8px rgba(255, 255, 255, 0.9);
+00438:   transition: 0.2s ease;
+00439:   margin-top: 10px;
+00440: }
+00441: 
+00442: .gox_bg_green {
+00443:   background: var(--gray-50);
+00444: }
+00445: 
+00446: .gox_bg_blue {
+00447:   background: var(--gray-50);
+00448: }
+00449: 
+00450: .gox_bg_pink {
+00451:   background: var(--gray-50);
+00452: }
+00453: 
+00454: .gox_bg_orange {
+00455:   background: var(--gray-50);
+00456: }
+00457: 
+00458: .gox_bg_kuning {
+00459:   background: var(--gray-50);
+00460: }
+00461: 
+00462: .gox_bg_merah {
+00463:   background: var(--gray-50);
+00464: }
+00465: 
+00466: .gox_bg_coklat {
+00467:   background: var(--gray-50);
+00468: }
+00469: 
+00470: .gox_bg_hitam {
+00471:   background: var(--gray-50);
+00472: }
+00473: 
+00474: .gox_icon_card:active {
+00475:   transform: scale(0.95);
+00476: }
+00477: 
+00478: .gox_icon_card img {
+00479:   width: 42px;
+00480:   height: 42px;
+00481:   object-fit: contain;
+00482: }
+00483: 
+00484: .gox_service_item p {
+00485:   margin-top: 8px;
+00486:   margin-bottom: 2px;
+00487:   font-size: 12px;
+00488:   font-weight: 600;
+00489:   color: var(--gray-900);
+00490:   text-align: center;
+00491:   width: 100%;
+00492: }
+00493: 
+00494: .gox_promo_ribbon {
+00495:   position: absolute;
+00496:   top: -7px;
+00497:   left: -6px;
+00498:   font-size: 7px;
+00499:   font-weight: 900;
+00500:   background: var(--blue-700);
+00501:   color: var(--gray-50);
+00502:   padding: 3px 7px;
+00503:   border-radius: 4px;
+00504:   z-index: 10;
+00505:   box-shadow:
+00506:     0 4px 10px rgba(0, 0, 0, 0.25),
+00507:     inset 0 1px 2px rgba(255, 255, 255, 0.3);
+00508: }
+00509: 
+00510: .gox_promo_ribbon::before {
+00511:   content: "";
+00512:   position: absolute;
+00513:   left: 0;
+00514:   bottom: -4px;
+00515:   border-top: 4px solid rgba(0, 0, 0, 0.2);
+00516:   border-left: 4px solid transparent;
+00517: }
+00518: 
+00519: .akb_new_section {
+00520:   margin-top: 20px;
+00521:   margin-bottom: 20px;
+00522: }
+00523: 
+00524: .akb_new_header {
+00525:   display: flex;
+00526:   justify-content: space-between;
+00527:   align-items: center;
+00528:   padding: 0 15px;
+00529:   margin-bottom: 12px;
+00530: }
+00531: 
+00532: .akb_new_title {
+00533:   font-size: 14px;
+00534:   font-weight: 700;
+00535:   color: var(--gray-900);
+00536: }
+00537: 
+00538: .akb_new_seeall {
+00539:   text-decoration: none;
+00540:   color: var(--gray-900);
+00541:   font-size: 14px;
+00542:   font-weight: 600;
+00543: }
+00544: 
+00545: .akb_new_product_wrap {
+00546:   overflow-x: auto;
+00547:   overflow-y: hidden;
+00548:   padding: 0 15px;
+00549:   scrollbar-width: none;
+00550: }
+00551: 
+00552: .akb_new_product_wrap::-webkit-scrollbar {
+00553:   display: none;
+00554: }
+00555: 
+00556: .akb_new_product_wrap #item-head {
+00557:   display: flex;
+00558:   gap: 12px;
+00559: }
+00560: 
+00561: .akb_new_product_wrap .item-row {
+00562:   flex: 0 0 140px;
+00563:   width: 140px !important;
+00564:   min-width: 140px;
+00565:   display: block !important;
+00566:   margin: 0 !important;
+00567: }
+00568: 
+00569: .akb_new_product_wrap .item-link {
+00570:   display: block;
+00571:   text-decoration: none;
+00572:   color: inherit;
+00573: }
+00574: 
+00575: .akb_new_product_wrap .item-image {
+00576:   width: 100% !important;
+00577:   height: 110px;
+00578:   object-fit: cover;
+00579:   margin: 0 !important;
+00580:   display: block;
+00581:   border-radius: 16px;
+00582: }
+00583: 
+00584: .akb_new_product_wrap .item-title {
+00585:   display: -webkit-box;
+00586:   line-clamp: 2;
+00587:   -webkit-line-clamp: 2;
+00588:   -webkit-box-orient: vertical;
+00589:   overflow: hidden;
+00590:   margin-top: 8px;
+00591:   font-size: 13px;
+00592:   font-weight: 700;
+00593:   line-height: 18px;
+00594:   color: var(--gray-900);
+00595: }
+00596: 
+00597: .akb_new_product_wrap .item-price {
+00598:   display: none;
+00599: }
+00600: 
+00601: .akb_new_product_wrap .item-price-format {
+00602:   display: block;
+00603:   margin-top: 6px;
+00604:   font-size: 13px;
+00605:   font-weight: 700;
+00606:   color: var(--gray-900);
+00607: }
+00608: 
+00609: .akb_nearby_section {
+00610:   margin-top: 20px;
+00611:   margin-bottom: 20px;
+00612: }
+00613: 
+00614: .akb_nearby_header {
+00615:   display: flex;
+00616:   justify-content: space-between;
+00617:   align-items: center;
+00618:   padding: 0 15px;
+00619:   margin-bottom: 12px;
+00620: }
+00621: 
+00622: .akb_nearby_title {
+00623:   font-size: 15px;
+00624:   font-weight: 700;
+00625:   color: var(--gray-900);
+00626: }
+00627: 
+00628: .akb_nearby_seeall {
+00629:   text-decoration: none;
+00630:   color: var(--gray-900);
+00631:   font-size: 15px;
+00632:   font-weight: 600;
+00633: }
+00634: 
+00635: .akb_nearby_wrap {
+00636:   overflow-x: auto;
+00637:   overflow-y: hidden;
+00638:   padding: 0 15px;
+00639:   scrollbar-width: none;
+00640: }
+00641: 
+00642: .akb_nearby_wrap::-webkit-scrollbar {
+00643:   display: none;
+00644: }
+00645: 
+00646: .akb_nearby_wrap #item-nearby-head {
+00647:   display: flex;
+00648:   gap: 12px;
+00649: }
+00650: 
+00651: .akb_nearby_wrap .item-nearby-row {
+00652:   flex: 0 0 140px;
+00653:   width: 140px !important;
+00654:   min-width: 140px;
+00655:   display: block !important;
+00656:   margin: 0 !important;
+00657:   background: #fff;
+00658:   border-radius: 16px;
+00659:   overflow: hidden;
+00660:   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+00661: }
+00662: 
+00663: .akb_nearby_wrap .item-nearby-link {
+00664:   display: block;
+00665:   text-decoration: none;
+00666:   color: inherit;
+00667: }
+00668: 
+00669: .akb_nearby_wrap .item-nearby-image {
+00670:   width: 100% !important;
+00671:   height: 110px;
+00672:   object-fit: cover;
+00673:   margin: 0 !important;
+00674:   display: block;
+00675: }
+00676: 
+00677: .akb_nearby_wrap .item-nearby-title {
+00678:   display: block;
+00679:   padding: 8px 10px 4px;
+00680:   font-size: 13px;
+00681:   font-weight: 700;
+00682:   line-height: 18px;
+00683:   overflow: hidden;
+00684:   white-space: nowrap;
+00685:   text-overflow: ellipsis;
+00686: }
+00687: 
+00688: .akb_nearby_wrap .item-nearby-distance {
+00689:   display: block;
+00690:   padding: 0 10px;
+00691:   font-size: 11px;
+00692:   color: var(--gray-50);
+00693: }
+00694: 
+00695: .akb_nearby_wrap .item-nearby-status {
+00696:   padding: 6px 10px 10px;
+00697: }
+00698: 
+00699: .akb_nearby_wrap .item-nearby-status-open {
+00700:   color: var(--blue-700);
+00701:   font-size: 11px;
+00702:   font-weight: 700;
+00703: }
+00704: 
+00705: .gpr-horizontal-slider {
+00706:   display: flex;
+00707:   gap: 15px;
+00708:   overflow-x: auto;
+00709:   padding: 0 15px;
+00710:   scroll-behavior: smooth;
+00711:   -webkit-overflow-scrolling: touch;
+00712: }
+00713: 
+00714: .gpr-horizontal-slider::-webkit-scrollbar {
+00715:   display: none;
+00716: }
+00717: 
+00718: .gpr-horizontal-slider .gpr-voucher-card {
+00719:   min-width: 340px;
+00720:   flex-shrink: 0;
+00721:   margin-bottom: 0;
+00722: }
+00723: 
+00724: .gpr_promo_header {
+00725:   display: flex;
+00726:   justify-content: space-between;
+00727:   align-items: center;
+00728:   margin-bottom: 18px;
+00729:   padding: 0 15px;
+00730: }
+00731: 
+00732: .gpr_promo_title {
+00733:   margin: 0;
+00734:   font-size: 15px;
+00735:   font-weight: 700;
+00736:   color: var(--gray-900);
+00737:   letter-spacing: -0.3px;
+00738: }
+00739: 
+00740: .gpr_promo_view_all {
+00741:   background: none;
+00742:   border: none;
+00743:   padding: 0;
+00744:   font-size: 14px;
+00745:   font-weight: 600;
+00746:   color: var(--blue-700);
+00747:   cursor: pointer;
+00748: }
+00749: 
+00750: .gpr_promo_view_all:hover {
+00751:   text-decoration: underline;
+00752: }
+
+============================================================
+FILE: css/versi-v02/chat.css
+============================================================
+
+00001: * {
+00002:   margin: 0;
+00003:   padding: 0;
+00004:   box-sizing: border-box;
+00005: }
+00006: 
+00007: html,
+00008: body {
+00009:   overflow-x: hidden;
+00010:   font-family:
+00011:     system-ui,
+00012:     -apple-system,
+00013:     sans-serif;
+00014:   background: var(--gray-50);
+00015:   color: var(--gray-900);
+00016: }
+00017: 
+00018: .cyberInboxPage {
+00019:   padding-bottom: 30px;
+00020: }
+00021: 
+00022: .cyberInboxHeader {
+00023:   background: var(--blue-700);
+00024:   padding: 55px 20px 40px;
+00025:   border-radius: 0 0 30px 30px;
+00026: }
+00027: 
+00028: .cyberInboxHeader h1 {
+00029:   font-size: 25px;
+00030:   font-weight: 800;
+00031:   color: var(--gray-50);
+00032: }
+00033: 
+00034: .cyberInboxSubtitle {
+00035:   margin-top: 6px;
+00036:   font-size: 15px;
+00037:   color: var(--gray-100);
+00038: }
+00039: 
+00040: .cyberInboxTitle {
+00041:   margin: 20px 20px 18px;
+00042:   font-size: 18px;
+00043:   font-weight: 700;
+00044: }
+00045: 
+00046: .cyberFeatureWrap {
+00047:   display: flex;
+00048:   gap: 16px;
+00049:   padding: 0 20px;
+00050: }
+00051: 
+00052: .cyberFeatureCard {
+00053:   width: 95px;
+00054:   padding: 10px;
+00055:   text-align: center;
+00056:   border-radius: 24px;
+00057:   border: 1px solid var(--gray-200);
+00058:   background: var(--gray-50);
+00059:   text-decoration: none;
+00060:   color: inherit;
+00061:   display: block;
+00062: }
+00063: 
+00064: .cyberFeatureCard span {
+00065:   display: block;
+00066:   margin-top: 12px;
+00067:   font-size: 14px;
+00068:   color: var(--gray-900);
+00069: }
+00070: 
+00071: .cyberFeatureIcon {
+00072:   width: 50px;
+00073:   height: 50px;
+00074:   border-radius: 50%;
+00075:   display: flex;
+00076:   justify-content: center;
+00077:   align-items: center;
+00078:   margin: auto;
+00079:   position: relative;
+00080: }
+00081: 
+00082: .cyberFeatureIcon svg {
+00083:   width: 30px;
+00084:   height: 30px;
+00085:   fill: var(--gray-50);
+00086: }
+00087: 
+00088: .cyberInboxIcon {
+00089:   background: #ff7a00;
+00090: }
+00091: 
+00092: .cyberHelpIcon {
+00093:   background: var(--blue-700);
+00094: }
+00095: 
+00096: .cyberNotifyDot {
+00097:   width: 16px;
+00098:   height: 16px;
+00099:   border-radius: 50%;
+00100:   background: red;
+00101:   border: 3px solid var(--gray-50);
+00102:   position: absolute;
+00103:   top: -2px;
+00104:   right: -2px;
+00105: }
+00106: 
+00107: .cyberSectionDivider {
+00108:   height: 5px;
+00109:   background: var(--gray-200);
+00110:   margin: 15px 5px;
+00111: }
+00112: 
+00113: .cyberAiCard {
+00114:   margin: 20px;
+00115:   padding: 18px;
+00116:   border: 1px solid var(--gray-200);
+00117:   border-radius: 24px;
+00118:   display: flex;
+00119:   justify-content: space-between;
+00120:   align-items: center;
+00121:   background: var(--gray-50);
+00122: }
+00123: 
+00124: .cyberAiLeft {
+00125:   display: flex;
+00126:   align-items: center;
+00127:   flex: 1;
+00128: }
+00129: 
+00130: .cyberAiIcon {
+00131:   width: 58px;
+00132:   height: 58px;
+00133:   border-radius: 18px;
+00134:   overflow: hidden;
+00135:   flex-shrink: 0;
+00136: }
+00137: 
+00138: .cyberAiIcon img {
+00139:   width: 100%;
+00140:   height: 100%;
+00141:   object-fit: cover;
+00142: }
+00143: 
+00144: .cyberAiInfo {
+00145:   margin-left: 15px;
+00146: }
+00147: 
+00148: .cyberAiTitle {
+00149:   font-size: 17px;
+00150:   font-weight: 700;
+00151: }
+00152: 
+00153: .cyberAiDesc {
+00154:   margin-top: 4px;
+00155:   font-size: 14px;
+00156:   color: var(--gray-500);
+00157: }
+00158: 
+00159: .cyberAiArrow {
+00160:   width: 36px;
+00161:   height: 36px;
+00162:   border-radius: 50%;
+00163:   background: var(--gray-50);
+00164:   display: flex;
+00165:   justify-content: center;
+00166:   align-items: center;
+00167:   font-size: 26px;
+00168:   color: var(--gray-400);
+00169: }
+00170: 
+00171: .cyberPopupOverlay {
+00172:   position: fixed;
+00173:   inset: 0;
+00174:   background: rgba(0, 0, 0, 0.45);
+00175:   display: none;
+00176:   justify-content: center;
+00177:   align-items: center;
+00178:   padding: 20px;
+00179:   z-index: 9999;
+00180: }
+00181: 
+00182: .cyberPopup {
+00183:   width: 100%;
+00184:   max-width: 340px;
+00185:   background: var(--gray-50);
+00186:   border-radius: 28px;
+00187:   padding: 24px;
+00188: }
+00189: 
+00190: .cyberPopupTitle {
+00191:   font-size: 20px;
+00192:   font-weight: 700;
+00193: }
+00194: 
+00195: .cyberPopupText {
+00196:   margin-top: 16px;
+00197:   color: var(--gray-900);
+00198:   font-size: 15px;
+00199:   line-height: 1.7;
+00200: }
+00201: 
+00202: .cyberPopupButton {
+00203:   width: 100%;
+00204:   height: 50px;
+00205:   margin-top: 24px;
+00206:   border: none;
+00207:   border-radius: 16px;
+00208:   background: var(--blue-700);
+00209:   color: var(--gray-50);
+00210:   font-size: 15px;
+00211:   font-weight: 600;
+00212: }
+
+============================================================
+FILE: css/versi-v02/nav.css
+============================================================
+
+00001: .bottom-nav {
+00002:   position: fixed;
+00003:   bottom: 0;
+00004:   left: 0;
+00005:   right: 0;
+00006:   background: var(--gray-50);
+00007:   border-top: 1px solid var(--gray-200);
+00008:   padding: 10px 24px 20px;
+00009:   display: flex;
+00010:   justify-content: space-between;
+00011:   align-items: center;
+00012:   z-index: 50;
+00013: }
+00014: 
+00015: .nav-item {
+00016:   display: flex;
+00017:   flex-direction: column;
+00018:   align-items: center;
+00019:   gap: 4px;
+00020:   width: 60px;
+00021:   cursor: pointer;
+00022:   background: none;
+00023:   border: none;
+00024:   font-family: inherit;
+00025:   padding: 0;
+00026:   -webkit-tap-highlight-color: transparent;
+00027: }
+00028: 
+00029: .nav-icon-wrap {
+00030:   width: 40px;
+00031:   height: 40px;
+00032:   border-radius: 50%;
+00033:   display: flex;
+00034:   align-items: center;
+00035:   justify-content: center;
+00036:   transition: background 0.2s;
+00037: }
+00038: 
+00039: .nav-item.active .nav-icon-wrap {
+00040:   background: var(--blue-100);
+00041: }
+00042: 
+00043: .nav-item svg {
+00044:   transition: color 0.2s;
+00045: }
+00046: 
+00047: .nav-item.active svg {
+00048:   color: var(--blue-700);
+00049: }
+00050: 
+00051: .nav-item:not(.active) svg {
+00052:   color: var(--gray-400);
+00053: }
+00054: 
+00055: .nav-label {
+00056:   font-size: 10px;
+00057:   font-weight: 600;
+00058:   transition: color 0.2s;
+00059: }
+00060: 
+00061: .nav-item.active .nav-label {
+00062:   color: var(--gray-900);
+00063: }
+00064: 
+00065: .nav-item:not(.active) .nav-label {
+00066:   color: var(--gray-400);
+00067: }
+
+============================================================
+FILE: css/versi-v02/orders.css
+============================================================
+
+00001: .gak_header {
+00002:   background: var(--blue-700);
+00003:   padding: 25px 18px 18px;
+00004:   border-radius: 0 0 28px 28px;
+00005:   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+00006: }
+00007: 
+00008: .gak_title {
+00009:   font-size: 20px;
+00010:   font-weight: 700;
+00011:   color: var(--gray-50);
+00012: }
+00013: 
+00014: /* TAB */
+00015: 
+00016: .gak_tabs {
+00017:   display: flex;
+00018:   gap: 10px;
+00019:   padding: 18px 15px;
+00020: }
+00021: 
+00022: .gak_tab {
+00023:   border: none;
+00024:   background: var(--gray-100);
+00025:   color: var(--gray-900);
+00026:   padding: 11px 18px;
+00027:   border-radius: 30px;
+00028:   font-size: 14px;
+00029:   font-weight: 700;
+00030:   transition: 0.2s;
+00031: }
+00032: 
+00033: .gak_tab.active {
+00034:   background: var(--blue-700);
+00035:   color: var(--gray-50);
+00036: }
+00037: 
+00038: /* PAGE */
+00039: 
+00040: .gak_page {
+00041:   display: none;
+00042: }
+00043: 
+00044: .gak_page.active {
+00045:   display: block;
+00046: }
+00047: 
+00048: /* CONTENT */
+00049: 
+00050: .gak_content {
+00051:   padding: 0 15px 25px;
+00052: }
+00053: 
+00054: .gak_menu_title {
+00055:   margin-bottom: 15px;
+00056:   font-size: 16px;
+00057:   font-weight: 700;
+00058:   color: var(--gray-900);
+00059: }
+00060: 
+00061: /* CARD */
+00062: .gak_cart_card {
+00063:   background: var(--gray-50);
+00064:   color: var(--gray-900);
+00065:   text-decoration: none;
+00066:   border-radius: 24px;
+00067:   padding: 20px;
+00068:   display: flex;
+00069:   gap: 16px;
+00070:   align-items: flex-start;
+00071:   margin-bottom: 16px;
+00072:   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+00073:   transition: 0.15s;
+00074: }
+00075: 
+00076: .gak_cart_card:active {
+00077:   transform: scale(0.98);
+00078: }
+00079: 
+00080: /* ICON */
+00081: 
+00082: .gak_cart_icon,
+00083: .gak_history_icon {
+00084:   width: 58px;
+00085:   height: 58px;
+00086:   border-radius: 20px;
+00087:   display: flex;
+00088:   align-items: center;
+00089:   justify-content: center;
+00090:   font-size: 28px;
+00091: }
+00092: 
+00093: .gak_cart_icon {
+00094:   background: #e8f8eb;
+00095: }
+00096: 
+00097: .gak_history_icon {
+00098:   background: #eaf3ff;
+00099: }
+00100: 
+00101: /* TEXT */
+00102: 
+00103: .gak_cart_right {
+00104:   flex: 1;
+00105: }
+00106: 
+00107: .gak_cart_title {
+00108:   font-size: 17px;
+00109:   font-weight: 700;
+00110:   color: var(--gray-900);
+00111: }
+00112: 
+00113: .gak_cart_desc {
+00114:   margin-top: 6px;
+00115:   font-size: 13px;
+00116:   line-height: 20px;
+00117:   color: var(--gray-600);
+00118: }
+00119: 
+00120: /* BUTTON */
+00121: .gak_cart_btn,
+00122: .gak_history_btn {
+00123:   display: inline-flex;
+00124:   align-items: center;
+00125:   gap: 5px;
+00126:   margin-top: 14px;
+00127:   padding: 10px 18px;
+00128:   border-radius: 30px;
+00129:   background: var(--blue-700);
+00130:   color: var(--gray-50);
+00131:   font-size: 13px;
+00132:   font-weight: 700;
+00133:   transition: 0.15s;
+00134: }
+00135: 
+00136: .gak_cart_card:active .gak_cart_btn,
+00137: .gak_cart_card:active .gak_history_btn {
+00138:   transform: scale(0.97);
+00139: }
+00140: 
+00141: /* ACTIVITIES V3 */
+00142: #page-orders {
+00143:   background: #f5f7fb;
+00144: }
+00145: #page-orders .scroll-area {
+00146:   min-height: 100%;
+00147:   padding-bottom: 88px;
+00148: }
+00149: #page-orders .gak_header {
+00150:   padding: 18px 15px 4px;
+00151:   border-radius: 0;
+00152:   background: transparent;
+00153:   box-shadow: none;
+00154: }
+00155: #page-orders .gak_header::after {
+00156:   content: "Pantau pesanan dan transaksi kamu dalam satu tempat.";
+00157:   display: block;
+00158:   margin-top: 4px;
+00159:   color: #748095;
+00160:   font-size: 11px;
+00161:   font-weight: 400;
+00162: }
+00163: #page-orders .gak_title {
+00164:   color: #172033;
+00165:   font-size: 20px;
+00166:   font-weight: 700;
+00167: }
+00168: #page-orders .gak_tabs {
+00169:   gap: 0;
+00170:   margin: 10px 15px 20px;
+00171:   padding: 3px;
+00172:   border: 1px solid #e3e8f0;
+00173:   border-radius: 10px;
+00174:   background: #fff;
+00175: }
+00176: #page-orders .gak_tab {
+00177:   flex: 1;
+00178:   padding: 8px 12px;
+00179:   border-radius: 7px;
+00180:   background: transparent;
+00181:   color: #667389;
+00182:   font-size: 11px;
+00183:   font-weight: 600;
+00184: }
+00185: #page-orders .gak_tab.active {
+00186:   background: #edf4ff;
+00187:   color: #1d4ed8;
+00188:   box-shadow: 0 1px 3px rgba(29, 78, 216, 0.08);
+00189: }
+00190: #page-orders .gak_content {
+00191:   padding: 0 15px 22px;
+00192: }
+00193: #page-orders .gak_menu_title {
+00194:   margin: 0 0 9px;
+00195:   color: #61708a;
+00196:   font-size: 9px;
+00197:   font-weight: 700;
+00198:   letter-spacing: 0.55px;
+00199:   text-transform: uppercase;
+00200: }
+00201: #page-orders .gak_cart_card {
+00202:   margin-bottom: 14px;
+00203:   padding: 13px;
+00204:   gap: 12px;
+00205:   border: 1px solid #e5e9f0;
+00206:   border-radius: 12px;
+00207:   background: #fff;
+00208:   box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+00209: }
+00210: #page-orders .gak_cart_icon,
+00211: #page-orders .gak_history_icon {
+00212:   width: 34px;
+00213:   height: 34px;
+00214:   flex: 0 0 34px;
+00215:   border-radius: 9px;
+00216:   background: #edf4ff;
+00217:   font-size: 17px;
+00218: }
+00219: #page-orders .gak_cart_title {
+00220:   color: #1c2940;
+00221:   font-size: 13px;
+00222:   font-weight: 700;
+00223: }
+00224: #page-orders .gak_cart_desc {
+00225:   margin-top: 3px;
+00226:   color: #728097;
+00227:   font-size: 10px;
+00228:   line-height: 1.42;
+00229: }
+00230: #page-orders .gak_cart_btn,
+00231: #page-orders .gak_history_btn {
+00232:   margin-top: 7px;
+00233:   padding: 0;
+00234:   border-radius: 0;
+00235:   background: transparent;
+00236:   color: #1d4ed8;
+00237:   font-size: 10px;
+00238:   font-weight: 600;
+00239: }
+
+============================================================
+FILE: css/versi-v02/profile.css
+============================================================
+
+00001: .kpz-main-wrap {
+00002:   max-width: 450px;
+00003:   margin: auto;
+00004:   min-height: 100vh;
+00005:   padding-bottom: 20px;
+00006: }
+00007: 
+00008: /* HEADER */
+00009: .kpz-head-panel {
+00010:   background: var(--blue-700);
+00011:   padding: 20px 16px;
+00012:   border-radius: 0 0 24px 24px;
+00013:   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+00014: }
+00015: 
+00016: .kpz-user-section {
+00017:   display: flex;
+00018:   justify-content: space-between;
+00019:   align-items: center;
+00020:   margin-top: 10px;
+00021: }
+00022: 
+00023: .kpz-user-left {
+00024:   display: flex;
+00025:   align-items: center;
+00026:   gap: 16px;
+00027: }
+00028: 
+00029: .kpz-avatar-box {
+00030:   width: 72px;
+00031:   height: 72px;
+00032:   border-radius: 50%;
+00033:   overflow: hidden;
+00034:   border: 3px solid rgba(255, 255, 255, 0.25);
+00035: }
+00036: 
+00037: .kpz-avatar-box img {
+00038:   width: 100%;
+00039:   height: 100%;
+00040:   object-fit: cover;
+00041: }
+00042: 
+00043: .kpz-user-info h2 {
+00044:   font-size: 18px;
+00045:   font-weight: 600;
+00046:   line-height: 1.2;
+00047:   color: var(--gray-50);
+00048:   margin-bottom: 4px;
+00049: }
+00050: 
+00051: .kpz-user-info p {
+00052:   font-size: 16px;
+00053:   opacity: 0.9;
+00054:   color: var(--gray-50);
+00055: }
+00056: 
+00057: .kpz-user-info small {
+00058:   font-size: 14px;
+00059:   opacity: 0.8;
+00060:   color: var(--gray-50);
+00061: }
+00062: 
+00063: /* MENU */
+00064: .kpz-section-title {
+00065:   margin: 24px 16px 10px;
+00066:   font-size: 13px;
+00067:   font-weight: 500;
+00068:   color: var(--gray-400);
+00069:   letter-spacing: 0.3px;
+00070: }
+00071: 
+00072: .kpz-list-card {
+00073:   background: var(--gray-100);
+00074:   margin: 0px 16px;
+00075:   border-radius: 18px;
+00076:   overflow: hidden;
+00077:   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+00078: }
+00079: 
+00080: .kpz-list-item {
+00081:   height: 56px;
+00082:   padding: 0 16px;
+00083:   display: flex;
+00084:   align-items: center;
+00085:   justify-content: space-between;
+00086:   text-decoration: none;
+00087:   transition: 0.2s;
+00088: }
+00089: 
+00090: .kpz-list-item:hover {
+00091:   background: var(--gray-300);
+00092: }
+00093: 
+00094: .kpz-list-item:not(:last-child) {
+00095:   border-bottom: 1px solid var(--gray-50);
+00096: }
+00097: 
+00098: .kpz-list-item:active {
+00099:   background: var(--gray-100);
+00100: }
+00101: 
+00102: .kpz-list-left {
+00103:   display: flex;
+00104:   align-items: center;
+00105:   gap: 14px;
+00106: }
+00107: 
+00108: .kpz-list-left span {
+00109:   font-size: 14px;
+00110:   font-weight: 500;
+00111:   color: var(--gray-900);
+00112: }
+00113: 
+00114: .kpz-list-icon {
+00115:   width: 20px;
+00116:   height: 20px;
+00117:   color: var(--gray-900);
+00118:   flex-shrink: 0;
+00119: }
+00120: 
+00121: .kpz-list-icon span {
+00122:   font-size: 14px;
+00123: }
+00124: 
+00125: /* LOGOUT */
+00126: .kpz-signout-btn {
+00127:   width: calc(100% - 32px);
+00128:   height: 48px;
+00129:   margin: 24px 16px;
+00130:   border-radius: 16px;
+00131:   background: var(--red);
+00132:   color: var(--gray-50);
+00133:   font-size: 14px;
+00134:   font-weight: 600;
+00135:   display: flex;
+00136:   align-items: center;
+00137:   justify-content: center;
+00138:   text-decoration: none;
+00139:   box-shadow: 0 4px 12px rgba(229, 57, 53, 0.08);
+00140: }
+00141: 
+00142: .kpz-signout-btn:active {
+00143:   transform: scale(0.98);
+00144: }
+00145: 
+00146: /*==CSS Switch Dark Mode Animasi==*/
+00147: .kpz-theme-toggle {
+00148:   position: relative;
+00149:   display: inline-block;
+00150:   width: 54px;
+00151:   height: 30px;
+00152: }
+00153: 
+00154: .kpz-theme-toggle input {
+00155:   display: none;
+00156: }
+00157: 
+00158: .kpz-theme-slider {
+00159:   position: absolute;
+00160:   inset: 0;
+00161:   cursor: pointer;
+00162:   background: var(--gray-900);
+00163:   border-radius: 30px;
+00164:   transition: 0.3s;
+00165: }
+00166: 
+00167: .kpz-theme-slider:before {
+00168:   content: "";
+00169:   position: absolute;
+00170:   width: 24px;
+00171:   height: 24px;
+00172:   left: 3px;
+00173:   top: 3px;
+00174:   background: var(--blue-700);
+00175:   border-radius: 50%;
+00176:   transition: 0.3s;
+00177:   box-shadow: 0 6px 6px rgba(32, 32, 32, 0.144);
+00178: }
+00179: 
+00180: input:checked + .kpz-theme-slider {
+00181:   background: var(--gray-50);
+00182: }
+00183: 
+00184: input:checked + .kpz-theme-slider:before {
+00185:   transform: translateX(24px);
+00186: }
+00187: 
+00188: /*==CSS Dark Mode==*/
+00189: .kpz-dark-mode {
+00190:   background: var(--bg-soft);
+00191: }
+00192: 
+00193: .kpz-dark-mode .kpz-nav-image,
+00194: .kpz-dark-mode .kpz-list-icon {
+00195:   filter: brightness(0) invert(1);
+00196: }
+00197: 
+00198: .kpz-nav-button {
+00199:   position: relative;
+00200:   width: 42px;
+00201:   height: 42px;
+00202:   border: none;
+00203:   border-radius: 50%;
+00204:   color: var(--gray-50);
+00205:   background: rgba(255, 255, 255, 0.18);
+00206:   border: 1.5px solid rgba(255, 255, 255, 0.151);
+00207:   display: flex;
+00208:   align-items: center;
+00209:   justify-content: center;
+00210:   text-decoration: none;
+00211:   transition: 0.2s ease;
+00212: }
+00213: 
+00214: .kpz-nav-button:hover {
+00215:   transform: translateY(-2px);
+00216:   background: rgba(255, 255, 255, 0.18);
+00217:   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+00218: }
+00219: 
+00220: .kpz-nav-button:active {
+00221:   transform: scale(0.95);
+00222: }
+00223: 
+00224: .kpz-nav-image {
+00225:   width: 19px;
+00226:   height: 19px;
+00227:   object-fit: contain;
+00228: }
+00229: 
+00230: .kpz-top-tools {
+00231:   display: flex;
+00232:   align-items: center;
+00233:   justify-content: space-between;
+00234:   margin-bottom: 40px;
+00235: }
+00236: 
+00237: .kpz-right-tools {
+00238:   display: flex;
+00239:   align-items: center;
+00240:   gap: 12px;
+00241: }
+00242: 
+00243: .kpz-badge {
+00244:   position: absolute;
+00245:   top: -3px;
+00246:   right: -3px;
+00247:   min-width: 18px;
+00248:   height: 18px;
+00249:   padding: 0 5px;
+00250:   border-radius: 20px;
+00251:   background: var(--red);
+00252:   color: var(--gray-50);
+00253:   font-size: 10px;
+00254:   font-weight: 600;
+00255:   display: flex;
+00256:   align-items: center;
+00257:   justify-content: center;
+00258:   line-height: 1;
+00259: }
+
+============================================================
+FILE: css/versi-v02/promo.css
+============================================================
+
+00001: .gpr-header {
+00002:   background: var(--blue-700);
+00003:   padding: 20px 15px 80px;
+00004:   border-radius: 0 0 30px 30px;
+00005:   color: var(--gray-50);
+00006: }
+00007: 
+00008: .gpr-header-top {
+00009:   display: flex;
+00010:   justify-content: flex-end;
+00011: }
+00012: 
+00013: .gpr-header-action {
+00014:   display: flex;
+00015:   gap: 10px;
+00016: }
+00017: 
+00018: .gpr-icon-btn {
+00019:   position: relative;
+00020:   width: 44px;
+00021:   height: 44px;
+00022:   border-radius: 50%;
+00023:   background: rgba(255, 255, 255, 0.18);
+00024:   backdrop-filter: blur(10px);
+00025:   display: flex;
+00026:   justify-content: center;
+00027:   align-items: center;
+00028:   text-decoration: none;
+00029: }
+00030: 
+00031: .gpr-icon-btn svg {
+00032:   width: 22px;
+00033:   height: 22px;
+00034: }
+00035: 
+00036: .gpr-notif-badge {
+00037:   position: absolute;
+00038:   top: -3px;
+00039:   right: -3px;
+00040:   min-width: 18px;
+00041:   height: 18px;
+00042:   padding: 0 4px;
+00043:   background: var(--red);
+00044:   color: var(--gray-50);
+00045:   border-radius: 20px;
+00046:   font-size: 11px;
+00047:   font-weight: 600;
+00048:   display: flex;
+00049:   align-items: center;
+00050:   justify-content: center;
+00051: }
+00052: 
+00053: .gpr-header-content {
+00054:   margin-top: 20px;
+00055: }
+00056: 
+00057: .gpr-header-content h1 {
+00058:   font-size: 25px;
+00059:   margin-bottom: 8px;
+00060: }
+00061: 
+00062: .gpr-header-content p {
+00063:   font-size: 14px;
+00064:   line-height: 1.5;
+00065:   color: var(--gray-50);
+00066: }
+00067: 
+00068: .gpr-info-card {
+00069:   background: var(--gray-50);
+00070:   margin: -45px 15px 20px;
+00071:   padding: 18px;
+00072:   border-radius: 22px;
+00073:   display: flex;
+00074:   align-items: center;
+00075:   gap: 15px;
+00076:   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+00077:   cursor: pointer;
+00078:   transition: 0.2s;
+00079: }
+00080: 
+00081: .gpr-info-card:active {
+00082:   transform: scale(0.98);
+00083: }
+00084: 
+00085: .gpr-info-icon {
+00086:   width: 40px;
+00087:   height: 40px;
+00088:   border-radius: 18px;
+00089:   background: var(--gray-100);
+00090:   color: var(--gray-900);
+00091:   font-size: 28px;
+00092:   display: flex;
+00093:   align-items: center;
+00094:   justify-content: center;
+00095: }
+00096: 
+00097: .gpr-info-text span {
+00098:   font-size: 13px;
+00099:   color: var(--gray-900);
+00100: }
+00101: 
+00102: .gpr-info-text h3 {
+00103:   margin-top: 5px;
+00104:   font-size: 15px;
+00105:   color: #1d1d1f;
+00106: }
+00107: 
+00108: /* BANNER */
+00109: .gpr-banner {
+00110:   padding: 0 15px;
+00111: }
+00112: 
+00113: .gpr-banner img {
+00114:   width: 100%;
+00115:   aspect-ratio: 16 / 6;
+00116:   object-fit: cover;
+00117:   display: block;
+00118:   border-radius: 22px;
+00119: }
+00120: 
+00121: .gpr-category {
+00122:   display: flex;
+00123:   gap: 10px;
+00124:   overflow-x: auto;
+00125:   padding: 20px 15px;
+00126:   scroll-behavior: smooth;
+00127:   -webkit-overflow-scrolling: touch;
+00128: }
+00129: 
+00130: .gpr-category::-webkit-scrollbar {
+00131:   display: none;
+00132: }
+00133: 
+00134: .gpr-category button {
+00135:   flex-shrink: 0;
+00136:   border: none;
+00137:   outline: none;
+00138:   background: var(--gray-50);
+00139:   color: var(--gray-900);
+00140:   padding: 12px 18px;
+00141:   border-radius: 999px;
+00142:   white-space: nowrap;
+00143:   cursor: pointer;
+00144:   font-size: 14px;
+00145:   font-weight: 600;
+00146:   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+00147:   transition:
+00148:     background-color 0.25s ease,
+00149:     color 0.25s ease,
+00150:     transform 0.2s ease,
+00151:     box-shadow 0.25s ease;
+00152: }
+00153: 
+00154: .gpr-category button:active {
+00155:   transform: scale(0.96);
+00156: }
+00157: 
+00158: .gpr-category button.active {
+00159:   background: var(--blue-700);
+00160:   color: var(--gray-50);
+00161:   box-shadow: 0 6px 16px rgba(0, 170, 19, 0.25);
+00162: }
+00163: 
+00164: @media (hover: hover) {
+00165:   .gpr-category button:hover:not(.active) {
+00166:     background: var(--gray-100);
+00167:   }
+00168: }
+00169: 
+00170: .gpr-content {
+00171:   display: none;
+00172:   padding: 0 15px 20px;
+00173: }
+00174: 
+00175: .gpr-voucher-card {
+00176:   position: relative;
+00177:   background: #fff;
+00178:   border-radius: 24px;
+00179:   padding: 14px 16px;
+00180:   margin-bottom: 14px;
+00181:   display: flex;
+00182:   align-items: center;
+00183:   gap: 12px;
+00184:   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+00185:   overflow: hidden;
+00186:   transition: 0.25s;
+00187: }
+00188: 
+00189: .gpr-voucher-card:hover {
+00190:   transform: translateY(-2px);
+00191:   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+00192: }
+00193: 
+00194: .gpr-voucher-card:active {
+00195:   transform: scale(0.98);
+00196: }
+00197: 
+00198: .gpr-voucher-card::after {
+00199:   content: "";
+00200:   position: absolute;
+00201:   top: 0;
+00202:   bottom: 0;
+00203:   right: 88px;
+00204:   border-right: 2px dashed #ececec;
+00205: }
+00206: 
+00207: .gpr-voucher-card::before {
+00208:   content: "";
+00209:   position: absolute;
+00210:   right: 78px;
+00211:   top: -10px;
+00212:   width: 20px;
+00213:   height: 20px;
+00214:   background: #f5f6f8;
+00215:   border-radius: 50%;
+00216:   box-shadow: 0 calc(100% + 20px) 0 #f5f6f8;
+00217: }
+00218: 
+00219: .gpr-voucher-card .gpr-voucher-info {
+00220:   position: relative;
+00221: }
+00222: 
+00223: .gpr-voucher-image {
+00224:   width: 70px;
+00225:   height: 70px;
+00226:   border-radius: 20px;
+00227:   overflow: hidden;
+00228:   flex-shrink: 0;
+00229: }
+00230: 
+00231: .gpr-voucher-img {
+00232:   width: 100%;
+00233:   height: 100%;
+00234:   object-fit: cover;
+00235:   display: block;
+00236: }
+00237: 
+00238: .gpr-voucher-info {
+00239:   flex: 1;
+00240:   min-width: 0;
+00241: }
+00242: 
+00243: .gpr-badge {
+00244:   display: inline-block;
+00245:   padding: 5px 10px;
+00246:   border-radius: 30px;
+00247:   background: #ffe8e8;
+00248:   color: #ff4d4f;
+00249:   font-size: 12px;
+00250:   font-weight: 700;
+00251: }
+00252: 
+00253: .gpr-badge.green {
+00254:   background: #e9f9ec;
+00255:   color: #00aa13;
+00256: }
+00257: 
+00258: .gpr-badge.blue {
+00259:   background: #e8f4ff;
+00260:   color: #2196f3;
+00261: }
+00262: 
+00263: .gpr-badge.orange {
+00264:   background: #fff3e0;
+00265:   color: #ff9800;
+00266: }
+00267: 
+00268: .gpr-voucher-title {
+00269:   margin-top: 5px;
+00270:   font-size: 13px;
+00271: }
+00272: 
+00273: .gpr-voucher-desc {
+00274:   margin-top: 2px;
+00275:   color: #666;
+00276:   font-size: 10px;
+00277: }
+00278: 
+00279: .gpr-voucher-period {
+00280:   display: block;
+00281:   margin-top: 3px;
+00282:   color: #999;
+00283:   font-size: 9px;
+00284: }
+00285: 
+00286: .gpr-copy-btn {
+00287:   width: 75px;
+00288:   height: 42px;
+00289:   border: none;
+00290:   background: var(--blue-700);
+00291:   color: var(--gray-50);
+00292:   border-radius: 18px;
+00293:   font-size: 13px;
+00294:   font-weight: 700;
+00295:   flex-shrink: 0;
+00296: }
+00297: 
+00298: .gpr-copy-btn:active {
+00299:   transform: scale(0.95);
+00300: }
+00301: 
+00302: .gpr-voucher-card.hide {
+00303:   display: none !important;
+00304: }
+00305: 
+00306: @media (max-width: 480px) {
+00307:   .gpr-voucher-card {
+00308:     gap: 12px;
+00309:     padding: 15px;
+00310:   }
+00311: 
+00312:   .gpr-voucher-image {
+00313:     width: 60px;
+00314:     height: 60px;
+00315:   }
+00316: 
+00317:   .gpr-voucher-card::after {
+00318:     right: 78px;
+00319:   }
+00320: 
+00321:   .gpr-voucher-card::before {
+00322:     right: 68px;
+00323:   }
+00324: 
+00325:   .gpr-copy-btn {
+00326:     padding: 10px 15px;
+00327:     font-size: 13px;
+00328:   }
+00329: }
+00330: 
+00331: .gpr-voucher-top {
+00332:   display: flex;
+00333:   align-items: center;
+00334:   gap: 6px;
+00335:   flex-wrap: nowrap;
+00336: }
+00337: 
+00338: .gpr-tag {
+00339:   padding: 5px 10px;
+00340:   border-radius: 20px;
+00341:   font-size: 11px;
+00342:   font-weight: 700;
+00343: }
+00344: 
+00345: .gpr-tag.hot {
+00346:   background: #fff3e0;
+00347:   color: #ff9800;
+00348: }
+00349: 
+00350: .gpr-tag.new {
+00351:   background: #e8f5ff;
+00352:   color: #2196f3;
+00353: }
+00354: 
+00355: .gpr-tag.exclusive {
+00356:   background: #f3e8ff;
+00357:   color: #9c27b0;
+00358: }
+00359: 
+00360: .gpr-tag.limit {
+00361:   background: #ffeaea;
+00362:   color: #f44336;
+00363: }
+00364: 
+00365: .gpr-countdown {
+00366:   margin-top: 3px;
+00367:   color: #ff5722;
+00368:   font-size: 11px;
+00369:   font-weight: 600;
+00370: }
+00371: 
+00372: .gpr-ribbon {
+00373:   position: absolute;
+00374:   top: 12px;
+00375:   right: -28px;
+00376:   width: 95px;
+00377:   padding: 4px 0;
+00378:   text-align: center;
+00379:   color: #fff;
+00380:   font-size: 10px;
+00381:   font-weight: 700;
+00382:   transform: rotate(45deg);
+00383:   z-index: 2;
+00384: }
+00385: 
+00386: .gpr-ribbon.hot {
+00387:   background: #ff5722;
+00388: }
+00389: 
+00390: .gpr-ribbon.new {
+00391:   background: #2196f3;
+00392: }
+00393: 
+00394: .gpr-ribbon.exclusive {
+00395:   background: #9c27b0;
+00396: }
+00397: 
+00398: .gpr-ribbon.limit {
+00399:   background: #f44336;
+00400: }
+00401: 
+00402: .gpr-voucher-modal {
+00403:   position: fixed;
+00404:   inset: 0;
+00405:   background: rgba(0, 0, 0, 0.45);
+00406:   display: none;
+00407:   justify-content: center;
+00408:   align-items: flex-end;
+00409:   z-index: 99999;
+00410: }
+00411: 
+00412: .gpr-voucher-modal.show {
+00413:   display: flex;
+00414: }
+00415: 
+00416: .gpr-voucher-modal-content {
+00417:   width: 100%;
+00418:   max-height: 85vh;
+00419:   overflow: auto;
+00420:   background: #fff;
+00421:   border-radius: 25px 25px 0 0;
+00422:   padding: 20px;
+00423: }
+00424: 
+00425: .gpr-modal-header {
+00426:   display: flex;
+00427:   justify-content: space-between;
+00428:   align-items: flex-start;
+00429:   margin-bottom: 20px;
+00430: }
+00431: 
+00432: .gpr-modal-header h3 {
+00433:   font-size: 20px;
+00434: }
+00435: 
+00436: .gpr-close-modal {
+00437:   width: 36px;
+00438:   height: 36px;
+00439:   border: none;
+00440:   border-radius: 50%;
+00441:   background: #f5f5f5;
+00442:   cursor: pointer;
+00443:   font-size: 18px;
+00444:   flex-shrink: 0;
+00445: }
+00446: 
+00447: .gpr-modal-section {
+00448:   margin-bottom: 20px;
+00449: }
+00450: 
+00451: .gpr-modal-section-title {
+00452:   margin-bottom: 8px;
+00453:   font-size: 13px;
+00454:   color: #888;
+00455: }
+00456: 
+00457: .gpr-modal-code {
+00458:   padding: 12px;
+00459:   border-radius: 12px;
+00460:   background: #f6fff7;
+00461:   border: 1px dashed var(--blue-700);
+00462:   color: var(--blue-700);
+00463:   font-weight: 700;
+00464: }
+00465: 
+00466: .gpr-modal-terms {
+00467:   padding-left: 20px;
+00468:   color: #666;
+00469:   line-height: 1.8;
+00470: }
+00471: 
+00472: .gpr-modal-copy-btn {
+00473:   width: 100%;
+00474:   border: none;
+00475:   background: var(--blue-700);
+00476:   color: var(--gray-50);
+00477:   padding: 15px;
+00478:   border-radius: 16px;
+00479:   font-size: 15px;
+00480:   font-weight: 700;
+00481:   cursor: pointer;
+00482:   transition: 0.2s;
+00483: }
+00484: 
+00485: .gpr-modal-copy-btn:active {
+00486:   transform: scale(0.98);
+00487: }
+00488: #page-promos {
+00489:   background: #f4f6fa;
+00490: }
+00491: #page-promos .scroll-area {
+00492:   padding: 0 0 88px;
+00493: }
+00494: #page-promos .gpr-header {
+00495:   padding: 18px 15px 8px;
+00496:   border-radius: 0;
+00497:   background: transparent;
+00498:   color: #172033;
+00499: }
+00500: #page-promos .gpr-header-top,
+00501: #page-promos .gpr-header-content p,
+00502: #page-promos .gpr-info-card,
+00503: #page-promos .gcsHalamanPromoBannerSection {
+00504:   display: none;
+00505: }
+00506: #page-promos .gpr-header-content {
+00507:   margin: 0;
+00508: }
+00509: #page-promos .gpr-header-content h1 {
+00510:   margin: 0;
+00511:   color: #172033;
+00512:   font-size: 20px;
+00513:   font-weight: 700;
+00514:   line-height: 1.25;
+00515: }
+00516: #page-promos .gpr-category {
+00517:   gap: 8px;
+00518:   padding: 8px 15px 14px;
+00519: }
+00520: #page-promos .gpr-category button {
+00521:   padding: 8px 15px;
+00522:   border: 1px solid #e5e9f0;
+00523:   border-radius: 999px;
+00524:   background: #fff;
+00525:   color: #687386;
+00526:   box-shadow: none;
+00527:   font-size: 11px;
+00528:   font-weight: 600;
+00529:   line-height: 1;
+00530: }
+00531: #page-promos .gpr-category button.active {
+00532:   border-color: #1d4ed8;
+00533:   background: #1d4ed8;
+00534:   color: #fff;
+00535:   box-shadow: none;
+00536: }
+00537: #page-promos .gpr-content {
+00538:   padding: 0 15px 20px;
+00539: }
+00540: #page-promos .gocesVoucherSection,
+00541: #page-promos #gocesVoucherSemua,
+00542: #page-promos #gocesVoucherPopuler,
+00543: #page-promos #gocesVoucherTerbaru,
+00544: #page-promos #gocesVoucherEksklusif,
+00545: #page-promos #gocesVoucherCashback,
+00546: #page-promos #gocesVoucherTerbatas {
+00547:   gap: 12px;
+00548: }
+00549: #page-promos .gcv-card {
+00550:   min-height: 122px;
+00551:   border-radius: 14px;
+00552:   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+00553: }
+00554: #page-promos .gcv-ticket-visual {
+00555:   width: 78px;
+00556:   min-width: 78px;
+00557: }
+00558: #page-promos .gcv-card::before,
+00559: #page-promos .gcv-card::after {
+00560:   left: 70px;
+00561: }
+00562: #page-promos .gcv-ticket-visual i {
+00563:   font-size: 27px;
+00564: }
+00565: #page-promos .gcv-ticket-visual span {
+00566:   font-size: 10px;
+00567:   font-weight: 700;
+00568: }
+00569: #page-promos .gcv-card .gcv-content {
+00570:   padding: 12px 10px 10px 13px;
+00571: }
+00572: #page-promos .gcv-card .gcv-title {
+00573:   margin-bottom: 6px;
+00574:   font-size: 15px;
+00575:   font-weight: 700;
+00576:   line-height: 1.25;
+00577: }
+00578: #page-promos .gcv-card .gcv-description {
+00579:   margin-bottom: 6px;
+00580:   color: #697589;
+00581:   font-size: 12px;
+00582:   font-weight: 400;
+00583:   line-height: 1.38;
+00584: }
+00585: #page-promos .gcv-card .gcv-period {
+00586:   margin-bottom: 7px;
+00587:   font-size: 10.5px;
+00588:   font-weight: 400;
+00589: }
+00590: #page-promos .gcv-card .gcv-countdown {
+00591:   max-width: calc(100% - 70px);
+00592:   padding: 4px 8px;
+00593:   font-size: 9.5px;
+00594:   font-weight: 600;
+00595: }
+00596: #page-promos .gcv-card .gcv-copy {
+00597:   min-width: 62px;
+00598:   padding: 7px 10px;
+00599:   font-size: 10.5px;
+00600:   font-weight: 600;
+00601: }
+00602: #page-promos .gcv-card .gcv-copy i {
+00603:   font-size: 12px;
+00604: }
+00605: @media (max-width: 360px) {
+00606:   #page-promos .gcv-ticket-visual {
+00607:     width: 72px;
+00608:     min-width: 72px;
+00609:   }
+00610:   #page-promos .gcv-card::before,
+00611:   #page-promos .gcv-card::after {
+00612:     left: 64px;
+00613:   }
+00614:   #page-promos .gcv-card .gcv-title {
+00615:     font-size: 14px;
+00616:   }
+00617:   #page-promos .gcv-card .gcv-description {
+00618:     font-size: 11px;
+00619:   }
+00620: }
+
+============================================================
+FILE: css/versi-v02/setting.css
+============================================================
+
+00001: .gset_page {
+00002:   background: #f8faff;
+00003:   min-height: 100vh;
+00004: }
+00005: 
+00006: .gset_header {
+00007:   display: flex;
+00008:   align-items: center;
+00009:   gap: 14px;
+00010:   padding: 18px 16px;
+00011:   background: var(--blue-700);
+00012:   border-bottom: var(--gray-500);
+00013: }
+00014: 
+00015: .gset_back_btn {
+00016:   width: 42px;
+00017:   height: 42px;
+00018:   border: none;
+00019:   border-radius: 50px;
+00020:   background: var(--gray-50);
+00021:   display: flex;
+00022:   align-items: center;
+00023:   justify-content: center;
+00024:   cursor: pointer;
+00025: }
+00026: 
+00027: .gset_back_btn svg {
+00028:   width: 22px;
+00029:   height: 22px;
+00030:   color: var(--gray-700);
+00031: }
+00032: 
+00033: .gset_header_title {
+00034:   font-size: 18px;
+00035:   font-weight: 600;
+00036:   color: var(--gray-50);
+00037: }
+00038: 
+00039: .gset_header_subtitle {
+00040:   margin-top: 2px;
+00041:   font-size: 12px;
+00042:   color: var(--gray-100);
+00043: }
+00044: 
+00045: .gset_card {
+00046:   margin: 16px;
+00047:   background: var(--gray-50);
+00048:   border-radius: 20px;
+00049:   overflow: hidden;
+00050:   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+00051: }
+00052: 
+00053: .gset_item {
+00054:   display: flex;
+00055:   align-items: center;
+00056:   padding: 16px;
+00057:   text-decoration: none;
+00058:   color: inherit;
+00059: }
+00060: 
+00061: .gset_item:not(:last-child) {
+00062:   border-bottom: 1px solid var(--gray-200);
+00063: }
+00064: 
+00065: .gset_icon {
+00066:   width: 46px;
+00067:   height: 46px;
+00068:   border-radius: 14px;
+00069:   background: var(--gray-200);
+00070:   display: flex;
+00071:   align-items: center;
+00072:   justify-content: center;
+00073:   color: var(--gray-700);
+00074:   margin-right: 14px;
+00075: }
+00076: 
+00077: .gset_icon svg {
+00078:   width: 22px;
+00079:   height: 22px;
+00080: }
+00081: 
+00082: .gset_content {
+00083:   flex: 1;
+00084: }
+00085: 
+00086: .gset_title {
+00087:   font-size: 15px;
+00088:   font-weight: 600;
+00089:   color: var(--gray-900);
+00090: }
+00091: 
+00092: .gset_subtitle {
+00093:   font-size: 12px;
+00094:   color: var(--gray-900);
+00095:   margin-top: 3px;
+00096: }
+00097: 
+00098: .gset_arrow {
+00099:   width: 18px;
+00100:   height: 18px;
+00101:   color: var(--gray-500);
+00102: }
+
+============================================================
+FILE: css/voucher.css
+============================================================
+
+00001: /*==================================================
+00002:                 GOCES VOUCHER V2
+00003: ==================================================*/
+00004: 
+00005: :root {
+00006:   --gcv-primary: #2563eb;
+00007:   --gcv-danger: #ef4444;
+00008:   --gcv-warning: #f59e0b;
+00009:   --gcv-success: #10b981;
+00010: 
+00011:   --gcv-text: #111827;
+00012:   --gcv-muted: #6b7280;
+00013: 
+00014:   --gcv-white: #ffffff;
+00015:   --gcv-border: #e5e7eb;
+00016: 
+00017:   --gcv-radius: 22px;
+00018: 
+00019:   --gcv-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+00020: 
+00021:   --gcv-transition: 0.25s ease;
+00022: }
+00023: 
+00024: html,
+00025: body {
+00026:   margin: 0;
+00027: 
+00028:   padding: 0;
+00029: 
+00030:   width: 100%;
+00031: 
+00032:   overflow-x: hidden;
+00033: 
+00034:   background: #f9fafb;
+00035: }
+00036: 
+00037: /*==================================================
+00038:                 WRAPPER
+00039: ==================================================*/
+00040: 
+00041: .gcv-wrapper {
+00042:   width: 100%;
+00043: 
+00044:   padding: 12px;
+00045: 
+00046:   display: flex;
+00047: 
+00048:   flex-direction: column;
+00049: 
+00050:   gap: 14px;
+00051: 
+00052:   box-sizing: border-box;
+00053: 
+00054:   overflow: hidden;
+00055: }
+00056: 
+00057: /*==================================================
+00058:                 CARD
+00059: ==================================================*/
+00060: 
+00061: .gcv-card {
+00062:   position: relative;
+00063: 
+00064:   display: flex;
+00065: 
+00066:   align-items: center;
+00067: 
+00068:   gap: 14px;
+00069: 
+00070:   background: var(--gcv-white);
+00071: 
+00072:   border-radius: var(--gcv-radius);
+00073: 
+00074:   overflow: hidden;
+00075: 
+00076:   padding: 14px;
+00077: 
+00078:   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+00079:   border: 1px solid #edf2f7;
+00080: 
+00081:   transition: var(--gcv-transition);
+00082: 
+00083:   cursor: pointer;
+00084: }
+00085: 
+00086: .gcv-card:hover {
+00087:   transform: translateY(-2px);
+00088: 
+00089:   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+00090:   border: 1px solid #edf2f7;
+00091: }
+00092: 
+00093: .gcv-card:active:not(.gcv-copy-click) {
+00094:   transform: scale(0.98);
+00095: }
+00096: 
+00097: /*==================================================
+00098:                 IMAGE
+00099: ==================================================*/
+00100: 
+00101: .gcv-image {
+00102:   width: 74px;
+00103: 
+00104:   height: 74px;
+00105: 
+00106:   flex-shrink: 0;
+00107: 
+00108:   border-radius: 16px;
+00109: 
+00110:   overflow: hidden;
+00111: 
+00112:   background: #f3f4f6;
+00113: }
+00114: 
+00115: .gcv-image img {
+00116:   width: 100%;
+00117: 
+00118:   height: 100%;
+00119: 
+00120:   object-fit: cover;
+00121: 
+00122:   display: block;
+00123: }
+00124: 
+00125: /*==================================================
+00126:                 CONTENT
+00127: ==================================================*/
+00128: 
+00129: .gcv-content {
+00130:   display: flex;
+00131: 
+00132:   flex-direction: column;
+00133: 
+00134:   justify-content: center;
+00135: 
+00136:   gap: 2px;
+00137: 
+00138:   flex: 1;
+00139: }
+00140: 
+00141: .gcv-top {
+00142:   display: flex;
+00143: 
+00144:   align-items: center;
+00145: 
+00146:   gap: 8px;
+00147: 
+00148:   margin-bottom: 2px;
+00149: }
+00150: 
+00151: .gcv-title {
+00152:   margin: 2px 0;
+00153: 
+00154:   font-size: 18px;
+00155: 
+00156:   font-weight: 700;
+00157: 
+00158:   line-height: 1.2;
+00159: }
+00160: 
+00161: .gcv-description {
+00162:   margin: 0;
+00163: 
+00164:   font-size: 13px;
+00165: 
+00166:   color: #6b7280;
+00167: 
+00168:   line-height: 1.25;
+00169: }
+00170: 
+00171: .gcv-period {
+00172:   margin: 2px 0;
+00173: 
+00174:   color: #9ca3af;
+00175: 
+00176:   font-size: 12px;
+00177: 
+00178:   line-height: 1.3;
+00179: }
+00180: 
+00181: /*==================================================
+00182:                 RIBBON
+00183: ==================================================*/
+00184: 
+00185: .gcv-ribbon {
+00186:   position: absolute;
+00187: 
+00188:   top: 12px;
+00189: 
+00190:   right: -34px;
+00191: 
+00192:   width: 120px;
+00193: 
+00194:   text-align: center;
+00195: 
+00196:   font-size: 11px;
+00197: 
+00198:   font-weight: 700;
+00199: 
+00200:   color: #fff;
+00201: 
+00202:   padding: 4px 0;
+00203: 
+00204:   transform: rotate(45deg);
+00205: 
+00206:   z-index: 20;
+00207: 
+00208:   letter-spacing: 0.5px;
+00209: 
+00210:   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+00211: }
+00212: 
+00213: .gcv-ribbon--hot {
+00214:   background: #ef4444;
+00215: }
+00216: 
+00217: .gcv-ribbon--new {
+00218:   background: #2563eb;
+00219: }
+00220: 
+00221: .gcv-ribbon--limit {
+00222:   background: #f59e0b;
+00223: }
+00224: 
+00225: .gcv-ribbon--exclusive {
+00226:   background: #7c3aed;
+00227: }
+00228: 
+00229: .gcv-ribbon--cashback {
+00230:   background: #10b981;
+00231: }
+00232: 
+00233: /*==================================================
+00234:                 BADGE
+00235: ==================================================*/
+00236: 
+00237: .gcv-badge {
+00238:   display: inline-flex;
+00239: 
+00240:   align-items: center;
+00241: 
+00242:   justify-content: center;
+00243: 
+00244:   padding: 4px 10px;
+00245: 
+00246:   border-radius: 999px;
+00247: 
+00248:   font-size: 11px;
+00249: 
+00250:   font-weight: 700;
+00251: 
+00252:   white-space: nowrap;
+00253: 
+00254:   color: #fff;
+00255: }
+00256: 
+00257: .gcv-badge--discount {
+00258:   background: #ef4444;
+00259: }
+00260: 
+00261: .gcv-badge--cashback {
+00262:   background: #10b981;
+00263: }
+00264: 
+00265: .gcv-badge--shipping {
+00266:   background: #2563eb;
+00267: }
+00268: 
+00269: .gcv-badge--member {
+00270:   background: #7c3aed;
+00271: }
+00272: 
+00273: .gcv-badge--point {
+00274:   background: #f59e0b;
+00275: }
+00276: 
+00277: /*==================================================
+00278:                 TAG
+00279: ==================================================*/
+00280: 
+00281: .gcv-tag {
+00282:   display: inline-flex;
+00283: 
+00284:   align-items: center;
+00285: 
+00286:   justify-content: center;
+00287: 
+00288:   padding: 4px 8px;
+00289: 
+00290:   border-radius: 999px;
+00291: 
+00292:   font-size: 11px;
+00293: 
+00294:   font-weight: 600;
+00295: 
+00296:   background: #f3f4f6;
+00297: 
+00298:   color: #374151;
+00299: 
+00300:   white-space: nowrap;
+00301: }
+00302: 
+00303: .gcv-tag--hot {
+00304:   background: #fee2e2;
+00305: 
+00306:   color: #dc2626;
+00307: }
+00308: 
+00309: .gcv-tag--new {
+00310:   background: #dbeafe;
+00311: 
+00312:   color: #2563eb;
+00313: }
+00314: 
+00315: .gcv-tag--exclusive {
+00316:   background: #ede9fe;
+00317: 
+00318:   color: #7c3aed;
+00319: }
+00320: 
+00321: .gcv-tag--limited {
+00322:   background: #fef3c7;
+00323: 
+00324:   color: #b45309;
+00325: }
+00326: 
+00327: /*==================================================
+00328:             COPY BUTTON
+00329: ==================================================*/
+00330: 
+00331: .gcv-copy {
+00332:   border: none;
+00333: 
+00334:   outline: none;
+00335: 
+00336:   cursor: pointer;
+00337: 
+00338:   padding: 10px 18px;
+00339: 
+00340:   border-radius: 999px;
+00341: 
+00342:   background: var(--blue-700);
+00343: 
+00344:   color: #fff;
+00345: 
+00346:   font-size: 13px;
+00347: 
+00348:   font-weight: 700;
+00349: 
+00350:   transition: 0.25s;
+00351: 
+00352:   flex-shrink: 0;
+00353: }
+00354: 
+00355: .gcv-copy:hover {
+00356:   background: #1d4ed8;
+00357: }
+00358: 
+00359: .gcv-copy:active {
+00360:   transform: scale(0.95);
+00361: }
+00362: 
+00363: .gcv-copy.copied {
+00364:   background: #10b981;
+00365: 
+00366:   transform: scale(0.95);
+00367: }
+00368: 
+00369: .gcv-copy-click {
+00370:   transform: none !important;
+00371: }
+00372: 
+00373: /*==================================================
+00374:             VOUCHER HOLE
+00375: ==================================================*/
+00376: 
+00377: .gcv-card::before {
+00378:   content: "";
+00379: 
+00380:   position: absolute;
+00381: 
+00382:   left: -10px;
+00383: 
+00384:   top: 50%;
+00385: 
+00386:   width: 20px;
+00387: 
+00388:   height: 20px;
+00389: 
+00390:   border-radius: 50%;
+00391: 
+00392:   background: #f3f4f6;
+00393: 
+00394:   transform: translateY(-50%);
+00395: }
+00396: 
+00397: .gcv-card::after {
+00398:   content: "";
+00399: 
+00400:   position: absolute;
+00401: 
+00402:   right: -10px;
+00403: 
+00404:   top: 50%;
+00405: 
+00406:   width: 20px;
+00407: 
+00408:   height: 20px;
+00409: 
+00410:   border-radius: 50%;
+00411: 
+00412:   background: #f3f4f6;
+00413: 
+00414:   transform: translateY(-50%);
+00415: }
+00416: 
+00417: /*==================================================
+00418:             DIVIDER
+00419: ==================================================*/
+00420: 
+00421: .gcv-card-divider {
+00422:   width: 1px;
+00423: 
+00424:   align-self: stretch;
+00425: 
+00426:   margin: 0 12px;
+00427: 
+00428:   border-left: 2px dashed #e4e4e4;
+00429: }
+00430: 
+00431: /*==================================================
+00432:             EXPIRED
+00433: ==================================================*/
+00434: 
+00435: .gcv-card.gcv-expired {
+00436:   opacity: 0.65;
+00437: 
+00438:   filter: grayscale(1);
+00439: }
+00440: 
+00441: .gcv-card.gcv-expired .gcv-copy {
+00442:   background: #9ca3af;
+00443: 
+00444:   cursor: not-allowed;
+00445: }
+00446: 
+00447: .gcv-card.gcv-expired .gcv-countdown {
+00448:   color: #dc2626;
+00449: }
+00450: 
+00451: /*==================================================
+00452:             ACTIVE
+00453: ==================================================*/
+00454: 
+00455: .gcv-card.gcv-active {
+00456:   border: 2px solid #2563eb;
+00457: }
+00458: 
+00459: /*==================================================
+00460:             DISABLED
+00461: ==================================================*/
+00462: 
+00463: .gcv-card.gcv-disabled {
+00464:   pointer-events: none;
+00465: }
+00466: 
+00467: /*==================================================
+00468:             TOAST
+00469: ==================================================*/
+00470: 
+00471: .gcv-toast {
+00472:   position: fixed;
+00473: 
+00474:   left: 50%;
+00475: 
+00476:   bottom: 25px;
+00477: 
+00478:   transform: translateX(-50%) translateY(30px);
+00479: 
+00480:   background: #111827;
+00481: 
+00482:   color: #fff;
+00483: 
+00484:   padding: 12px 20px;
+00485: 
+00486:   border-radius: 999px;
+00487: 
+00488:   font-size: 13px;
+00489: 
+00490:   font-weight: 600;
+00491: 
+00492:   z-index: 99999;
+00493: 
+00494:   opacity: 0;
+00495: 
+00496:   visibility: hidden;
+00497: 
+00498:   transition: 0.3s;
+00499: }
+00500: 
+00501: .gcv-toast.show {
+00502:   opacity: 1;
+00503: 
+00504:   visibility: visible;
+00505: 
+00506:   transform: translateX(-50%) translateY(0);
+00507: }
+00508: 
+00509: /*==================================================
+00510:             MODAL
+00511: ==================================================*/
+00512: 
+00513: .gcv-modal {
+00514:   position: fixed;
+00515: 
+00516:   inset: 0;
+00517: 
+00518:   background: rgba(0, 0, 0, 0.45);
+00519: 
+00520:   display: flex;
+00521: 
+00522:   align-items: flex-end;
+00523: 
+00524:   justify-content: center;
+00525: 
+00526:   opacity: 0;
+00527: 
+00528:   visibility: hidden;
+00529: 
+00530:   transition: 0.25s;
+00531: 
+00532:   z-index: 99999;
+00533: }
+00534: 
+00535: .gcv-modal.show {
+00536:   opacity: 1;
+00537: 
+00538:   visibility: visible;
+00539: }
+00540: 
+00541: .gcv-modal-content {
+00542:   width: 100%;
+00543: 
+00544:   max-width: 500px;
+00545: 
+00546:   background: #fff;
+00547: 
+00548:   border-radius: 28px 28px 0 0;
+00549: 
+00550:   padding: 24px;
+00551: 
+00552:   max-height: 85vh;
+00553: 
+00554:   overflow: auto;
+00555: 
+00556:   animation: gcvUp 0.25s ease;
+00557: }
+00558: 
+00559: @keyframes gcvUp {
+00560:   from {
+00561:     transform: translateY(40px);
+00562:   }
+00563: 
+00564:   to {
+00565:     transform: translateY(0);
+00566:   }
+00567: }
+00568: 
+00569: .gcv-modal-title {
+00570:   font-size: 22px;
+00571: 
+00572:   font-weight: 700;
+00573: 
+00574:   color: #111827;
+00575: 
+00576:   margin-bottom: 8px;
+00577: }
+00578: 
+00579: .gcv-modal-description {
+00580:   font-size: 14px;
+00581: 
+00582:   color: #6b7280;
+00583: 
+00584:   line-height: 1.6;
+00585: 
+00586:   margin-bottom: 18px;
+00587: }
+00588: 
+00589: .gcv-modal-code {
+00590:   display: flex;
+00591: 
+00592:   align-items: center;
+00593: 
+00594:   justify-content: center;
+00595: 
+00596:   padding: 16px;
+00597: 
+00598:   border: 2px dashed #2563eb;
+00599: 
+00600:   border-radius: 18px;
+00601: 
+00602:   font-size: 22px;
+00603: 
+00604:   font-weight: 700;
+00605: 
+00606:   letter-spacing: 2px;
+00607: 
+00608:   color: #2563eb;
+00609: 
+00610:   margin-bottom: 20px;
+00611: }
+00612: 
+00613: .gcv-modal-copy {
+00614:   width: 100%;
+00615: 
+00616:   border: none;
+00617: 
+00618:   cursor: pointer;
+00619: 
+00620:   background: var(--blue-700);
+00621: 
+00622:   color: #fff;
+00623: 
+00624:   font-size: 15px;
+00625: 
+00626:   font-weight: 700;
+00627: 
+00628:   padding: 14px;
+00629: 
+00630:   border-radius: 16px;
+00631: }
+00632: 
+00633: .gcv-modal-copy:active {
+00634:   transform: scale(0.98);
+00635: }
+00636: 
+00637: .gcv-modal-close {
+00638:   position: absolute;
+00639: 
+00640:   top: 16px;
+00641: 
+00642:   right: 18px;
+00643: 
+00644:   width: 36px;
+00645: 
+00646:   height: 36px;
+00647: 
+00648:   border: none;
+00649: 
+00650:   background: #f3f4f6;
+00651: 
+00652:   border-radius: 50%;
+00653: 
+00654:   cursor: pointer;
+00655: }
+00656: 
+00657: /* VOUCHER DETAIL V3 */
+00658: .gcv-modal {
+00659:   padding: 0;
+00660:   background: rgba(15, 23, 42, 0.52);
+00661:   backdrop-filter: blur(3px);
+00662: }
+00663: .gcv-modal-content {
+00664:   position: relative;
+00665:   max-width: 520px;
+00666:   padding: 24px 18px 16px;
+00667:   border-radius: 22px 22px 0 0;
+00668:   box-shadow: 0 -10px 36px rgba(15, 23, 42, 0.16);
+00669: }
+00670: .gcv-modal-header {
+00671:   margin: -54px 0 14px;
+00672: }
+00673: .gcv-modal-image {
+00674:   width: 92px;
+00675:   height: 92px;
+00676:   border: 4px solid #fff;
+00677:   border-radius: 18px;
+00678:   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+00679: }
+00680: .gcv-modal-close {
+00681:   top: 14px;
+00682:   right: 14px;
+00683:   width: 30px;
+00684:   height: 30px;
+00685:   background: #f0f4fb;
+00686:   color: #385273;
+00687:   font-size: 14px;
+00688: }
+00689: .gcv-modal-title {
+00690:   margin: 0 36px 6px 0;
+00691:   color: #172033;
+00692:   font-size: 18px;
+00693:   font-weight: 700;
+00694:   line-height: 1.3;
+00695: }
+00696: .gcv-modal-description {
+00697:   margin: 0 0 14px;
+00698:   color: #6d7a91;
+00699:   font-size: 12px;
+00700:   line-height: 1.45;
+00701: }
+00702: .gcv-modal-code {
+00703:   margin-bottom: 14px;
+00704:   padding: 12px;
+00705:   border: 1.5px dashed #4d7cff;
+00706:   border-radius: 12px;
+00707:   background: #f7f9ff;
+00708:   color: #1d4ed8;
+00709:   font-size: 16px;
+00710:   letter-spacing: 1.5px;
+00711: }
+00712: .gcv-modal-details {
+00713:   display: grid;
+00714:   gap: 5px;
+00715:   margin-bottom: 15px;
+00716:   color: #3c4d67;
+00717:   font-size: 11px;
+00718:   line-height: 1.4;
+00719: }
+00720: .gcv-modal-details > div::before {
+00721:   display: inline-block;
+00722:   min-width: 112px;
+00723:   color: #7a879b;
+00724: }
+00725: .gcv-modal-period::before {
+00726:   content: "Periode";
+00727: }
+00728: .gcv-modal-min-order::before {
+00729:   content: "Minimal Belanja";
+00730: }
+00731: .gcv-modal-max-discount::before {
+00732:   content: "Maksimal Diskon";
+00733: }
+00734: .gcv-terms {
+00735:   margin-top: 0;
+00736:   padding-top: 13px;
+00737:   border-top: 1px solid #edf0f5;
+00738: }
+00739: .gcv-terms-title {
+00740:   margin-bottom: 8px;
+00741:   color: #172033;
+00742:   font-size: 12px;
+00743: }
+00744: .gcv-terms li {
+00745:   margin-bottom: 5px;
+00746:   color: #66758b;
+00747:   font-size: 11px;
+00748:   line-height: 1.4;
+00749: }
+00750: .gcv-modal-copy {
+00751:   margin-top: 4px;
+00752:   padding: 12px;
+00753:   border-radius: 11px;
+00754:   background: #1d4ed8;
+00755:   font-size: 13px;
+00756: }
+00757: 
+00758: /*==================================================
+00759:                 MODAL IMAGE
+00760: ==================================================*/
+00761: 
+00762: .gcv-modal-header {
+00763:   display: flex;
+00764: 
+00765:   justify-content: center;
+00766: 
+00767:   margin-bottom: 20px;
+00768: }
+00769: 
+00770: .gcv-modal-image {
+00771:   width: 110px;
+00772: 
+00773:   height: 110px;
+00774: 
+00775:   border-radius: 20px;
+00776: 
+00777:   object-fit: cover;
+00778: }
+00779: 
+00780: /*==================================================
+00781:             TERMS
+00782: ==================================================*/
+00783: 
+00784: .gcv-terms {
+00785:   margin-top: 22px;
+00786: }
+00787: 
+00788: .gcv-terms-title {
+00789:   font-size: 15px;
+00790: 
+00791:   font-weight: 700;
+00792: 
+00793:   margin-bottom: 10px;
+00794: }
+00795: 
+00796: .gcv-terms ul {
+00797:   padding-left: 18px;
+00798: }
+00799: 
+00800: .gcv-terms li {
+00801:   margin-bottom: 8px;
+00802: 
+00803:   color: #4b5563;
+00804: 
+00805:   line-height: 1.5;
+00806: }
+00807: 
+00808: /*==================================================
+00809:             MOBILE
+00810: ==================================================*/
+00811: 
+00812: @media (max-width: 520px) {
+00813:   .gcv-card {
+00814:     gap: 10px;
+00815: 
+00816:     padding: 12px;
+00817:   }
+00818: 
+00819:   .gcv-image {
+00820:     width: 72px;
+00821: 
+00822:     height: 72px;
+00823:   }
+00824: 
+00825:   .gcv-title {
+00826:     font-size: 15px;
+00827:   }
+00828: 
+00829:   .gcv-copy {
+00830:     padding: 8px 14px;
+00831: 
+00832:     font-size: 12px;
+00833:   }
+00834: }
+00835: 
+00836: /*==================================================
+00837:             END
+00838: ==================================================*/
+00839: .gcv-wrapper,
+00840: .gocesVoucherSection,
+00841: #gocesVoucherSemua,
+00842: #gocesVoucherPopuler,
+00843: #gocesVoucherTerbaru,
+00844: #gocesVoucherEksklusif,
+00845: #gocesVoucherCashback,
+00846: #gocesVoucherTerbatas {
+00847:   gap: 12px;
+00848: }
+00849: .gcv-card {
+00850:   min-height: 104px;
+00851:   padding: 0;
+00852:   gap: 0;
+00853:   align-items: stretch;
+00854:   border: 1px solid #e5e7eb;
+00855:   border-radius: 14px;
+00856:   background: #fff;
+00857:   box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+00858:   overflow: hidden;
+00859: }
+00860: .gcv-card:hover {
+00861:   transform: none;
+00862:   border-color: #e5e7eb;
+00863:   box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+00864: }
+00865: .gcv-card::before,
+00866: .gcv-card::after {
+00867:   left: 72px;
+00868:   right: auto;
+00869:   width: 15px;
+00870:   height: 15px;
+00871:   background: #f3f4f6;
+00872:   z-index: 3;
+00873: }
+00874: .gcv-card::before {
+00875:   top: -8px;
+00876:   transform: none;
+00877: }
+00878: .gcv-card::after {
+00879:   top: auto;
+00880:   bottom: -8px;
+00881:   transform: none;
+00882: }
+00883: .gcv-ticket-visual {
+00884:   width: 80px;
+00885:   min-width: 80px;
+00886:   padding: 12px 6px;
+00887:   display: flex;
+00888:   flex-direction: column;
+00889:   align-items: center;
+00890:   justify-content: center;
+00891:   gap: 7px;
+00892:   color: #fff;
+00893:   border-right: 2px dashed rgba(255, 255, 255, 0.82);
+00894:   text-align: center;
+00895: }
+00896: .gcv-ticket-visual i {
+00897:   font-size: 25px;
+00898:   line-height: 1;
+00899: }
+00900: .gcv-ticket-visual span {
+00901:   font-size: 10px;
+00902:   font-weight: 800;
+00903:   line-height: 1.1;
+00904:   text-transform: uppercase;
+00905: }
+00906: .gcv-ticket--food {
+00907:   background: linear-gradient(145deg, #ffad0b, #f18700);
+00908: }
+00909: .gcv-ticket--ride {
+00910:   background: linear-gradient(145deg, #10c98f, #00a86b);
+00911: }
+00912: .gcv-ticket--car {
+00913:   background: linear-gradient(145deg, #4084ff, #2563eb);
+00914: }
+00915: .gcv-ticket--pay {
+00916:   background: linear-gradient(145deg, #9a5cff, #7034df);
+00917: }
+00918: .gcv-ticket--delivery {
+00919:   background: linear-gradient(145deg, #ff7d42, #ea580c);
+00920: }
+00921: .gcv-card .gcv-content {
+00922:   min-width: 0;
+00923:   padding: 11px 10px 9px 13px;
+00924:   gap: 0;
+00925:   justify-content: flex-start;
+00926: }
+00927: .gcv-card .gcv-title {
+00928:   margin: 0 0 4px;
+00929:   padding-right: 0;
+00930:   color: #172033;
+00931:   font-size: 13px;
+00932:   font-weight: 800;
+00933:   line-height: 1.25;
+00934:   white-space: nowrap;
+00935:   overflow: hidden;
+00936:   text-overflow: ellipsis;
+00937: }
+00938: .gcv-card .gcv-description {
+00939:   margin: 0 0 4px;
+00940:   color: #788397;
+00941:   font-size: 10px;
+00942:   line-height: 1.35;
+00943:   -webkit-line-clamp: 2;
+00944: }
+00945: .gcv-card .gcv-period {
+00946:   margin: 0 0 5px;
+00947:   color: #98a1b2;
+00948:   font-size: 9px;
+00949:   line-height: 1.2;
+00950:   white-space: nowrap;
+00951:   overflow: hidden;
+00952:   text-overflow: ellipsis;
+00953: }
+00954: .gcv-ticket-bottom {
+00955:   min-height: 22px;
+00956:   margin-top: auto;
+00957:   display: flex;
+00958:   align-items: center;
+00959:   justify-content: space-between;
+00960:   gap: 6px;
+00961: }
+00962: .gcv-card .gcv-countdown {
+00963:   max-width: calc(100% - 60px);
+00964:   margin: 0;
+00965:   padding: 3px 6px;
+00966:   border-radius: 999px;
+00967:   background: #fff3d7;
+00968:   color: #d48500;
+00969:   font-size: 8px;
+00970:   font-weight: 700;
+00971:   line-height: 1.15;
+00972:   white-space: nowrap;
+00973:   overflow: hidden;
+00974:   text-overflow: ellipsis;
+00975: }
+00976: .gcv-card .gcv-countdown.upcoming,
+00977: .gcv-card .gcv-countdown.expired {
+00978:   background: #fee9e9;
+00979:   color: #e5484d;
+00980: }
+00981: .gcv-card .gcv-copy {
+00982:   min-width: 53px;
+00983:   padding: 5px 8px;
+00984:   display: inline-flex;
+00985:   align-items: center;
+00986:   justify-content: center;
+00987:   gap: 3px;
+00988:   border-radius: 999px;
+00989:   background: #2457d6;
+00990:   color: #fff;
+00991:   font-size: 9px;
+00992:   line-height: 1;
+00993: }
+00994: .gcv-card .gcv-copy i {
+00995:   font-size: 11px;
+00996: }
+00997: .gcv-card .gcv-copy.copied {
+00998:   background: #10b981;
+00999: }
+01000: .gcv-card.gcv-expired .gcv-copy {
+01001:   background: #9ca3af;
+01002: }
+01003: .gcvh-container .gcv-card {
+01004:   flex-basis: calc(100vw - 32px);
+01005: }
+01006: @media (max-width: 360px) {
+01007:   .gcv-ticket-visual {
+01008:     width: 72px;
+01009:     min-width: 72px;
+01010:   }
+01011:   .gcv-card::before,
+01012:   .gcv-card::after {
+01013:     left: 64px;
+01014:   }
+01015:   .gcv-card .gcv-content {
+01016:     padding-left: 11px;
+01017:   }
+01018: }
+01019: 
+01020: /* Keep the premium modal rules after the legacy modal rules. */
+01021: .gcv-modal-content {
+01022:   position: relative;
+01023:   max-width: 520px;
+01024:   padding: 24px 18px 16px;
+01025:   border-radius: 22px 22px 0 0;
+01026:   box-shadow: 0 -10px 36px rgba(15, 23, 42, 0.16);
+01027: }
+01028: .gcv-modal-header {
+01029:   margin: -54px 0 14px;
+01030: }
+01031: .gcv-modal-image {
+01032:   width: 92px;
+01033:   height: 92px;
+01034:   border: 4px solid #fff;
+01035:   border-radius: 18px;
+01036:   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+01037: }
+01038: .gcv-modal-close {
+01039:   top: 14px;
+01040:   right: 14px;
+01041:   width: 30px;
+01042:   height: 30px;
+01043:   background: #f0f4fb;
+01044:   color: #385273;
+01045:   font-size: 14px;
+01046: }
+01047: .gcv-modal-title {
+01048:   margin: 0 36px 6px 0;
+01049:   color: #172033;
+01050:   font-size: 18px;
+01051:   font-weight: 700;
+01052:   line-height: 1.3;
+01053: }
+01054: .gcv-modal-description {
+01055:   margin: 0 0 14px;
+01056:   color: #6d7a91;
+01057:   font-size: 12px;
+01058:   line-height: 1.45;
+01059: }
+01060: .gcv-modal-code {
+01061:   margin-bottom: 14px;
+01062:   padding: 12px;
+01063:   border: 1.5px dashed #4d7cff;
+01064:   border-radius: 12px;
+01065:   background: #f7f9ff;
+01066:   color: #1d4ed8;
+01067:   font-size: 16px;
+01068:   letter-spacing: 1.5px;
+01069: }
+01070: .gcv-terms {
+01071:   margin-top: 0;
+01072:   padding-top: 13px;
+01073:   border-top: 1px solid #edf0f5;
+01074: }
+01075: .gcv-terms-title {
+01076:   margin-bottom: 8px;
+01077:   color: #172033;
+01078:   font-size: 12px;
+01079: }
+01080: .gcv-terms li {
+01081:   margin-bottom: 5px;
+01082:   color: #66758b;
+01083:   font-size: 11px;
+01084:   line-height: 1.4;
+01085: }
+01086: .gcv-modal-copy {
+01087:   margin-top: 4px;
+01088:   padding: 12px;
+01089:   border-radius: 11px;
+01090:   background: #1d4ed8;
+01091:   font-size: 13px;
+01092: }
+01093: 
+01094: .goces-voucher-section {
+01095:   width: 100%;
+01096: 
+01097:   margin-top: 16px;
+01098: }
+01099: 
+01100: /*====================================
+01101:         GOCES IFRAME
+01102: ====================================*/
+01103: 
+01104: .goces-frame {
+01105:   width: 100%;
+01106: 
+01107:   height: 0;
+01108: 
+01109:   min-height: 0;
+01110: 
+01111:   border: none;
+01112: 
+01113:   display: block;
+01114: 
+01115:   overflow: hidden;
+01116: 
+01117:   transition: height 0.25s ease;
+01118: }
+01119: 
+01120: /*==================================
+01121:         COUNTDOWN
+01122: ==================================*/
+01123: 
+01124: .gcv-countdown {
+01125:   margin-top: 4px;
+01126: 
+01127:   font-size: 12px;
+01128: 
+01129:   font-weight: 600;
+01130: }
+01131: 
+01132: .gcv-countdown.active {
+01133:   color: #16a34a;
+01134: }
+01135: 
+01136: .gcv-countdown.upcoming {
+01137:   color: #2563eb;
+01138: }
+01139: 
+01140: .gcv-countdown.expired {
+01141:   color: #dc2626;
+01142: }
+01143: 
+01144: .gocesVoucherSection {
+01145:   display: flex;
+01146: 
+01147:   flex-direction: column;
+01148: 
+01149:   gap: 16px;
+01150: }
+01151: 
+01152: #gocesVoucherSemua {
+01153:   display: flex;
+01154: 
+01155:   flex-direction: column;
+01156: 
+01157:   gap: 16px;
+01158: }
+01159: 
+01160: #gocesVoucherPopuler,
+01161: #gocesVoucherTerbaru,
+01162: #gocesVoucherEksklusif,
+01163: #gocesVoucherCashback,
+01164: #gocesVoucherTerbatas {
+01165:   display: flex;
+01166: 
+01167:   flex-direction: column;
+01168: 
+01169:   gap: 16px;
+01170: }
+
+============================================================
+FILE: css/voucher-horizontal.css
+============================================================
+
+00001: /*==================================
+00002:         GOCES HORIZONTAL VOUCHER
+00003: ==================================*/
+00004: 
+00005: .gcvh-section {
+00006:   margin-top: 18px;
+00007: 
+00008:   padding: 0 12px;
+00009: }
+00010: 
+00011: .gcvh-header {
+00012:   display: flex;
+00013: 
+00014:   align-items: center;
+00015: 
+00016:   justify-content: space-between;
+00017: 
+00018:   margin-bottom: 14px;
+00019: 
+00020:   padding: 0;
+00021: }
+00022: 
+00023: .gcvh-title {
+00024:   margin: 0;
+00025: 
+00026:   font-size: 17px;
+00027: 
+00028:   font-weight: 600;
+00029: 
+00030:   color: #111827;
+00031: }
+00032: 
+00033: .gcvh-seeall {
+00034:   border: none;
+00035: 
+00036:   background: none;
+00037: 
+00038:   color: var(--blue);
+00039: 
+00040:   font-size: 14px;
+00041: 
+00042:   font-weight: 700;
+00043: 
+00044:   cursor: pointer;
+00045: }
+00046: 
+00047: .gcvh-section {
+00048:   margin-top: 18px;
+00049: 
+00050:   padding: 0 16px;
+00051: }
+00052: 
+00053: .gcvh-container {
+00054:   display: flex;
+00055: 
+00056:   gap: 12px;
+00057: 
+00058:   overflow-x: auto;
+00059: 
+00060:   scroll-snap-type: x mandatory;
+00061: 
+00062:   scrollbar-width: none;
+00063: 
+00064:   -webkit-overflow-scrolling: touch;
+00065: 
+00066:   padding-bottom: 8px;
+00067: }
+00068: 
+00069: .gcvh-container::-webkit-scrollbar {
+00070:   display: none;
+00071: }
+00072: 
+00073: .gcvh-container .gcv-card {
+00074:   flex: 0 0 calc(100vw - 32px);
+00075:   width: calc(100vw - 32px);
+00076:   box-sizing: border-box;
+00077:   margin: 0;
+00078:   scroll-snap-align: start;
+00079: }
+00080: 
+00081: .gcvh-container .gcv-content {
+00082:   min-width: 0;
+00083: }

@@ -1,0 +1,33 @@
+GOCES V12 DEPLOYMENT MAP
+GOCES APP
+LOCAL ROOT:
+C:\Users\Akbar\OneDrive\Desktop\Goces v12
+GIT:
+https://github.com/managerbos16/goces-app.git
+PRODUCTION:
+https://goces-app.vercel.app
+STATUS:
+ACTIVE / DEPLOYED
+GOCES API
+CANONICAL LOCAL SOURCE:
+C:\Users\Akbar\OneDrive\Desktop\Goces v12\goces-api-repo
+GIT:
+https://github.com/managerbos16/goces-api.git
+REMOTE MAIN:
+22a81a764b0fe64e4e02ac70db38f7ff570462c6
+PRODUCTION:
+https://goces-api.vercel.app
+STATUS:
+ACTIVE / DO NOT REDEPLOY WITHOUT AUDIT
+JAGEL-API LOCAL WORKSPACE
+PATH:
+C:\Users\Akbar\OneDrive\Desktop\Goces v12\jagel-api
+STATUS:
+DEVELOPMENT WORKSPACE
+DIRTY / UNCOMMITTED CHANGES
+DO NOT DEPLOY DIRECTLY
+RULE:
+1. GOCES APP deploy dari root Goces v12.
+2. API production source harus diverifikasi dari goces-api-repo.
+3. Folder jagel-api tidak boleh dipakai production sebelum audit/merge.
+4. Jangan tertukar antara goces-app dan goces-api.

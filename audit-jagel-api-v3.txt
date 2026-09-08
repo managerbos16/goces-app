@@ -1,0 +1,493 @@
+GOCES V12 - JAGEL API AUDIT V3
+TIME: 2026-09-08 16:10:08
+
+AUDIT ONLY - SOURCE TIDAK DIUBAH
+
+============================================================
+1. JAGEL-API IDENTITAS
+============================================================
+
+> git rev-parse HEAD
+63bdfcfb778cba2a06a74ad899cff887b9e2e783
+[EXIT=0]
+
+> git rev-parse origin/main
+22a81a764b0fe64e4e02ac70db38f7ff570462c6
+[EXIT=0]
+
+> git status --short
+ M categories.js
+ M handlers/categoryHandler.js
+ M services/jagelService.js
+?? controllers/bankAccountController.js
+?? models/bankAccountModel.js
+?? routes/bankAccountRoutes.js
+?? services/bankAccountService.js
+?? services/tripayDisbursementService.js
+?? templates/categoryError.js
+[EXIT=0]
+
+> git rev-list --left-right --count HEAD...origin/main
+0	3
+[EXIT=0]
+
+============================================================
+2. UNTRACKED FILE SIZE
+============================================================
+controllers/bankAccountController.js | 0 bytes
+models/bankAccountModel.js | 5074 bytes
+routes/bankAccountRoutes.js | 0 bytes
+services/bankAccountService.js | 0 bytes
+services/tripayDisbursementService.js | 0 bytes
+templates/categoryError.js | 1483 bytes
+
+============================================================
+3. LOCAL WORKTREE VS OLD LOCAL HEAD
+============================================================
+
+> categories.js
+diff --git a/categories.js b/categories.js
+index 2a6fcec..f90697a 100644
+--- a/categories.js
++++ b/categories.js
+@@ -1,49 +1,52 @@
++const componentId = (name, fallback) =>
++    process.env[`JAGEL_COMPONENT_${name.toUpperCase()}`] || fallback;
++
+ module.exports = [
+ 
+     {
+         path: "/kuliner",
+         page: "kuliner",
+-        componentId: "482013168266a338e404198a9.02087100",
++        componentId: componentId("kuliner", "482013168266a338e404198a9.02087100"),
+         title: "­ƒì¢´©Å Rekomendasi Untukmu"
+     },
+ 
+     {
+         path: "/minuman",
+         page: "minuman",
+-        componentId: "092113168266a338e55536e99.19442399",
++        componentId: componentId("minuman", "092113168266a338e55536e99.19442399"),
+         title: "Minuman"
+     },
+ 
+     {
+         path: "/snack",
+         page: "snack",
+-        componentId: "105419195266a5782f2b07806.84367521",
++        componentId: componentId("snack", "105419195266a5782f2b07806.84367521"),
+         title: "Snack"
+     },
+ 
+     {
+         path: "/bakso",
+         page: "bakso",
+-        componentId: "485319195266a5782dc346207.21541794",
++        componentId: componentId("bakso", "485319195266a5782dc346207.21541794"),
+         title: "Bakso"
+     },
+ 
+     {
+         path: "/pizza",
+         page: "pizza",
+-        componentId: "175319195266a5782bd911d73.99279096",
++        componentId: componentId("pizza", "175319195266a5782bd911d73.99279096"),
+         title: "Pizza"
+     },
+ 
+     {
+         path: "/kulinerhorizontal",
+         page: "kulinerhorizontal",
+-        componentId: "482013168266a338e404198a9.02087100",
++        componentId: componentId("kuliner", "482013168266a338e404198a9.02087100"),
+         title: "Rekomendasi untukmu !!"
+     },
+ 
+     {
+         path: "/handphone",
+         page: "handphone",
+         componentId: "281316189266a4f6638af8062.89603879",
+         title: "Handphone"
+@@ -114,9 +117,9 @@ module.exports = [
+ 
+     {
+         path: "/beras",
+         page: "beras",
+         componentId: "413716189266a4f6be53f5b01.11075840",
+         title: "beras"
+     }
+ 
+-];
+\ No newline at end of file
++];
+[EXIT=0]
+
+> handlers/categoryHandler.js
+diff --git a/handlers/categoryHandler.js b/handlers/categoryHandler.js
+index 31fc28d..4001fab 100644
+--- a/handlers/categoryHandler.js
++++ b/handlers/categoryHandler.js
+@@ -2,16 +2,19 @@ const jagelService =
+     require("../services/jagelService");
+ 
+ const renderProductGrid =
+     require("../templates/productGrid");
+ 
+ const renderProductHorizontal =
+     require("../templates/productHorizontal");
+ 
++const renderCategoryError =
++    require("../templates/categoryError");
++
+ async function categoryHandler(req, res) {
+ 
+     try {
+ 
+         const response =
+             await jagelService.getComponent(
+                 req.category.componentId
+             );
+@@ -54,16 +57,28 @@ async function categoryHandler(req, res) {
+ 
+             );
+ 
+         }
+ 
+     }
+ 
+     catch (err) {
++        const upstreamMessage =
++            err.response?.data?.message || err.message;
++
++        console.error(
++            `Kategori ${req.category.page} gagal dimuat:`,
++            upstreamMessage
++        );
+ 
+-        res.status(500).send(err.message);
++        // Tetap kirim dokumen iframe yang dapat mengatur tingginya sendiri.
++        // Status 502 membuat masalah tetap terlihat di log/monitoring tanpa
++        // meninggalkan area GoFood setinggi 0px di sisi pengguna.
++        res.status(502).send(renderCategoryError({
++            page: req.category.page
++        }));
+ 
+     }
+ 
+ }
+ 
+-module.exports = categoryHandler;
+\ No newline at end of file
++module.exports = categoryHandler;
+[EXIT=0]
+
+> services/jagelService.js
+diff --git a/services/jagelService.js b/services/jagelService.js
+index 816fed3..a7f6540 100644
+--- a/services/jagelService.js
++++ b/services/jagelService.js
+@@ -1,23 +1,27 @@
+ const axios = require("axios");
+ 
++const JAGEL_CODENAME =
++    process.env.JAGEL_CODENAME || "gocescustomer";
++
+ async function getComponent(componentId) {
+ 
+     const response = await axios.get(
+         `https://app.jagel.id/api/v2/customer/component/${componentId}`,
+         {
+             params: {
+-                codename: "gocesapp",
++                codename: JAGEL_CODENAME,
+                 page: 1,
+                 app_mode: 1,
+                 per_page: 50
+-            }
++            },
++            timeout: 15000
+         }
+     );
+ 
+     return response.data;
+ 
+ }
+ 
+ module.exports = {
+     getComponent
+-};
+\ No newline at end of file
++};
+[EXIT=0]
+
+============================================================
+4. OLD LOCAL HEAD VS ORIGIN MAIN
+============================================================
+
+> categories.js
+diff --git a/categories.js b/categories.js
+index 2a6fcec..f90697a 100644
+--- a/categories.js
++++ b/categories.js
+@@ -1,49 +1,52 @@
++const componentId = (name, fallback) =>
++    process.env[`JAGEL_COMPONENT_${name.toUpperCase()}`] || fallback;
++
+ module.exports = [
+ 
+     {
+         path: "/kuliner",
+         page: "kuliner",
+-        componentId: "482013168266a338e404198a9.02087100",
++        componentId: componentId("kuliner", "482013168266a338e404198a9.02087100"),
+         title: "­ƒì¢´©Å Rekomendasi Untukmu"
+     },
+ 
+     {
+         path: "/minuman",
+         page: "minuman",
+-        componentId: "092113168266a338e55536e99.19442399",
++        componentId: componentId("minuman", "092113168266a338e55536e99.19442399"),
+         title: "Minuman"
+     },
+ 
+     {
+         path: "/snack",
+         page: "snack",
+-        componentId: "105419195266a5782f2b07806.84367521",
++        componentId: componentId("snack", "105419195266a5782f2b07806.84367521"),
+         title: "Snack"
+     },
+ 
+     {
+         path: "/bakso",
+         page: "bakso",
+-        componentId: "485319195266a5782dc346207.21541794",
++        componentId: componentId("bakso", "485319195266a5782dc346207.21541794"),
+         title: "Bakso"
+     },
+ 
+     {
+         path: "/pizza",
+         page: "pizza",
+-        componentId: "175319195266a5782bd911d73.99279096",
++        componentId: componentId("pizza", "175319195266a5782bd911d73.99279096"),
+         title: "Pizza"
+     },
+ 
+     {
+         path: "/kulinerhorizontal",
+         page: "kulinerhorizontal",
+-        componentId: "482013168266a338e404198a9.02087100",
++        componentId: componentId("kuliner", "482013168266a338e404198a9.02087100"),
+         title: "Rekomendasi untukmu !!"
+     },
+ 
+     {
+         path: "/handphone",
+         page: "handphone",
+         componentId: "281316189266a4f6638af8062.89603879",
+         title: "Handphone"
+@@ -114,9 +117,9 @@ module.exports = [
+ 
+     {
+         path: "/beras",
+         page: "beras",
+         componentId: "413716189266a4f6be53f5b01.11075840",
+         title: "beras"
+     }
+ 
+-];
+\ No newline at end of file
++];
+[EXIT=0]
+
+> handlers/categoryHandler.js
+diff --git a/handlers/categoryHandler.js b/handlers/categoryHandler.js
+index 31fc28d..fc30e98 100644
+--- a/handlers/categoryHandler.js
++++ b/handlers/categoryHandler.js
+@@ -2,16 +2,19 @@ const jagelService =
+     require("../services/jagelService");
+ 
+ const renderProductGrid =
+     require("../templates/productGrid");
+ 
+ const renderProductHorizontal =
+     require("../templates/productHorizontal");
+ 
++const renderCategoryError =
++    require("../templates/categoryError");
++
+ async function categoryHandler(req, res) {
+ 
+     try {
+ 
+         const response =
+             await jagelService.getComponent(
+                 req.category.componentId
+             );
+@@ -54,16 +57,25 @@ async function categoryHandler(req, res) {
+ 
+             );
+ 
+         }
+ 
+     }
+ 
+     catch (err) {
++        const upstreamMessage =
++            err.response?.data?.message || err.message;
++
++        console.error(
++            `Kategori ${req.category.page} gagal dimuat:`,
++            upstreamMessage
++        );
+ 
+-        res.status(500).send(err.message);
++        res.status(502).send(renderCategoryError({
++            page: req.category.page
++        }));
+ 
+     }
+ 
+ }
+ 
+-module.exports = categoryHandler;
+\ No newline at end of file
++module.exports = categoryHandler;
+[EXIT=0]
+
+> services/jagelService.js
+diff --git a/services/jagelService.js b/services/jagelService.js
+index 816fed3..a7f6540 100644
+--- a/services/jagelService.js
++++ b/services/jagelService.js
+@@ -1,23 +1,27 @@
+ const axios = require("axios");
+ 
++const JAGEL_CODENAME =
++    process.env.JAGEL_CODENAME || "gocescustomer";
++
+ async function getComponent(componentId) {
+ 
+     const response = await axios.get(
+         `https://app.jagel.id/api/v2/customer/component/${componentId}`,
+         {
+             params: {
+-                codename: "gocesapp",
++                codename: JAGEL_CODENAME,
+                 page: 1,
+                 app_mode: 1,
+                 per_page: 50
+-            }
++            },
++            timeout: 15000
+         }
+     );
+ 
+     return response.data;
+ 
+ }
+ 
+ module.exports = {
+     getComponent
+-};
+\ No newline at end of file
++};
+[EXIT=0]
+
+============================================================
+5. CURRENT JAGEL WORKTREE VS ORIGIN MAIN
+============================================================
+
+> NET DIFF 3 TRACKED FILES
+diff --git a/handlers/categoryHandler.js b/handlers/categoryHandler.js
+index fc30e98..4001fab 100644
+--- a/handlers/categoryHandler.js
++++ b/handlers/categoryHandler.js
+@@ -65,16 +65,19 @@ async function categoryHandler(req, res) {
+         const upstreamMessage =
+             err.response?.data?.message || err.message;
+ 
+         console.error(
+             `Kategori ${req.category.page} gagal dimuat:`,
+             upstreamMessage
+         );
+ 
++        // Tetap kirim dokumen iframe yang dapat mengatur tingginya sendiri.
++        // Status 502 membuat masalah tetap terlihat di log/monitoring tanpa
++        // meninggalkan area GoFood setinggi 0px di sisi pengguna.
+         res.status(502).send(renderCategoryError({
+             page: req.category.page
+         }));
+ 
+     }
+ 
+ }
+ 
+[EXIT=0]
+
+============================================================
+6. REFERENCES IN JAGEL-API
+============================================================
+
+PATTERN: categoryError
+handlers\categoryHandler.js:10: const renderCategoryError =
+handlers\categoryHandler.js:11: require("../templates/categoryError");
+handlers\categoryHandler.js:76: res.status(502).send(renderCategoryError({
+templates\categoryError.js:10: function renderCategoryError(data) {
+templates\categoryError.js:39: module.exports = renderCategoryError;
+
+PATTERN: bankAccount
+(tidak ditemukan)
+
+PATTERN: bankAccountRoutes
+(tidak ditemukan)
+
+PATTERN: tripayDisbursement
+(tidak ditemukan)
+
+PATTERN: user_bank_accounts
+models\bankAccountModel.js:20: FROM user_bank_accounts
+models\bankAccountModel.js:42: FROM user_bank_accounts
+models\bankAccountModel.js:67: FROM user_bank_accounts
+models\bankAccountModel.js:90: FROM user_bank_accounts
+models\bankAccountModel.js:116: INSERT INTO user_bank_accounts
+models\bankAccountModel.js:169: UPDATE user_bank_accounts
+models\bankAccountModel.js:218: DELETE FROM user_bank_accounts
+models\bankAccountModel.js:241: UPDATE user_bank_accounts
+models\bankAccountModel.js:264: UPDATE user_bank_accounts
+
+============================================================
+7. REFERENCES IN GOCES-API-REPO
+============================================================
+
+PATTERN: categoryError
+handlers\categoryHandler.js:10: const renderCategoryError =
+handlers\categoryHandler.js:11: require("../templates/categoryError");
+handlers\categoryHandler.js:73: res.status(502).send(renderCategoryError({
+templates\categoryError.js:10: function renderCategoryError(data) {
+templates\categoryError.js:39: module.exports = renderCategoryError;
+
+PATTERN: bankAccount
+(tidak ditemukan)
+
+PATTERN: bankAccountRoutes
+(tidak ditemukan)
+
+PATTERN: tripayDisbursement
+(tidak ditemukan)
+
+PATTERN: user_bank_accounts
+(tidak ditemukan)
+
+============================================================
+8. RESULT
+============================================================
+SOURCE TIDAK DIUBAH.
+BELUM MERGE.
+BELUM RESET.
+BELUM COMMIT.
+BELUM DEPLOY.
