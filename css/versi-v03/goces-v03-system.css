@@ -3272,3 +3272,38 @@ body {
   -webkit-overflow-scrolling: auto !important;
   overscroll-behavior-y: none !important;
 }
+
+/* ============================================================
+   GOCES V03 - VOUCHER COPY TEXT SIZE FIX
+   ============================================================ */
+/* Tombol Salin pada card voucher */
+#page-promos .gcv-card .gcv-copy,
+.gcvh-container .gcv-card .gcv-copy,
+.gocesVoucherSection .gcv-card .gcv-copy,
+.gcv-wrapper .gcv-card .gcv-copy {
+  min-height: 30px !important;
+  padding: 0 9px !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+#page-promos .gcv-card .gcv-copy span,
+.gcvh-container .gcv-card .gcv-copy span,
+.gocesVoucherSection .gcv-card .gcv-copy span,
+.gcv-wrapper .gcv-card .gcv-copy span {
+  font-size: 10px !important;
+  line-height: 1 !important;
+}
+#page-promos .gcv-card .gcv-copy i,
+.gcvh-container .gcv-card .gcv-copy i,
+.gocesVoucherSection .gcv-card .gcv-copy i,
+.gcv-wrapper .gcv-card .gcv-copy i {
+  font-size: 10px !important;
+}
+/* Tombol Salin Voucher di popup */
+#gocesVoucherModal .gcv-modal-copy {
+  min-height: 44px !important;
+  padding: 10px 14px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}

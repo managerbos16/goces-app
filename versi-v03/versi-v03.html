@@ -2122,5 +2122,200 @@
       "
     ></div>
     <div id="gocesToast" class="goces-toast"></div>
-  </body>
+  <script id="gocesJagelTouchGuard">
+(function () {
+    if (window.__gocesJagelTouchGuardInstalled) {
+        return;
+    }
+    window.__gocesJagelTouchGuardInstalled = true;
+    var startX = 0;
+    var startY = 0;
+    function getRootScroller() {
+        return (
+            document.scrollingElement ||
+            document.documentElement ||
+            document.body
+        );
+    }
+    function getRootTop() {
+        var root = getRootScroller();
+        if (!root) {
+            return 0;
+        }
+        return Math.max(
+            root.scrollTop || 0,
+            window.pageYOffset || 0
+        );
+    }
+    function rootCanScroll() {
+        var root = getRootScroller();
+        if (!root) {
+            return false;
+        }
+        return (
+            root.scrollHeight >
+            root.clientHeight + 1
+        );
+    }
+    /*
+     * Jagel Android memakai pull-to-refresh native.
+     * Pertahankan root di 1px ketika berada di paling atas.
+     * 1px tidak terlihat user tetapi membuat WebView tetap
+     * dianggap mempunyai posisi scroll ke atas.
+     */
+    function armTopGuard() {
+        var root = getRootScroller();
+        if (!root) {
+            return;
+        }
+        if (
+            rootCanScroll() &&
+            root.scrollTop <= 0
+        ) {
+            root.scrollTop = 1;
+        }
+    }
+    /*
+     * Jangan mengganggu modal atau container yang memang
+     * mempunyai vertical scroll sendiri.
+     */
+    function findVerticalScroller(target) {
+        var el =
+            target && target.nodeType === 1
+                ? target
+                : null;
+        while (
+            el &&
+            el !== document.body &&
+            el !== document.documentElement
+        ) {
+            var style =
+                window.getComputedStyle(el);
+            var overflowY =
+                style.overflowY;
+            if (
+                (
+                    overflowY === "auto" ||
+                    overflowY === "scroll"
+                ) &&
+                el.scrollHeight >
+                el.clientHeight + 1
+            ) {
+                return el;
+            }
+            el = el.parentElement;
+        }
+        return null;
+    }
+    document.addEventListener(
+        "touchstart",
+        function (event) {
+            if (
+                !event.touches ||
+                event.touches.length !== 1
+            ) {
+                return;
+            }
+            /*
+             * Dilakukan sejak ACTION DOWN agar native
+             * SwipeRefreshLayout Jagel tidak mengambil gesture.
+             */
+            armTopGuard();
+            startX =
+                event.touches[0].clientX;
+            startY =
+                event.touches[0].clientY;
+        },
+        {
+            passive: true,
+            capture: true
+        }
+    );
+    document.addEventListener(
+        "touchmove",
+        function (event) {
+            if (
+                !event.touches ||
+                event.touches.length !== 1
+            ) {
+                return;
+            }
+            var touch =
+                event.touches[0];
+            var deltaX =
+                touch.clientX - startX;
+            var deltaY =
+                touch.clientY - startY;
+            /*
+             * Swipe horizontal jangan disentuh.
+             * Voucher/category horizontal tetap lancar.
+             */
+            if (
+                Math.abs(deltaY) <=
+                Math.abs(deltaX)
+            ) {
+                return;
+            }
+            /*
+             * Finger bergerak ke atas:
+             * ini adalah scroll turun halaman.
+             * WAJIB dibiarkan.
+             */
+            if (deltaY <= 0) {
+                return;
+            }
+            var innerScroller =
+                findVerticalScroller(
+                    event.target
+                );
+            /*
+             * Kalau modal/container masih punya posisi
+             * scroll di atas, biarkan dia scroll normal.
+             */
+            if (
+                innerScroller &&
+                innerScroller.scrollTop > 1
+            ) {
+                return;
+            }
+            /*
+             * Hanya blok gesture tarik turun ketika root
+             * benar-benar sudah mencapai paling atas.
+             */
+            if (
+                getRootTop() <= 1 &&
+                event.cancelable
+            ) {
+                event.preventDefault();
+            }
+        },
+        {
+            passive: false,
+            capture: true
+        }
+    );
+    function rearm() {
+        window.requestAnimationFrame(
+            armTopGuard
+        );
+        setTimeout(
+            armTopGuard,
+            80
+        );
+    }
+    window.addEventListener(
+        "load",
+        rearm
+    );
+    window.addEventListener(
+        "pageshow",
+        rearm
+    );
+    window.addEventListener(
+        "goces:pagechange",
+        rearm
+    );
+})();
+</script>
+</body>
 </html>
