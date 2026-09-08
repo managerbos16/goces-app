@@ -735,6 +735,186 @@ body {
 /*==================================================
             END
 ==================================================*/
+.gcv-wrapper,
+.gocesVoucherSection,
+#gocesVoucherSemua,
+#gocesVoucherPopuler,
+#gocesVoucherTerbaru,
+#gocesVoucherEksklusif,
+#gocesVoucherCashback,
+#gocesVoucherTerbatas {
+  gap: 12px;
+}
+.gcv-card {
+  min-height: 104px;
+  padding: 0;
+  gap: 0;
+  align-items: stretch;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+.gcv-card:hover {
+  transform: none;
+  border-color: #e5e7eb;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+}
+.gcv-card::before,
+.gcv-card::after {
+  left: 72px;
+  right: auto;
+  width: 15px;
+  height: 15px;
+  background: #f3f4f6;
+  z-index: 3;
+}
+.gcv-card::before {
+  top: -8px;
+  transform: none;
+}
+.gcv-card::after {
+  top: auto;
+  bottom: -8px;
+  transform: none;
+}
+.gcv-ticket-visual {
+  width: 80px;
+  min-width: 80px;
+  padding: 12px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #fff;
+  border-right: 2px dashed rgba(255, 255, 255, 0.82);
+  text-align: center;
+}
+.gcv-ticket-visual i {
+  font-size: 25px;
+  line-height: 1;
+}
+.gcv-ticket-visual span {
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.gcv-ticket--food {
+  background: linear-gradient(145deg, #ffad0b, #f18700);
+}
+.gcv-ticket--ride {
+  background: linear-gradient(145deg, #10c98f, #00a86b);
+}
+.gcv-ticket--car {
+  background: linear-gradient(145deg, #4084ff, #2563eb);
+}
+.gcv-ticket--pay {
+  background: linear-gradient(145deg, #9a5cff, #7034df);
+}
+.gcv-ticket--delivery {
+  background: linear-gradient(145deg, #ff7d42, #ea580c);
+}
+.gcv-card .gcv-content {
+  min-width: 0;
+  padding: 11px 10px 9px 13px;
+  gap: 0;
+  justify-content: flex-start;
+}
+.gcv-card .gcv-title {
+  margin: 0 0 4px;
+  padding-right: 0;
+  color: #172033;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gcv-card .gcv-description {
+  margin: 0 0 4px;
+  color: #788397;
+  font-size: 10px;
+  line-height: 1.35;
+  -webkit-line-clamp: 2;
+}
+.gcv-card .gcv-period {
+  margin: 0 0 5px;
+  color: #98a1b2;
+  font-size: 9px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gcv-ticket-bottom {
+  min-height: 22px;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.gcv-card .gcv-countdown {
+  max-width: calc(100% - 60px);
+  margin: 0;
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: #fff3d7;
+  color: #d48500;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gcv-card .gcv-countdown.upcoming,
+.gcv-card .gcv-countdown.expired {
+  background: #fee9e9;
+  color: #e5484d;
+}
+.gcv-card .gcv-copy {
+  min-width: 53px;
+  padding: 5px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 999px;
+  background: #2457d6;
+  color: #fff;
+  font-size: 9px;
+  line-height: 1;
+}
+.gcv-card .gcv-copy i {
+  font-size: 11px;
+}
+.gcv-card .gcv-copy.copied {
+  background: #10b981;
+}
+.gcv-card.gcv-expired .gcv-copy {
+  background: #9ca3af;
+}
+.gcvh-container .gcv-card {
+  flex-basis: calc(100vw - 32px);
+}
+@media (max-width: 360px) {
+  .gcv-ticket-visual {
+    width: 72px;
+    min-width: 72px;
+  }
+  .gcv-card::before,
+  .gcv-card::after {
+    left: 64px;
+  }
+  .gcv-card .gcv-content {
+    padding-left: 11px;
+  }
+}
 
 .goces-voucher-section {
   width: 100%;
