@@ -485,3 +485,136 @@
 .gpr-modal-copy-btn:active {
   transform: scale(0.98);
 }
+#page-promos {
+  background: #f4f6fa;
+}
+#page-promos .scroll-area {
+  padding: 0 0 88px;
+}
+#page-promos .gpr-header {
+  padding: 18px 15px 8px;
+  border-radius: 0;
+  background: transparent;
+  color: #172033;
+}
+#page-promos .gpr-header-top,
+#page-promos .gpr-header-content p,
+#page-promos .gpr-info-card,
+#page-promos .gcsHalamanPromoBannerSection {
+  display: none;
+}
+#page-promos .gpr-header-content {
+  margin: 0;
+}
+#page-promos .gpr-header-content h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+#page-promos .gpr-category {
+  gap: 8px;
+  padding: 8px 15px 14px;
+}
+#page-promos .gpr-category button {
+  padding: 8px 15px;
+  border: 1px solid #e5e9f0;
+  border-radius: 999px;
+  background: #fff;
+  color: #687386;
+  box-shadow: none;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+#page-promos .gpr-category button.active {
+  border-color: #172033;
+  background: #172033;
+  color: #fff;
+  box-shadow: none;
+}
+#page-promos .gpr-content {
+  padding: 0 15px 20px;
+}
+#page-promos .gocesVoucherSection,
+#page-promos #gocesVoucherSemua,
+#page-promos #gocesVoucherPopuler,
+#page-promos #gocesVoucherTerbaru,
+#page-promos #gocesVoucherEksklusif,
+#page-promos #gocesVoucherCashback,
+#page-promos #gocesVoucherTerbatas {
+  gap: 12px;
+}
+#page-promos .gcv-card {
+  min-height: 110px;
+  border-radius: 13px;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.07);
+}
+#page-promos .gcv-ticket-visual {
+  width: 78px;
+  min-width: 78px;
+}
+#page-promos .gcv-card::before,
+#page-promos .gcv-card::after {
+  left: 70px;
+}
+#page-promos .gcv-ticket-visual i {
+  font-size: 27px;
+}
+#page-promos .gcv-ticket-visual span {
+  font-size: 10px;
+  font-weight: 700;
+}
+#page-promos .gcv-card .gcv-content {
+  padding: 12px 10px 10px 13px;
+}
+#page-promos .gcv-card .gcv-title {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+#page-promos .gcv-card .gcv-description {
+  margin-bottom: 5px;
+  color: #697589;
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+#page-promos .gcv-card .gcv-period {
+  margin-bottom: 6px;
+  font-size: 10px;
+  font-weight: 400;
+}
+#page-promos .gcv-card .gcv-countdown {
+  max-width: calc(100% - 66px);
+  padding: 4px 7px;
+  font-size: 9px;
+  font-weight: 600;
+}
+#page-promos .gcv-card .gcv-copy {
+  min-width: 58px;
+  padding: 6px 9px;
+  font-size: 10px;
+  font-weight: 600;
+}
+#page-promos .gcv-card .gcv-copy i {
+  font-size: 12px;
+}
+@media (max-width: 360px) {
+  #page-promos .gcv-ticket-visual {
+    width: 72px;
+    min-width: 72px;
+  }
+  #page-promos .gcv-card::before,
+  #page-promos .gcv-card::after {
+    left: 64px;
+  }
+  #page-promos .gcv-card .gcv-title {
+    font-size: 13px;
+  }
+  #page-promos .gcv-card .gcv-description {
+    font-size: 10.5px;
+  }
+}
