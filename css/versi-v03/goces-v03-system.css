@@ -3363,18 +3363,18 @@ a.icon-circle-btn[href="action://act/cart"]:active {
 }
 
 /* ============================================================
-   HOME HEADER FULL BANNER
+   HOME HEADER FULL BANNER - EXTRA FULL
    ============================================================ */
 
 #page-home .home-hero-slider {
   position: relative !important;
-  width: calc(100% + 24px) !important;
-  margin-left: -12px !important;
-  margin-right: -12px !important;
-  margin-top: 8px !important;
-  margin-bottom: 14px !important;
+  width: calc(100% + 28px) !important;
+  margin-left: -14px !important;
+  margin-right: -14px !important;
+  margin-top: 2px !important;
+  margin-bottom: 8px !important;
   overflow: hidden !important;
-  border-radius: 0 0 22px 22px !important;
+  border-radius: 0 0 24px 24px !important;
   background: transparent !important;
   box-shadow: none !important;
 }
@@ -3387,47 +3387,65 @@ a.icon-circle-btn[href="action://act/cart"]:active {
 #page-home .home-hero-item {
   width: 100% !important;
   overflow: hidden !important;
-  border-radius: 0 0 22px 22px !important;
+  border-radius: 0 0 24px 24px !important;
   background: transparent !important;
 }
 
 #page-home .home-hero-item img {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
-  min-height: 170px !important;
+  height: 210px !important;
   object-fit: cover !important;
-  border-radius: 0 0 22px 22px !important;
+  object-position: center !important;
+  border-radius: 0 0 24px 24px !important;
+}
+
+/* Supaya kartu saldo sedikit naik dan terasa menyatu elegan */
+#page-home .wallet-card,
+#page-home .gocespay-card,
+#page-home .home-wallet-card {
+  position: relative !important;
+  margin-top: -4px !important;
+  z-index: 2 !important;
 }
 
 /* HP kecil */
 @media (max-width: 360px) {
   #page-home .home-hero-slider {
-    width: calc(100% + 20px) !important;
-    margin-left: -10px !important;
-    margin-right: -10px !important;
+    width: calc(100% + 24px) !important;
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+    margin-top: 2px !important;
+    margin-bottom: 8px !important;
+  }
+
+  #page-home .home-hero-item,
+  #page-home .home-hero-item img {
+    border-radius: 0 0 22px 22px !important;
   }
 
   #page-home .home-hero-item img {
-    min-height: 155px !important;
+    height: 190px !important;
   }
 }
 
 /* Tablet */
 @media (min-width: 600px) {
   #page-home .home-hero-slider {
-    width: calc(100% + 32px) !important;
-    margin-left: -16px !important;
-    margin-right: -16px !important;
-    border-radius: 0 0 26px 26px !important;
+    width: calc(100% + 36px) !important;
+    margin-left: -18px !important;
+    margin-right: -18px !important;
+    margin-top: 4px !important;
+    margin-bottom: 10px !important;
+    border-radius: 0 0 28px 28px !important;
   }
 
   #page-home .home-hero-item,
   #page-home .home-hero-item img {
-    border-radius: 0 0 26px 26px !important;
+    border-radius: 0 0 28px 28px !important;
   }
 
   #page-home .home-hero-item img {
-    min-height: 210px !important;
+    height: 250px !important;
   }
 }
