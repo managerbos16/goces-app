@@ -85,63 +85,42 @@
 
       .atc-nearby-header {
         display: flex;
-
         align-items: center;
-
         justify-content: space-between;
-
         padding: 0 16px;
-
         margin-bottom: 12px;
       }
 
       .atc-nearby-title {
         margin: 0;
-
         font-size: 18px;
-
         font-weight: 700;
-
         color: #1f2937;
       }
 
       .atc-nearby-seeall {
         border: none;
-
         background: none;
-
         padding: 0;
-
         color: #2563eb;
-
         font-size: 13px;
-
         font-weight: 700;
-
         cursor: pointer;
       }
 
       .atc-nearby-wrapper {
         width: 100%;
-
         overflow: hidden;
       }
 
       .atc-nearby-wrapper #item-nearby-head {
         display: flex;
-
         gap: 12px;
-
         padding: 0 16px 8px;
-
         overflow-x: auto;
-
         overflow-y: hidden;
-
         scroll-behavior: smooth;
-
         scrollbar-width: none;
-
         -webkit-overflow-scrolling: touch;
       }
 
@@ -151,147 +130,92 @@
 
       .atc-nearby-wrapper .item-nearby-row {
         position: relative;
-
         flex-shrink: 0;
-
         width: 160px;
-
         margin: 0;
-
         background: #fff;
-
         border-radius: 18px;
-
         overflow: hidden;
-
         border: 1px solid #eef2f7;
-
         box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
       }
 
       .atc-nearby-wrapper .item-nearby-row::before {
         content: "⭐TERDEKAT";
-
         position: absolute;
-
         top: 10px;
-
         left: 0;
-
         background: #ef4444;
-
         color: #fff;
-
         padding: 6px 14px;
-
         border-radius: 0 18px 18px 0;
-
         font-size: 9px;
-
         font-weight: 700;
-
         letter-spacing: 0.3px;
-
         z-index: 20;
       }
 
       .atc-nearby-wrapper .item-nearby-link {
         display: block;
-
         text-decoration: none;
-
         color: #111827;
       }
 
       .atc-nearby-wrapper .item-nearby-image {
         margin: 0 !important;
-
         width: 100% !important;
-
         display: block;
-
         aspect-ratio: 1/0.82;
-
         object-fit: cover;
-
         object-position: center center;
       }
 
       .atc-nearby-wrapper .item-nearby-title {
         display: -webkit-box;
-
         -webkit-box-orient: vertical;
-
         -webkit-line-clamp: 2;
-
         line-clamp: 2;
-
         overflow: hidden;
-
         padding: 10px 12px 4px;
-
         font-size: 14px;
-
         font-weight: 700;
-
         line-height: 1.35;
-
         color: #111827;
-
         min-height: 38px;
       }
 
       .atc-nearby-wrapper .item-nearby-distance {
         display: flex;
-
         justify-content: space-between;
-
         align-items: center;
-
         padding: 0 12px 8px;
-
         font-size: 12px;
-
         color: #6b7280;
       }
 
       .atc-nearby-wrapper .item-nearby-distance::after {
         content: "🛵 8-15 mnt";
-
         font-size: 11px;
-
         color: #6b7280;
-
         font-weight: 500;
       }
 
       .atc-nearby-wrapper .item-nearby-status {
         display: flex;
-
         align-items: center;
-
         justify-content: space-between;
-
         padding: 0 12px 12px;
       }
 
       .atc-nearby-wrapper .item-nearby-status-open {
         display: inline-flex;
-
         align-items: center;
-
         justify-content: center;
-
         padding: 4px 10px;
-
         border-radius: 999px;
-
         background: #dcfce7;
-
         color: #16a34a;
-
         font-size: 10px;
-
         font-weight: 700;
       }
 
@@ -301,236 +225,150 @@
 
       .atc-nearby-wrapper .item-nearby-status::after {
         content: "⭐ 4.9";
-
         font-size: 12px;
-
         font-weight: 700;
-
         color: #f59e0b;
       }
 
       /* GOCES PEDULI INLINE CSS — nonaktif sementara
     .home-goces-peduli {
-
         width: 100%;
-
         margin-top: 20px;
-
     }
 
     .goces-peduli-frame {
-
         width: 100%;
-
         min-height: 420px;
-
         height: auto;
-
         border: 0;
-
     }
-
-
 
     .gpd-header {
         position: sticky;
-
         top: 0;
-
         z-index: 100;
-
         background: #fff;
-
         display: flex;
-
         align-items: center;
-
         gap: 12px;
-
         padding: 14px 16px;
-
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     }
 
     .gpd-back {
         width: 40px;
-
         height: 40px;
-
         border: none;
-
         border-radius: 12px;
-
         background: #eef4ff;
-
         color: #2563eb;
-
         font-size: 22px;
-
         cursor: pointer;
-
         display: flex;
-
         align-items: center;
-
         justify-content: center;
     }
 
     .gpd-header h1 {
         font-size: 18px;
-
         font-weight: 700;
     }
 
-
-
     .gpd-loading {
         padding: 50px 20px;
-
         text-align: center;
-
         color: #6b7280;
     }
-
-
 
     .gpd-content {
         padding: 16px;
     }
 
-
-
     .gpd-banner {
         position: relative;
-
         overflow: hidden;
-
         border-radius: 18px;
-
         margin-bottom: 16px;
     }
 
     .gpd-banner img {
         width: 100%;
-
         aspect-ratio: 16/9;
-
         height: auto;
-
         object-fit: cover;
-
         display: block;
     }
 
     .gpd-category {
         position: absolute;
-
         left: 14px;
-
         top: 14px;
-
         background: #16a34a;
-
         color: #fff;
-
         padding: 7px 14px;
-
         border-radius: 30px;
-
         font-size: 12px;
-
         font-weight: 700;
     }
 
-
-
     .gpd-card {
         background: #fff;
-
         border-radius: 18px;
-
         padding: 18px;
-
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
     }
 
     .gpd-card h2 {
         font-size: 22px;
-
         line-height: 30px;
-
         margin-bottom: 10px;
     }
 
     .gpd-card p {
         color: #6b7280;
-
         line-height: 24px;
-
         margin-bottom: 20px;
     }
 
-
-
     .gpd-progress-info {
         display: flex;
-
         justify-content: space-between;
-
         align-items: center;
-
         margin-bottom: 10px;
     }
 
     .gpd-progress-info span:first-child {
         font-size: 22px;
-
         color: #16a34a;
-
         font-weight: 700;
     }
 
     .gpd-progress-info span:last-child {
         color: #2563eb;
-
         font-weight: 700;
     }
 
     .gpd-progress {
         width: 100%;
-
         height: 10px;
-
         background: #e5e7eb;
-
         border-radius: 30px;
-
         overflow: hidden;
-
         margin-bottom: 16px;
     }
 
     .gpd-progress-bar {
         width: 0%;
-
         height: 100%;
-
         background: #16a34a;
-
         border-radius: 30px;
-
         transition: width 0.35s ease;
     }
 
-
-
     .gpd-target {
         display: flex;
-
         justify-content: space-between;
-
         align-items: center;
-
         margin-bottom: 16px;
     }
 
@@ -542,48 +380,31 @@
         font-size: 18px;
     }
 
-
-
     .gpd-donatur {
         display: flex;
-
         align-items: center;
-
         gap: 8px;
-
         color: #4b5563;
-
         font-size: 15px;
     }
 
-
-
     .gpd-about {
         margin-top: 18px;
-
         background: #fff;
-
         border-radius: 18px;
-
         padding: 18px;
-
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
     }
 
     .gpd-about h3 {
         margin-bottom: 14px;
-
         font-size: 18px;
     }
 
     .gpd-about p {
         color: #4b5563;
-
         line-height: 28px;
     }
-
-
-
 
     #page-goces-detail:not(.active) .gpd-footer {
         display: none !important;
@@ -603,21 +424,13 @@
 
     .gpd-footer button {
         width: 100%;
-
         height: 52px;
-
         border: none;
-
         border-radius: 14px;
-
         background: #2563eb;
-
         color: #fff;
-
         font-size: 16px;
-
         font-weight: 700;
-
         cursor: pointer;
     }
 
@@ -632,14 +445,12 @@
     .gpd-footer button:focus-visible,
     .gpd-back:focus-visible {
         outline: 2px solid #2563eb;
-
         outline-offset: 3px;
     }
 
     @media (max-width: 480px) {
         .gpd-card h2 {
             font-size: 20px;
-
             line-height: 28px;
         }
 
@@ -652,13 +463,10 @@
         background: #f7f9fc;
     }
 
-
-
     .gpa-header {
         display: flex;
         align-items: center;
         gap: 12px;
-
         margin: 16px 16px 20px;
     }
 
@@ -700,10 +508,8 @@
         display: flex;
         align-items: center;
         gap: 13px;
-
         margin: 0 16px 24px;
         padding: 17px;
-
         border: 1px solid #ffe1df;
         border-radius: 18px;
         background: linear-gradient(135deg, #fff0f1, #fff8ed);
@@ -781,38 +587,28 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
     }
-    */
 
+    */
       .goces-toast {
         position: fixed;
         left: 50%;
         bottom: 90px;
-
         transform: translateX(-50%) translateY(20px);
-
         max-width: 90%;
         padding: 14px 18px;
-
         border-radius: 12px;
-
         background: #111827;
         color: #fff;
-
         font-size: 14px;
-
         opacity: 0;
         visibility: hidden;
-
         transition: 0.25s;
-
         z-index: 99999;
       }
 
       .goces-toast.show {
         opacity: 1;
-
         visibility: visible;
-
         transform: translateX(-50%) translateY(0);
       }
     </style>
