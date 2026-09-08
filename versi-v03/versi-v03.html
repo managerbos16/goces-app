@@ -53,10 +53,6 @@
     />
     <link
       rel="stylesheet"
-      href="https://goces-app.vercel.app/css/versi-v01/benner-food.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://goces-app.vercel.app/css/versi-v01/benner-promo.css"
     />
     <link
@@ -541,6 +537,7 @@
         transform: translateX(-50%) translateY(0);
       }
     </style>
+      <link id="goces-v03-system" rel="stylesheet" href="https://goces-app.vercel.app/css/versi-v03/goces-v03-system.css" />
   </head>
   <body>
     <div class="app-wrapper">
@@ -576,7 +573,7 @@
                 <input
                   type="search"
                   name="search"
-                  placeholder="Find services, food, or places"
+                  placeholder="Cari layanan atau makanan"
                 />
               </form>
               <a href="action://act/message_list" class="kpz-nav-button">
@@ -920,18 +917,6 @@
                     pengalaman belanja yang lebih cepat.
                   </div>
                   <div class="gak_cart_btn">Lihat Keranjang ›</div>
-                </div>
-              </a>
-              <div class="gak_menu_title">Aktivitas Transaksi</div>
-              <a href="action://act/shopping" class="gak_cart_card">
-                <div class="gak_history_icon">📦</div>
-                <div class="gak_cart_right">
-                  <div class="gak_cart_title">Riwayat Pesanan</div>
-                  <div class="gak_cart_desc">
-                    Lihat transaksi, top up, dan pesanan yang sedang berlangsung
-                    dengan lebih mudah.
-                  </div>
-                  <div class="gak_history_btn">Lihat Aktivitas ›</div>
                 </div>
               </a>
             </div>
@@ -1362,17 +1347,11 @@
                   id="search"
                   name="search"
                   class="input"
-                  placeholder="Cari makanan apa ??"
+                  placeholder="Cari makanan favoritmu"
                 />
               </form>
             </div>
           </div>
-          <section class="gcsFoodBannerSection">
-            <div
-              id="gcsFoodBannerContainer"
-              class="gcsFoodBannerContainer"
-            ></div>
-          </section>
           <nav class="categories-bar">
             <div class="categories-scroll">
               <button class="category-chip active" data-category="semua">
@@ -1405,6 +1384,23 @@
                 "
               >
               </iframe>
+              <!-- GOCES V03 - VOUCHER GOFOOD -->
+              <section class="gcvh-section gcvh-gofood-section">
+                <div class="gcvh-header">
+                  <h2 class="gcvh-title">Voucher Menarik</h2>
+                  <button
+                    type="button"
+                    class="gcvh-seeall"
+                    onclick="showPage('promos')"
+                  >
+                    Lihat Semua
+                  </button>
+                </div>
+                <div
+                  id="gocesVoucherFood"
+                  class="gcvh-container"
+                ></div>
+              </section>
             </section>
             <section id="section-kuliner" class="menu-section">
               <iframe
@@ -1930,7 +1926,7 @@
             <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
         </div>
-        <span class="nav-label">Home</span>
+        <span class="nav-label">Beranda</span>
       </button>
       <button
         class="nav-item"
@@ -1953,7 +1949,7 @@
             <circle cx="17.5" cy="17.5" r="2.5" />
           </svg>
         </div>
-        <span class="nav-label">Promos</span>
+        <span class="nav-label">Promo</span>
       </button>
       <button
         class="nav-item"
@@ -1979,7 +1975,7 @@
             <line x1="16" y1="17" x2="8" y2="17" />
           </svg>
         </div>
-        <span class="nav-label">Orders</span>
+        <span class="nav-label">Aktivitas</span>
       </button>
       <button
         class="nav-item"
@@ -2013,7 +2009,6 @@
     <script src="https://goces-app.vercel.app/js/core/goces-frame-manager.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v01/food.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v01/benner-home.js"></script>
-    <script src="https://goces-app.vercel.app/js/versi-v01/benner-food.js"></script>
     <script src="https://goces-app.vercel.app/js/versi-v01/benner-promo.js"></script>
     <script src="https://goces-app.vercel.app/js/development.js"></script>
     <script src="https://goces-app.vercel.app/js/voucher/voucher-card.js"></script>

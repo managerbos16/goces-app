@@ -9,3 +9,9 @@ Admin/backend/
 .codex/
 catatan/
 versi-tester-v00/
+versi-v03/_backup-ui-v03/
+versi-v03/audit-assets-v03/
+versi-v03/audit-full-v03/
+versi-v03/audit-versi-v03.txt
+audit-final-deploy-goces-v12.txt
+**/*.backup
