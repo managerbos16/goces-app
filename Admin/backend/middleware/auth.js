@@ -1,5 +1,11 @@
 const jwt = require("jsonwebtoken");
 
+const jwtSecret = process.env.JWT_SECRET;
+
+if (!jwtSecret) {
+    throw new Error("JWT_SECRET belum dikonfigurasi.");
+}
+
 const verifyToken = (req, res, next) => {
 
     const authHeader = req.headers["authorization"];
@@ -22,7 +28,7 @@ const verifyToken = (req, res, next) => {
 
     try {
 
-        const decoded = jwt.verify(token, "GOCES_SECRET");
+        const decoded = jwt.verify(token, jwtSecret);
 
         req.user = decoded;
 

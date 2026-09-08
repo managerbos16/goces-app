@@ -1,2 +1,19 @@
 # Backend API
 jagel-api/
+goces-api-repo/
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Secrets and local environment
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Vercel local metadata
+.vercel/
+**/.vercel/

@@ -2,6 +2,12 @@ const pool = require("../config/database");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+const jwtSecret = process.env.JWT_SECRET;
+
+if (!jwtSecret) {
+    throw new Error("JWT_SECRET belum dikonfigurasi.");
+}
+
 // =========================
 // Setup Super Admin
 // =========================
@@ -298,7 +304,7 @@ WHERE a.email = $1
                 id: admin.id,
                 role_id: admin.role_id
             },
-            "GOCES_SECRET",
+            jwtSecret,
             {
                 expiresIn: "1d"
             }

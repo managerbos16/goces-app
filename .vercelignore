@@ -1,0 +1,11 @@
+jagel-api/
+goces-api-repo/
+Admin/backend/
+**/.env
+**/.env.*
+**/node_modules/
+.git/
+.agents/
+.codex/
+catatan/
+versi-tester-v00/
