@@ -654,6 +654,107 @@ body {
   cursor: pointer;
 }
 
+/* VOUCHER DETAIL V3 */
+.gcv-modal {
+  padding: 0;
+  background: rgba(15, 23, 42, 0.52);
+  backdrop-filter: blur(3px);
+}
+.gcv-modal-content {
+  position: relative;
+  max-width: 520px;
+  padding: 24px 18px 16px;
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -10px 36px rgba(15, 23, 42, 0.16);
+}
+.gcv-modal-header {
+  margin: -54px 0 14px;
+}
+.gcv-modal-image {
+  width: 92px;
+  height: 92px;
+  border: 4px solid #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+}
+.gcv-modal-close {
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  background: #f0f4fb;
+  color: #385273;
+  font-size: 14px;
+}
+.gcv-modal-title {
+  margin: 0 36px 6px 0;
+  color: #172033;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.gcv-modal-description {
+  margin: 0 0 14px;
+  color: #6d7a91;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.gcv-modal-code {
+  margin-bottom: 14px;
+  padding: 12px;
+  border: 1.5px dashed #4d7cff;
+  border-radius: 12px;
+  background: #f7f9ff;
+  color: #1d4ed8;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+}
+.gcv-modal-details {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 15px;
+  color: #3c4d67;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.gcv-modal-details > div::before {
+  display: inline-block;
+  min-width: 112px;
+  color: #7a879b;
+}
+.gcv-modal-period::before {
+  content: "Periode";
+}
+.gcv-modal-min-order::before {
+  content: "Minimal Belanja";
+}
+.gcv-modal-max-discount::before {
+  content: "Maksimal Diskon";
+}
+.gcv-terms {
+  margin-top: 0;
+  padding-top: 13px;
+  border-top: 1px solid #edf0f5;
+}
+.gcv-terms-title {
+  margin-bottom: 8px;
+  color: #172033;
+  font-size: 12px;
+}
+.gcv-terms li {
+  margin-bottom: 5px;
+  color: #66758b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.gcv-modal-copy {
+  margin-top: 4px;
+  padding: 12px;
+  border-radius: 11px;
+  background: #1d4ed8;
+  font-size: 13px;
+}
+
 /*==================================================
                 MODAL IMAGE
 ==================================================*/
@@ -914,6 +1015,80 @@ body {
   .gcv-card .gcv-content {
     padding-left: 11px;
   }
+}
+
+/* Keep the premium modal rules after the legacy modal rules. */
+.gcv-modal-content {
+  position: relative;
+  max-width: 520px;
+  padding: 24px 18px 16px;
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -10px 36px rgba(15, 23, 42, 0.16);
+}
+.gcv-modal-header {
+  margin: -54px 0 14px;
+}
+.gcv-modal-image {
+  width: 92px;
+  height: 92px;
+  border: 4px solid #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+}
+.gcv-modal-close {
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  background: #f0f4fb;
+  color: #385273;
+  font-size: 14px;
+}
+.gcv-modal-title {
+  margin: 0 36px 6px 0;
+  color: #172033;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.gcv-modal-description {
+  margin: 0 0 14px;
+  color: #6d7a91;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.gcv-modal-code {
+  margin-bottom: 14px;
+  padding: 12px;
+  border: 1.5px dashed #4d7cff;
+  border-radius: 12px;
+  background: #f7f9ff;
+  color: #1d4ed8;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+}
+.gcv-terms {
+  margin-top: 0;
+  padding-top: 13px;
+  border-top: 1px solid #edf0f5;
+}
+.gcv-terms-title {
+  margin-bottom: 8px;
+  color: #172033;
+  font-size: 12px;
+}
+.gcv-terms li {
+  margin-bottom: 5px;
+  color: #66758b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.gcv-modal-copy {
+  margin-top: 4px;
+  padding: 12px;
+  border-radius: 11px;
+  background: #1d4ed8;
+  font-size: 13px;
 }
 
 .goces-voucher-section {

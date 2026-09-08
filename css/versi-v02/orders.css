@@ -137,3 +137,103 @@
 .gak_cart_card:active .gak_history_btn {
   transform: scale(0.97);
 }
+
+/* ACTIVITIES V3 */
+#page-orders {
+  background: #f5f7fb;
+}
+#page-orders .scroll-area {
+  min-height: 100%;
+  padding-bottom: 88px;
+}
+#page-orders .gak_header {
+  padding: 18px 15px 4px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#page-orders .gak_header::after {
+  content: "Pantau pesanan dan transaksi kamu dalam satu tempat.";
+  display: block;
+  margin-top: 4px;
+  color: #748095;
+  font-size: 11px;
+  font-weight: 400;
+}
+#page-orders .gak_title {
+  color: #172033;
+  font-size: 20px;
+  font-weight: 700;
+}
+#page-orders .gak_tabs {
+  gap: 0;
+  margin: 10px 15px 20px;
+  padding: 3px;
+  border: 1px solid #e3e8f0;
+  border-radius: 10px;
+  background: #fff;
+}
+#page-orders .gak_tab {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 7px;
+  background: transparent;
+  color: #667389;
+  font-size: 11px;
+  font-weight: 600;
+}
+#page-orders .gak_tab.active {
+  background: #edf4ff;
+  color: #1d4ed8;
+  box-shadow: 0 1px 3px rgba(29, 78, 216, 0.08);
+}
+#page-orders .gak_content {
+  padding: 0 15px 22px;
+}
+#page-orders .gak_menu_title {
+  margin: 0 0 9px;
+  color: #61708a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+}
+#page-orders .gak_cart_card {
+  margin-bottom: 14px;
+  padding: 13px;
+  gap: 12px;
+  border: 1px solid #e5e9f0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+}
+#page-orders .gak_cart_icon,
+#page-orders .gak_history_icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 9px;
+  background: #edf4ff;
+  font-size: 17px;
+}
+#page-orders .gak_cart_title {
+  color: #1c2940;
+  font-size: 13px;
+  font-weight: 700;
+}
+#page-orders .gak_cart_desc {
+  margin-top: 3px;
+  color: #728097;
+  font-size: 10px;
+  line-height: 1.42;
+}
+#page-orders .gak_cart_btn,
+#page-orders .gak_history_btn {
+  margin-top: 7px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #1d4ed8;
+  font-size: 10px;
+  font-weight: 600;
+}

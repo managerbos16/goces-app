@@ -1,6 +1,18 @@
 /* GOCES VOUCHER CARD */
 (function () {
   function getVoucherVisual(voucher) {
+    const selectedIcon = String(voucher.icon || "")
+      .toLowerCase()
+      .trim();
+    const iconMap = {
+      food: { type: "food", icon: "ph-hamburger" },
+      coffee: { type: "food", icon: "ph-coffee" },
+      ride: { type: "ride", icon: "ph-motorcycle" },
+      car: { type: "car", icon: "ph-car" },
+      pay: { type: "pay", icon: "ph-wallet" },
+      delivery: { type: "delivery", icon: "ph-package" },
+    };
+    if (iconMap[selectedIcon]) return iconMap[selectedIcon];
     const identity = [
       voucher.title,
       voucher.description,

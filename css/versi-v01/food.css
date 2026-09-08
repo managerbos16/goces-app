@@ -322,3 +322,94 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* GOFOOD V3 */
+#page-gofood {
+  background: #f5f7fb;
+}
+#page-gofood .scroll-area {
+  padding-bottom: 88px;
+}
+#page-gofood .goces-header {
+  padding: 13px 15px 6px;
+  background: #f5f7fb;
+  position: static;
+}
+#page-gofood .header-inner {
+  justify-content: flex-start;
+  gap: 10px;
+}
+#page-gofood .icon-circle-btn {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  color: #173b79;
+  font-size: 19px;
+}
+#page-gofood .header-right {
+  display: none;
+}
+#page-gofood .gofood-page-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+#page-gofood .gofood-page-title strong {
+  color: #172033;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+#page-gofood .gofood-page-title span {
+  color: #789;
+  font-size: 9px;
+  line-height: 1.2;
+}
+#page-gofood .search-section {
+  padding: 8px 15px 7px;
+}
+#page-gofood .search-wrapper .input {
+  height: 40px;
+  border-radius: 11px;
+  border-color: #e3e8f0;
+  padding-left: 37px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  font-size: 11px;
+}
+#page-gofood .search-inner-icon {
+  left: 12px;
+  color: #668;
+  font-size: 16px;
+}
+#page-gofood .gcsFoodBannerSection {
+  padding: 6px 15px 0;
+}
+#page-gofood .gcsFoodBannerContainer img {
+  border-radius: 11px;
+}
+#page-gofood .categories-bar {
+  padding: 12px 0 10px;
+}
+#page-gofood .categories-scroll {
+  gap: 8px;
+  padding: 0 15px;
+}
+#page-gofood .category-chip {
+  padding: 7px 14px;
+  border-color: #e4e8f0;
+  background: #fff;
+  color: #657188;
+  font-size: 10px;
+  font-weight: 600;
+}
+#page-gofood .category-chip.active {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+  color: #fff;
+}
+#page-gofood .content-body {
+  padding: 0 15px;
+}
