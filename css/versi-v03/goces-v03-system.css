@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    GOCES V03 DESIGN SYSTEM
    Jagel / Android WebView / Android Tablet
    ============================================================ */
@@ -3220,4 +3220,55 @@ a.icon-circle-btn[href="action://act/cart"]:active {
   #frame-kulinerhorizontal {
     margin-bottom: 18px !important;
   }
+}
+
+/* GOCES V03 - ROOT WEBVIEW SCROLL FIX
+   Jagel harus membaca scroll dari WebView/document utama,
+   bukan nested .scroll-area.
+   ============================================================ */
+html {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: none !important;
+}
+body {
+  height: auto !important;
+  min-height: 100dvh !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  overscroll-behavior-y: none !important;
+}
+/* Jangan kunci tinggi aplikasi ke viewport */
+.app-wrapper {
+  height: auto !important;
+  min-height: 100dvh !important;
+  overflow: visible !important;
+}
+/* Halaman mengikuti tinggi konten */
+.page {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 100dvh !important;
+  overflow: visible !important;
+}
+/* Hanya halaman aktif yang tampil */
+.page.active {
+  display: flex !important;
+  flex-direction: column !important;
+}
+/* PENTING:
+   Matikan nested vertical scroll.
+   Document/WebView menjadi satu-satunya vertical scroller.
+*/
+.scroll-area {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100dvh !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  -webkit-overflow-scrolling: auto !important;
+  overscroll-behavior-y: none !important;
 }
