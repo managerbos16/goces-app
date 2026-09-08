@@ -3363,64 +3363,220 @@ a.icon-circle-btn[href="action://act/cart"]:active {
 }
 
 /* ============================================================
-   GOCES V03 - HOME HEADER BANNER FULL FINAL
-   Banner penuh tanpa crop / tanpa stretch
+   GOCES V03 - HOME HERO OVERLAY FINAL
+   Profile + Search + Notification di atas banner
    ============================================================ */
 
 #page-home .home-header {
-  padding: calc(14px + env(safe-area-inset-top)) 0 0 !important;
+  position: relative !important;
+
+  width: 100% !important;
+
+  padding: 0 !important;
 
   overflow: hidden !important;
+
+  background: #1d4ed8 !important;
+
   border-radius: 0 0 24px 24px !important;
 }
 
-/* Search + avatar tetap punya jarak kiri kanan */
+/* ============================================================
+   TOP ACTIONS MENGAMBANG DI ATAS BANNER
+   ============================================================ */
+
 #page-home .header-row {
-  padding-left: 12px !important;
-  padding-right: 12px !important;
+  position: absolute !important;
+
+  top: calc(10px + env(safe-area-inset-top)) !important;
+  left: 10px !important;
+  right: 10px !important;
+
+  z-index: 20 !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 8px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* Banner benar-benar memenuhi header */
+/* ============================================================
+   BANNER FULL HEADER
+   ============================================================ */
+
 #page-home .home-hero-slider {
+  position: relative !important;
+
   width: 100% !important;
+
   aspect-ratio: 16 / 7 !important;
 
-  margin: 8px 0 0 !important;
+  margin: 0 !important;
 
-  border-radius: 0 !important;
   overflow: hidden !important;
-  background: transparent !important;
+
+  border-radius: 0 0 24px 24px !important;
+
+  background: #1d4ed8 !important;
 }
 
-/* Item banner */
+#page-home .home-hero-slider > a {
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+}
+
 #page-home .home-hero-item {
   position: absolute !important;
   inset: 0 !important;
+
   width: 100% !important;
   height: 100% !important;
 
-  border-radius: 0 !important;
   overflow: hidden !important;
+
+  border-radius: 0 0 24px 24px !important;
 }
 
-/* PENTING:
-   jangan pakai fixed height,
-   jangan potong gambar */
 #page-home .home-hero-item img {
   display: block !important;
 
   width: 100% !important;
   height: 100% !important;
 
-  object-fit: fill !important;
-  object-position: center !important;
+  object-fit: cover !important;
+  object-position: center center !important;
 
-  border-radius: 0 !important;
+  border-radius: 0 0 24px 24px !important;
 }
 
-/* Wallet overlap ke bagian bawah banner */
+/* ============================================================
+   SEARCH DI ATAS GAMBAR
+   Sedikit transparan agar terasa premium
+   ============================================================ */
+
+#page-home .search-bar {
+  height: 40px !important;
+
+  padding: 0 12px !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+
+  border-radius: 999px !important;
+
+  background: rgba(255, 255, 255, 0.94) !important;
+
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.16) !important;
+
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+#page-home .search-bar input {
+  font-size: 12px !important;
+
+  background: transparent !important;
+}
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+
+#page-home .avatar-btn {
+  width: 40px !important;
+  height: 40px !important;
+
+  min-width: 40px !important;
+  flex: 0 0 40px !important;
+
+  padding: 2px !important;
+
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
+
+  border-radius: 50% !important;
+
+  background: rgba(255, 255, 255, 0.96) !important;
+
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.16) !important;
+}
+
+#page-home .avatar-img {
+  width: 100% !important;
+  height: 100% !important;
+
+  border-radius: 50% !important;
+
+  object-fit: cover !important;
+}
+
+/* ============================================================
+   NOTIFICATION
+   ============================================================ */
+
+#page-home .header-row a.kpz-nav-button[href="action://act/message_list"] {
+  width: 40px !important;
+  height: 40px !important;
+
+  min-width: 40px !important;
+  min-height: 40px !important;
+
+  flex: 0 0 40px !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+
+  border-radius: 50% !important;
+
+  background: rgba(255, 255, 255, 0.94) !important;
+
+  color: #111827 !important;
+
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.16) !important;
+
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* ============================================================
+   GOCESPAY OVERLAP BANNER
+   ============================================================ */
+
 #page-home .wallet-card {
-  margin-top: -22px !important;
   position: relative !important;
-  z-index: 5 !important;
+
+  z-index: 10 !important;
+
+  margin-top: -22px !important;
+}
+
+/* ============================================================
+   SMALL ANDROID
+   ============================================================ */
+
+@media (max-width: 359px) {
+  #page-home .header-row {
+    top: calc(8px + env(safe-area-inset-top)) !important;
+
+    left: 8px !important;
+    right: 8px !important;
+
+    gap: 6px !important;
+  }
+
+  #page-home .avatar-btn,
+  #page-home .header-row a.kpz-nav-button[href="action://act/message_list"] {
+    width: 38px !important;
+    height: 38px !important;
+
+    min-width: 38px !important;
+
+    flex-basis: 38px !important;
+  }
+
+  #page-home .search-bar {
+    height: 38px !important;
+  }
 }
