@@ -850,23 +850,93 @@ iframe {
 #page-gofood .search-section {
   padding: 8px var(--g3-page-pad) 10px;
 }
+/* =========================================================
+   GOFOOD SEARCH - SINGLE CARD
+   Hilangkan efek card bertumpuk
+   ========================================================= */
+
 #page-gofood .search-wrapper {
+  position: relative;
+
+  width: 100%;
   min-height: 46px;
+
+  display: flex;
+  align-items: center;
+
   border: 1px solid var(--g3-border);
+
   border-radius: 14px;
-  background: #fff;
-  box-shadow: none;
+
+  background: #ffffff;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+
+  overflow: hidden;
 }
+
 #page-gofood .search-wrapper form {
   width: 100%;
+
+  margin: 0;
+  padding: 0;
 }
-#page-gofood .input {
+
+/* INPUT TIDAK BOLEH PUNYA CARD SENDIRI */
+
+#page-gofood .search-wrapper .input {
   width: 100%;
   height: 46px;
+
+  margin: 0;
+
+  padding: 0 14px 0 44px;
+
+  border: 0 !important;
+
+  border-radius: 0 !important;
+
+  outline: 0 !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+
+  color: var(--g3-text);
+
+  font-family: inherit;
+
   font-size: 14px;
+
+  line-height: 1;
 }
+
+/* HILANGKAN SHADOW LAMA SAAT INPUT FOCUS */
+
+#page-gofood .search-wrapper .input:focus {
+  border: 0 !important;
+
+  outline: 0 !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+}
+
+/* SEARCH ICON */
+
 #page-gofood .search-inner-icon {
+  position: absolute;
+
+  left: 14px;
+
+  z-index: 2;
+
+  color: #64748b;
+
   font-size: 20px;
+
+  pointer-events: none;
 }
 #page-gofood .categories-bar {
   padding: 0;
